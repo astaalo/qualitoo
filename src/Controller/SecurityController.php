@@ -11,6 +11,7 @@
 
 namespace App\Controller;
 
+use App\Annotation\QMLogger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,6 +40,7 @@ class SecurityController extends BaseController
     }
 
     /**
+     * @QMLogger("Page de connexion")
      * @param Request $request
      * @Route("/login", name="login")
      * @return Response
@@ -82,11 +84,19 @@ class SecurityController extends BaseController
         ));
     }
 
+    /**
+     * @QMLogger("Tentative de connexion")
+     * @Route("/login_check", name="login_check")
+     */
     public function checkAction()
     {
         throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
     }
 
+    /**
+     * @QMLogger("Deconnexion de l'utilisateur")
+     * @Route("/logout", name="logout")
+     */
     public function logoutAction()
     {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');

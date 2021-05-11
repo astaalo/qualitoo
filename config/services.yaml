@@ -76,3 +76,8 @@ services:
     App\Controller\RegistrationController:
         arguments:
             $formFactory: "@fos_user.registration.form.factory"
+
+    App\Controller\ExceptionController:
+        public: true
+        arguments: [ '@kernel','@twig','@mailer']
+        tags: [ 'controller.service_arguments' ]

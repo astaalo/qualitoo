@@ -1,0 +1,28 @@
+{#{% extends 'layout.html.twig' %}#}
+
+{% block head %}
+    {#<link href="{{ asset('bundles/framework/css/exception.css', absolute=true) }}" rel="stylesheet" type="text/css" media="all" />#}
+    <link href="{{ asset('bundles/orangemain/css/assets/error.min.css', absolute=true) }}" rel="stylesheet" type="text/css" media="all" />
+{% endblock %}
+
+{% block title %}
+{#{{ exception.message }} ({{ status_code }} {{ status_text }})#}
+{% endblock %}
+
+{% block body %}
+    <div id="error-wrap">
+
+        {#<div id="error-digits">
+            <span class="animated">4</span>
+            <span class="animated delay300">0</span>
+            <span class="animated delay600">4</span>
+        </div>#}
+
+        <h1> Votre profil ne vous permet pas de vous connecter depuis ce réseau.</h1>
+        <p>Pour plus d'informations, veuillez contacter l'administrateur.
+            <a href="{{ is_granted("ROLE_PREVIOUS_ADMIN") ? path('_dashboard') ~ '?_want_to_be_this_user=_exit' : path('fos_user_security_logout') }}">
+                <i class="icon-off"></i>Déconnexion
+            </a>
+
+    </div>
+{% endblock %}

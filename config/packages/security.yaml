@@ -1,0 +1,32 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                #default_target_path: dashboard
+
+            logout: true
+            anonymous: true
+
+            form_login_ldap:
+                provider: fos_userbundle
+                service: Symfony\Component\Ldap\Ldap
+                dn_string: 'ORANGE-SONATEL\{username}'
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }

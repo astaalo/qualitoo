@@ -1,0 +1,34 @@
+{% if type is defined %}
+	<div style="margin: 0 auto;width: 56%;">
+		<!-- // breaks -->
+		<div class="sigrc_grid shoutcutBox identification {{ position==1 ? 'active' : null }}" onclick="location.href='{{ path('choix_carto_kpi',{carto:1, type:0,link:app.request.attributes.get('_route')}) }}'"> 
+			<span class="ico color add"></span> <strong>Métier</strong> <em>Fiche de risque métier</em> 
+		</div>
+		<div class="sigrc_grid shoutcutBox identification {{ position==2 ? 'active' : null }}" onclick="location.href='{{ path('choix_carto_kpi',{carto:2, type:0,link:app.request.attributes.get('_route')}) }}'">
+			<span class="ico color eye"></span> <strong>Projet</strong> <em>Fiches de risque projet</em> 
+		</div>
+		<div class="sigrc_grid shoutcutBox identification {{ position==3 ? 'active' : null }}" onclick="location.href='{{ path('choix_carto_kpi',{carto:3, type:1,link:app.request.attributes.get('_route')}) }}'">
+			<span class="ico color pencil"></span> <strong>SST</strong> <em>Fiche de risque SST</em> 
+		</div>
+		<div class="sigrc_grid shoutcutBox identification {{ position==4 ? 'active' : null }}" onclick="location.href='{{ path('choix_carto_kpi',{carto:4, type:1,link:app.request.attributes.get('_route')}) }}'" style="width:180px;">
+			<span class="ico color checkmark2"></span> <strong>Environnemental</strong> <em>Fiche de risque environnemental</em> 
+		</div>
+	</div>
+
+	{% else %}
+	<div style="margin: 0 auto;width: 56%;">
+		<!-- // breaks -->
+		<div class="sigrc_grid shoutcutBox identification {{ position==1 ? 'active' : null }}" onclick="location.href='{{ path('choix_carto_kpi',{carto:1,type:-1,link:app.request.attributes.get('_route')}) }}'"> 
+			<span class="ico color add"></span> <strong>Métier</strong> <em>Fiche de risque métier</em> 
+		</div>
+		<div class="sigrc_grid shoutcutBox identification {{ position==2 ? 'active' : null }}" onclick="location.href='{{ path('choix_carto_kpi',{carto:2,type:-1,link:app.request.attributes.get('_route')}) }}'">
+			<span class="ico color eye"></span> <strong>Projet</strong> <em>Fiches de risque projet</em> 
+		</div>
+		<div class="sigrc_grid shoutcutBox identification {{ position==3 ? 'active' : null }}" onclick="location.href='{{ path('choix_carto_kpi',{carto:3,type:-1,link:app.request.attributes.get('_route')}) }}'">
+			<span class="ico color pencil"></span> <strong>SST</strong> <em>Fiche de risque SST</em> 
+		</div>
+		<div class="sigrc_grid shoutcutBox identification {{ position==4 ? 'active' : null }}" onclick="location.href='{{ path('choix_carto_kpi',{carto:4,type:-1,link:app.request.attributes.get('_route')}) }}'" style="width:180px;">
+			<span class="ico color checkmark2"></span> <strong>Environnemental</strong> <em>Fiche de risque environnemental</em> 
+		</div>
+	</div>
+{% endif %}

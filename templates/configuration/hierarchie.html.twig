@@ -1,0 +1,15 @@
+	<div style="position: relative; left: 40%">
+		<!-- // breaks -->
+		{% if app.user.hasRole('ROLE_SUPER_ADMIN') %}
+		<div class="sigrc_grid shoutcutBox hierarchie {{ position==1 ? 'active' : null }}" onclick="location.href='{{ path('les_societes') }}'"> 
+			<span class="ico color item"></span> <strong>Société</strong> <em> Société/Filiale</em> 
+		</div>
+		{% endif %}
+		<div class="sigrc_grid shoutcutBox hierarchie {{ position==2 ? 'active' : null }}" onclick="location.href='{{ path('les_structures') }}'">
+			<span class="ico color group"></span> <strong>Entité</strong> <em>Entité/Structure</em> 
+		</div>
+		<!-- // breaks -->
+		<div class="sigrc_grid shoutcutBox hierarchie {{ position==3 ? 'active' : null }}" onclick="location.href='{{ path('les_utilisateurs') }}'"> 
+			<span class="ico color emoticon_grin"></span> <strong>Utilisateur</strong> <em>Membre/Utilisateur</em> 
+		</div>
+	</div>

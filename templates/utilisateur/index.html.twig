@@ -1,0 +1,46 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block header_config %}
+{% include 'configuration/configuration.html.twig' %}
+<div class="header">
+	<span>
+		<span class="ico gray spreadsheet"></span>
+		Liste des membres
+	</span>
+	<div id="buttom_top">
+			<ul class="uibutton-group">
+			<li><a class="uibutton icon add" href="{{ path('fos_user_registration_register') }}">Nouvel utilisateur</a></li>
+	            </ul>
+        </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="content">
+	<div class="tableName">
+		<table class="display" id="membreTable">
+			<thead>
+				<tr>
+					<th><div class="th_wrapp">Nom</div></th>
+					<th><div class="th_wrapp">Matricule</div></th>
+					<th><div class="th_wrapp">Structure</div></th>
+					<th><div class="th_wrapp">Rôle</div></th>
+					<th><div class="th_wrapp">Etat</div></th>
+					<th width="100px"><div class="th_wrapp">Actions</div></th>
+				</tr>
+			</thead>
+			<tbody>
+			 	<tr class="odd gradeX">
+					<td colspan="6">Chargement des données en cours ...</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ block( 'datatable_options', 'form_div_layout.html.twig', {has_buttons: false, with_tag: 1 }) }}
+	{% include 'Extra/datatable.html.twig' with {idTable: 'membreTable', url: path('liste_des_utilisateurs'), nosorting: {0:4, 1:5} } %}
+{% endblock %}

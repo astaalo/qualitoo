@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block menu %}{% endblock %}
+
+{% block content %}{% block menu_config %}{% endblock %}
+	
+	{% block br_header %}<br class="clear"/>{% endblock %}
+    <div class="onecolumn">
+    	{% block header_config %}
+    	<div class="header">
+			<span>
+				<span class="ico color gear"></span>Configuration
+			</span>
+		</div>
+		{% endblock %}
+        {% block separator_config %}<br class="clear"/>{% endblock %}
+        {% block content_config %}{% endblock %}
+    </div>
+    <div class="clear"></div>
+{% endblock %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Orange\QuickMakingBundle\Twig;
+namespace App\QuickMakingBundle\Twig;
 
 class JQueryExtension extends \Twig_Extension
 {

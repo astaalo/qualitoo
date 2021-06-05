@@ -1,0 +1,15 @@
+		{% if carto <= 2 %}
+			<li><a class="uibutton type_aggreg {{ type==0 ? 'active'  : null}}" href="{{ path(app.request.attributes.get('_route'),{carto:carto, type:0}) }}">Entité</a></li>
+			<li><a class="uibutton type_aggreg {{ type==1 ? 'active'  : null}}" href="{{ path(app.request.attributes.get('_route'),{carto:carto, type:1}) }}">Sous-entité</a></li>
+		{% endif %}
+		
+		{% if carto > 2 %}
+			<li><a class="uibutton type_aggreg {{ type==1 ? 'active'  : null}}" href="{{ path(app.request.attributes.get('_route'),{carto:carto, type:1}) }}">Site</a></li>
+			<li><a class="uibutton type_aggreg {{ type==3 ? 'active'  : null}}" href="{{ path(app.request.attributes.get('_route'),{carto:carto, type:3}) }}">Equipement</a></li>
+		{% endif %}
+		
+		{% if carto == 2 %}
+				<li><a class="uibutton type_aggreg {{ type==2 ? 'active'  : null}}" href="{{ path(app.request.attributes.get('_route'),{carto:2, type:2}) }}">Projet</a></li>
+		{% elseif carto == 1 %}
+				<li><a class="uibutton type_aggreg {{ type==2 ? 'active'  : null}}" href="{{ path(app.request.attributes.get('_route'),{carto:carto, type:2}) }}">Activité</a></li>
+		{% endif %}

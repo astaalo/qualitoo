@@ -1,0 +1,13 @@
+	<div style="margin: 0 auto;width: 630px;">
+		<!-- // breaks -->
+		<div class="maitrise sigrc_grid shoutcutBox {{ position==1 ? 'active' : null }}" onclick="location.href='{{ path('les_planactions') }}'"> 
+			<span class="ico color item"></span> <strong>Plan d'action</strong> <em> Plans d'actions à traiter</em> 
+		</div>
+		<div class="maitrise sigrc_grid shoutcutBox {{ position==2 ? 'active' : null }}" onclick="location.href='{{ path('les_dispositifs') }}'">
+			<span class="ico color group"></span> <strong>Dispositif</strong> <em>Pland d'action en dispositif</em> 
+		</div>
+		<!-- // breaks -->
+		<div class="maitrise sigrc_grid shoutcutBox  {{ position==3 ? 'active' : null }}" onclick="location.href='{{ path('les_controles') }}'"> 
+			<span class="ico color emoticon_grin"></span> <strong>Contrôle</strong> <em>Dispositif de contrôle</em> 
+		</div>
+	</div>

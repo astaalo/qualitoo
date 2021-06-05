@@ -1,0 +1,16 @@
+	<div style="margin: 0 auto;width: 750px;">
+		<!-- // breaks -->
+		<div class="sigrc_grid shoutcutBox carto {{ position==1 ? 'active' : null }}" onclick="location.href='{{ path('les_processus') }}'"> 
+			<span class="ico color item"></span> <strong>Processus</strong> <em> Processus de la société</em> 
+		</div>
+		<div class="sigrc_grid shoutcutBox carto {{ position==2 ? 'active' : null }}" onclick="location.href='{{ path('les_activites') }}'">
+			<span class="ico color group"></span> <strong>Activité</strong> <em>Activités de la société</em> 
+		</div>
+		<div class="sigrc_grid shoutcutBox carto {{ position==4 ? 'active' : null }}" onclick="location.href='{{ path('les_projets') }}'">
+			<span class="ico color briefcase"></span> <strong>Projet</strong> <em>Projets de la société</em> 
+		</div>
+		<!-- // breaks -->
+		<div class="sigrc_grid shoutcutBox carto {{ position==3 ? 'active' : null }}" onclick="location.href='{{ path('les_menaces') }}'"> 
+			<span class="ico color emoticon_grin"></span> <strong>Cartographie</strong> <em>Base des risques</em> 
+		</div>
+	</div>

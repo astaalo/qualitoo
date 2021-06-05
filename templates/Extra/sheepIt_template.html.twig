@@ -1,0 +1,18 @@
+<div id="{{ id }}">
+	<ul id="{{ id }}_controls" class="uibutton-group">
+		<li>
+			<input type="button" id="{{ id }}_add" class="uibutton icon add " value="{{ addText }}" />
+		</li>
+		<li>
+			<input type="button" id="{{ id }}_remove_all" class="uibutton icon special " value="{{ removeAllText }}" />
+		</li>
+	</ul>
+
+	<div id="{{ id }}_template">
+		{% include prototypeTemplate with {'form' :	prototype, 'id': id} %}
+	</div>
+	<div id="{{ id }}_noforms_template" style="color: #f00; font-size: 15px;">
+		{{ noFormText }}
+	</div>
+</div>
+

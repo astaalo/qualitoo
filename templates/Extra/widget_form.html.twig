@@ -1,0 +1,26 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% set has_error = (form_errors(input) is not empty) ? 'error' : null %}
+{% set placeholder = (placeholder is defined) ? placeholder : null  %}
+{% autoescape %}
+	{% set msg_error = form_errors(input)|raw %}
+		<div class="control-group {{ has_error }}">
+			<label class="control-label">{{ (label is defined) ? label : input.vars.label|trans }}
+				{% if input.vars.required %}
+					<span class="required">*</span>
+				{% endif %}
+				{% set classes = input.vars.required ? 'required ' : null %}
+				{% set classes = classes ~ ((class is defined) ? class : null) %}
+			</label>
+			<div class="controls">
+				{% if widget_type is not defined %}
+					{{ form_widget(input, { 'attr' : attr|default({class: classes, placeholder: placeholder }) }) }}
+				{% elseif widget_type=='file' %}
+					{{ form_widget(input, { 'attr' : attr|default({class: classes, placeholder: placeholder, 'data-provide': 'fileinput' }) }) }}
+				{% endif %}
+				{% if msg_error is not empty %}
+					<label for="url1" generated="true" class="error help-block">{{ msg_error|raw }}</label>
+				{% endif %}
+			</div>
+		</div>
+{% endautoescape %}

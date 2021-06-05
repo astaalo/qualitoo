@@ -1,0 +1,14 @@
+<h1 style="color: #f60; font-weight: bold">CORIS SONATEL</h1>
+<h3 style="color: #222;">{{ body.action }}</h3>
+
+<br>
+<br>
+	{{ body.content|raw }}
+<br>
+<br>
+{% if body.linkvalidation is defined %}
+<strong>Pour valider ce risque, <a style="color: #f60" href="{{ body.linkvalidation }}">cliquez ici </a></strong></a>!
+{% endif %}
+<br>
+<strong>Pour acceder &agrave; l'application, <a style="color: #f60" href="{{ body.link }}">cliquez ici </a></strong></a>!
+

@@ -48,7 +48,7 @@ class SecurityController extends BaseController
     public function loginAction(Request $request)
     {
         if ($this->getUser()){
-            return $this->redirectToRoute('blog.index');
+            return $this->redirectToRoute('dashboard');
         }
         /** @var $session Session */
         $session = $request->getSession();

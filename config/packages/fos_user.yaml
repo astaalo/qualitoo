@@ -1,7 +1,7 @@
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: App\Entity\User
+    user_class: App\Entity\Utilisateur
     from_email:
-        address: "vincent@vfac.fr"
-        sender_name: "vincent@vfac.fr"
+        address: "coris@orange-sonatel.com"
+        sender_name: "CORIS WEB"

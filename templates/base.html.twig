@@ -1,19 +1,200 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}CORIS - ARQ{% endblock %}</title>
+    {% block stylesheets %}
+        <!-- Link css-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/css/zice.style.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/css/icon.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/css/ui-custom.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/css/timepicker.css') }}"  />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/colorpicker/css/colorpicker.css') }}"  />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/elfinder/css/elfinder.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/datatables/dataTables.css') }}"  />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/validationEngine/validationEngine.jquery.css') }}" />
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/jscrollpane/jscrollpane.css') }}" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/fancybox/jquery.fancybox.css') }}" media="screen" />
+        <link rel="stylesheet" http-equiv="X-Frame-Options" type="text/css" href="{{ asset('bundles/orangemain/components/tipsy/tipsy.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/editor/jquery.cleditor.css') }}"  />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/chosen/chosen.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/confirm/jquery.confirm.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/sourcerer/sourcerer.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/fullcalendar/fullcalendar.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/Jcrop/jquery.Jcrop.css') }}"  />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/css/smart_wizard.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/css/jquery-ui.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/css/styles.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/css/juizDropDownMenu.css') }}"/>
+
+        <link rel="icon" href="{{ asset('favicon.ico') }}" />
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/ui/jquery.ui.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/ui/jquery.autotab.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/ui/timepicker.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/colorpicker/js/colorpicker.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/checkboxes/iphone.check.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/datatables/dataTables.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/spinner/ui.spinner.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/tipsy/jquery.tipsy.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/editor/jquery.cleditor.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/chosen/chosen.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/validationEngine/jquery.validationEngine.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/validationEngine/jquery.validationEngine-en.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/checkboxes/customInput.jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/effect/jquery-jrumble.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/filestyle/jquery.filestyle.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/placeholder/jquery.placeholder.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/Jcrop/jquery.Jcrop.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/imgTransform/jquery.transform.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/webcam/webcam.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/dualListBox/dualListBox.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/smartWizard/jquery.smartWizard.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/sheepit/jquery.sheepit.js') }}"></script>
+
+
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/jquery.cookie.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/bootstrap-modal.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/boxes2.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/zice.custom.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/flash.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/jquery-ui.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangequickmaking/js/utils.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangequickmaking/js/jquery.form.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/juizDropDownMenu-2.0.0.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/flot/flot.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/flot/flot.pie.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/flot/flot.resize.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/components/flot/graphtable.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/highcharts.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/orangemain/js/highchart-exporting.js') }}"></script>
+    {% endblock %}
+</head>
+<body class="dashborad">
+{% block body %}
+    <div id="alertMessage" class="error"></div>
+    <div id="header">
+        <div class="logo"></div>
+        <div id="account_info">
+            {# {% if has_rights('ROLE_ADMIN') or has_rights('ROLE_SUPER_ADMIN') or has_rights('ROLE_RISKMANAGER') or has_rights('ROLE_AUDITEUR') %} #}
+            <div id="societe_choice">
+	                	<span>{% if app.user.societe and app.user.societe.photo %}<img src="{{ asset(app.user.societe.webPath) }}" />{% endif %}
+	                		<b>{{ app.user.societe?app.user.societe:"" }}</b>
+	                	</span>
+                {% set societes = app.user.allSocietes %}
+
+                <span class="scroll_down_menu"></span>
+                <ul style="display: none;">
+                    {% for societe in societes %}
+                        {# <li ><a href="#" class="ajaxLink" modal-url={{ path('changement_societe', {id: societe.id}) }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li> #}
+                        <li ><a href="#" class="ajaxLink" modal-url={{ path('dashboard') }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            {# {% endif %} #}
+            <div style="float: left;"><img src="{{ asset('bundles/orangemain/images/logo/logo.gif') }}" alt="Online" class="avatar" /></div>
+            <div class="setting" title="Modification du profil"><b>Bienvenue,</b> <b class="red">{{ app.user }}</b><img src="{{ asset('bundles/orangemain/images/gear.png') }}" class="gear"  alt="Profile Setting" ></div>
+            <div title="Disconnect">
+                {% if is_granted("ROLE_PREVIOUS_ADMIN") %}
+                    <a href="{{ path('dashboard') ~ '?_want_to_be_this_user=_exit' }}"><b >Déconnexion</b></a>
+                {% else %}
+                    <a href="{{ path('fos_user_security_logout') }}"><b >Déconnexion</b></a>
+                {% endif %}
+                <img src="{{ asset('bundles/orangemain/images/connect.png') }}" name="connect" class="disconnect" alt="disconnect" >
+            </div>
+        </div>
+    </div> <!--//  header -->
+    <div id="shadowhead"></div>
+    {% block menu %}{% endblock %}
+    <div id="content">
+        <div class="inner">
+            <div class="topcolumn">
+                <div class="logo"></div>
+                {% block shortcut %}
+                    {{ knp_menu_render('OrangeMainBundle:Builder:showShortcut', {'template': 'Extra/knp_shortcut.html.twig'}) }}
+                {% endblock %}
+            </div>
+            <div class="clear"></div>
+            <br /><br />
+            {% block content %}{% endblock %}
+            {% include 'Extra/flash.html.twig' %}
+            <div class="modal_dialog hide" id="myModal" ></div>
+            <div class="hide" id="loading-modal">
+                <div class="header">
+                    <span>Traitement en cours ...</span>
+                    <div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+                </div>
+                <div class="content">
+                    <div style="height: 250px">
+                        <img style="margin-top: 5px;margin-left: 180px;" width="200" src="{{ asset('bundles/orangemain/images/loader/black.gif') }}" />
+                    </div>
+                    <div class="section last">
+                    </div>
+                </div>
+            </div>
+            <div id="footer"> &copy; Copyright 2015 <span class="tip"><a  href="#" title="DSD/DASI/PMA" >SONATEL MULTIMEDIA</a> </span> </div>
+        </div> <!--// End inner -->
+        <div>
+        </div>
+    </div> <!--// End content -->
+{% endblock %}
+{% block script_js %}
+    <script type="text/javascript">
+        {% set functionAfterShowModal %}
+        function() {
+            activateModals();
+            $('select').not("select.chzn-select,select.no-chzn,select[multiple],select#box1Storage,select#box2Storage").selectmenu({
+                style: 'dropdown', transferClasses: true, width: null
+            });
+            $(".chzn-select").chosen({
+                search_contains: true
+            });
+            $("#myModal").draggable({ handle: "div.header" });
+            $(".on_off_checkbox").iphoneStyle();
+            $("input.fileupload").filestyle();
+            $("#myModal input:radio").customInput();
+        }
+        {% endset %}
+        {% set functionOnComplete %}
+        todoOnCompleteWithError();
+        {% endset %}
+        {{ addEventActionLink(functionAfterShowModal) }}
+        {{ loadAjax() }}
+        {{ formModalSubmit('#myModal', '#loading-modal', functionOnComplete) }}
+        addEventActionLink();
+        loadAjax();
+        formModalSubmit();
+
+        $(function(){
+            $("#dropdown").juizDropDownMenu({
+                'showEffect' : 'slide',
+                'hideEffect' : 'slide'
+            });
+        });
+
+    </script>
+{% endblock %}
+
+{% block add_script_js %}
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+// 			$(document).live('click', function(event) {
+// 			    if(event.target.href)
+// 				        $(window).unbind('beforeunload');
+// 			});
+// 		    $(window).bind("beforeunload", function() {
+// 		        return confirm("Do you really want to close?");
+// 		    });
+        });
+    </script>
+{% endblock %}
+</body>
 </html>

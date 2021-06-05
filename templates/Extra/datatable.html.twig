@@ -1,0 +1,19 @@
+<script type="text/javascript">
+$(document).ready(function() {
+	dataTableOptions['sAjaxSource']	= "{{ url }}";
+	dataTableOptions['bStateSave']	= true;
+	dataTableOptions['bProcessing']	= true;
+	dataTableOptions['aoColumnDefs']= new Array();
+	{% if nosorting is defined %}
+		var length = dataTableOptions['aoColumnDefs'].length;
+		dataTableOptions['aoColumnDefs'][length] = { bSortable: false, aTargets: {{ to_array(nosorting) }} };
+	{% endif %}
+	dataTableOptions['bServerSide']	= true;
+	fnDrawCallback = ('fnDrawCallback' in dataTableOptions) ? dataTableOptions['fnDrawCallback'] : function() {};
+	dataTableOptions['fnDrawCallback'] = function() {
+		fnDrawCallback();
+		{{ (functionAfter is defined) ? functionAfter|raw : null }}
+	}
+	oTable = $("{{ '#' ~ idTable }}").dataTable(dataTableOptions);
+});
+</script>

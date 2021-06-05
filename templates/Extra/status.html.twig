@@ -1,0 +1,59 @@
+{% block status_planaction %}
+	{% if entity.statut is empty %}
+		{% set class_state = '' %}
+	{% elseif entity.statut.id==global_ids.statut.plan_action.non_fait %}
+		{% set class_state = 'red' %}
+	{% elseif entity.statut.id==global_ids.statut.plan_action.en_cours or entity.statut.id==global_ids.statut.plan_action.non_echu %}
+		{% set class_state = 'orange' %}
+	{% elseif entity.statut.id==global_ids.statut.plan_action.fait %}
+		{% set class_state = 'green' %}
+	{% elseif entity.statut.id==global_ids.statut.plan_action.annule %}
+		{% set class_state = 'black' %}
+	{% elseif entity.statut.id==global_ids.statut.plan_action.realise %}
+		{% set class_state = 'green' %}
+	{% elseif entity.statut.id==global_ids.statut.plan_action.non_realise %}
+		{% set class_state = 'red' %}
+	{% elseif entity.statut.id==global_ids.statut.plan_action.gele %}
+		{% set class_state = 'blue' %}
+	{% elseif entity.toControle is not empty and entity.toControle is not empty %}
+		{% set class_state = 'blue' %}
+	{% elseif entity.statut is not empty and entity.statut.id==global_ids.statut.plan_action.solde %}
+		{% set class_state = 'gray' %}
+	{% endif %}
+	<label class="badge cl_{{ class_state is defined ? class_state : ''  }}">{{ (entity.toControle is not empty) ? 'En dispositif' : entity.statut }}</label>
+{% endblock status_planaction %}
+
+{% block status_maturite %}
+<label class="badge cl_{{ entity.couleur }}">{{ entity }}</label>
+{% endblock status_maturite %}
+
+{% block status_criticite %}
+<label class="badge cl_{{ entity.couleur }}">{{ entity }}</label>
+{% endblock status_criticite %}
+
+{% block status_projet %}
+	{{ block('status_default') }}
+{% endblock status_projet %}
+
+{% block status_domaineimpact_etat %}
+	{{ block('status_default') }}
+{% endblock status_domaineimpact_etat %}
+
+{% block status_domaineactivite_etat %}
+	{{ block('status_default') }}
+{% endblock status_domaineactivite_etat %}
+
+{% block status_domainesite_etat %}
+	{{ block('status_default') }}
+{% endblock status_domainesite_etat %}
+
+{% block status_default %}
+	{% if entity.etat %}
+		{% set class_state = 'green' %}
+	{% else %}
+		{% set class_state = 'red' %}
+	{% endif %}
+	<label class="badge cl_{{ class_state }}">{{ entity.etat ? 'Actif' : 'Inactif' }}</label>
+{% endblock status_default %}
+
+

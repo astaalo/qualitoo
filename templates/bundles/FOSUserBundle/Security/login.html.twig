@@ -1,0 +1,33 @@
+{% extends 'layoutAuth.html.twig' %}
+
+{% block title %}{{ parent() }} | Authentification{% endblock %}
+
+{% block content %}
+    <form name="formLogin"  id="formLogin" action="{{ path('fos_user_security_check') }}" method="POST" autocomplete="off">
+        {% if error is not empty %}
+            <span style="color: red;font-size: 16px;display: block;text-align: center;">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+        {% endif %}
+        <div class="tip">
+            <input name="_username" type="text"  id="username_id" title="Nom d'utilisateur" value="{{ last_username }}"  />
+        </div>
+        <div class="tip">
+            <input name="_password" autocomplete="off" type="password" class="password" title="Mot de passe"  />
+        </div>
+        <div style="padding:20px 0px 0px 0px ;">
+
+            <div style="float:left; padding:0px 0px 2px 0px ;">
+                {# <input type="checkbox" id="remember_me" name="_remember_me" checked /> #}
+                {# <label for="remember_me">Keep me logged in</label> #}
+                <input type="checkbox" id="remember_me" name="_remember_me" class="on_off_checkbox" value=1 />
+                <span class="f_help">Se souvenir de moi</span>
+            </div>
+            <div style="float:right;padding:2px 0px ;">
+                <div>
+                    <ul class="uibutton-group">
+                        <li><input class="uibutton  normal" type="submit" value="Connexion"/></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

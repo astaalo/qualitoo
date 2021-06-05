@@ -1,0 +1,20 @@
+{% for item in items %}
+	<div class="big_menu bd_grid {% if item.rows|length == 0 %} no_submenu {% endif %} {% if not app.user.hasRoles(item.roles) %} gray {% endif %} ">
+		<span class="header" {% if item.path is defined %} style="cursor: pointer;" onclick="location.href='{{ item.path }}'"{% endif %}>{{ item.header }}</span>
+		{% if item.rows|length > 0 %}
+		<ul> 
+			{% for row in item.rows %}
+			{% set hasRoles = (app.user.hasRoles(item.roles) and not app.user.hasRoles(row.roles) and not row.roles|length > 0) or (app.user.hasRoles(item.roles) and app.user.hasRoles(row.roles) and row.roles|length > 0) %}
+			<li {% if row.width is defined %}style="float: left;width: {{ row.width }};"{% endif %}>
+				<img src="{{ asset('bundles/orangemain/images/icon/' ~ (hasRoles ? 'color_18/' : 'gray_18/') ~ row.icon) }}" alt="{{ row.text }}">
+				{% if hasRoles %}
+					<a href="{{ row.path }}" >{{ row.text }}</a>
+				{% else %}
+					<i style="color: gray; ">{{ row.text }}</i>
+				{% endif %}
+			</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div>
+{% endfor %}

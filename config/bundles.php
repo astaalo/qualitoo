@@ -15,4 +15,6 @@ return [
     FOS\UserBundle\FOSUserBundle::class => ['all' => true],
     Bafford\PasswordStrengthBundle\BaffordPasswordStrengthBundle::class => ['all' => true],
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
+    Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
+    App\MainBundle\OrangeMainBundle::class => ['all' => true],
 ];

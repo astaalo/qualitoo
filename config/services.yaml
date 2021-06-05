@@ -4,12 +4,106 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    states:
+        entity:
+            supprime:  -1
+            a_valider:  0
+            valide:     1
+        risque:
+            abondonne: -2
+            rejete:    -1
+            nouveau:    0
+            a_valider:  2
+            en_cours:   3
+            valide:     1
+            transfere:  4
+        projet:
+            abandonne: -1
+            inactif:    0
+            actif:      1
+            cloture:    2
+    ids:
+        type_evaluation:
+            cause:    1
+            impact:   2
+            maitrise: 3
+            maturite: 4
+        type_colonne:
+            processus: 1
+        mode_fonctionnement:
+            normal:   1
+            anormal:  2
+        type_processus:
+            macro:    1
+            normal:   2
+            sous:     3
+        carto:
+            metier:         1
+            projet:         2
+            sst:            3
+            environnement:  4
+        statut:
+            plan_action:
+                non_fait:         1
+                en_cours:         2
+                fait:             3
+                solde:            4
+                annule:           5
+                non_echu:         6
+                demande_abandon:  7
+                realise:          8
+                non_realise:      9
+                gele:             10
+                
+    types:
+        statut:
+            plan_action: 1
+            controle: 2
+        equipement:
+            activite: 1
+            equipement: 2
+        rapportChargement:
+            risque: 1
+            cause: 2
+            planAction: 3
+            controle: 4
+            impact: 5
+    aggregat:
+        metier:
+            direction:    1
+            structure:    2
+            activite:     3
+            risque:       4
+            aucun:        0
+        projet:
+            direction:    1
+            structure:    2
+            projet:       3
+            risque:       4
+            aucun:        0
+        sst:
+            site:         1
+            equipement:   2
+            activite:     3
+            risque:       4
+            aucun:        0
+        environnement:
+            site:         1
+            equipement:   2
+            activite:     3
+            risque:       4
+            aucun:        0
 
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+#        bind:
+#            $states: "%states%"
+#            $types: "%types%"
+#            $ids: "%ids%"
+#            $aggregat: "%aggregat%"
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -81,3 +175,8 @@ services:
         public: true
         arguments: [ '@kernel','@twig','@mailer']
         tags: [ 'controller.service_arguments' ]
+
+    orange_main.notification:
+        class: App\Service\Notification
+        public: true
+        arguments: ["@service_container"]

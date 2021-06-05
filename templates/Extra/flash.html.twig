@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    {% for flashMessage in app.session.flashbag.get('success') %}
+		showSuccess("{{ flashMessage|trans|raw|nl2br }}", 5000);       
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+		showError("{{ flashMessage|trans|raw|nl2br }}", 5000);           
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('info') %}
+		showInfo("{{ flashMessage|trans|raw|nl2br }}", 5000);         
+    {% endfor %}
+</script>

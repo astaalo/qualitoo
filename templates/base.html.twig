@@ -117,7 +117,9 @@
         <div class="inner">
             <div class="topcolumn">
                 <div class="logo"></div>
-
+                {% block shortcut %}
+                    {{ knp_menu_render('OrangeMainBundle:Builder:showShortcut', {'template': 'Extra/knp_shortcut.html.twig'}) }}
+                {% endblock %}
             </div>
             <div class="clear"></div>
             <br /><br />

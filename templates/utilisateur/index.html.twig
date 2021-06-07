@@ -39,8 +39,8 @@
 </div>
 {% endblock %}
 
-{#{% block javascripts %}
+{% block javascripts %}
 	{{ parent() }}
-	{{ render_block('form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }}
 	{% include 'Extra/datatable.html.twig' with {idTable: 'membreTable', url: path('liste_des_utilisateurs'), nosorting: {0:4, 1:5} } %}
-{% endblock %}#}
+{% endblock %}

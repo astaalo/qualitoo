@@ -43,5 +43,5 @@
 {% block javascripts %}
 	{{ parent() }}
 	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }} #}
-	{% include 'extra/datatable.html.twig' with {idTable: 'questionTable', url: path('liste_des_questions'), nosorting: {0:1, 1:2, 2:3} } %}
+{#	{% include 'extra/datatable.html.twig' with {idTable: 'questionTable', url: path('liste_des_questions'), nosorting: {0:1, 1:2, 2:3} } %}#}
 {% endblock %}

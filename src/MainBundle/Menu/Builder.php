@@ -20,8 +20,8 @@ class Builder implements ContainerAwareInterface
 		$menu->addChild('Cause', array('route' => 'les_causes', 'label' => 'Cause', 'attributes' => array('class' => 'firewall')));
  		$menu->addChild('Questions', array('route' => 'les_questions', 'label' => 'Grille de maturité', 'attributes' => array('class' => 'home')));
 		$menu->addChild('Equipement', array('route' => 'les_equipements', 'label' => 'Equipement/Activité', 'attributes' => array('class' => 'spreadsheet')));
-		$menu->addChild('DomainePhysique', array('route' => 'les_domaines', 'label' => 'Domaine physique', 'attributes' => array('class' => 'home')));
-		$menu->addChild('DomaineActivite', array('route' => 'les_domaines', 'label' => "Domaine d'activité", 'attributes' => array('class' => 'home')));
+		$menu->addChild('DomainePhysique', array('route' => 'les_domaines', 'label' => 'Domaines', 'attributes' => array('class' => 'home')));
+		//$menu->addChild('DomaineActivite', array('route' => 'les_domaines', 'label' => "Domaine d'activité", 'attributes' => array('class' => 'home')));
 		$menu->addChild('Bareme', array('route' => 'les_baremes', 'label' => 'Grille de cause', 'attributes' => array('class' => 'spreadsheet')));
 		$menu->addChild('Critere', array('route' => 'les_criteres', 'label' => "Grille d'impact", 'attributes' => array('class' => 'access_point')));
 		$menu->addChild('Utilisateur', array('route' => 'les_utilisateurs', 'label' => 'Utilisateur', 'attributes' => array('class' => 'administrator')));

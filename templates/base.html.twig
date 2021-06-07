@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="fr">
 <head>
     <meta charset="utf-8" />
     <title>{% block title %}CORIS - ARQ{% endblock %}</title>
@@ -16,7 +16,7 @@
 
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/jscrollpane/jscrollpane.css') }}" media="screen" />
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/fancybox/jquery.fancybox.css') }}" media="screen" />
-        <link rel="stylesheet" http-equiv="X-Frame-Options" type="text/css" href="{{ asset('bundles/orangemain/components/tipsy/tipsy.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/tipsy/tipsy.css') }}" media="all" />
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/editor/jquery.cleditor.css') }}"  />
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/chosen/chosen.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/orangemain/components/confirm/jquery.confirm.css') }}" />
@@ -117,9 +117,7 @@
         <div class="inner">
             <div class="topcolumn">
                 <div class="logo"></div>
-                {% block shortcut %}
-                    {{ knp_menu_render('OrangeMainBundle:Builder:showShortcut', {'template': 'Extra/knp_shortcut.html.twig'}) }}
-                {% endblock %}
+
             </div>
             <div class="clear"></div>
             <br /><br />

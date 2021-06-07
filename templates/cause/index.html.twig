@@ -1,0 +1,46 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color gear"></span>Liste des causes
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon filter actionLink" href="#myModal" modal-url="{{ path('filtrer_les_causes') }}" data-toggle="modal" data-target="#myModal">Filtrer</a></li>
+			<li><a class="uibutton icon download" href="{{ path('exporter_les_causes') }}">Extraire</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="content_table">
+	<div class="tableName">
+		<table class="display simple_table" id="causeTable">
+			<thead>
+				<tr>
+					<th><div class="th_wrapp">Nom du risque</div></th>
+					<th><div class="th_wrapp">Nom de la cause</div></th>
+					<th><div class="th_wrapp">Famille</div></th>
+					<th><div class="th_wrapp">Dernière évaluation</div></th>
+					<th width="60px"><div class="th_wrapp">Actions</div></th>
+				</tr>
+			</thead>
+			<tbody>
+			 	<tr class="odd gradeX">
+					<td colspan="5">Chargement des données en cours ...</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }} #}
+	{% include 'extra/datatable.html.twig' with {idTable: 'causeTable', url: path('liste_des_causes'), nosorting: {0:3, 1:4} } %}
+{% endblock %}

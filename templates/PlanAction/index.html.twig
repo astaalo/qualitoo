@@ -1,0 +1,54 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/maitrise.html.twig' with {position: 1} %}
+{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico gray spreadsheet"></span>
+		Plan d'action
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon filter on_load_filter" name="#filter_content" href="#">Filtrer</a></li>
+			<li><a class="uibutton icon download" href="{{ path('exporter_les_planactions') }}">Extraire</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+	<div id="filter_content" hidden>
+		{% include 'OrangeMainBundle:PlanAction:filter.html.twig' with {form: form} %}
+	</div>
+	<div id="main_content" class="content">
+		<div class="tableName">
+			<table class="display" id="planactionTable">
+				<thead>
+					<tr>
+						<th width="60px"><div class="th_wrapp">Code</div></th>
+						<th><div class="th_wrapp">Risque</div></th>
+						<th><div class="th_wrapp">Libelle</div></th>
+						<th width="140px"><div class="th_wrapp">Porteur</div></th>
+						<th width="140px"><div class="th_wrapp">Echéance</div></th>
+						<th width="140px"><div class="th_wrapp">Statut</div></th>
+						<th width="60px"><div class="th_wrapp">Actions</div></th>
+					</tr>
+				</thead>
+				<tbody>
+				 	<tr class="odd gradeX">
+						<td colspan="7">Chargement des données en cours ...</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }} #}
+	{% include 'extra/datatable.html.twig' with {idTable: 'planactionTable', url: path('liste_des_planactions'), nosorting: {0:5} } %}
+{% endblock %}

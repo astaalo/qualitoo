@@ -1,0 +1,91 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/identificationKpi.html.twig' with {position: carto} %}
+{% endblock %}
+
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Comparaison de la maturité des contrôles avant /après test 
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon filter on_load_filter" name="#filter_content" href="#">Filtrer</a></li>
+			<li><a class="uibutton icon download" href="{{ path('export_pour_kpi') }}">Extraire</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div id="filter_content" hidden>
+									{% include 'OrangeMainBundle:KPI:filter.html.twig' with {show_filter_for : 'cmc',form: form,link : app.request.attributes.get('_route') , carto:carto} %}
+								</div>
+<div id="main_content" class="content" style="background-color: #fff;">
+ <div class="content" > <br  class="clear"/>
+  <div class="grid1 rightzero" style="width: 24%; float: left;     margin: 0 10px 10px 20px;">
+        <div class="shoutcutBox " onclick="location.href='{{ path('choix_carto_kpi', {carto: 1, type: 0, link:'rcc'}) }}'"> <span class="ico color stats_pie"></span> <strong>C/M</strong> <em>Répartition et comparaison Criticité /Maitrise</em> </a></div>
+        <div class="shoutcutBox " onclick="location.href='{{ path('choix_carto_kpi', {carto: 1, type: -1, link:'rrc'}) }}'"> <span class="ico color stats_lines"></span> <strong>RRC</strong> <em>Répartition des risques par niveau de criticité</em> </a></div>
+        <div class="breaks"><span></span></div>     <!--  // breaks -->	
+        {% if has_rights('ROLE_ADMIN') or has_rights('ROLE_RISKMANAGER') %}
+        <div class="shoutcutBox " onclick="location.href='{{ path('choix_carto_kpi', {carto: 1, type: -1, link:'rt'}) }}'"> <span class="ico color stats_bars"></span> <strong>RT</strong> <em>Risques transverses</em> </a></div>
+        <div class="shoutcutBox " onclick="location.href='{{ path('choix_carto_kpi', {carto: 1, type: -1, link:'rav'}) }}'"> <span class="ico color stats_pie"></span> <strong>RA</strong> <em>Risques Avérés</em> </a></div>
+        <div class="breaks"><span></span></div>     <!--  // breaks -->	
+        {% endif %}
+        <div class="shoutcutBox activebis" onclick="location.href='{{ path('choix_carto_kpi', {carto: 1,type: -1,link:'cmc'}) }}'"> <span class="ico color stats_lines"></span> <strong>CMC</strong> <em>Comparaison de la maturité des contrôles avant /après test</em> </a></div>
+        <div class="shoutcutBox " onclick="location.href='{{ path('choix_carto_kpi', {carto: 1, type: -1, link:'tprc'}) }}'"> <span class="ico color stats_pie"></span> <strong>%</strong> <em>Prises en charges des risques et controles testés</em> </a></div>
+        <div class="shoutcutBox " onclick="location.href='{{ path('choix_carto_kpi', {carto: 1, type: -1, link:'eicg'}) }}'"> <span class="ico color stats_bars"></span> <strong>ICG</strong> <em>Evolution ICG par année</em> </a></div>
+	</div>
+<div class="grid3" style="width: 70%;margin-left: 25px;overflow:hidden;"> 
+      <div id="uploadTab">
+      <div class="tableName">
+                              <table class="display" id="tabCompRisk">
+                                <thead>
+                                  <tr>
+                                  {% if carto <=2 %}
+                                       <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Name" style="width: 100px !important;"> Direction</th>
+	                                   <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 100px;">Département</th>
+	                              {% endif %}
+	                              {% if carto ==1 %}
+	                                   <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 150px;">Activité</th>
+	                             {% endif %}
+	                               {% if carto ==2 %}
+	                                   <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 150px;">Projet</th>
+	                             {% endif %}
+	                               {% if carto >2 %}
+	                               <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 100px;">Site</th>  
+	                               <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 150px;">Activité/Equipement</th>
+	                               {% endif %}
+	                               	   <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 150px;">Risque</th>
+	                                   <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 100px;">Controle</th>
+	                                   <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 150px;">Maturité avant</th>
+	                                   <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 150px;">Maturité aprés</th>
+                                  </tr>
+                                </thead>
+                                
+                              <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <tr>
+	                              {% if carto <=2 %}
+                                       <td colspan="7" >Chargement donnée ...</td>
+	                               {% else %}   
+	                                 <td colspan="6" >Chargement donnée ...</td>
+	                               {% endif %}
+	                               </tr>
+	                            </tbody>
+                             </table>
+                             </div>
+                     </div>
+</div>
+                           
+<div class="clear"></div>
+</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }} #}
+ 	{% include 'extra/datatable.html.twig' with {idTable: 'tabCompRisk', url: path('liste_des_controles_for_kpis'), nosorting: {0:4}  } %}
+{% endblock %}

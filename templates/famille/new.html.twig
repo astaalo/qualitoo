@@ -1,0 +1,38 @@
+{% extends 'configuration/index.html.twig' %}
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/configuration.html.twig' with {position: 1} %}
+{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color gear"></span>Ajout d'une famille
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon answer" href="{{ path('les_familles') }}">retour aux familles</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="one_column">
+	<div class="contentForm">
+		<form  novalidate="novalidate"  action="{{ path('creer_famille') }}" method="POST">
+			{{ form_row(form.libelle, {attr: {class: 'large'}}) }}
+			{{ form_row(form.parent) }}
+			{{ form_row(form.description) }}
+			{{ form_row(form._token) }}
+			<div class="section last footer">
+				<div>
+					<button class="uibutton loading">Enregistrer</button>
+					<input type="reset"  class="uibutton special" value="Effacer" >
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block header_config %}
+{% include 'configuration/configuration.html.twig' %}
+<div class="header">
+	<span>
+		<span class="ico color gear"></span>Liste des familles
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon add" href="{{ path('nouvelle_famille') }}">Nouvelle famille</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="contentDatatable">
+	<div class="tableName">
+		<table class="display"  id="familleTable">
+			<thead>
+				<tr>
+					<th><div class="th_wrapp">Nom de la famille</div></th>
+					<th><div class="th_wrapp">Famille parente</div></th>
+					<th width="80px" class="no-sort"><div class="th_wrapp">Actions</div></th>
+				</tr>
+			</thead>
+			<tbody>
+			 	<tr class="odd gradeX">
+			 		<td colspan="3">Chargement des données en cours ...</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }} #}
+	{% include 'extra/datatable.html.twig' with {idTable: 'familleTable', url: path('liste_des_familles'), nosorting: {} } %}
+{% endblock %}

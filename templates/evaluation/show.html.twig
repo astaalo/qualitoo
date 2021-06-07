@@ -1,0 +1,122 @@
+{% extends '::base.html.twig' %}
+{% set risque = entity.risque %}
+
+{% block content %}
+<div class="onecolumn" >
+	<div class="header"><span ><span class="ico  gray spreadsheet">
+		</span>Détails de l'évaluation</span>
+		<div id="buttom_top">
+			<ul class="uibutton-group">
+				<li><a class="uibutton icon answer" href="{{ path('details_risque', {'id': risque.id}) }}">Retour au risque</a></li>
+            </ul>
+        </div>
+	</div>
+	<div class="clear"></div>
+	<table class="show_table">
+		<tbody>
+			<tr>
+				<th style="width:140px;" >Risque du code:</th>
+				<td style="padding-left: 70px;">{% if risque.code %}{{ risque.code }}{% else %}<span style="color: red;font-weight: bold;">Pas encore renseigné</span>{% endif %}</td>
+			</tr>
+			<tr>
+				<th style="width:140px;" >Nom du risque:</th>
+				<td style="padding-left: 70px;">{{ risque.menace ? risque.menace : 'Non renseigné' }}</td>
+			</tr>
+			<tr>
+				<th style="width:140px;" >&Eacute;valué le:</th>
+				<td style="padding-left: 70px;">{{ entity.dateEvaluation|date('d/m/Y à H:i') }}</td>
+			</tr>
+			<tr>
+				<th style="width:140px;" >&Eacute;valué par:</th>
+				<td style="padding-left: 70px;">{% if entity.evaluateur is not empty %}{{ entity.evaluateur }}{% else %}<span style="color: red;font-weight: bold;">Pas renseigné</span>{% endif %}</td>
+			</tr>
+			{% if risque.cartographie.id == global_ids.carto.metier %}
+				{% include 'OrangeMainBundle:Risque:show_metier.html.twig' with {entity: risque.risqueMetier} %}
+			{% elseif risque.cartographie.id == global_ids.carto.projet %}
+				{% include 'OrangeMainBundle:Risque:show_projet.html.twig' with {entity: risque.risqueProjet} %}
+			{% elseif risque.cartographie.id == global_ids.carto.sst %}
+				{% include 'OrangeMainBundle:Risque:show_sst.html.twig' with {entity: risque.risqueSST} %}
+			{% elseif risque.cartographie.id == global_ids.carto.environnement %}
+				{% include 'OrangeMainBundle:Risque:show_environnemental.html.twig' with {entity: risque.risqueEnvironnemental} %}
+			{% endif %}
+		</tbody>
+	</table>
+	<ul class="header no-margin">
+		<li>Synthése globale de l'évaluation</li>
+	</ul>
+	<div class="clear"></div>
+	<table class="show_table">
+		<tbody>
+			<tr>
+				<th style="width:115px;" >Probabilité:</th>
+				<td style="padding-left: 100px;">{{ entity.probabilite }}</td>
+			</tr>
+			<tr>
+				<th style="width:115px;" >Gravité:</th>
+				<td style="padding-left: 100px;">{{ entity.gravite }}</td>
+			</tr>
+			<tr>
+				<th style="width:115px;" >Criticité:</th>
+				<td style="padding-left: 100px;">{{ entity.probabilite }} * {{ entity.gravite }} = {{ entity.probabilite * entity.gravite }} [{{ entity.criticite }}]</td>
+			</tr>
+		</tbody>
+	</table>
+	<ul class="tabs header no-margin">
+		<li><a href="#tab1">Evaluation des causes</a></li>
+		<li><a href="#tab2">Evaluation des impacts</a></li>
+	</ul>
+	<div id="tab1" class="tab_content">
+        <div class="content_table">
+			<div class="tableName">
+				<table class="display simple_table" >
+					<thead>
+						<tr>
+							<th><div class="th_wrapp">Libellé</div></th>
+							<th><div class="th_wrapp">Famille</div></th>
+							<th><div class="th_wrapp">Constat</div></th>
+							<th><div class="th_wrapp">Probabilité</div></th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for causeOfEvaluation in entity.causeOfEvaluation %}
+						 <tr class="odd gradeX">
+							<td>{{ causeOfEvaluation.cause }}</td>
+							<td>{{ causeOfEvaluation.cause.famille }}</td>
+							<td>{{ causeOfEvaluation.grille ? causeOfEvaluation.grille : 'Non renseigné' }}</td>
+							<td>{{ causeOfEvaluation.grille ? causeOfEvaluation.grille.note : 'Non renseigné' }}</td>
+						</tr>
+					{% endfor %}	
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="tab2" class="tab_content">
+        <div class="content_table">
+			<div class="tableName">
+				<table class="display simple_table" >
+					<thead>
+						<tr>
+							<th><div class="th_wrapp">Critére</div></th>
+							<th><div class="th_wrapp">Domaine</div></th>
+							<th><div class="th_wrapp">Constat</div></th>
+							<th><div class="th_wrapp">Gravité</div></th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for impactOfEvaluation in entity.impactOfEvaluation %}
+					 	<tr class="odd gradeX">
+							<td >{{ impactOfEvaluation.impact.critere }}</td>
+							<td >{{ impactOfEvaluation.impact.critere.domaine }}</td>
+							<td >{{ impactOfEvaluation.grille ? impactOfEvaluation.grille : 'Non renseigné' }}</td>
+							<td >{{ impactOfEvaluation.grille ? impactOfEvaluation.grille.note : 'Non renseigné' }}</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+   	</div>
+</div>
+<div class="clear"></div>
+{% endblock %}

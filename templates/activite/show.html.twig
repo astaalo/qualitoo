@@ -1,0 +1,119 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Détails de l'activité
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon answer" href="{{ path('les_activites') }}">Liste des activités</a></li>
+			<li><a class="uibutton icon edit" href="{{ path('edition_activite', {'id': entitie.id}) }}">Edition de l'activité</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="content" >
+	<div id="uploadTab">
+		<table class="show_table" style="margin-bottom: 50px;">
+			<tbody>
+				<tr>
+					<th style="width:150px;" >Libellé:</th>
+					<td style="padding-left: 65px;">{{ entitie.libelle }}</td>
+				</tr>
+				<tr>
+					<th style="width:150px;" >Code:</th>
+					<td style="padding-left: 65px;">{{ entitie.code }}</td>
+				</tr>
+				<tr>
+					<th style="width:150px;" >{{ entitie.processus.typeProcessus }}:</th>
+					<td style="padding-left: 65px;"><a href="{{ path('details_processus', {id: entitie.processus.id}) }}">{{ entitie.processus }}</a></td>
+				</tr>
+				<tr>
+					<th style="width:150px;" >Structure:</th>
+					<td style="padding-left: 65px;">{{ entitie.processus.structure ? entitie.processus.structure.name : 'Non renseigné' }}</td>
+				</tr>
+				<tr>
+					<th style="width:150px;" >Description:</th>
+					<td style="padding-left: 65px;">{{ entitie.description }}</td>
+				</tr>
+			</tbody>
+			
+			<table class="show_table" >
+				<tbody>
+				<tr>
+					<th style="width:140px;" >Evaluation courante</th>
+				</tr>
+				{% if entitie.ICG is not empty %}
+				<tr>
+					<th style="width:140px;" >Probabilité</th>
+					<td style="padding-left: 70px;">{{ entitie.probabilite }}</td>
+				</tr>
+				<tr>
+					<th style="width:140px;" >Gravité</th>
+					<td style="padding-left: 70px;">{{ entitie.gravite }}</td>
+				</tr>
+				<tr>
+					<th style="width:140px;" >Indice de criticité</th>
+					<td style="padding-left: 70px;">{{ entitie.ICG }}</td>
+				</tr>
+				{% else %}
+				<tr>
+					<th style="width:140px;color: red;font-weight: bold;font-size: 16px;" colspan="2">Les risques de l'activité ne sont pas encore évalués</th>
+				</tr>
+				{% endif %}
+				</tbody>
+			</table>
+		</table>
+		<ul class="header no-margin" >
+			<li >Risques</li>
+		</ul>
+		<div id="tab1" class="tab_content">
+			<table  class="display no-margin">
+				<thead>
+					<tr>
+						<th >Code</th>
+						<th >Libellé</th>
+						<th >Utilisateur</th>
+						<th >Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for rm in entitie.risque if rm.risque.etat==global_states.risque.valide %}
+					 <tr>
+						<td >{{ rm.risque.code }}</td>
+						<td >{{ rm.risque.menace }}</td>
+						<td >{{ rm.risque.utilisateur }}</td>
+						<td >
+							<span class="tip" >
+                				<a title="Détails" href="{{ path('details_risque', {'id': rm.risque.id}) }}">
+	                				<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" />
+	                			</a>
+                			</span>
+			                <span class="tip" >
+			                	<a title="Modifier" href="{{ path('edition_risque', {'id': rm.risque.id}) }}">
+			                		<img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}" />
+			                	</a>
+			                </span>
+                            {#
+                            <span class="tip" >
+			                	<a id="1" class="Delete"  name="Band ring" title="Delete" title="Supprimer"  href="#">
+			                		<img src="{{ asset('bundles/orangemain/images/icon/color_18/delete.png') }}" >
+			                	</a>
+			                </span>
+			                #}
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div><!--tab1-->
+	</div><!--/END TAB/-->
+	<div class="clear"/></div>
+	</div>
+</div>
+{% endblock %}

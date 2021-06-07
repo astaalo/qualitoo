@@ -1,0 +1,41 @@
+{% extends "::base.html.twig" %}
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+{% block navigation %}
+	{{ knp_menu_render('OrangeMainBundle:Builder:showMenu', {'template': 'OrangeMainBundle:Extra:knp_menu.html.twig', 'item': {1:'Configuration'} }) }}
+{% endblock %}
+{% block content %}
+<div class="onecolumn">
+	<div class="header">
+		<span>
+			<span class="ico gray add"></span>
+			Ajout Document
+		</span>
+		<div id="buttom_top">
+			<ul class="uibutton-group">
+{# 				<li><a class="uibutton icon answer" href="#">Liste des Consequences</a></li>#}
+            </ul>
+        </div>
+	</div>
+	<div class="clear"></div>
+	<div class="contentForm">
+	<form  novalidate="novalidate"  action="{{ path('modifier_document',{id : entity.id}) }}" {{ form_enctype(form) }}  method="POST">
+	    {{ form_row(form._token) }}
+		{{ form_row(form.libelle) }}
+		<div style="display: none">
+			{{ form_row(form.typeDocument) }}
+		</div>
+		{{ form_row(form.description) }}
+		{{ form_row(form.profils) }}
+		{{ form_row(form.tmpUtilisateur) }}
+		<div class="section last">
+			<div>
+				<button class="uibutton loading">Enregistrer</button>
+				<input type="reset"  class="uibutton special" value="Effacer" >
+			</div>
+		</div>
+	</div>
+	</form>
+	</div>
+</div>
+{% endblock %}

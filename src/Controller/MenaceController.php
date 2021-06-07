@@ -82,7 +82,7 @@ class MenaceController extends BaseController {
 	 */
 	public function indexAction() {
 		$entity= new Menace();
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		
 		return array();
 	}

@@ -23,7 +23,7 @@ class ProcessusController extends BaseController {
 	 */
 	public function indexAction() {
 		$entity= new Processus();
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		if(!$this->get('session')->get('processus_criteria')) {
 			$this->get('session')->set('processus_criteria', array());
 		}

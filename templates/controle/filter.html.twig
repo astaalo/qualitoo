@@ -1,0 +1,47 @@
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+<div class="contentForm">
+	<form  novalidate="novalidate"  action="{{ path('filtrer_les_controles') }}" method="POST">
+		{{ form_row(form.menace) }}
+		<div class="section">
+			<label>Structure Porteur & porteur</label>
+			<div style="width: 30%;display: inline-block;margin-left: 0">
+				{{ form_widget(form.structurePorteur) }}
+			</div>
+			<div style="width: 30%;display: inline-block;margin-left: 0">
+				{{ form_widget(form.porteur) }}
+			</div>
+		</div>
+		<div class="section">
+			<label>Structure Superviseur & Superviseur</label>
+			<div style="width: 30%;display: inline-block;margin-left: 0">
+				{{ form_widget(form.structureSuperviseur) }}
+			</div>
+			<div style="width: 30%;display: inline-block;margin-left: 0">
+				{{ form_widget(form.superviseur) }}
+			</div>
+		</div>
+		
+		{{ form_row(form.typeControle) }}
+		{{ form_row(form.periodicite) }}
+		{{ form_row(form.traitement) }}
+		<div class="section last footer">
+			<div>
+				<button class="uibutton loading submitTargetLink on_load_page" data-target="#filter_content" name="#main_content" data-target="#myModal" call="afterSuccesFiltrer" argument-call="#controleTable">Filtrer</button>
+				<input type="reset" name="#main_content" class="uibutton special on_load_page" value="Effacer" >
+			</div>
+		</div>
+	</form>
+</div>
+
+{% block add_script_js %}
+<script type="text/javascript">
+		$(function() {
+		{% set functionOnComplete %}
+					todoOnCompleteWithError();
+				{% endset %}
+				{{ formTargetSubmit('#filter_content', '', functionOnComplete) }}
+				formTargetSubmit();	
+		});
+</script>
+{% endblock %}

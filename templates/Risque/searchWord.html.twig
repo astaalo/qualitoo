@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="onecolumn">
+                            <div class="header"><span><span class="ico gray access_point"></span> Recherche par mot clé</span></div>
+                            <br class="clear"/>
+                            <div class="content">
+                                <div id="news_update" style="position: relative;" >
+                                    <ul style=" margin: 0pt; padding: 0pt; top: 0px; width: 100%;">
+                                    {% for risque in risques %}
+                                        <li>
+                                            <div class="detail_news">
+                                                <div class="boxtitle min" >{{ risque['menace'] }}</div>
+                                                <ul>
+                                                <li><b>Site/Structure:</b> </li>
+                                                <li><b>Carto:</b>  {{ risque['carto'] }}</li>
+                                                <li><b>Activite:</b> </li>
+                                                <li><b>Nb Causes:</b> {{ risque['nbCauz'] }}</li>
+                                                </ul>
+                                                <span class="datepost">{{ risque['dateSaisie']|date('d/m/Y') }}</span><span class="morelink"><a href="{{ path('details_risque', {'id': risque['id']}) }}" class="red">Détails du risque</a></span> </div>
+                                            <br class="clear"/>
+                                        </li>
+                                      {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+{% endblock %}

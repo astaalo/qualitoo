@@ -1,0 +1,50 @@
+{# form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' #}
+<form  novalidate="novalidate"  action="{{ path('creer_famille') }}" method="POST">
+	<div class="header">
+		<img src="{{ asset('bundles/orangemain/images/icon/color_18/add.png') }}" alt="add">
+		<span>Choix d'une entité</span>
+		<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+	</div>
+	<div class="content">
+		<div class="section ">
+				<label>{{ form.vars.value.entiteOne ? form.vars.value.entiteOne.typeStructure : null }}</label>
+				{{ form_widget(form.entiteOne, { attr: attr|default({class: 'large'}) }) }}
+		</div>
+		<div class="section ">
+			<label>{{ form.vars.value.entiteTwo ? form.vars.value.entiteTwo.typeStructure : null }}</label>
+			{{ form_widget(form.entiteTwo, { attr: attr|default({class: 'medium'}) }) }}
+		</div>
+		<div class="section ">
+			<label>{{ form.vars.value.entiteThree ? form.vars.value.entiteThree.typeStructure : null }}</label>
+			{{ form_widget(form.entiteThree, { attr: attr|default({class: 'medium'}) }) }}
+		</div>
+		<div class="section ">
+			<label>{{ form.vars.value.entiteFour ? form.vars.value.entiteFour.typeStructure : null }}</label>
+			{{ form_widget(form.entiteFour, { attr: attr|default({class: 'medium'}) }) }}
+		</div>
+		<div class="section ">
+			<label>{{ form.vars.value.entiteFive ? form.vars.value.entiteFive.typeStructure : null }}</label>
+			{{ form_widget(form.entiteFive, { attr: attr|default({class: 'medium'}) }) }}
+		</div>
+		{{ form_row(form._token) }}
+		<div class="section last">
+			<div>
+				<button class="uibutton loading">Choisir</button>
+				<input type="reset" class="uibutton special" value="Annuler" >
+			</div>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+	$('select').selectmenu({style: 'dropdown', transferClasses: true, width: '100%'});
+</script>
+{% include 'extra/reloadSelect.html.twig' with {parent: form.entiteOne, child: form.entiteTwo, url: path('structure_by_parent'), key: 'id' } %}
+{% include 'extra/reloadSelect.html.twig' with {
+		parent: form.entiteTwo, child: form.entiteThree, url: path('structure_by_parent'), key: 'id', functionAfter: 'reloadStructure' } 
+	%}
+{% include 'extra/reloadSelect.html.twig' with {
+		parent: form.entiteThree, child: form.entiteFour, url: path('structure_by_parent'), key: 'id', functionAfter: 'reloadStructure' } 
+	%}
+{% include 'extra/reloadSelect.html.twig' with {
+		parent: form.entiteFour, child: form.entiteFive, url: path('structure_by_parent'), key: 'id', functionAfter: 'reloadStructure' } 
+	%}

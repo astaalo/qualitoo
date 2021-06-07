@@ -1,0 +1,23 @@
+			<tr>
+				<th style="width:140px;" >Responsable:</th>
+				<td style="padding-left: 70px;">{{ entity.responsable ? entity.responsable : 'Non renseigné' }}</td>
+			</tr>
+			{% set processus = entity.processus?entity.processus:'' %}
+			<tr>
+				<th style="width:140px;" >Structure:</th>
+				<td style="padding-left: 70px;">{{ processus? processus.structure:'' }} ({{ processus? processus.structure.name:'aucune' }})</td>
+			</tr>
+			<tr>
+			   {% if processus is defined and processus is not empty%}
+					<th style="width:140px;" >{{ processus.typeProcessus }}:</th>
+					<td style="padding-left: 70px;">
+					<a href="{{ path( 'details_processus', {id: processus.id}) }}">{{ processus }}</a>
+					</td>
+			  {% endif %}
+			</tr>
+			<tr>
+				<th style="width:140px;" >Nom du projet:</th>
+				{% if entity.projet is defined and entity.projet is not empty%}
+					<td style="padding-left: 70px;"><a href="{{ path('details_projet', {id: entity.projet.id}) }}">{{ entity.projet }}</a></td>
+				{% endif %}
+			</tr>

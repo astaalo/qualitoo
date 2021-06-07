@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\TypeGrille;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -20,9 +21,9 @@ class CritereController extends BaseController {
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
 		$entity = new Critere();
-		$entities = $em->getRepository('OrangeMainBundle:TypeGrille')->findByTypeEvaluationId($this->getMyParameter('ids', array('type_evaluation', 'impact')));
+		$entities = $em->getRepository(TypeGrille::class)->findByTypeEvaluationId($this->getMyParameter('ids', array('type_evaluation', 'impact')));
 		
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		
 		return array('entities' => $entities);
 	}

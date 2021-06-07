@@ -22,7 +22,7 @@ class DomaineController extends BaseController {
 	 */
 	public function indexAction() {
 		$entity = new DomaineActivite();
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		// $this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		return array();
 	}
 	

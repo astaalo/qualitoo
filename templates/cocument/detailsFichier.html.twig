@@ -1,0 +1,43 @@
+<div class="header">
+	<img src="{{ asset('bundles/orangemain/images/icon/color_18/eye.png') }}" alt="Consulter">
+	<span>Détails fichier</span>
+	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+</div>
+<div class="contentForm">
+				<table class="display grille_datatable" >
+						<tr>
+							<td><div class="th_wrapp"><b>Libellé</b></div></td>
+							<td><div class="th_wrapp">{{ document.libelle }}</div></td>
+						</tr>
+						<tr>
+							<td><div class="th_wrapp"><b>Description</b></div></td>
+							<td><div class="th_wrapp">{{ document.description }}</div></td>
+						</tr>
+						<tr>
+							<td><div class="th_wrapp"><b>Date Création</b></div></td>
+							<td><div class="th_wrapp">{{ document.dateCreation|date('d/m/Y') }}</div></td>
+						</tr>
+						<tr>
+							<td><div class="th_wrapp"><b>Nom fichier</b></div></td>
+							<td><div class="th_wrapp">{{ document.nomFichier }}</div></td>
+						</tr>
+						<tr>
+							<td><div class="th_wrapp"><b>Accessible par les profils</b></div></td>
+							<td>
+								<div class="th_wrapp">
+								{% for profil in document.profils %}
+								   {{ show_profil(profil) }} <br>
+								{% endfor %}
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><div class="th_wrapp"><b>Accessible par les utilisateurs</b></div></td>
+							<td><div class="th_wrapp">
+							{% for ua in document.utilisateursAutorises %}
+								   {{ ua.utilisateur }} <br>
+							{% endfor %}
+							</div></td>
+						</tr>
+				</table>
+</div>

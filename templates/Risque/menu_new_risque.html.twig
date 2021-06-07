@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block navigation %}
+	{{ knp_menu_render('OrangeMainBundle:Builder:showMenu', {'template': 'OrangeMainBundle:Extra:knp_menu.html.twig', 'item': {1:'Risque'} }) }}
+{% endblock %}
+
+{% block content %}
+ 	<h1 align="center">Quel type de risque voulez-vous identifier?</h1>
+ {% if (has_rights ('ROLE_RESPONSABLE_ONLY') == true and app.user.manager==true) or has_rights ('ROLE_ADMIN') or has_rights ('ROLE_AUDITEUR') or has_rights ('ROLE_RISKMANAGER') %}	
+ 	<div class="big_menu bd_grid  no_submenu   " style="margin-left:200px; ">
+		<span class="header" style="cursor: pointer;" onclick="location.href='{{ path('nouveau_risque',{'cartographie_id':1}) }}'">Risque Metier</span>
+	</div> 
+	
+ 	<div class="big_menu bd_grid  no_submenu   ">
+		<span class="header" style="cursor: pointer;" onclick="location.href='{{ path('nouveau_risque',{'cartographie_id':2}) }}'">Risque Projet</span>
+	</div>
+{% endif %}
+{% if (has_rights ('ROLE_RESPONSABLE_ONLY') ==true and app.user.site.count()>0) or has_rights ('ROLE_ADMIN') or has_rights ('ROLE_AUDITEUR') or has_rights ('ROLE_RISKMANAGER') %}
+	<div class="big_menu bd_grid  no_submenu   " style="margin-left:200px; ">
+		<span class="header" style="cursor: pointer;" onclick="location.href='{{ path('nouveau_risque',{'cartographie_id':3}) }}'">Risque SST</span>
+	</div>
+	
+	<div class="big_menu bd_grid  no_submenu   ">
+		<span class="header" style="cursor: pointer;" onclick="location.href='{{ path('nouveau_risque',{'cartographie_id':4}) }}'">Risque Environnemental</span>
+	</div>
+{% endif %}
+{% endblock %}

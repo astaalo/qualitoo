@@ -1,0 +1,147 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/identificationKpi.html.twig' with {position: carto} %}
+{% endblock %}
+
+
+{% block header_config %}
+{% include 'configuration/typeAggregation.html.twig' with {type: type, carto: carto} %}
+{% endblock %}
+
+{% block content_config %}
+<div id="filter_content" hidden>
+									{% include 'OrangeMainBundle:KPI:filter.html.twig' with {form: form} %}
+								</div>
+<div id="main_content" class="content" style="background-color: #fff;">
+ <div class="content" > <br  class="clear"/>
+                            <div class="grid1 rightzero" style="width: 24%; float: left;     margin: 0 10px 10px 20px;">
+                                <div class="shoutcutBox" onclick="location.href='{{ path('rcc', {carto: 1, type: 0}) }}'"> <span class="ico color stats_pie"></span> <strong>C/M</strong> <em>Répartition et comparaison criticité /niveau de maitrise</em> </a></div>
+ </div>
+<div class="grid3" style="width: 70%;margin-left: 25px;overflow:hidden;"> 
+      <div id="uploadTab">
+                      <ul class="tabs">
+                          <li ><a href="#tab1">Mode tableau</a></li>  
+                          <li ><a href="#tab2">Mode graphe</a></li>            
+                      </ul>
+                      <div class="tab_container" >
+                          <div id="tab1" class="tab_content">
+                          	<div class="load_page">
+                          	<ul class="uibutton-group" style="margin-top: -40px;">
+                                    <li><a class="uibutton icon filter on_load_filter" name="#filter_content" href="#">Filtrer</a></li>
+                                    <li><a class="uibutton icon download" href="{{ path('export_pour_kpi') }}">Extraire</a></li>
+                              </ul>
+                              {% if kpis is not empty %}
+                              <table class="display  data_table2" id="tabRisqueCrit">
+                                <thead>
+                                  <tr role="row">
+	                                  <th width="70" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Name" style="width: 300px !important;"> {{ libelle }}</th>
+	                                  <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 150px;">Gravité</th>
+	                                  <th width="30" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Show ID" style="width: 150px;">Probabilité</th>
+                                  </tr>
+                                </thead>
+                                
+                              <tbody role="alert" aria-live="polite" aria-relevant="all">
+	                              {% for kpi in kpis  %}
+		                              <tr class="">
+		                                    <td class=" " style="{% if type==2 %} text-align: left;padding-left: 30px !important;{% endif %}">
+		                                       {% autoescape false %}
+		                                   		 {{ type==1 and carto<=2 ? kpi['name']  : ( kpi['code'] is defined ? ('<b>'~ kpi['code'] ~ '</b> ===> ' ~kpi['libelle'])|raw :kpi['libelle']) }}
+		                                   	   {% endautoescape %}
+		                                    </td>
+		                                    <td class=" ">{{ kpi['gravite']|round }}</td>
+		                                    <td class=" ">{{ kpi['proba']|round }}</td>
+		                              </tr>
+		                           {% endfor %}
+	                            </tbody>
+                                 </table>
+                                {% else %}
+		                             <div class="screen-msg"><span class="icon"><img src="{{  asset('bundles/orangemain/images/icon/dialog.png') }}" alt="dialog"></span>Aucunes informations pour ce KPI.</div>
+		                   {% endif %}
+                            </div>
+                          </div>
+                          <div id="tab2" class="tab_content"> 
+                          {% if kpis is not empty %}	
+                          	<div id="chart1"></div>
+                          	{% else %}
+		                             <div class="screen-msg"><span class="icon"><img src="{{  asset('bundles/orangemain/images/icon/dialog.png') }}" alt="dialog"></span>Aucunes informations pour ce KPI.</div>
+		                   {% endif %}
+                          </div>
+                     </div>
+</div>
+                           
+<div class="clear"></div>
+</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript">
+		$(function () {
+			series=[];
+			 var categories = [];
+			
+			{% for c,value in kpis %}
+					categories[{{ loop.index0 }}] = '{{ type==1 and carto<=2 ? value['name']  : value['code'] }}';
+			{% endfor %}
+			var i=0;
+			{% for libelle,val in graphe %}
+						series[{{ loop.index0 }}] = new Object();
+						series[{{ loop.index0 }}].name = '{{ libelle|escape('js')  }}';
+			{% endfor %}
+			{% for libelle, stats in graphe %}
+		     	series[{{ loop.index0 }}].data = [];
+				{%  for cle, val in stats  %}
+							series[{{ loop.parent.loop.index0 }}].data.push({{ val }});
+				{% endfor %}
+			{% endfor %}
+			
+		    $('#chart1').highcharts({
+		        chart: {
+		            type: 'column'
+		        },
+		        colors: ["#9164cd", "#ff6600"],
+		        credits:{
+			        enabled:false
+			        },
+		        title: {
+		            text: 'Suivi des risques via les critères(gravité et probabilité)'
+		        },
+		        lang: {
+		        	downloadJPEG: 'Télécharger sous image JPEG',
+		        	downloadPNG: 'Télécharger sous image PNG',
+		        	downloadSVG: 'Télécharger sous image SVG',
+		        	downloadPDF: 'Télécharger sous document PDF',
+		        	printChart: 'Imprimer le graphe',
+		        	contextButtonTitle: 'Télécharger le graphe'
+		    	},
+		        xAxis: {
+		            categories: categories,
+		            crosshair: true
+		        },
+		        yAxis: {
+		            min: 0,
+		            title: {
+		                text: 'Valeur'
+		            }
+		        },
+		        tooltip: {
+		            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+		            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		                '<td style="padding:0"><b>{point.y} </b></td></tr>',
+		            footerFormat: '</table>',
+		            shared: true,
+		            useHTML: true
+		        },
+		        plotOptions: {
+		            column: {
+		                pointPadding: 0.2,
+		                borderWidth: 0
+		            }
+		        },
+		        series: series
+		    });
+		});
+	</script>
+{% endblock %}

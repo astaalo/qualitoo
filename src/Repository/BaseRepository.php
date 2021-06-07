@@ -16,7 +16,6 @@ class BaseRepository extends EntityRepository
 	 * @see \Doctrine\ORM\EntityRepository::findAll()
 	 */
 	public function findAll() {
-		// TODO: Auto-generated method stub
 		return $this->filterBySociete($this->createQueryBuilder('q'))->getQuery()->execute();
 	}
 	

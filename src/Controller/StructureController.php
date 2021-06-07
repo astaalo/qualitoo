@@ -26,7 +26,7 @@ class StructureController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		
 		$entity= new Structure();
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		
 		return array();
 	}

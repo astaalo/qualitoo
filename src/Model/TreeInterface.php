@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use App\Entity\Structure;
+
 interface TreeInterface
 {
     /**

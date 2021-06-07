@@ -1,0 +1,68 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/identification.html.twig' with {position: position} %}
+{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Consultation des fiches de risque
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon filter on_load_filter" name="#filter_content" href="#">Filtrer</a></li>
+			<li><a class="uibutton icon download" href="{{ path('exporter_les_risques') }}">Extraire</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+	<div id="transfert_content" hidden>
+	</div>
+	<div id="filter_content" hidden>
+		{% include 'OrangeMainBundle:Risque:filter.html.twig' with {form: form, evaluated: 1} %}
+	</div>
+	<div id="main_content" class="content" style="background-color: #fff;">
+		<div class="tableName">
+			<table id="risqueTable" class="display no-margin">
+				<thead>
+					<tr>
+						<th width="70px"><div class="th_wrapp">Code</div></th>
+						{% if position <=2 %}
+							<th width="200px"><div class="th_wrapp">Processus</div></th>
+							<th width="200px"><div class="th_wrapp">Structure</div></th>
+						{% else %}
+							<th width="200px"><div class="th_wrapp">Site</div></th>
+						{% endif %}
+						<th width="200px"><div class="th_wrapp">Activité</div></th>
+						<th><div class="th_wrapp">Nom du risque</div></th>
+						<th width="200px"><div class="th_wrapp">Nombre de causes</div></th>
+						<th width="100px"><div class="th_wrapp">Date saisie</div></th>
+						<th width="60px"><div class="th_wrapp">Actions</div></th>
+					</tr>
+				</thead>
+				<tbody>
+				 	<tr class="odd gradeX">
+				 	{% if position <=2 %}
+				 		<td colspan="9">Chargement des données en cours ...</td>
+				 	{% else %}
+				 		<td colspan="8">Chargement des données en cours ...</td>
+				 	{% endif %}
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }} #}
+	{% if id_import is not defined %}
+	 {% include 'extra/datatable.html.twig' with {idTable: 'risqueTable', url: path('liste_des_risques'), nosorting: [0, 1, 2, 6] } %}
+	 {% else %}
+	 {% include 'extra/datatable.html.twig' with {idTable: 'risqueTable', url: path('liste_des_risques_importer', {id:id_import}), nosorting: [0, 1, 2, 5] } %}
+	 {% endif %}
+{% endblock %}

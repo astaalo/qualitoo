@@ -1,0 +1,6 @@
+{% for domaine in domaines %}
+	<input type="checkbox" id="risque_domaineImpact_{{ domaine.id }}" name="risque[domaineImpact][]" class="ck" value="{{ domaine.id }}">
+	<label style="width: 25%;" for="risque_domaineImpact_{{ domaine.id }}">{{ domaine.libelle }}</label>
+{% else %}
+	<span style="color: red;text-align: center;">Aucun domaine trouvé</span>
+{% endfor %}

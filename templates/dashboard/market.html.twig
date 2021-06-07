@@ -1,12 +1,12 @@
-{% extends 'OrangeMainBundle:Configuration:index.html.twig' %}
+{% extends 'configuration/index.html.twig' %}
 
 {% block menu_config %}
-	{% include 'OrangeMainBundle:Configuration:identification.html.twig' with {position: carto} %}
+	{% include 'configuration/identification.html.twig' with {position: carto} %}
 {% endblock %}
 
 
 {% block header_config %}
-{% include 'OrangeMainBundle:Configuration:typeAggregation.html.twig' with {type: type, carto: carto} %}
+{% include 'configuration/typeAggregation.html.twig' with {type: type, carto: carto} %}
 {% endblock %}
 
 {% block content_config %}

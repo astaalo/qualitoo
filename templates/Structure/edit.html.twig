@@ -1,0 +1,42 @@
+{% extends 'configuration/index.html.twig' %}
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/hierarchie.html.twig' with {position: 2} %}
+{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico gray add"></span>
+		Edition structure
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon add" href="{{ path('nouvelle_structure') }}">structure</a></li>
+			<li><a class="uibutton icon answer" href="{{ path('les_structures') }}">Liste des Structures</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="onecolumn">
+	<div class="clear"></div>
+	<div class="contentForm">
+	<form  novalidate="novalidate"  action="{{ path('modifier_structure', {'id': entity.id}) }}" method="POST">
+		{{ form_row(form.code) }}
+		{{ form_row(form.libelle, {attr: attr|default({class: ' large'})}) }}
+		{{ form_row(form.typeStructure) }}
+		{{ form_row(form.parent) }}
+		{{ form_row(form._token) }}
+		<div class="section last footer">
+			<div>
+				<button class="uibutton loading">Enregistrer</button>
+				<input type="reset"  class="uibutton special" value="Effacer" >
+			</div>
+		</div>
+	</form>
+	</div>
+	</div>
+{% endblock %}

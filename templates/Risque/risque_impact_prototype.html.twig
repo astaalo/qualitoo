@@ -1,0 +1,10 @@
+{% form_theme form 'OrangeMainBundle:Extra:no_form_theme.html.twig' %}
+
+<div class="risque_cause_row"> 
+	<span  for="{{ id }}_label">Impact n°<span id="{{ id }}_label"></span></span>
+	{{ form_row(form.impact.libelle, {id: id ~ '___name___libelle' }) }}
+	{{ form_row(form.impact.critere, {id: id ~ '___name___critere' }) }}
+	<a id="{{ id }}_remove_current" title="Supprimer l'impact">
+		<img class="delete" src="{{ asset('bundles/orangemain/images/icon/icon_delete.png') }}" width="16" height="16" border="0">
+	</a>
+</div>

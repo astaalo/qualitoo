@@ -1,0 +1,19 @@
+{# {% form_theme form 'OrangeMainBundle:Extra:no_form_theme.html.twig' %}#}
+
+<div class="risque_cause_row" onload="customizeCause()"> 
+	<span  for="label">Aspect n°<span id="label"></span></span>
+	<div style="display: none">
+		{{ form_widget(form.carto)}}
+	</div>
+ 	{{ form_row(form.cause, {'label':'Choisir un aspect'})}}
+ 	{{ form_row(form.choice, {'label':'Saisir un aspect'}) }}
+ 	{{ form_row(form.newCause.libelle, {id: id ~ '___name___libelle'}) }}
+ 	{{ form_row(form.modeFonctionnement) }}
+ 	
+	<a id="{{ id }}_remove_current" title="Supprimer l\'aspect">
+		<img class="delete" src="{{ asset('bundles/orangemain/images/icon/icon_delete.png') }}" width="16" height="16" border="0">
+	</a>
+</div>
+<script type="text/javascript">
+
+</script>

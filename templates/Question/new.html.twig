@@ -1,0 +1,21 @@
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+<div class="header">
+	<img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}" alt="edit">
+	<span>Edition de la question</span>
+	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+</div>
+<div class="contentForm">
+	<form  novalidate="novalidate"  action="{{ path('creer_question') }}" method="POST">
+		{{ form_row(form.libelle) }}
+		{{ form_row(form.cotation) }}
+		{{ form_row(form.etat) }}
+		{{ form_row(form._token) }}
+		<div class="section last">
+			<div>
+				<button class="uibutton loading submitLink" call="closeAndNotifyAfterSuccess" argument-call="#questionTable">Enregistrer</button>
+				<input type="reset"  class="uibutton special" value="Effacer" >
+			</div>
+		</div>
+	</form>
+</div>

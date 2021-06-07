@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block navigation %}
+	{{ knp_menu_render('OrangeMainBundle:Builder:showMenu', {'template': 'OrangeMainBundle:Extra:knp_menu.html.twig', 'item': {1:'Configuration'} }) }}
+{% endblock %}
+
+{% block content %}
+<div class="onecolumn">
+	<div class="header">
+		<span>
+			<span class="ico gray spreadsheet"></span>
+			Liste des conséquences
+		</span>
+		<div id="buttom_top">
+			<ul class="uibutton-group">
+				<li><a class="uibutton icon add" href="{{ path('nouvelle_consequence') }}">Nouvelle consequence</a></li>
+            </ul>
+        </div>
+	</div>
+	<div class="clear"></div>
+	<div class="contentDatatable">
+	<div class="tableName">
+	<table class="display data_table2" id="consequenceTable">
+	<thead>
+		<tr>
+			<th><div class="th_wrapp">Domaine</div></th>
+			<th><div class="th_wrapp">Entité</div></th>
+			<th><div class="th_wrapp">Actions</div></th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for entitie in entities %}
+	 	<tr class="odd gradeX">
+			<td >{{ entitie.domaine }}</td>
+			<td >{{ entitie.entite }}</td>
+			<td width="100px">
+				<span class="tip" >
+	                <a  title="Détails" href="{{ path('details_consequence', {'id': entitie.id}) }}">
+	                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+	                </a>
+                </span> 
+                <span class="tip" >
+	                <a  title="Modifier" href="{{ path('edition_consequence', {'id': entitie.id}) }}">
+	                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}" >
+	                </a>
+                </span> 
+               	<span class="tip" >
+	                <a id="1" class="Delete"  name="Band ring" title="Delete" title="Supprimer"  href="#">
+	                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/delete.png') }}" >
+	                </a>
+                </span> 
+			</td>
+		</tr>
+	{% endfor %} 
+	</tbody>
+</table>
+</div>
+	</div>
+</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	{% include 'extra/datatable.html.twig' with {idTable: 'consequenceTable', url: path('liste_des_consequences') } %}
+{% endblock %}

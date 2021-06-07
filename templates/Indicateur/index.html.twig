@@ -1,0 +1,91 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/configuration.html.twig' with {position: 5} %}
+{% endblock %}
+
+{% block header_config %}{% endblock %}
+
+{% block separator_config %}{% endblock %}
+
+{% block content_config %}
+<div id="indicateurTable" class="content">
+	<ul class="tabs header">
+	{% for indicateur in entities if indicateur.etat==1 %}
+        <li style="display: list-item;" class="{{ loop.index==1 ? 'active' : null }}"><a href="#tab{{ loop.index }}">{{ indicateur }}</a></li>
+    {% endfor %}
+    </ul>
+    <div class="tab_container no-margin">
+    {% for indicateur in entities if indicateur.etat==1 %}
+        <div id="tab{{ loop.index }}" class="tab_content">
+        	<div>
+				<ul class="uibutton-group">
+					<li><a class="uibutton icon add" href="{{ path('nouveau_indicateur', {id: indicateur.id}) }}" title="Ajout d'un critère">Nouveau critère</a></li>
+	            </ul>
+        	</div>
+			<table class="display no-margin">
+				<thead>
+					<tr>
+						<th><div class="th_wrapp">Niveau</div></th>
+						<th><div class="th_wrapp">Critère</div></th>
+						{% for gravite in typeGrille.gravite %}
+							<th width="15%"><div class="th_wrapp">{{ gravite }}</div></th>
+						{% endfor %}
+						<th width="20px"><div class="th_wrapp">&nbsp;</div></th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for domaine in typeGrille.domaine if domaine.etat==1 %}
+				 	{% set numberCritere = domaine.activeCritere|length %}
+					{% for indicateur in domaine.indicateur if indicateur.etat==1 %}
+				 	<tr class="odd gradeX">
+				 		{% if loop.index0==0 %}
+						<td style="text-align: center;vertical-align: middle;" {% if numberCritere > 1 %}rowspan="{{ numberCritere }}"{% endif %}>
+							{{ domaine }}
+						</td>
+						{% endif %}
+						<td>{{ indicateur }}</td>
+						{% for gravite in typeGrille.gravite %}
+							<td style="text-align: left;">
+								{% set lengthGrille = indicateur.grilleImpactByValue(gravite.valeur)|length %}
+								{% if lengthGrille > 1 %}<ul>{% endif %}
+								{% for grilleImpact in indicateur.grilleImpactByValue(gravite.valeur) %}
+									{% if lengthGrille > 1 %}<li>{{ grilleImpact }}</li>{% else %}{{ grilleImpact }}{% endif %}
+								{% endfor %}
+								{% if lengthGrille > 1 %}</ul>{% endif %}
+							</td>
+						{% endfor %}
+						<td>
+							<span class="tip" >
+				                <a  title="Détails" href="{{ path('details_indicateur', {'id': indicateur.id}) }}">
+				                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+				                </a>
+			                </span> 
+			                <span class="tip" >
+				                <a  title="Modifier" href="{{ path('edition_indicateur', {'id': indicateur.id}) }}">
+				                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}" >
+				                </a>
+			                </span> 
+			               	<span class="tip" >
+				                <a id="1" class="Delete"  name="Band ring" title="Delete" title="Supprimer"  href="#">
+				                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/delete.png') }}" >
+				                </a>
+			                </span>
+			            </td>
+					</tr>
+					{% endfor %}
+					{% if numberCritere==0 %}
+						<tr class="odd gradeX">
+							<td style="text-align: center;vertical-align: middle;">{{ domaine }}</td>
+							<td colspan="6">Aucun critère</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<div class="clear"></div>
+{% endblock %}

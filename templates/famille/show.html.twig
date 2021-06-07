@@ -1,0 +1,47 @@
+<div class="header">
+	<img
+		src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}"
+		alt="add"> <span>Consultation d'une famille</span>
+	<div class="close_me">
+		<a data-dismiss="modal"><img
+			src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a>
+	</div>
+</div>
+<div class="content">
+	<div class="content tableName">
+		<table class="display data_table">
+			<tbody>
+				<tr>
+					<td><div class="msg">
+							<div class="msg_topic">
+								<strong>Libellé</strong> 
+							</div>
+						</div></td>
+					<td><div class="msg_date">
+							{{ entity.libelle }}
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="msg">
+							<div class="msg_topic">
+								<strong>Parent</strong> 
+							</div>
+						</div></td>
+					<td><div class="msg_date">
+							{{ entity.parent }}
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="msg">
+							<div class="msg_topic">
+								<strong>Description</strong> 
+							</div>
+						</div></td>
+					<td><div class="msg_date">
+							{{ entity.description }}
+						</div></td>
+				</tr>
+			</tbody>  
+		</table>
+	</div>
+</div>

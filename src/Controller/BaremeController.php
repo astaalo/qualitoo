@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\TypeGrille;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -14,7 +15,7 @@ class BaremeController extends BaseController {
 	 */
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('OrangeMainBundle:TypeGrille')->findByTypeEvaluationId($this->getMyParameter('ids', array('type_evaluation', 'cause')));
+		$entities = $em->getRepository(TypeGrille::class)->findByTypeEvaluationId($this->getMyParameter('ids', array('type_evaluation', 'cause')));
 		return array('entities' => $entities);
 	}
 	
@@ -25,7 +26,7 @@ class BaremeController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:TypeGrille')->find($id);
+		$entity = $em->getRepository(TypeGrille::class)->find($id);
 		if(!$entity || $entity->getTypeEvaluation()->getId()!=$this->getMyParameter('ids', array('type_evaluation', 'cause'))) {
 			$this->createAccessDeniedException("Vous n'avez pas le droit de modifier ce barême");
 		}
@@ -37,11 +38,11 @@ class BaremeController extends BaseController {
 	 * @QMLogger(message="Modification d'un bareme")
 	 * @Route ("/{id}/modifier_bareme", name="modifier_bareme", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Bareme:edit.html.twig")
+	 * @Template("bareme/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:TypeGrille')->find($id);
+		$entity = $em->getRepository(TypeGrille::class)->find($id);
 		$form = $this->createCreateForm($entity, 'TypeGrille', array('attr' => array('em' => $em)));
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {

@@ -1,0 +1,11 @@
+<div class="header">
+	<span>Erreurs de chargement</span>
+	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+</div>
+<div class="content">
+    <ul style="    padding: 16px;line-height: 20px;font-size: 13px;">
+	{% for erreur in erreurs %}
+	  <li><b>{{ erreur }}</b></li>
+	{% endfor %}
+	</ul>
+</div>

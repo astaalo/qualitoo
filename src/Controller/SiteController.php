@@ -20,7 +20,7 @@ class SiteController extends BaseController {
 	 */
 	public function indexAction() {
 		$entity= new Site();
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		return array();
 	}
 	

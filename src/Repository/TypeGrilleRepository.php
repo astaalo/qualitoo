@@ -3,8 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\TypeGrille;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method TypeGrille|null find($id, $lockMode = null, $lockVersion = null)
@@ -12,39 +10,35 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method TypeGrille[]    findAll()
  * @method TypeGrille[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TypeGrilleRepository extends ServiceEntityRepository
+class TypeGrilleRepository extends EntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, TypeGrille::class);
+    /**
+     * @param integer $id
+     * @return array
+     */
+    public function findByTypeEvaluationId($id) {
+        return $this->createQueryBuilder('tg')
+            ->innerJoin('tg.typeEvaluation', 'te')
+            ->where('te.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()->getResult();
     }
 
-    // /**
-    //  * @return TypeGrille[] Returns an array of TypeGrille objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    /**
+     * @param integer $id
+     * @return \App\\Entity\TypeGrille
+     */
+    public function getTypeGrilleForImpact($id) {
+        $data = $this->createQueryBuilder('tg')
+            ->innerJoin('tg.typeEvaluation', 'te')
+            ->innerJoin('tg.profilRisque', 'pr')
+            ->innerJoin('pr.risque', 'r')
+            ->where('te.id = :typeEvaluationId')
+            ->andWhere('r.id = :risqueId')
+            ->andWhere('tg.etat = :etat')
+            ->setParameters(array('typeEvaluationId' => $this->_ids['type_evaluation']['impact'], 'risqueId' => $id, 'etat' => true))
+            ->getQuery()->getResult();
+        return $data ? $data[0] : null;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?TypeGrille
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

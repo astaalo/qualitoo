@@ -1,0 +1,127 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}
+        <link href="{{asset('assets/plugins/nestable/jquery.nestable.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+		<link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/css/core.css" rel="stylesheet')}}" type="text/css">
+        <link href="{{asset('assets/css/icons.css" rel="stylesheet')}}" type="text/css">
+        <link href="{{asset('assets/css/components.css" rel="stylesheet')}}" type="text/css">
+        <link href="{{asset('assets/css/pages.css" rel="stylesheet')}}" type="text/css">
+        <link href="{{asset('assets/css/menu.css" rel="stylesheet')}}"type="text/css">
+        <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/plugins/sweetalert/dist/sweetalert.css')}}" rel="stylesheet" type="text/css">
+
+        <script src="{{asset('assets/js/modernizr.min.js')}}"></script>
+
+{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color gear"></span>Comparaison des Activités
+	</span>	
+</div>
+
+
+                        <!-- Page-Title -->
+                       
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="{{path('les_activites')}}">Activités</a></li>
+                                    <li class="active">Fusionner les  Activités </li>
+                                </ol>
+						         <h4 class="text-center page-title "> {% if activites|length >=2 %}  Activités Semblables {% else %} Cette activité est unique {% endif %} </h4>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+						{% for activite in activites  %} 
+						<form  method="post"  >
+						
+                            <div class="col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">{{activite.libelle }}</h3> 
+                                    </div> 
+                                    <div class="panel-body"> 
+                                        <div class="dd" id="nestable_list_1">
+                                              <ol class="dd-list">
+
+                                               <li class="dd-item" data-id="11">
+                                                       <div class=""><b>STRUCTURE</b></div> 
+													   <ol>
+													      <li class="dd-item" data-id="2">
+                                                            <div class="dd-handle">{{activite.processus.structure.name }} </div>
+                                                          </li>
+													  </ol>   
+                                                  </li>
+
+                                                  <li class="dd-item" data-id="11">
+                                                       <div class="t"><b>TYPE PROCESSUS<b/></div> 
+													   <ol>
+													      <li class="dd-item" data-id="2">
+                                                            <div class="dd-handle">{{activite.processus.typeprocessus.libelle }}</div>
+                                                          </li>
+													  </ol>   
+                                                  </li>
+												
+                                                 
+                                                 
+
+                                                  <li class="dd-item" data-id="11">
+                                                       <div class=""><b>PROCESSUS<b/></div> 
+													   <ol>
+													      <li class="dd-item" data-id="2">
+                                                            <div  class="text dd-handle">{{activite.processus }}</div>
+                                                          </li>
+													  </ol>   
+                                                  </li>
+
+                                                  <li class="dd-item" data-id="11">
+                                                       <div class=""><b>DESCRIPTION</b></div> 
+													   <ol>
+                                                            <div class="text dd-item">{{activite.description }}</div>
+                                                          
+													  </ol>   
+                                                  </li>
+												    
+                                              </ol>
+                                          	{% if activites|length >=2    %}	<center>  <a  href="{{ path('delete_activite', {'id':activite.id }) }}" data-id="{{ activite.id }}" class="btn btn-sonatel waves-effect waves-light btn-sm dellbutton ">Supprimer</a></center>	
+                                        <a style="color:white"  href="{{ path('delete_activite', {'id':activite.id }) }}"  id="activites{{ activite.id }}" >-</a>    
+                                        {% endif %}
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                         {% endfor %} 
+						 </form> 
+
+                        
+                         
+                        </div> 
+						
+                        <!-- End of row -->
+                        
+
+                       
+ <!-- Sweet-Alert  -->
+         <!--script for this page only-->
+        <script src="{{asset('assets/plugins/nestable/jquery.nestable.js')}}"></script>
+        <script src="{{asset('assets/pages/nestable.js')}}"></script>
+        <script src="{{asset('assets/plugins/sweetalert/dist/sweetalert.min.js')}}"></script>
+        <script src="{{asset('assets/pages/jquery.sweet-alert.init.js')}}"></script>
+        <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('assets/js/detect.js')}}"></script>
+
+{% endblock %}
+
+	{% block javascripts %}
+     
+	     {{ parent() }}
+      
+
+        
+{% endblock %}

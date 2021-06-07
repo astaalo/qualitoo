@@ -1,0 +1,77 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/identification.html.twig' with {position: position} %}
+{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Auditer les risques
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon filter on_load_filter" name="#filter_content" href="#">Filtrer</a></li>
+			<li><a id="valider"  class="uibutton icon add" name="#filter_content" href="#">Auditer</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+	<div id="filter_content" hidden>
+		{% include 'OrangeMainBundle:Risque:filter.html.twig' with {form: form, evaluated: 0} %}
+	</div>
+	<div id="main_content" class="content" style="background-color: #fff;">
+		<div class="tableName">
+			<table id="risqueTable" class="display no-margin">
+				<thead>
+					<tr>
+						<th width="35" ><input type="checkbox" id="checkAll"  class="checkAll"/></th>
+						<th width="150px"><div class="th_wrapp">Code</div></th>
+						<th width="200px"><div class="th_wrapp">Activité</div></th>
+						<th width="200px"><div class="th_wrapp">Processus</div></th>
+						<th ><div class="th_wrapp">Libellé</div></th>
+						<th width="100px"><div class="th_wrapp">Date Saisie</div></th>
+						<th width="50px"><div class="th_wrapp">Actions</div></th>
+					</tr>
+				</thead>
+				<tbody>
+				 	<tr class="odd gradeX">
+				 		<td colspan="8">Chargement des données en cours ...</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }} #}
+	{% include 'extra/datatable.html.twig' with {idTable: 'risqueTable', url: path('liste_des_risques_a_tester'), nosorting: {0:0,1:1,2:4} } %}
+	<script type="text/javascript">
+ 	$(document).ready( function () {
+		$("a#valider").addClass('disable');
+		$("a#valider").attr('href', '');
+		$('#risqueTable input[type=checkbox]').live('click', function(){
+			var nb = 0;  
+			var arrRisques=[];
+			 $('#risqueTable input[type=checkbox].chkbox:checked').each(function(){
+			       arrRisques.push($(this).val());
+			       nb++;
+			  }); 
+			  if(nb>0){
+				  $("a#valider").removeClass('disable');
+				  var url = "{{ path("valider_teste_risque", {"ids" : "id", "carto": position}) }}"; 
+				  js_id = arrRisques.toString();
+				  url = url.replace("id", js_id);
+				   $("a#valider").attr('href', url);
+			  }else{
+				  $("a#valider").addClass('disable');
+			  }
+		 });
+	 });
+	</script>
+{% endblock %}
+

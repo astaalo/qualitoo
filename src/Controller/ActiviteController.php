@@ -25,7 +25,7 @@ class ActiviteController extends BaseController
 	public function indexAction()
 	{
 		$entity = new Activite();
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 
 		if (!$this->get('session')->get('activite_criteria')) {
 			$this->get('session')->set('activite_criteria', array());

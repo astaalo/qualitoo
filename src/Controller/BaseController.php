@@ -65,8 +65,7 @@ class BaseController extends AbstractController
     }
 
     /**
-     * @todo fait un tri sur le résultat
-     * @param sfWebRequest $request
+     * @param Request $request
      */
     protected function setOrder(QueryBuilder $queryBuilder, $aColumns, Request $request) {
         if($request->query->has('iSortCol_0')) {
@@ -94,7 +93,6 @@ class BaseController extends AbstractController
     }
 
     /**
-     * @todo ajoute un filtre
      * @param Request $request
      */
     protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
@@ -110,7 +108,6 @@ class BaseController extends AbstractController
     }
 
     /**
-     * @todo customize le résultat de la requête
      * @param QueryBuilder $queryBuilder
      */
     protected function customResultsQuery(QueryBuilder $queryBuilder) {
@@ -119,7 +116,6 @@ class BaseController extends AbstractController
 
 
     /**
-     * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
      * @param QueryBuilder $queryBuilder
      * @return integer
      */
@@ -129,7 +125,8 @@ class BaseController extends AbstractController
     }
 
     protected function getMyParameter($name, $path = array()) {
-        $data = $this->container->getParameter($name);
+        //$data = $this->container->getParameter($name);
+        $data = $this->getParameter($name);
         foreach($path as $key) {
             $data = $data[$key];
         }

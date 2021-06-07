@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="onecolumn" >
+	<div class="header"><span ><span class="ico color spreadsheet">
+		</span>Test des risques </span>
+	</div>
+	<div class="clear"></div>
+		<form action="{{ path('valider_teste_risque', {ids: ids, carto:carto}) }}" method="post" novalidate="novalidate">
+			{{ form_widget(form._token) }}
+			{{ form_row(form.libelle) }}
+			<ul class="header with_icon">
+				<span class="ico color access_point"></span>
+				<li>:: Merci de donner la maturité réel des risques</li>
+			</ul>
+			<div id="tab2">
+				<div id="impact_of_risque" class="contentForm">
+				  	<div style="color: #f60;font-size: 20px">
+				  	{% if carto<=2 %}
+				  		<div style="width: 15%;display: inline-block;margin-left: 20px;">
+					    	<label>Direction</label>
+				    	</div>
+				    	<div style="width: 15%;display: inline-block;margin-left: 20px;">
+					    	<label>Département</label>
+				    	</div>
+				    {% else %}
+				    		<div style="width: 15%;display: inline-block;">
+					    	<label>Site</label>
+				    	</div>
+				    {% endif %}
+				  		<div style="width:25%;display: inline-block;vertical-align: bottom;">
+					    	<label>Activité</label>
+				    	</div>
+				  		<div style="width: 15%;display: inline-block;vertical-align: bottom;">
+					    	<label>Risque </label>
+				    	</div>
+				    	<div style="width: 20%;display: inline-block;vertical-align: bottom;">
+					    	<label>Maturité </label>
+				    	</div>
+				  	</div>
+					<!-- Form template-->
+					{% for auditHasRisque in form.risques %}
+				  	<div type="impact {{ auditHasRisque.vars.value.id }}" >
+					  	{% if carto<=2 %}
+					  		<div style="width: 15%;display: inline-block;margin-left: 20px;">
+						    	<label>{{ auditHasRisque.vars.value.risque.direction.code  }}</label>
+					    	</div>
+					    	<div style="width: 15%;display: inline-block;margin-left: 20px;">
+						    	<label>{{ auditHasRisque.vars.value.risque.structreOrSite.code }}</label>
+					    	</div>
+					    {% else %}
+					    		<div style="width: 15%;display: inline-block;">
+						    	<label>{{ auditHasRisque.vars.value.risque.site }}</label>
+					    	</div>
+					    {% endif %}
+					  		<div style="width:25%;display: inline-block;vertical-align: bottom;">
+						    	<label>{{ auditHasRisque.vars.value.risque.activite }}</label>
+					    	</div>
+					  		<div style="width: 15%;display: inline-block;vertical-align: bottom;">
+						    	<label>{{ auditHasRisque.vars.value.risque.menace }}</label>
+					    	</div>
+					    	<div style="width: 20%;display: inline-block;vertical-align: bottom;">
+						    	<label>{{ form_widget(auditHasRisque.maturite , {attr: {class: 'chzn-select'}}) }}</label>
+					    	</div>
+				  	</div>
+				  	{% endfor %}
+				  	<!-- /Form template-->
+				</div>
+				<div class="clear"></div>
+			</div><!--tab2-->
+			<div class="section footer last">
+				<div>
+					<button class="uibutton loading">Enregistrer</button>
+					<a class="uibutton special" onClick="ResetForm()" title="Effacer">Effacer</a>
+				</div>
+			</div>
+		</form>
+		<div class="clear"></div>
+</div>
+<div class="clear"></div>
+{% endblock %}
+
+{% block add_script_js %}
+	
+{% endblock %}

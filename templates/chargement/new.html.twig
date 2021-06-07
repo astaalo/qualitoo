@@ -1,0 +1,72 @@
+{% extends 'configuration/index.html.twig' %}
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+{% block navigation %}
+{{ knp_menu_render('OrangeMainBundle:Builder:showMenu', {'template': 'OrangeMainBundle:Extra:knp_menu.html.twig', 'item': {1:'Configuration'} }) }}
+{% endblock %}
+
+{% block content %}
+<div class="onecolumn">
+	<div class="header">
+		<span> <span class="ico color add"></span> Chargement de
+			risques
+		</span>
+		<div id="buttom_top">
+			<ul class="uibutton-group">
+
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="contentForm">
+		<form novalidate="novalidate" action="{{ path( 'nouveau_chargement', {id:id} ) }}" method="POST">
+			{{ form_row(form.libelle)}}
+			{% if id==global_ids.carto.metier  %}
+			    {{ form_row(form.direction) }}
+			    {{ form_row(form.activite) }}
+			{% elseif id==global_ids.carto.projet  %}
+			    {{ form_row(form.projet) }}
+			{% endif %}
+			<div class="section" style="background-color: #eee;">
+				<h4
+					style="text-align: center; color: #ff6600; border: none; margin: -5px;">
+					<i>Choisir pour chaque domaine le critère qui sera renseigner
+						au chargement</i>
+				</h4>
+			</div>
+			{% for critere in form.critere %}
+			<div class="section">
+				<label>{{ critere.vars.value.domaine.libelle }} </label>
+				<div style="width: 30%; display: none; margin-left: 0">
+					{{ form_widget(critere.domaine) }}
+				</div>
+				<div style="width: 30%; display: inline-block; margin-left: 0">
+					{{ form_widget(critere.critere) }}
+				</div>
+			</div>
+			{% endfor %}
+			{{ form_row(form._token) }}
+			<div class="section last footer">
+				<div>
+					<button name="save" class="uibutton loading">Enregistrer</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block add_script_js %}
+{% if id==global_ids.carto.metier  %}
+	<script type="text/javascript">
+	// code to execute after Select ajax load
+	function afterStructureReload() {
+		$("#{{ form.activite.vars.id }} option[value='{{ form.activite.vars.value }}']").attr('selected', 'selected');
+		$("#{{ form.activite.vars.id }}").trigger('liszt:updated');
+	}
+	</script>
+	{% include 'extra/reloadSelect.html.twig' with 
+    	{parent: form.direction, child: form.activite, url: path('get_activities_by_structure'), key: 'id', empty_child: 1	, functionAfter: 'afterStructureReload'} 
+    %}
+{% endif %}
+{% endblock %}

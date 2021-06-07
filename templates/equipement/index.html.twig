@@ -1,0 +1,45 @@
+{% extends 'configuration/index.html.twig' %}
+
+
+{% block header_config %}
+{% include 'configuration/configuration.html.twig' %}
+<div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Liste des équipements/activités
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li class="tip"><a href="#myModal" class="uibutton icon filter actionLink" data-toggle="modal" data-target="#myModal" modal-url="{{ path('filtrer_les_equipements') }}" original-title="Filter les processus">Filtre</a></li>
+			<a class="uibutton icon add actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" class="actionLink" modal-url="{{ path('nouvel_equipement', {type: 1}) }}">Nouvelle activité</a></li>
+			<a class="uibutton icon add actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" class="actionLink" modal-url="{{ path('nouvel_equipement', {type: 2}) }}">Nouveau équipement</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="contentDatatable">
+	<div class="tableName">
+	<table class="display" id="equipementTable">
+		<thead>
+			<tr>
+				<th><div class="th_wrapp">Code</div></th>
+				<th><div class="th_wrapp">Libellé</div></th>
+				<th width="50px"><div class="th_wrapp">Actions</div></th>
+			</tr>
+		</thead>
+		<tbody>
+		 	<tr class="odd gradeX">
+		 		<td colspan="3">Chargement des données en cours ...</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }} #}
+	{% include 'extra/datatable.html.twig' with {idTable: 'equipementTable', url: path('liste_des_equipements'), nosorting: {0:2} } %}
+{% endblock %}

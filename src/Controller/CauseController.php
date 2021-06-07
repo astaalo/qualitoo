@@ -24,7 +24,7 @@ class CauseController extends BaseController {
 	public function indexAction() {
 		$entity = new Cause();
 		$this->get('session')->set('risquehascause_criteria', array());
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		return array();
 	}
 	

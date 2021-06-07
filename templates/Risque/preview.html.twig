@@ -1,0 +1,286 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="onecolumn" >
+	<div class="header"><span ><span class="ico  gray spreadsheet">
+		</span>Détails risques</span>
+		<div id="buttom_top">
+			<ul class="uibutton-group">
+				<li><a class="uibutton confirm" href="{{ path('les_risques') }}" title="les risques">
+					<img src="{{ asset('bundles/orangemain/images//icon/color_18/undo.png') }}" alt="eye" >Retour à la liste
+				</a></li>
+            </ul>
+        </div>
+	</div>
+	<div class="clear"></div>
+	<table class="show_table">
+		<tbody>
+			<tr>
+				<th style="width:140px;" >Code du risque:</th>
+				<td style="padding-left: 70px;">{% if entity.code %}{{ entity.code }}{% else %}<span style="color: red;font-weight: bold;">Pas encore renseigné</span>{% endif %}</td>
+			</tr>
+			<tr>
+				<th style="width:140px;" >Libellé:</th>
+				<td style="padding-left: 70px;">{{ entity.menace ? entity.menace : (entity.identification.libelle? entity.identification.libelle :'Non renseigné') }}</td>
+			</tr>
+			{% if entity.cartographie.id == global_ids.carto.metier %}
+				{% include 'OrangeMainBundle:Risque:show_metier.html.twig' with {entity: entity.risqueMetier} %}
+			{% elseif entity.cartographie.id == global_ids.carto.projet %}
+				{% include 'OrangeMainBundle:Risque:show_projet.html.twig' with {entity: entity.risqueProjet} %}
+			{% elseif entity.cartographie.id == global_ids.carto.sst %}
+				{% include 'OrangeMainBundle:Risque:show_sst.html.twig' with {entity: entity.risqueSST} %}
+			{% elseif entity.cartographie.id == global_ids.carto.environnement %}
+				{% include 'OrangeMainBundle:Risque:show_environnemental.html.twig' with {entity: entity.risqueEnvironnemental} %}
+			{% endif %}
+		</tbody>
+		<table class="show_table" >
+			<tbody>
+			<tr>
+				<th style="width:140px;" colspan="2">Dernière évaluation</th>
+			</tr>
+			{% if entity.criticite is not empty %}
+			<tr>
+				<th style="width:140px;" >Probabilité</th>
+				<td style="padding-left: 70px;">{{ entity.probabilite }}</td>
+			</tr>
+			<tr>
+				<th style="width:140px;" >Gravité</th>
+				<td style="padding-left: 70px;">{{ entity.gravite }}</td>
+			</tr>
+			<tr>
+				<th style="width:140px;" >Criticité</th>
+				<td style="padding-left: 70px;">
+				{{ entity.probabilite }} * {{ entity.gravite }} = [{{ entity.criticite }}]	
+			</td>
+			</tr>
+			{% else %}
+			<tr>
+				<th style="width:140px;color: red;font-weight: bold;font-size: 16px;white-space: nowrap;">Risque pas encore évalué</th>
+			</tr>
+			{% endif %}
+			</tbody>
+		</table>
+	</table>
+	<ul class="tabs header no-margin">
+		<li><a href="#tab1">Les causes</a></li>
+		<li><a href="#tab2">Les impacts</a></li>
+		<li><a href="#tab3">Les évaluations</a></li>
+		<li><a href="#tab4">Les plans d'action</a></li>
+		<li><a href="#tab5">Les controles</a></li>
+	</ul>
+	<!--// two column window -->
+	<div id="tab1" class="tab_content">
+        <div class="content_table">
+			<div class="tableName">
+				<table class="display simple_table" >
+					<thead>
+						<tr>
+							<th><div class="th_wrapp">Libellé</div></th>
+							<th><div class="th_wrapp">Probabilité</div></th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for causeOfRisque in entity.causeOfRisque %}
+						 <tr class="odd gradeX">
+							<td>{{ causeOfRisque.cause }}</td>
+							<td>{{ causeOfRisque.grille ? causeOfRisque.grille.note : 'NC' }}</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="3" style="color: red;font-weight: bold;">Aucune cause n'est identifiée</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="tab2" class="tab_content">
+        <div class="content_table">
+			<div class="tableName">
+				<table class="display simple_table" >
+					<thead>
+						<tr>
+							<th><div class="th_wrapp">Critére</div></th>
+							<th><div class="th_wrapp">Domaine</div></th>
+							<th><div class="th_wrapp">Gravité</div></th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for impactOfRisque in entity.impactOfRisque %}
+					 	<tr class="odd gradeX">
+							<td >{{ impactOfRisque.impact.critere }}</td>
+							<td >{{ impactOfRisque.impact.critere ? impactOfRisque.impact.critere.domaine : '-' }}</td>
+							<td >{{ impactOfRisque.grille ? impactOfRisque.grille.note : 'Non renseigné' }}</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="3" style="color: red;font-weight: bold;">Aucun impact n'est identifié</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+   	</div>
+   	<div id="tab3" class="tab_content">
+   	<ul class="uibutton-group">
+			<li><a class="uibutton" href="{{ path('nouvelle_evaluation', {id: entity.id}) }}"><img src="{{ asset('bundles/orangemain/images//icon/color_18/pyramid.png') }}" alt="eye" > Evaluer</a></li>
+        </ul>
+		<div class="content_table">
+			<div class="tableName">
+				<table class="display simple_table" >
+					<thead>
+						<tr>
+							<th><div class="th_wrapp">Date d'évaluation</div></th>
+							<th><div class="th_wrapp">Probabilité </div></th>
+							<th><div class="th_wrapp">Gravité</div></th>
+							<th><div class="th_wrapp">Criticité</div></th>
+							<th><div class="th_wrapp">Action</div></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for evaluation in entity.evaluation %}
+					 	<tr class="odd gradeX">
+							<td >{{ evaluation.dateEvaluation|date('d-m-Y à H:i') }}</td>
+							<td >{{ evaluation.probabilite }}</td>
+							<td >{{ evaluation.gravite }}</td>
+							<td style="color: {{ evaluation.criticite ? evaluation.criticite.couleur : "" }};font-weight: bold;">
+								{{ evaluation.probabilite }} * {{ evaluation.gravite }} = [{{ evaluation.criticite }}]
+							</td>
+							<td>
+								<span class="tip" >
+									<a  title="details" href="{{ path('details_evaluation', {'id':evaluation.id}) }}">
+								    	<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" />
+								    </a>
+								</span>
+							</td> 
+						</tr>
+						{% else %}
+							<tr>
+								<td colspan="5" style="color: red;font-weight: bold;">Aucune évaluation n'est faite</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="tab4" class="tab_content">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon add" title="Ajouter plan d'action" href="{{ path('nouveau_planaction_de_risque', {'risque_id':entity.id}) }}"> Plan d'action</a></li>
+		</ul>
+       	<div class="content_table">
+			<div class="tableName">
+				<table class="display simple_table" >
+					<thead>
+						<tr>
+							<th><div class="th_wrapp">Code</div></th>
+							<th><div class="th_wrapp">Date de début</div></th>
+							<th><div class="th_wrapp">Date de fin</div></th>
+							<th><div class="th_wrapp">Statut</div></th>
+							<th><div class="th_wrapp">Actions</div></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for planAction in entity.planAction %}
+					 	<tr class="odd gradeX">
+							<td title="{{ planAction.libelle }}" >{{ planAction.code }}</td>
+							<td >{{ planAction.dateDebut | localizeddate('medium', 'none', 'en') }}</td>
+							<td >{{ planAction.dateFin | localizeddate('medium', 'none', 'en') }}</td>
+							<td>{{ planAction|show_status }}</td>
+							<td>
+						  	<span class="tip">
+				                <a title="details" href="{{ path('details_planaction', {id: planAction.id}) }}">
+				                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+				                </a>
+				                {% if has_rights ('ROLE_ADMIN')  %}
+				                     <a  title="supprimer un plan d'action" class="actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('supprimer_pa', {id: planAction.id}) }}">
+					                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/cancel.png') }}" >
+					                </a>
+				                {% endif %}
+				                {% if planAction.statut.id != global_ids.statut.plan_action.solde %}
+					                <a title="Modifier" href="{{ path('edition_planaction', {id: planAction.id}) }}">
+					                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}" >
+					                </a>
+				                {% elseif planAction.causeOfRisque.controle|length==0 %}
+					                <a title="Passer en dispositif" href="{{ path('a_mettre_en_dispositif', {pa_id: planAction.id}) }}">
+					                	<img src="{{ asset('bundles/orangemain/images/icon/gray_18/satellite.png') }}" >
+					                </a>
+				                {% endif %}
+						  	</span>
+							</td>
+						</tr>
+						{% else %}
+						<tr>
+							<td align="center" colspan="5" style="color: red;font-weight: bold;">Aucun plan d'action n'est saisi</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+	   	</div>
+	</div>
+    <div id="tab5" class="tab_content">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon add" title="Ajouter controle" href="{{ path('nouveau_controle_de_risque', {'risque_id':entity.id}) }}">Controle</a></li>
+        </ul>
+        <div class="content_table">
+			<div class="tableName">
+				<table class="display simple_table" >  
+					<thead>
+						<tr>
+							<th><div class="th_wrapp">Code</div></th>
+							<th><div class="th_wrapp">Cause</div></th>
+							<th><div class="th_wrapp">Nom du contrôle</div></th>
+							<th><div class="th_wrapp">Porteur</div></th>
+							<th><div class="th_wrapp">Superviseur</div></th>
+							<th><div class="th_wrapp">Actions</div></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for controle in entity.controle %}
+						 <tr class="odd gradeX">
+							<td title="{{ controle.description }}" >{{ controle.code }}</td>
+							<td>{{ controle.cause }}</td>
+							<td>{{ controle.description }}</td>
+							<td>{{ controle.porteur }}</td>
+							<td>{{ controle.superviseur }}</td>
+							<td>
+							  	<span class="tip" >
+					                <a  title="details" href="{{ path('details_controle', {'id':controle.id}) }}">
+					                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+					                </a>
+							  	</span>
+				                {% if controle.causeOfRisque.planAction|length %}
+					                <a title="Saisir un plan d'action" href="{{ path('saisie_planaction', {controle_id: controle.id}) }}">
+					                	<img src="{{ asset('bundles/orangemain/images/icon/gray_18/hammer.png') }}" >
+					                </a>
+				                {% endif %}
+							  	<span class="tip" >
+					                <a  title="Evaluer" class="actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('evaluation_controle', {'id': controle.id}) }}">
+					                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/pyramid.png') }}" >
+					                </a>
+							  	</span>
+							  	{% if has_rights('ROLE_ADMIN') or has_rights('ROLE_SUPER_ADMIN') or has_rights('ROLE_RISKMANAGER')  %}
+     					        <span class="tip" >
+     					            <a title="Supprimer" class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('supprimer_controle', {'id': controle.id}) }}">
+     					               	<img src="{{ asset('bundles/orangemain/images/icon/color_18/cancel.png') }}" >
+     					            </a>
+     					        </span>
+ 					            {% endif %}
+							</td>
+						</tr>
+						{% else %}
+							<tr>
+								<td colspan="5" style="color: red;font-weight: bold;">Aucun controle n'est saisi</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+{% endblock %}

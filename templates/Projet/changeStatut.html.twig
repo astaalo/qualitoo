@@ -1,0 +1,12 @@
+<div id="confirmBox" style="display: block;">
+<h1>Voulez-vous changer le statut du projet?</h1>
+<p> 
+<strong>Vous etes sur le point de changer le statut projet </strong><br>
+</p>
+<div id="confirmButtons">
+<form novalidate="novalidate" action="{{ path('changer_statut', {id: id, statut: statut}) }}" method="POST">
+	<input type="submit" class="uibutton " value="Confirmer" >
+	<input type="reset" data-dismiss="modal" class="uibutton special" value="Annuler" >
+</form>
+</div>
+</div>

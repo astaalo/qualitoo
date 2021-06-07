@@ -1,0 +1,69 @@
+{% extends "::base.html.twig" %}
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+{% block navigation %}
+	{{ knp_menu_render('OrangeMainBundle:Builder:showMenu', {'template': 'OrangeMainBundle:Extra:knp_menu.html.twig', 'item': {1:'Configuration'} }) }}
+{% endblock %}
+
+{% block content %}
+<div class="onecolumn">
+	<div class="header">
+		<span>
+			<span class="ico color pencil"></span>
+			Edition du plan d'action 
+		</span>
+		<div id="buttom_top">
+			<ul class="uibutton-group">
+			{% if entity.risque.isValidated %}
+				{% if risque_id is defined and risque_id is not empty %}
+					<li><a class="uibutton icon answer" href="{{ path('details_risque', {id: risque_id}) }}">Retour au risque</a></li>
+				{% endif %}
+					<li><a class="uibutton icon answer" href="{{ path('les_planactions') }}">Liste des plans d'action</a></li>
+	        {% endif %}
+			{% if entity.risque.isIdentified or entity.risque.isPending %}
+				{% if entity.risque.evaluation|length %}
+					<li><a class="uibutton icon special forward" href="{{ path('edition_evaluation', {id: entity.risque.evaluation.0.id}) }}">Passer à l'évaluation</a></li>
+				{% else %}
+					<li><a class="uibutton icon special forward" href="{{ path('nouvelle_evaluation', {id: entity.risque.id}) }}">Passer à l'évaluation</a></li>
+				{% endif %}
+			{% endif %}
+	        </ul>
+	    </div>
+	</div>
+	<div class="clear"></div>
+	<div class="contentForm">
+		<form  novalidate="novalidate"  action="{{ path('modifier_planaction', {'id': entity.id}) }}" method="POST">
+			<div class="section">
+				{{ form_label(form.causeOfRisque) }}
+				<div style="font-weight: bold;color: orange;font-size: 16px;">{{ form.vars.value.cause }}</div>
+			</div>
+			{% if form.vars.value.controle is not empty %}
+			<div class="section">
+				{{ form_label(form.controle) }}
+				<div style="font-weight: bold;color: orange;font-size: 16px;">{{ form.vars.value.controle }}</div>
+			</div>
+			{% endif %}
+			<div hidden>{{ form_row(form.causeOfRisque) }}</div>
+			{{ form_row(form.controle) }}
+			{{ form_row(form.libelle, {attr: {class: 'large'}}) }}
+			{{ form_row(form.dateDebut, {attr: {'class': 'datepicker '}}) }}
+			{{ form_row(form.dateFin, {attr: {'class': 'datepicker '}}) }}
+			{{ form_row(form.statut) }}
+			{{ form_row(form.porteur) }}
+			{{ form_row(form.superviseur) }}
+			{{ form_row(form.description, {attr: {class: 'full'}}) }}
+			{{ form_row(form._token) }}
+			<div class="section last footer">
+				<div>
+				{% if entity.risque.isValidated %}
+					<button name="save" class="uibutton loading">Enregistrer</button>
+				{% else %}
+					<button name="edit_another" class="uibutton loading">Enregistrer et passer à un autre plan d'action</button>
+					<button name="edit_and_pass" class="uibutton loading">Enregistrer et passer à l'évaluation</button>
+				{% endif %}
+				</div>
+			</div>
+		</form>
+	</div>
+	</div>
+{% endblock %}

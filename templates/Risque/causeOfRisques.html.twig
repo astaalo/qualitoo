@@ -1,0 +1,35 @@
+<div class="header">
+	<img src="{{ asset('bundles/orangemain/images/icon/color_18/eye.png') }}" alt="Consulter">
+	<span>Les causes du risque</span>
+	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+</div>
+<div class="contentForm">
+	<table class="display simple_table" >
+					<thead>
+						<tr>
+							<th><div class="th_wrapp">Libellé</div></th>
+							<th><div class="th_wrapp">Probabilité</div></th>
+							<th><div class="th_wrapp">Action</div></th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for causeOfRisque in entity.causeOfRisque %}
+						 <tr class="odd gradeX">
+							<td>{{ causeOfRisque.cause }}</td>
+							<td>{{ causeOfRisque.grille ? causeOfRisque.grille.note : 'NC' }}</td>
+							<td>
+						  	<span class="tip">
+				                <a title="details de la cause" href="{{ path('details_cause', {id: causeOfRisque.id}) }}">
+				                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+				                </a>
+						  	</span>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="4" style="color: red;font-weight: bold;">Aucune cause n'est identifiée</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+</div>

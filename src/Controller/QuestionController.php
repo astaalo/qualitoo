@@ -21,8 +21,8 @@ class QuestionController extends BaseController{
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
 		$entity= new Question();
-		$entities = $em->getRepository('OrangeMainBundle:Question')->listAll();
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		$entities = $em->getRepository(Question::class)->listAll();
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		return array('entities' => $entities);
 	}
 	

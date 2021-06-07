@@ -1,0 +1,39 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/menu.html.twig' with {position: 7} %}
+{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color calculator"></span>Liste des grilles d'évaluation
+	</span>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="content_table">
+	<div class="tableName">
+		<table class="display simple_table" id="grilleTable">
+			<thead>
+				<tr>
+					<th><div class="th_wrapp">Type d'évaluation</div></th>
+					<th width="300px"><div class="th_wrapp">Dernière date de modification</div></th>
+					<th width="100px"><div class="th_wrapp">Actions</div></th>
+				</tr>
+			</thead>
+			<tbody>
+			 	<tr class="odd gradeX">
+					<td colspan="3">Chargement des données en cours ...</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }} #}
+	{% include 'extra/datatable.html.twig' with {idTable: 'grilleTable', url: path('liste_des_grilles'), nosorting: {0:2} } %}
+{% endblock %}

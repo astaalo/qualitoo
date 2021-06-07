@@ -30,7 +30,7 @@ class EquipementController extends BaseController
     public function indexAction()
     {
     	$entity= new Equipement();
-    	$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+    	//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
         $this->get('session')->set('equipement_criteria', array());
 		return array();
     }

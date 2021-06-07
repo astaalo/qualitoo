@@ -1,0 +1,17 @@
+<div class="header">
+	<img src="{{ asset('bundles/orangemain/images/icon/color_18/add.png') }}" alt="add">
+	<span>Suppression Processus</span>
+	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+</div>
+<div class="contentForm">
+	<p style="text-align: center; font-size: 16px;padding:10px;"> <strong>Voulez vous supprimer ce processus? </strong><br></p>
+	<form action="{{ path('supprimer_processus',{id : entity.id}) }}" method="POST">
+		<div class="section last">
+			<div>
+				<input type="submit" value="Oui">
+				<input type="reset" data-dismiss="modal" class="uibutton special" value="Non" >
+			</div>
+		</div>
+	</form>
+</div>
+</div>

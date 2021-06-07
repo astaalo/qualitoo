@@ -1,0 +1,47 @@
+{% extends 'configuration/index.html.twig' %}
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color add"></span>Définir la période courante des risques avérés
+	</span>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="contentForm">
+	<form  novalidate="novalidate"  action="{{  path('creer_periode_avere') }}" method="POST">
+	{% if lastPeriode is not empty %}
+		<div class="section" style="    padding: 15px 0;">
+		  <div style="width: 40%; display: inline-block; margin-left: 8%;">
+		        <label>Début dernière Période: </label>
+				<span style="color: #ff6600;font-weight: bold;font-size: 16px;margin-left: 40px;">{{ lastPeriode.dateDebut|date("d/m/Y") }}</span>
+			</div>
+			<div style="width: 50%; display: inline-block; margin-left: 0;">
+				<label>Fin dernière Période: </label>
+				<span style="color: #ff6600;font-weight: bold;font-size: 16px;margin-left: 40px;">{{ lastPeriode.dateFin|date("d/m/Y") }}</span>
+			</div>
+		</div>
+	{% endif %}
+		<div class="section">
+		   <div style="width: 40%;display: inline-block;margin-left: 8%;">
+		        <label>Date début</label>
+				{{ form_widget(form.dateDebut, {attr: {class: 'datepicker', style: 'width: 170px;margin-left: 79px;'}}) }}
+			</div>
+			<div style="width: 50%;display: inline-block;margin-left: 0;">
+			<label>Date Fin</label>
+				{{ form_widget(form.dateFin, {attr: {class: 'datepicker', style: 'width: 170px;margin-left: 79px;'}}) }}
+			</div>
+		</div>
+		{{ form_row(form._token) }}
+		<div class="section last footer">
+			<div>
+				<button class="uibutton loading">Enregistrer</button>
+				<input type="reset"  class="uibutton special" value="Effacer" >
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}

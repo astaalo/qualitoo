@@ -1,0 +1,36 @@
+{% extends "::base.html.twig" %}
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+{% block navigation %}
+	{{ knp_menu_render('OrangeMainBundle:Builder:showMenu', {'template': 'OrangeMainBundle:Extra:knp_menu.html.twig', 'item': {1:'Configuration'} }) }}
+{% endblock %}
+{% block content %}
+<div class="onecolumn">
+	<div class="header">
+		<span>
+			<span class="ico gray add"></span>
+			Ajout grille impact
+		</span>
+		<div id="buttom_top">
+			<ul class="uibutton-group">
+				<li><a class="uibutton icon answer" href="{{ path('les_grilleImpact') }}">Liste des Structures</a></li>
+            </ul>
+        </div>
+	</div>
+	<div class="clear"></div>
+	<div class="contentForm">
+	<form  novalidate="novalidate"  action="{{ path('creer_grilleImpact') }}" method="POST">
+		{{ form_row(form.libelle) }}
+		{{ form_row(form.niveau) }}
+		{{ form_row(form.critere) }}
+		{{ form_row(form._token) }}
+		<div class="section last">
+			<div>
+				<button class="uibutton loading">Enregistrer</button>
+				<input type="reset"  class="uibutton special" value="Effacer" >
+			</div>
+		</div>
+	</form>
+	</div>
+</div>
+{% endblock %}

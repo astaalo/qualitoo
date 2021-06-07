@@ -1,0 +1,50 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}
+	{% include 'configuration/evaluation.html.twig' with {position: 2} %}
+{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color gear"></span>Les évaluations
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon filter actionLink" href="#myModal" modal-url="{{ path('filtrer_les_evaluations') }}" data-toggle="modal" data-target="#myModal">Filtrer</a></li>
+			<li><a class="uibutton icon download" href="{{ path('exporter_les_evaluations') }}">Extraire</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="content_table">
+	<div class="tableName">
+		<table class="display simple_table" id="evaluationTable">
+			<thead>
+				<tr>
+					<th width="50px"><div class="th_wrapp">Code</div></th>
+					<th><div class="th_wrapp">Nom du risque</div></th>
+					<th><div class="th_wrapp">Evaluateur</div></th>
+					<th width="80px"><div class="th_wrapp">Probabilité</div></th>
+					<th width="70px"><div class="th_wrapp">Gravité</div></th>
+					<th width="70px"><div class="th_wrapp">Criticité</div></th>
+					<th width="60px"><div class="th_wrapp">Actions</div></th>
+				</tr>
+			</thead>
+			<tbody>
+			 	<tr class="odd gradeX">
+					<td colspan="7">Chargement des données en cours ...</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }} #}
+	{% include 'extra/datatable.html.twig' with {idTable: 'evaluationTable', url: path('liste_des_evaluations'), nosorting: {0:0, 1:1, 2:6} } %}
+{% endblock %}

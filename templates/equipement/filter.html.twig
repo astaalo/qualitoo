@@ -1,0 +1,18 @@
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+<div class="header">
+	<img src="{{ asset('bundles/orangemain/images/icon/color_18/zoom.png') }}" alt="add">
+	<span>Filtre des équipements</span>
+	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+</div>
+<div class="content">
+	<form  novalidate="novalidate"  action="{{ path('filtrer_les_equipements') }}" method="POST">
+		{{ form_row(form.libelle, {attr: {class: 'full'}} ) }}
+		<div class="section last">
+			<div>
+				<button class="uibutton loading submitLink" data-target="#myModal" call="afterSuccesFiltrer" argument-call="#activiteTable">Filtrer</button>
+				<input type="reset" data-dismiss="modal" class="uibutton special" value="Effacer" >
+			</div>
+		</div>
+	</form>
+</div>

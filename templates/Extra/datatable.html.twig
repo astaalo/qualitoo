@@ -1,19 +1,34 @@
 <script type="text/javascript">
 $(document).ready(function() {
-	dataTableOptions['sAjaxSource']	= "{{ url }}";
-	dataTableOptions['bStateSave']	= true;
-	dataTableOptions['bProcessing']	= true;
-	dataTableOptions['aoColumnDefs']= new Array();
+	var index = {{ (index is defined) ? index : 0 }};
+	dtOptions[index] = $.extend(true, {}, dataTableOptions);
+	dtOptions[index]['sAjaxSource']	= "{{ url }}";
+	dtOptions[index]['bStateSave']	= true;
+	dtOptions[index]['bProcessing']	= true;
+	dtOptions[index]['aoColumnDefs']= new Array();
+	dtOptions[index]['columnDefs']= new Array();
 	{% if nosorting is defined %}
-		var length = dataTableOptions['aoColumnDefs'].length;
-		dataTableOptions['aoColumnDefs'][length] = { bSortable: false, aTargets: {{ to_array(nosorting) }} };
+		var length = dtOptions[index]['aoColumnDefs'].length;
+		dtOptions[index]['aoColumnDefs'][length] = { bSortable: false, aTargets: {{ to_array(nosorting) }} };
 	{% endif %}
-	dataTableOptions['bServerSide']	= true;
-	fnDrawCallback = ('fnDrawCallback' in dataTableOptions) ? dataTableOptions['fnDrawCallback'] : function() {};
-	dataTableOptions['fnDrawCallback'] = function() {
+	{% if invisible is defined %}
+		var length = dtOptions[index]['columnDefs'].length;
+		dtOptions[index]['columnDefs'][length] = { visible: false, targets: {{ to_array(invisible) }} };
+	{% endif %}
+	dtOptions[index]['bServerSide']	= true;
+	fnDrawCallback = ('fnDrawCallback' in dtOptions[index]) ? dtOptions[index]['fnDrawCallback'] : function() {};
+	dtOptions[index]['fnDrawCallback'] = function() {
 		fnDrawCallback();
 		{{ (functionAfter is defined) ? functionAfter|raw : null }}
 	}
-	oTable = $("{{ '#' ~ idTable }}").dataTable(dataTableOptions);
+	{% if invisible is defined %}
+	dtOptions[index]['rowCallback'] = function(row, data) {
+		{{ functionRowDraw|raw }}
+	}
+	{% endif %}
+	oTable = $({{ ('"#' ~ idTable ~ '"')|raw }}).dataTable(dtOptions[index]);
+	oTable.on('error', function() { 
+		alert('error');
+	});
 });
 </script>

@@ -1,0 +1,168 @@
+<script type="text/javascript">
+{% block reload_by_select %}
+	{{ block('open_script') }}
+	{{ block('get_elements') }}
+	$(parent).change(function(e) {
+        var Id =  $(this).val();
+        {% if codeBefore is defined %}{{ codeBefore }}{% endif %}
+        if(Id) {
+	        $.post("{{ url }}", { "{{ key }}": Id },  
+	    		function(results) {
+	        		{{ block('load_select_after_succes') }}
+		    });
+		    {{ block('empty_child') }}
+        }
+    });
+	{{ block('action_onload') }}
+	{{ block('close_script') }}
+{% endblock reload_by_select %}
+
+{% block reload_checkbox_by_select %}
+	{{ block('open_script') }}
+	{{ block('get_elements') }}
+	$(parent).live('change', function(e) {
+        var Id =  $(this).val();
+        {% if codeBefore is defined %}{{ codeBefore }}{% endif %}
+        if(Id) {
+	        $.post("{{ url }}", { "{{ key }}": Id },  
+	    		function(results) {
+	    			$('#risque_domaineImpact').html(results);
+			        {% if functionAfter is defined %}
+			        	{{ functionAfter }}($('#risque_domaineImpact'));
+				    {% elseif (is_js_object is not defined) or (is_js_object==0) %}
+				    	//child.val({{ child.vars.value }});
+				    {% endif %}
+		    });
+		    {{ block('empty_child') }}
+        }
+    });
+	{{ block('action_onload') }}
+	{{ block('close_script') }}
+{% endblock reload_checkbox_by_select %}
+
+{% block reload_by_idselect %}
+	{{ block('open_script') }}
+	{{ block('get_elements') }}
+	$(parent).change(function(e) {
+        var Id =  $(this).val();
+        {% if codeBefore is defined %}{{ codeBefore }}{% endif %}
+        if(Id) {
+	        $.post("{{ url }}", { "{{ key }}": Id },  
+	    		function(results) {
+	        		{{ block('load_select_after_succes') }}
+		    });
+		    {{ block('empty_child') }}
+        }
+    });
+	{{ block('action_onload') }}
+	{{ block('close_script') }}
+{% endblock reload_by_idselect %}
+
+{% block reload_by_multiselect %}
+	{{ block('open_script') }}
+	{{ block('get_elements') }}
+	$(parent).change(function(e) {
+        var Id =  $(this).val();
+        {% if codeBefore is defined %}{{ codeBefore }}{% endif %}
+        if(Id) {
+	        $.post("{{ url }}", { "{{ key }}": Id },  
+	    		function(results) {
+	        		{{ block('load_select_after_succes') }}
+		    });
+		    {{ block('empty_child') }}
+        }
+    });
+	{{ block('action_onload') }}
+	{{ block('close_script') }}
+{% endblock reload_by_multiselect %}
+
+{% block reload_by_idmultiselect %}
+	{{ block('open_script') }}
+	{{ block('get_elements') }}
+	$(parent).change(function(e) {
+        var Id =  $(this).val();
+        {% if codeBefore is defined %}{{ codeBefore }}{% endif %}
+        if(Id) {
+	        $.post("{{ url }}", { "{{ key }}": Id },  
+	    		function(results) {
+	        		{{ block('load_select_after_succes') }}
+		    });
+	        {{ block('empty_child') }}
+        }
+    });
+	{{ block('action_onload') }}
+	{{ block('close_script') }}
+{% endblock reload_by_idmultiselect %}
+
+{% block reload_by_checkbox %}
+	{{ block('open_script') }}
+	{{ block('get_elements') }}
+	$(parent).live('change', function(e) {
+		var Ids = [];
+		$(parent).each(function() {
+			if($(this).is(':checked')) {
+				Ids.push($(this).val());
+			}
+		});
+        {% if codeBefore is defined %}{{ codeBefore }}{% endif %}
+        if(Ids.length) {
+	        $.post({{ ("'" ~ url ~ "'")|raw }}, { {{ ("'" ~ key ~ "'")|raw }}: JSON.stringify(Ids) },  
+	    		function(results) {
+	        		{{ block('load_select_after_succes') }}
+		    });
+	        {{ block('empty_child') }}
+        }
+    });
+	{{ block('action_onload') }}
+    {{ block('close_script') }}
+{% endblock reload_by_checkbox %}
+
+{% block load_select_after_succes %}
+	var sub = $(child);
+    sub.empty();
+    $.each(results , function(key, value) { 
+	    var opt = $("<option></option>");
+	    if(value.hasOwnProperty('selected')) {
+		   	opt.attr('selected', 'selected');
+		}
+    	sub.append(opt.attr("value", value.id).text(value.libelle));
+    });
+    {% if functionAfter is defined %}
+    	{{ functionAfter }}(sub);
+    {% elseif (is_js_object is not defined) or (is_js_object==0) %}
+    	sub.val({{ child.vars.value }});
+    {% endif %}
+{% endblock load_select_after_succes %}
+
+{% block empty_child %}
+	{% if (empty_child is not defined) or (empty_child==1) %}
+        } else {
+        	if($(child).is('select')) {
+        		clearValuesForSelect($(child));
+        	}
+    {% endif %}
+{% endblock empty_child %}
+
+{% block action_onload %}
+	{% if (change_onload is not defined) or (change_onload==1) %}$(parent).change();{% endif %}
+{% endblock action_onload %}
+
+{% block get_elements %}
+	var parent = {% if (is_js_object is defined) and (is_js_object==1) %}{{ parent|raw }}{% else %}{{ ("'" ~ parent ~ "'")|raw }}{% endif %};
+	var child = {% if (is_js_object is defined) and (is_js_object==1) %}{{ child|raw }}{% else %}{{ ("'" ~ child ~ "'")|raw }}{% endif %};
+{% endblock get_elements %}
+</script>
+
+{% block open_script %}
+	{% if (only_script is not defined) or (only_script==0) %}
+		{% if (with_script is not defined) or (with_script==1) %}<script type="text/javascript">{% endif %}
+		$(document).ready(function() {
+	{% endif %}
+{% endblock open_script %}
+
+{% block close_script %}
+	{% if (only_script is not defined) or (only_script==0) %}
+		});
+		{% if (with_script is not defined) or (with_script==1) %}</script>{% endif %}
+	{% endif %}
+{% endblock close_script %}

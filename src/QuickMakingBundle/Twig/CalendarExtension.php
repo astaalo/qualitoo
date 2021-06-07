@@ -1,6 +1,6 @@
 <?php
 
-namespace Orange\QuickMakingBundle\Twig;
+namespace App\QuickMakingBundle\Twig;
 
 class CalendarExtension extends \Twig_Extension
 {

@@ -22,7 +22,7 @@ interface TreeInterface
     /**
      * Add children
      *
-     * @param \Orange\MainBundle\Model\TreeInterface $tree
+     * @param \App\Model\TreeInterface $tree
      * @return Structure
      */
     public function addChildren($children);
@@ -30,7 +30,7 @@ interface TreeInterface
     /**
      * Remove children
      *
-     * @param \Orange\MainBundle\Model\TreeInterface $children
+     * @param \App\Model\TreeInterface $children
      */
     public function removeChildren($children);
     

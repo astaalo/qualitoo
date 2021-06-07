@@ -16,6 +16,7 @@ return [
     Bafford\PasswordStrengthBundle\BaffordPasswordStrengthBundle::class => ['all' => true],
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
+    App\QuickMakingBundle\OrangeQuickMakingBundle::class => ['all' => true],
     App\MainBundle\OrangeMainBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
 ];

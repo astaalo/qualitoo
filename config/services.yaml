@@ -180,3 +180,12 @@ services:
         class: App\Service\Notification
         public: true
         arguments: ["@service_container"]
+
+    orange_main.block:
+        class: App\Service\Block
+        arguments: [ "@twig" ]
+
+    App\QuickMakingBundle\Twig\BlockExtension:
+        arguments: [ "@orange_main.block" ]
+        tags:
+            - { name: twig.extension }

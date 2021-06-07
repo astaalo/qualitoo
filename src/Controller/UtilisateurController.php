@@ -37,7 +37,7 @@ class UtilisateurController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine ()->getManager ();
-		$queryBuilder = $em->getRepository ( 'OrangeMainBundle:Utilisateur' )->listAllQueryBuilder ( $this->getUser () );
+		$queryBuilder = $em->getRepository (Utilisateur::class)->listAllQueryBuilder ( $this->getUser () );
 		return $this->paginate ( $request, $queryBuilder );
 	}
 	

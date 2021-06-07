@@ -1,6 +1,6 @@
 <?php
 
-namespace Orange\MainBundle\Services;
+namespace App\Services;
 
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;

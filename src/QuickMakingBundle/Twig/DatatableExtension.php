@@ -1,6 +1,6 @@
 <?php
 
-namespace Orange\QuickMakingBundle\Twig;
+namespace App\QuickMakingBundle\Twig;
 
 class DatatableExtension extends \Twig_Extension
 {

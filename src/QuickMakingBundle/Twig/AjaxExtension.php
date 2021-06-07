@@ -1,6 +1,6 @@
 <?php
 
-namespace Orange\QuickMakingBundle\Twig;
+namespace App\QuickMakingBundle\Twig;
 
 class AjaxExtension extends \Twig_Extension
 {
@@ -22,7 +22,7 @@ class AjaxExtension extends \Twig_Extension
     }
 
     public function doActionInList($actionUrl, $successCallback, $errorCallback) {
-    	return $this->environment->render('QuickMakingBundle:Extra:ajax.html.twig', array('actionUrl' => $actionUrl, 'successCallback' => $successCallback, 'errorCallback' => $errorCallback));
+    	return $this->environment->render('Extra/ajax.html.twig', array('actionUrl' => $actionUrl, 'successCallback' => $successCallback, 'errorCallback' => $errorCallback));
     }
     
     /**

@@ -1,5 +1,5 @@
 <?php
-namespace Orange\MainBundle\Utils;
+namespace App\Utils;
 
 
 class EmailUtil {

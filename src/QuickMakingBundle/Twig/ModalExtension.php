@@ -65,12 +65,12 @@ class ModalExtension extends \Twig_Extension
     }
 
     public function refreshEventModal() {
-    	$template = $this->twig->loadTemplate('OrangeQuickMakingBundle:Extra:modal.html.twig');
+    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
     	return $template->renderBlock('form_submit_modal', array());
     }
 
     public function callValidationForm() {
-    	$template = $this->twig->loadTemplate('OrangeQuickMakingBundle:Extra:modal.html.twig');
+    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
     	return $template->renderBlock('call_validation_form', array());
     }
 

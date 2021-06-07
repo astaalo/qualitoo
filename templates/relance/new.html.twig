@@ -1,0 +1,55 @@
+{% extends 'OrangeMainBundle:Configuration:index.html.twig' %}
+
+{% block menu_config %}
+{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color add"></span>Parametrer relance
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+        </ul>
+    </div>
+</div>
+{% endblock %}
+{% block content_config %}
+<div class="contentForm">
+	<form  novalidate="novalidate"  action="{{ (id is empty) ? path('creer_relance') : path('modifier_relance', {id: id}) }}}" method="POST">
+	   <div class="section" >
+						<label>Début relance</label>
+							<div style="display: inline-block;margin-left: 0">
+							<div style=" float: left;">
+								{{ form_widget(form.nbDebut) }}
+							</div>
+							<div style="float: right; width: 300px; margin-left: 30px;">
+								{{ form_widget(form.uniteTpsDebut) }}
+							</div>
+						
+		</div>	
+		</div><div style="clear:both;"></div>
+		{{ form_row(form.phase) }}
+		 <div class="section" >
+						<label>Relancer chaque</label>
+							<div style="display: inline-block;margin-left: 0">
+							<div style=" float: left;">
+								{{ form_widget(form.nbFrequence) }}
+							</div>
+							<div style="float: right; width: 300px; margin-left: 30px;">
+								{{ form_widget(form.uniteTpsFrequence) }}
+							</div>
+						
+		</div>
+		</div><div style="clear:both;"></div>
+		{{ form_row(form.isActif) }}
+		{{ form_row(form._token) }}
+		<div class="section last footer">
+			<div>
+				<button class="uibutton loading">Enregistrer</button>
+				<input type="reset"  class="uibutton special" value="Effacer" >
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}

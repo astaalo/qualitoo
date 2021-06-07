@@ -43,14 +43,12 @@ class DashboardController extends BaseController
                     'icon'	=> 'add.png',
                     'text'	=> "Saisir une fiche de risque",
                     'roles' => array(),
-                    'path'	=> $this->generateUrl('dashboard')
-                    //'path'	=> $this->generateUrl('menu_nouveau_risque')
+                    'path'	=> $this->generateUrl('menu_nouveau_risque')
                 ), array(
                     'icon'	=> 'pencil.png',
                     'text'	=> "Terminer une fiche de risque",
                     'roles' => array(),
-                    'path'	=> $this->generateUrl('dashboard')
-                    //'path'	=> $this->generateUrl('risques_a_completer')
+                    'path'	=> $this->generateUrl('risques_a_completer')
                 ), array(
                     'icon'	=> 'arrow_up2.png',
                     'text'	=> "Charger des fiches de risque",

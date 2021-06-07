@@ -55,8 +55,7 @@ class DashboardController extends BaseController
                     'icon'	=> 'arrow_up2.png',
                     'text'	=> "Charger des fiches de risque",
                     'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER'),
-                    'path'	=> $this->generateUrl('dashboard')
-                    //'path'	=> $this->generateUrl('menu_chargement_risque')
+                    'path'	=> $this->generateUrl('menu_chargement_risque')
                 )
             )
         );
@@ -69,8 +68,7 @@ class DashboardController extends BaseController
                     'icon'	=> 'checkmark2.png',
                     'text'	=> "Valider une fiche de risque",
                     'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER'),
-                    'path'	=> $this->generateUrl('dashboard')
-                    //'path'	=> $this->generateUrl('choix_carto',array('carto' => $this->getParameter('ids')['carto']['metier'], 'link'=>'risques_a_valider'))
+                    'path'	=> $this->generateUrl('choix_carto',array('carto' => $this->getParameter('ids')['carto']['metier'], 'link'=>'risques_a_valider'))
                 ),array(
                     'icon'	=> 'usb.png',
                     'text'	=> "Transférer les risques projets",

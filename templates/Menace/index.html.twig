@@ -38,6 +38,6 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }} #}
-	{#	{% include 'extra/datatable.html.twig' with {idTable: 'menaceTable', url: path('liste_des_menaces'), nosorting: {0: 1, 1: 2} } %}#}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }}
+	{% include 'extra/datatable.html.twig' with {idTable: 'menaceTable', url: path('liste_des_menaces'), nosorting: {0: 1, 1: 2} } %}
 {% endblock %}

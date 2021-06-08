@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Annotation\QMLogger;
+use App\Repository\UtilisateurRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,8 +39,48 @@ class UtilisateurController extends BaseController {
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine ()->getManager ();
 		$queryBuilder = $em->getRepository (Utilisateur::class)->listAllQueryBuilder ( $this->getUser () );
+		dd($queryBuilder);
 		return $this->paginate ( $request, $queryBuilder );
 	}
+
+
+    /**
+     * @Route("/BO/datatable_listent", name="list")
+     * @QMLogger(message="Liste du datatable entreprise")
+     */
+    public function list(UtilisateurRepository $userRepo, Request $request)
+    {
+        ## Read value
+        $draw = $request->get('draw');
+        $start = $request->get('start');
+        $rowperpage = $request->get('length'); // Rows display per page
+        $columnIndex = $request->get('order')[0]['column']; // Column index
+        $columnName = $request->get('columns')[$columnIndex]['data']; // Column name
+        $columnSortOrder = $request->get('order')[0]['dir']; // asc or desc
+        $searchValue = $request->get("search")['value']; // Search value
+        // FILTRE
+        $filtreLocalite = (!empty($_GET['filter_localite'])) ? $_GET['filter_localite'] : null;
+        $filtreSecteur =  (!empty($_GET['filter_secteur'])) ? $_GET['filter_secteur'] : null;
+        // SAVE DT FIELD IN SESSION
+        $this->saveVariableDatatable($draw, $start, $rowperpage,$columnIndex, $columnName, $columnSortOrder, $searchValue, $filtreLocalite, $filtreSecteur);
+
+        $dt = $userRepo->entrepriseDatatable($searchValue, $columnName, $columnSortOrder, $start, $rowperpage, $filtreLocalite, $filtreSecteur);// REPOSITORY
+        $totalRecordwithFilter = $userRepo->countFilteredEnt($searchValue, $filtreLocalite, $filtreSecteur);// TOTAL FILTRE
+        $totalRecords = $userRepo->countAllEnt();// TOTAL DONNEES
+        $data = array();
+        foreach ($dt as $row) {
+            $data[] = $row;
+        }
+        ## Response
+        $response = array(
+            // "searc" => json_decode($request->getContent(), true),
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordwithFilter,
+            "aaData" => $data
+        );
+        return $this->json($response,200,[],['groups'=> 'e:read']);
+    }
 	
 	/**
 	 * @QMLogger(message="Modification utilisateur")

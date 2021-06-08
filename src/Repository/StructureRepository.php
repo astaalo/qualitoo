@@ -124,8 +124,6 @@ class StructureRepository extends BaseRepository {
     public function filter() {
         $queryBuilder = $this->createQueryBuilder('q')
             ->leftJoin('q.societe','soc');
-
-        dd($this);
         if( $this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN)) {
 
         } elseif( $this->_user->hasRole(Utilisateur::ROLE_ADMIN) || $this->_user->hasRole(Utilisateur::ROLE_RISKMANAGER) || $this->_user->hasRole(Utilisateur::ROLE_AUDITEUR)) {

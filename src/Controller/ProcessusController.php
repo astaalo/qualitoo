@@ -108,10 +108,10 @@ class ProcessusController extends BaseController {
 	public function newAction($id = null) {
 		$entity = new Processus();
 		if($id) {
-			$processus = $this->getDoctrine()->getManager()->getRepository('OrangeMainBundle:Processus')->find($id);
+			$processus = $this->getDoctrine()->getManager()->getRepository(Processus::class)->find($id);
 			$entity->setParent($processus);
 		}
-		$form   = $this->createCreateForm($entity, 'Processus');
+		$form   = $this->createForm(ProcessusType::class, $entity);
 		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
 	}

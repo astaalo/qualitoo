@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -103,7 +105,7 @@ class Utilisateur extends User implements UtilisateurInterface
     
     
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Projet", mappedBy="utilisateur")
      */
     private $projet;
@@ -119,7 +121,7 @@ class Utilisateur extends User implements UtilisateurInterface
     private $societe;
 	
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="Societe", inversedBy="administrateur")
      * @ORM\JoinTable(name="administrateur",
      *   joinColumns={
@@ -133,7 +135,7 @@ class Utilisateur extends User implements UtilisateurInterface
     private $societeOfAdministrator;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection
      *
      * @ORM\ManyToMany(targetEntity="Societe", inversedBy="auditeur")
      * @ORM\JoinTable(name="auditeur",
@@ -148,7 +150,7 @@ class Utilisateur extends User implements UtilisateurInterface
     private $societeOfAuditor;
     
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection
      *
      * @ORM\ManyToMany(targetEntity="Structure", inversedBy="consulteur")
      * @ORM\JoinTable(name="consulteur",
@@ -159,7 +161,7 @@ class Utilisateur extends User implements UtilisateurInterface
     private $structureOfConsulteur;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection
      *
      * @ORM\ManyToMany(targetEntity="Societe", inversedBy="riskManager")
      * @ORM\JoinTable(name="risk_manager",
@@ -174,25 +176,25 @@ class Utilisateur extends User implements UtilisateurInterface
     private $societeOfRiskManager;
 	
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection
      * @ORM\OneToMany(targetEntity="PlanAction", mappedBy="porteur")
      */
     private $paOfPorteur;
 	
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection
      * @ORM\OneToMany(targetEntity="PlanAction", mappedBy="superviseur")
      */
     private $paOfSuperviseur;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection
      * @ORM\OneToMany(targetEntity="Controle", mappedBy="porteur")
      */
     private $controleOfPorteur;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection
      * @ORM\OneToMany(targetEntity="Controle", mappedBy="superviseur")
      */
     private $controleOfSuperviseur;
@@ -203,10 +205,10 @@ class Utilisateur extends User implements UtilisateurInterface
     public function __construct()
     {
     	parent::__construct();
-        $this->societeOfAdministrator = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->societeOfRiskManager = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->societeOfAuditor = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->structureOfConsulteur = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->societeOfAdministrator = new ArrayCollection();
+        $this->societeOfRiskManager = new ArrayCollection();
+        $this->societeOfAuditor = new ArrayCollection();
+        $this->structureOfConsulteur = new ArrayCollection();
     }
     
     /**
@@ -253,7 +255,7 @@ class Utilisateur extends User implements UtilisateurInterface
 	}
 	
 	/**
-	 * @return \Doctrine\Common\Collections\Collection
+	 * @return Collection
 	 */
 	public function getSocieteOfAdministrator() {
 		return $this->societeOfAdministrator;
@@ -287,7 +289,7 @@ class Utilisateur extends User implements UtilisateurInterface
 	}
 	
 	/**
-	 * @return \Doctrine\Common\Collections\Collection
+	 * @return Collection
 	 */
 	public function getSocieteOfAuditor() {
 		return $this->societeOfAuditor;
@@ -309,7 +311,7 @@ class Utilisateur extends User implements UtilisateurInterface
 	}
 	
 	/**
-	 * @return \Doctrine\Common\Collections\Collection
+	 * @return Collection
 	 */
 	public function getStructureOfConsulteur() {
 		return $this->structureOfConsulteur;
@@ -348,7 +350,7 @@ class Utilisateur extends User implements UtilisateurInterface
 	}
 	
 	/**
-	 * @return \Doctrine\Common\Collections\Collection
+	 * @return Collection
 	 */
 	public function getSocieteOfRiskManager() {
 		return $this->societeOfRiskManager;
@@ -383,7 +385,7 @@ class Utilisateur extends User implements UtilisateurInterface
 	
 	/**
 	 * @param number $societeId
-	 * @return \Doctrine\Common\Collections\ArrayCollection
+	 * @return ArrayCollection
 	 */
 	public function getProjetOf($societeId) {
 		return $this->projet->filter(function($projet) use($societeId) {
@@ -458,10 +460,10 @@ class Utilisateur extends User implements UtilisateurInterface
 	}
 	
 	/**
-	 * @return \Doctrine\Common\Collections\ArrayCollection
+	 * @return ArrayCollection
 	 */
 	public function getAllSocietes() {
-		$data = new \Doctrine\Common\Collections\ArrayCollection();
+		$data = new ArrayCollection();
 		$ids = array();
 		$data->add($this->structure->getSociete());
 		$ids[] = $this->structure->getSociete()->getId();
@@ -733,7 +735,7 @@ class Utilisateur extends User implements UtilisateurInterface
     /**
      * Get paOfPorteur
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getPaOfPorteur()
     {
@@ -766,7 +768,7 @@ class Utilisateur extends User implements UtilisateurInterface
     /**
      * Get paOfSuperviseur
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getPaOfSuperviseur()
     {
@@ -799,7 +801,7 @@ class Utilisateur extends User implements UtilisateurInterface
     /**
      * Get controleOfPorteur
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getControleOfPorteur()
     {
@@ -832,7 +834,7 @@ class Utilisateur extends User implements UtilisateurInterface
     /**
      * Get controleOfSuperviseur
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getControleOfSuperviseur()
     {
@@ -864,7 +866,7 @@ class Utilisateur extends User implements UtilisateurInterface
     
     /**
      * Get site
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection
      */
     public function getSite()
     {
@@ -886,7 +888,7 @@ class Utilisateur extends User implements UtilisateurInterface
     
     /**
      * Get projet
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return ArrayCollection
      */
     public function getProjet()
     {

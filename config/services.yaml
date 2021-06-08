@@ -176,6 +176,10 @@ services:
         arguments: [ '@kernel','@twig','@mailer']
         tags: [ 'controller.service_arguments' ]
 
+    App\Form\RegistrationFormType:
+        arguments:
+            $class: 'App\Entity\Utilisateur'
+
     orange_main.notification:
         class: App\Service\Notification
         public: true

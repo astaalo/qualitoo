@@ -7,6 +7,9 @@
         {% if error is not empty %}
             <span style="color: red;font-size: 16px;display: block;text-align: center;">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
         {% endif %}
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
         <div class="tip">
             <input name="_username" type="text"  id="username_id" title="Nom d'utilisateur" value="{{ last_username }}"  />
         </div>

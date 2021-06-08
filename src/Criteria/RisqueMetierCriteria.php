@@ -4,7 +4,7 @@ namespace App\Criteria;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Orange\MainBundle\Repository\StructureRepository;
+use App\Repository\StructureRepository;
 
 class RisqueMetierCriteria extends AbstractType
 {

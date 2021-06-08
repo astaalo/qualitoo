@@ -74,7 +74,7 @@ class SecurityController extends BaseController
         $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
 
         $csrfToken = $this->tokenManager
-            ? $this->tokenManager->getToken('authenticate')->getValue()
+            ? $this->tokenManager->refreshToken('authenticate')->getValue()
             : null;
 
         return $this->renderLogin(array(

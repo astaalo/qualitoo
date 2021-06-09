@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Service\Actions;
+use App\Service\Status;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Query;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\Form;
@@ -14,11 +18,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class BaseController extends AbstractController
 {
     private $getParameter;
+    private $paginator;
+    protected $service_status;
+    protected $service_action;
 
-    public function __construct(ParameterBagInterface $params)
+    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action)
     {
         $this->getParameter = $params;
+        $this->paginator = $paginator;
+        $this->service_status = $status;
+        $this->service_action = $action;
     }
+
+    // public static function getSubscribedServices(): array  //ON surcharge cette fonction pour ajouter nos services aux services existants #Spécialité Symfony4
+    // {
+    //     return array_merge(parent::getSubscribedServices(), [ // on merge le tableau des services par defaut avec notre tableau personnalisé
+    //         'orange_main.actions' => 'App\Service\Actions',
+    //         'monolog.logger.trace' => 'Psr\Log\LoggerInterface',
+    //         'orange_main.status' => 'App\Service\Status',
+    //         'orange_ca.mailer' => 'App\Service\Mailer'
+    //     ]);
+    // }
 
     /**
      * @param Mixed $entity
@@ -35,11 +55,11 @@ class BaseController extends AbstractController
      * @param Request $request
      * @param QueryBuilder $queryBuilder
      * @param string $rendererMethod
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
     protected function paginate($request, QueryBuilder $queryBuilder, $rendererMethod = 'addRowInTable', $orderMethod = 'setOrder', $rootColumnName='id') {
         $query = $queryBuilder->getQuery();
-        $paginator  = $this->get('knp_paginator');
+        $paginator  = $this->paginator;
         $numberPage = ((int)$request->query->get('iDisplayStart')/(int)$request->query->get('iDisplayLength'))+1;
         $pagination = $paginator->paginate($query, $request->query->get('page', 1), 10);
         $this->setFilter($queryBuilder, array(), $request);

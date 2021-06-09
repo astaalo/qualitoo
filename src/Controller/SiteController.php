@@ -31,7 +31,7 @@ class SiteController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Site')->listAllQueryBuilder();
+		$queryBuilder = $em->getRepository(Site::class)->listAllQueryBuilder();
 		return $this->paginate($request, $queryBuilder);
 	}
 	

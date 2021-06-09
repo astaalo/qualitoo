@@ -198,7 +198,6 @@ class ProcessusController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Processus $entity
 	 * @return array
 	 */

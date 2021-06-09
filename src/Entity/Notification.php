@@ -252,10 +252,10 @@ class Notification
     /**
      * Set type
      *
-     * @param \App\Entity\TypeNotification $type
+     * @param TypeNotification $type
      * @return Notification
      */
-    public function setType(\App\Entity\TypeNotification $type = null)
+    public function setType(TypeNotification $type = null)
     {
         $this->type = $type;
 
@@ -265,7 +265,7 @@ class Notification
     /**
      * Get type
      *
-     * @return \App\Entity\TypeNotification
+     * @return TypeNotification
      */
     public function getType()
     {
@@ -275,10 +275,10 @@ class Notification
     /**
      * Set user
      *
-     * @param \App\Entity\Utilisateur $user
+     * @param Utilisateur $user
      * @return Notification
      */
-    public function setUser(\App\Entity\Utilisateur $user = null)
+    public function setUser(Utilisateur $user = null)
     {
         $this->user = $user;
 
@@ -288,7 +288,7 @@ class Notification
     /**
      * Get user
      *
-     * @return \App\Entity\Utilisateur
+     * @return Utilisateur
      */
     public function getUser()
     {
@@ -312,10 +312,10 @@ class Notification
     /**
      * Set notificationControle
      *
-     * @param \App\Entity\NotificationControle $notificationControle
+     * @param NotificationControle $notificationControle
      * @return Notification
      */
-    public function setNotificationControle(\App\Entity\NotificationControle $notificationControle = null)
+    public function setNotificationControle(NotificationControle $notificationControle = null)
     {
         $notificationControle->setNotification($this);
         $this->notificationControle = $notificationControle;
@@ -326,7 +326,7 @@ class Notification
     /**
      * Get notificationControle
      *
-     * @return \App\Entity\NotificationControle
+     * @return NotificationControle
      */
     public function getNotificationControle()
     {
@@ -336,10 +336,10 @@ class Notification
     /**
      * Set notificationRisque
      *
-     * @param \App\Entity\NotificationRisque $notificationRisque
+     * @param NotificationRisque $notificationRisque
      * @return Notification
      */
-    public function setNotificationRisque(\App\Entity\NotificationRisque $notificationRisque = null)
+    public function setNotificationRisque(NotificationRisque $notificationRisque = null)
     {
         $notificationRisque->setNotification($this);
         $this->notificationRisque = $notificationRisque;
@@ -350,7 +350,7 @@ class Notification
     /**
      * Get notificationRisque
      *
-     * @return \App\Entity\NotificationRisque
+     * @return NotificationRisque
      */
     public function getNotificationRisque()
     {
@@ -361,10 +361,10 @@ class Notification
     /**
      * Add receivers
      *
-     * @param \App\Entity\Utilisateur $receivers
+     * @param Utilisateur $receivers
      * @return Notification
      */
-    public function addReceiver(\App\Entity\Utilisateur $receivers)
+    public function addReceiver(Utilisateur $receivers)
     {
         $this->receivers->set($receivers->getId(), $receivers);
         return $this;
@@ -373,9 +373,9 @@ class Notification
     /**
      * Remove receivers
      *
-     * @param \App\Entity\Utilisateur $receivers
+     * @param Utilisateur $receivers
      */
-    public function removeReceiver(\App\Entity\Utilisateur $receivers)
+    public function removeReceiver(Utilisateur $receivers)
     {
         $this->receivers->removeElement($receivers);
     }
@@ -393,10 +393,10 @@ class Notification
     /**
      * Set notificationExecution
      *
-     * @param \App\Entity\NotificationExecution $notificationExecution
+     * @param NotificationExecution $notificationExecution
      * @return Notification
      */
-    public function setNotificationExecution(\App\Entity\NotificationExecution $notificationExecution = null)
+    public function setNotificationExecution(NotificationExecution $notificationExecution = null)
     {
         $notificationExecution->setNotification($this);
         $this->notificationExecution = $notificationExecution;
@@ -407,7 +407,7 @@ class Notification
     /**
      * Get notificationExecution
      *
-     * @return \App\Entity\NotificationExecution
+     * @return NotificationExecution
      */
     public function getNotificationExecution()
     {
@@ -417,10 +417,10 @@ class Notification
     /**
      * Set notificationPa
      *
-     * @param \App\Entity\NotificationPlanAction $notificationPa
+     * @param NotificationPlanAction $notificationPa
      * @return Notification
      */
-    public function setNotificationPlanAction(\App\Entity\NotificationPlanAction $notificationPa = null)
+    public function setNotificationPlanAction(NotificationPlanAction $notificationPa = null)
     {
         $notificationPa->setNotification($this);
         $this->notificationPa = $notificationPa;
@@ -431,7 +431,7 @@ class Notification
     /**
      * Get notificationPa
      *
-     * @return \App\Entity\NotificationPlanAction
+     * @return NotificationPlanAction
      */
     public function getNotificationPlanAction()
     {
@@ -470,10 +470,10 @@ class Notification
     /**
      * Set notificationPa
      *
-     * @param \App\Entity\NotificationPlanAction $notificationPa
+     * @param NotificationPlanAction $notificationPa
      * @return Notification
      */
-    public function setNotificationPa(\App\Entity\NotificationPlanAction $notificationPa = null)
+    public function setNotificationPa(NotificationPlanAction $notificationPa = null)
     {
         $this->notificationPa = $notificationPa;
 
@@ -483,7 +483,7 @@ class Notification
     /**
      * Get notificationPa
      *
-     * @return \App\Entity\NotificationPlanAction
+     * @return NotificationPlanAction
      */
     public function getNotificationPa()
     {

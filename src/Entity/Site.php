@@ -49,7 +49,7 @@ class Site
 
 
     /**
-     * @var \Societe
+     * @var Societe
      *
      * @ORM\ManyToOne(targetEntity="Societe")
      * @ORM\JoinColumns({

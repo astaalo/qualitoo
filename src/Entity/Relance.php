@@ -66,7 +66,7 @@ class Relance
     private $phase;
     
     /**
-     * @var datetime
+     * @var \DateTime
      *
      * @ORM\Column(name="date_saisie", type="date", nullable=false)
      *

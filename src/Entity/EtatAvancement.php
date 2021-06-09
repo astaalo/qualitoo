@@ -1,24 +1,51 @@
 <?php
-
 namespace App\Entity;
 
-use App\Repository\EtatAvancementRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=EtatAvancementRepository::class)
+ * Avancement
+ *
+ * @ORM\Table(name="etat_avancement")
+ * @ORM\Entity
  */
 class EtatAvancement
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=255, nullable=false)
+     */
+    private $libelle;
+	public function getId() {
+		return $this->id;
+	}
+	public function getLibelle() {
+		return $this->libelle;
+	}
+	public function setLibelle($libelle) {
+		$this->libelle = $libelle;
+		return $this;
+	}
+	
+	/**
+	 * Get libelle
+	 *
+	 * @return string
+	 */
+	public function __toString(){
+			
+		return $this->libelle;
+	}
+    
+	
 }

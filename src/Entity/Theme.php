@@ -1,24 +1,72 @@
 <?php
-
 namespace App\Entity;
 
-use App\Repository\ThemeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 /**
- * @ORM\Entity(repositoryClass=ThemeRepository::class)
+ * Theme
+ * @ORM\Table(name="theme")
+ * @ORM\Entity
  */
-class Theme
+class Theme 
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
-    public function getId(): ?int
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=45, nullable=false)
+     */
+    private $libelle;
+    
+
+    /**
+     * get libelle
+     * @return string
+     */
+    public function __toString() {
+    	return $this->libelle;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set libelle
+     *
+     * @param string $libelle
+     * @return Theme
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+    
+        return $this;
+    }
+
+    /**
+     * Get libelle
+     *
+     * @return string 
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
     }
 }

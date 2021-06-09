@@ -1,24 +1,56 @@
 <?php
-
 namespace App\Entity;
 
-use App\Repository\TraitementRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TraitementRepository::class)
+ * Traitement
+ *
+ * @ORM\Table(name="traitement")
+ * @ORM\Entity()
  */
 class Traitement
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=45, nullable=false)
+     */
+    private $libelle;
+    
+    
+    
+	public function getId() {
+		return $this->id;
+	}
+	public function getLibelle() {
+		return $this->libelle;
+	}
+	public function setLibelle($libelle) {
+		$this->libelle = $libelle;
+		return $this;
+	}
+	/**
+	 * Get libelle
+	 *
+	 * @return string
+	 */
+	public function __toString(){
+			
+		return $this->libelle;
+	}
+    
+    
+    
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+
 }

@@ -115,7 +115,7 @@ class Activite
 
     /**
      * @param integer $numero
-     * @return \App\Entity\Processus
+     * @return Processus
      */
     public function setNumero($numero) {
     $this->numero = $numero;
@@ -131,7 +131,7 @@ class Activite
 
     /**
      * @param string $code
-     * @return \App\Entity\Activite
+     * @return Activite
      */
     public function setCode($code) {
     $this->code = $code;
@@ -147,7 +147,7 @@ class Activite
 
     /**
      * @param string $libelle
-     * @return \App\Entity\Activite
+     * @return Activite
      */
     public function setLibelle($libelle) {
     $this->libelle = $libelle;
@@ -163,7 +163,7 @@ class Activite
 
     /**
      * @param boolean $etat
-     * @return \App\Entity\Activite
+     * @return Activite
      */
     public function setEtat($etat) {
     $this->etat = $etat;
@@ -179,7 +179,7 @@ class Activite
 
     /**
      * @param Processus $processus
-     * @return \App\Entity\Activite
+     * @return Activite
      */
     public function setProcessus($processus) {
     $this->processus = $processus;
@@ -195,7 +195,7 @@ class Activite
 
     /**
      * @param Activite $origine
-     * @return \App\Entity\Activite
+     * @return Activite
      */
     public function setOrigine($origine) {
     $this->origine = $origine;
@@ -211,7 +211,7 @@ class Activite
 
     /**
      * @param string $description
-     * @return \App\Entity\Activite
+     * @return Activite
      */
     public function setDescription($description) {
     $this->description = $description;
@@ -275,7 +275,7 @@ class Activite
 
     /**
      * @param RisqueMetier $risque
-     * @return \App\Entity\Activite
+     * @return Activite
      */
     public function addRisque($risque) {
     $risque->setActivite($this);
@@ -326,9 +326,9 @@ class Activite
     /**
      * Remove risque
      *
-     * @param \App\Entity\RisqueMetier $risque
+     * @param RisqueMetier $risque
      */
-    public function removeRisque(\App\Entity\RisqueMetier $risque)
+    public function removeRisque(RisqueMetier $risque)
 {
     $this->risque->removeElement($risque);
 }

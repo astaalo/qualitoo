@@ -2,11 +2,28 @@
 
 namespace App\Repository;
 
+use App\Entity\Processus;
 use App\Entity\Structure;
 use App\Entity\Utilisateur;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\Security\Core\Security;
 
-class StructureRepository extends BaseRepository {
+class StructureRepository extends ServiceEntityRepository {
+
+    protected $_ids;
+    protected $_states;
+    protected $_user;
+
+    public function __construct(ManagerRegistry $registry, ParameterBagInterface $param, Security $security)
+    {
+        parent::__construct($registry, Structure::class);
+        $this->_ids		= $param->get('ids');
+        $this->_states	= $param->get('states');
+        $this->_user	= $security->getUser();
+    }
 
     public function findOneByFullname($fullname = null) {
         if($fullname==null) {
@@ -161,5 +178,16 @@ class StructureRepository extends BaseRepository {
         }
 
         return $query;
+    }
+
+    public function filterBySociete(QueryBuilder $queryBuilder, $alias = null) {
+        if(!$alias) {
+            $aliases = $queryBuilder->getRootAliases();
+            $alias = $aliases[0];
+        }
+        if($this->_user->getSociete()) {
+            $queryBuilder->andWhere($alias . '.societe = :societe')->setParameter('societe', $this->_user->getSociete());
+        }
+        return $queryBuilder;
     }
 }

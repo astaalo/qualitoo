@@ -126,7 +126,7 @@ class UtilisateurController extends BaseController {
 	  
 	/**
 	 * @todo ajoute un filtre
-	 * @param sfWebRequest $request
+	 * @param Request $request
 	 */
 	protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
 		parent::setFilter($queryBuilder, array('q.nom', 'q.prenom'), $request);

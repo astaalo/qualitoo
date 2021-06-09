@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Activite;
 use Doctrine\ORM\QueryBuilder;
 use App\Query\BaseQuery;
+use App\Repository\ProcessusRepository;
 
 class ProcessusController extends BaseController {
 
@@ -36,7 +37,8 @@ class ProcessusController extends BaseController {
 	 * @Template()
 	 */
 	public function filterAction(Request $request) {
-		$form = $this->createForm(new ProcessusType());
+		$processus = new Processus();
+		$form = $this->createForm(ProcessusType::class, $processus);
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('processus_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -51,12 +53,12 @@ class ProcessusController extends BaseController {
 	 * @Route("/liste_des_processus", name="liste_des_processus")
 	 * @Template()
 	 */
-	public function listAction(Request $request) {
-		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new ProcessusType());
+	public function listAction(Request $request, ProcessusRepository $processusRepo) {
+		$processus = new Processus();
+		$form = $this->createForm(ProcessusType::class, $processus);
 		$this->modifyRequestForForm($request, $this->get('session')->get('processus_criteria'), $form);
 		$criteria = $form->getData();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Processus')->listAllQueryBuilder($criteria);
+		$queryBuilder = $processusRepo->listAll($criteria);
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -191,7 +193,7 @@ class ProcessusController extends BaseController {
 	  
 	/**
 	 * (non-PHPdoc)
-	 * @see \Orange\QuickMakingBundle\Controller\BaseController::setFilter()
+	 * @see \App\Controller\BaseController::setFilter()
 	 */
 	protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
 		parent::setFilter($queryBuilder, array('p.code', 'p.libelle'), $request);
@@ -207,7 +209,7 @@ class ProcessusController extends BaseController {
 			$entity->getLibelle(),
 			$entity->getTypeProcessus()->getLibelle(),
 			$entity->getStructure() ? $entity->getStructure()->getName() : null,
-			$this->get('orange.main.actions')->generateActionsForProcessus($entity)
+			$this->service_action->generateActionsForProcessus($entity)
 		);
 	}
 }

@@ -5,46 +5,22 @@ namespace App\Repository;
 use App\Entity\DomaineActivite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\Security\Core\Security;
 
-/**
- * @method DomaineActivite|null find($id, $lockMode = null, $lockVersion = null)
- * @method DomaineActivite|null findOneBy(array $criteria, array $orderBy = null)
- * @method DomaineActivite[]    findAll()
- * @method DomaineActivite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
 class DomaineActiviteRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    protected $_states;
+
+    public function __construct(ManagerRegistry $registry, ParameterBagInterface $param)
     {
         parent::__construct($registry, DomaineActivite::class);
+        $this->_states	= $param->get('states');
     }
 
-    // /**
-    //  * @return DomaineActivite[] Returns an array of DomaineActivite objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    public function listAllQueryBuilder($criteria = null) {
+        return $this->createQueryBuilder('q')
+            ->where('q.etat != :etat')
+            ->setParameter('etat', $this->_states['entity']['supprime']);
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?DomaineActivite
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

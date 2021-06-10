@@ -126,7 +126,7 @@ class StructureRepository extends ServiceEntityRepository {
             $queryBuilder->andWhere('q.typeStructure = :typeStructure')->setParameter('typeStructure', $structure->getTypeStructure());
         }
 
-        return BaseRepository::filterBySociete($queryBuilder)->orderBy('q.lvl');
+        return BaseRepository::filterBySociete($queryBuilder, 'q', $this->_user)->orderBy('q.lvl');
     }
 
     /* (non-PHPdoc)

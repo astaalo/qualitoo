@@ -54,10 +54,10 @@ class StructureController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new StructureType());
+		$form = $this->createForm(StructureType::class, new Structure());
 		$this->modifyRequestForForm($request, $this->get('session')->get('structure_criteria'), $form);
 		$criteria = $form->getData();
-		$queryBuilder = $em->getRepository('App\Entity\Structure')->listAllQueryBuilder($criteria);
+		$queryBuilder = $em->getRepository(Structure::class)->listAllQueryBuilder($criteria);
 		return $this->paginate($request, $queryBuilder);
 	}
 

@@ -3,11 +3,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Repository\DomaineSiteRepository;
 
 /**
  * Domaine
  * @ORM\Table(name="domaine_site")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=DomaineSiteRepository::class)
  */
 class DomaineSite 
 {

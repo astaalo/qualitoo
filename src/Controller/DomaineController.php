@@ -44,7 +44,7 @@ class DomaineController extends BaseController {
 	 */
 	public function listForActiviteAction(Request $request){
 		$em = $this->getDoctrine()->getManager();
-    	$queryBuilder = $em->getRepository('App\Entity\DomaineActivite')->listAllQueryBuilder();
+    	$queryBuilder = $em->getRepository(DomaineActivite::class)->listAllQueryBuilder();
     	return $this->paginate($request, $queryBuilder, 'addRowInTableForActivite');
 	}
 	
@@ -55,7 +55,7 @@ class DomaineController extends BaseController {
 	 */
 	public function listForSiteAction(Request $request){
 		$em = $this->getDoctrine()->getManager();
-    	$queryBuilder = $em->getRepository('App\Entity\DomaineSite')->listAllQueryBuilder();
+    	$queryBuilder = $em->getRepository(DomaineSite::class)->listAllQueryBuilder();
     	return $this->paginate($request, $queryBuilder, 'addRowInTableForSite');
 	}
 	
@@ -204,7 +204,7 @@ class DomaineController extends BaseController {
 	 */
 	public function editForSiteAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('App\Entity\DomaineSite')->find($id);
+		$entity = $em->getRepository(DomaineSite::class)->find($id);
 
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		
@@ -262,7 +262,7 @@ class DomaineController extends BaseController {
 	 */
 	public function updateForSiteAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('App\Entity\DomaineSite')->find($id);
+		$entity = $em->getRepository(DomaineSite::class)->find($id);
 		$form = $this->createCreateForm($entity, 'DomaineSite');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {

@@ -42,7 +42,7 @@ class UtilisateurRepository extends ServiceEntityRepository
             ->where('q.etat != :etat')
             ->setParameter('etat', $this->_states['entity']['supprime']);
 
-        return BaseRepository::filterBySociete($querBuilder, 'e')->groupBy('q.id');
+        return BaseRepository::filterBySociete($querBuilder, 'e', $this->_user)->groupBy('q.id');
     }
 
     /* (non-PHPdoc)

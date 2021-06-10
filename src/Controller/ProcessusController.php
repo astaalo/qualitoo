@@ -69,7 +69,7 @@ class ProcessusController extends BaseController {
 	 */
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
-		$processus = $em->getRepository('OrangeMainBundle:Processus')->find($id);
+		$processus = $em->getRepository('App\Entity\Processus')->find($id);
 		$this->denyAccessUnlessGranted('read', $processus, 'Accés non autorisé');
 		return array('entitie' => $processus);
 	}
@@ -81,7 +81,7 @@ class ProcessusController extends BaseController {
 	 */
 	public function deleteAction(Request $request, $id){
 		$em = $this->getDoctrine()->getManager();
-		$processus = $em->getRepository('OrangeMainBundle:Processus')->find($id);
+		$processus = $em->getRepository('App\Entity\Processus')->find($id);
 		$activites=$processus->getActivite();
 		if (! $processus) {
 			throw $this->createNotFoundException('Aucun processus trouvé pour cet id : ' . $id);
@@ -148,7 +148,7 @@ class ProcessusController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Processus')->find($id);
+		$entity = $em->getRepository('App\Entity\Processus')->find($id);
 		$form = $this->createCreateForm($entity, 'Processus');
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
@@ -162,7 +162,7 @@ class ProcessusController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Processus')->find($id);
+		$entity = $em->getRepository('App\Entity\Processus')->find($id);
 		$form = $this->createCreateForm($entity, 'Processus');
 		$form->bind($this->get('request'));
 		if ($form->isValid()) {

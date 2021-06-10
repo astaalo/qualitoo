@@ -56,7 +56,7 @@ class RestitutionController extends BaseController {
 		
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$em->getRepository('OrangeMainBundle:Risque')->getMatrice($form->getData(), $type, $probabiteKPIs, $graviteKPIs);
+		$em->getRepository('App\Entity\Risque')->getMatrice($form->getData(), $type, $probabiteKPIs, $graviteKPIs);
 		$entities = $this->get('orange_main.core')->getMapping('Risque')->mapForMatrice($probabiteKPIs, $graviteKPIs, $type, $form->getData());
 		return array('entities' => $entities, 'form' => $form->createView(), 'carto'=>$carto, 'type' => $type);
 	}

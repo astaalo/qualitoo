@@ -50,7 +50,7 @@ class EvaluationController extends BaseController{
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new EvaluationCriteria()); 
 		$this->modifyRequestForForm($request, $this->get('session')->get('evaluation_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Evaluation')->listQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Evaluation')->listQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -61,7 +61,7 @@ class EvaluationController extends BaseController{
 	 */
 	public function newAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$risque = $em->getRepository('OrangeMainBundle:Risque')->find($id);
+		$risque = $em->getRepository('App\Entity\Risque')->find($id);
 		$entity = new Evaluation();
 		$form = $this->createCreateForm($entity->newEvaluation($risque), 'Evaluation', array('attr' => array('em' => $em)));
 		return array('entity' => $entity, 'form' => $form->createView());
@@ -75,7 +75,7 @@ class EvaluationController extends BaseController{
 	 */
 	public function createAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
-		$risque = $em->getRepository('OrangeMainBundle:Risque')->find($id);
+		$risque = $em->getRepository('App\Entity\Risque')->find($id);
 		$entity = new Evaluation();
 		$entity->setRisque($risque);
 		$entity->setEvaluateur($this->getUser());
@@ -87,7 +87,7 @@ class EvaluationController extends BaseController{
 			$entity->cleanUselessImpact();
 			$entity->computeProbabilite();
 			$entity->computeGravite();
-			$entity->setCriticite($em->getRepository('OrangeMainBundle:Criticite')->findByProbabiliteAndGravite($entity->getProbabilite(), $entity->getGravite()));
+			$entity->setCriticite($em->getRepository('App\Entity\Criticite')->findByProbabiliteAndGravite($entity->getProbabilite(), $entity->getGravite()));
 			$entity->cloneEvaluation();
 			$event->setEvaluation($entity);
 			$risque->setTobeMigrate(true);
@@ -107,7 +107,7 @@ class EvaluationController extends BaseController{
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$evaluation = $em->getRepository('OrangeMainBundle:Evaluation')->find($id);
+		$evaluation = $em->getRepository('App\Entity\Evaluation')->find($id);
 		return array('entity' => $evaluation);
 	}
 	
@@ -118,7 +118,7 @@ class EvaluationController extends BaseController{
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Evaluation')->find($id);
+		$entity = $em->getRepository('App\Entity\Evaluation')->find($id);
 		$form = $this->createCreateForm($entity->completeDomaine(), 'Evaluation', array('attr' => array('em' => $em)));
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -131,7 +131,7 @@ class EvaluationController extends BaseController{
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Evaluation')->find($id);
+		$entity = $em->getRepository('App\Entity\Evaluation')->find($id);
 		$form = $this->createCreateForm($entity, 'Evaluation', array('attr' => array('em' => $em)));
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -142,7 +142,7 @@ class EvaluationController extends BaseController{
 				$entity->cleanUselessImpact();
 				$entity->computeProbabilite();
 				$entity->computeGravite();
-				$entity->setCriticite($em->getRepository('OrangeMainBundle:Criticite')->findByProbabiliteAndGravite($entity->getProbabilite(), $entity->getGravite()));
+				$entity->setCriticite($em->getRepository('App\Entity\Criticite')->findByProbabiliteAndGravite($entity->getProbabilite(), $entity->getGravite()));
 				$entity->setDateEvaluation(new \DateTime('NOW'));
 				$entity->cloneEvaluation();
 				$event->setEvaluation($entity);
@@ -191,14 +191,13 @@ class EvaluationController extends BaseController{
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new EvaluationCriteria()); 
 		$this->modifyRequestForForm($request, $this->get('session')->get('evaluation_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Evaluation')->listQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Evaluation')->listQueryBuilder($form->getData());
 		$data = $this->get('orange_main.core')->getMapping('Evaluation')->mapForBasicExport($queryBuilder->getQuery()->getResult());
 		$reporting = $this->get('orange_main.core')->getReporting('Risque')->extractByRisque($data);
 		$reporting->getResponseAfterSave('php://output', 'Cartographie des risques');
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Evaluation $entity
 	 * @return array
 	 */

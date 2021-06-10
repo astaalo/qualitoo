@@ -33,7 +33,7 @@ class DomaineController extends BaseController {
 	 */
 	public function listForImpactAction(Request $request){
 		$em = $this->getDoctrine()->getManager();
-    	$queryBuilder = $em->getRepository('OrangeMainBundle:DomaineImpact')->listAllQueryBuilder();
+    	$queryBuilder = $em->getRepository('App\Entity\DomaineImpact')->listAllQueryBuilder();
     	return $this->paginate($request, $queryBuilder, 'addRowInTableForImpact');
 	}
 	
@@ -44,7 +44,7 @@ class DomaineController extends BaseController {
 	 */
 	public function listForActiviteAction(Request $request){
 		$em = $this->getDoctrine()->getManager();
-    	$queryBuilder = $em->getRepository('OrangeMainBundle:DomaineActivite')->listAllQueryBuilder();
+    	$queryBuilder = $em->getRepository('App\Entity\DomaineActivite')->listAllQueryBuilder();
     	return $this->paginate($request, $queryBuilder, 'addRowInTableForActivite');
 	}
 	
@@ -55,7 +55,7 @@ class DomaineController extends BaseController {
 	 */
 	public function listForSiteAction(Request $request){
 		$em = $this->getDoctrine()->getManager();
-    	$queryBuilder = $em->getRepository('OrangeMainBundle:DomaineSite')->listAllQueryBuilder();
+    	$queryBuilder = $em->getRepository('App\Entity\DomaineSite')->listAllQueryBuilder();
     	return $this->paginate($request, $queryBuilder, 'addRowInTableForSite');
 	}
 	
@@ -66,7 +66,7 @@ class DomaineController extends BaseController {
 	*/
 	public function newForImpactAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$cartographie = $em->getRepository('OrangeMainBundle:Cartographie')->find($id);
+		$cartographie = $em->getRepository('App\Entity\Cartographie')->find($id);
 		$entity = new DomaineImpact();
 		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
 		$form = $this->createCreateForm($entity->setCartographie($cartographie),'DomaineImpact');
@@ -160,7 +160,7 @@ class DomaineController extends BaseController {
 	 */
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
-		$domaine = $em->getRepository('OrangeMainBundle:Domaine')->find($id);
+		$domaine = $em->getRepository('App\Entity\Domaine')->find($id);
 		
 		$this->denyAccessUnlessGranted('read', $domaine, 'Accés non autorisée!');
 		
@@ -174,7 +174,7 @@ class DomaineController extends BaseController {
 	 */
 	public function editForImpactAction($id){
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:DomaineImpact')->find($id);
+		$entity = $em->getRepository('App\Entity\DomaineImpact')->find($id);
 		$form = $this->createCreateform($entity, 'DomaineImpact');
 		
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
@@ -189,7 +189,7 @@ class DomaineController extends BaseController {
 	 */
 	public function editForActiviteAction($id){
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:DomaineActivite')->find($id);
+		$entity = $em->getRepository('App\Entity\DomaineActivite')->find($id);
 		$form = $this->createCreateform($entity, 'DomaineActivite');
 
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
@@ -204,7 +204,7 @@ class DomaineController extends BaseController {
 	 */
 	public function editForSiteAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:DomaineSite')->find($id);
+		$entity = $em->getRepository('App\Entity\DomaineSite')->find($id);
 
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		
@@ -220,7 +220,7 @@ class DomaineController extends BaseController {
 	 */
 	public function updateForImpactAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:DomaineImpact')->find($id);
+		$entity = $em->getRepository('App\Entity\DomaineImpact')->find($id);
 		$form = $this->createCreateform($entity, 'DomaineImpact');
 		$form->bind($this->get('request'));
 		if($form->isValid()) {
@@ -240,7 +240,7 @@ class DomaineController extends BaseController {
 	 */
 	public function updateForActiviteAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:DomaineActivite')->find($id);
+		$entity = $em->getRepository('App\Entity\DomaineActivite')->find($id);
 		$form = $this->createCreateForm($entity, 'DomaineActivite');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -262,7 +262,7 @@ class DomaineController extends BaseController {
 	 */
 	public function updateForSiteAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:DomaineSite')->find($id);
+		$entity = $em->getRepository('App\Entity\DomaineSite')->find($id);
 		$form = $this->createCreateForm($entity, 'DomaineSite');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -283,12 +283,11 @@ class DomaineController extends BaseController {
 	 */
 	public function listImpactByProfilRisqueAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$domaines = $em->getRepository('OrangeMainBundle:DomaineImpact')->findByProfilRisque($request->request->get('id'));
+		$domaines = $em->getRepository('App\Entity\DomaineImpact')->findByProfilRisque($request->request->get('id'));
 		return array('domaines' => $domaines);
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\DomaineImpact $entity
 	 * @return array
 	 */
@@ -302,7 +301,6 @@ class DomaineController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\DomaineActivite $entity
 	 * @return array
 	 */
@@ -315,7 +313,6 @@ class DomaineController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\DomaineSite $entity
 	 * @return array
 	 */

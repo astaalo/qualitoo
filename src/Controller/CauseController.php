@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\RisqueHasCause;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,9 +36,9 @@ class CauseController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueHasCauseCriteria());
+		$form = $this->createForm(RisqueHasCauseCriteria::class, new RisqueHasCause());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risquehascause_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:RisqueHasCause')->listAllQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\RisqueHasCause')->listAllQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -47,7 +48,7 @@ class CauseController extends BaseController {
 	 * @Template()
 	 */
 	public function filterAction(Request $request) {
-		$form = $this->createForm(new RisqueHasCauseCriteria());
+		$form = $this->createForm(RisqueHasCauseCriteria::class, new RisqueHasCause());
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risquehascause_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -62,7 +63,7 @@ class CauseController extends BaseController {
 	 */
 	public function listByRisqueAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$risques = $em->getRepository('OrangeMainBundle:Cause')->getByRisqueId($request->request->get('id'));
+		$risques = $em->getRepository('App\Entity\Cause')->getByRisqueId($request->request->get('id'));
 		$output = array(array('id' => "", 'libelle' => 'Choisir une cause ...'));
 		foreach ($risques as $risque) {
 			$output[] = array('id' => $risque['id'], 'libelle' => $risque['libelle']);
@@ -113,7 +114,7 @@ class CauseController extends BaseController {
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
 		$entity = new Cause();
-		$cause = $em->getRepository('OrangeMainBundle:RisqueHasCause')->find($id);
+		$cause = $em->getRepository('App\Entity\RisqueHasCause')->find($id);
 		if(!$cause)
 			throw new EntityNotFoundException('Entité avec ce id non trouvé ');
 			
@@ -129,7 +130,7 @@ class CauseController extends BaseController {
 	 */
 	public function editAction($id, $page = 0) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Cause')->find($id);
+		$entity = $em->getRepository('App\Entity\Cause')->find($id);
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		$form = $this->createCreateForm($entity, 'Cause');
 		return array('entity' => $entity, 'form' => $form->createView(), 'page' => $page);
@@ -143,7 +144,7 @@ class CauseController extends BaseController {
 	 */
 	public function updateAction($id, $page) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Cause')->find($id);
+		$entity = $em->getRepository('App\Entity\Cause')->find($id);
 		$form = $this->createCreateForm($entity, 'Cause');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -175,14 +176,13 @@ class CauseController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new CauseCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risquehascause_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Cause')->listAllQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Cause')->listAllQueryBuilder($form->getData());
 		$data = $this->get('orange_main.core')->getMapping('Cause')->mapForBasicExport($queryBuilder->getQuery()->getResult());
 		$reporting = $this->get('orange_main.core')->getReporting('Cause')->extractByCause($data);
 		$reporting->getResponseAfterSave('php://output', 'Extraction des causes');
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\RisqueHasCause $entity
 	 * @return array
 	 */

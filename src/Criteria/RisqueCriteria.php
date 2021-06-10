@@ -1,7 +1,14 @@
 <?php
 namespace App\Criteria;
 
+use App\Entity\Criticite;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormView;
@@ -12,39 +19,40 @@ class RisqueCriteria extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('motCle', 'text', array('label' => 'Mot-clé'))
-        	->add('menace', null, array('empty_value'=>'Chosir un risque ...', 'attr'=>array('class'=>'chzn-select')))
-        	->add('cartographie', null, array('expanded'=>true, 'required' => true))
-        	->add('probabilite', 'choice', array('choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
-        	->add('gravite', 'choice', array('choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
-        	->add('criticite', null, array('expanded' => true, 'multiple' => true))
-        	->add('dateSaisie',  'repeated', array('type' => 'date'))
-        	->add('risqueMetier', new RisqueMetierCriteria())
-        	->add('risqueProjet', new RisqueProjetCriteria())
-        	->add('risqueSST', new RisqueSSTCriteria())
-        	->add('risqueEnvironnemental', new RisqueEnvironnementalCriteria())
-        	->add($builder->create('dateEvaluation', 'form')
+        $builder->add('motCle', TextType::class, array('label' => 'Mot-clé'))
+        	->add('menace', null, array('attr'=>array('class'=>'chzn-select', 'placeholder'=>'Chosir un risque ...')))
+            //->add('cartographie', null, array('expanded'=>true, 'required' => true))
+            ->add('cartographie', null, array('required' => true))
+            ->add('probabilite', ChoiceType::class, array('choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
+        	->add('gravite', ChoiceType::class, array('choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
+        	->add('criticite', ChoiceType::class, array('expanded' => true, 'multiple' => true))
+        	->add('dateSaisie',  RepeatedType::class, array('type' => 'date'))
+        	->add('risqueMetier', RisqueMetierCriteria::class)
+        	->add('risqueProjet', RisqueProjetCriteria::class)
+        	->add('risqueSST', RisqueSSTCriteria::class)
+        	->add('risqueEnvironnemental', RisqueEnvironnementalCriteria::class)
+        	->add($builder->create('dateEvaluation', FormType::class)
         			->add('dateDebut', 'datetime', array('label' => 'Date de début', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
         			->add('dateFin', 'datetime', array('label' => 'Date de fin', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
-        	)->add('cause', 'entity', array('label' => 'Cause, danger ou aspect',
-        			'class' => '\App\Entity\Cause', 'empty_value'=>'Choisir ...', 'attr'=>array('class'=>'chzn-select'),
+        	)->add('cause', EntityType::class, array('label' => 'Cause, danger ou aspect',
+        			'class' => 'App\Entity\Cause', 'placeholder'=>'Choisir ...', 'attr'=>array('class'=>'chzn-select'),
         			'query_builder' => function($er) {
 				         return $er->createQueryBuilder('m')->orderBy('m.libelle');
 				}
 			))
-			->add('hasPlanAction', 'choice', array('label' => 'Risque :','expanded' => true, 'choices' => array(null=>'Avec ou sans plans d\'action',true=>'Avec plans d\'actions ', false=>'Sans plans d\'actions')))
-        	->add('hasControle', 'choice', array('label' => 'Risque :','expanded' => true,'choices' => array(null=>'Avec ou sans controles',true=>'Avec controles ', false=>'Sans controles')))
-        	->add('statutPlanAction',  'entity', array('class' => '\App\Entity\Statut', 'label' => "Statut des plans d'action", 'empty_value'=>'Choisir un statut ...',  'attr' => array('class' => 'chzn-select')));
+			->add('hasPlanAction', ChoiceType::class, array('label' => 'Risque :','expanded' => true, 'choices' => array(null=>'Avec ou sans plans d\'action',true=>'Avec plans d\'actions ', false=>'Sans plans d\'actions')))
+        	->add('hasControle', ChoiceType::class, array('label' => 'Risque :','expanded' => true,'choices' => array(null=>'Avec ou sans controles',true=>'Avec controles ', false=>'Sans controles')))
+        	->add('statutPlanAction',  EntityType::class, array('class' => 'App\Entity\Statut', 'label' => "Statut des plans d'action", 'placeholder'=>'Choisir un statut ...',  'attr' => array('class' => 'chzn-select')));
        //filtres sur les kpis
-       $builder ->add('probaForKpi', 'choice', array('label'=>'Probabilité' ,'choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
-        		->add('graviteForKpi', 'choice', array('label'=>'Gravité' ,'choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
-        		->add('criticiteForKpi', 'entity', array('label'=>'Criticité' ,'expanded' => true, 'multiple' => true,'class' => '\App\Entity\Criticite'))
-        		->add('maturiteForKpi', 'entity', array('label'=>'Maturité' ,'expanded' => true, 'multiple' => true,'class' => '\App\Entity\Maturite'))
+       $builder ->add('probaForKpi', ChoiceType::class, array('label'=>'Probabilité' ,'choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
+        		->add('graviteForKpi', ChoiceType::class, array('label'=>'Gravité' ,'choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
+        		->add('criticiteForKpi', EntityType::class, array('label'=>'Criticité' ,'expanded' => true, 'multiple' => true,'class' => Criticite::class))
+        		->add('maturiteForKpi', EntityType::class, array('label'=>'Maturité' ,'expanded' => true, 'multiple' => true,'class' => 'App\Entity\Maturite'))
         		->add('occurencesForKpi')
-        		->add('maturiteReels', 'entity', array('label'=>'Maturité aprés:' ,'expanded' => true, 'multiple' => true,'class' => '\App\Entity\Maturite'))
-        		->add('maturiteTheoriques', 'entity', array('label'=>'Maturité avant' ,'expanded' => true, 'multiple' => true, 'class' => '\App\Entity\Maturite'))
-        		->add('anneeEvaluationDebut',  'integer',array('label'=>'De l\'an :' ))
-        		->add('anneeEvaluationFin','integer',array('label'=>'A l\'an :' ));
+        		->add('maturiteReels', EntityType::class, array('label'=>'Maturité aprés:' ,'expanded' => true, 'multiple' => true,'class' => 'App\Entity\Maturite'))
+        		->add('maturiteTheoriques', EntityType::class, array('label'=>'Maturité avant' ,'expanded' => true, 'multiple' => true, 'class' => 'App\Entity\Maturite'))
+        		->add('anneeEvaluationDebut',  IntegerType::class,array('label'=>'De l\'an :' ))
+        		->add('anneeEvaluationFin',IntegerType::class,array('label'=>'A l\'an :' ));
     }
 	
 	public function finishView(FormView $view, FormInterface $form, array $options) {

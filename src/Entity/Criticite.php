@@ -3,12 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Repository\CriticiteRepository;
 /**
- * Criticite
- *
- * @ORM\Table(name="criticite")
- * @ORM\Entity(repositoryClass="\App\Repository\CriticiteRepository")
+ * @ORM\Entity(repositoryClass=CriticiteRepository::class)
  */
 class Criticite
 {
@@ -149,6 +146,4 @@ class Criticite
 	public function __toString() {
 		return $this->libelle;
 	}
-	
-
 }

@@ -27,7 +27,7 @@ class AuditController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('OrangeMainBundle:Audit')->findAll();
+        $entities = $em->getRepository('App\Entity\Audit')->findAll();
 
         return array(
             'entities' => $entities,
@@ -69,7 +69,7 @@ class AuditController extends BaseController
     	$em = $this->getDoctrine()->getManager();
     	$entity = new Audit();
     	$datas = $datas=explode(',',str_replace(" ", "",$ids));
-    	$cartographie = $em->getRepository('OrangeMainBundle:Cartographie')->find($carto);
+    	$cartographie = $em->getRepository('App\Entity\Cartographie')->find($carto);
     	$risques = $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')
     					->createQueryBuilder('r')
     					->leftJoin('r.cartographie','c')

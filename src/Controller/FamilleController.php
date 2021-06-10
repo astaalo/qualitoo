@@ -19,7 +19,7 @@ class FamilleController extends BaseController {
 	 */
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('OrangeMainBundle:Famille')->listAll();
+		$entities = $em->getRepository('App\Entity\Famille')->listAll();
 		return array('entities' => $entities);
 	}
 	
@@ -30,7 +30,7 @@ class FamilleController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Famille')->listAllQueryBuilder();
+		$queryBuilder = $em->getRepository('App\Entity\Famille')->listAllQueryBuilder();
 		return $this->paginate($request, $queryBuilder);
 	}
 
@@ -71,7 +71,7 @@ class FamilleController extends BaseController {
 	 */
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
-		$famille = $em->getRepository('OrangeMainBundle:Famille')->find($id);
+		$famille = $em->getRepository('App\Entity\Famille')->find($id);
 		return array('entity' => $famille);
 	}
 	
@@ -82,7 +82,7 @@ class FamilleController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Famille')->find($id);
+		$entity = $em->getRepository('App\Entity\Famille')->find($id);
 		$form = $this->createCreateForm($entity, 'Famille');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -95,7 +95,7 @@ class FamilleController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Famille')->find($id);
+		$entity = $em->getRepository('App\Entity\Famille')->find($id);
 		$form = $this->createCreateForm($entity, 'Famille');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -120,7 +120,6 @@ class FamilleController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Entite $entity
 	 * @return array
 	 */

@@ -76,7 +76,7 @@ class SiteController extends BaseController {
 	 */
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
-		$site = $em->getRepository('OrangeMainBundle:Site')->find($id);
+		$site = $em->getRepository('App\Entity\Site')->find($id);
 		
 		$this->denyAccessUnlessGranted('read', $site, 'Accés non autorisé');
 		
@@ -90,7 +90,7 @@ class SiteController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Site')->find($id);
+		$entity = $em->getRepository('App\Entity\Site')->find($id);
 		$form = $this->createCreateForm($entity, 'Site');
 		
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
@@ -106,7 +106,7 @@ class SiteController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Site')->find($id);
+		$entity = $em->getRepository('App\Entity\Site')->find($id);
 		$form = $this->createCreateForm($entity, 'Site');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -127,7 +127,7 @@ class SiteController extends BaseController {
 	 */
 	public function activateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Site')->find($id);
+		$entity = $em->getRepository('App\Entity\Site')->find($id);
 		
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
@@ -145,7 +145,7 @@ class SiteController extends BaseController {
 	 */
 	public function desactivateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Site')->find($id);
+		$entity = $em->getRepository('App\Entity\Site')->find($id);
 		
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
@@ -165,14 +165,13 @@ class SiteController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Site $entity
 	 * @return array
 	 */
 	protected function addRowInTable($entity) {
 	  	return array(
 	  			$entity->getLibelle(),
-	  			$this->get('orange_main.status')->generateStatusForEntity($entity),
+	  			$this->service_status->generateStatusForEntity($entity),
 	  			$this->service_action->generateActionsForSite($entity)
 	  		);
 	}

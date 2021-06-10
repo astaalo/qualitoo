@@ -47,7 +47,7 @@ class ImpactController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new ImpactCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risquehasimpact_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:RisqueHasImpact')->listAllQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\RisqueHasImpact')->listAllQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -58,7 +58,7 @@ class ImpactController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$impact = $em->getRepository('OrangeMainBundle:RisqueHasImpact')->find($id);
+		$impact = $em->getRepository('App\Entity\RisqueHasImpact')->find($id);
 		return array('entity' => $impact);
 	}
 	
@@ -71,14 +71,13 @@ class ImpactController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new ImpactCriteria()); 
 		$this->modifyRequestForForm($request, $this->get('session')->get('impact_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Impact')->listQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Impact')->listQueryBuilder($form->getData());
 		$data = $this->get('orange_main.core')->getMapping('Impact')->mapForBasicExport($queryBuilder->getQuery()->getResult());
 		$reporting = $this->get('orange_main.core')->getReporting('Impact')->extractByImpact($data);
 		$reporting->getResponseAfterSave('php://output', 'Extraction des impacts');
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\RisqueHasImpact $entity
 	 * @return array
 	 */

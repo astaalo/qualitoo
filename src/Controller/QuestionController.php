@@ -33,7 +33,7 @@ class QuestionController extends BaseController{
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Question')->listAllQueryBuilder();
+		$queryBuilder = $em->getRepository('App\Entity\Question')->listAllQueryBuilder();
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -58,7 +58,7 @@ class QuestionController extends BaseController{
 	 */
 	public function createAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('OrangeMainBundle:Question')->listAll();
+		$entities = $em->getRepository('App\Entity\Question')->listAll();
 		$count= count($entities);
 		$entity = new Question();
 		$form   = $this->createCreateForm($entity, 'Question');
@@ -81,7 +81,7 @@ class QuestionController extends BaseController{
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$question = $em->getRepository('OrangeMainBundle:Question')->find($id);
+		$question = $em->getRepository('App\Entity\Question')->find($id);
 		
 		$this->denyAccessUnlessGranted('read', $processus, 'Accés non autorisé');
 		
@@ -95,7 +95,7 @@ class QuestionController extends BaseController{
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Question')->find($id);
+		$entity = $em->getRepository('App\Entity\Question')->find($id);
 		$form = $this->createCreateForm($entity, 'Question');
 		
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
@@ -112,7 +112,7 @@ class QuestionController extends BaseController{
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Question')->find($id);
+		$entity = $em->getRepository('App\Entity\Question')->find($id);
 		$form = $this->createCreateForm($entity, 'Question');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -133,7 +133,7 @@ class QuestionController extends BaseController{
 	 */
 	public function deleteAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Question')->find($id);
+		$entity = $em->getRepository('App\Entity\Question')->find($id);
 		if(!$entity) {
 			throw $this->createNotFoundException('Aucune question trouvée pour cet id : '.$id);
 		}
@@ -153,7 +153,7 @@ class QuestionController extends BaseController{
 	 */
 	public function changePositionAction($sens) {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('OrangeMainBundle:Question')->listAll();
+		$entities = $em->getRepository('App\Entity\Question')->listAll();
 		$entity= new Question();
 		
 		$this->denyAccessUnlessGranted('changePosition', $entity,'Accés non autorisée');
@@ -183,7 +183,6 @@ class QuestionController extends BaseController{
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Question $entity
 	 * @return array
 	 */
@@ -192,7 +191,7 @@ class QuestionController extends BaseController{
 	  			$entity->getLibelle(),
 	  			$entity->getCotation(),
 	  			$entity->getPosition(),
-	  			$this->get('orange_main.status')->generateStatusForQuestion($entity),
+	  			$this->service_status->generateStatusForQuestion($entity),
 	  			$this->service_action->generateActionsForQuestion($entity)
 	  	);
 	}

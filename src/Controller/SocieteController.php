@@ -22,7 +22,7 @@ class SocieteController extends BaseController {
 	 */
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('OrangeMainBundle:Societe')->listAll();
+		$entities = $em->getRepository('App\Entity\Societe')->listAll();
 		return array('entities' => $entities);
 	}
 	
@@ -33,7 +33,7 @@ class SocieteController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Societe')->listAllQueryBuilder();
+		$queryBuilder = $em->getRepository('App\Entity\Societe')->listAllQueryBuilder();
 		return $this->paginate($request, $queryBuilder);
 	}
 
@@ -79,7 +79,7 @@ class SocieteController extends BaseController {
 	 */
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
-		$societe = $em->getRepository('OrangeMainBundle:Societe')->find($id);
+		$societe = $em->getRepository('App\Entity\Societe')->find($id);
 		return array('entity' => $societe);
 	}
 	
@@ -90,7 +90,7 @@ class SocieteController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Societe')->find($id);
+		$entity = $em->getRepository('App\Entity\Societe')->find($id);
 		$form = $this->createCreateForm($entity, 'Societe');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -103,7 +103,7 @@ class SocieteController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Societe')->find($id);
+		$entity = $em->getRepository('App\Entity\Societe')->find($id);
 		$form = $this->createCreateForm($entity, 'Societe');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -120,7 +120,6 @@ class SocieteController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Societe $entity
 	 * @return array
 	 */
@@ -128,7 +127,7 @@ class SocieteController extends BaseController {
 	  	return array(
 	  			sprintf('<img src="%s" />', $this->get('twig.extension.assets')->getAssetUrl($entity->getWebPath())),
 	  			sprintf('<a href="%s">%s<a/>', $this->generateUrl('details_risque', array('id' => $entity->getId())), $entity->getLibelle()),
-	  			$this->get('orange_main.status')->generateStatusForSociete($entity),
+	  			$this->service_status->generateStatusForSociete($entity),
 	  			$this->service_action->generateActionsForSociete($entity)
 	  	);
 	}

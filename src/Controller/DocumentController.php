@@ -59,7 +59,7 @@ class DocumentController extends BaseController {
 		}
 		$data = $this->get('session')->get('document_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$documents = $em->getRepository('OrangeMainBundle:Document')->getDocumentsByType($form->getData())->getQuery()->execute();
+		$documents = $em->getRepository('App\Entity\Document')->getDocumentsByType($form->getData())->getQuery()->execute();
 		return array('form' => $form->createView(),'position'=>$year, 'type'=>$type, 'currentYear'=>$currrentYear,'documents'=>$documents, 'entityType'=>$entityType);
 	}
 	
@@ -74,7 +74,7 @@ class DocumentController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new DocumentCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('document_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Document')->getDocumentsByType($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Document')->getDocumentsByType($form->getData());
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -145,7 +145,7 @@ class DocumentController extends BaseController {
 	public function supprimeAction(Request $request,$id) {
 		$em = $this->getDoctrine()->getManager();
 		
-		$entity = $em->getRepository('OrangeMainBundle:Document')->find($id);
+		$entity = $em->getRepository('App\Entity\Document')->find($id);
 		
 		if(!$entity){
 			$this->get('session')->getFlashBag()->add('success', "Le document n'existe pas");
@@ -170,7 +170,7 @@ class DocumentController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Document')->find($id);
+		$entity = $em->getRepository('App\Entity\Document')->find($id);
 		$form = $this->createCreateForm($entity, 'Document');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -183,7 +183,7 @@ class DocumentController extends BaseController {
 	 */
 	public function updateAction(Request $request,$id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Document')->find($id);
+		$entity = $em->getRepository('App\Entity\Document')->find($id);
 		$form = $this->createCreateForm($entity, 'Document');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -198,7 +198,6 @@ class DocumentController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Site $entity
 	 * @return array
 	 */
@@ -207,7 +206,7 @@ class DocumentController extends BaseController {
 	  			$entity->getLibelle(),
 	  			$entity->getUtilisateur()->__toString(),
 	  			$entity->getDateCreation()->format('d-m-Y'),
-// 	  			$this->get('orange_main.status')->generateStatusForEntity($entity),
+// 	  			$this->service_status->generateStatusForEntity($entity),
 // 	  			$this->service_action->generateActionsForSite($entity)
 	  		);
 	}

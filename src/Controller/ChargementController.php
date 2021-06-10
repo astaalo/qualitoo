@@ -45,7 +45,7 @@ class ChargementController extends BaseController {
 	 */
 	public function listeAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Chargement')->createQueryBuilder('c')->where('c.etat=1');
+		$queryBuilder = $em->getRepository('App\Entity\Chargement')->createQueryBuilder('c')->where('c.etat=1');
 		return $this->paginate($request, $queryBuilder,'addRowInTableChargement');
 	}
 	
@@ -57,9 +57,9 @@ class ChargementController extends BaseController {
 	public function newAction( Request $request, $id) {
 		$em=$this->getDoctrine()->getManager();
 		$entity =new Chargement();
-		$carto = $em->getRepository('OrangeMainBundle:Cartographie')->find($id);
+		$carto = $em->getRepository('App\Entity\Cartographie')->find($id);
 		$entity->setCartographie($carto);
-		$domaines =  $em->getRepository('OrangeMainBundle:DomaineImpact')->findBy(array('cartographie'=>$carto,'lvl'=>0));
+		$domaines =  $em->getRepository('App\Entity\DomaineImpact')->findBy(array('cartographie'=>$carto,'lvl'=>0));
 		$CC = array();
 		foreach ($domaines as $domaine){
 			$object = new CritereChargement();
@@ -78,7 +78,7 @@ class ChargementController extends BaseController {
 			$criteres_chosis = $request->request->get('chargement')['critere'];
 			foreach ($criteres_chosis as $cr){
 				$id_cr = (int) $cr['critere'];
-				$critere = $em->getRepository('OrangeMainBundle:Critere')->find($id_cr);
+				$critere = $em->getRepository('App\Entity\Critere')->find($id_cr);
 				$object = new CritereChargement();
 				$object->setChargement($entity);
 				$object->setDomaine($critere->getDomaine());
@@ -102,8 +102,8 @@ class ChargementController extends BaseController {
 	public function createAction(Request $request,$id) {
 		$em=$this->getDoctrine()->getEntityManager();
 		$entity = new Chargement();
-		$carto = $em->getRepository('OrangeMainBundle:Cartographie')->find($id);
-		$domaines =  $em->getRepository('OrangeMainBundle:DomaineImpact')->findBy(array('cartographie'=>$carto,'lvl'=>0));
+		$carto = $em->getRepository('App\Entity\Cartographie')->find($id);
+		$domaines =  $em->getRepository('App\Entity\DomaineImpact')->findBy(array('cartographie'=>$carto,'lvl'=>0));
 		foreach ($domaines as $domaine){
 			$object = new CritereChargement();
 			$object->setChargement($entity);
@@ -135,7 +135,7 @@ class ChargementController extends BaseController {
 	public function importAction(Request $request,$id){
 		$em = $this->getDoctrine()->getEntityManager();
 		$form = $this->createForm(new ImportType());
-		$chargement = $em->getRepository('OrangeMainBundle:Chargement')->find($id);
+		$chargement = $em->getRepository('App\Entity\Chargement')->find($id);
 		if(!$chargement) {
 		   throw new EntityNotFoundException("Chargement inexistant.");
 		}
@@ -184,7 +184,7 @@ class ChargementController extends BaseController {
 	public function indexImportAction($id) {
 		$entity=new Risque();
 		$em=$this->getDoctrine()->getEntityManager();
-		$chargement = $em->getRepository('OrangeMainBundle:Chargement')->find($id);
+		$chargement = $em->getRepository('App\Entity\Chargement')->find($id);
 		$this->get('session')->set('risque_criteria', array('cartographie' => $chargement->getCartographie()->getId()));
 		$position=$this->get('session')->get('risque_criteria')['cartographie'];
 		$data = $this->get('session')->get('risque_criteria');
@@ -204,7 +204,7 @@ class ChargementController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Risque')->listByImport($form->getData(), $id);
+		$queryBuilder = $em->getRepository('App\Entity\Risque')->listByImport($form->getData(), $id);
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -215,7 +215,7 @@ class ChargementController extends BaseController {
 	 */
 	public function deleteRisquesImportesAction(Request $request, $id) {
 		$em=$this->getDoctrine()->getEntityManager();
-		$chargement = $em->getRepository('OrangeMainBundle:Chargement')->find($id);
+		$chargement = $em->getRepository('App\Entity\Chargement')->find($id);
 		if($chargement == null)
 			$this->createNotFoundException("Ce chargement n'existe pas!");
 		if($request->getMethod()=='POST') {
@@ -250,7 +250,6 @@ class ChargementController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Risque $entity
 	 * @return array
 	 */
@@ -280,7 +279,6 @@ class ChargementController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Chargement $entity
 	 * @return array
 	 */

@@ -61,7 +61,7 @@ class EquipementController extends BaseController
     	$form = $this->createForm(new EquipementCriteria());
     	$this->modifyRequestForForm($request, $this->get('session')->get('equipement_criteria'), $form);
     	$criteria = $form->getData();
-    	$queryBuilder = $em->getRepository('OrangeMainBundle:Equipement')->listAllQueryBuilder($criteria);
+    	$queryBuilder = $em->getRepository('App\Entity\Equipement')->listAllQueryBuilder($criteria);
     	return $this->paginate($request, $queryBuilder);
     }
    
@@ -122,7 +122,7 @@ class EquipementController extends BaseController
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('OrangeMainBundle:Equipement')->find($id);
+        $entity = $em->getRepository('App\Entity\Equipement')->find($id);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Equipement entity.');
         }
@@ -145,7 +145,7 @@ class EquipementController extends BaseController
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('OrangeMainBundle:Equipement')->find($id);
+        $entity = $em->getRepository('App\Entity\Equipement')->find($id);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Equipement entity.');
         }
@@ -185,7 +185,7 @@ class EquipementController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrangeMainBundle:Equipement')->find($id);
+        $entity = $em->getRepository('App\Entity\Equipement')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Equipement entity.');
@@ -215,7 +215,7 @@ class EquipementController extends BaseController
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('OrangeMainBundle:Equipement')->find($id);
+            $entity = $em->getRepository('App\Entity\Equipement')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Equipement entity.');

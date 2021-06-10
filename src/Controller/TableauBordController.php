@@ -29,7 +29,7 @@ class TableauBordController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:TableauBord')->listAllQueryBuilder();
+		$queryBuilder = $em->getRepository('App\Entity\TableauBord')->listAllQueryBuilder();
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -46,7 +46,6 @@ class TableauBordController extends BaseController {
 
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Site $entity
 	 * @return array
 	 */
@@ -55,7 +54,7 @@ class TableauBordController extends BaseController {
 	  			$entity->getLibelle(),
 	  			'  ',
 	  			'   ',
-// 	  			$this->get('orange_main.status')->generateStatusForEntity($entity),
+// 	  			$this->service_status->generateStatusForEntity($entity),
 // 	  			$this->service_action->generateActionsForSite($entity)
 	  		);
 	}

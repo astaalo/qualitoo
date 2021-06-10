@@ -29,7 +29,7 @@ class AuditHasRisqueController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('OrangeMainBundle:AuditHasRisque')->findAll();
+        $entities = $em->getRepository('App\Entity\AuditHasRisque')->findAll();
 
         return array(
             'entities' => $entities,
@@ -110,7 +110,7 @@ class AuditHasRisqueController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrangeMainBundle:AuditHasRisque')->find($id);
+        $entity = $em->getRepository('App\Entity\AuditHasRisque')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find AuditHasRisque entity.');
@@ -135,7 +135,7 @@ class AuditHasRisqueController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrangeMainBundle:AuditHasRisque')->find($id);
+        $entity = $em->getRepository('App\Entity\AuditHasRisque')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find AuditHasRisque entity.');
@@ -180,7 +180,7 @@ class AuditHasRisqueController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrangeMainBundle:AuditHasRisque')->find($id);
+        $entity = $em->getRepository('App\Entity\AuditHasRisque')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find AuditHasRisque entity.');
@@ -215,7 +215,7 @@ class AuditHasRisqueController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('OrangeMainBundle:AuditHasRisque')->find($id);
+            $entity = $em->getRepository('App\Entity\AuditHasRisque')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find AuditHasRisque entity.');

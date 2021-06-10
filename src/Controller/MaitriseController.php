@@ -19,7 +19,7 @@ class MaitriseController extends BaseController {
 	 */
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('OrangeMainBundle:Controle')->listAll();
+		$entities = $em->getRepository('App\Entity\Controle')->listAll();
 		return array('entities' => $entities);
 	}
 	

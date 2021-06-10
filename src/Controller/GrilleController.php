@@ -23,7 +23,7 @@ class GrilleController extends BaseController{
 	 */
 	public function listByCritereAction() {
 	  $em = $this->getDoctrine()->getManager();
-	  $arrData = $em->getRepository('OrangeMainBundle:Grille')->listByCritere($this->getRequest()->request->get('id'));
+	  $arrData = $em->getRepository('App\Entity\Grille')->listByCritere($this->getRequest()->request->get('id'));
 	  $output = array(0 => array('id' => '', 'libelle' => 'Choisir un niveau ...'));
 	  foreach ($arrData as $data) {
 			$output[] = array('id' => $data['id'], 'libelle' => $data['libelle']);

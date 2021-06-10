@@ -48,7 +48,7 @@ class UtilisateurController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$user = $em->getRepository('OrangeMainBundle:Utilisateur')->find($id);
+		$user = $em->getRepository('App\Entity\Utilisateur')->find($id);
 		$form = $this->createForm(new UtilisateurFormType(), $user);
 		$this->denyAccessUnlessGranted('update', $user,'Accés non autorisé!');
 		$form->setData($user);
@@ -71,7 +71,7 @@ class UtilisateurController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$utilisateur = $em->getRepository('OrangeMainBundle:Utilisateur')->find($id);
+		$utilisateur = $em->getRepository('App\Entity\Utilisateur')->find($id);
 		$this->denyAccessUnlessGranted('read', $utilisateur,'Accés non autorisé!');
 		return array('entity' => $utilisateur);
 	}
@@ -84,7 +84,7 @@ class UtilisateurController extends BaseController {
 	public function changeSocieteAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$this->get('session')->set('entite_id', $id);
-		$entite = $em->getRepository('OrangeMainBundle:Societe')->find($id);
+		$entite = $em->getRepository('App\Entity\Societe')->find($id);
 		$utilisateur = $this->getUser();
 		$utilisateur->setSociete($entite);
 		$em->persist($utilisateur);
@@ -99,7 +99,7 @@ class UtilisateurController extends BaseController {
 	 */
 	public function activateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$utilisateur = $em->getRepository('OrangeMainBundle:Utilisateur')->find($id);
+		$utilisateur = $em->getRepository('App\Entity\Utilisateur')->find($id);
 		$this->denyAccessUnlessGranted('activate', $utilisateur,'Accés non autorisé!');
 		$utilisateur->setEnabled(true);
 		$em->persist($utilisateur);
@@ -115,7 +115,7 @@ class UtilisateurController extends BaseController {
 	 */
 	public function desactivateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$utilisateur = $em->getRepository('OrangeMainBundle:Utilisateur')->find($id);
+		$utilisateur = $em->getRepository('App\Entity\Utilisateur')->find($id);
 		$this->denyAccessUnlessGranted('desactivate', $utilisateur,'Accés non autorisé!');
 		$utilisateur->setEnabled(false);
 		$em->persist($utilisateur);

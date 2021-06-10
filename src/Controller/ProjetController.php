@@ -62,10 +62,10 @@ class ProjetController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new ProjetCriteria());
+		$form = $this->createForm(ProjetCriteria::class, new Projet());
 		$this->modifyRequestForForm($request, $this->get('session')->get('projet_criteria'), $form);
 		$criteria = $form->getData();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Projet')->listAllQueryBuilder($criteria);
+		$queryBuilder = $em->getRepository('App\Entity\Projet')->listAllQueryBuilder($criteria);
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -76,7 +76,7 @@ class ProjetController extends BaseController {
 	 */
 	public function changeStatutAction(Request $request,$id,$statut){
 		$em = $this->getDoctrine()->getManager();
-		$entity =$em->getRepository('OrangeMainBundle:Projet')->find($id);
+		$entity =$em->getRepository('App\Entity\Projet')->find($id);
 		if($request->getMethod()=='POST'){
 		    $entity->setEtat($statut);
 		    $em->persist($entity);
@@ -95,7 +95,7 @@ class ProjetController extends BaseController {
 		$form = $this->createForm(new ProjetCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('projet_criteria'), $form);
 		$criteria = $form->getData();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Projet')->listAllQueryBuilder($criteria);
+		$queryBuilder = $em->getRepository('App\Entity\Projet')->listAllQueryBuilder($criteria);
 		return $this->paginate($request, $queryBuilder, 'addRowInTableSuivi');
 	}
 	
@@ -123,7 +123,7 @@ class ProjetController extends BaseController {
 	public function createAction(Request $request, $id = null) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = new Projet();
-		$processus = $id ? $em->getRepository('OrangeMainBundle:Processus')->find($id) : null;
+		$processus = $id ? $em->getRepository('App\Entity\Processus')->find($id) : null;
 		$entity->setProcessus($processus);
 		$form   = $this->createCreateForm($entity, 'Projet');
 		$form->handleRequest($request);
@@ -143,7 +143,7 @@ class ProjetController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$projet = $em->getRepository('OrangeMainBundle:Projet')->find($id);
+		$projet = $em->getRepository('App\Entity\Projet')->find($id);
 		return array('entity' => $projet);
 	}
 	
@@ -154,7 +154,7 @@ class ProjetController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Projet')->find($id);
+		$entity = $em->getRepository('App\Entity\Projet')->find($id);
 		$form = $this->createCreateForm($entity, 'Projet');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -167,7 +167,7 @@ class ProjetController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Projet')->find($id);
+		$entity = $em->getRepository('App\Entity\Projet')->find($id);
 		$form = $this->createCreateForm($entity, 'Projet');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -192,7 +192,7 @@ class ProjetController extends BaseController {
 	 */
 	public function listByProcessusAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$projets = $em->getRepository('OrangeMainBundle:Projet')->findByProcessusId($request->request->get('id'));
+		$projets = $em->getRepository('App\Entity\Projet')->findByProcessusId($request->request->get('id'));
 		$output = array(array('id' => "", 'libelle' => 'Choisir un projet ...'));
 		foreach ($projets as $projet) {
 			$output[] = array('id' => $projet['id'], 'libelle' => $projet['libelle']);
@@ -208,7 +208,7 @@ class ProjetController extends BaseController {
 	 */
 	public function listByStructureAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$projets = $em->getRepository('OrangeMainBundle:Projet')->findByStructureId($request->request->get('id'));
+		$projets = $em->getRepository('App\Entity\Projet')->findByStructureId($request->request->get('id'));
 		$output = array(array('id' => "", 'libelle' => 'Choisir un projet ...'));
 		foreach ($projets as $projet) {
 			$output[] = array('id' => $projet['id'], 'libelle' => $projet['libelle']);
@@ -225,7 +225,7 @@ class ProjetController extends BaseController {
 	 */
 	public function deleteAction(Request $request, $id){
 		$em = $this->getDoctrine()->getEntityManager();
-		$entity = $em->getRepository('OrangeMainBundle:Projet')->find($id);
+		$entity = $em->getRepository('App\Entity\Projet')->find($id);
 		if($entity == null)
 			$this->createNotFoundException("Ce projet n'existe pas!");
 		
@@ -256,15 +256,13 @@ class ProjetController extends BaseController {
 	}
 	
 	/**
-	 * @todo ajoute un filtre
-	 * @param sfWebRequest $request
+	 * @param Request $request
 	 */
 	protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
 		parent::setFilter($queryBuilder, array('p.libelle'), $request);
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Projet $entity
 	 * @return array
 	 */
@@ -273,13 +271,12 @@ class ProjetController extends BaseController {
 	  			$entity->getCode(),
 	  			$entity->getLibelle(),
 	  			$entity->getUtilisateur()->__toString(),
-	  			$this->get('orange_main.status')->generateStatusForProjet($entity),
+	  			$this->service_status->generateStatusForProjet($entity),
 	  			$this->service_action->generateActionsForProjet($entity)
 	  		);
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Projet $entity
 	 * @return array
 	 */
@@ -288,7 +285,7 @@ class ProjetController extends BaseController {
 				$entity->getCode(),
 				$entity->getLibelle(),
 				$entity->getUtilisateur()->__toString(),
-				$this->get('orange_main.status')->generateStatusForProjet($entity),
+				$this->service_status->generateStatusForProjet($entity),
 				$this->service_action->generateActionsForSuiviProjet($entity)
 		);
 	}

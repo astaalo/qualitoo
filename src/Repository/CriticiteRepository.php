@@ -6,12 +6,6 @@ use App\Entity\Criticite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @method Criticite|null find($id, $lockMode = null, $lockVersion = null)
- * @method Criticite|null findOneBy(array $criteria, array $orderBy = null)
- * @method Criticite[]    findAll()
- * @method Criticite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
 class CriticiteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -19,32 +13,19 @@ class CriticiteRepository extends ServiceEntityRepository
         parent::__construct($registry, Criticite::class);
     }
 
-    // /**
-    //  * @return Criticite[] Returns an array of Criticite objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
+    /**
+     * get criticite by probabilite and gravite
+     * @param integer $probabilite
+     * @param integer $gravite
+     * @return Criticite
+     */
+    public function findByProbabiliteAndGravite($probabilite, $gravite) {
+        if(!$probabilite || !$gravite) {
+            return null;
+        }
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+            ->where('c.vmin <= :valeur AND c.vmax >= :valeur')
+            ->setParameter('valeur', $probabilite*$gravite)
+            ->getQuery()->getOneOrNullResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Criticite
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

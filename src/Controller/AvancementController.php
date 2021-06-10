@@ -17,7 +17,7 @@ class AvancementController extends BaseController {
 	 */
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('OrangeMainBundle:Avancement')->listAll();
+		$entities = $em->getRepository('App\Entity\Avancement')->listAll();
 		return array('entities' => $entities);
 	}
 	
@@ -28,7 +28,7 @@ class AvancementController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Avancement')->listAllQueryBuilder();
+		$queryBuilder = $em->getRepository('App\Entity\Avancement')->listAllQueryBuilder();
 		return $this->paginate($request, $queryBuilder);
 	}
 
@@ -40,7 +40,7 @@ class AvancementController extends BaseController {
 	public function newAction($id) {
 		$entity = new Avancement();
 		$em = $this->getDoctrine()->getManager();
-		$pa = $em->getRepository('OrangeMainBundle:PlanAction')->find($id);
+		$pa = $em->getRepository('App\Entity\PlanAction')->find($id);
 		$entity->setPlanAction($pa);
 		$form   = $this->createCreateForm($entity, 'Avancement');
 		return array('entity' => $entity, 'form' => $form->createView(), 'id'=>$id);
@@ -55,7 +55,7 @@ class AvancementController extends BaseController {
 		$entity = new Avancement();
 		$em = $this->getDoctrine()->getManager();
 		$form   = $this->createCreateForm($entity, 'Avancement');
-		$pa = $em->getRepository('OrangeMainBundle:PlanAction')->find($id);
+		$pa = $em->getRepository('App\Entity\PlanAction')->find($id);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -77,7 +77,7 @@ class AvancementController extends BaseController {
 	 */
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
-		$cause = $em->getRepository('OrangeMainBundle:Avancement')->find($id);
+		$cause = $em->getRepository('App\Entity\Avancement')->find($id);
 		return array('entitie' => $cause);
 	}
 	
@@ -88,7 +88,7 @@ class AvancementController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Avancement')->find($id);
+		$entity = $em->getRepository('App\Entity\Avancement')->find($id);
 		$form = $this->createCreateForm($entity, 'Avancement');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -100,7 +100,7 @@ class AvancementController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Avancement')->find($id);
+		$entity = $em->getRepository('App\Entity\Avancement')->find($id);
 		$form = $this->createCreateForm($entity, 'Avancement');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -122,7 +122,7 @@ class AvancementController extends BaseController {
 	 */
 	public function deleteAction($id) { 
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Avancement')->find($id);
+		$entity = $em->getRepository('App\Entity\Avancement')->find($id);
 		if(!$entity) {
 			throw $this->createNotFoundException('Aucun avancement trouvé pour cet id : '.$id);
 		}
@@ -138,7 +138,6 @@ class AvancementController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Entite $entity
 	 * @return array
 	 */
@@ -146,7 +145,7 @@ class AvancementController extends BaseController {
 	  	return array(
 	  			$entity->__toString(),
 	  			$entity->getParent() ? $entity->getParent()->getName() : null,
-	  			$this->get('orange_main.status')->generateStatusForUtilisateur($entity),
+	  			$this->service_status->generateStatusForUtilisateur($entity),
 	  			$this->service_action->generateActionsForUtilisateur($entity)
 	  	);
 	}

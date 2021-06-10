@@ -20,7 +20,7 @@ class ConsequenceController extends BaseController {
 	 */
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('OrangeMainBundle:Consequence')->listAll();
+		$entities = $em->getRepository('App\Entity\Consequence')->listAll();
 		return array('entities' => $entities);
 	}
 	
@@ -31,7 +31,7 @@ class ConsequenceController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Consequence')->listAllQueryBuilder();
+		$queryBuilder = $em->getRepository('App\Entity\Consequence')->listAllQueryBuilder();
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -73,7 +73,7 @@ class ConsequenceController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$consequence = $em->getRepository('OrangeMainBundle:Consequence')->find($id);
+		$consequence = $em->getRepository('App\Entity\Consequence')->find($id);
 		return array('entity' => $consequence);
 	}
 	
@@ -84,7 +84,7 @@ class ConsequenceController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Consequence')->find($id);
+		$entity = $em->getRepository('App\Entity\Consequence')->find($id);
 		$form = $this->createCreateForm($entity, 'Consequence');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -97,7 +97,7 @@ class ConsequenceController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Consequence')->find($id);
+		$entity = $em->getRepository('App\Entity\Consequence')->find($id);
 		$form = $this->createCreateForm($entity, 'Consequence');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {

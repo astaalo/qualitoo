@@ -33,7 +33,7 @@ class RisqueController extends BaseController {
 	 */
 	public function searchWordAction($kw){
 		$em=$this->getDoctrine()->getManager();
-		$qb = $em->getRepository('OrangeMainBundle:Risque')->createQueryBuilder('r');
+		$qb = $em->getRepository('App\Entity\Risque')->createQueryBuilder('r');
 		$qb->innerJoin('r.menace','m')
  		   ->innerJoin('r.cartographie', 'c')
 		   ->innerJoin('r.causeOfRisque','cOfRis');
@@ -104,7 +104,7 @@ class RisqueController extends BaseController {
 			if(strlen($entity->getRisque()->toTransferts)>0) {
 				$datas=explode(',',str_replace(" ", "",$entity->getRisque()->toTransferts));
 			} else {
-				$datas=array_column($em->getRepository('OrangeMainBundle:Risque')->listToTransfert($criteria)->select('r.id')->getQuery()->getArrayResult(),'id');
+				$datas=array_column($em->getRepository('App\Entity\Risque')->listToTransfert($criteria)->select('r.id')->getQuery()->getArrayResult(),'id');
 			}
 			// recupere les rp a transferer
 			$qb = $em->createQueryBuilder('m')->select('m');
@@ -154,7 +154,7 @@ class RisqueController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Risque')->listValidQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Risque')->listValidQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder,'addRowInValidTableWithChecked');
 	}
 	
@@ -193,7 +193,7 @@ class RisqueController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Risque')->listValidQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Risque')->listValidQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -338,7 +338,7 @@ class RisqueController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Risque')->listToTransfert($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Risque')->listToTransfert($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInTansferedRisqueTable');
 	}
 	
@@ -401,7 +401,7 @@ class RisqueController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Risque')->listUnValidatedRisquesQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Risque')->listUnValidatedRisquesQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInUnvalidatedRisqueTable');
 	}
 
@@ -413,7 +413,7 @@ class RisqueController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Risque')->listUncompletedRisquesQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Risque')->listUncompletedRisquesQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInUncompletedRisqueTable');
 	}
 
@@ -426,7 +426,7 @@ class RisqueController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Risque')->listRejectedRisquesQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Risque')->listRejectedRisquesQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInRejectedRisqueTable');
 	}
 	
@@ -438,26 +438,26 @@ class RisqueController extends BaseController {
 	 */
 	public function validationAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
-		$risque = $em->getRepository('OrangeMainBundle:Risque')->find($id);
+		$risque = $em->getRepository('App\Entity\Risque')->find($id);
 		$entity=null;
 		if(!$risque) 
 			throw $this->createNotFoundException('Aucun risque trouvé pour cet id : '.$id);
 		
 		$cartographie_id=$risque->getCartographie()->getId();
 		if($cartographie_id==1) {
-			$entity = $em->getRepository('OrangeMainBundle:RisqueMetier')->findOneBy(array('risque'=>$risque));
+			$entity = $em->getRepository('App\Entity\RisqueMetier')->findOneBy(array('risque'=>$risque));
 			$form   = $this->createForm(new RisqueMetierType(true), $entity);
 			$view   ='OrangeMainBundle:Risque:validation_metier.html.twig';
 		} elseif ($cartographie_id==2) {
-			$entity = $em->getRepository('OrangeMainBundle:RisqueProjet')->findOneBy(array('risque'=>$risque));
+			$entity = $em->getRepository('App\Entity\RisqueProjet')->findOneBy(array('risque'=>$risque));
 			$form   = $this->createForm(new RisqueProjetType(), $entity);
 			$view   ='OrangeMainBundle:Risque:validation_projet.html.twig';
 		} elseif($cartographie_id==3) {
-			$entity = $em->getRepository('OrangeMainBundle:RisqueSST')->findOneBy(array('risque'=>$risque));
+			$entity = $em->getRepository('App\Entity\RisqueSST')->findOneBy(array('risque'=>$risque));
 			$form   = $this->createForm(new RisqueSSTType(), $entity);
 			$view   ='OrangeMainBundle:Risque:validation_sst.html.twig';
 		} elseif($cartographie_id==4) {
-			$entity = $em->getRepository('OrangeMainBundle:RisqueEnvironnemental')->findOneBy(array('risque'=>$risque));
+			$entity = $em->getRepository('App\Entity\RisqueEnvironnemental')->findOneBy(array('risque'=>$risque));
 			$form   = $this->createForm(new RisqueEnvironnementalType(), $entity);
 			$view   ='OrangeMainBundle:Risque:validation_environnemental.html.twig';
 		} else {
@@ -481,7 +481,7 @@ class RisqueController extends BaseController {
 					$cause = $rha->getCause();
 					$cause->setEtat(true);
 					$lib = $cause->getLibelle();
-					$qb = $em->getRepository('OrangeMainBundle:Risque')->createQueryBuilder('r');
+					$qb = $em->getRepository('App\Entity\Risque')->createQueryBuilder('r');
 					$qb->innerJoin('r.menace','m')
 					->innerJoin('r.cartographie', 'c')
 					->innerJoin('r.causeOfRisque','cOfRis');
@@ -494,7 +494,7 @@ class RisqueController extends BaseController {
 				$event=new CartoEvent($this->container);
 				$event->setRisque($entity->getRisque());
 				$dispatcher->dispatch(OrangeMainBundle::RISQUE_VALIDATED,$event);
-				$this->get('orange_main.status')->logEtatRisque($risque,$this->getUser(),"Validation de la fiche de risque!");
+				$this->service_status->logEtatRisque($risque,$this->getUser(),"Validation de la fiche de risque!");
 				$em->flush();
 				$this->get('session')->getFlashBag()->add('success', "Le risque mis à jour avec succés. Merci de passer à la maitrise de ce risque.");
 				if($risque->getControle()->count()) {
@@ -520,7 +520,7 @@ class RisqueController extends BaseController {
 		 * 
 		 * @var Risque $risque
 		 */
-		$risque = $em->getRepository('OrangeMainBundle:Risque')->find($id);
+		$risque = $em->getRepository('App\Entity\Risque')->find($id);
 		
 		if(!$risque) {
 			throw $this->createNotFoundException('Aucun risque trouvé pour cet id : '.$id);
@@ -559,7 +559,7 @@ class RisqueController extends BaseController {
 	 */
 	public function supprimeCauseOfRisqueAction(Request $request, $id){
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:RisqueHasCause')->find($id);
+		$entity = $em->getRepository('App\Entity\RisqueHasCause')->find($id);
 		
 		if(!$entity)
 			throw $this->createNotFoundException('Aucun cause trouvé pour cet id : '.$id);
@@ -581,7 +581,7 @@ class RisqueController extends BaseController {
 	 */
 	public function deleteAction(Request $request, $id){
 		$em = $this->getDoctrine()->getEntityManager();
-		$entity = $em->getRepository('OrangeMainBundle:Risque')->find($id);
+		$entity = $em->getRepository('App\Entity\Risque')->find($id);
 		if($entity == null)
 			$this->createNotFoundException("Ce risque n'existe pas!");
 		
@@ -604,7 +604,7 @@ class RisqueController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Risque')->find($id);
+		$entity = $em->getRepository('App\Entity\Risque')->find($id);
 		
 		if($entity && $entity->isValidated()==false) {
 			return $this->redirect($this->generateUrl('apercu_risque', array('id' => $entity->getId())));
@@ -623,7 +623,7 @@ class RisqueController extends BaseController {
 	 */
 	public function previewAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$risque = $em->getRepository('OrangeMainBundle:Risque')->find($id);
+		$risque = $em->getRepository('App\Entity\Risque')->find($id);
 		if($risque==null) {
 			$this->createNotFoundException("Le risque n'existe pas dans la base");
 		}
@@ -641,22 +641,22 @@ class RisqueController extends BaseController {
 	 */
 	public function editAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
-		$risque=$em->getRepository('OrangeMainBundle:Risque')->find($id);
+		$risque=$em->getRepository('App\Entity\Risque')->find($id);
 		$cartographie_id=$risque->getCartographie()->getId();
 		if($cartographie_id==1){
-			$entity = $em->getRepository('OrangeMainBundle:RisqueMetier')->findOneBy(array('risque'=>$id));
+			$entity = $em->getRepository('App\Entity\RisqueMetier')->findOneBy(array('risque'=>$id));
 			$form   = $this->createForm(new RisqueMetierType(), $entity);
 			$view   ='OrangeMainBundle:Risque:new_risque_metier.html.twig';
 		} elseif ($cartographie_id==2){
-			$entity = $em->getRepository('OrangeMainBundle:RisqueProjet')->findOneBy(array('risque'=>$id));
+			$entity = $em->getRepository('App\Entity\RisqueProjet')->findOneBy(array('risque'=>$id));
 			$form   = $this->createForm(new RisqueProjetType(), $entity);
 			$view   ='OrangeMainBundle:Risque:new_risque_projet.html.twig';
 		} elseif($cartographie_id==3) {
-			$entity = $em->getRepository('OrangeMainBundle:RisqueSST')->findOneBy(array('risque'=>$id));
+			$entity = $em->getRepository('App\Entity\RisqueSST')->findOneBy(array('risque'=>$id));
 			$form   = $this->createForm(new RisqueSSTType(), $entity);
 			$view   ='OrangeMainBundle:Risque:new_risque_sst.html.twig';
 		} elseif($cartographie_id==4){
-			$entity = $em->getRepository('OrangeMainBundle:RisqueEnvironnemental')->findOneBy(array('risque'=>$id));
+			$entity = $em->getRepository('App\Entity\RisqueEnvironnemental')->findOneBy(array('risque'=>$id));
 			$form   = $this->createForm(new RisqueEnvironnementalType(), $entity);
 			$view   ='OrangeMainBundle:Risque:new_risque_environnemental.html.twig';
 		} else {
@@ -704,7 +704,7 @@ class RisqueController extends BaseController {
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$criteria = $this->get('session')->get('risque_criteria');
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Risque')->listValidQueryBuilder($form->getData())->getQuery()->getResult();
+		$queryBuilder = $em->getRepository('App\Entity\Risque')->listValidQueryBuilder($form->getData())->getQuery()->getResult();
 		if($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'metier'))) {
 			$data = $this->get('orange_main.core')->getMapping('Risque')->mapForExportMetier($queryBuilder, $form->getData()->getCartographie());
 		} elseif($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'projet'))) {
@@ -719,7 +719,6 @@ class RisqueController extends BaseController {
 	}
 
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Risque $entity
 	 * @return array
 	 */
@@ -739,7 +738,6 @@ class RisqueController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Risque $entity
 	 * @return array
 	 */
@@ -756,7 +754,6 @@ class RisqueController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Risque $entity
 	 * @return array
 	 */
@@ -775,7 +772,6 @@ class RisqueController extends BaseController {
 	
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Risque $entity
 	 * @return array
 	 */
@@ -793,7 +789,6 @@ class RisqueController extends BaseController {
 	}
 
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Risque $entity
 	 * @return array
 	 */
@@ -808,7 +803,6 @@ class RisqueController extends BaseController {
 	}
 
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Risque $entity
 	 * @return array
 	 */
@@ -823,7 +817,6 @@ class RisqueController extends BaseController {
 	}
 
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Risque $entity
 	 * @return array
 	 */
@@ -888,7 +881,7 @@ class RisqueController extends BaseController {
 	 */
 	public function getActivitiesByProcessusAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$activities = $em->getRepository('OrangeMainBundle:Activite')->findByProcessusId($request->request->get('id'));
+		$activities = $em->getRepository('App\Entity\Activite')->findByProcessusId($request->request->get('id'));
 		$output = array(array('id' => "", 'libelle' => 'Choisir une activité ...'));
 		foreach ($activities as $activity) {
 			$output[] = array('id' => $activity['id'], 'libelle' => $activity['libelle']);
@@ -904,7 +897,7 @@ class RisqueController extends BaseController {
 	 */
 	public function getActivitiesByStructureAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$activities = $em->getRepository('OrangeMainBundle:Activite')->findByStructureId($request->request->get('id'));
+		$activities = $em->getRepository('App\Entity\Activite')->findByStructureId($request->request->get('id'));
 		$output = array(array('id' => "", 'libelle' => 'Choisir une activité ...'));
 		foreach ($activities as $activity) {
 			$output[] = array('id' => $activity['id'], 'libelle' => $activity['libelle']);
@@ -920,7 +913,7 @@ class RisqueController extends BaseController {
 	 */
 	public function getProjetByProcessusAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$projets = $em->getRepository('OrangeMainBundle:Projet')->findByProcessusId($request->request->get('id'));
+		$projets = $em->getRepository('App\Entity\Projet')->findByProcessusId($request->request->get('id'));
 		$output = array(array('id' => "", 'libelle' => 'Choisir un projet ...'));
 		foreach ($projets as $projet) {
 			$output[] = array('id' => $projet['id'], 'libelle' => $projet['libelle']);
@@ -936,7 +929,7 @@ class RisqueController extends BaseController {
 	 */
 	public function getProcessusByStructureAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$processuses = $em->getRepository('OrangeMainBundle:Processus')->findByStructureId($request->request->get('id'));
+		$processuses = $em->getRepository('App\Entity\Processus')->findByStructureId($request->request->get('id'));
 		$output = array(array('id' => "", 'libelle' => 'Choisir un processus ...'));
 		foreach ($processuses as $processus) {
 			$libelle = ($processus['type'] == 1) ? '[MP] - '.$processus['libelle']
@@ -954,7 +947,7 @@ class RisqueController extends BaseController {
 	 */
 	public function getResponsableByStructureAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$structure = $em->getRepository('OrangeMainBundle:Structure')->find($request->request->get('id'));
+		$structure = $em->getRepository('App\Entity\Structure')->find($request->request->get('id'));
 
 		if(!$structure) {
 			throw $this->createNotFoundException('Aucune structure trouvée pour cet id : '.$request->request->get('id'));
@@ -968,7 +961,7 @@ class RisqueController extends BaseController {
 	 */
 	public function getResponsableBySiteAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$site = $em->getRepository('OrangeMainBundle:Site')->find($request->request->get('id'));
+		$site = $em->getRepository('App\Entity\Site')->find($request->request->get('id'));
 	
 		if(!$site) {
 			throw $this->createNotFoundException('Aucune structure trouvée pour cet id : '.$request->request->get('id'));

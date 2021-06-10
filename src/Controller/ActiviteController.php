@@ -73,7 +73,7 @@ class ActiviteController extends BaseController
 	public function showAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$activite = $em->getRepository('OrangeMainBundle:Activite')->find($id);
+		$activite = $em->getRepository('App\Entity\Activite')->find($id);
 		$this->denyAccessUnlessGranted('read', $activite, 'Accés non autorisé');
 		return array('entitie' => $activite);
 	}
@@ -86,7 +86,7 @@ class ActiviteController extends BaseController
 	public function deleteAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$activite = $em->getRepository('OrangeMainBundle:Activite')->find($id);
+		$activite = $em->getRepository('App\Entity\Activite')->find($id);
 		$this->denyAccessUnlessGranted('delete', $activite, 'Accés non autorisé');
 		$processus = $activite->getProcessus();
 		if (count($activite->getRisque()) <= 0) {
@@ -150,7 +150,7 @@ class ActiviteController extends BaseController
 	public function editAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Activite')->find($id);
+		$entity = $em->getRepository('App\Entity\Activite')->find($id);
 		$form = $this->createCreateForm($entity, 'Activite');
 
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
@@ -166,7 +166,7 @@ class ActiviteController extends BaseController
 	public function updateAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Activite')->find($id);
+		$entity = $em->getRepository('App\Entity\Activite')->find($id);
 		$form = $this->createCreateForm($entity, 'Activite');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -222,10 +222,10 @@ class ActiviteController extends BaseController
 	public function compareAction(Request $request, $id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Activite')->find($id);
+		$entity = $em->getRepository('App\Entity\Activite')->find($id);
 		$lib = $entity->getLibelleSansCarSpecial();
 		$structure = $entity->getProcessus()->getStructure()->getId();
-		$same = $em->getRepository('OrangeMainBundle:Activite')->findStructureBy($structure, $lib);
+		$same = $em->getRepository('App\Entity\Activite')->findStructureBy($structure, $lib);
 		return new Response($this->renderView('OrangeMainBundle:Activite:merge.html.twig', array(
 			'activites' => $same,
 		)));
@@ -241,15 +241,15 @@ class ActiviteController extends BaseController
 	public function supprimeAction(Request $request, $id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Activite')->find($id);
+		$entity = $em->getRepository('App\Entity\Activite')->find($id);
 		if ($entity) {
 			$ok =  $entity->setEtat(0);
 			$em->flush();
 			$lib = $ok->getLibelleSansCarSpecial();
 			$structure = $ok->getProcessus()->getStructure()->getId();
-			$sames = $em->getRepository('OrangeMainBundle:Activite')->findStructureByEtat($structure, $lib);
+			$sames = $em->getRepository('App\Entity\Activite')->findStructureByEtat($structure, $lib);
 			$same = $sames[0];
-			$ActivitesToUpdateInRisqueMetier = $em->getRepository('OrangeMainBundle:RisqueMetier')->findBy(array("activite" => $id));
+			$ActivitesToUpdateInRisqueMetier = $em->getRepository('App\Entity\RisqueMetier')->findBy(array("activite" => $id));
 			foreach ($ActivitesToUpdateInRisqueMetier as $ActiviteToUpdateInRisqueMetier) {
 				$ActiviteToUpdateInRisqueMetier->setActivite($same);
 			}

@@ -175,7 +175,7 @@ class KPIController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Controle')->getControles($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\Controle')->getControles($form->getData());
 		$this->get('session')->set('export', array('kpis' => serialize($queryBuilder->getQuery()->execute()), 'type'=>'Risque','source'=>'cmc'));
 		return $this->paginate($request, $queryBuilder, 'addRowInTableControle');
 	}
@@ -312,7 +312,6 @@ class KPIController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Controle $entity
 	 * @return array
 	 */

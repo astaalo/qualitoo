@@ -47,7 +47,7 @@ class ProcessusRepository extends ServiceEntityRepository
     public function getIdsChilrenAndMeBuilder($processus_id) {
         $queryBuilder = $this->createQueryBuilder('q')
             ->select('q.id')
-            ->innerJoin('OrangeMainBundle:Processus', 'p', 'WITH', 'q.root = p.root')
+            ->innerJoin('App\Entity\Processus', 'p', 'WITH', 'q.root = p.root')
             ->where('p.lft <= q.lft AND p.rgt >= q.rgt AND p.lvl <= q.lvl');
         if($processus_id) {
             $queryBuilder->andWhere('p.id = :processus_id');
@@ -107,12 +107,12 @@ class ProcessusRepository extends ServiceEntityRepository
             ->where('s.societe = :societe')
             ->setParameter('societe', $this->_user->getSociete());
         if($criteria->getStructure()) {
-            $queryBuilder->innerJoin('OrangeMainBundle:Structure', 'ps')
+            $queryBuilder->innerJoin('App\Entity\Structure', 'ps')
                 ->andWhere('ps = :structure')->setParameter('structure', $criteria->getStructure())
                 ->andWhere('ps.root = s.root AND ps.lvl <= s.lvl AND ps.lft <= s.lft AND ps.rgt >= s.rgt');
         }
         if($criteria->processus) {
-            $queryBuilder->innerJoin('OrangeMainBundle:Processus', 'pp')
+            $queryBuilder->innerJoin('App\Entity\Processus', 'pp')
                 ->andWhere('pp = :processus')->setParameter('processus', $criteria->processus)
                 ->andWhere('pp.root = p.root AND pp.lvl <= p.lvl AND pp.lft <= p.lft AND pp.rgt >= p.rgt');
         }
@@ -151,7 +151,7 @@ class ProcessusRepository extends ServiceEntityRepository
             ->select('q.id, q.libelle, tp.id type')
             ->innerJoin('q.structure', 's')
             ->innerJoin('q.typeProcessus', 'tp')
-            ->innerJoin('OrangeMainBundle:Structure', 'r')
+            ->innerJoin('App\Entity\Structure', 'r')
             ->where('r.id = :structure_id')
             ->andWhere('r.root = s.root AND r.lvl <= s.lvl AND r.lft <= s.lft AND r.rgt >= s.rgt')
             ->setParameter('structure_id', $structure_id)->orderBy('q.libelle')

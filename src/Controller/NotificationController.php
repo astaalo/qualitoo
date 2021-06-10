@@ -52,7 +52,7 @@ class NotificationController extends BaseController {
      */
 	public function listUnreadNotificationAction(Request $request){
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Notification')->getUnreadNotif();
+		$queryBuilder = $em->getRepository('App\Entity\Notification')->getUnreadNotif();
 		return $this->paginate($request, $queryBuilder);
 	}
 	/**

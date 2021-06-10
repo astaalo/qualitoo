@@ -18,7 +18,7 @@ class TraceController extends BaseController
 	 */
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('OrangeMainBundle:Trace')->listAll();
+		$entities = $em->getRepository('App\Entity\Trace')->listAll();
 		return array('entities' => $entities);
 	}
 	
@@ -28,7 +28,7 @@ class TraceController extends BaseController
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Trace')->listAllQueryBuilder();
+		$queryBuilder = $em->getRepository('App\Entity\Trace')->listAllQueryBuilder();
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -65,7 +65,7 @@ class TraceController extends BaseController
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$trace = $em->getRepository('OrangeMainBundle:Trace')->find($id);
+		$trace = $em->getRepository('App\Entity\Trace')->find($id);
 		return array('entity' => $trace);
 	}
 	
@@ -75,7 +75,7 @@ class TraceController extends BaseController
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Trace')->find($id);
+		$entity = $em->getRepository('App\Entity\Trace')->find($id);
 		$form = $this->createCreateForm($entity, 'Trace');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -87,7 +87,7 @@ class TraceController extends BaseController
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Trace')->find($id);
+		$entity = $em->getRepository('App\Entity\Trace')->find($id);
 		$form = $this->createCreateForm($entity, 'Trace');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {

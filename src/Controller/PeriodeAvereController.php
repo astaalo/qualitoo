@@ -26,7 +26,7 @@ class PeriodeAvereController extends BaseController
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('OrangeMainBundle:PeriodeAvere')->findAll();
+        $entities = $em->getRepository('App\Entity\PeriodeAvere')->findAll();
         return array(
             'entities' => $entities,
         );

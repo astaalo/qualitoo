@@ -57,7 +57,7 @@ class StructureController extends BaseController {
 		$form = $this->createForm(new StructureType());
 		$this->modifyRequestForForm($request, $this->get('session')->get('structure_criteria'), $form);
 		$criteria = $form->getData();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Structure')->listAllQueryBuilder($criteria);
+		$queryBuilder = $em->getRepository('App\Entity\Structure')->listAllQueryBuilder($criteria);
 		return $this->paginate($request, $queryBuilder);
 	}
 
@@ -104,7 +104,7 @@ class StructureController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$structure = $em->getRepository('OrangeMainBundle:Structure')->find($id);
+		$structure = $em->getRepository('App\Entity\Structure')->find($id);
 		$this->denyAccessUnlessGranted('read', $structure, 'Accés non autorisé');
 		return array('entity' => $structure);
 	}
@@ -117,7 +117,7 @@ class StructureController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Structure')->find($id);
+		$entity = $em->getRepository('App\Entity\Structure')->find($id);
 		$form = $this->createCreateForm($entity, 'Structure');
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
@@ -131,7 +131,7 @@ class StructureController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Structure')->find($id);
+		$entity = $em->getRepository('App\Entity\Structure')->find($id);
 		$form = $this->createCreateForm($entity, 'Structure');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -159,7 +159,7 @@ class StructureController extends BaseController {
 	 */
 	public function deleteAction(Request $request, $id){
 		$em = $this->getDoctrine()->getEntityManager();
-		$entity = $em->getRepository('OrangeMainBundle:Structure')->find($id);
+		$entity = $em->getRepository('App\Entity\Structure')->find($id);
 		if($entity == null)
 			$this->createNotFoundException("Cette structure n'existe pas!");
 		
@@ -184,7 +184,7 @@ class StructureController extends BaseController {
 	 */
 	public function showForRisqueInModalAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$structure = $em->getRepository('OrangeMainBundle:Structure')->findOneByFullname($request->request->get('value'));
+		$structure = $em->getRepository('App\Entity\Structure')->findOneByFullname($request->request->get('value'));
 		$entity = Hierarchie::createFromStructure($structure);
 		$form = $this->createCreateForm($entity, 'Hierarchie');
 		return array('entity' => $entity, 'form' => $form->createView());
@@ -205,7 +205,7 @@ class StructureController extends BaseController {
 	 */
 	public function structureByParentAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$arrData = $em->getRepository('OrangeMainBundle:Structure')->listByParent($request->request->get('id'))->getQuery()->execute();
+		$arrData = $em->getRepository('App\Entity\Structure')->listByParent($request->request->get('id'))->getQuery()->execute();
 		$output = array(0 => array('id' => '', 'libelle' => 'Choisir une entité ...'));
 		foreach ($arrData as $data) {
 			$output[] = array('id' => $data->getId(), 'libelle' => $data->getName());
@@ -226,7 +226,6 @@ class StructureController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Structure $entity
 	 * @return array
 	 */

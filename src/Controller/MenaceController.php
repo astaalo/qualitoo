@@ -52,7 +52,7 @@ class MenaceController extends BaseController {
 	 */
 	public function listAveresAction(Request $request,$periode_id) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Menace')->listAvereByPeriode($periode_id);
+		$queryBuilder = $em->getRepository('App\Entity\Menace')->listAvereByPeriode($periode_id);
 		return $this->paginate($request, $queryBuilder,'addRowAvere');
 	}
 	
@@ -71,7 +71,7 @@ class MenaceController extends BaseController {
 	 */
 	public function listAverablesAction(Request $request,$periode_id) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Menace')->listAverableByPeriode($periode_id);
+		$queryBuilder = $em->getRepository('App\Entity\Menace')->listAverableByPeriode($periode_id);
 		return $this->paginate($request, $queryBuilder,'addRowAverable');
 	}
 	
@@ -94,7 +94,7 @@ class MenaceController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Menace')->listAllQueryBuilder();
+		$queryBuilder = $em->getRepository('App\Entity\Menace')->listAllQueryBuilder();
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -136,7 +136,7 @@ class MenaceController extends BaseController {
 	 */
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
-		$menace = $em->getRepository('OrangeMainBundle:Menace')->find($id);
+		$menace = $em->getRepository('App\Entity\Menace')->find($id);
 		
 		$this->denyAccessUnlessGranted('create', $menace, 'Accés non autorisé');
 		
@@ -150,7 +150,7 @@ class MenaceController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Menace')->find($id);
+		$entity = $em->getRepository('App\Entity\Menace')->find($id);
 		$form = $this->createCreateForm($entity, 'Menace');
 		
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
@@ -167,7 +167,7 @@ class MenaceController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Menace')->find($id);
+		$entity = $em->getRepository('App\Entity\Menace')->find($id);
 		$form = $this->createCreateForm($entity, 'Menace');
 		$request = $this->get('request');
 		if ($request->getMethod() == 'POST') {
@@ -190,7 +190,6 @@ class MenaceController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Menace $entity
 	 * @return array
 	 */
@@ -205,7 +204,6 @@ class MenaceController extends BaseController {
 	
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Menace $entity
 	 * @return array
 	 */
@@ -221,7 +219,6 @@ class MenaceController extends BaseController {
 	
 
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Menace $entity
 	 * @return array
 	 */
@@ -242,9 +239,9 @@ class MenaceController extends BaseController {
 	 */ 
 	public function compareAction(Request $request, $id ) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Menace')->find($id);
+		$entity = $em->getRepository('App\Entity\Menace')->find($id);
 		$lib= $entity->getLibelleSansCarSpecial();
-		$same=$em->getRepository('OrangeMainBundle:Menace')->findBy(array("libelleSansCarSpecial"=>$lib,"etat"=>1));
+		$same=$em->getRepository('App\Entity\Menace')->findBy(array("libelleSansCarSpecial"=>$lib,"etat"=>1));
 		
 		return new Response($this->renderView('OrangeMainBundle:Menace:compare.html.twig', array(
 			'menaces' =>$same,
@@ -260,12 +257,12 @@ class MenaceController extends BaseController {
 	 */
 		public function deleteAction(Request $request, $id ) {
 			$em = $this->getDoctrine()->getManager();
-			$entity = $em->getRepository('OrangeMainBundle:Menace')->findOneBy(array("id"=>$id,"etat"=>1));
+			$entity = $em->getRepository('App\Entity\Menace')->findOneBy(array("id"=>$id,"etat"=>1));
 				$ok =  $entity->setEtat(0);
 				$em->flush();
 				$lib= $ok->getLibelleSansCarSpecial();
-				$same=$em->getRepository('OrangeMainBundle:Menace')->findOneBy(array("libelleSansCarSpecial"=>$lib,"etat"=>1));
-				$menacesToUpdate= $em->getRepository('OrangeMainBundle:Risque')->findBy(array("menace"=>$id));
+				$same=$em->getRepository('App\Entity\Menace')->findOneBy(array("libelleSansCarSpecial"=>$lib,"etat"=>1));
+				$menacesToUpdate= $em->getRepository('App\Entity\Risque')->findBy(array("menace"=>$id));
 				foreach ($menacesToUpdate as $menaceToUpdate) {	
 					$menaceToUpdate->setMenace($same);
 		    		$menaceToUpdate->setTobeMigrate(1);

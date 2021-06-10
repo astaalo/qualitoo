@@ -9,9 +9,9 @@ class RisqueHasCauseCriteria extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('grille', new GrilleCriteria());
-        $builder->add('cause', new CauseCriteria());
-        $builder->add('risque', new RisqueCriteria());
+        $builder->add('grille', GrilleCriteria::class);
+        $builder->add('cause', CauseCriteria::class);
+        $builder->add('risque', RisqueCriteria::class);
     }
 	
 	public function setDefaultOptions(OptionsResolver $resolver)

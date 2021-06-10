@@ -21,8 +21,8 @@ class ExtractionController extends BaseController {
 	 */
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$extractions = $em->getRepository('OrangeMainBundle:Extraction')->findAll();
-		$societe = $em->getRepository('OrangeMainBundle:Societe')->find($this->getUser()->getSociete()->getId());
+		$extractions = $em->getRepository('App\Entity\Extraction')->findAll();
+		$societe = $em->getRepository('App\Entity\Societe')->find($this->getUser()->getSociete()->getId());
 		$form = $this->createCreateForm($societe, 'OurReporting');
 		return array('form' => $form->createView(), 'extractions' => $extractions);
 	}
@@ -35,7 +35,7 @@ class ExtractionController extends BaseController {
 	 */
 	public function changeAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$societe = $em->getRepository('OrangeMainBundle:Societe')->find($this->getUser()->getSociete()->getId());
+		$societe = $em->getRepository('App\Entity\Societe')->find($this->getUser()->getSociete()->getId());
 		$form = $this->createCreateForm($societe, 'OurReporting');
 		$form->handleRequest($request);
 		$em->persist($societe);

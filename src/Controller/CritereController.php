@@ -35,7 +35,7 @@ class CritereController extends BaseController {
 	 */
 	public function newAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$cartographie = $em->getRepository('OrangeMainBundle:Cartographie')->find($id);
+		$cartographie = $em->getRepository('App\Entity\Cartographie')->find($id);
 		$entity = new Critere();
 		
 		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
@@ -69,7 +69,7 @@ class CritereController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Critere')->find($id);
+		$entity = $em->getRepository('App\Entity\Critere')->find($id);
 		
 		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		
@@ -83,7 +83,7 @@ class CritereController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Critere')->find($id);
+		$entity = $em->getRepository('App\Entity\Critere')->find($id);
 		$form = $this->createCreateForm($entity, 'Critere', array('attr' => array('em' => $em)));
 		
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
@@ -99,7 +99,7 @@ class CritereController extends BaseController {
 	 */
 	public function updateAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Critere')->find($id);
+		$entity = $em->getRepository('App\Entity\Critere')->find($id);
 		$form = $this->createCreateForm($entity, 'Critere', array('attr' => array('em' => $em)));
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
@@ -119,7 +119,7 @@ class CritereController extends BaseController {
 	public function listByDomainesAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$ids = json_decode($request->request->get('ids'));
-		$criteres = $em->getRepository('OrangeMainBundle:Critere')->findByDomaines($ids);
+		$criteres = $em->getRepository('App\Entity\Critere')->findByDomaines($ids);
 		$output = array(array('id' => "", 'libelle' => 'Choisir une critère ...'));
 		foreach ($criteres as $critere) {
 			$output[] = array('id' => $critere['id'], 'libelle' => $critere['libelle']);
@@ -138,7 +138,7 @@ class CritereController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		
 		/** @var Critere $entity */
-		$entity = $em->getRepository('OrangeMainBundle:Critere')->find($id);
+		$entity = $em->getRepository('App\Entity\Critere')->find($id);
 		
 		if(!$entity){
 			$this->get('session')->getFlashBag()->add('error', "Le critère n'existe pas");

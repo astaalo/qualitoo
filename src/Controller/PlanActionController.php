@@ -79,7 +79,7 @@ class PlanActionController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new PlanActionCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('planaction_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:PlanAction')->listAllQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\PlanAction')->listAllQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -92,7 +92,7 @@ class PlanActionController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new PlanActionCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('dispositif_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:PlanAction')->listAllQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository('App\Entity\PlanAction')->listAllQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInTableForDispositif');
 	}
 	
@@ -177,7 +177,7 @@ class PlanActionController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$planaction = $em->getRepository('OrangeMainBundle:PlanAction')->find($id);
+		$planaction = $em->getRepository('App\Entity\PlanAction')->find($id);
 		if(! $planaction)
 			throw $this->createNotFoundException('Aucun controle trouvé pour cet id : ' . $id);
 		// $this->denyAccessUnlessGranted('accesOnePa', $planaction, 'Accés non autorisé!');
@@ -191,7 +191,7 @@ class PlanActionController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:PlanAction')->find($id);
+		$entity = $em->getRepository('App\Entity\PlanAction')->find($id);
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé!');
 		$form = $this->createCreateForm($entity, 'PlanAction', array(
 				'attr' => array('type_statut' => $this->getMyParameter('types', array('statut', 'plan_action')), 'em' => $em) 
@@ -207,7 +207,7 @@ class PlanActionController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:PlanAction')->find($id);
+		$entity = $em->getRepository('App\Entity\PlanAction')->find($id);
 		$form = $this->createCreateForm($entity, 'PlanAction', array(
 				'attr' => array('type_statut' => $this->getMyParameter('types', array('statut', 'plan_action')), 'em' => $em) 
 			));
@@ -248,7 +248,7 @@ class PlanActionController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new PlanActionCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('planaction_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:PlanAction')->listAllQueryBuilder($form->getData())->getQuery()->getResult();
+		$queryBuilder = $em->getRepository('App\Entity\PlanAction')->listAllQueryBuilder($form->getData())->getQuery()->getResult();
 		$data = $this->get('orange_main.core')->getMapping('PlanAction')->mapForExport($queryBuilder);
 		$reporting = $this->get('orange_main.core')->getReporting('PlanAction')->extract($data);
 		return $reporting->getResponseAfterSave('php://output', 'PlanActions');
@@ -277,7 +277,7 @@ class PlanActionController extends BaseController {
 	 */
 	public function deleteAction(Request $request,$id){
 		$em = $this->getDoctrine()->getEntityManager();
-		$planAction = $em->getRepository('OrangeMainBundle:PlanAction')->find($id);
+		$planAction = $em->getRepository('App\Entity\PlanAction')->find($id);
 		if(!$planAction)
 			throw new EntityNotFoundException("plan d'action n'existe pas!");
 		
@@ -292,7 +292,6 @@ class PlanActionController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\PlanAction $entity        	
 	 * @return array
 	 */
@@ -309,7 +308,6 @@ class PlanActionController extends BaseController {
 	}
 	
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\PlanAction $entity        	
 	 * @return array
 	 */

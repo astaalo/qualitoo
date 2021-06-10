@@ -43,7 +43,7 @@ class ControleController extends BaseController {
 		$em = $this->getDoctrine ()->getManager ();
 		$form = $this->createForm(new ControleCriteria ());
 		$this->modifyRequestForForm($request, $this->get('session')->get('controle_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Controle')->listAllQueryBuilder($form->getData ());
+		$queryBuilder = $em->getRepository('App\Entity\Controle')->listAllQueryBuilder($form->getData ());
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -75,11 +75,11 @@ class ControleController extends BaseController {
 		$entity = new Controle ();
 		$em = $this->getDoctrine ()->getManager ();
 		if ($risque_id) {
-			$risque = $em->getRepository('OrangeMainBundle:Risque')->find($risque_id);
+			$risque = $em->getRepository('App\Entity\Risque')->find($risque_id);
 			$entity->setRisque($risque);
 		}
 		if ($pa_id) {
-			$planaction = $em->getRepository('OrangeMainBundle:PlanAction')->find($pa_id);
+			$planaction = $em->getRepository('App\Entity\PlanAction')->find($pa_id);
 			$entity->setPlanAction($planaction);
 			$entity->setRisque($planaction->getRisque ());
 			$entity->setCauseOfRisque($planaction->getCauseOfRisque ());
@@ -153,7 +153,7 @@ class ControleController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine ()->getManager ();
-		$controle = $em->getRepository('OrangeMainBundle:Controle')->find($id);
+		$controle = $em->getRepository('App\Entity\Controle')->find($id);
 		
 		if (! $controle)
 			throw $this->createNotFoundException('Aucun controle trouvé pour cet id : ' . $id);
@@ -169,7 +169,7 @@ class ControleController extends BaseController {
 	 */
 	public function supprimeAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('OrangeMainBundle:Controle')->find($id);
+		$entity = $em->getRepository('App\Entity\Controle')->find($id);
 		if (! $entity) {
 			throw $this->createNotFoundException('Aucun controle trouvé pour cet id : ' . $id);
 		}
@@ -192,7 +192,7 @@ class ControleController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine ()->getManager ();
-		$entity = $em->getRepository('OrangeMainBundle:Controle')->find($id);
+		$entity = $em->getRepository('App\Entity\Controle')->find($id);
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé!');
 		$form = $this->createCreateForm($entity, 'Controle', array('attr' => array ('em' => $em)));
 		return array('entity' => $entity, 'form' => $form->createView());
@@ -206,7 +206,7 @@ class ControleController extends BaseController {
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine ()->getManager ();
-		$entity = $em->getRepository('OrangeMainBundle:Controle')->find($id);
+		$entity = $em->getRepository('App\Entity\Controle')->find($id);
 		$form = $this->createCreateForm($entity, 'Controle', array('attr' => array ('em' => $em)));
 		$request = $this->get('request');
 		if ($request->getMethod () == 'POST') {
@@ -256,7 +256,7 @@ class ControleController extends BaseController {
 	 */
 	public function listPasByPeriodiciteAction(Request $request) {
 		$em = $this->getDoctrine ()->getManager ();
-		$arrData = $em->getRepository('OrangeMainBundle:Pas')->listByPeriodicite($request->request->get('id'));
+		$arrData = $em->getRepository('App\Entity\Pas')->listByPeriodicite($request->request->get('id'));
 		$output = array(0 => array ('id' => null, 'libelle' => 'Choisir un pas ...'));
 		foreach($arrData as $data){
 			$output [] = array('id' => $data ['id'], 'libelle' => $data ['valeur']);
@@ -273,11 +273,11 @@ class ControleController extends BaseController {
 	 */
 	public function evaluationAction(Request $request, $id) {
 		$em = $this->getDoctrine ()->getManager ();
-		$controle = $em->getRepository('OrangeMainBundle:Controle')->find($id);
+		$controle = $em->getRepository('App\Entity\Controle')->find($id);
 		if (! $controle) {
 			throw $this->createNotFoundException('Aucun controle trouvé pour cet id : ' . $id);
 		}
-		$questions = $em->getRepository('OrangeMainBundle:Question')->findAll ();
+		$questions = $em->getRepository('App\Entity\Question')->findAll ();
 		$user = $this->getUser ();
 		$quiz = new Quiz ();
 		$quiz->setControle($controle);
@@ -292,7 +292,7 @@ class ControleController extends BaseController {
 			$form->handleRequest($request);
 			if ($form->isvalid ()) {
 				$note = $quiz->getRapport ();
-				$maturite = $em->getRepository('OrangeMainBundle:Maturite')->findOneByValeur($note);
+				$maturite = $em->getRepository('App\Entity\Maturite')->findOneByValeur($note);
 				$quiz->setMaturite($maturite);
 				$controle->setMaturiteReel($maturite);
 				$controle->getRisque()->setTobeMigrate(true);
@@ -311,7 +311,7 @@ class ControleController extends BaseController {
 	public function executionAction($id) {
 		$em = $this->getDoctrine ()->getManager ();
 		$entity = new Execution ();
-		$controle = $em->getRepository('OrangeMainBundle:Controle')->find($id);
+		$controle = $em->getRepository('App\Entity\Controle')->find($id);
 		$form = $this->createCreateForm($entity, 'Execution');
 		return array ('entity' => $controle, 'form' => $form->createView());
 	}
@@ -322,7 +322,7 @@ class ControleController extends BaseController {
 	public function executeAction(Request $request, $id) {
 		$em = $this->getDoctrine ()->getManager ();
 		$entity = new Execution ();
-		$controle = $em->getRepository('OrangeMainBundle:Controle')->find($id);
+		$controle = $em->getRepository('App\Entity\Controle')->find($id);
 		$entity->setControle($em->getReference('OrangeMainBundle:Controle', $id));
 		$entity->setExecuteur($this->getUser ());
 		$form = $this->createCreateForm($entity, 'Execution');
@@ -348,8 +348,8 @@ class ControleController extends BaseController {
 		$em = $this->getDoctrine ()->getManager ();
 		$form = $this->createForm(new ControleCriteria ());
 		$this->modifyRequestForForm($request, $this->get('session')->get('controle_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Controle')->listAllQueryBuilder($form->getData ())->getQuery ()->getResult ();
-		$traitements = $em->getRepository('OrangeMainBundle:Traitement')->findAll ();
+		$queryBuilder = $em->getRepository('App\Entity\Controle')->listAllQueryBuilder($form->getData ())->getQuery ()->getResult ();
+		$traitements = $em->getRepository('App\Entity\Traitement')->findAll ();
 		$data = $this->get('orange_main.core')->getMapping('Controle')->mapForExport($queryBuilder, $traitements);
 		$reporting = $this->get('orange_main.core')->getReporting('Controle')->extract($data);
 		$reporting->getResponseAfterSave('php://output', 'Controles');
@@ -361,7 +361,7 @@ class ControleController extends BaseController {
 	 */
 	public function grilleBycartoAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$arrData = $em->getRepository('OrangeMainBundle:Grille')->getGrilleByCartoForMaturiteSSTE($request->request->get('id'))->getQuery()->execute();
+		$arrData = $em->getRepository('App\Entity\Grille')->getGrilleByCartoForMaturiteSSTE($request->request->get('id'))->getQuery()->execute();
 		$output = array(0 => array('id' => '', 'libelle' => 'Choisir la maturité ...'));
 		foreach ($arrData as $data) {
 			$output[] = array('id' => $data->getId(), 'libelle' => $data->getLibelle());
@@ -373,7 +373,6 @@ class ControleController extends BaseController {
 	
 	/**
 	 *
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Controle $entity        	
 	 * @return array
 	 */

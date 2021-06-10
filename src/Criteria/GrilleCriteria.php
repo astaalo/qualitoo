@@ -9,7 +9,7 @@ class GrilleCriteria extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('note', new NoteCriteria());
+        $builder->add('note', NoteCriteria::class);
     }
 	
 	public function setDefaultOptions(OptionsResolver $resolver)

@@ -19,7 +19,7 @@ class BaseRepository extends EntityRepository
 		return $this->filterBySociete($this->createQueryBuilder('q'))->getQuery()->execute();
 	}
 	
-	public function filterBySociete(QueryBuilder $queryBuilder, $alias = null) {
+	public function filterBySocieteOLD(QueryBuilder $queryBuilder, $alias = null) {
 		if(!$alias) {
 			$aliases = $queryBuilder->getRootAliases();
 			$alias = $aliases[0];
@@ -29,7 +29,17 @@ class BaseRepository extends EntityRepository
 		}
 		return $queryBuilder;
 	}
-	
+
+    public static function filterBySociete(QueryBuilder $queryBuilder, $alias = null, $user = null) {
+        if(!$alias) {
+            $aliases = $queryBuilder->getRootAliases();
+            $alias = $aliases[0];
+        }
+        if($user->getSociete()) {
+            $queryBuilder->andWhere($alias . '.societe = :societe')->setParameter('societe', $user->getSociete());
+        }
+        return $queryBuilder;
+    }
 
 	public function filterByProfile(QueryBuilder $queryBuilder, $alias = null, $role = null) {
 		if(!$alias) {

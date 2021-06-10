@@ -383,7 +383,7 @@ class ControleController extends BaseController {
 				$entity->getRisque() ? $entity->getRisque()->__toString() : '',
 				$entity->getCauseOfRisque() ? $entity->getCauseOfRisque()->__toString() : '',
 				$entity->getDescription(),
-				$this->get('orange.main.actions')->generateActionsForControle($entity) 
+				$this->service_action->generateActionsForControle($entity)
 			);
 	}
 	

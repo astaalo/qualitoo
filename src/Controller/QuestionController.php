@@ -193,7 +193,7 @@ class QuestionController extends BaseController{
 	  			$entity->getCotation(),
 	  			$entity->getPosition(),
 	  			$this->get('orange_main.status')->generateStatusForQuestion($entity),
-	  			$this->get('orange.main.actions')->generateActionsForQuestion($entity)
+	  			$this->service_action->generateActionsForQuestion($entity)
 	  	);
 	}
 	

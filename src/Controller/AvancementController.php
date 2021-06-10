@@ -147,7 +147,7 @@ class AvancementController extends BaseController {
 	  			$entity->__toString(),
 	  			$entity->getParent() ? $entity->getParent()->getName() : null,
 	  			$this->get('orange_main.status')->generateStatusForUtilisateur($entity),
-	  			$this->get('orange.main.actions')->generateActionsForUtilisateur($entity)
+	  			$this->service_action->generateActionsForUtilisateur($entity)
 	  	);
 	}
 }

@@ -210,7 +210,7 @@ class EvaluationController extends BaseController{
 	  			$entity->getProbabilite(),
 	  			$entity->getGravite(),
 	  			$entity->getCriticite() ? $entity->getCriticite()->getNiveau() : 'Non renseigné',
-	  			$this->get('orange.main.actions')->generateActionsForEvaluation($entity)
+	  			$this->service_action->generateActionsForEvaluation($entity)
 	  		);
 	}
 	

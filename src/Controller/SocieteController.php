@@ -129,7 +129,7 @@ class SocieteController extends BaseController {
 	  			sprintf('<img src="%s" />', $this->get('twig.extension.assets')->getAssetUrl($entity->getWebPath())),
 	  			sprintf('<a href="%s">%s<a/>', $this->generateUrl('details_risque', array('id' => $entity->getId())), $entity->getLibelle()),
 	  			$this->get('orange_main.status')->generateStatusForSociete($entity),
-	  			$this->get('orange.main.actions')->generateActionsForSociete($entity)
+	  			$this->service_action->generateActionsForSociete($entity)
 	  	);
 	}
 }

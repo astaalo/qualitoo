@@ -57,10 +57,10 @@ class ActiviteController extends BaseController
 	public function listAction(Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new ActiviteCriteria());
+		$form = $this->createForm(ActiviteCriteria::class, new Activite());
 		$this->modifyRequestForForm($request, $this->get('session')->get('activite_criteria'), $form);
 		$criteria = $form->getData();
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Activite')->listAllQueryBuilder($criteria);
+		$queryBuilder = $em->getRepository(Activite::class)->listAllQueryBuilder($criteria);
 		return $this->paginate($request, $queryBuilder);
 	}
 
@@ -200,7 +200,6 @@ class ActiviteController extends BaseController
 	}
 
 	/**
-	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
 	 * @param \App\Entity\Activite $entity
 	 * @return array
 	 */
@@ -210,7 +209,7 @@ class ActiviteController extends BaseController
 			$entity->getCode(),
 			$entity->getLibelle(),
 			$entity->getProcessus()->getLibelle(),
-			$this->get('orange.main.actions')->generateActionsForActivite($entity)
+			$this->service_action->generateActionsForActivite($entity)
 		);
 	}
 

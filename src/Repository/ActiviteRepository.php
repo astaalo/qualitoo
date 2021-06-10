@@ -5,16 +5,30 @@ namespace App\Repository;
 use App\Entity\Activite;
 use App\Entity\Processus;
 use App\Entity\Structure;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @method Activite|null find($id, $lockMode = null, $lockVersion = null)
  * @method Activite|null findOneBy(array $criteria, array $orderBy = null)
  * @method Activite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ActiviteRepository extends BaseRepository
+class ActiviteRepository extends ServiceEntityRepository
 {
+    protected $_ids;
+    protected $_states;
+    protected $_user;
+
+    public function __construct(ManagerRegistry $registry, ParameterBagInterface $param, Security $security)
+    {
+        parent::__construct($registry, Activite::class);
+        $this->_ids		= $param->get('ids');
+        $this->_states	= $param->get('states');
+        $this->_user	= $security->getUser();
+    }
 
     public function listByProcessusQueryBuilder($entite_id, $processus_id) {
         $queryBuilder = $this->createQueryBuilder('a');
@@ -53,7 +67,7 @@ class ActiviteRepository extends BaseRepository
             $queryBuilder->andWhere('q.libelle LIKE :libelle')
                 ->setParameter('libelle', '%'.$activite->getProcessus()->getLibelle().'%');
         }
-        return $this->filterBySociete($queryBuilder, 'q');
+        return BaseRepository::filterBySociete($queryBuilder, 'q', $this->_user);
     }
 
     /* (non-PHPdoc)

@@ -192,7 +192,7 @@ class CauseController extends BaseController {
   			$entity->__toString(),
   			$entity->getCause()->getFamille() ? $entity->getCause()->getFamille()->getLibelle() : null,
   			$entity->getGrille() ? $entity->getGrille()->getNote()->__toString() : '<span style="color: red;">Aucune évaluation</span>',
-  			$this->get('orange.main.actions')->generateActionsForCause($entity)
+  			$this->service_action->generateActionsForCause($entity)
   		);
 	}
 }

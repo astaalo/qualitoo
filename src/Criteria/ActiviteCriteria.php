@@ -9,7 +9,7 @@ class ActiviteCriteria extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('processus', new ProcessusCriteria());
+        $builder->add('processus',  ProcessusCriteria::class);
     }
 	
 	public function setDefaultOptions(OptionsResolver $resolver)

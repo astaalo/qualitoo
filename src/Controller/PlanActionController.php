@@ -304,7 +304,7 @@ class PlanActionController extends BaseController {
 				$entity->getPorteur() ? $entity->getPorteur()->__toString() : null,
 				$entity->getDateFin() != null ? $entity->getDateFin()->format('d/m/Y') : '',
 				$entity->getStatut() ? $entity->getStatut()->__toString() : null,
-				$this->get('orange.main.actions')->generateActionsForPlanAction($entity) 
+				$this->service_action->generateActionsForPlanAction($entity)
 			);
 	}
 	
@@ -321,7 +321,7 @@ class PlanActionController extends BaseController {
 				$entity->getDateFin() != null ? $entity->getDateFin()->format('d/m/Y') : '',
 				$entity->getPorteur() ? $entity->getPorteur()->__toString() : null,
 				$entity->getSuperviseur() ? $entity->getSuperviseur()->__toString() : null,
-				$this->get('orange.main.actions')->generateActionsForPlanAction($entity) 
+				$this->service_action->generateActionsForPlanAction($entity)
 			);
 	}
 	

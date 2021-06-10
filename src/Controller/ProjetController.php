@@ -274,7 +274,7 @@ class ProjetController extends BaseController {
 	  			$entity->getLibelle(),
 	  			$entity->getUtilisateur()->__toString(),
 	  			$this->get('orange_main.status')->generateStatusForProjet($entity),
-	  			$this->get('orange.main.actions')->generateActionsForProjet($entity)
+	  			$this->service_action->generateActionsForProjet($entity)
 	  		);
 	}
 	
@@ -289,7 +289,7 @@ class ProjetController extends BaseController {
 				$entity->getLibelle(),
 				$entity->getUtilisateur()->__toString(),
 				$this->get('orange_main.status')->generateStatusForProjet($entity),
-				$this->get('orange.main.actions')->generateActionsForSuiviProjet($entity)
+				$this->service_action->generateActionsForSuiviProjet($entity)
 		);
 	}
 }

@@ -254,7 +254,7 @@ class EquipementController extends BaseController
     	return array(
     			$entity->getCode(),
     			$entity->getLibelle(),
-    			$this->get('orange.main.actions')->generateActionsForEquipement($entity)
+    			$this->service_action->generateActionsForEquipement($entity)
     	);
     }
 }

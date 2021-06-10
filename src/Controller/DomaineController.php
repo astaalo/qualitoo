@@ -297,7 +297,7 @@ class DomaineController extends BaseController {
 	  			$entity->__toString(),
 	  			$entity->getParent() ? $entity->getParent()->getLibelle() : null,
 	  			$this->showEntityStatus($entity, 'etat'),
-	  			$this->get('orange.main.actions')->generateActionsForDomaineImpact($entity)
+	  			$this->service_action->generateActionsForDomaineImpact($entity)
 	  	);
 	}
 	
@@ -310,7 +310,7 @@ class DomaineController extends BaseController {
 	  	return array(
 	  			$entity->__toString(),
 	  			$this->showEntityStatus($entity, 'etat'),
-	  			$this->get('orange.main.actions')->generateActionsForDomaineActivite($entity)
+	  			$this->service_action->generateActionsForDomaineActivite($entity)
 	  	);
 	}
 	
@@ -323,7 +323,7 @@ class DomaineController extends BaseController {
 	  	return array(
 	  			$entity->__toString(),
 	  			$this->showEntityStatus($entity, 'etat'),
-	  			$this->get('orange.main.actions')->generateActionsForDomaineSite($entity)
+	  			$this->service_action->generateActionsForDomaineSite($entity)
 	  	);
 	}
 	

@@ -56,7 +56,7 @@ class TableauBordController extends BaseController {
 	  			'  ',
 	  			'   ',
 // 	  			$this->get('orange_main.status')->generateStatusForEntity($entity),
-// 	  			$this->get('orange.main.actions')->generateActionsForSite($entity)
+// 	  			$this->service_action->generateActionsForSite($entity)
 	  		);
 	}
 }

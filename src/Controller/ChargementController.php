@@ -264,7 +264,7 @@ class ChargementController extends BaseController {
 					$entity->getMenace() ? $entity->getMenace()->__toString() : 'Non renseigné',
 					'<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="'.$this->generateUrl('cause_of_risque', array('id' => $entity->getId())).'">'.$entity->getCauseOfRisque()->count().'</a>',
 					$entity->getDateSaisie()?$entity->getDateSaisie()->format('d/m/Y'):'',
-					$this->get('orange.main.actions')->generateActionsForRisque($entity)
+					$this->service_action->generateActionsForRisque($entity)
 			);
 			else
 				return array(
@@ -275,7 +275,7 @@ class ChargementController extends BaseController {
 						'<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="'.$this->generateUrl('cause_of_risque', array('id' => $entity->getId())).'">'.$entity->getCauseOfRisque()->count().'</a>',
 						//$entity->getUtilisateur() ? $entity->getUtilisateur()->__toString() : null,
 						$entity->getDateSaisie()?$entity->getDateSaisie()->format('d/m/Y'):'',
-						$this->get('orange.main.actions')->generateActionsForRisque($entity)
+						$this->service_action->generateActionsForRisque($entity)
 				);
 	}
 	
@@ -289,7 +289,7 @@ class ChargementController extends BaseController {
 				$entity->getLibelle(),
 				$entity->getDate()?$entity->getDate()->format('d/m/Y'):'',
 				$entity->getUtilisateur()?$entity->getUtilisateur()->__toString():'',
-				$this->get('orange.main.actions')->generateActionsForChargement($entity)
+				$this->service_action->generateActionsForChargement($entity)
 		);
 	}
 }

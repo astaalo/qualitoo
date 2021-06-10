@@ -734,7 +734,7 @@ class RisqueController extends BaseController {
 		$data[] = $entity->getMenace() ? $entity->getMenace()->__toString() : 'Non renseigné';
 		$data[] = '<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="'.$this->generateUrl('cause_of_risque', array('id' => $entity->getId())).'">'.$entity->getCauseOfRisque()->count().'</a>';
 		$data[] = $entity->getDateSaisie() ? $entity->getDateSaisie()->format('d/m/Y') : '';
-		$data[] = $this->get('orange.main.actions')->generateActionsForRisque($entity);
+		$data[] = $this->service_action->generateActionsForRisque($entity);
 		return $data;
 	}
 	
@@ -751,7 +751,7 @@ class RisqueController extends BaseController {
 				$entity->getRisqueData()?$entity->getRisqueData()->getProcessus()->__toString():'',
 				$entity->getMenace() ? $entity->getMenace()->__toString() : 'Non renseigné',
 				$entity->getDateSaisie()->format('d/m/Y'),
-				$this->get('orange.main.actions')->generateActionsForRisque($entity)
+				$this->service_action->generateActionsForRisque($entity)
 		);
 	}
 	
@@ -769,7 +769,7 @@ class RisqueController extends BaseController {
 				$entity->getMenace() ? $entity->getMenace()->__toString() : 'Non renseigné',
 				//$entity->getUtilisateur() ? $entity->getUtilisateur()->__toString() : null,
 				$entity->getDateSaisie()->format('d/m/Y'),
-				$this->get('orange.main.actions')->generateActionsForRisque($entity)
+				$this->service_action->generateActionsForRisque($entity)
 		);
 	}
 	
@@ -788,7 +788,7 @@ class RisqueController extends BaseController {
 				$entity->getMenace() ? $entity->getMenace()->__toString() : 'Non renseigné',
 				//$entity->getUtilisateur() ? $entity->getUtilisateur()->__toString() : null,
 				$entity->getDateSaisie()->format('d/m/Y'),
-				$this->get('orange.main.actions')->generateActionsForRisque($entity)
+				$this->service_action->generateActionsForRisque($entity)
 		);
 	}
 
@@ -803,7 +803,7 @@ class RisqueController extends BaseController {
 				$entity->getMenace() ? $entity->getMenace()->__toString() : ($entity->getIdentification()?$entity->getIdentification()->getLibelle():'Non renseigné'),
 				$entity->getUtilisateur() ? $entity->getUtilisateur()->__toString() : null,
 				$entity->getDateSaisie() ? $entity->getDateSaisie()->format('d/m/Y') : null,
-				$this->get('orange.main.actions')->generateActionsForUnvalidatedRisque($entity)
+				$this->service_action->generateActionsForUnvalidatedRisque($entity)
 		);
 	}
 
@@ -818,7 +818,7 @@ class RisqueController extends BaseController {
 				$entity->getCartographie() ? $entity->getCartographie()->getDescription() : 'Non renseigné',
 				$entity->getUtilisateur()->__toString(),
 				$entity->getDateSaisie() ? $entity->getDateSaisie()->format('d/m/Y') : null,
-				$this->get('orange.main.actions')->generateActionsForUncompletedRisque($entity)
+				$this->service_action->generateActionsForUncompletedRisque($entity)
 		);
 	}
 
@@ -834,7 +834,7 @@ class RisqueController extends BaseController {
 				$entity->getValidateur()->__toString(),
 				$entity->getDateValidation()->format('d/m/Y'), 
 				$entity->getLastHistory() ? $entity->getLastHistory()->getComment() : "aucun motif renseigné",
-				$this->get('orange.main.actions')->generateActionsForRejetedRisque($entity)
+				$this->service_action->generateActionsForRejetedRisque($entity)
 			);
 	}
 	

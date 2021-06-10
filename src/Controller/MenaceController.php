@@ -198,7 +198,7 @@ class MenaceController extends BaseController {
 	  	return array(
 	  			$entity->getLibelle(),
 	  			$entity->getLibelleCartographie(),
-				  $this->get('orange.main.actions')->generateActionsForMenace($entity),
+				  $this->service_action->generateActionsForMenace($entity),
 				  
 	  		);
 	}
@@ -215,7 +215,7 @@ class MenaceController extends BaseController {
 				$entity->getLibelle(),
 				$entity->getLibelleCartographie(),
 				'-'
-			//	$this->get('orange.main.actions')->generateActionsForMenace($entity)
+			//	$this->service_action->generateActionsForMenace($entity)
 		);
 	}
 	

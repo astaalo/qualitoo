@@ -235,7 +235,7 @@ class StructureController extends BaseController {
 	  			$entity->__toString(),
 	  			$entity->getTypeStructure()?$entity->getTypeStructure()->getLibelle():null,
 	  			$entity->getParent() ? $entity->getParent()->__toString() : null,
-	  			$this->get('orange.main.actions')->generateActionsForStructure($entity)
+	  			$this->service_action->generateActionsForStructure($entity)
 	  	);
 	}
 }

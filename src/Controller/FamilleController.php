@@ -128,7 +128,7 @@ class FamilleController extends BaseController {
 	  	return array(
 	  			$entity->__toString(),
 	  			$entity->getParent() ? $entity->getParent()->getLibelle() : null,
-	  			$this->get('orange.main.actions')->generateActionsForFamille($entity)
+	  			$this->service_action->generateActionsForFamille($entity)
 	  	);
 	}
 }

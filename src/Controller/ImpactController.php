@@ -88,7 +88,7 @@ class ImpactController extends BaseController {
 	  			sprintf('<a href="%s" >%s<a/>', $this->generateUrl('details_impact', array('id' => $entity->getId())), $entity->getImpact()->__toString()),
 	  			$entity->getImpact()?($entity->getImpact()->getCritere()? $entity->getImpact()->getCritere()->getLibelle() : 'Non renseigné'):null,
 	  			$entity->getImpact()?($entity->getImpact()->hasEvaluation() ? $entity->getGrille()->getNote()->__toString() : 'Aucun évaluation'):null,
-	  			$this->get('orange.main.actions')->generateActionsForImpact($entity)
+	  			$this->service_action->generateActionsForImpact($entity)
 	  		);
 	}
 }

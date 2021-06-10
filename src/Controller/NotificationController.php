@@ -63,7 +63,7 @@ class NotificationController extends BaseController {
 				$entity->getLibelle(),
 				$entity->getUser() ?$entity->getUser()->__toString(): '-',
 				$entity->getDateCreation() ? $entity->getDateCreation()->format('d/m/Y') : '-', 
-				$this->get('orange.main.actions')->generateActionsForNotification($entity)
+				$this->service_action->generateActionsForNotification($entity)
 		);
 	}
 }

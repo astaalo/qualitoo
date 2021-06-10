@@ -77,7 +77,7 @@ class ActiviteRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('a')
             ->innerJoin('a.processus', 'p')
             ->innerJoin('p.structure', 's');
-        return $this->filterBySociete($queryBuilder, 's')->getQuery()->execute();
+        return BaseRepository::filterBySociete($queryBuilder, 's')->getQuery()->execute();
     }
 
     /**

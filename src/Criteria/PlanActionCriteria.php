@@ -19,10 +19,10 @@ class PlanActionCriteria extends AbstractType
 	        ->add('structure',  'entity', array('class' => '\App\Entity\Structure', 'empty_value'=>'Choisir une structure ...', 'attr' => array('class' => 'chzn-select')))
         	->add('porteur',  null, array('label' => 'Porteur ', 'empty_value'=>'Choisir un porteur ...',  'attr' => array('class' => 'chzn-select')))
         	->add('statut',  null, array('label' => 'Statut ', 'empty_value'=>'Choisir un statut ...',  'attr' => array('class' => 'chzn-select')))
-        	->add('dateDebutFrom', 'date', array('label'=>'De ', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
-        	->add('dateDebutTo', 'date', array('label'=>'Et', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
-        	->add('dateFinFrom', 'date', array('label'=>'De', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
-        	->add('dateFinTo', 'date', array('label'=>'Et', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'));
+        	->add('dateDebutFrom', 'datetime', array('label'=>'De ', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
+        	->add('dateDebutTo', 'datetime', array('label'=>'Et', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
+        	->add('dateFinFrom', 'datetime', array('label'=>'De', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
+        	->add('dateFinTo', 'datetime', array('label'=>'Et', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'));
     }
     
     public function finishView(FormView $view, FormInterface $form, array $options) {

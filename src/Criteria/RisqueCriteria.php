@@ -5,6 +5,8 @@ use App\Entity\Criticite;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -26,14 +28,14 @@ class RisqueCriteria extends AbstractType
             ->add('probabilite', ChoiceType::class, array('choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
         	->add('gravite', ChoiceType::class, array('choices' => array(1=>1, 2=>2, 3=>3, 4=>4), 'expanded' => true, 'multiple' => true))
         	->add('criticite', ChoiceType::class, array('expanded' => true, 'multiple' => true))
-        	->add('dateSaisie',  RepeatedType::class, array('type' => 'date'))
+        	->add('dateSaisie',  RepeatedType::class, array('type' => DateType::class))
         	->add('risqueMetier', RisqueMetierCriteria::class)
         	->add('risqueProjet', RisqueProjetCriteria::class)
         	->add('risqueSST', RisqueSSTCriteria::class)
         	->add('risqueEnvironnemental', RisqueEnvironnementalCriteria::class)
         	->add($builder->create('dateEvaluation', FormType::class)
-        			->add('dateDebut', 'datetime', array('label' => 'Date de début', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
-        			->add('dateFin', 'datetime', array('label' => 'Date de fin', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
+        			->add('dateDebut', DateTimeType::class, array('label' => 'Date de début', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
+        			->add('dateFin', DateTimeType::class, array('label' => 'Date de fin', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
         	)->add('cause', EntityType::class, array('label' => 'Cause, danger ou aspect',
         			'class' => 'App\Entity\Cause', 'placeholder'=>'Choisir ...', 'attr'=>array('class'=>'chzn-select'),
         			'query_builder' => function($er) {

@@ -42,7 +42,7 @@ class UtilisateurRepository extends ServiceEntityRepository
             ->where('q.etat != :etat')
             ->setParameter('etat', $this->_states['entity']['supprime']);
 
-        return $this->filterBySociete($querBuilder, 'e')->groupBy('q.id');
+        return BaseRepository::filterBySociete($querBuilder, 'e')->groupBy('q.id');
     }
 
     /* (non-PHPdoc)
@@ -51,7 +51,7 @@ class UtilisateurRepository extends ServiceEntityRepository
     public function findAll() {
         $queryBuilder = $this->createQueryBuilder('q')
             ->innerJoin('q.structure', 's');
-        return $this->filterBySociete($queryBuilder, 's')->getQuery()->execute();
+        return BaseRepository::filterBySociete($queryBuilder, 's')->getQuery()->execute();
     }
 
     public function filter() {

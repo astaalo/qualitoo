@@ -58,7 +58,7 @@ class EquipementController extends BaseController
      */
     public function listAction(Request $request) {
     	$em = $this->getDoctrine()->getManager();
-    	$form = $this->createForm(new EquipementCriteria());
+    	$form = $this->createForm(EquipementCriteria::class, new Equipement());
     	$this->modifyRequestForForm($request, $this->get('session')->get('equipement_criteria'), $form);
     	$criteria = $form->getData();
     	$queryBuilder = $em->getRepository('App\Entity\Equipement')->listAllQueryBuilder($criteria);
@@ -246,8 +246,7 @@ class EquipementController extends BaseController
     }
     
     /**
-     * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
-     * @param \App\Entity\Equipement $entity
+     * @param Equipement $entity
      * @return array
      */
     protected function addRowInTable($entity) {

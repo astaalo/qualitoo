@@ -6,12 +6,6 @@ use App\Entity\RisqueHasCause;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @method RisqueHasCause|null find($id, $lockMode = null, $lockVersion = null)
- * @method RisqueHasCause|null findOneBy(array $criteria, array $orderBy = null)
- * @method RisqueHasCause[]    findAll()
- * @method RisqueHasCause[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
 class RisqueHasCauseRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -19,32 +13,31 @@ class RisqueHasCauseRepository extends ServiceEntityRepository
         parent::__construct($registry, RisqueHasCause::class);
     }
 
-    // /**
-    //  * @return RisqueHasCause[] Returns an array of RisqueHasCause objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    public function findAll() {
+        return $this->createQueryBuilder('rhc')->getQuery()->getResult();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?RisqueHasCause
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+
+
+    public function listAllQueryBuilder($criteria = null) {
+        $criteria = $criteria ? $criteria : new \App\Entity\RisqueHasCause();
+        $queryBuilder = $this->createQueryBuilder('rhc')
+            ->innerJoin('rhc.risque', 'r')
+            ->innerJoin('rhc.cause', 'c')
         ;
+        if($criteria->getRisque()){
+            if($criteria->getRisque()->getMenace()) {
+                $queryBuilder->andWhere('r.menace = :menace')->setParameter('menace', $criteria->getRisque()->getMenace());
+            }
+            if($criteria->getRisque()->getCartographie()) {
+                $queryBuilder->andWhere('r.cartographie IN (:cartographie)')->setParameter('cartographie', array($criteria->getRisque()->getCartographie()->getId()));
+            }
+        }
+        if($criteria->getCause()){
+            if($criteria->getCause()->getFamille()) {
+                $queryBuilder->andWhere('c.famille = :famille')->setParameter('famille', $criteria->getCause()->getFamille());
+            }
+        }
+        return $queryBuilder;
     }
-    */
 }

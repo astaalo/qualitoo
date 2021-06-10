@@ -126,7 +126,7 @@ class StructureRepository extends ServiceEntityRepository {
             $queryBuilder->andWhere('q.typeStructure = :typeStructure')->setParameter('typeStructure', $structure->getTypeStructure());
         }
 
-        return $this->filterBySociete($queryBuilder)->orderBy('q.lvl');
+        return BaseRepository::filterBySociete($queryBuilder)->orderBy('q.lvl');
     }
 
     /* (non-PHPdoc)
@@ -134,7 +134,7 @@ class StructureRepository extends ServiceEntityRepository {
      */
     public function findAll() {
         $queryBuilder = $this->createQueryBuilder('q');
-        return $this->filterBySociete($queryBuilder)->getQuery()->execute();
+        return BaseRepository::filterBySociete($queryBuilder)->getQuery()->execute();
     }
 
 
@@ -161,7 +161,7 @@ class StructureRepository extends ServiceEntityRepository {
             $queryBuilder->andWhere('q.id=:n')->setParameter('n', -1);
         }
 
-        return $this->filterBySociete($queryBuilder)->orderBy('q.name');
+        return BaseRepository::filterBySociete($queryBuilder, 'q', $this->_user)->orderBy('q.name');
     }
 
     public function listUserStructure() {

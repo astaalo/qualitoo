@@ -71,7 +71,7 @@ class CritereController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Critere')->find($id);
 		
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		
 		return array('entity' => $entity);
 	}

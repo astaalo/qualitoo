@@ -195,9 +195,20 @@ services:
         tags:
             - { name: twig.extension }
 
+    App\MainBundle\Twig\StatutExtension:
+        arguments: [ "@twig", "%ids%" ]
+        tags:
+            - { name: twig.extension }
+
     App\Service\Status:
         class: App\Service\Status
         arguments: ["%states%","@service_container"]
 
     App\Service\Actions:
         arguments: [ "@twig", "@router", "%states%", "@security.helper", "@doctrine.orm.entity_manager" ]
+
+    # date french
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }

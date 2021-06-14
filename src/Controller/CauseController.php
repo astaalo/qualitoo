@@ -118,7 +118,7 @@ class CauseController extends BaseController {
 		if(!$cause)
 			throw new EntityNotFoundException('Entité avec ce id non trouvé ');
 			
-		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		return array('entity' => $cause);
 	}
 	

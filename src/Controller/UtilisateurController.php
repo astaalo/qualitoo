@@ -72,7 +72,7 @@ class UtilisateurController extends BaseController {
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$utilisateur = $em->getRepository('App\Entity\Utilisateur')->find($id);
-		$this->denyAccessUnlessGranted('read', $utilisateur,'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('read', $utilisateur,'Accés non autorisé!');
 		return array('entity' => $utilisateur);
 	}
 	 

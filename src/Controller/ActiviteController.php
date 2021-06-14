@@ -74,7 +74,7 @@ class ActiviteController extends BaseController
 	{
 		$em = $this->getDoctrine()->getManager();
 		$activite = $em->getRepository('App\Entity\Activite')->find($id);
-		$this->denyAccessUnlessGranted('read', $activite, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('read', $activite, 'Accés non autorisé');
 		return array('entitie' => $activite);
 	}
 

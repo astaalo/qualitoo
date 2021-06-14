@@ -11,6 +11,7 @@
 
 namespace App\Form;
 
+use App\Entity\Utilisateur;
 use FOS\UserBundle\Form\Type\RegistrationFormType as AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,6 +19,7 @@ use App\Repository\StructureRepository;
 use App\Repository\SocieteRepository;
 
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegistrationFormType extends AbstractType
 {
@@ -59,6 +61,16 @@ class RegistrationFormType extends AbstractType
             }
             ))
     		->add('connectWindows', null, array('label' => 'Connexion avec compte windows', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')));
+    }
+
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Utilisateur::class
+        ));
     }
 
     public function getName()

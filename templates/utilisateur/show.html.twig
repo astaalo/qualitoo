@@ -1,0 +1,24 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Détail Utilisateur
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon confirm answer" href="{{ path('les_processus') }}" title="les processus">Retour à la liste</a></li>
+			<li><a class="uibutton icon edit" href="{{ path('edition_processus', {'id': entity.id}) }}">Edition de processus</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+	<div class="content">
+	</div>
+</div>
+{% endblock %}
+ 

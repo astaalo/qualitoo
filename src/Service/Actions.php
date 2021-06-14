@@ -86,11 +86,10 @@ class Actions
     {
         $render = sprintf('<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>
              <span class="tip" ><a title="Modifier" href="%s"><img src="%s" /></a></span>
-             <span class="tip" ><a title="Désactiver" href="%s"><img src="%s" /></a></span>', '#', $this->asset('bundles/orangemain/images/icon/color_18/info.png'), $this->router->generate('edition_utilisateur', array(
-            'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'), $this->router->generate(($entity->isEnabled() ? 'desactiver' : 'activer') . '_utilisateur', array(
-            'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/' . ($entity->isEnabled() ? 'cancel' : 'checkmark2') . '.png'));
+             <span class="tip" ><a title="Désactiver" href="%s"><img src="%s" /></a></span>',
+            $this->router->generate('details_utilisateur', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/info.png'),
+            $this->router->generate('edition_utilisateur', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'),
+            $this->router->generate(($entity->isEnabled() ? 'desactiver' : 'activer') . '_utilisateur', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/' . ($entity->isEnabled() ? 'cancel' : 'checkmark2') . '.png'));
         if ($this->user->hasRole(Utilisateur::ROLE_SUPER_ADMIN) && $entity->getId() != $this->user->getId()) {
             $render .= sprintf(
                 '<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>',

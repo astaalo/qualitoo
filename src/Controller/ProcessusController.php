@@ -70,7 +70,7 @@ class ProcessusController extends BaseController {
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
 		$processus = $em->getRepository('App\Entity\Processus')->find($id);
-		$this->denyAccessUnlessGranted('read', $processus, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('read', $processus, 'Accés non autorisé');
 		return array('entitie' => $processus);
 	}
 	

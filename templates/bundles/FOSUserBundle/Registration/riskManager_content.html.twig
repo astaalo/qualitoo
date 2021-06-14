@@ -1,0 +1,44 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block content %}
+<div class="onecolumn">
+	<div class="header">
+		<span>
+			<span class="ico gray add"></span>
+			Ajout de membre
+		</span>
+		<div id="buttom_top">
+			<ul class="uibutton-group">
+				<li><a class="uibutton icon answer" href="{{ path('les_utilisateurs') }}">Liste des Utilisateurs</a></li>
+            </ul>
+        </div>
+	</div>
+	<div class="clear"></div>
+	<div class="contentForm">
+		<form  novalidate="novalidate"  action="{{ path('fos_user_registration_register') }}" method="POST">
+			{{ form_row(form.prenom) }}
+			{{ form_row(form.nom) }}
+			{{ form_row(form.username) }}
+			{{ form_row(form.email) }}
+			{{ form_row(form._token) }}
+			{{ form_row(form.matricule) }}
+			<div style="display: none;"> {{ form_row(form.roles) }}</div>
+			{{ form_row(form.manager) }}
+			{{ form_row(form.telephone) }}
+			{{ form_row(form.structure) }}
+			{{ form_row(form.societeOfRiskManager) }}
+			{{ form_row(form.plainPassword.first, {attr: attr|default({class: 'smallinput'})}) }}
+			{{ form_row(form.plainPassword.second, {attr: attr|default({class: 'smallinput'})}) }}
+			<div class="section last">
+				<div>
+					<button class="uibutton loading">{{ 'registration.submit'|trans }}</button>
+					<input type="reset"  class="uibutton special" value="Effacer" >
+				</div>
+			</div>
+		</form>
+	</div>
+	</div>
+{% endblock %}
+<script type="text/javascript">
+
+</script>

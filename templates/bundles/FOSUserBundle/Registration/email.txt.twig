@@ -1,13 +1,17 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block subject %}
-{%- autoescape false -%}
-{{ 'registration.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
-{%- endautoescape -%}
-{% endblock %}
-
-{% block body_text %}
-{% autoescape false %}
-{{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+{% autoescape true %}
+Création d'un utilisateur
 {% endautoescape %}
 {% endblock %}
-{% block body_html %}{% endblock %}
+{% block body_text %}
+{% endblock %}
+{% block body_html %}
+<div style="font-size: 14px">
+Bonjour {{ user.prenom ~ ' ' ~ user.nom }}<br>
+Vous avez été ajouté à l'application <strong>SIGRC</strong><br><br>
+Vous pouvez vous connecter avec votre compte windows.
+Vous pouvez accédez a l'application à partir d' <a href="{{ confirmationUrl }}">ici</a><br><br>
+Cordialement,
+</div>
+{% endblock %}

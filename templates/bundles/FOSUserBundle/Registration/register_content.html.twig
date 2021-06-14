@@ -1,8 +1,53 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% block content %}
+	<div class="contentForm">
+		<form  novalidate="novalidate"  action="{{ path('fos_user_registration_register') }}" method="POST">
+			{{ form_row(form.prenom) }}
+			{{ form_row(form.nom) }}
+			{{ form_row(form.username) }}
+			{{ form_row(form.email, {attr: attr|default({class: 'medium'})}) }}
+			{{ form_row(form._token) }}
+			{{ form_row(form.matricule) }}
+			<div style="display: none;"> {{ form_row(form.roles) }}</div>
+			{{ form_row(form.manager) }}
+			{{ form_row(form.telephone) }}
+			{{ form_row(form.structure) }}
+			{{ form_row(form.societeOfAdministrator) }}
+			{{ form_row(form.societeOfRiskManager) }}
+			{{ form_row(form.societeOfAuditor) }}
+			<div id="button_windows">
+			    {{ form_row(form.connectWindows) }}
+			</div>
+			<div id="password_windows">
+				{{ form_row(form.plainPassword.first, {attr: attr|default({class: 'smallinput', value: '8fkz2PF6'})}) }}
+				{{ form_row(form.plainPassword.second, {attr: attr|default({class: 'smallinput', value: '8fkz2PF6'})}) }}
+			</div>
+			<div class="section last footer">
+				<div>
+					<button class="uibutton loading">{{ 'registration.submit'|trans }}</button>
+					<input type="reset"  class="uibutton special" value="Effacer" >
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#password_windows").hide();
+	var n = document.getElementById('password_windows'); var b = 1;
+	var f = document.getElementById('fos_user_registration_form_plainPassword_first');
+	var s = document.getElementById('fos_user_registration_form_plainPassword_second');
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
-    </div>
-{{ form_end(form) }}
+	$("#button_windows .iPhoneCheckLabelOn").on('click', function() {
+		b=1; n.setAttribute("style", "display:block");
+	});
+
+	$("#button_windows .iPhoneCheckLabelOff").on('click', function() {
+				b=0; n.setAttribute("style", "display:none"); f.value='8fkz2PF6'; s.value='8fkz2PF6';
+
+	});
+	$("#button_windows .iPhoneCheckHandle").on('click', function() {
+		if(b==0) { b=1; n.setAttribute("style", "display:block"); }
+		else if(b==1) { b=0; n.setAttribute("style", "display:none"); f.value='8fkz2PF6'; s.value='8fkz2PF6'; }
+	});
+});
+</script>

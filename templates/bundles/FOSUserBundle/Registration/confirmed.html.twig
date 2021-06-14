@@ -1,10 +1,13 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "FOSUserBundle::layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+    {% if app.session is not empty %}
+        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+    {% else %}
+    	<a href="{{ path('accueil') }}">Allez à la page de connexion</a>
     {% endif %}
 {% endblock fos_user_content %}

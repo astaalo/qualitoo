@@ -3,3 +3,12 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: App\Controller\ExceptionController::show
+
+    form_themes:
+        - form_div_layout.html.twig
+        - extra\simple_form_theme.html.twig
+    globals:
+        global_ids:   "%ids%"
+        global_states: "%states%"
+        global_types: "%types%"
+        aggregat:     "%aggregat%"

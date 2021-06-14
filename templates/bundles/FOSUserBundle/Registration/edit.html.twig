@@ -1,16 +1,16 @@
 {% trans_default_domain 'FOSUserBundle' %}
-{% extends 'configuration/index.html.twig' %}
-{% form_theme form 'extra/simple_form_theme.html.twig' %}
+{% extends 'OrangeMainBundle:Configuration:index.html.twig' %}
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
 
 {% block menu_config %}
-	{% include 'configuration/hierarchie.html.twig' with {position: 3} %}
+	{% include 'OrangeMainBundle:Configuration:hierarchie.html.twig' with {position: 3} %}
 {% endblock %}
 
 {% block header_config %}
 	<div class="header">
 		<span>
-			<span class="ico gray add"></span>
-			Ajout de membre
+			<span class="ico gray edit"></span>
+			Edition du membre
 		</span>
 		<div id="buttom_top">
 			<ul class="uibutton-group">
@@ -21,5 +21,5 @@
 {% endblock %}
 
 {% block content_config %}
-	{% include "bundles/FOSUserBundle/Registration/register_content.html.twig" %}
+	{% include "FOSUserBundle:Registration:edit_content.html.twig" %}
 {% endblock %}

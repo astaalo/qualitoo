@@ -1,0 +1,13 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "::base.html.twig" %}
+{% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
+
+{% block navigation %}
+	{{ knp_menu_render('OrangeMainBundle:Builder:showMenu', {'template': 'OrangeMainBundle:Extra:knp_menu.html.twig', 'item': {1:'Membre'} }) }}
+{% endblock %}
+
+
+{% block content %}
+{% include "FOSUserBundle:Registration:riskManager_content.html.twig" %}
+{% endblock %}
+       

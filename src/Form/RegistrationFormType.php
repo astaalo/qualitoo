@@ -12,6 +12,7 @@
 namespace App\Form;
 
 use FOS\UserBundle\Form\Type\RegistrationFormType as AbstractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Repository\StructureRepository;
 use App\Repository\SocieteRepository;
@@ -27,27 +28,32 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('prenom', null, array('label' => 'Prénom', 'attr' => array('class' => 'large')))
             ->add('nom', null, array('label' => 'Nom', 'attr' => array('class' => 'smallinput')))
-            ->add('roles', 'choice', array('label' => 'Profil', 'choices' => array('ROLE_USER' => 'Utilisateur simple', 'ROLE_ADMIN' => 'Administrateur'), 'multiple' => true
+            ->add('roles', ChoiceType::class, array('label' => 'Profil', 'choices' => array('ROLE_USER' => 'Utilisateur simple', 'ROLE_ADMIN' => 'Administrateur'), 'multiple' => true
             		,'attr' => array('class' => 'chzn-select')))
-            ->add('structure', 'entity', array('label' => 'Structure', 'attr'=>array('class'=>'chzn-select'),'class' => 'OrangeMainBundle:Structure','empty_value' => 'Choisir la structure ...',
+            ->add('structure', EntityType::class, array('label' => 'Structure', 'attr'=>array('empty_value' => 'Choisir la structure ...', 'class'=>'chzn-select'),'class' => 'App\Entity\Structure',
             				'query_builder'=>function($sr){
             				return $sr->filter();
             				}))
             ->add('matricule', null, array('label' => 'Matricule', 'attr' => array('class' => 'ui-spinner-box')))
             ->add('telephone', null, array('label' => 'Téléphone'))
             ->add('manager', null, array('label' => 'Est manager', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
-            ->add('societeOfAdministrator',null, array('label' => 'Est administrateur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'OrangeMainBundle:Societe','empty_value' => 'Choisir la société ...',
-            'query_builder'=>function($sr){
-            return $sr->listUserSocieties();
-            }
+            ->add('societeOfAdministrator',null, array(
+                'label' => 'Est administrateur de',
+                'attr'=>array(
+                    'empty_value' => 'Choisir la société ...',
+                    'class'=>'chzn-select', 'multiple' => 'multiple'),
+                'class' => 'App\Entity\Societe',
+                'query_builder'=>function($sr){
+                    return $sr->listUserSocieties();
+                }
             ))
             
-            ->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'OrangeMainBundle:Societe','empty_value' => 'Choisir la société ...',
+            ->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('empty_value' => 'Choisir la société ...','class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe',
             'query_builder'=>function($sr){
             return $sr->listUserSocieties();
             }
             ))
-            ->add('societeOfRiskManager',null, array('label' => 'Est risque manager de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'OrangeMainBundle:Societe','empty_value' => 'Choisir la société ...',
+            ->add('societeOfRiskManager',null, array('label' => 'Est risque manager de','class' => 'App\Entity\Societe', 'attr'=>array('empty_value' => 'Choisir la société ...', 'class'=>'chzn-select', 'multiple' => 'multiple'),
             'query_builder'=>function($sr){
             return $sr-> listUserSocieties();
             }

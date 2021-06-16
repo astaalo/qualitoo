@@ -1,12 +1,12 @@
 <?php
-namespace Orange\MainBundle\Services;
+namespace App\Service;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\DependencyInjection\Container;
-use Orange\MainBundle\Query\RisqueMetierQuery;
-use Orange\MainBundle\Entity\Chargement;
-use Orange\MainBundle\Query\RisqueSSTEQuery;
-use Orange\MainBundle\Query\RisqueProjetQuery;
+use App\Query\RisqueMetierQuery;
+use App\Entity\Chargement;
+use App\Query\RisqueSSTEQuery;
+use App\Query\RisqueProjetQuery;
 
 class Loader {
 

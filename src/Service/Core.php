@@ -1,5 +1,5 @@
 <?php
-namespace Orange\MainBundle\Services;
+namespace App\Service;
 
 /**
  * @Service("orange_main.core")
@@ -18,7 +18,7 @@ class Core {
 	 * @param string $name
 	 */
 	public function getReporting($name) {
-		$class = sprintf('\Orange\MainBundle\Reporting\%sReporting', $name);
+		$class = sprintf('\App\Reporting\%sReporting', $name);
 		return new $class;
 	}
 	
@@ -26,7 +26,7 @@ class Core {
 	 * @param string $name
 	 */
 	public function getCriteria($name) {
-		$class = sprintf('\Orange\MainBundle\Criteria\%sCriteria', $name);
+		$class = sprintf('\App\Criteria\%sCriteria', $name);
 		return new $class;
 	}
 }

@@ -1,0 +1,12 @@
+<IfModule mod_headers.c>
+     Header unset X-Powered-By
+     Header set X-Frame-Options "SAMEORIGIN"
+     Header set Referrer-Policy "same-origin"
+</IfModule>
+
+RewriteEngine on
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
+Options -Indexes

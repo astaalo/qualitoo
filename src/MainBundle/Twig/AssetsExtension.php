@@ -1,5 +1,5 @@
 <?php
-namespace Orange\MainBundle\Twig;
+namespace App\MainBundle\Twig;
 
 class AssetsExtension extends \Symfony\Bundle\TwigBundle\Extension\AssetsExtension
 {

@@ -1,7 +1,8 @@
 <?php
-namespace Orange\MainBundle\Twig;
+namespace App\MainBundle\Twig;
 
 use Symfony\Component\DependencyInjection\Container;
+use Twig\TwigFilter;
 
 class MainExtension extends \Twig_Extension {
 	
@@ -28,7 +29,7 @@ class MainExtension extends \Twig_Extension {
 	public function getFilters()
 	{
         return array(
-                'aggregate_link' => new \Twig_Filter_Method($this, 'showAggregateLink', array('is_safe' => array('html')))
+                new TwigFilter('aggregate_link', [$this, 'showAggregateLink'], array('is_safe' => array('html')))
         	);
 	}
     

@@ -1,12 +1,12 @@
 <?php 
-namespace Orange\MainBundle\Twig;
+namespace App\MainBundle\Twig;
 
 use Symfony\Component\Security\Core\SecurityContext;
 
 class SecurityExtension extends \Twig_Extension
 {
 	/**
-	 * @var \Orange\MainBundle\Entity\Utilisateur
+	 * @var \App\Entity\Utilisateur
 	 */
 	private $user;
 	

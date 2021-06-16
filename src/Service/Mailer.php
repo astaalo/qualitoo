@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Service;
 
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
@@ -9,7 +9,7 @@ class Mailer {
 	
 	/**
 	 *
-	 * @var Swift_Mailer
+	 * @var \Swift_Mailer
 	 */
 	protected $mailer;
 	

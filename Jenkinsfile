@@ -22,10 +22,8 @@ pipeline {
     stages {
         stage('Installation des packets') {
             steps {
-                sh 'rm -rf vendor/*'
-                sh 'php72 -d memory_limit=-1 composer.phar update'
-                sh 'set +ex ; export NVM_DIR="$HOME/.nvm"; . ~/.nvm/nvm.sh; . ~/.profile ; nvm use lts/erbium ; npm install -g yarn ; yarn install ; yarn encore dev ; set -ex'
-                stash includes: '**/*', name: 'app'
+                sh 'rm -rf vendor'
+                sh 'php74 -d memory_limit=-1 composer.phar update'
             }
         }
         /*stage('SonarQube Scan') {
@@ -59,7 +57,6 @@ pipeline {
                 sh 'docker ps -qa -f name=${NAME} | xargs --no-run-if-empty docker rm -f'
                 sh 'docker images -f reference=${IMAGE} -qa | xargs --no-run-if-empty docker rmi'
                 sh 'rm -rf target/'
-                unstash 'app'
                 sh 'sed -i "/DATABASE_URL/ s/^/# /" .env'
                 sh 'sed -i "/MAILER_URL/ s/^/# /" .env'
                 sh 'sed -i "/APP_SECRET/ s/^/# /" .env'

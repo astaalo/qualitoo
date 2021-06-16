@@ -64,18 +64,18 @@
 							<td>
 								<span class="tip" >
 									<a  title="Détails" href="{{ path('details_critere', {'id': critere.id}) }}">
-										<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+										<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}" >
 									</a>
 								</span> &nbsp;&nbsp;
 								{% if app.user.hasRoles(['ROLE_RISKMANAGER', 'ROLE_ADMIN']) %}
 								<span class="tip" >
 									<a  title="Modifier" href="{{ path('edition_critere', {'id': critere.id}) }}">
-										<img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}" >
+										<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/pencil.png') }}" >
 									</a>
 								</span> &nbsp;&nbsp;
 								<span class="tip" >
 									<a id="1" class="actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" class="actionLink" modal-url="{{ path('suppression_critere', {'id': critere.id}) }}">
-										<img src="{{ asset('bundles/orangemain/images/icon/color_18/delete.png') }}" >
+										<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/delete.png') }}" >
 									</a>
 								</span>
 								{% endif %}

@@ -1,9 +1,9 @@
 {% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
 
 <div class="header">
-	<img src="{{ asset('bundles/orangemain/images/icon/color_18/zoom.png') }}" alt="add">
+	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/zoom.png') }}" alt="add">
 	<span>Filtre des structures</span>
-	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('assets/bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
 </div>
 <div class="content">
 	<form  novalidate="novalidate"  action="{{ path('filtrer_les_structures') }}" method="POST">

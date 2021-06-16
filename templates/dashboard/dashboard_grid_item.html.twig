@@ -6,7 +6,7 @@
 			{% for row in item.rows %}
 			{% set hasRoles = (app.user.hasRoles(item.roles) and not app.user.hasRoles(row.roles) and not row.roles|length > 0) or (app.user.hasRoles(item.roles) and app.user.hasRoles(row.roles) and row.roles|length > 0) %}
 			<li {% if row.width is defined %}style="float: left;width: {{ row.width }};"{% endif %}>
-				<img src="{{ asset('bundles/orangemain/images/icon/' ~ (hasRoles ? 'color_18/' : 'gray_18/') ~ row.icon) }}" alt="{{ row.text }}">
+				<img src="{{ asset('assets/bundles/orangemain/images/icon/' ~ (hasRoles ? 'color_18/' : 'gray_18/') ~ row.icon) }}" alt="{{ row.text }}">
 				{% if hasRoles %}
 					<a href="{{ row.path }}" >{{ row.text }}</a>
 				{% else %}

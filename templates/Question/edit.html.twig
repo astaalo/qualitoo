@@ -1,9 +1,9 @@
 {% form_theme form 'OrangeMainBundle:Extra:simple_form_theme.html.twig' %}
 
 <div class="header">
-	<img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}" alt="edit">
+	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/pencil.png') }}" alt="edit">
 	<span>Edition de la question</span>
-	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
+	<div class="close_me"><a data-dismiss="modal"><img src="{{ asset('assets/bundles/orangemain/images/icon/closeme.png') }}"> </a></div>
 </div>
 <div class="contentForm">
 	<form  novalidate="novalidate"  action="{{ path('modifier_question', {id:id}) }}" method="POST">

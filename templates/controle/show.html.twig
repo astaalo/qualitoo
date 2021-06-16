@@ -153,7 +153,7 @@
 						<td>
 							<span class="tip" >
 	                			<a title="Détails" href="#">
-		                			<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+		                			<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}" >
 		                		</a>
                 			</span> 
 						</td>
@@ -172,7 +172,7 @@
  				<li>
  				{% if has_rights('ROLE_RISKMANAGER') or has_rights('ROLE_AUDITEUR') %}
  					<a class="uibutton actionLink" href="#myModal" modal-url="{{ path('evaluation_controle', {'id': entity.id}) }}" data-toggle="modal" data-target="#myModal">
- 						<img src="{{ asset('bundles/orangemain/images/icon/color_18/pyramid.png') }}" />Evaluer la maturité aprés test
+ 						<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/pyramid.png') }}" />Evaluer la maturité aprés test
  					</a>
  				{% endif %}
  				</li>
@@ -199,12 +199,12 @@
 						<td>
 							<span class="tip" >
 	                			<a title="Détails" href="#">
-		                			<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+		                			<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}" >
 		                		</a>
                 			</span> 
                 		<span class="tip" >
                 			<a class="uibutton actionLink" href="#myModal" modal-url="{{ path('evaluation_controle', {'id': entity.id}) }}" data-toggle="modal" data-target="#myModal">
-		 						<img src="{{ asset('bundles/orangemain/images/icon/color_18/pyramid.png') }}" />Evaluer la maturité aprés test
+		 						<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/pyramid.png') }}" />Evaluer la maturité aprés test
 		 					</a>
 						</td>
 						</span> 

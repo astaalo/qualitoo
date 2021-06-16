@@ -37,7 +37,7 @@
 		
 	{%- else %}
 		<a {% if item.attribute('href_attr') is not empty %}id="{{ item.attribute('href_attr').id }}" class="{{ item.attribute('href_attr').class }}"{% endif %} href="{{ item.uri }}"{{ _self.attributes(item.linkAttributes) }}>
-			<img src="{{ asset('bundles/orangemain/images/icon/' ~ item.attribute('icon')) }}" alt="{{ block('label') }}" width="40px" />
+			<img src="{{ asset('assets/bundles/orangemain/images/icon/' ~ item.attribute('icon')) }}" alt="{{ block('label') }}" width="40px" />
 			<strong>{{ block('label') }}</strong>
 			{% if item.attribute('has_notifications') %}
 				<div class="notification" >{{ item.attribute('notifications_count') }}</div>

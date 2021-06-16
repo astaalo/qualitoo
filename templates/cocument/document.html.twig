@@ -56,14 +56,14 @@
 							<td width="100px"><div class="th_wrapp">{{ document.dateCreation|date('d/m/Y') }}</div></td>
 							<td width="70px"><div class="th_wrapp">
 								<span class="tip">
-									<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('details_fichier',{id : document.id}) }}" original-title="Voir les détails "><img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}"></a>
+									<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('details_fichier',{id : document.id}) }}" original-title="Voir les détails "><img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}"></a>
 							    </span>
 							    {% if has_rights('ROLE_ADMIN') or (has_rights('ROLE_RISKMANAGER') and is_proprietaire(document)) %}
 							    <span class="tip">
-									<a   href="{{ path('edition_document',{id : document.id}) }}" original-title="Modifier "><img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}"></a>
+									<a   href="{{ path('edition_document',{id : document.id}) }}" original-title="Modifier "><img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/pencil.png') }}"></a>
 							    </span>
 							    <span class="tip">
-							    	<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('supprimer_document',{id : document.id}) }}" original-title="Supprimer le fichier"><img src="{{ asset('bundles/orangemain/images/icon/color_18/delete.png') }}"></a>
+							    	<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('supprimer_document',{id : document.id}) }}" original-title="Supprimer le fichier"><img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/delete.png') }}"></a>
 							    </span>
 							    {% endif %}
 							</div></td>

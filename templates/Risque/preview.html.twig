@@ -7,7 +7,7 @@
 		<div id="buttom_top">
 			<ul class="uibutton-group">
 				<li><a class="uibutton confirm" href="{{ path('les_risques') }}" title="les risques">
-					<img src="{{ asset('bundles/orangemain/images//icon/color_18/undo.png') }}" alt="eye" >Retour à la liste
+					<img src="{{ asset('assets/bundles/orangemain/images//icon/color_18/undo.png') }}" alt="eye" >Retour à la liste
 				</a></li>
             </ul>
         </div>
@@ -125,7 +125,7 @@
    	</div>
    	<div id="tab3" class="tab_content">
    	<ul class="uibutton-group">
-			<li><a class="uibutton" href="{{ path('nouvelle_evaluation', {id: entity.id}) }}"><img src="{{ asset('bundles/orangemain/images//icon/color_18/pyramid.png') }}" alt="eye" > Evaluer</a></li>
+			<li><a class="uibutton" href="{{ path('nouvelle_evaluation', {id: entity.id}) }}"><img src="{{ asset('assets/bundles/orangemain/images//icon/color_18/pyramid.png') }}" alt="eye" > Evaluer</a></li>
         </ul>
 		<div class="content_table">
 			<div class="tableName">
@@ -151,7 +151,7 @@
 							<td>
 								<span class="tip" >
 									<a  title="details" href="{{ path('details_evaluation', {'id':evaluation.id}) }}">
-								    	<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" />
+								    	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}" />
 								    </a>
 								</span>
 							</td> 
@@ -192,20 +192,20 @@
 							<td>
 						  	<span class="tip">
 				                <a title="details" href="{{ path('details_planaction', {id: planAction.id}) }}">
-				                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+				                	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}" >
 				                </a>
 				                {% if has_rights ('ROLE_ADMIN')  %}
 				                     <a  title="supprimer un plan d'action" class="actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('supprimer_pa', {id: planAction.id}) }}">
-					                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/cancel.png') }}" >
+					                	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/cancel.png') }}" >
 					                </a>
 				                {% endif %}
 				                {% if planAction.statut.id != global_ids.statut.plan_action.solde %}
 					                <a title="Modifier" href="{{ path('edition_planaction', {id: planAction.id}) }}">
-					                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}" >
+					                	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/pencil.png') }}" >
 					                </a>
 				                {% elseif planAction.causeOfRisque.controle|length==0 %}
 					                <a title="Passer en dispositif" href="{{ path('a_mettre_en_dispositif', {pa_id: planAction.id}) }}">
-					                	<img src="{{ asset('bundles/orangemain/images/icon/gray_18/satellite.png') }}" >
+					                	<img src="{{ asset('assets/bundles/orangemain/images/icon/gray_18/satellite.png') }}" >
 					                </a>
 				                {% endif %}
 						  	</span>
@@ -249,23 +249,23 @@
 							<td>
 							  	<span class="tip" >
 					                <a  title="details" href="{{ path('details_controle', {'id':controle.id}) }}">
-					                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}" >
+					                	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}" >
 					                </a>
 							  	</span>
 				                {% if controle.causeOfRisque.planAction|length %}
 					                <a title="Saisir un plan d'action" href="{{ path('saisie_planaction', {controle_id: controle.id}) }}">
-					                	<img src="{{ asset('bundles/orangemain/images/icon/gray_18/hammer.png') }}" >
+					                	<img src="{{ asset('assets/bundles/orangemain/images/icon/gray_18/hammer.png') }}" >
 					                </a>
 				                {% endif %}
 							  	<span class="tip" >
 					                <a  title="Evaluer" class="actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('evaluation_controle', {'id': controle.id}) }}">
-					                	<img src="{{ asset('bundles/orangemain/images/icon/color_18/pyramid.png') }}" >
+					                	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/pyramid.png') }}" >
 					                </a>
 							  	</span>
 							  	{% if has_rights('ROLE_ADMIN') or has_rights('ROLE_SUPER_ADMIN') or has_rights('ROLE_RISKMANAGER')  %}
      					        <span class="tip" >
      					            <a title="Supprimer" class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('supprimer_controle', {'id': controle.id}) }}">
-     					               	<img src="{{ asset('bundles/orangemain/images/icon/color_18/cancel.png') }}" >
+     					               	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/cancel.png') }}" >
      					            </a>
      					        </span>
  					            {% endif %}

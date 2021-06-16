@@ -1,7 +1,7 @@
 <?php 
 namespace App\MainBundle\Twig;
 
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Security;
 
 class SecurityExtension extends \Twig_Extension
 {
@@ -10,7 +10,7 @@ class SecurityExtension extends \Twig_Extension
 	 */
 	private $user;
 	
-    public function __construct($securityContext)
+    public function __construct(Security $securityContext)
     {
         $this->user = $securityContext->getToken() ? $securityContext->getToken()->getUser() : null; 
     }

@@ -2,6 +2,7 @@
 namespace App\MainBundle\Twig;
 
 use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Twig\TwigFilter;
 
 class MainExtension extends \Twig_Extension {
@@ -11,7 +12,7 @@ class MainExtension extends \Twig_Extension {
 	 */
 	private $router;
 	
-	public function __construct($container) {
+	public function __construct(ContainerInterface $container) {
 		$this->router = $container->get('router');
 	}
 	

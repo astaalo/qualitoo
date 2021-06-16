@@ -1,6 +1,6 @@
 <?php
 
-namespace Orange\MainBundle\Services;
+namespace App\Service;
 
 Class Logger 
 {

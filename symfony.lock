@@ -163,6 +163,9 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "sonata-project/intl-bundle": {
+        "version": "2.10.1"
+    },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.7"
     },

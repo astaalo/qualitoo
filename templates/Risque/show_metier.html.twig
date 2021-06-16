@@ -1,8 +1,8 @@
 			<tr>
 				<th style="width:140px;" >Responsable:</th>
-				<td style="padding-left: 70px;">{{ entity.responsable ? entity.responsable : 'Non renseigné' }}</td>
+				<td style="padding-left: 70px;">{{ entity.responsable | default('Non renseigné') }}</td>
 			</tr>
-			{% set processus = entity.activite ? entity.activite.processus : '' %}
+			{% set processus = entity.activite | default('') %}
 			<tr>
 				<th style="width:140px;" >Structure:</th>
 				<td style="padding-left: 70px;">{{ processus ? processus.structure : '' }} ({{ processus ? processus.structure.name : 'aucune' }})</td>

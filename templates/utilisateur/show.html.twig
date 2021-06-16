@@ -9,16 +9,48 @@
 	</span>
 	<div id="buttom_top">
 		<ul class="uibutton-group">
-			<li><a class="uibutton icon confirm answer" href="{{ path('les_processus') }}" title="les processus">Retour à la liste</a></li>
-			<li><a class="uibutton icon edit" href="{{ path('edition_processus', {'id': entity.id}) }}">Edition de processus</a></li>
+			<li><a class="uibutton icon confirm answer" href="{{ path('les_utilisateurs') }}" title="les utilisateurs">Retour à la liste</a></li>
+			<li><a class="uibutton icon edit" href="{{ path('edition_utilisateur', {'id': entity.id}) }}">Edition d'utilisateur</a></li>
         </ul>
     </div>
 </div>
 {% endblock %}
 
+
 {% block content_config %}
 	<div class="content">
+		<table class="show_table" >
+			<tbody>
+				<tr>
+					<th style="width:115px;" >Prénom</th>
+					<td style="padding-left: 100px;">{{ entity.prenom }}</td>
+				</tr>
+				<tr>
+					<th style="width:115px;" >Nom</th>
+					<td style="padding-left: 100px;">{{ entity.nom }}</td>
+				</tr>
+				<tr>
+					<th style="width:115px;" >Matricule</th>
+					<td style="padding-left: 100px;">{{ entity.matricule }}</td>
+				</tr>
+				<tr>
+					<th style="width:115px;" >Nom d'utilisateur</th>
+					<td style="padding-left: 100px;">{{ entity.username }}</td>
+				</tr>
+				<tr>
+					<th style="width:115px;" >Email</th>
+					<td style="padding-left: 100px;">{{ entity.email }}</td>
+				</tr>
+				<tr>
+					<th style="width:115px;" >Téléphone</th>
+					<td style="padding-left: 100px;">{{ entity.telephone }}</td>
+				</tr>
+				<tr>
+					<th style="width:115px;" >Statut:</th>
+					<td style="padding-left: 100px;">{% if entity.enabled %} Actif {% else %} Inactif {% endif %}</td>
+				</tr>
+			</tbody>
+
+		</table>
 	</div>
-</div>
 {% endblock %}
- 

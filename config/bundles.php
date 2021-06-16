@@ -19,4 +19,5 @@ return [
     App\QuickMakingBundle\OrangeQuickMakingBundle::class => ['all' => true],
     App\MainBundle\OrangeMainBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
+    Sonata\IntlBundle\SonataIntlBundle::class => ['all' => true],
 ];

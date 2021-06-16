@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'base.html.twig' %}
 {% set risque = entity.risque %}
 
 {% block content %}
@@ -31,13 +31,13 @@
 				<td style="padding-left: 70px;">{% if entity.evaluateur is not empty %}{{ entity.evaluateur }}{% else %}<span style="color: red;font-weight: bold;">Pas renseigné</span>{% endif %}</td>
 			</tr>
 			{% if risque.cartographie.id == global_ids.carto.metier %}
-				{% include 'OrangeMainBundle:Risque:show_metier.html.twig' with {entity: risque.risqueMetier} %}
+				{% include 'Risque/show_metier.html.twig' with {entity: risque.risqueMetier} %}
 			{% elseif risque.cartographie.id == global_ids.carto.projet %}
-				{% include 'OrangeMainBundle:Risque:show_projet.html.twig' with {entity: risque.risqueProjet} %}
+				{% include 'Risque/show_projet.html.twig' with {entity: risque.risqueProjet} %}
 			{% elseif risque.cartographie.id == global_ids.carto.sst %}
-				{% include 'OrangeMainBundle:Risque:show_sst.html.twig' with {entity: risque.risqueSST} %}
+				{% include 'Risque/show_sst.html.twig' with {entity: risque.risqueSST} %}
 			{% elseif risque.cartographie.id == global_ids.carto.environnement %}
-				{% include 'OrangeMainBundle:Risque:show_environnemental.html.twig' with {entity: risque.risqueEnvironnemental} %}
+				{% include 'Risque/show_environnemental.html.twig' with {entity: risque.risqueEnvironnemental} %}
 			{% endif %}
 		</tbody>
 	</table>

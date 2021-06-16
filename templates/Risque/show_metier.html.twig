@@ -5,7 +5,7 @@
 			{% set processus = entity.activite | default('') %}
 			<tr>
 				<th style="width:140px;" >Structure:</th>
-				<td style="padding-left: 70px;">{{ processus ? processus.structure : '' }} ({{ processus ? processus.structure.name : 'aucune' }})</td>
+				<td style="padding-left: 70px;">{{ processus.structure | default('') }} ({{ processus.structure.name | default('aucune') }})</td>
 			</tr>
 			<tr>
 			   {% if processus is defined and processus is not empty%}

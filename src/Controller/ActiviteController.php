@@ -87,7 +87,7 @@ class ActiviteController extends BaseController
 	{
 		$em = $this->getDoctrine()->getManager();
 		$activite = $em->getRepository('App\Entity\Activite')->find($id);
-		$this->denyAccessUnlessGranted('delete', $activite, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('delete', $activite, 'Accés non autorisé');
 		$processus = $activite->getProcessus();
 		if (count($activite->getRisque()) <= 0) {
 			$em->remove($activite);

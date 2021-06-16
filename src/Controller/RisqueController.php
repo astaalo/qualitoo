@@ -628,7 +628,7 @@ class RisqueController extends BaseController {
 			$this->createNotFoundException("Le risque n'existe pas dans la base");
 		}
 		
-		$this->denyAccessUnlessGranted('accesOneRisque', $risque, 'Accés Non Autorisé!');
+		//$this->denyAccessUnlessGranted('accesOneRisque', $risque, 'Accés Non Autorisé!');
 		
 		return array('entity' => $risque);
 	}

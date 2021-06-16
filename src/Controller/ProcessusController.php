@@ -87,7 +87,7 @@ class ProcessusController extends BaseController {
 			throw $this->createNotFoundException('Aucun processus trouvé pour cet id : ' . $id);
 		}
 		
-		$this->denyAccessUnlessGranted('delete', $processus, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('delete', $processus, 'Accés non autorisé');
 		if ($request->getMethod () == 'POST') {
 			if(count($activites)) {
 				$this->get('session')->getFlashBag()->add('error', "Le processus ne peut pas etre supprimé du fait qu'il y a des activités.");

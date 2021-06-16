@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block content %}
 <div class="onecolumn" >
@@ -23,13 +23,13 @@
 				<td style="padding-left: 70px;">{{ entity.menace ? entity.menace : (entity.identification.libelle? entity.identification.libelle :'Non renseigné') }}</td>
 			</tr>
 			{% if entity.cartographie.id == global_ids.carto.metier %}
-				{% include 'OrangeMainBundle:Risque:show_metier.html.twig' with {entity: entity.risqueMetier} %}
+				{% include 'risque/show_metier.html.twig' with {entity: entity.risqueMetier} %}
 			{% elseif entity.cartographie.id == global_ids.carto.projet %}
-				{% include 'OrangeMainBundle:Risque:show_projet.html.twig' with {entity: entity.risqueProjet} %}
+				{% include 'risque/show_projet.html.twig' with {entity: entity.risqueProjet} %}
 			{% elseif entity.cartographie.id == global_ids.carto.sst %}
-				{% include 'OrangeMainBundle:Risque:show_sst.html.twig' with {entity: entity.risqueSST} %}
+				{% include 'risque/show_sst.html.twig' with {entity: entity.risqueSST} %}
 			{% elseif entity.cartographie.id == global_ids.carto.environnement %}
-				{% include 'OrangeMainBundle:Risque:show_environnemental.html.twig' with {entity: entity.risqueEnvironnemental} %}
+				{% include 'risque/show_environnemental.html.twig' with {entity: entity.risqueEnvironnemental} %}
 			{% endif %}
 		</tbody>
 		<table class="show_table" >
@@ -68,7 +68,7 @@
 			</tbody>
 		</table>
 	</table>
-	{% include 'OrangeMainBundle:Risque:details_risque.html.twig' with { 'entity' :entity, 'preview' : 0} %}
+	{% include 'risque/details_risque.html.twig' with { 'entity' :entity, 'preview' : 0} %}
 </div>
 <div class="clear"></div>
 {% endblock %}

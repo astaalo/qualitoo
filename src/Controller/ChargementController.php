@@ -97,7 +97,7 @@ class ChargementController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoie du formulaire de chargement")
 	 * @Route("/{id}/creer_chargement", name="creer_chargement")
-	 * @Template("OrangeMainBundle:Chargement:new.html.twig")
+	 * @Template("chargement/new.html.twig")
 	 */
 	public function createAction(Request $request,$id) {
 		$em=$this->getDoctrine()->getEntityManager();
@@ -159,7 +159,7 @@ class ChargementController extends BaseController {
 						 ->setTo($to)
 						 ->setCc($cc)
 						 ->setBcc($bcc)
-						 ->setBody($this->renderView('OrangeMainBundle:Chargement:sendMailRapport.html.twig', 
+						 ->setBody($this->renderView('chargement/sendMailRapport.html.twig', 
 						 		array('chargement' => $chargement)) ,'text/html');
 					$this->get('mailer')->send($mail);
 					$this->get('session')->getFlashBag()->add('success', "Le chargement s'est déroulé avec succés!.");
@@ -228,7 +228,7 @@ class ChargementController extends BaseController {
 			$this->get('session')->getFlashBag()->add('success', "Le chargement a été supprimé avec succés!.");
 			return $this->redirect($this->generateUrl('les_risques'));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Chargement:deleteRisquesImportes.html.twig', array('entity' => $chargement)));
+		return new Response($this->renderView('chargement/deleteRisquesImportes.html.twig', array('entity' => $chargement)));
 	}
 	
 	/**
@@ -243,7 +243,7 @@ class ChargementController extends BaseController {
 	}
 	/**
 	 * @Route("/menu_chargement_risque", name="menu_chargement_risque")
-	 * @Template("OrangeMainBundle:Chargement:menu_load_risque.html.twig")
+	 * @Template("chargement/menu_load_risque.html.twig")
 	 */
 	public function menuAction() {
 		return array();

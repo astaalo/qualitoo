@@ -125,7 +125,7 @@ class RisqueController extends BaseController {
 			$this->get('session')->getFlashBag()->add('success', "Le transfert s'est déroulé avec succés.");
 			return new Response($this->redirect($this->generateUrl('les_risques_a_transferer')));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Risque:transfert.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+		return new Response($this->renderView('risque/transfert.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 	
 	
@@ -199,7 +199,7 @@ class RisqueController extends BaseController {
 	
 	/**
 	 * @Route("/menu_nouveau_risque", name="menu_nouveau_risque")
-	 * @Template("OrangeMainBundle:Risque:menu_new_risque.html.twig")
+	 * @Template("risque/menu_new_risque.html.twig")
 	 */
 	public function menuAction() {
 		return array();
@@ -218,7 +218,7 @@ class RisqueController extends BaseController {
 				$entity->setStructure($this->getUser()->getStructure());
 			}
 			$type = new RisqueMetierType();
-			$view='OrangeMainBundle:Risque:new_risque_metier.html.twig';
+			$view='risque/new_risque_metier.html.twig';
  		} elseif ($cartographie_id==2) {
 			$entity = new RisqueProjet();
 			if($this->getUser()->hasRole("ROLE_RESPONSABLE_ONLY")){
@@ -226,15 +226,15 @@ class RisqueController extends BaseController {
 				$entity->setStructure($this->getUser()->getStructure());
 			}
 			$type = new RisqueProjetType();
-			$view   ='OrangeMainBundle:Risque:new_risque_projet.html.twig';
+			$view   ='risque/new_risque_projet.html.twig';
 		} elseif($cartographie_id==3) {
 			$entity = new RisqueSST();
 			$type = new RisqueSSTType();
-			$view   ='OrangeMainBundle:Risque:new_risque_sst.html.twig';
+			$view   ='risque/new_risque_sst.html.twig';
 		} elseif($cartographie_id==4) {
 			$entity = new RisqueEnvironnemental();
 			$type = new RisqueEnvironnementalType();
-			$view   ='OrangeMainBundle:Risque:new_risque_environnemental.html.twig';
+			$view   ='risque/new_risque_environnemental.html.twig';
 		}
 		$risque = new Risque();
 		$risque->setCartographie($this->getDoctrine()->getManager()->getRepository('OrangeMainBundle:Cartographie')->find($cartographie_id));
@@ -260,7 +260,7 @@ class RisqueController extends BaseController {
 				$entity->setStructure($this->getUser()->getStructure());
 			}
 			$type = new RisqueMetierType();
-			$view='OrangeMainBundle:Risque:new_risque_metier.html.twig';
+			$view='risque/new_risque_metier.html.twig';
  		} elseif ($cartographie_id==2) {
 			$entity = new RisqueProjet();
 	 		if($this->getUser()->hasRole("ROLE_RESPONSABLE_ONLY")){
@@ -268,15 +268,15 @@ class RisqueController extends BaseController {
 					$entity->setStructure($this->getUser()->getStructure());
 			}
 			$type = new RisqueProjetType();
-			$view   ='OrangeMainBundle:Risque:new_risque_projet.html.twig';
+			$view   ='risque/new_risque_projet.html.twig';
 		} elseif($cartographie_id==3) {
 			$entity = new RisqueSST();
 			$type = new RisqueSSTType();
-			$view   ='OrangeMainBundle:Risque:new_risque_sst.html.twig';
+			$view   ='risque/new_risque_sst.html.twig';
 		} elseif($cartographie_id==4) {
 			$entity = new RisqueEnvironnemental();
 			$type = new RisqueEnvironnementalType();
-			$view   ='OrangeMainBundle:Risque:new_risque_environnemental.html.twig';
+			$view   ='risque/new_risque_environnemental.html.twig';
 		}
 		$risque = new Risque();
     	$cartographie = $this->getDoctrine()->getRepository('OrangeMainBundle:Cartographie')->find($cartographie_id);
@@ -370,8 +370,8 @@ class RisqueController extends BaseController {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $this->getMyParameter('ids', array('carto', 'metier'))));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$this->modifyRequestForForm($request, $data, $form);
 		return array('form' => $form->createView(), 'position'=>intval($position));
 		//return array('form' => $form->createView());
 	}
@@ -447,19 +447,19 @@ class RisqueController extends BaseController {
 		if($cartographie_id==1) {
 			$entity = $em->getRepository('App\Entity\RisqueMetier')->findOneBy(array('risque'=>$risque));
 			$form   = $this->createForm(new RisqueMetierType(true), $entity);
-			$view   ='OrangeMainBundle:Risque:validation_metier.html.twig';
+			$view   ='risque/validation_metier.html.twig';
 		} elseif ($cartographie_id==2) {
 			$entity = $em->getRepository('App\Entity\RisqueProjet')->findOneBy(array('risque'=>$risque));
 			$form   = $this->createForm(new RisqueProjetType(), $entity);
-			$view   ='OrangeMainBundle:Risque:validation_projet.html.twig';
+			$view   ='risque/validation_projet.html.twig';
 		} elseif($cartographie_id==3) {
 			$entity = $em->getRepository('App\Entity\RisqueSST')->findOneBy(array('risque'=>$risque));
 			$form   = $this->createForm(new RisqueSSTType(), $entity);
-			$view   ='OrangeMainBundle:Risque:validation_sst.html.twig';
+			$view   ='risque/validation_sst.html.twig';
 		} elseif($cartographie_id==4) {
 			$entity = $em->getRepository('App\Entity\RisqueEnvironnemental')->findOneBy(array('risque'=>$risque));
 			$form   = $this->createForm(new RisqueEnvironnementalType(), $entity);
-			$view   ='OrangeMainBundle:Risque:validation_environnemental.html.twig';
+			$view   ='risque/validation_environnemental.html.twig';
 		} else {
 			$entity = new Risque();
 			$form=new RisqueType();
@@ -570,7 +570,7 @@ class RisqueController extends BaseController {
 			$em->flush();
 			return new JsonResponse(array('response' => 'La cause a été supprimée avec succès.'));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Risque:supprimeCauseOfRisque.html.twig', array('entity' => $entity)));
+		return new Response($this->renderView('risque/supprimeCauseOfRisque.html.twig', array('entity' => $entity)));
 	}
 	
 	
@@ -593,7 +593,7 @@ class RisqueController extends BaseController {
 			$em->flush();
 			return new JsonResponse(array('status' => 'success', 'text' => 'Le risque a été supprimé avec succès.'));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Risque:delete.html.twig', array('entity' => $entity)));
+		return new Response($this->renderView('risque/delete.html.twig', array('entity' => $entity)));
 	}
 
 	
@@ -646,19 +646,19 @@ class RisqueController extends BaseController {
 		if($cartographie_id==1){
 			$entity = $em->getRepository('App\Entity\RisqueMetier')->findOneBy(array('risque'=>$id));
 			$form   = $this->createForm(new RisqueMetierType(), $entity);
-			$view   ='OrangeMainBundle:Risque:new_risque_metier.html.twig';
+			$view   ='risque/new_risque_metier.html.twig';
 		} elseif ($cartographie_id==2){
 			$entity = $em->getRepository('App\Entity\RisqueProjet')->findOneBy(array('risque'=>$id));
 			$form   = $this->createForm(new RisqueProjetType(), $entity);
-			$view   ='OrangeMainBundle:Risque:new_risque_projet.html.twig';
+			$view   ='risque/new_risque_projet.html.twig';
 		} elseif($cartographie_id==3) {
 			$entity = $em->getRepository('App\Entity\RisqueSST')->findOneBy(array('risque'=>$id));
 			$form   = $this->createForm(new RisqueSSTType(), $entity);
-			$view   ='OrangeMainBundle:Risque:new_risque_sst.html.twig';
+			$view   ='risque/new_risque_sst.html.twig';
 		} elseif($cartographie_id==4){
 			$entity = $em->getRepository('App\Entity\RisqueEnvironnemental')->findOneBy(array('risque'=>$id));
 			$form   = $this->createForm(new RisqueEnvironnementalType(), $entity);
-			$view   ='OrangeMainBundle:Risque:new_risque_environnemental.html.twig';
+			$view   ='risque/new_risque_environnemental.html.twig';
 		} else {
 			$entity = new Risque();
 			$form = new RisqueType();

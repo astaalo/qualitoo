@@ -50,7 +50,7 @@
 			{% endset %}
 			
 			{% set causeSheepItTemplate %}
-				{% include 'OrangeMainBundle:Extra:sheepIt_template.html.twig' with 
+				{% include 'extra/sheepIt_template.html.twig' with
 					{
 						'id': form.causeOfRisque.vars.id,
 						'prototype' : form.causeOfRisque.vars.prototype, 
@@ -63,7 +63,7 @@
 			{% endset %}
 			
 			{% set impactSheepItTemplate %}
-				{% include 'OrangeMainBundle:Extra:sheepIt_template.html.twig' with 
+				{% include 'extra/sheepIt_template.html.twig' with
 					{
 						'id': form.impactOfRisque.vars.id,
 						'prototype' : form.impactOfRisque.vars.prototype, 

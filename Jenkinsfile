@@ -14,7 +14,7 @@ pipeline {
         APP_DEBUG = '0'
         APP_SECRET = '777fa4b759d4067ed9ee76f6b0d9d156'
         MAILER_URL="smtp://10.100.56.56:25"
-        DATABASE_URL="mysql://annuaire:nnr_pma@s2m@172.17.0.1:3306/annuaire?serverVersion=13&charset=utf8"
+        DATABASE_URL="mysql://coris:crs_pma@s2m@172.17.0.1:3306/coris?serverVersion=13&charset=utf8"
     }
     tools {
         maven "Maven_3.3.9"

@@ -45,7 +45,7 @@ class Mailer {
 			->setFrom ( array(self::FROM => self::FROM_NAME) )
 			->setTo ( $to )
 			->setSubject ( $subject )
-			->setBody ( $this->templating->render ( $template ? $template : 'OrangeMainBundle:Extra:email.html.twig', array (
+			->setBody ( $this->templating->render ( $template ? $template : 'extra/email.html.twig', array (
 					'body' => $body 
 			) ) )
 			->setContentType ( 'text/html' );

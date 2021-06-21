@@ -108,7 +108,7 @@
 						{% set errorSteps = errorSteps ~ "1, " %}
 					{% endif %}
 					{% set causeSheepItTemplate %}
-						{% include 'OrangeMainBundle:Extra:sheepIt_template.html.twig' with 
+						{% include 'extra/sheepIt_template.html.twig' with
 							{
 								'id': form.risque.causeOfRisque.vars.id,
 								'prototype' : form.risque.causeOfRisque.vars.prototype, 

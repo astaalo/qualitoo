@@ -131,7 +131,7 @@
 					</p>
 					<br> <br>
 					{{ form_row(form.isCorrective, {'attr': {'value':isCorrective} }) }}
-					{% include 'OrangeMainBundle:Extra:customFormFile.html.twig' with {'fileField': form.file} %}
+					{% include 'extra/customFormFile.html.twig' with {'fileField': form.file} %}
 					{{ form_row(form._token) }}
 					<div class="form-group form-actions">
 						<div class="col-lg-offset-3 col-lg-9">

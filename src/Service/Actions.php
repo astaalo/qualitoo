@@ -73,8 +73,8 @@ class Actions
         return sprintf('<span class="tip" ><a title="Détails" href="%s"><img src="%s" /></a></span> 
          <span class="tip" ><a title="Modifier" href="%s"><img src="%s" /></a></span> 
           <span class="tip" ><a class="Delete" title="Désactiver" href="%s"><img src="%s" /></a></span> 
-          <span class="tip" ><a class="Delete" title="Supprimer" href="%s"><img src="%s" /></a></span>', '#', $this->asset('bundles/orangemain/images/icon/color_18/info.png'), '#', $this->asset('bundles/orangemain/images/icon/
-                  /pencil.png'), '#', $this->asset('bundles/orangemain/images/icon/color_18/close.png'), '#', $this->asset('bundles/orangemain/images/icon/color_18/cross.png'));
+          <span class="tip" ><a class="Delete" title="Supprimer" href="%s"><img src="%s" /></a></span>', '#', $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'), '#', $this->asset('assets/bundles/orangemain/images/icon/
+                  /pencil.png'), '#', $this->asset('assets/bundles/orangemain/images/icon/color_18/close.png'), '#', $this->asset('assets/bundles/orangemain/images/icon/color_18/cross.png'));
     }
 
     /**
@@ -87,14 +87,14 @@ class Actions
         $render = sprintf('<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>
              <span class="tip" ><a title="Modifier" href="%s"><img src="%s" /></a></span>
              <span class="tip" ><a title="Désactiver" href="%s"><img src="%s" /></a></span>',
-            $this->router->generate('details_utilisateur', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/info.png'),
-            $this->router->generate('edition_utilisateur', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'),
-            $this->router->generate(($entity->isEnabled() ? 'desactiver' : 'activer') . '_utilisateur', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/' . ($entity->isEnabled() ? 'cancel' : 'checkmark2') . '.png'));
+            $this->router->generate('details_utilisateur', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'),
+            $this->router->generate('edition_utilisateur', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'),
+            $this->router->generate(($entity->isEnabled() ? 'desactiver' : 'activer') . '_utilisateur', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/' . ($entity->isEnabled() ? 'cancel' : 'checkmark2') . '.png'));
         if ($this->user->hasRole(Utilisateur::ROLE_SUPER_ADMIN) && $entity->getId() != $this->user->getId()) {
             $render .= sprintf(
                 '<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>',
                 $this->router->generate('dashboard') . '?_want_to_be_this_user=' . $entity->getUsername(),
-                $this->asset('bundles/orangemain/images/icon/color_18/random.png')
+                $this->asset('assets/bundles/orangemain/images/icon/color_18/random.png')
             );
         }
         return $render;
@@ -108,7 +108,7 @@ class Actions
     public function generateActionsForGrille($entity)
     {
         return sprintf('<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>
-             <span class="tip" ><a title="Modifier" href="%s"><img src="%s" /></a></span>', '#', $this->asset('bundles/orangemain/images/icon/color_18/info.png'), '#', $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'));
+             <span class="tip" ><a title="Modifier" href="%s"><img src="%s" /></a></span>', '#', $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'), '#', $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'));
     }
 
     /**
@@ -117,12 +117,12 @@ class Actions
      */
     public function generateActionsForCause($entity)
     {
-        $this->addAction("Voir les détails", $this->router->generate('details_cause', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
+        $this->addAction("Voir les détails", $this->router->generate('details_cause', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
         $this->addActionByRoles(
             array('ROLE_RISKMANAGER', 'ROLE_ADMIN'),
             "Modifier",
             $this->router->generate('edition_cause', array('id' => $entity->getCause()->getId(), 'page' => 1)),
-            $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'),
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'),
             true
         );
         return $this->getActions();
@@ -134,10 +134,10 @@ class Actions
      */
     public function generateActionsForImpact($entity)
     {
-        $this->addAction("Voir les détails", $this->router->generate('details_impact', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
+        $this->addAction("Voir les détails", $this->router->generate('details_impact', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
         /*$this->addActionByRoles(array(
                 'ROLE_RISKMANAGER'
-        ), "Modifier", "#", $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'));*/
+        ), "Modifier", "#", $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'));*/
         return $this->getActions();
     }
 
@@ -149,16 +149,16 @@ class Actions
     {
         $this->addAction("Voir les détails", $this->router->generate('details_famille', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/info.png'), true);
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'), true);
         $this->addActionByRoles(array(
             'ROLE_RISKMANAGER'
         ), "Modifier", $this->router->generate('edition_famille', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'));
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'));
         if ($entity->getChildren()->count() > 0 || $entity->getCause()->count() > 0) {
             $this->addActionByRoles(array(
                 'ROLE_RISKMANAGER'
-            ), "Supprimer", '#', $this->asset('bundles/orangemain/images/icon/color_18/close.png'));
+            ), "Supprimer", '#', $this->asset('assets/bundles/orangemain/images/icon/color_18/close.png'));
         }
         return $this->getActions();
     }
@@ -169,12 +169,12 @@ class Actions
      */
     public function generateActionsForDomaineImpact($entity)
     {
-        $this->addAction("Voir les détails", '#', $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
+        $this->addAction("Voir les détails", '#', $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
         $this->addActionByRoles(array(
             'ROLE_ADMIN', 'ROLE_RISKMANAGER'
         ), "Modifier", $this->router->generate('edition_domaine_dimpact', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'), true);
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'), true);
         return $this->getActions();
     }
 
@@ -188,7 +188,7 @@ class Actions
             'ROLE_ADMIN', 'ROLE_RISKMANAGER'
         ), "Modifier", $this->router->generate('edition_domaine_dactivite', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'), true);
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'), true);
         return $this->getActions();
     }
 
@@ -202,7 +202,7 @@ class Actions
             'ROLE_ADMIN', 'ROLE_RISKMANAGER'
         ), "Modifier", $this->router->generate('edition_domaine_site', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'), true);
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'), true);
         return $this->getActions();
     }
 
@@ -215,14 +215,14 @@ class Actions
         /* $text = sprintf('
                 <span class="tip" ><a title="Voir les détails" href="#"><img src="%s" /></a></span>
                 <span class="tip" ><a title="Modifier" href="%s"><img src="%s" /></a></span>',
-                $this->asset('bundles/orangemain/images/icon/color_18/info.png'),
+                $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'),
                 $this->router->generate('edition_structure', array('id' => $entity->getId())),
-                $this->asset('bundles/orangemain/images/icon/color_18/pencil.png')
+                $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png')
             );
         return $text; */
-        $info_icon = $this->asset('bundles/orangemain/images/icon/color_18/info.png');
-        $pencil_icon = $this->asset('bundles/orangemain/images/icon/color_18/pencil.png');
-        $cancel_icon = $this->asset('bundles/orangemain/images/icon/color_18/cancel.png');
+        $info_icon = $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png');
+        $pencil_icon = $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png');
+        $cancel_icon = $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png');
         $id = $entity->getId();
         $links = '<span class="tip" ><a title="Voir les détails" href="%s"><img src=' . $info_icon . ' /></a></span>
              <span class="tip" ><a title="Modifier" href="%s"><img src="' . $pencil_icon . '" /></a></span>';
@@ -254,18 +254,18 @@ class Actions
     {
         $this->addAction("Voir les détails", $this->router->generate('details_processus', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
         $this->addActionByRoles(
             array('ROLE_RISKMANAGER', 'ROLE_ADMIN'),
             "Modifier",
             $this->router->generate('edition_processus', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/pencil.png')
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png')
         );
         $this->addActionByRoles(
             array('ROLE_RISKMANAGER', 'ROLE_ADMIN'),
             "Supprimer",
             $this->router->generate('supprimer_processus', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/cancel.png'),
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'),
             true
         );
         return $this->getActions();
@@ -281,25 +281,25 @@ class Actions
         $this->addAction(
             "Voir les détails",
             $this->router->generate('details_activite', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/info.png')
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png')
         );
         $this->addActionByRoles(
             array('ROLE_RISKMANAGER'),
             "Modifier",
             $this->router->generate('edition_activite', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/pencil.png')
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png')
         );
         $this->addActionByRoles(
             array('ROLE_RISKMANAGER'),
             "Supprimer",
             $this->router->generate('supprimer_activite', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/cancel.png')
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png')
         );
         /*$this->addActionByRoles(array(
                 'ROLE_RISKMANAGER'
         ), "Comparer", $this->router->generate('compare_activite', array(
                 'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/eye.png'));*/
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/eye.png'));*/
         return $this->getActions();
     }
 
@@ -314,21 +314,21 @@ class Actions
         $this->addAction(
             "Voir les détails",
             $this->router->generate('details_risque', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/info.png')
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png')
         );
         $this->addActionByRoles(
             array('ROLE_RISKMANAGER'),
             "Supprimer Risque",
             $this->router->generate('suppression_risque', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/cancel.png'),
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'),
             true
         );
         return $this->getActions();
 
         /*return sprintf('<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>', $this->router->generate('details_risque', array(
                 'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
-        $this->addActionByRoles(array('ROLE_ADMIN'), "Supprimer PA", $this->router->generate('supprimer_pa', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/cancel.png'),true);*/
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
+        $this->addActionByRoles(array('ROLE_ADMIN'), "Supprimer PA", $this->router->generate('supprimer_pa', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'),true);*/
     }
 
     /**
@@ -342,7 +342,7 @@ class Actions
             array('ROLE_RISKMANAGER'),
             "Supprimer Risque",
             $this->router->generate('suppression_risque', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/cancel.png'),
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'),
             true
         );
         return $this->getActions();
@@ -356,7 +356,7 @@ class Actions
     {
         return sprintf('<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>', $this->router->generate('details_evaluation', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
     }
 
     /**
@@ -369,14 +369,14 @@ class Actions
         $text = sprintf(
             '<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>',
             $this->router->generate('details_projet', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/info.png')
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png')
         );
 
         if ($this->user->hasRole(Utilisateur::ROLE_ADMIN) || $this->user->hasRole(Utilisateur::ROLE_RISKMANAGER)) {
             $text .= sprintf(
                 '<span class="tip"><a title="Supprimer Projet" href="#myModal" class="actionLink" modal-url="%s" data-target="#myModal" data-toggle="modal"><img src="%s" /></a></span>',
                 $this->router->generate('suppression_projet', array('id' => $entity->getId())),
-                $this->asset('bundles/orangemain/images/icon/color_18/cancel.png'),
+                $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'),
                 true
             );
         }
@@ -392,27 +392,27 @@ class Actions
     {
         $text = sprintf('<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>', $this->router->generate('details_projet', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
         if ($entity->getEtat() != $this->states['projet']['cloture'])
             $text .= ' ' . sprintf('<span class="tip" >
                                 <a title="Cloturer projet" class="icon add actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" class="actionLink" modal-url="%s">
                                 <img src="%s" /></a></span>', $this->router->generate('changer_statut', array(
                 'id' => $entity->getId(), 'statut' => $this->states['projet']['cloture']
-            )), $this->asset('bundles/orangemain/images/icon/color_18/lock.png'));
+            )), $this->asset('assets/bundles/orangemain/images/icon/color_18/lock.png'));
 
         if ($entity->getEtat() != $this->states['projet']['actif'])
             $text .= sprintf('<span class="tip" >
                      <a title="Activer projet" class="icon add actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" class="actionLink" modal-url="%s">
                      <img src="%s" /></a></span>', $this->router->generate('changer_statut', array(
                 'id' => $entity->getId(), 'statut' => $this->states['projet']['actif']
-            )), $this->asset('bundles/orangemain/images/icon/color_18/lock_open.png'));
+            )), $this->asset('assets/bundles/orangemain/images/icon/color_18/lock_open.png'));
 
         if ($entity->getEtat() != $this->states['projet']['abandonne'])
             $text .= sprintf('<span class="tip" >
                      <a title="Abandonner projet" class="icon add actionLink" href="#myModal" data-toggle="modal" data-target="#myModal" class="actionLink" modal-url="%s">
                      <img src="%s" /></a></span>', $this->router->generate('changer_statut', array(
                 'id' => $entity->getId(), 'statut' => $this->states['projet']['abandonne']
-            )), $this->asset('bundles/orangemain/images/icon/color_18/cancel.png'));
+            )), $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'));
 
         return $text;
     }
@@ -425,16 +425,16 @@ class Actions
     {
         return sprintf('<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>', $this->router->generate('apercu_risque', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/info.png')) .
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png')) .
             sprintf('<span class="tip" ><a title="Valider le risque" href="%s"><img src="%s" /></a></span>', $this->router->generate('validation_risque', array(
                 'id' => $entity->getId()
-            )), $this->asset('bundles/orangemain/images/icon/color_18/checkmark2.png')) .
+            )), $this->asset('assets/bundles/orangemain/images/icon/color_18/checkmark2.png')) .
             sprintf('<span class="tip" ><a title="Modifier" href="%s"><img src="%s" /></a></span>', $this->router->generate('edition_risque', array(
                 'id' => $entity->getId()
-            )), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png')).
+            )), $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png')).
             sprintf('<span class="tip" ><a title="Supprimer" href="#myModal" class="actionLink" modal-url="%s" data-target="#myModal" data-toggle="modal"><img src="%s" /></a></span>', $this->router->generate('suppression_risque', array(
                 'id' => $entity->getId()
-            )), $this->asset('bundles/orangemain/images/icon/color_18/cancel.png'));
+            )), $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'));
 
     }
 
@@ -446,7 +446,7 @@ class Actions
     {
         return sprintf('<span class="tip" ><a title="Poursuivre" href="%s"><img src="%s" /></a></span>', $this->router->generate('edition_risque', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/play.png'));
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/play.png'));
     }
 
     /**
@@ -456,10 +456,10 @@ class Actions
      */
     public function generateActionsForQuestion($entity)
     {
-        $this->addAction("Faire monter", $this->router->generate('changer_position', array('sens' => 'H')), $this->asset('bundles/orangemain/images/icon/color_18/directional_up.png'));
-        $this->addAction("Faire descendre", $this->router->generate('changer_position', array('sens' => 'B')), $this->asset('bundles/orangemain/images/icon/color_18/directional_down.png'));
-        $this->addAction("Voir les détails", "#", $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
-        $this->addActionByRoles(array('ROLE_RISKMANAGER'), "Modifier", $this->router->generate('edition_question', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'), true);
+        $this->addAction("Faire monter", $this->router->generate('changer_position', array('sens' => 'H')), $this->asset('assets/bundles/orangemain/images/icon/color_18/directional_up.png'));
+        $this->addAction("Faire descendre", $this->router->generate('changer_position', array('sens' => 'B')), $this->asset('assets/bundles/orangemain/images/icon/color_18/directional_down.png'));
+        $this->addAction("Voir les détails", "#", $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
+        $this->addActionByRoles(array('ROLE_RISKMANAGER'), "Modifier", $this->router->generate('edition_question', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'), true);
         return $this->getActions();
     }
 
@@ -474,13 +474,13 @@ class Actions
             'ROLE_RISKMANAGER', 'ROLE_ADMIN'
         ), "Modifier", $this->router->generate('edition_menace', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'), true);
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'), true);
 
         /*$this->addActionByRoles(array(
             'ROLE_RISKMANAGER' , 'ROLE_ADMIN'
         ), "Comparer", $this->router->generate('compare_menace', array(
                 'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/eye.png'), false);*/
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/eye.png'), false);*/
 
         return $this->getActions();
     }
@@ -496,14 +496,14 @@ class Actions
             array('ROLE_RISKMANAGER'),
             "Modifier",
             $this->router->generate('edition_site', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'),
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'),
             true
         );
         $this->addActionByRoles(
             array('ROLE_RISKMANAGER'),
             $entity->getEtat() ? 'Désactiver' : 'Activer',
             $this->router->generate('edition_site', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/' . ($entity->getEtat() ? 'cancel' : 'checkmark2') . '.png'),
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/' . ($entity->getEtat() ? 'cancel' : 'checkmark2') . '.png'),
             true
         );
         return $this->getActions();
@@ -516,8 +516,8 @@ class Actions
      */
     public function generateActionsForPlanAction($entity)
     {
-        $this->addAction("Voir les détails", $this->router->generate('details_planaction', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
-        $this->addActionByRoles(array('ROLE_ADMIN'), "Supprimer PA", $this->router->generate('supprimer_pa', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/cancel.png'), true);
+        $this->addAction("Voir les détails", $this->router->generate('details_planaction', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
+        $this->addActionByRoles(array('ROLE_ADMIN'), "Supprimer PA", $this->router->generate('supprimer_pa', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'), true);
         return $this->getActions();
     }
 
@@ -531,19 +531,19 @@ class Actions
         $content = sprintf(
             '<span class="tip" ><a title="Voir les détails" href="%s"><img src="%s" /></a></span>',
             $this->router->generate('details_controle', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/info.png')
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png')
         );
 
         if ($this->user->hasRole(Utilisateur::ROLE_ADMIN) || $this->user->hasRole(Utilisateur::ROLE_RISKMANAGER) || $this->user->hasRole(Utilisateur::ROLE_AUDITEUR) || $this->user->hasRole(Utilisateur::ROLE_RESPONSABLE)) {
             $content .= sprintf(
                 '<span class="tip" ><a title="Modifier le controle" href="%s"><img src="%s" /></a></span>',
                 $this->router->generate('edition_controle', array('id' => $entity->getId())),
-                $this->asset('bundles/orangemain/images/icon/color_18/pencil.png')
+                $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png')
             );
         }
         //      if($this->user->hasRole(Utilisateur::ROLE_ADMIN) || $this->isAuditorOfRisque($entity->getRisque())){
         //              $content .= sprintf('<span class="tip" ><a title="Supprimer le controle" href="#myModal" class="actionLink" modal-url="%s" data-target="#myModal" data-toggle="modal"><img src="%s" /></a></span>',
-        //                       $this->router->generate('supprimer_controle', array('id' => $entity->getId())), $this->asset('bundles/orangemain/images/icon/color_18/cancel.png'));
+        //                       $this->router->generate('supprimer_controle', array('id' => $entity->getId())), $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'));
         //      }
         return $content;
     }
@@ -557,7 +557,7 @@ class Actions
     {
         return sprintf('<span class="tip" ><a title="Détails" href="%s"><img src="%s" /></a></span>', $this->router->generate('read_notification', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/info.png'));
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
     }
 
     /**
@@ -620,7 +620,7 @@ class Actions
             'ROLE_ADMIN', 'ROLE_RISKMANAGER'
         ), "Modifier", $this->router->generate('edition_equipement', array(
             'id' => $entity->getId()
-        )), $this->asset('bundles/orangemain/images/icon/color_18/pencil.png'), true);
+        )), $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'), true);
         return $this->getActions();
     }
 
@@ -634,7 +634,7 @@ class Actions
         return sprintf(
             '<span class="tip" ><a title="Voir les risques" href="%s"><img src="%s" /></a></span>',
             $this->router->generate('les_risques_importes', array('id' => $entity->getId())),
-            $this->asset('bundles/orangemain/images/icon/color_18/info.png')
+            $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png')
         );
     }
 

@@ -122,7 +122,7 @@ class ActiviteController extends BaseController
 	/**
 	 * @Route("/{id}/ajouter_activite", name="ajouter_activite", requirements={ "id"=  "\d+"})
 	 * @Route("/creer_activite", name="creer_activite")
-	 * @Template("OrangeMainBundle:Activite:add.html.twig")
+	 * @Template("activite/add.html.twig")
 	 */
 	public function createAction(Request $request, $id = null)
 	{
@@ -161,7 +161,7 @@ class ActiviteController extends BaseController
 	/**
 	 * @Route ("/{id}/modifier_activite", name="modifier_activite", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Activite:edit.html.twig")
+	 * @Template("activite/edit.html.twig")
 	 */
 	public function updateAction($id)
 	{
@@ -226,7 +226,7 @@ class ActiviteController extends BaseController
 		$lib = $entity->getLibelleSansCarSpecial();
 		$structure = $entity->getProcessus()->getStructure()->getId();
 		$same = $em->getRepository('App\Entity\Activite')->findStructureBy($structure, $lib);
-		return new Response($this->renderView('OrangeMainBundle:Activite:merge.html.twig', array(
+		return new Response($this->renderView('activite/merge.html.twig', array(
 			'activites' => $same,
 		)));
 	}

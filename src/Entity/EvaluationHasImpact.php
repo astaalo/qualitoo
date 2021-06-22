@@ -23,7 +23,7 @@ class EvaluationHasImpact
     private $id;
     
     /**
-     * @var \Evaluation
+     * @var Evaluation
      *
      * @ORM\ManyToOne(targetEntity="Evaluation")
      * @ORM\JoinColumns({

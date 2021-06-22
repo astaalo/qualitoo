@@ -151,9 +151,9 @@ class CritereController extends BaseController {
 					$em->flush();
 					$this->get('session')->getFlashBag()->add('success', "Le critere a été supprimé avec succés.");
 				}elseif ($entity->getImpact()->count()>0)
-					$this->get('session')->getFlashBag()->add('error', "Le critère est déja utilisé pour une évaluation");
+					$this->get('session')->getFlashBag()->add('error', "Le critère est déja utilisé pour une évaluation.");
 				
-				return new Response($this->redirect($this->generateUrl('les_criteres')));
+				return $this->redirect($this->generateUrl('les_criteres'));
 			}
 		}
 		return array('entity' => $entity);

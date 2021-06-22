@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Utilisateur;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,10 +17,10 @@ class SiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('libelle', null, array('label' => 'Nom du site'));
-        $builder->add('responsable', 'entity', array(
+        $builder->add('responsable', EntityType::class, array(
         		'label' => 'Processus',
-        		'class' => 'OrangeMainBundle:Utilisateur',
-        		'empty_value' => 'Choisir le responsable ...',
+        		'class' => Utilisateur::class,
+        		'placeholder' => 'Choisir le responsable ...',
         		'empty_data'  => null,
         		'attr' => array(
         				'class' => 'chzn-select',

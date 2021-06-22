@@ -502,7 +502,7 @@ class Actions
         $this->addActionByRoles(
             array('ROLE_RISKMANAGER'),
             $entity->getEtat() ? 'Désactiver' : 'Activer',
-            $this->router->generate('edition_site', array('id' => $entity->getId())),
+            $this->router->generate('activer_desactiver_site', array('id' => $entity->getId())),
             $this->asset('assets/bundles/orangemain/images/icon/color_18/' . ($entity->getEtat() ? 'cancel' : 'checkmark2') . '.png'),
             true
         );
@@ -600,9 +600,7 @@ class Actions
         $this->actions .= sprintf($isModal ? self::ACTION_MODAL_TEMPLATE : self::ACTION_TEMPLATE, $title, $url, $icon);
     }
 
-    /**
-     * @return \App\Services\string
-     */
+
     private function getActions()
     {
         $actions = $this->actions;

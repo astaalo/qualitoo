@@ -118,7 +118,7 @@ class ProjetController extends BaseController {
 	* @Route("/creer_projet", name="creer_projet")
 	* @Route("/{id}/ajouter_projet", name="ajouter_projet")
 	* @Method("POST")
-	* @Template("OrangeMainBundle:Projet:new.html.twig")
+	* @Template("projet/new.html.twig")
 	*/
 	public function createAction(Request $request, $id = null) {
 		$em = $this->getDoctrine()->getManager();
@@ -163,7 +163,7 @@ class ProjetController extends BaseController {
 	 * @QMLogger(message="Envoi de donnees saisies lors de la modification  des projets")
 	 * @Route ("/{id}/modifier_projet", name="modifier_projet", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Projet:edit.html.twig")
+	 * @Template("projet/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
@@ -224,19 +224,24 @@ class ProjetController extends BaseController {
 	 * @Template()
 	 */
 	public function deleteAction(Request $request, $id){
-		$em = $this->getDoctrine()->getEntityManager();
+		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Projet')->find($id);
 		if($entity == null)
 			$this->createNotFoundException("Ce projet n'existe pas!");
-		
-		$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');
 		if($request->getMethod()=='POST') {
-			$em->remove($entity);
-			$em->flush();
-			$this->get('session')->getFlashBag()->add('success', "Le projet a été supprimé avec succès.");
+            $charg = $em->getRepository('App\Entity\Chargement')->findByProjet($id);
+            $risque = $em->getRepository('App\Entity\RisqueProjet')->findByProjet($id);
+            if (count($charg) <= 0 && count($risque) <= 0) {
+                $em->remove($entity);
+                $em->flush();
+                $this->get('session')->getFlashBag()->add('success', "Le projet a été supprimé avec succès.");
+            } else {
+                $this->get('session')->getFlashBag()->add('error', "Veuillez supprimer d'abord les chargements et risques liés à ce projet.");
+            }
 			return $this->redirect($this->generateUrl('les_projets'));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Projet:delete.html.twig', array('entity' => $entity)));
+		return new Response($this->renderView('projet/delete.html.twig', array('entity' => $entity)));
 	}
 	
 	/**

@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Form\SiteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -52,7 +53,7 @@ class SiteController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoi des donnees lors de la creation d'un site")
 	 * @Route("/creer_site", name="creer_site")
-	 * @Template("OrangeMainBundle:Site:new.html.twig")
+	 * @Template("site/new.html.twig")
 	 */
 	public function createAction(Request $request) {
 		$entity = new Site();
@@ -65,7 +66,7 @@ class SiteController extends BaseController {
 			$em->flush();
 			return new JsonResponse(array('status' => 'success', 'text' => 'Le site a bien été ajouté avec succés'));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Site:new.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+		return new Response($this->renderView('site/new.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 	
 	/**
@@ -91,9 +92,9 @@ class SiteController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Site')->find($id);
-		$form = $this->createCreateForm($entity, 'Site');
+		$form = $this->CreateForm(SiteType::class, $entity);
 		
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -102,7 +103,7 @@ class SiteController extends BaseController {
 	 * @QMLogger(message="Envoi des données lors d'une modification d'un site")
 	 * @Route ("/{id}/modifier_site", name="modifier_site", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Site:edit.html.twig")
+	 * @Template("site/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
@@ -117,26 +118,38 @@ class SiteController extends BaseController {
 				return new JsonResponse(array('status' => 'success', 'text' => 'Le site a bien été mis à jour'));
 			}
 		}
-		return new Response($this->renderView('OrangeMainBundle:Site:edit.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+		return new Response($this->renderView('site/edit.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
-	 
-	/**
-	 * @QMLogger(message="Activer site")
-	 * @Route("/{id}/activer_site", name="activer_site", requirements={ "id"=  "\d+"})
-	 * @Template()
-	 */
-	public function activateAction($id) {
-		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('App\Entity\Site')->find($id);
-		
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
-		
-		$entity->setEtat(true);
-		$em->persist($entity);
-		$em->flush();
-		$this->get('session')->getFlashBag()->add('success', "Le site a été bien activé avec succés");
-		return $this->redirect($this->generateUrl('les_sites'));
-	}
+
+    /**
+     * @Route("/{id}/activer_desactiver_site", name="activer_desactiver_site", requirements={ "id"=  "\d+"})
+     * @Template()
+     */
+    public function activeDesactiveAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('App\Entity\Site')->find($id);
+
+        //$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+        return ['entity' => $entity];
+    }
+
+    /**
+     * @QMLogger(message="Activer site")
+     * @Route("/{id}/activer_site", name="activer_site", requirements={ "id"=  "\d+"})
+     * @Template()
+     */
+    public function activateAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('App\Entity\Site')->find($id);
+
+        //$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+
+        $entity->setEtat(true);
+        $em->persist($entity);
+        $em->flush();
+        $this->get('session')->getFlashBag()->add('success', "Le site a été bien activé avec succés");
+        return $this->redirect($this->generateUrl('les_sites'));
+    }
 	 
 	/**
 	 * @QMLogger(message="Désactiver site")
@@ -147,7 +160,7 @@ class SiteController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Site')->find($id);
 		
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
 		$entity->setEtat(false);
 		$em->persist($entity);
@@ -158,7 +171,7 @@ class SiteController extends BaseController {
 	  
 	/**
 	 * @todo ajoute un filtre
-	 * @param sfWebRequest $request
+	 * @param Request $request
 	 */
 	protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
 		parent::setFilter($queryBuilder, array('s.libelle'), $request);

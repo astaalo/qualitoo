@@ -35,42 +35,42 @@ class ModalExtension extends \Twig_Extension
      * @return string
      */
     public function loadAjax() {
-    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
+    	$template = $this->twig->loadTemplate('extra/modal.html.twig');
     	return $template->renderBlock('load_ajax', array());
     }
 
     public function loadModal($idModal, $url) {
-    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
+    	$template = $this->twig->loadTemplate('extra/modal.html.twig');
     	return $template->renderBlock('load_modal', array('idModal' => $idModal, 'url' => $url));
     }
 
     public function addEventActionLink($functionAfterShowModal) {
-    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
+    	$template = $this->twig->loadTemplate('extra/modal.html.twig');
     	return $template->renderBlock('add_event_action_link', array('functionAfterShowModal' => $functionAfterShowModal));
     }
 
     public function addEventTextTransformer() {
-    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
+    	$template = $this->twig->loadTemplate('extra/modal.html.twig');
     	return $template->renderBlock('add_event_text_transformer', array());
     }
 
     public function formModalSubmit($idModal, $idLoading, $functionOnComplete) {
-    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
+    	$template = $this->twig->loadTemplate('extra/modal.html.twig');
     	return $template->renderBlock('add_form_submit_modal', array('idLoading' => $idLoading, 'functionOnComplete' => $functionOnComplete));
     }
 
     public function formTargetSubmit($idModal, $idLoading, $functionOnComplete) {
-    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
+    	$template = $this->twig->loadTemplate('extra/modal.html.twig');
     	return $template->renderBlock('add_form_submit', array('idLoading' => $idLoading, 'functionOnComplete' => $functionOnComplete));
     }
 
     public function refreshEventModal() {
-    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
+    	$template = $this->twig->loadTemplate('extra/modal.html.twig');
     	return $template->renderBlock('form_submit_modal', array());
     }
 
     public function callValidationForm() {
-    	$template = $this->twig->loadTemplate('Extra/modal.html.twig');
+    	$template = $this->twig->loadTemplate('extra/modal.html.twig');
     	return $template->renderBlock('call_validation_form', array());
     }
 

@@ -46,7 +46,7 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }} #}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }}
 	{% include 'extra/datatable.html.twig' with {idTable: 'risqueTable', url: path('liste_risques_rejetes'), nosorting: {0:0,1:1,2:2} } %}
 {% endblock %}
 

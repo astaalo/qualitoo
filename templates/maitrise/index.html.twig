@@ -118,7 +118,7 @@
 
 {% block script_js %}
 	{{ parent() }}
-	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }} #}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }}
 	{% include 'extra/datatable.html.twig' with {
 		idTable: 'processusTable', url: path('les_processus_du_tdb'), nosorting: {0:0, 1:1, 2:2, 3:3}, index: 0, invisible: {0:1},
 		functionRowDraw: "setUrlToParentProcessus(row, data);"} 

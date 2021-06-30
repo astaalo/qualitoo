@@ -28,7 +28,7 @@ class ImpactController extends BaseController {
 	 * @Template()
 	 */
 	public function filterAction(Request $request) {
-		$form = $this->createForm(new ImpactCriteria());
+		$form = $this->createForm(ImpactCriteria::class, new Impact());
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risquehasimpact_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -45,7 +45,7 @@ class ImpactController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new ImpactCriteria());
+		$form = $this->createForm(ImpactCriteria::class, new Impact());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risquehasimpact_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\RisqueHasImpact')->listAllQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);

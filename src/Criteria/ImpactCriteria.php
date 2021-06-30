@@ -1,6 +1,7 @@
 <?php
 namespace App\Criteria;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -10,9 +11,9 @@ class ImpactCriteria extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        	->add('menace', 'entity', array('class'=>'\App\Entity\Menace', 'empty_value'=>'Chosir un risque ...', 'attr'=>array('class'=>'chzn-select')))
-        	->add('profilRisque', 'entity', array('class'=>'\App\Entity\ProfilRisque', 'empty_value'=>'Chosir un profil risque ...'))
-        	->add('domaine', 'entity', array('class'=>'\App\Entity\DomaineImpact', 'empty_value'=>'Chosir un domaine ...'));
+        	->add('menace', EntityType::class, array('class'=>'App\Entity\Menace', 'placeholder'=>'Chosir un risque ...', 'attr'=>array('class'=>'chzn-select')))
+        	//->add('profilRisque', EntityType::class, array('class'=>'App\Entity\ProfilRisque', 'placeholder'=>'Chosir un profil risque ...'))
+        	->add('domaine', EntityType::class, array('class'=>'App\Entity\DomaineImpact', 'placeholder'=>'Chosir un domaine ...'));
     }
 	
 	public function setDefaultOptions(OptionsResolver $resolver)

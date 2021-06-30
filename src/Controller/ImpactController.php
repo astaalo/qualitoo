@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\RisqueHasImpact;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -47,7 +48,7 @@ class ImpactController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(ImpactCriteria::class, new Impact());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risquehasimpact_criteria'), $form);
-		$queryBuilder = $em->getRepository('App\Entity\RisqueHasImpact')->listAllQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository(RisqueHasImpact::class)->listAllQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);
 	}
 	

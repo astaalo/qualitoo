@@ -9,7 +9,6 @@ use App\Entity\Evaluation;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Criteria\EvaluationCriteria;
 use App\Entity\Risque;
-use App\OrangeMainBundle;
 use App\Event\CartoEvent;
 use App\Annotation\QMLogger;
 
@@ -48,9 +47,9 @@ class EvaluationController extends BaseController{
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new EvaluationCriteria()); 
+		$form = $this->createForm(EvaluationCriteria::class, new Evaluation());
 		$this->modifyRequestForForm($request, $this->get('session')->get('evaluation_criteria'), $form);
-		$queryBuilder = $em->getRepository('App\Entity\Evaluation')->listQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository(Evaluation::class)->listQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);
 	}
 	

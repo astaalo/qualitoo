@@ -1,4 +1,4 @@
-{% extends "::base.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block navigation %}
 	{{ knp_menu_render('OrangeMainBundle:Builder:showMenu', {'template': 'extra/knp_menu.html.twig', 'item': {1:'Risque'} }) }}
@@ -19,11 +19,11 @@
 			<tbody>
 				<tr>
 					<th style="width:145px;" >Critère:</th>
-					<td style="padding-left: 50px;">{{ entity.critere }}</td>
+					<td style="padding-left: 50px;">{{ entity.impact.critere.libelle }}</td>
 				</tr>
 				<tr>
 					<th style="width:145px;" >Domaine:</th>
-					<td style="padding-left: 50px;">{{ entity.critere.domaine }}</td>
+					<td style="padding-left: 50px;">{{ entity.domaine | default('') }}</td>
 				</tr>
 				<tr>
 					<th style="width:145px;" >Nom du risque:</th>
@@ -54,7 +54,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				{% for eoc in entity.evaluation %}
+				{% for eoc in entity.impact.evaluation %}
 					 <tr>
 						<td >{{ eoc.evaluation.evaluateur }}</td>
 						<td >{{ eoc.evaluation.dateEvaluation | localizeddate('medium', 'none', 'fr')}}</td>
@@ -75,8 +75,8 @@
 				{% endfor %}
 				</tbody>
 			</table>
-			{# </div>#}
-		</div><!--tab1-->
+			{# </div>#}{#
+		</div><!--tab1-->#}
 	</div><!--/END TAB/-->
 	<div class="clear"/></div>
 	</div>

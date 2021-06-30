@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class RisqueHasImpact
 {
     /**
-     * @var \Risque
+     * @var Risque
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(name="id", type="integer", nullable=false)
@@ -21,7 +21,7 @@ class RisqueHasImpact
 	private $id;
 	
     /**
-     * @var \Risque
+     * @var Risque
      * @ORM\ManyToOne(targetEntity="Risque")
      * @ORM\JoinColumn(name="risque_id", referencedColumnName="id")
      * @Assert\NotNull(message="Le choix du risque est obligatoire")
@@ -29,7 +29,7 @@ class RisqueHasImpact
     private $risque;
 	
     /**
-     * @var \Impact
+     * @var Impact
      * @ORM\ManyToOne(targetEntity="Impact", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="impact_id", referencedColumnName="id")
      * @Assert\NotNull(message="Le champ impact est obligatoire")
@@ -38,7 +38,7 @@ class RisqueHasImpact
     private $impact;
 
     /**
-     * @var \Grille
+     * @var Grille
      * @ORM\ManyToOne(targetEntity="Grille")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="grille_id", referencedColumnName="id")
@@ -59,7 +59,7 @@ class RisqueHasImpact
 	}
 	
 	/**
-	 * @param \Risque $risque
+	 * @param Risque $risque
 	 * @return RisqueHasImpact
 	 */
 	public function setRisque($risque) {
@@ -91,7 +91,7 @@ class RisqueHasImpact
 	}
 	
 	/**
-	 * @param \Grille $grille
+	 * @param Grille $grille
 	 * @return RisqueHasImpact
 	 */
 	public function setGrille($grille) {

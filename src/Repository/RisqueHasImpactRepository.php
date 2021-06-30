@@ -19,32 +19,27 @@ class RisqueHasImpactRepository extends ServiceEntityRepository
         parent::__construct($registry, RisqueHasImpact::class);
     }
 
-    // /**
-    //  * @return RisqueHasImpact[] Returns an array of RisqueHasImpact objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+    public function listAllQueryBuilder($criteria = null) {
+        $criteria = $criteria ? $criteria : new RisqueHasImpact();
+        $queryBuilder = $this->createQueryBuilder('rhi')
+            ->innerJoin('rhi.risque', 'r')
+            ->innerJoin('rhi.impact', 'i')
         ;
+        if($criteria->getId()) {
+            if ($criteria->getRisque()) {
+                if ($criteria->getRisque()->getMenace()) {
+                    $queryBuilder->andWhere('r.menace = :menace')->setParameter('menace', $criteria->getRisque()->getMenace());
+                }
+                if ($criteria->getRisque()->getCartographie()) {
+                    $queryBuilder->andWhere('r.cartographie IN (:cartographie)')->setParameter('cartographie', array($criteria->getRisque()->getCartographie()->getId()));
+                }
+            }
+            if ($criteria->getImpact()) {
+                if ($criteria->getImpact()->getCritere()) {
+                    $queryBuilder->andWhere('i.critere = :critere')->setParameter('critere', $criteria->getImpact()->getCritere());
+                }
+            }
+        }
+        return $queryBuilder;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?RisqueHasImpact
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

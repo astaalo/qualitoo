@@ -111,7 +111,7 @@ class Impact
 	}
 	
 	/**
-	 * @return DateTime
+	 * @return \DateTime
 	 */
 	public function getDateCreation() {
 		return $this->dateCreation;

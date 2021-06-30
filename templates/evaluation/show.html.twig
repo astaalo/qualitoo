@@ -1,0 +1,47 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
+
+{% block header_config %}
+    <div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Détails Evaluation
+	</span>
+        <div id="buttom_top">
+            <ul class="uibutton-group">
+                <li><a class="uibutton icon answer" href="{{ path('les_evaluations') }}">Liste des activités</a></li>
+{#                <li><a class="uibutton icon edit" href="{{ path('edition_activite', {'id': entitie.id}) }}">Edition de l'activité</a></li>#}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content_config %}
+    <div class="content" >
+        <div id="uploadTab">
+            {{ dump(entity) }}
+            <table class="show_table" style="margin-bottom: 50px;">
+                <tbody>
+                <tr>
+                    <th style="width:150px;" >Libellé:</th>
+                    <td style="padding-left: 65px;"></td>
+                </tr>
+                <tr>
+                    <th style="width:150px;" >Code:</th>
+                    <td style="padding-left: 65px;"></td>
+                </tr>
+                <tr>
+                    <th style="width:150px;" >Structure:</th>
+                    <td style="padding-left: 65px;"></td>
+                </tr>
+                <tr>
+                    <th style="width:150px;" >Description:</th>
+                    <td style="padding-left: 65px;"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!--/END TAB/-->
+        <div class="clear"/></div>
+    </div>
+    </div>
+{% endblock %}

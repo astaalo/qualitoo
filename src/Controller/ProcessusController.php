@@ -89,8 +89,8 @@ class ProcessusController extends BaseController {
 		
 		//$this->denyAccessUnlessGranted('delete', $processus, 'Accés non autorisé');
 		if ($request->getMethod () == 'POST') {
-			if(count($activites)) {
-				$this->get('session')->getFlashBag()->add('error', "Le processus ne peut pas etre supprimé du fait qu'il y a des activités.");
+			if(count($activites) > 0 || count($processus->getChildren()) > 0 || count($processus->getProjet()) > 0) {
+				$this->get('session')->getFlashBag()->add('error', "Le processus ne peut pas etre supprimé. Il est lié à des activités ou sous-processus ou projets.");
 			} else {
 				$em->remove($processus);
 				$em->flush();
@@ -114,7 +114,7 @@ class ProcessusController extends BaseController {
 			$entity->setParent($processus);
 		}
 		$form   = $this->createForm(ProcessusType::class, $entity);
-		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
 	}
 	

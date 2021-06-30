@@ -605,7 +605,6 @@ class RisqueController extends BaseController {
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Risque')->find($id);
-		dd($entity->isValidated());
 		if($entity && $entity->isValidated()==false) {
 			return $this->redirect($this->generateUrl('apercu_risque', array('id' => $entity->getId())));
 		} elseif($entity==null || $entity->isValidated()==false) {

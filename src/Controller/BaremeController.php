@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\TypeGrille;
+use App\Form\TypeGrilleType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -30,7 +31,7 @@ class BaremeController extends BaseController {
 		if(!$entity || $entity->getTypeEvaluation()->getId()!=$this->getMyParameter('ids', array('type_evaluation', 'cause'))) {
 			$this->createAccessDeniedException("Vous n'avez pas le droit de modifier ce barême");
 		}
-		$form = $this->createCreateForm($entity, 'TypeGrille', array('attr' => array('em' => $em)));
+		$form = $this->createForm(TypeGrilleType::class,$entity, array('attr' => array('em' => $em)));
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	

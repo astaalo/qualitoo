@@ -20,4 +20,5 @@ return [
     App\MainBundle\OrangeMainBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Sonata\IntlBundle\SonataIntlBundle::class => ['all' => true],
+    Shtumi\UsefulBundle\ShtumiUsefulBundle::class => ['all' => true],
 ];

@@ -4,6 +4,7 @@
  */
 namespace App\Controller;
 
+use App\Form\QuestionType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -44,9 +45,9 @@ class QuestionController extends BaseController{
 	 */
 	public function newAction() {
 		$entity = new Question();
-		$form = $this->createCreateForm( $entity, 'Question');
+		$form = $this->createForm( QuestionType::class, $entity);
 		
-		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

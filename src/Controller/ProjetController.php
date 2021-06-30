@@ -45,7 +45,7 @@ class ProjetController extends BaseController {
 	 * @Template()
 	 */
 	public function filterAction(Request $request) {
-		$form = $this->createForm(new ProjetCriteria());
+		$form = $this->createForm(ProjetCriteria::class, new Projet());
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('projet_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -92,7 +92,7 @@ class ProjetController extends BaseController {
 	 */
 	public function suivilistAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new ProjetCriteria());
+		$form = $this->createForm(ProjetCriteria::class, new Projet());
 		$this->modifyRequestForForm($request, $this->get('session')->get('projet_criteria'), $form);
 		$criteria = $form->getData();
 		$queryBuilder = $em->getRepository('App\Entity\Projet')->listAllQueryBuilder($criteria);
@@ -107,9 +107,9 @@ class ProjetController extends BaseController {
 	 */
 	public function newAction($id = null) {
 		$entity = new Projet();
-		$processus = $id ? $this->getDoctrine()->getManager()->getRepository('OrangeMainBundle:Processus')->find($id) : null;
+		$processus = $id ? $this->getDoctrine()->getManager()->getRepository('App\Entity\Processus')->find($id) : null;
 		$entity->setProcessus($processus);
-		$form = $this->createCreateForm($entity, 'Projet');
+		$form = $this->CreateForm(ProjetType::class, $entity);
 		return array('entity' => $entity, 'form' => $form->createView(), 'processus_id' => $id);
 	}
 	
@@ -174,7 +174,7 @@ class ProjetController extends BaseController {
 			$form->bind($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
-				$this->getDoctrine()->getRepository('OrangeMainBundle:RisqueProjet')->createQueryBuilder('rp')
+				$this->getDoctrine()->getRepository('App\Entity\RisqueProjet')->createQueryBuilder('rp')
 					->update()
 					->set('rp.processus', $entity->getProcessus()->getId())
 					->where('IDENTITY(rp.projet) = :projet')->setParameter('projet', $entity->getId())
@@ -250,7 +250,7 @@ class ProjetController extends BaseController {
 	 * @Template()
 	 */
 	public function exportAction(Request $request) {
-		$form = $this->createForm(new ProjetCriteria());
+		$form = $this->createForm(ProjetCriteria::class, new Projet());
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('projet_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();

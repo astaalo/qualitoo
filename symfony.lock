@@ -163,6 +163,9 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "shtumi/useful-bundle": {
+        "version": "dev-master"
+    },
     "sonata-project/intl-bundle": {
         "version": "2.10.1"
     },

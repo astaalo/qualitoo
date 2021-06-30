@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Annotation\QMLogger;
+use App\Entity\Processus;
+use App\Form\ActiviteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -109,12 +111,12 @@ class ActiviteController extends BaseController
 	{
 		$entity = new Activite();
 		if ($id) {
-			$processus = $this->getDoctrine()->getManager()->getRepository('OrangeMainBundle:Processus')->find($id);
+			$processus = $this->getDoctrine()->getManager()->getRepository(Processus::class)->find($id);
 			$entity->setProcessus($processus);
 		}
-		$form   = $this->createCreateForm($entity, 'Activite');
+		$form   = $this->createForm(ActiviteType::class, $entity);
 
-		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
 	}

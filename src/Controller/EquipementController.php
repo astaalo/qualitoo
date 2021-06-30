@@ -41,7 +41,7 @@ class EquipementController extends BaseController
      * @Template()
      */
     public function filterAction(Request $request) {
-    	$form = $this->createForm(new EquipementCriteria());
+    	$form = $this->createForm(EquipementCriteria::class, new Equipement());
     	if($request->getMethod()=='POST') {
     		$this->get('session')->set('activite_criteria', $request->request->get($form->getName()));
     		return new JsonResponse();
@@ -101,9 +101,9 @@ class EquipementController extends BaseController
     {
         $entity = new Equipement();
         $entity->setType($type);
-        $form   = $this->createCreateForm($entity,'Equipement');
+        $form   = $this->createForm(EquipementType::class, $entity);
         
-        $this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+        //$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 
         return array(
             'entity' => $entity,

@@ -12,8 +12,8 @@ class ActiviteType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('libelle', null, array('label' => 'Libellé'))
-			->add('processus', null, array('empty_value' => 'Chosir un processus', 'attr' => array('class' => 'chzn-select')))
-			->add('origine', null, array('label' => 'Activité origine', 'empty_value' => 'Chosir l\'activité origine', 'attr' => array('class' => 'chzn-select')))
+			->add('processus', null, array('placeholder' => 'Chosir un processus', 'attr' => array('class' => 'chzn-select')))
+			->add('origine', null, array('label' => 'Activité origine', 'placeholder' => 'Chosir l\'activité origine', 'attr' => array('class' => 'chzn-select')))
 			->add('description');
 	}
 	

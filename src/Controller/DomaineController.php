@@ -1,6 +1,7 @@
 <?php
 namespace  App\Controller;
 
+use App\Form\DomaineActiviteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -76,12 +77,12 @@ class DomaineController extends BaseController {
 	/**
 	 * @QMLogger(message="Creation d'un domaine d'activite")
 	* @Route("/nouveau_domaine_activite", name="nouveau_domaine_activite")
-	* @Template()
+	* @Template("domaine/newForActivite.html.twig")
 	*/
 	public function newForActiviteAction(){
 		$entity = new DomaineActivite();
-		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
-		$form = $this->createCreateForm($entity,'DomaineActivite');
+		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
+		$form = $this->createForm(DomaineActiviteType::class, $entity);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	

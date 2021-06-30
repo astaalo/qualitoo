@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Form\MenaceType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -22,8 +23,8 @@ class MenaceController extends BaseController {
 	public function  valideMenaceAverablesAction(Request $request,$ids,$periode_id){
 		$em = $this->getDoctrine()->getManager();
 		$datas   = explode(',',str_replace(" ", "",$ids));
-		$menaces = $this->getDoctrine()->getRepository('OrangeMainBundle:Menace')->findBy(array('id'=>$datas));
-		$periode = $this->getDoctrine()->getRepository('OrangeMainBundle:PeriodeAvere')->find($periode_id);
+		$menaces = $this->getDoctrine()->getRepository(Menace::class)->findBy(array('id'=>$datas));
+		$periode = $this->getDoctrine()->getRepository(Menace::class)->find($periode_id);
 		foreach ($menaces as $value){
 			$ma = new MenaceAvere();
 			$ma->setMenace($value);
@@ -105,15 +106,15 @@ class MenaceController extends BaseController {
 	 */
 	public function newAction() {
 		$entity = new Menace();
-		$form   = $this->createCreateForm($entity, 'Menace');
-		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		$form   = $this->createForm(MenaceType::class, $entity);
+		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 
 	/**
 	 * @QMLogger(message="Envoi des donnees saisies lors de la creation d'une menace")
 	 * @Route("/creer_menace", name="creer_menace")
-	 * @Template("OrangeMainBundle:Menace:new.html.twig")
+	 * @Template("menace/new.html.twig")
 	 */
 	public function createAction(Request $request) {
 		$entity = new Menace();
@@ -125,7 +126,7 @@ class MenaceController extends BaseController {
 			$em->flush();
 			return new JsonResponse(array('status' => 'success', 'text' => 'Le risque a bien été ajouté avec succés'));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Menace:new.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+		return new Response($this->renderView('menace/new.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 	
 	/**
@@ -163,7 +164,7 @@ class MenaceController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modifcation d'une menace")
 	 * @Route ("/{id}/modifier_menace", name="modifier_menace", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Menace:edit.html.twig")
+	 * @Template("menace/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
@@ -178,7 +179,7 @@ class MenaceController extends BaseController {
 				return new JsonResponse(array('status' => 'success', 'text' => 'Le risque a bien été mis à jour'));
 			}
 		}
-		return new Response($this->renderView('OrangeMainBundle:Menace:edit.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+		return new Response($this->renderView('menace/edit.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 	  
 	/**
@@ -243,7 +244,7 @@ class MenaceController extends BaseController {
 		$lib= $entity->getLibelleSansCarSpecial();
 		$same=$em->getRepository('App\Entity\Menace')->findBy(array("libelleSansCarSpecial"=>$lib,"etat"=>1));
 		
-		return new Response($this->renderView('OrangeMainBundle:Menace:compare.html.twig', array(
+		return new Response($this->renderView('menace/compare.html.twig', array(
 			'menaces' =>$same,
 		))) ;
 	}

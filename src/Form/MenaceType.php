@@ -15,7 +15,7 @@ class MenaceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('libelle', null, array('label' => 'Libellé'))
-        		->add('cartographie',  null, array('label' => 'Traitement ', 'empty_value' => 'Choisir le traitement', 'attr' => array('class' => 'chzn-select')))
+        		->add('cartographie',  null, array('label' => 'Traitement ', 'attr' => array('class' => 'chzn-select', 'placeholder' => 'Choisir le traitement')))
            		->add('description');
     }
     

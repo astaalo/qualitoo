@@ -60,7 +60,7 @@ class RisqueHasCauseType extends AbstractType
 		}
 	}
 	
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 				'data_class' => 'App\Entity\RisqueHasCause',

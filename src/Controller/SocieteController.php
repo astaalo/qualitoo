@@ -22,7 +22,7 @@ class SocieteController extends BaseController {
 	 */
 	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('App\Entity\Societe')->listAll();
+		$entities = $em->getRepository(Societe::class)->listAll();
 		return array('entities' => $entities);
 	}
 	

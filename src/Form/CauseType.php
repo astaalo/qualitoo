@@ -14,7 +14,7 @@ class CauseType extends AbstractType
 			->add('description', null, array('attr' => array('style' => 'min-height: 21px;')));
 	}
 	
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 			'data_class' => 'App\Entity\Cause'

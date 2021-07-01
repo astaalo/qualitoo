@@ -18,11 +18,13 @@ use Symfony\Component\Security\Core\Security;
 class SocieteRepository extends ServiceEntityRepository
 {
     protected $_user;
+    protected $_states;
 
-    public function __construct(ManagerRegistry $registry, Security $security)
+    public function __construct(ManagerRegistry $registry, Security $security, ParameterBagInterface $param)
     {
         parent::__construct($registry, Societe::class);
-        $this->_user	= $security->getUser();
+        $this->_user = $security->getUser();
+        $this->_states	= $param->get('states');
     }
 
 
@@ -40,5 +42,17 @@ class SocieteRepository extends ServiceEntityRepository
         }
 
         return $query;
+    }
+
+    public function listAll() {
+        return $this->listAllQueryBuilder()
+            ->getQuery()
+            ->execute();
+    }
+
+    public function listAllQueryBuilder($criteria = null) {
+        return $this->createQueryBuilder('q')
+            ->where('q.etat != :etat')
+            ->setParameter('etat', $this->_states['entity']['supprime']);
     }
 }

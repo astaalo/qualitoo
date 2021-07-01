@@ -67,7 +67,7 @@ class RisqueProjetType extends AbstractType {
 		//$builder->add('proprietaire', 'text', array('attr'=>array('disabled'=>'disabled', 'value'=>'Aucun')));
 	}
 	
-	public function setDefaultOptions(OptionsResolver $resolver) {
+	public function configureOptions(OptionsResolver $resolver) {
 		$resolver->setDefaults(array(
 				'data_class' => 'App\Entity\RisqueProjet',
 				'cascade_validation'=>true,

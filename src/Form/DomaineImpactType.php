@@ -24,16 +24,16 @@ class DomaineImpactType extends AbstractType
 	public function onSetData(FormEvent $event) {
 		if(null != $cartographie = $event->getData()->getCartographie()) {
 			$parent = $event->getData()->getParent();
-			$event->getForm()->add('parent', null, array('label' => 'Domaine parent', 'property' => 'name', 'query_builder' => function($er) use($cartographie) {
+			$event->getForm()->add('parent', null, array('label' => 'Domaine parent', 'property_path' => 'name', 'query_builder' => function($er) use($cartographie) {
             		return $er->createQueryBuilder('d')->where('d.cartographie = :cartographie')->setParameter('cartographie', $cartographie);
             	}, 'attr' => array('class' => 'chzn-select')));
-			if($event->getName()==FormEvents::SUBMIT) {
+			if($event->getForm()==FormEvents::SUBMIT) {
 				$event->getForm()->get('parent')->submit($parent ? $parent->getId() : null);
 			}
 		}
 	}
 
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 				'data_class' => 'App\Entity\DomaineImpact'

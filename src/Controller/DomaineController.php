@@ -2,6 +2,7 @@
 namespace  App\Controller;
 
 use App\Form\DomaineActiviteType;
+use App\Form\DomaineImpactType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -63,14 +64,14 @@ class DomaineController extends BaseController {
 	/**
 	 * @QMLogger(message="Creation d'un domaine d'impact")
 	* @Route("/{id}/nouveau_domaine_impact", name="nouveau_domaine_impact")
-	* @Template()
+	* @Template("domaine/newForImpact.html.twig")
 	*/
 	public function newForImpactAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$cartographie = $em->getRepository('App\Entity\Cartographie')->find($id);
 		$entity = new DomaineImpact();
-		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
-		$form = $this->createCreateForm($entity->setCartographie($cartographie),'DomaineImpact');
+		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
+		$form = $this->CreateForm(DomaineImpactType::class, $entity->setCartographie($cartographie));
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	

@@ -21,7 +21,7 @@ class IdentificationType extends AbstractType
 		$builder->add('structure', null, array('attr' => array('widget_help' => 'Veuillez saisir la strucutre dans la zone de texte')));
 	}
 	
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 			'data_class' => 'App\Entity\Identification'

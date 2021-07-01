@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Cartographie;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvents;
@@ -18,12 +21,16 @@ class CritereType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('libelle', null, array('label' => 'Libellé'))
-			->add($builder->create('cartographie', 'hidden')->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\Cartographie')))
+			->add($builder->create('cartographie', HiddenType::class)->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], Cartographie::class)))
             ->add('domaine')
-            ->add('grilleImpact', 'collection', array(
-            		'type' => new GrilleImpactType(), 'allow_add' => true, 'allow_delete' => true, 'by_reference' => false, 'cascade_validation' => true,
-            		'options' => array('attr' => $options['attr'])
-            	));
+            ->add('grilleImpact', CollectionType::class, array(
+                'entry_type' => GrilleImpactType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                //'cascade_validation' => true,
+                'entry_options' => array('attr' => $options['attr'])
+            ));
 		$builder->addEventListener(FormEvents::SUBMIT, array($this, 'onSetData'));
 		$builder->addEventListener(FormEvents::POST_SET_DATA, array($this, 'onSetData'));
     }
@@ -34,10 +41,10 @@ class CritereType extends AbstractType
 	public function onSetData(FormEvent $event) {
 		if(null != $cartographie = $event->getData()->getCartographie()) {
 			$domaine = $event->getData()->getDomaine();
-			$event->getForm()->add('domaine', null, array('empty_value' => 'Choisir un domaine ...', 'query_builder' => function($er) use($cartographie) {
+			$event->getForm()->add('domaine', null, array('placeholder' => 'Choisir un domaine ...', 'query_builder' => function($er) use($cartographie) {
             		return $er->createQueryBuilder('d')->where('d.cartographie = :cartographie')->setParameter('cartographie', $cartographie);
             	}, 'attr' => array('class' => 'chzn-select')));
-			if($event->getName()==FormEvents::SUBMIT) {
+			if($event->getForm()==FormEvents::SUBMIT) {
 				$event->getForm()->get('domaine')->submit($domaine ? $domaine->getId() : null);
 			}
 		}
@@ -46,7 +53,7 @@ class CritereType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             	'data_class' => 'App\Entity\Critere', 'cascade_validation' => true

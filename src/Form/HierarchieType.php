@@ -19,7 +19,7 @@ class HierarchieType extends AbstractType
         	->add('entiteFive', 'entity', array('class' => 'OrangeMainBundle:Structure', 'label' => 'Entité', 'empty_value' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')));
 	}
 	
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 			'data_class' => 'App\Entity\Hierarchie'

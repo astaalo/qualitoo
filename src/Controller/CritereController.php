@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\TypeGrille;
+use App\Form\CritereType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -38,9 +39,9 @@ class CritereController extends BaseController {
 		$cartographie = $em->getRepository('App\Entity\Cartographie')->find($id);
 		$entity = new Critere();
 		
-		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
+		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
 		
-		$form   = $this->createCreateForm($entity->init($cartographie, 4), 'Critere', array('attr' => array('em' => $em)));
+		$form   = $this->CreateForm(CritereType::class, $entity->init($cartographie, 4), array('attr' => array('em' => $em)));
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
 	}
 	

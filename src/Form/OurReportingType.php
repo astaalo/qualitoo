@@ -13,7 +13,7 @@ class OurReportingType extends AbstractType
 		$builder->add('colonne', 'collection', array('type'=>new ColonneType(), 'cascade_validation'=>true, 'by_reference'=>false));
 	}
 	
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 			'data_class' => 'App\Entity\Societe'

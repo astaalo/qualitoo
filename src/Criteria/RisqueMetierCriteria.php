@@ -34,7 +34,7 @@ class RisqueMetierCriteria extends AbstractType
         	->add('activite', null, array('attr'=>array('empty_value'=>'Chosir une activité ...', 'class'=>'chzn-select')));
     }
 	
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 				'data_class' => 'App\Entity\RisqueMetier',

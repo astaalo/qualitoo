@@ -28,7 +28,7 @@ class ChargementType extends AbstractType
 			->add('critere','collection', array('label'=>"Critere", 'by_reference'=>false, 'cascade_validation'=>true, 'type'=>new CritereChargementType()));
 	}
 	
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 			'data_class' => 'App\Entity\Chargement',

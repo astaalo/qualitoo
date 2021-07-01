@@ -16,7 +16,7 @@ class ColonneType extends AbstractType
 			->add('etat', null, array('attr' => array('class' => 'on_off_checkbox')));
 	}
 	
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 			'data_class' => 'App\Entity\Colonne'

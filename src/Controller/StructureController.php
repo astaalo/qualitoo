@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Hierarchie;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\QueryBuilder;
-use App\Form\ChooseStructureType;
 use App\Annotation\QMLogger;
 
 class StructureController extends BaseController {
@@ -68,9 +67,9 @@ class StructureController extends BaseController {
 	 */
 	public function newAction() {
 		$entity = new Structure();
-		$form   = $this->createCreateForm($entity, 'Structure');
+		$form   = $this->CreateForm(StructureType::class, $entity);
 		
-		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

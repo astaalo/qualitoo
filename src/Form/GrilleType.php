@@ -2,13 +2,14 @@
 namespace App\Form;
 
 use App\Entity\Cartographie;
+use App\Form\DataTransformer\EntityToPropertyTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Shtumi\UsefulBundle\Form\DataTransformer\EntityToPropertyTransformer;
+//use Shtumi\UsefulBundle\Form\DataTransformer\EntityToPropertyTransformer;
 
 class GrilleType extends AbstractType
 {

@@ -16,7 +16,7 @@ class ExecutionType extends AbstractType
 			->add('commentaire');
 	}
 
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 				'data_class' => 'App\Entity\Execution'

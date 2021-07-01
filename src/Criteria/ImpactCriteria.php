@@ -16,7 +16,7 @@ class ImpactCriteria extends AbstractType
         	->add('domaine', EntityType::class, array('class'=>'App\Entity\DomaineImpact', 'placeholder'=>'Chosir un domaine ...'));
     }
 	
-	public function setDefaultOptions(OptionsResolver $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 				'data_class' => 'App\Entity\Impact',

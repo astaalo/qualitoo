@@ -932,6 +932,7 @@ class Risque implements NotificationInterface {
 		if($this->cartographie==null) {
 			return null;
 		}
+		$data = null;
 		switch($this->cartographie->getId()) {
 			case self::$carto['metier']:
 				$data = $this->risqueMetier;

@@ -1,7 +1,9 @@
 <?php
 namespace App\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormInterface;
@@ -10,30 +12,30 @@ use Symfony\Component\Form\FormView;
 class RisqueSSTType extends AbstractType {
 	
 	public function buildForm(FormBuilderInterface $builder, array $options) {
-		$builder->add('risque', new RisqueType());
-		$builder->add('lieu', 'entity', array(
+		$builder->add('risque', RisqueType::class);
+		$builder->add('lieu', EntityType::class, array(
 				'label' => 'Lieu ',
-				'class' => 'OrangeMainBundle:Lieu',
-				'empty_value' => 'Choisir un lieu ...',
+				'class' => 'App\Entity\Lieu',
+				'placeholder' => 'Choisir un lieu ...',
 				'attr' => array(
 						'class' => 'chzn-select',
 						'placeholder' => 'Choisir un lieu ...'
 				)
 		));
-		$builder->add('manifestation', 'entity', array(
+		$builder->add('manifestation', EntityType::class, array(
 				'label' => 'MAnifestation ',
-				'class' => 'OrangeMainBundle:Manifestation',
-				'empty_value' => 'Choisir une manifestation ...',
+				'class' => 'App\Entity\Manifestation',
+				'placeholder' => 'Choisir une manifestation ...',
 				'attr' => array(
 						'class' => 'chzn-select',
 						'placeholder' => 'Choisir une manifestation ...'
 				)
 		));
 		
-		$builder->add('site', 'entity', array(
+		$builder->add('site', EntityType::class, array(
 				'label' => 'Site',
-				'class' => 'OrangeMainBundle:Site',
-				'empty_value' => 'Choisir un site ...',
+				'class' => 'App\Entity\Site',
+				'placeholder' => 'Choisir un site ...',
 				'query_builder' =>function($er){
 				return $er->filter();
 				},
@@ -43,10 +45,10 @@ class RisqueSSTType extends AbstractType {
 						'widget_help' => 'Choisir un site dans la liste',
 				)
 		));
-		$builder->add('domaineActivite', 'entity', array(
+		$builder->add('domaineActivite', EntityType::class, array(
 				'label' => "Domaine d'activité",
-				'class' => 'OrangeMainBundle:DomaineActivite',
-				'empty_value' => "Choisir un domaine d'activité ...",
+				'class' => 'App\Entity\DomaineActivite',
+				'placeholder' => "Choisir un domaine d'activité ...",
 				'attr' => array(
 						'class' => 'chzn-select',
 						'placeholder' => 'Choisir un domaine ...',
@@ -54,10 +56,10 @@ class RisqueSSTType extends AbstractType {
 				)
 		));
 		
-		$builder->add('equipement', 'entity', array(
+		$builder->add('equipement', EntityType::class, array(
 				'label' => 'Equipement/Activité',
-				'class' => 'OrangeMainBundle:Equipement',
-				'empty_value' => 'Choisir un equipement/activité ...',
+				'class' => 'App\Entity\Equipement',
+				'placeholder' => 'Choisir un equipement/activité ...',
 				'attr' => array(
 						'class' => 'chzn-select',
 						'placeholder' => 'Choisir un equipement ...',
@@ -65,7 +67,7 @@ class RisqueSSTType extends AbstractType {
 				)
 		));
 	
-		$builder->add('proprietaire', 'text', array('disabled'    => true,));
+		$builder->add('proprietaire', TextType::class, array('disabled'    => true,));
 		
 	}
 

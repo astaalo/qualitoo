@@ -1,7 +1,9 @@
 <?php
 namespace App\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormView;
@@ -11,14 +13,14 @@ use App\Repository\StructureRepository;
 class RisqueProjetType extends AbstractType {
 	
 	public function buildForm(FormBuilderInterface $builder, array $options) {
-		$builder->add('risque', new RisqueType());
-		$builder->add('direction', 'entity', array(
+		$builder->add('risque', RisqueType::class);
+		$builder->add('direction', EntityType::class, array(
 				'label' => 'Direction',
-				'class' => 'OrangeMainBundle:Structure',
+				'class' => 'App\Entity\Structure',
 				'query_builder' => function(StructureRepository $er){
 					return $er->listAllDirectionBySociete();
 				},
-				'empty_value' => 'Choisir la direction ...',
+				'placeholder' => 'Choisir la direction ...',
 				//'mapped' => false,
 				'attr' => array(
 						'class' => 'chzn-select',
@@ -26,10 +28,10 @@ class RisqueProjetType extends AbstractType {
 						'widget_help' => 'Choisir une direction dans la liste',
 				)
 		));
-		$builder->add('structure', 'entity', array(
-				'class' => 'OrangeMainBundle:Structure',
+		$builder->add('structure', EntityType::class, array(
+				'class' => 'App\Entity\Structure',
 				'label' => 'Structure',
-				'empty_value' => 'Choisir une structure ...',
+				'placeholder' => 'Choisir une structure ...',
 				'attr' => array(
 						'class' => 'chzn-select',
 						'label_help' => 'Structure à laquelle l\'activité est rattachée',
@@ -39,10 +41,10 @@ class RisqueProjetType extends AbstractType {
 				return $sr->filter();
 				}
 		));
-		$builder->add('processus', 'entity', array(
+		$builder->add('processus', EntityType::class, array(
 				'label' => 'Processus',
-				'class' => 'OrangeMainBundle:Processus',
-				'empty_value' => 'Choisir un processus ...',
+				'class' => 'App\Entity\Processus',
+				'placeholder' => 'Choisir un processus ...',
 				'empty_data'  => null,
 				'attr' => array(
 						'class' => 'chzn-select',
@@ -51,12 +53,12 @@ class RisqueProjetType extends AbstractType {
 				)
 		));
 		
-		$builder->add('proprietaire', 'text', array('disabled'    => true,));
+		$builder->add('proprietaire', TextType::class, array('disabled'    => true,));
 		
-		$builder->add('projet', 'entity', array(
+		$builder->add('projet', EntityType::class, array(
 				'label' => 'Projet',
-				'class' => 'OrangeMainBundle:Projet',
-				'empty_value' => 'Choisir un projet ...',
+				'class' => 'App\Entity\Projet',
+				'placeholder' => 'Choisir un projet ...',
 				'attr' => array(
 						'class' => 'chzn-select',
 						'placeholder' => 'Choisir un projet ...',

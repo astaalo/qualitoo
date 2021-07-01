@@ -49,18 +49,18 @@ class RisqueController extends BaseController {
 	 * @Route("/les_risques", name="les_risques")
 	 * @Template()
 	 */
-	public function indexAction() {
+	public function indexAction(Request $request) {
 		$position=$this->get('session')->get('risque_criteria')['cartographie'];
 		$entity=new Risque();
 		if($this->get('session')->get('risque_criteria')==null || count($this->get('session')->get('risque_criteria'))==0) {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $this->getMyParameter('ids', array('carto', 'metier'))));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$this->modifyRequestForForm($request, $data, $form);
 		$entity->setCartographie($form->getData()->getCartographie());
 		
-		$this->denyAccessUnlessGranted('read', $entity,'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('read', $entity,'Accés non autorisé!');
 		
 		return array('form' => $form->createView(),'position'=>intval($position));
 	}
@@ -140,7 +140,7 @@ class RisqueController extends BaseController {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $this->getMyParameter('ids', array('carto', 'metier'))));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
 		return array('form' => $form->createView(),'position'=>intval($position));
 	}
@@ -152,7 +152,7 @@ class RisqueController extends BaseController {
 	 */
 	public function listATesterAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class, new Risque());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listValidQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder,'addRowInValidTableWithChecked');
@@ -165,7 +165,7 @@ class RisqueController extends BaseController {
 	 * @Template()
 	 */
 	public function filterAction(Request $request) {
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class, new Risque());
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -191,7 +191,7 @@ class RisqueController extends BaseController {
 	public function listAction(Request $request) {
 		//exit('ok');
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class, new Risque());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listValidQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);
@@ -325,7 +325,7 @@ class RisqueController extends BaseController {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $this->getMyParameter('ids', array('carto', 'metier'))));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
 		return array('form' => $form->createView(), 'position'=>intval($position));
 	}
@@ -336,7 +336,7 @@ class RisqueController extends BaseController {
 	 */
 	public function listTransferedRisquesAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class, new Risque());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listToTransfert($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInTansferedRisqueTable');
@@ -354,7 +354,7 @@ class RisqueController extends BaseController {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $this->getMyParameter('ids', array('carto', 'metier'))));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
 		return array('form' => $form->createView(), 'position'=>intval($position));
 	}
@@ -379,7 +379,7 @@ class RisqueController extends BaseController {
 	/**
 	 * @QMLogger(message="Risques a completer")
 	 * @Route("/risques_a_completer", name="risques_a_completer")
-	 * @Template()
+	 * @Template("risque/unCompletedRisques.html.twig")
 	 */
 	public function unCompletedRisquesAction(Request $request) {
 		$position=$this->get('session')->get('risque_criteria')['cartographie'];
@@ -387,8 +387,8 @@ class RisqueController extends BaseController {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $this->getMyParameter('ids', array('carto', 'metier'))));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$this->modifyRequestForForm($request, $data, $form);
 		return array('form' => $form->createView(), 'position'=>intval($position));
 	}
 	
@@ -399,7 +399,7 @@ class RisqueController extends BaseController {
 	 */
 	public function listUnValidatedRisquesAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class, new Risque());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listUnValidatedRisquesQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInUnvalidatedRisqueTable');
@@ -411,7 +411,7 @@ class RisqueController extends BaseController {
 	 */
 	public function listUncompletedRisquesAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class, new Risque());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listUncompletedRisquesQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInUncompletedRisqueTable');
@@ -424,7 +424,7 @@ class RisqueController extends BaseController {
 	 */
 	public function listRejectedRisquesAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class, new Risque());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listRejectedRisquesQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInRejectedRisqueTable');
@@ -700,7 +700,7 @@ class RisqueController extends BaseController {
 	 */
 	public function exportAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class, new Risque());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$criteria = $this->get('session')->get('risque_criteria');
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listValidQueryBuilder($form->getData())->getQuery()->getResult();

@@ -2,6 +2,8 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Risque;
@@ -12,16 +14,16 @@ use Symfony\Component\Form\FormEvent;
 class RisqueType extends AbstractType {
 	
 	public function buildForm(FormBuilderInterface $builder, array $options) {
-		$builder->add('toTransferts', 'text', array('label'=> 'selection'));
-		$builder->add('maturiteReel', 'text', array('label'=> 'Maturité Réel:'));
+		$builder->add('toTransferts', TextType::class, array('label'=> 'selection'));
+		$builder->add('maturiteReel', TextType::class, array('label'=> 'Maturité Réel:'));
 		$builder->add('menace', null, array(
-				'label' => 'Nom du risque', 'empty_value' => 'Choisir un risque ...', 'attr' => array(
+				'label' => 'Nom du risque', 'placeholder' => 'Choisir un risque ...', 'attr' => array(
 						'label_help' => 'Nom pour identifier le risque', 'class' => 'chzn-select',
 						'widget_help' => 'Choisir le nom du risque dans la liste ci-dessus', 'extended_entity' => true
 					)
 			));
 		
-		$builder->add('identification', new IdentificationType());
+		$builder->add('identification', IdentificationType::class);
 		$builder->addEventListener(FormEvents::POST_SET_DATA, function(FormEvent $event) {
 			$carto = $event->getData() ? $event->getData()->getCartographie()->getId() : null;
 			if($carto==3) {
@@ -31,13 +33,18 @@ class RisqueType extends AbstractType {
 			} else {
 				$label_help='Définir les causes liées au risque';
 			}
-			$event->getForm()->add('causeOfRisque', 'collection', array(
-				'type' => new RisqueHasCauseType(), 'allow_add' => true, 'allow_delete' => true,  'by_reference'=>false,
-				'label' => 'Causes', 'attr' => array('label_help' => $label_help), 'cascade_validation'=>true,
+			$event->getForm()->add('causeOfRisque', CollectionType::class, array(
+				'entry_type' => RisqueHasCauseType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference'=>false,
+				'label' => 'Causes',
+                'attr' => array('label_help' => $label_help),
+                //'cascade_validation'=>true,
 				'entry_options'  => array('attr' => array('carto' => $carto))
 			));
 			$event->getForm()->add('menace', null, array(
-				'label' => 'Nom du risque', 'empty_value' => 'Choisir un risque ...',
+				'label' => 'Nom du risque', 'placeholder' => 'Choisir un risque ...',
 				/*'query_builder' => function($er) use($event) {
 					return $er->createQueryBuilder('m')->innerJoin('m.cartographie', 'c')
 						->where('c.id = :cartographieId')->setParameter('cartographieId', $event->getData()->getCartographie()->getId());

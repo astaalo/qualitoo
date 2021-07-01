@@ -21,7 +21,7 @@ use App\Form\RisqueEnvironnementalType;
 use App\Entity\RisqueSST;
 use App\Form\RisqueSSTType;
 use App\Entity\RisqueEnvironnemental;
-use App\OrangeMainBundle;
+//use App\OrangeMainBundle;
 use App\Event\CartoEvent;
 use App\Annotation\QMLogger;
 
@@ -217,7 +217,7 @@ class RisqueController extends BaseController {
 				$entity->setDirection($this->getUser()->getStructure()->getDirection());
 				$entity->setStructure($this->getUser()->getStructure());
 			}
-			$type = new RisqueMetierType();
+			$type = RisqueMetierType::class;
 			$view='risque/new_risque_metier.html.twig';
  		} elseif ($cartographie_id==2) {
 			$entity = new RisqueProjet();
@@ -225,22 +225,22 @@ class RisqueController extends BaseController {
 				$entity->setDirection($this->getUser()->getStructure()->getDirection());
 				$entity->setStructure($this->getUser()->getStructure());
 			}
-			$type = new RisqueProjetType();
+			$type = RisqueProjetType::class;
 			$view   ='risque/new_risque_projet.html.twig';
 		} elseif($cartographie_id==3) {
 			$entity = new RisqueSST();
-			$type = new RisqueSSTType();
+			$type = RisqueSSTType::class;
 			$view   ='risque/new_risque_sst.html.twig';
 		} elseif($cartographie_id==4) {
 			$entity = new RisqueEnvironnemental();
-			$type = new RisqueEnvironnementalType();
+			$type = RisqueEnvironnementalType::class;
 			$view   ='risque/new_risque_environnemental.html.twig';
 		}
 		$risque = new Risque();
-		$risque->setCartographie($this->getDoctrine()->getManager()->getRepository('OrangeMainBundle:Cartographie')->find($cartographie_id));
+		$risque->setCartographie($this->getDoctrine()->getManager()->getRepository('App\Entity\Cartographie')->find($cartographie_id));
 		$entity->setRisque($risque);
 		
-		$this->denyAccessUnlessGranted('create', $entity->getRisque(),'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('create', $entity->getRisque(),'Accés non autorisé!');
 		
 		$form   = $this->createForm($type, $entity);
 		return $this->render($view, array('entity' => $entity, 'form' => $form->createView(), 'cartographie_id'=>$cartographie_id));
@@ -279,7 +279,7 @@ class RisqueController extends BaseController {
 			$view   ='risque/new_risque_environnemental.html.twig';
 		}
 		$risque = new Risque();
-    	$cartographie = $this->getDoctrine()->getRepository('OrangeMainBundle:Cartographie')->find($cartographie_id);
+    	$cartographie = $this->getDoctrine()->getRepository('App\Entity\Cartographie')->find($cartographie_id);
     	$risque->setCartographie($cartographie);
     	$entity->setRisque($risque);
 		$form   = $this->createForm($type, $entity);
@@ -298,7 +298,7 @@ class RisqueController extends BaseController {
 			$entity->getRisque()->setTobeMigrate(true);
     		// Mise à jour menace dans carto
 			$menace = $entity->getRisque()->getMenace();
-			$menace_has_profil = $this->getDoctrine()->getRepository('OrangeMainBundle:Menace')->menaceHasProfilRisque($cartographie_id);
+			$menace_has_profil = $this->getDoctrine()->getRepository('App\Entity\Menace')->menaceHasProfilRisque($cartographie_id);
 			if(!$menace_has_profil) {
 				$menace->addCartographie($cartographie);
 				$em->persist($menace);
@@ -688,7 +688,7 @@ class RisqueController extends BaseController {
 	 * @Template()
 	 */
 	public function causeOfRisquesAction(Request $request,$id){
-		$entity = $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->find($id);
+		$entity = $this->getDoctrine()->getRepository('App\Entity\Risque')->find($id);
 		return array('entity' => $entity);
 	}
 

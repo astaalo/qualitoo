@@ -1,7 +1,10 @@
 <?php
 namespace App\Form;
 
+use App\Entity\Structure;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormInterface;
@@ -11,12 +14,12 @@ use App\Repository\StructureRepository;
 class RisqueMetierType extends AbstractType {
 	
 	public function buildForm(FormBuilderInterface $builder, array $options) {
-		$builder->add('risque', new RisqueType());
-		$builder->add('structure', 'entity', array(
-				'class' => 'OrangeMainBundle:Structure',
+		$builder->add('risque', RisqueType::class);
+		$builder->add('structure', EntityType::class, array(
+				'class' => Structure::class,
 				'label' => 'Structure',
 				'validation_groups' => array('RisqueValidation'),
-				'empty_value' => 'Choisir une structure ...',
+				'placeholder' => 'Choisir une structure ...',
 				'query_builder'=>function(StructureRepository $sr){
 					          return $sr->filter();
 					 },
@@ -26,18 +29,18 @@ class RisqueMetierType extends AbstractType {
 						'widget_help' => 'Cliquer puis rechercher et choisir une structure dans la liste',
 				)
 		));
-		$builder->add('direction', 'entity', array(
-				'label' => 'Direction', 'class' => 'OrangeMainBundle:Structure',
+		$builder->add('direction', EntityType::class, array(
+				'label' => 'Direction', 'class' => 'App\Entity\Structure',
 				'query_builder' => function(StructureRepository $er){
 							return $er->listAllDirectionBySociete();
 						}, 'attr' => array(
 							'class' => 'chzn-select', 'label_help' => 'Direction', 'widget_help' => 'Choisir une direction dans la liste'
-					), 'empty_value' => 'Choisir la direction ...'
+					), 'placeholder' => 'Choisir la direction ...'
 		));
-		$builder->add('processus', 'entity', array(
+		$builder->add('processus', EntityType::class, array(
 				'label' => 'Processus',
-				'class' => 'OrangeMainBundle:Processus',
-				'empty_value' => 'Chosir un processus ...',
+				'class' => 'App\Entity\Processus',
+				'placeholder' => 'Chosir un processus ...',
 				'empty_data'  => null,
 				'attr' => array(
 						'class' => 'chzn-select',
@@ -45,12 +48,12 @@ class RisqueMetierType extends AbstractType {
 						'widget_help' => 'Choisir un processus dans la liste',
 				)
 		));
-		
-		$builder->add('proprietaire', 'text', array('disabled'    => true,));
-		$builder->add('activite', 'entity', array(
+
+		$builder->add('proprietaire', TextType::class, array('disabled'    => true,));
+		$builder->add('activite', EntityType::class, array(
 				'label' => 'Activité',
-				'class' => 'OrangeMainBundle:Activite',
-				'empty_value' => 'Choisir une activité ...',
+				'class' => 'App\Entity\Activite',
+				'placeholder' => 'Choisir une activité ...',
 				'attr' => array(
 						'class' => 'chzn-select',
 						'placeholder' => 'Choisir une activité ...',

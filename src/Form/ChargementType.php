@@ -1,7 +1,9 @@
 <?php
 namespace App\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormInterface;
@@ -12,20 +14,24 @@ class ChargementType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('libelle', null, array('label' => 'Lbelle du chargement:', 'attr' => array('class' => 'medium')))
-		    ->add('direction', 'entity', array('class' => 'OrangeMainBundle:Structure', 'empty_value' => 'Choisir la direction ...',
+		    ->add('direction', EntityType::class, array('class' => 'App\Entity\Structure', 'placeholder' => 'Choisir la direction ...',
 					'label' => 'Direction', 'query_builder' => function(StructureRepository $er) {
 						return $er->listAllDirectionBySociete();
 					}, 'attr' => array('class' => 'chzn-select', 'label_help' => 'Direction', 'widget_help' => 'Choisir une direction dans la liste')
 				))
-		    ->add('projet', 'entity', array('class' => 'OrangeMainBundle:Projet', 'empty_value' => 'Choisir le projet ...',
+		    ->add('projet', EntityType::class, array('class' => 'App\Entity\Projet', 'placeholder' => 'Choisir le projet ...',
 					'label' => 'Projet', 'query_builder' => function($er) {
 						return $er->listAllQueryBuilder();
 					}, 'attr' => array('class' => 'chzn-select', 'label_help' => 'Projet', 'widget_help' => 'Choisir un projet dans la liste')
 				))
-			->add('activite', 'entity', array('class' => 'OrangeMainBundle:Activite', 'empty_value' => 'Choisir une activité ...', 'label' => 'Activité', 		
+			->add('activite', EntityType::class, array('class' => 'App\Entity\Activite', 'placeholder' => 'Choisir une activité ...', 'label' => 'Activité', 		
 					'attr' => array('class' => 'chzn-select', 'placeholder' => 'Choisir une activité ...', 'widget_help' => 'Choisir une activité dans la liste')
 				))
-			->add('critere','collection', array('label'=>"Critere", 'by_reference'=>false, 'cascade_validation'=>true, 'type'=>new CritereChargementType()));
+			->add('critere',CollectionType::class, array(
+			    'label'=>"Critere",
+                'by_reference'=>false,
+                //'cascade_validation'=>true,
+                'entry_type'=> CritereChargementType::class));
 	}
 	
 	public function configureOptions(OptionsResolver $resolver)

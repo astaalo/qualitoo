@@ -316,7 +316,7 @@ class RisqueController extends BaseController {
 	/**
 	 * @QMLogger(message="Risques a transferer")
 	 * @Route("/les_risques_a_transferer", name="les_risques_a_transferer")
-	 * @Template()
+	 * @Template("risque/transferedRisques.html.twig")
 	 */
 	public function transferedRisquesAction(Request $request) {
 		$position=$this->get('session')->get('risque_criteria')['cartographie'];
@@ -326,7 +326,7 @@ class RisqueController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		return array('form' => $form->createView(), 'position'=>intval($position));
 	}
 	
@@ -345,7 +345,7 @@ class RisqueController extends BaseController {
 	/**
 	 * @QMLogger(message="Risques rejetes")
 	 * @Route("/les_risques_rejetes", name="les_risques_rejetes")
-	 * @Template()
+	 * @Template("risque/rejectedRisques.html.twig")
 	 */
 	public function rejectedRisquesAction(Request $request) {
 		$position=$this->get('session')->get('risque_criteria')['cartographie'];
@@ -355,14 +355,14 @@ class RisqueController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		return array('form' => $form->createView(), 'position'=>intval($position));
 	}
 
 	/**
 	 * * @QMLogger(message="Risques a valider")
 	 * @Route("/risques_a_valider", name="risques_a_valider")
-	 * @Template()
+	 * @Template("risque/unValidatedRisques.html.twig")
 	 */
 	public function unValidatedRisquesAction(Request $request) {
 		$position=$this->get('session')->get('risque_criteria')['cartographie'];

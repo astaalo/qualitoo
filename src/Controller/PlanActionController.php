@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\PlanAction;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Criteria\PlanActionCriteria;
-use App\OrangeMainBundle;
 use App\Event\CartoEvent;
 use App\Annotation\QMLogger;
 use Doctrine\ORM\EntityNotFoundException;
@@ -19,10 +18,10 @@ class PlanActionController extends BaseController {
 	/**
 	 * @QMLogger(message="Affichage des plans d'action")
 	 * @Route("/les_planactions", name="les_planactions")
-	 * @Template()
+	 * @Template("planAction/index.html.twig")
 	 */
 	public function indexAction() {
-		$form = $this->createForm(new PlanActionCriteria());
+		$form = $this->createForm(PlanActionCriteria::class);
 		$data = $this->get('session')->get('planaction_criteria');
 		$this->get('session')->set('planaction_criteria', $data ? $data : array());
 		return array('form' => $form->createView());
@@ -31,7 +30,7 @@ class PlanActionController extends BaseController {
 	/**
 	 * @QMLogger(message="Affichage des dispositifs")
 	 * @Route("/les_dispositifs", name="les_dispositifs")
-	 * @Template()
+	 * @Template("planAction/dispositif.html.twig")
 	 */
 	public function dispositifAction() {
 		$this->get('session')->set('dispositif_criteria', array());
@@ -77,7 +76,7 @@ class PlanActionController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new PlanActionCriteria());
+		$form = $this->createForm(PlanActionCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('planaction_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\PlanAction')->listAllQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder);
@@ -90,9 +89,9 @@ class PlanActionController extends BaseController {
 	 */
 	public function listDispositifAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new PlanActionCriteria());
+		$form = $this->createForm(PlanActionCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('dispositif_criteria'), $form);
-		$queryBuilder = $em->getRepository('App\Entity\PlanAction')->listAllQueryBuilder($form->getData());
+		$queryBuilder = $em->getRepository(PlanAction::class)->listAllQueryBuilder($form->getData());
 		return $this->paginate($request, $queryBuilder, 'addRowInTableForDispositif');
 	}
 	
@@ -173,7 +172,7 @@ class PlanActionController extends BaseController {
 	/**
 	 * @QMLogger(message="Details d'un plans d'action")
 	 * @Route("/{id}/details_planaction", name="details_planaction", requirements={ "id"= "\d+"})
-	 * @Template()
+	 * @Template("planAction/show.html.twig")
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();

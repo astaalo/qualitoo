@@ -27,7 +27,7 @@ class ControleController extends BaseController {
 	 * @Template()
 	 */
 	public function indexAction() {
-		$form = $this->createForm(new ControleCriteria ());
+		$form = $this->createForm(ControleCriteria::class);
 		$data = $this->get('session')->get('controle_criteria');
 		$data ['cartographie'] = 1;
 		$data = $this->get('session')->set('controle_criteria', $data);
@@ -41,9 +41,9 @@ class ControleController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine ()->getManager ();
-		$form = $this->createForm(new ControleCriteria ());
+		$form = $this->createForm(ControleCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('controle_criteria'), $form);
-		$queryBuilder = $em->getRepository('App\Entity\Controle')->listAllQueryBuilder($form->getData ());
+		$queryBuilder = $em->getRepository(Controle::class)->listAllQueryBuilder($form->getData ());
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -158,7 +158,7 @@ class ControleController extends BaseController {
 		if (! $controle)
 			throw $this->createNotFoundException('Aucun controle trouvé pour cet id : ' . $id);
 		
-		$this->denyAccessUnlessGranted('accesOneCtrl', $controle, 'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('accesOneCtrl', $controle, 'Accés non autorisé!');
 		return array('entity' => $controle);
 	}
 	

@@ -15,7 +15,7 @@ class AvancementType extends AbstractType
 		
 			->add('description')
 			->add('etatAvancement', null, array(
-					'empty_value' => 'Chosir l\'état d\'avancement'
+					'placeholder' => 'Chosir l\'état d\'avancement'
 					,'attr' => array('class' => 'chzn-select')));
 	}
 	

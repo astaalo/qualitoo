@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Form\AvancementType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -42,7 +43,7 @@ class AvancementController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$pa = $em->getRepository('App\Entity\PlanAction')->find($id);
 		$entity->setPlanAction($pa);
-		$form   = $this->createCreateForm($entity, 'Avancement');
+		$form   = $this->CreateForm(AvancementType::class, $entity);
 		return array('entity' => $entity, 'form' => $form->createView(), 'id'=>$id);
 	}
 

@@ -41,24 +41,24 @@ class BaseRepository extends EntityRepository
         return $queryBuilder;
     }
 
-	public function filterByProfile(QueryBuilder $queryBuilder, $alias = null, $role = null) {
+	public static function filterByProfile(QueryBuilder $queryBuilder, $alias = null, $role = null, $user = null) {
 		if(!$alias) {
 			$aliases = $queryBuilder->getRootAliases();
 			$alias = $aliases[0];
 		}
-		if($role && $role==Utilisateur::ROLE_SUPER_ADMIN && $this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN)) {	
-		} elseif($role && $role==Utilisateur::ROLE_ADMIN && $this->_user->hasRole(Utilisateur::ROLE_ADMIN)) {
-			$queryBuilder->andWhere($alias.'.id = :societeId')->setParameter('societeId', $this->_user->getSociete()->getId());
-		} elseif($role && $role==Utilisateur::ROLE_RISKMANAGER && $this->_user->hasRole(Utilisateur::ROLE_RISKMANAGER)) {
-			$queryBuilder->andWhere($alias.'.id = :societeId')->setParameter('societeId', $this->_user->getSociete()->getId());
-		} elseif($role && $role==Utilisateur::ROLE_RESPONSABLE && $this->_user->hasRole(Utilisateur::ROLE_RESPONSABLE)) {
-			$queryBuilder->andWhere($alias.'.id = :structureId')->setParameter('structureId', $this->_user->getStructure()->getId());
-		} elseif($role && $role==Utilisateur::ROLE_AUDITEUR && $this->_user->hasRole(Utilisateur::ROLE_AUDITEUR)) {
-			$queryBuilder->andWhere($alias.'.id = :societeId')->setParameter('societeId', $this->_user->getSociete()->getId());
-		} elseif($role && $role==Utilisateur::ROLE_SUPERVISEUR && $this->_user->hasRole(Utilisateur::ROLE_SUPERVISEUR)) {
-			$queryBuilder->andWhere($alias.'.id=:userId')->setParameter('userId', $this->_user->getId());
-		} elseif($role && $role==Utilisateur::ROLE_PORTEUR && $this->_user->hasRole(Utilisateur::ROLE_PORTEUR)) {
-			$queryBuilder->andWhere($alias.'.id=:userId')->setParameter('userId', $this->_user->getId());
+		if($role && $role==Utilisateur::ROLE_SUPER_ADMIN && $user->hasRole(Utilisateur::ROLE_SUPER_ADMIN)) {
+		} elseif($role && $role==Utilisateur::ROLE_ADMIN && $user->hasRole(Utilisateur::ROLE_ADMIN)) {
+			$queryBuilder->andWhere($alias.'.id = :societeId')->setParameter('societeId', $user->getSociete()->getId());
+		} elseif($role && $role==Utilisateur::ROLE_RISKMANAGER && $user->hasRole(Utilisateur::ROLE_RISKMANAGER)) {
+			$queryBuilder->andWhere($alias.'.id = :societeId')->setParameter('societeId', $user->getSociete()->getId());
+		} elseif($role && $role==Utilisateur::ROLE_RESPONSABLE && $user->hasRole(Utilisateur::ROLE_RESPONSABLE)) {
+			$queryBuilder->andWhere($alias.'.id = :structureId')->setParameter('structureId', $user->getStructure()->getId());
+		} elseif($role && $role==Utilisateur::ROLE_AUDITEUR && $user->hasRole(Utilisateur::ROLE_AUDITEUR)) {
+			$queryBuilder->andWhere($alias.'.id = :societeId')->setParameter('societeId', $user->getSociete()->getId());
+		} elseif($role && $role==Utilisateur::ROLE_SUPERVISEUR && $user->hasRole(Utilisateur::ROLE_SUPERVISEUR)) {
+			$queryBuilder->andWhere($alias.'.id=:userId')->setParameter('userId', $user->getId());
+		} elseif($role && $role==Utilisateur::ROLE_PORTEUR && $user->hasRole(Utilisateur::ROLE_PORTEUR)) {
+			$queryBuilder->andWhere($alias.'.id=:userId')->setParameter('userId', $user->getId());
 		} elseif($role) {
 			$queryBuilder->andWhere($alias.'.id = -1');
 		}

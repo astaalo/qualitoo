@@ -1,0 +1,22 @@
+{% form_theme form 'extra/simple_form_theme.html.twig' %}
+
+<div class="contentForm">
+	<form novalidate="novalidate"  action="" method="POST">
+		<div style="display: none;">
+	        {{ form_row(form.typeDocument) }}
+	        {{ form_row(form.annee) }}
+	     </div>
+		{{ form_row(form.libelle) }}
+		<div class="section last footer">
+			<div>
+				<button class="uibutton loading submitTargetLink on_load_page_refresh" data-target="#filter_content" name="#main_content" data-target="#myModal" call="afterSuccesFiltrer" argument-call="#risqueTable">Filtrer</button>
+				<input type="reset" name="#main_content" class="uibutton special on_load_page_refresh" value="Annuler" >
+			</div>
+		</div>
+	</form>
+</div>
+
+
+{% block add_script_js %}
+	
+{% endblock %}

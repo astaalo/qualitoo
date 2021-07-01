@@ -20,14 +20,14 @@ class DocumentController extends BaseController {
 	 * @Route("/les_documents", name="les_documents")
 	 * @Template()
 	 */
-	public function indexAction() {
+	public function indexAction(Request $request) {
 		$position=$this->get('session')->get('document_criteria')['typeDocument'];
 		
 		$position=$this->get('session')->get('document_criteria')['typeDocument'];
 		
 		$data = $this->get('session')->get('document_criteria');
 		$form = $this->createForm(new DocumentCriteria(), new Document(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		return array('form' => $form->createView(),'position'=>intval($position));
 	}
 	
@@ -51,15 +51,15 @@ class DocumentController extends BaseController {
 	 */
 	public function documentAction(Request $request,$year, $type) {
 		$em = $this->getDoctrine()->getManager();
-		$entityType = $em->find('OrangeMainBundle:TypeDocument', $type);
+		$entityType = $em->find(TypeDocument::class, $type);
 		$currrentYear = date('Y');
-		$form = $this->createForm(new DocumentCriteria(), new Document(), array('attr' => array('em' => $this->getDoctrine()->getManager(), 'year'=>$year)));
+		$form = $this->createForm(DocumentCriteria::class, new Document(), array('attr' => array('em' => $this->getDoctrine()->getManager(), 'year'=>$year)));
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('document_criteria', $request->request->get($form->getName()));
 		}
 		$data = $this->get('session')->get('document_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$documents = $em->getRepository('App\Entity\Document')->getDocumentsByType($form->getData())->getQuery()->execute();
+		$this->modifyRequestForForm($request, $data, $form);
+		$documents = $em->getRepository(Document::class)->getDocumentsByType($form->getData())->getQuery()->execute();
 		return array('form' => $form->createView(),'position'=>$year, 'type'=>$type, 'currentYear'=>$currrentYear,'documents'=>$documents, 'entityType'=>$entityType);
 	}
 	

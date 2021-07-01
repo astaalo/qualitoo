@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Form\ChargementType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -68,12 +69,13 @@ class ChargementController extends BaseController {
 			$CC[] = $object;
 			$entity->addCritere($object);
 		}
-		$form =$this->createCreateForm($entity, 'Chargement');
+		$form =$this->createForm(ChargementType::class, $entity);
 		if($id!=$this->getMyParameter('ids', array('carto', 'metier'))) { 
 			$form->remove('direction');
 			$form->remove('activite');
 		}
-		if($form->handleRequest($request) && $form->isValid()) {
+        $form->handleRequest($request);
+		if($form->isSubmitted() && $form->isValid()) {
 			foreach ($CC as $c){ $entity->removeCritere($c); }
 			$criteres_chosis = $request->request->get('chargement')['critere'];
 			foreach ($criteres_chosis as $cr){

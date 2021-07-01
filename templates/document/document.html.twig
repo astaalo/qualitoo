@@ -1,0 +1,86 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}
+	
+{% endblock %}
+
+
+{% block header_config %}
+<div class="header">
+			<span>
+				<span class="ico color folder"></span>
+				SharePoint :: <font style="color: #ff6600">{{ entityType.libelle|upper }}</font></li>
+			</span>
+	<div id="buttom_top" style="width: 75%">
+		<ul class="uibutton-group aggregat" style="margin-right: 36%;">
+			<li><a class="uibutton type_aggreg icon forward  {{ position==currentYear-3 ? 'active' : null }}" onclick="location.href='{{ path('choix_type',{year: currentYear-3 , type:type, link:app.request.attributes.get('_route')}) }}'">{{ currentYear-3 }}</a></li>
+			<li><a class="uibutton type_aggreg icon forward  {{ position==currentYear-2? 'active' : null }}" onclick="location.href='{{ path('choix_type',{year: currentYear-2, type:type, link:app.request.attributes.get('_route')}) }}'">{{ currentYear-2 }}</a></li>
+			<li><a class="uibutton type_aggreg icon forward  {{ position==currentYear-1 ? 'active' : null }}" onclick="location.href='{{ path('choix_type',{year:currentYear-1, type:type, link:app.request.attributes.get('_route')}) }}'">{{ currentYear-1 }}</a></li>
+			<li><a class="uibutton type_aggreg icon forward  {{ position==currentYear ? 'active' : null }}" onclick="location.href='{{ path('choix_type',{year:currentYear, type:type, link:app.request.attributes.get('_route')}) }}'">{{ currentYear }}</a></li>
+        </ul>
+		<ul class="uibutton-group">
+		{% if has_rights('ROLE_ADMIN') or has_rights('ROLE_RISKMANAGER') %}
+			<li><a class="uibutton icon add " href="{{ path('nouveau_document',{type : type}) }}">Ajouter</a></li>
+		{% endif %}
+			<li><a class="uibutton icon filter on_load_filter" name="#filter_content" href="#">Filtrer</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+	<div id="filter_content" hidden>
+		{% include 'document/filter.html.twig' with {form: form, evaluated: 1} %}
+	</div>
+	<div id="main_content" class="content" style="background-color: #fff;">
+		<div class="tableName" >
+			<table id="documentTable" class="display no-margin grille_datatable" >
+				<thead>
+					<tr>
+						<th width="150" >Libellé</th>
+						<th width="150" >Description</th>
+						<th width="150" >Fichier</th>
+						<th width="150"><div class="th_wrapp">Utilisateur</div></th>
+						<th width="100"><div class="th_wrapp">Date de Création</div></th>
+						<th width="50"><div class="th_wrapp">Actions</div></th>
+					</tr>
+				</thead>
+				<tbody>
+				{% if documents|length >0  %}
+				 	{% for document in documents %}
+				 		<tr>
+				 			<td width="70px" >{{ document.libelle }}</td>
+							<td width="70px" >{{ document.description }}</td>
+							<td width="100px"><div class="th_wrapp"><a href="{{ asset(document.path) }}" download>{{ document.nomFichier }}</a></div></td>
+							<td width="70px" >{{ document.utilisateur }}</td>
+							<td width="100px"><div class="th_wrapp">{{ document.dateCreation|date('d/m/Y') }}</div></td>
+							<td width="70px"><div class="th_wrapp">
+								<span class="tip">
+									<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('details_fichier',{id : document.id}) }}" original-title="Voir les détails "><img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}"></a>
+							    </span>
+							    {% if has_rights('ROLE_ADMIN') or (has_rights('ROLE_RISKMANAGER') and is_proprietaire(document)) %}
+							    <span class="tip">
+									<a   href="{{ path('edition_document',{id : document.id}) }}" original-title="Modifier "><img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}"></a>
+							    </span>
+							    <span class="tip">
+							    	<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('supprimer_document',{id : document.id}) }}" original-title="Supprimer le fichier"><img src="{{ asset('bundles/orangemain/images/icon/color_18/delete.png') }}"></a>
+							    </span>
+							    {% endif %}
+							</div></td>
+					    </tr>
+				 	{% endfor %}
+				 {% else %}
+				   <tr>
+				    <td colspan="6">Aucun document disponible ...</td>
+				   </tr>
+				 {% endif %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }}
+{% endblock %}

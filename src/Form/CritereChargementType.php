@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Entity\DomaineImpact;
@@ -18,10 +19,10 @@ class CritereChargementType extends AbstractType {
 	 * @param array $options        	
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options) {
-		$builder->add ( 'domaine', 'entity', array (
+		$builder->add ( 'domaine', EntityType::class, array (
 				'label' => 'vt',
 				'required' => true,
-				'class' => 'OrangeMainBundle:DomaineImpact',
+				'class' => 'App\Entity\DomaineImpact',
 				'attr' => array (
 						'class' => 'chzn-select' 
 				)) );
@@ -35,9 +36,9 @@ class CritereChargementType extends AbstractType {
 	public function onSetData(FormEvent $event) {
 		if (null != $domaine = $event->getData ()->getDomaine ()) {
 			$domaine = $event->getData ()->getDomaine ();
-			$event->getForm ()->add ( 'critere', 'entity', array (
-					'class'=>'OrangeMainBundle:Critere',
-					'empty_value' => 'Choisir un critère ...',
+			$event->getForm ()->add ( 'critere', EntityType::class, array (
+					'class'=>'App\Entity\Critere',
+					'placeholder' => 'Choisir un critère ...',
 					'query_builder' => function ($er) use ($domaine) {
 						return $er->createQueryBuilder ( 'q' )
 						          ->innerJoin('q.domaine','d')

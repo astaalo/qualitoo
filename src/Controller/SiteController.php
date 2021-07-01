@@ -43,9 +43,9 @@ class SiteController extends BaseController {
 	 */
 	public function newAction() {
 		$entity = new Site();
-		$form   = $this->createCreateForm($entity, 'Site');
+		$form   = $this->CreateForm(SiteType::class, $entity);
 		
-		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

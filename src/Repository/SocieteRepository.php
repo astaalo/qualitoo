@@ -17,14 +17,16 @@ use Symfony\Component\Security\Core\Security;
  */
 class SocieteRepository extends ServiceEntityRepository
 {
-    protected $_user;
+    protected $_ids;
     protected $_states;
+    protected $_user;
 
-    public function __construct(ManagerRegistry $registry, Security $security, ParameterBagInterface $param)
+    public function __construct(ManagerRegistry $registry, ParameterBagInterface $param, Security $security)
     {
         parent::__construct($registry, Societe::class);
-        $this->_user = $security->getUser();
+        //$this->_ids		= $param->get('ids');
         $this->_states	= $param->get('states');
+        $this->_user	= $security->getUser();
     }
 
 

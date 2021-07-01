@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\MainBundle\Twig\AssetsExtension;
 use App\Service\Actions;
 use App\Service\Status;
 use Doctrine\ORM\QueryBuilder;
@@ -21,24 +22,28 @@ class BaseController extends AbstractController
     private $paginator;
     protected $service_status;
     protected $service_action;
+    protected $service_assets_extension;
 
-    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action)
+    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension)
     {
         $this->getParameter = $params;
         $this->paginator = $paginator;
         $this->service_status = $status;
         $this->service_action = $action;
+        $this->service_assets_extension = $assets_extension;
     }
 
-    // public static function getSubscribedServices(): array  //ON surcharge cette fonction pour ajouter nos services aux services existants #Spécialité Symfony4
-    // {
-    //     return array_merge(parent::getSubscribedServices(), [ // on merge le tableau des services par defaut avec notre tableau personnalisé
-    //         'orange_main.actions' => 'App\Service\Actions',
-    //         'monolog.logger.trace' => 'Psr\Log\LoggerInterface',
-    //         'orange_main.status' => 'App\Service\Status',
-    //         'orange_ca.mailer' => 'App\Service\Mailer'
-    //     ]);
-    // }
+     public static function getSubscribedServices(): array  //ON surcharge cette fonction pour ajouter nos services aux services existants #Spécialité Symfony4
+     {
+         return array_merge(parent::getSubscribedServices(), [ // on merge le tableau des services par defaut avec notre tableau personnalisé
+             //'orange_main.actions' => 'App\Service\Actions',
+             //'monolog.logger.trace' => 'Psr\Log\LoggerInterface',
+             //'orange_main.status' => 'App\Service\Status',
+             //'orange_ca.mailer' => 'App\Service\Mailer'
+             'twig.extension.assets' => AssetsExtension::class
+
+         ]);
+     }
 
     /**
      * @param Mixed $entity

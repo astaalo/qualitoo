@@ -37,6 +37,6 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }} #}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }}
 	{% include 'extra/datatable.html.twig' with {idTable: 'familleTable', url: path('liste_des_familles'), nosorting: {} } %}
 {% endblock %}

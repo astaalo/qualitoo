@@ -43,6 +43,6 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	{# {{ block_render('::form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }} #}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }}
 	{% include 'extra/datatable.html.twig' with {idTable: 'societeTable', url: path('liste_des_societes'), nosorting: {0:0, 1:2, 2:3} } %}
 {% endblock %}

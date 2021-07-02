@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -149,7 +150,7 @@ class EquipementController extends BaseController
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Equipement entity.');
         }
-        $this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+        //$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
         $editForm = $this->createEditForm($entity);
         return array(
             'entity'      => $entity,
@@ -166,12 +167,12 @@ class EquipementController extends BaseController
     */
     private function createEditForm(Equipement $entity)
     {
-        $form = $this->createForm(new EquipementType(), $entity, array(
+        $form = $this->createForm(EquipementType::class, $entity, array(
             'action' => $this->generateUrl('modifier_equipement', array('id' => $entity->getId())),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', SubmitType::class, array('label' => 'Update'));
 
         return $form;
     }

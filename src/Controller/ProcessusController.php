@@ -149,8 +149,8 @@ class ProcessusController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Processus')->find($id);
-		$form = $this->createCreateForm($entity, 'Processus');
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		$form = $this->CreateForm(ProcessusType::class, $entity);
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	

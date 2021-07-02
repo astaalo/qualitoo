@@ -152,9 +152,9 @@ class MenaceController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Menace')->find($id);
-		$form = $this->createCreateForm($entity, 'Menace');
+		$form = $this->createForm(MenaceType::class, $entity);
 		
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

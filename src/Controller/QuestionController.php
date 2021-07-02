@@ -97,9 +97,9 @@ class QuestionController extends BaseController{
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Question')->find($id);
-		$form = $this->createCreateForm($entity, 'Question');
+		$form = $this->createCreateForm($entity, QuestionType::class);
 		
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView(),'id'=>$id);
 	}

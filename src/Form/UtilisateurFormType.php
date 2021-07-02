@@ -11,7 +11,10 @@
 
 namespace App\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Repository\StructureRepository;
@@ -24,37 +27,37 @@ class UtilisateurFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-       $builder->add('email', 'email', array('label' => "Adresse e-mail"))
+       $builder->add('email', EmailType::class, array('label' => "Adresse e-mail"))
       		->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('prenom', null, array('label' => 'Prénom'))
             ->add('nom', null, array('label' => 'Nom'))
-            ->add('structure', 'entity', array('label' => 'Structure', 'class' => 'OrangeMainBundle:Structure',
+            ->add('structure', EntityType::class, array('label' => 'Structure', 'class' => 'App\Entity\Structure',
 				'query_builder'=>function($sr){
 				return $sr->filter();
 				}))
-            ->add('matricule', 'text', array('label' => 'Matricule', 'attr' => array('class' => 'ui-spinner-box')))
+            ->add('matricule', TextType::class, array('label' => 'Matricule', 'attr' => array('class' => 'ui-spinner-box')))
             ->add('telephone', null, array('label' => 'Téléphone'))
             ->add('manager', null, array('label' => 'Est manager', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
-            ->add('societeOfAdministrator',null, array('label' => 'Est administrateur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'OrangeMainBundle:Societe','empty_value' => 'Choisir la société ...',
+            ->add('societeOfAdministrator',null, array('label' => 'Est administrateur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe','placeholder' => 'Choisir la société ...',
             'query_builder'=>function($sr){
             return $sr->listUserSocieties();
             }
             ))
-            ->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'OrangeMainBundle:Societe','empty_value' => 'Choisir la société ...',
+            ->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe','placeholder' => 'Choisir la société ...',
             'query_builder'=>function($sr){
             return $sr->listUserSocieties();
             }
             ))
-            ->add('societeOfRiskManager',null, array('label' => 'Est risque manager de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'OrangeMainBundle:Societe','empty_value' => 'Choisir la société ...',
+            ->add('societeOfRiskManager',null, array('label' => 'Est risque manager de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe','placeholder' => 'Choisir la société ...',
             'query_builder'=>function($sr){
             return $sr-> listUserSocieties();
             }
             ))
-            ->add('structureOfConsulteur', null, array('label' => 'Est consulteur de', 'required' => false, 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple'),'class' => 'OrangeMainBundle:Structure','empty_value' => 'Choisir ...', 'query_builder'=>function($sr){
+            ->add('structureOfConsulteur', null, array('label' => 'Est consulteur de', 'required' => false, 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Structure','placeholder' => 'Choisir ...', 'query_builder'=>function($sr){
                 return $sr-> listUserStructure();
                 }
             ))
-            ->add('roles', 'choice', array('label' => 'Profil', 'choices' => array('ROLE_USER' => 'Utilisateur simple', 'ROLE_ADMIN' => 'Administrateur'), 'multiple' => true, 'required' => true, 'empty_value' => 'Choisir ...'));
+            ->add('roles', ChoiceType::class, array('label' => 'Profil', 'choices' => array('ROLE_USER' => 'Utilisateur simple', 'ROLE_ADMIN' => 'Administrateur'), 'multiple' => true, 'required' => true, 'placeholder' => 'Choisir ...'));
     }
 
     public function configureOptions(OptionsResolver $resolver)

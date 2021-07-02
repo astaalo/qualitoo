@@ -117,8 +117,8 @@ class StructureController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Structure')->find($id);
-		$form = $this->createCreateForm($entity, 'Structure');
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		$form = $this->createCreateForm($entity, StructureType::class);
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	

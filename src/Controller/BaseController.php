@@ -51,8 +51,9 @@ class BaseController extends AbstractController
      * @return \Symfony\Component\Form\Form
      */
     protected function createCreateForm($entity, $formName, $options = array()) {
-        $type = '\App\Form\\'.$formName.'Type';
-        $form = $this->createForm(new $type() , $entity, $options);
+        //$type = '\App\Form\\'.$formName.'Type';
+        $type = $formName;
+        $form = $this->createForm($type , $entity, $options);
         return $form;
     }
 

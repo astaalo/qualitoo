@@ -85,9 +85,9 @@ class CritereController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Critere')->find($id);
-		$form = $this->createCreateForm($entity, 'Critere', array('attr' => array('em' => $em)));
+		$form = $this->createCreateForm($entity, CritereType::class, array('attr' => array('em' => $em)));
 		
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

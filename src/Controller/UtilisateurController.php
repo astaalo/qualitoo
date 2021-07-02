@@ -44,16 +44,16 @@ class UtilisateurController extends BaseController {
 	/**
 	 * @QMLogger(message="Modification utilisateur")
 	 * @Route ("/{id}/edition_utilisateur", name="edition_utilisateur", requirements={ "id"= "\d+"})
-	 * @Template("FOSUserBundle:Registration:edit.html.twig")
+	 * @Template("bundles/FOSUserBundle/Registration/edit.html.twig")
 	 */
-	public function editAction($id) {
+	public function editAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$user = $em->getRepository('App\Entity\Utilisateur')->find($id);
-		$form = $this->createForm(new UtilisateurFormType(), $user);
-		$this->denyAccessUnlessGranted('update', $user,'Accés non autorisé!');
+		$form = $this->createForm(UtilisateurFormType::class, $user);
+		//$this->denyAccessUnlessGranted('update', $user,'Accés non autorisé!');
 		$form->setData($user);
-		if ($this->get('request')->getMethod() == 'POST') {
-			$form->bind($this->get('request'));
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
 			if ($form->isValid()) {
 				$em->persist($user);
 				$em->flush();

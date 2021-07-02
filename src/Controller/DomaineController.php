@@ -187,14 +187,14 @@ class DomaineController extends BaseController {
 	/**
 	 * @QMLogger(message="Modification d'un domaine d'activtie")
 	 * @Route("/{id}/edition_domaine_dactivite", name="edition_domaine_dactivite", requirements={"id"= "\d+"})
-	 * @Template()
+	 * @Template("domaine/editForActivite.html.twig")
 	 */
 	public function editForActiviteAction($id){
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\DomaineActivite')->find($id);
-		$form = $this->createCreateform($entity, 'DomaineActivite');
+		$form = $this->createCreateform($entity, DomaineActiviteType::class);
 
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		
 		return array('entity' => $entity, 'form' =>$form->createView());
 	}

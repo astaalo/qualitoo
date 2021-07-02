@@ -2,7 +2,8 @@
 
 {% block content %}
 	<div class="contentForm">
-		<form  novalidate="novalidate"  action="{{ path('edition_utilisateur', {id: user.id}) }}" {{ form_enctype(form) }} method="POST">
+{#		<form  novalidate="novalidate"  action="{{ path('edition_utilisateur', {id: user.id}) }}" {{ form_enctype(form) }} method="POST">#}
+		<form  novalidate="novalidate"  action="{{ path('edition_utilisateur', {id: user.id}) }}" method="POST">
 			{{ form_row(form.prenom) }}
 			{{ form_row(form.nom) }}
 			{{ form_row(form.email, {attr: attr|default({class: 'medium'})}) }}
@@ -19,7 +20,7 @@
 			{{ form_row(form.structureOfConsulteur) }}
 			<div class="section last footer">
 				<div>
-					<button class="uibutton loading">{{ 'registration.submit'|trans }}</button>
+					<button class="uibutton loading">Enregistrer</button>
 					<input type="reset"  class="uibutton special" value="Effacer" >
 				</div>
 			</div>

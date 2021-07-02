@@ -131,8 +131,8 @@ class CauseController extends BaseController {
 	public function editAction($id, $page = 0) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Cause')->find($id);
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
-		$form = $this->createCreateForm($entity, 'Cause');
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
+		$form = $this->createCreateForm($entity, CauseType::class);
 		return array('entity' => $entity, 'form' => $form->createView(), 'page' => $page);
 	}
 	

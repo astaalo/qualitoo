@@ -153,9 +153,9 @@ class ActiviteController extends BaseController
 	{
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Activite')->find($id);
-		$form = $this->createCreateForm($entity, 'Activite');
+		$form = $this->createForm(ActiviteType::class, $entity);
 
-		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

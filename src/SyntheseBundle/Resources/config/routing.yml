@@ -1,0 +1,3 @@
+synthese_homepage:
+    path:     /
+    defaults: { _controller: SyntheseBundle:Default:index }

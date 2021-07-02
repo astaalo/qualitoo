@@ -1,0 +1,44 @@
+<?php
+namespace Orange\SyntheseBundle\Model;
+
+use Doctrine\MongoDB\Connection;
+use Doctrine\Common\EventManager;
+use Doctrine\ODM\MongoDB\Configuration;
+
+class DocumentManager extends \Doctrine\ODM\MongoDB\DocumentManager
+{
+    /**
+     * The used Parameters.
+     *
+     * @var Array
+     */
+    private $_parameters;
+
+    public static function create(Connection $conn = null, Configuration $config = null, EventManager $eventManager = null)
+    {
+        $dm = parent::create($conn, $config, $eventManager);
+        return new DocumentManager($dm->getConnection(), $dm->getConfiguration(), $dm->getEventManager());
+    }
+    
+    /**
+     * Gets the repository for a document class.
+     *
+     * @param string $documentName  The name of the Document.
+     * @return ObjectRepository  The repository.
+     */
+    public function getRepository($documentName)
+    {
+    	$repository = parent::getRepository($documentName);
+    	if(method_exists($repository, 'setParameters')) {
+    		$repository->setParameters($this->_parameters);
+    	}
+    	return $repository;
+    }
+
+    public function setParameters($ids, $states, $user) {
+    	$this->_parameters = array();
+    	$this->_parameters['ids'] = $ids;
+    	$this->_parameters['states'] = $states;
+    	$this->_parameters['user'] = $user;
+    }
+}

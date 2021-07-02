@@ -99,12 +99,12 @@ class Risque implements NotificationInterface {
     private $first = true;
 	
 	/**
-	 * @var \Processus 
+	 * @var Processus
 	 */
 	private $processus;
 	
 	/**
-	 * @var \TypeProcessus
+	 * @var TypeProcessus
 	 */
 	public $typeProcessus;
 	
@@ -115,7 +115,7 @@ class Risque implements NotificationInterface {
 	private $probabilite;
 	
    /**
-     * @var \Maturite
+     * @var Maturite
      * @ORM\ManyToOne(targetEntity="Maturite")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="maturite_reel_id", referencedColumnName="id")
@@ -343,12 +343,12 @@ class Risque implements NotificationInterface {
 	public $criticiteForKpi;
 	
 	/**
-	 * @var \Maturite
+	 * @var Maturite
 	 */
 	public $maturiteReels;
 	
 	/**
-	 * @var \Maturite
+	 * @var Maturite
 	 */
 	public $maturiteTheoriques;
 	
@@ -588,7 +588,7 @@ class Risque implements NotificationInterface {
 	/**
 	 * set utilisateur
 	 * 
-	 * @param \Utilisateur $utilisateur        	
+	 * @param Utilisateur $utilisateur
 	 * @return Risque
 	 */
 	public function setUtilisateur($utilisateur) {
@@ -608,7 +608,7 @@ class Risque implements NotificationInterface {
 	/**
 	 * set validateur
 	 * 
-	 * @param \Utilisateur $validateur        	
+	 * @param Utilisateur $validateur
 	 * @return Risque
 	 */
 	public function setValidateur($validateur) {
@@ -750,7 +750,7 @@ class Risque implements NotificationInterface {
 	
 	/**
 	 *
-	 * @return App\Entity\Processus
+	 * @return Processus
 	 */
 	public function getProcessusByType($type) {
 		$processus = $this->getActivite()->getProcessus();

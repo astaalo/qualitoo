@@ -37,14 +37,14 @@ class RestitutionController extends BaseController {
 	
 	/**
 	 * @QMLogger(message="Affichage matrice par carto")
-	 * @Route("/{carto}/{type}/la_restitutionnnnn", name="la_restitutionnnn")
+	 * @Route("/{carto}/{type}/la_restitution", name="la_restitution")
 	 * @Template()
 	 */
 	public function matriceAction(Request $request, $carto, $type) {
 		$em = $this->getDoctrine()->getManager();
 		$probabiteKPIs = $graviteKPIs = false;
 		$entity = new Risque();
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
 			$this->get('session')->set('risque_criteria', $request->request->get($form->getName()));
@@ -52,11 +52,10 @@ class RestitutionController extends BaseController {
 		} 	elseif($this->get('session')->get('risque_criteria')==null || count($this->get('session')->get('risque_criteria'))==0) {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
-		$this->denyAccessUnlessGranted('matrice', $entity, 'Accés non autorisée!');
-		
+		//$this->denyAccessUnlessGranted('matrice', $entity, 'Accés non autorisée!');
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$em->getRepository('App\Entity\Risque')->getMatrice($form->getData(), $type, $probabiteKPIs, $graviteKPIs);
+		$this->modifyRequestForForm($request, $data, $form);
+		$em->getRepository(Risque::class)->getMatrice($form->getData(), $type, $probabiteKPIs, $graviteKPIs);
 		$entities = $this->get('orange_main.core')->getMapping('Risque')->mapForMatrice($probabiteKPIs, $graviteKPIs, $type, $form->getData());
 		return array('entities' => $entities, 'form' => $form->createView(), 'carto'=>$carto, 'type' => $type);
 	}

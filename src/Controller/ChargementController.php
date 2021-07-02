@@ -181,19 +181,19 @@ class ChargementController extends BaseController {
 	/**
 	 * @QMLogger(message="Liste des  risques importés")
 	 * @Route("/{id}/les_risques_importes", name="les_risques_importes")
-	 * @Template()
+	 * @Template("chargement/indexImport.html.twig")
 	 */
-	public function indexImportAction($id) {
+	public function indexImportAction($id, Request $request) {
 		$entity=new Risque();
-		$em=$this->getDoctrine()->getEntityManager();
+		$em=$this->getDoctrine()->getManager();
 		$chargement = $em->getRepository('App\Entity\Chargement')->find($id);
 		$this->get('session')->set('risque_criteria', array('cartographie' => $chargement->getCartographie()->getId()));
 		$position=$this->get('session')->get('risque_criteria')['cartographie'];
 		$data = $this->get('session')->get('risque_criteria');
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$this->modifyRequestForForm($request, $data, $form);
 		$entity->setCartographie($form->getData()->getCartographie());
-		$this->denyAccessUnlessGranted('read', $entity,'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('read', $entity,'Accés non autorisé!');
 		return array('form' => $form->createView(),'position'=>intval($position) ,'id_import'=>$id,'rapport'=>$chargement->getRapport());
 	}
 	
@@ -204,7 +204,7 @@ class ChargementController extends BaseController {
 	 */
 	public function listImportAction(Request $request,$id) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listByImport($form->getData(), $id);
 		return $this->paginate($request, $queryBuilder);

@@ -175,12 +175,12 @@ class ActiviteController extends BaseController
 			$form->bind($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
-				$this->getDoctrine()->getRepository('OrangeMainBundle:RisqueMetier')->createQueryBuilder('rm')
+				$this->getDoctrine()->getRepository(RisqueMetier::class)->createQueryBuilder('rm')
 					->update()
 					->set('rm.processus', $entity->getProcessus()->getId())
 					->where('IDENTITY(rm.activite) = :activite')->setParameter('activite', $entity->getId())
 					->getQuery()->execute();
-				$this->getDoctrine()->getRepository('OrangeMainBundle:RisqueMetier')->createQueryBuilder('rm')
+				$this->getDoctrine()->getRepository(RisqueMetier::class)->createQueryBuilder('rm')
 					->update()
 					->set('rm.structure', $entity->getProcessus()->getStructure()->getId())
 					->where('IDENTITY(rm.activite) = :activite')->setParameter('activite', $entity->getId())

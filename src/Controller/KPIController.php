@@ -24,9 +24,9 @@ class KPIController extends BaseController {
 	public function repartitionComparaisonCriticiteAction(Request $request,$carto,$type){
 		$graphe= array('Maturité'=>array() , 'Criticité'=>array());
 		$choixRepo	= ($type  == 0)
-					?  'Direction'
-					: (($type  == 1) ? ($carto <=2  ? 'Departement' : 'Site' )
-									 : ($type == 2  ? ($carto !=2 ? 'Activite': 'Projet') : 'Equipement'));
+			?  Direction::class
+			: (($type  == 1) ? ($carto <=2  ? Departement::class : Site::class )
+				: ($type == 2  ? ($carto !=2 ? Activite::class : Projet::class) : Equipement::class));
 		
 		$this->denyAccessUnlessGranted('rcc', new Risque(), 'Accés non autorisé!');
 					
@@ -41,18 +41,18 @@ class KPIController extends BaseController {
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
 		if($type<=1 && $carto<=2){
-			$structures = $this->getDoctrine()->getRepository('OrangeMainBundle:Structure')->listByType($type)->getQuery()->getArrayResult();
-		    $gravites= $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->getGraviteByRisqueStructure($form->getData(),$type)->getQuery()->getArrayResult();
-			$matuProb= $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->getMaturiteProbabiliteByRisqueStructure($form->getData(),$type)->getQuery()->getArrayResult();
+			$structures = $this->getDoctrine()->getRepository(Structure::class)->listByType($type)->getQuery()->getArrayResult();
+		    $gravites= $this->getDoctrine()->getRepository(Risque::class)->getGraviteByRisqueStructure($form->getData(),$type)->getQuery()->getArrayResult();
+			$matuProb= $this->getDoctrine()->getRepository(Risque::class)->getMaturiteProbabiliteByRisqueStructure($form->getData(),$type)->getQuery()->getArrayResult();
 			$kpis = $this->get('orange_main.core')->getMapping('Risque')->mapForTableauCriticiteAndGraviteByStructure($gravites,$matuProb,$type, $form->getData());
 		}elseif ($type==1 && $carto>2){
-			$sites = $this->getDoctrine()->getRepository('OrangeMainBundle:Site')->listAllQueryBuilder()->getQuery()->getArrayResult();
-			$gravites= $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->getGraviteByRisqueSite($form->getData())->getQuery()->getArrayResult();
-			$matuProb= $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->getMaturiteProbabiliteBySite($form->getData())->getQuery()->getArrayResult();
+			$sites = $this->getDoctrine()->getRepository(Site::class)->listAllQueryBuilder()->getQuery()->getArrayResult();
+			$gravites= $this->getDoctrine()->getRepository(Risque::class)->getGraviteByRisqueSite($form->getData())->getQuery()->getArrayResult();
+			$matuProb= $this->getDoctrine()->getRepository(Risque::class)->getMaturiteProbabiliteBySite($form->getData())->getQuery()->getArrayResult();
 			$kpis = $this->get('orange_main.core')->getMapping('Risque')->mapForTableauCriticiteAndGraviteBySite($gravites,$matuProb);
 		}elseif ($type>=2){
-			$aggregates = $this->getDoctrine()->getRepository('OrangeMainBundle:'.$choixRepo)->listAllQueryBuilder()->getQuery()->getArrayResult();
-			$kpis  = $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->getMaturiteGraviteByType($form->getData(),$type)->getQuery()->getArrayResult();
+			$aggregates = $this->getDoctrine()->getRepository($choixRepo)->listAllQueryBuilder()->getQuery()->getArrayResult();
+			$kpis  = $this->getDoctrine()->getRepository(Risque::class)->getMaturiteGraviteByType($form->getData(),$type)->getQuery()->getArrayResult();
 		}
 		$i=0;
 		foreach ($kpis as $key=>$value){
@@ -92,7 +92,7 @@ class KPIController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$req= $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->getMaturiteGraviteProbabilteByRisque($form->getData())->getQuery()->getArrayResult();
+		$req= $this->getDoctrine()->getRepository(Risque::class)->getMaturiteGraviteProbabilteByRisque($form->getData())->getQuery()->getArrayResult();
 		$kpis = $this->get('orange_main.core')->getMapping('Risque')->mapForTableauRisqueCriticite($req);
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rrc'));
 		return array('carto'=> $carto, 'kpis'=>$kpis, 'form'=>$form->createView());
@@ -118,7 +118,7 @@ class KPIController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$kpis=$this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->risqueTransverses($form->getData())->getQuery()->getArrayResult();
+		$kpis=$this->getDoctrine()->getRepository(Risque::class)->risqueTransverses($form->getData())->getQuery()->getArrayResult();
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rt'));
 		return array('carto'=> $carto, 'kpis'=>$kpis, 'form'=>$form->createView());
 	}
@@ -130,12 +130,12 @@ class KPIController extends BaseController {
 	 * @Template("OrangeMainBundle:KPI:details_rt.html.twig")
 	 */
 	public function detailsRTAction(Request $request,$menace_id,$occurence,$carto){
-		$entity = $this->getDoctrine()->getRepository('OrangeMainBundle:Menace')->find($menace_id);
+		$entity = $this->getDoctrine()->getRepository(Menace::class)->find($menace_id);
 		
 		$this->denyAccessUnlessGranted('drt', new Risque(), 'Accés non autorisé!');
 		
-		$risques   = $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->getGraviteByMenaceStructure($entity,$carto)->getQuery()->execute();
-		$cartographie=$this->getDoctrine()->getRepository('OrangeMainBundle:Cartographie')->find($carto);
+		$risques   = $this->getDoctrine()->getRepository(Risque::class)->getGraviteByMenaceStructure($entity,$carto)->getQuery()->execute();
+		$cartographie=$this->getDoctrine()->getRepository(Cartographie::class)->find($carto);
 		if($carto<=2)
 		    $this->get('session')->set('export', array('kpis' => serialize($risques), 'type'=>'Risque','source'=>'details_metier_rt'));
 		else
@@ -201,8 +201,8 @@ class KPIController extends BaseController {
 		
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$reqTotalRisques = $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')-> getMenacesTotalByYear($form->getData())->getQuery()->getArrayResult();
-		$reqTestedRisques = $this->getDoctrine()->getRepository('OrangeMainBundle:Quiz')-> getRisquesTesterByYear($form->getData())->getQuery()->getArrayResult();
+		$reqTotalRisques = $this->getDoctrine()->getRepository(Risque::class)-> getMenacesTotalByYear($form->getData())->getQuery()->getArrayResult();
+		$reqTestedRisques = $this->getDoctrine()->getRepository(Quiz::class)-> getRisquesTesterByYear($form->getData())->getQuery()->getArrayResult();
 		$kpis =  $this->get('orange_main.core')->getMapping('Risque')->mapForTableauPriseEnCharge($reqTotalRisques, $reqTestedRisques);
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'tprc'));
 		return array('carto'=>$carto, 'kpis'=>$kpis, 'form'=>$form->createView());
@@ -226,7 +226,7 @@ class KPIController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$kpis = $this->getDoctrine()->getRepository('OrangeMainBundle:Menace')->getRisquesAveresByPeriode($form->getData())->getQuery()->execute();
+		$kpis = $this->getDoctrine()->getRepository(Menace::class)->getRisquesAveresByPeriode($form->getData())->getQuery()->execute();
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rav'));
 		return array('carto'=>$carto, 'kpis'=>$kpis, 'form'=>$form->createView());
 	}
@@ -251,7 +251,7 @@ class KPIController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$req = $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->getMaturiteGraviteProbabiliteByRisqueByYear($form->getData())->getQuery()->getArrayResult();
+		$req = $this->getDoctrine()->getRepository(Risque::class)->getMaturiteGraviteProbabiliteByRisqueByYear($form->getData())->getQuery()->getArrayResult();
 		$kpis =  $this->get('orange_main.core')->getMapping('Risque')->mapForTableauICGByYear($req);
 		$graphe = $this->get('orange_main.core')->getMapping('Risque')->mapForGrapheICGByYear($req);
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'eicg'));

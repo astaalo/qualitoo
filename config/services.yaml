@@ -208,6 +208,10 @@ services:
     App\Service\Actions:
         arguments: [ "@twig", "@router", "%states%", "@security.helper", "@doctrine.orm.entity_manager" ]
 
+    App\Service\Loader:
+        class: App\Service\Loader
+        arguments: ["@service_container", "%kernel.root_dir%/../public/","%ids%"]
+
     # date french
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl

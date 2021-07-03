@@ -174,7 +174,7 @@ class ProcessusController extends BaseController {
 				 ->setParameter('id', $entity->getId())
 				 ->setParameter('lib', $lib_sans_spec)
 				 ->getQuery()->execute();
-			$this->getDoctrine()->getRepository('OrangeMainBundle:RisqueMetier')->createQueryBuilder('rm')
+			$this->getDoctrine()->getRepository(RisqueMetier::class)->createQueryBuilder('rm')
 				->update()
 				->set('rm.structure', $entity->getStructure()->getId())
 				->where('IDENTITY(rm.processus) = :processus')->setParameter('processus', $entity->getId())

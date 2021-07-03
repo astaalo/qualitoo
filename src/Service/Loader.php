@@ -86,7 +86,7 @@ class Loader {
 	 */
 	public function loadRisqueMetier($file,$current_user,$chargement) {
 		$query = new RisqueMetierQuery($this->em->getConnection());
-		$nextId = $this->em->getRepository('OrangeMainBundle:Risque')->getNextId();
+		$nextId = $this->em->getRepository(Risque::class)->getNextId();
 		$query->createTable($nextId);
 		$query->loadTable($chargement, $file->getPathname(), $this->web_dir, $nextId);
         $query->updateTable($chargement,$this->ids,$this->em);
@@ -102,7 +102,7 @@ class Loader {
 	 */
 	public function loadRisqueProjet($file, $current_user,$chargement) {
 		$query = new RisqueProjetQuery($this->em->getConnection());
-		$nextId = $this->em->getRepository('OrangeMainBundle:Risque')->getNextId();
+		$nextId = $this->em->getRepository(Risque::class)->getNextId();
 		$query->createTable($nextId);
 	    $query->loadTable($file->getPathname(), $this->web_dir, $nextId);
         $query->updateTable($chargement,$this->ids, $this->em);
@@ -118,7 +118,7 @@ class Loader {
 	 */
 	public function loadRisqueSSTE($file,$current_user,$chargement) {
 		$query = new RisqueSSTEQuery($this->em->getConnection());
-		$nextId = $this->em->getRepository('OrangeMainBundle:Risque')->getNextId();
+		$nextId = $this->em->getRepository(Risque::class)->getNextId();
 		$query->createTable($nextId);
 		$query->loadTable($file->getPathname(), $this->web_dir,$nextId);
  		$query->updateTable($chargement,$this->ids,$this->em,$current_user);

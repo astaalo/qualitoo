@@ -73,7 +73,7 @@ class MenaceRepository extends ServiceEntityRepository
      */
     public function getRisquesAveresByPeriode($criteria){
         $criteria = $criteria ? $criteria : new \App\Entity\Risque();
-        $risqueRepo = $this->_em->getRepository('OrangeMainBundle:Risque');
+        $risqueRepo = $this->_em->getRepository(Risque::class);
         $evalBuilder = $this->_em->getRepository('OrangeMainBundle:Evaluation')
             ->createQueryBuilder('ev')
             ->innerJoin('ev.risque','risk')

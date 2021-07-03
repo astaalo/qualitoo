@@ -37,7 +37,7 @@ class DocumentController extends BaseController {
 	 * @Template()
 	 */
 	public function detailsFichierAction($id) {
-		$document = $this->getDoctrine()->getRepository('OrangeMainBundle:Document')->find($id);
+		$document = $this->getDoctrine()->getRepository(Document::class)->find($id);
 		
 		return array('document'=>$document);
 	}
@@ -93,7 +93,7 @@ class DocumentController extends BaseController {
 	 */
 	public function newAction($type) {
 		$entity = new Document();
-		$typeDocument = $this->getDoctrine()->getRepository('OrangeMainBundle:TypeDocument')->find($type);
+		$typeDocument = $this->getDoctrine()->getRepository(TypeDocument::class)->find($type);
 		$currrentYear = date('Y');
 		$entity->setTypeDocument($typeDocument);
 		$form   = $this->createCreateForm($entity, 'Document');
@@ -108,7 +108,7 @@ class DocumentController extends BaseController {
 	public function createAction(Request $request,$type) {
 		$entity = new Document();
 		$form   = $this->createCreateForm($entity, 'Document');
-		$typeDocument = $this->getDoctrine()->getRepository('OrangeMainBundle:TypeDocument')->find($type);
+		$typeDocument = $this->getDoctrine()->getRepository(TypeDocument::class)->find($type);
 		$entity->setTypeDocument($typeDocument);
 		$currrentYear = date('Y');
 		$form->handleRequest($request);

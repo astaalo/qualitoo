@@ -104,13 +104,13 @@ class PlanActionController extends BaseController {
 	 */
 	public function newAction($risque_id = null, $controle_id = null) {
 		$entity = new PlanAction();
-		$controle = $controle_id ? $this->getDoctrine()->getManager()->getRepository('OrangeMainBundle:Controle')->find($controle_id) : null;
+		$controle = $controle_id ? $this->getDoctrine()->getManager()->getRepository(Controle::class)->find($controle_id) : null;
 		if($controle) {
 			$entity->setControle($controle);
 			$entity->setRisque($controle->getRisque());
 			$entity->setCauseOfRisque($controle->getCauseOfRisque());
 		} elseif($risque_id) {
-			$entity->setRisque($this->getDoctrine()->getManager()->getRepository('OrangeMainBundle:Risque')->find($risque_id));
+			$entity->setRisque($this->getDoctrine()->getManager()->getRepository(Risque::class)->find($risque_id));
 		}
 		$form = $this->createCreateForm($entity, 'PlanAction', array(
 				'attr' => array(

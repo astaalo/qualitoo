@@ -323,7 +323,7 @@ class ControleController extends BaseController {
 		$em = $this->getDoctrine ()->getManager ();
 		$entity = new Execution ();
 		$controle = $em->getRepository('App\Entity\Controle')->find($id);
-		$entity->setControle($em->getReference('OrangeMainBundle:Controle', $id));
+		$entity->setControle($em->getReference(Controle::class, $id));
 		$entity->setExecuteur($this->getUser ());
 		$form = $this->createCreateForm($entity, 'Execution');
 		$form->bind($request);

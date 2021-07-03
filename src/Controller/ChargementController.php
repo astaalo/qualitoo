@@ -135,8 +135,8 @@ class ChargementController extends BaseController {
 	 * @Template()
 	 */
 	public function importAction(Request $request,$id){
-		$em = $this->getDoctrine()->getEntityManager();
-		$form = $this->createForm(new ImportType());
+		$em = $this->getDoctrine()->getManager();
+		$form = $this->createForm(ImportType::class);
 		$chargement = $em->getRepository('App\Entity\Chargement')->find($id);
 		if(!$chargement) {
 		   throw new EntityNotFoundException("Chargement inexistant.");
@@ -146,7 +146,7 @@ class ChargementController extends BaseController {
 			if($form->isValid()) {
 				try {
 					$data = $form->getData();
-					$number = $this->get('orange.main.loader')->loadRisque($data['file'], $this->getUser(), $chargement);
+					$number = $this->orange_main_loader->loadRisque($data['file'], $this->getUser(), $chargement);
 					$em->persist($chargement->generateRapport());
 					$em->flush();
 					$to = $this->getUser()->getEmail();

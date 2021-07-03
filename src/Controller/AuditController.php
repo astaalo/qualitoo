@@ -70,7 +70,7 @@ class AuditController extends BaseController
     	$entity = new Audit();
     	$datas = $datas=explode(',',str_replace(" ", "",$ids));
     	$cartographie = $em->getRepository('App\Entity\Cartographie')->find($carto);
-    	$risques = $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')
+    	$risques = $this->getDoctrine()->getRepository(Risque::class)
     					->createQueryBuilder('r')
     					->leftJoin('r.cartographie','c')
     					->andWhere('r.id in (:ids)')->setParameter('ids',$datas)
@@ -101,7 +101,7 @@ class AuditController extends BaseController
      */
     public function cloturerValiderAuditRisqueAction(Request $request, $id){
     	$em = $this->getDoctrine()->getManager();
-    	$entity = $this->getDoctrine()->getRepository('OrangeMainBundle:Audit')->find($id);
+    	$entity = $this->getDoctrine()->getRepository(Audit::class)->find($id);
     	$entity -> setAuteur($this->getUser());
     	
     	$form->handleRequest($request);

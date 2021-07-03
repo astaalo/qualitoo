@@ -126,7 +126,7 @@ class RisqueVoter extends AbstractVoter {
 	 * @param Risque $entity
 	 */
 	public function isYourRisque($entity) {
-		$repo = $this->em->getRepository('OrangeMainBundle:Risque');
+		$repo = $this->em->getRepository(Risque::class);
 		$qb   = $repo ->getAllRisquesByUser();
 		$qb->andWhere('r.id =:id ')->setParameter('id', $entity->getId());
 		return count($qb->getQuery()->getArrayResult())>0;

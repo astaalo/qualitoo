@@ -23,7 +23,7 @@
 			<div class="inner">
 				<form novalidate="novalidate"
 					action="{{ path('importer_les_risques',{id:id}) }}"
-					{{ form_enctype(form) }} method="POST">
+					{{ form_start(form) }} method="POST">
 					{{ form_row(form._token) }}
 					{{ form_row(form.file) }}
 					<div class="section last">
@@ -51,11 +51,11 @@
 				<span>Le fichier de chargement est structuré de la maniére
 					suivante:</span>
 			{% if chargement.cartographie.id == global_ids['carto']['metier']  %}
-			   {% include 'OrangeMainBundle:Chargement:manuel_metier.html.twig' with {chargement: chargement} %}
+			   {% include 'chargement/manuel_metier.html.twig' with {chargement: chargement} %}
 			{% elseif chargement.cartographie.id == global_ids['carto']['projet'] %}
-			   {% include 'OrangeMainBundle:Chargement:manuel_projet.html.twig' %}
+			   {% include 'chargement/manuel_projet.html.twig' %}
 			{% else %}
-			     {% include 'OrangeMainBundle:Chargement:manuel_sste.html.twig' %}
+			     {% include 'chargement/manuel_sste.html.twig' %}
 			{% endif %}
 			</div>
 		</div>

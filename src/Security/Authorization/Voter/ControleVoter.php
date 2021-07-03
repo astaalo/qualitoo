@@ -86,7 +86,7 @@ class ControleVoter extends AbstractVoter {
 	 * @param Controle $entity
 	 */
 	public function isYourControle($entity){
-			$repo  = $this->em->getRepository('OrangeMainBundle:Controle');
+			$repo  = $this->em->getRepository(Controle::class);
 			$qb    = $repo ->listAllQueryBuilder();
 			$qb    ->andWhere('q.id =:id ')->setParameter('id', $entity->getId());
 			return count($qb->getQuery()->getArrayResult())>0;

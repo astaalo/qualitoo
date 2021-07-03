@@ -73,7 +73,7 @@ class RisqueController extends BaseController {
 	public function  transfertAction(Request $request){
 		$entity = new RisqueMetier();
 		$risque=new Risque();
-		$carto=$this->getDoctrine()->getManager()->find('OrangeMainBundle:Cartographie', $this->getMyParameter('ids', array('carto', 'metier')));
+		$carto=$this->getDoctrine()->getManager()->find(Cartographie::class, $this->getMyParameter('ids', array('carto', 'metier')));
 		$risque->setCartographie($carto);
 		$entity->setRisque($risque);
 		$type = new RisqueMetierType();
@@ -89,7 +89,7 @@ class RisqueController extends BaseController {
 	public function doTransfertAction(Request $request){
 		$criteria=null;
 		$entity = new RisqueMetier();
-		$carto=$this->getDoctrine()->getManager()->find('OrangeMainBundle:Cartographie', $this->getMyParameter('ids', array('carto', 'metier')));
+		$carto=$this->getDoctrine()->getManager()->find(Cartographie::class, $this->getMyParameter('ids', array('carto', 'metier')));
 		$risque=new Risque();
 		$risque->setCartographie($carto);
 		$entity->setRisque($risque);

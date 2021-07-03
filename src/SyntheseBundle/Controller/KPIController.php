@@ -108,7 +108,7 @@ class KPIController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$kpis=$this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->risqueTransverses($form->getData())->getQuery()->getArrayResult();
+		$kpis=$this->getDoctrine()->getRepository(Risque::class)->risqueTransverses($form->getData())->getQuery()->getArrayResult();
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rt'));
 		return array('carto'=> $carto, 'kpis'=>$kpis, 'form'=>$form->createView());
 	}
@@ -120,12 +120,12 @@ class KPIController extends BaseController {
 	 * @Template("OrangeMainBundle:KPI:details_rt.html.twig")
 	 */
 	public function detailsRTAction(Request $request,$menace_id,$occurence,$carto){
-		$entity = $this->getDoctrine()->getRepository('OrangeMainBundle:Menace')->find($menace_id);
+		$entity = $this->getDoctrine()->getRepository(Menace::class)->find($menace_id);
 		
 		$this->denyAccessUnlessGranted('drt', new Risque(), 'Accés non autorisé!');
 		
-		$risques   = $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')->getGraviteByMenaceStructure($entity,$carto)->getQuery()->execute();
-		$cartographie=$this->getDoctrine()->getRepository('OrangeMainBundle:Cartographie')->find($carto);
+		$risques   = $this->getDoctrine()->getRepository(Risque::class)->getGraviteByMenaceStructure($entity,$carto)->getQuery()->execute();
+		$cartographie=$this->getDoctrine()->getRepository(Cartographie::class)->find($carto);
 		if($carto<=2)
 		    $this->get('session')->set('export', array('kpis' => serialize($risques), 'type'=>'Risque','source'=>'details_metier_rt'));
 		else
@@ -165,7 +165,7 @@ class KPIController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(new RisqueCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
-		$queryBuilder = $em->getRepository('OrangeMainBundle:Controle')->getControles($form->getData());
+		$queryBuilder = $em->getRepository(Controle::class)->getControles($form->getData());
 		$this->get('session')->set('export', array('kpis' => serialize($queryBuilder->getQuery()->execute()), 'type'=>'Risque','source'=>'cmc'));
 		return $this->paginate($request, $queryBuilder, 'addRowInTableControle');
 	}
@@ -191,8 +191,8 @@ class KPIController extends BaseController {
 		
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$reqTotalRisques = $this->getDoctrine()->getRepository('OrangeMainBundle:Risque')-> getMenacesTotalByYear($form->getData())->getQuery()->getArrayResult();
-		$reqTestedRisques = $this->getDoctrine()->getRepository('OrangeMainBundle:Quiz')-> getRisquesTesterByYear($form->getData())->getQuery()->getArrayResult();
+		$reqTotalRisques = $this->getDoctrine()->getRepository(Risque::class)-> getMenacesTotalByYear($form->getData())->getQuery()->getArrayResult();
+		$reqTestedRisques = $this->getDoctrine()->getRepository(Quiz::class)-> getRisquesTesterByYear($form->getData())->getQuery()->getArrayResult();
 		$kpis =  $this->get('orange_main.core')->getMapping('Risque')->mapForTableauPriseEnCharge($reqTotalRisques, $reqTestedRisques);
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'tprc'));
 		return array('carto'=>$carto, 'kpis'=>$kpis, 'form'=>$form->createView());
@@ -216,7 +216,7 @@ class KPIController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($this->get('request'), $data, $form);
-		$kpis = $this->getDoctrine()->getRepository('OrangeMainBundle:Menace')->getRisquesAveresByPeriode($form->getData())->getQuery()->execute();
+		$kpis = $this->getDoctrine()->getRepository(Menace::class)->getRisquesAveresByPeriode($form->getData())->getQuery()->execute();
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rav'));
 		return array('carto'=>$carto, 'kpis'=>$kpis, 'form'=>$form->createView());
 	}

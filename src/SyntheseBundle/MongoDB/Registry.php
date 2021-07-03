@@ -16,6 +16,7 @@ namespace App\SyntheseBundle\MongoDB;
 
 
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
+use Doctrine\ODM\MongoDB\MongoDBException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

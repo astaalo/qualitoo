@@ -1,7 +1,10 @@
 <?php
-namespace Orange\SyntheseBundle\Model;
+namespace App\SyntheseBundle\Model;
 
-use Doctrine\MongoDB\Connection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Persistence\ObjectRepository;
+use MongoDB\Client as Connection;
+//use Doctrine\MongoDB\Connection;
 use Doctrine\Common\EventManager;
 use Doctrine\ODM\MongoDB\Configuration;
 
@@ -10,7 +13,7 @@ class DocumentManager extends \Doctrine\ODM\MongoDB\DocumentManager
     /**
      * The used Parameters.
      *
-     * @var Array
+     * @var ArrayCollection
      */
     private $_parameters;
 

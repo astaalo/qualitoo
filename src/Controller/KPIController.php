@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Annotation\QMLogger;
+use App\Entity\Quiz;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -184,12 +185,12 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Taux de prise en charge des risques")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/tprc", name="tprc")
-	 * @Template("OrangeMainBundle:KPI:tauxPriseChargeRisqueControle.html.twig")
+	 * @Template("KPI/tauxPriseChargeRisqueControle.html.twig")
 	 */
 	public function tauxPriseChargeRisqueControleAction(Request $request,$carto){
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
-		$this->denyAccessUnlessGranted('tprc', new Risque(), 'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('tprc', new Risque(), 'Accés non autorisé!');
 		
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
@@ -200,10 +201,10 @@ class KPIController extends BaseController {
 		}
 		
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$reqTotalRisques = $this->getDoctrine()->getRepository(Risque::class)-> getMenacesTotalByYear($form->getData())->getQuery()->getArrayResult();
 		$reqTestedRisques = $this->getDoctrine()->getRepository(Quiz::class)-> getRisquesTesterByYear($form->getData())->getQuery()->getArrayResult();
-		$kpis =  $this->get('orange_main.core')->getMapping('Risque')->mapForTableauPriseEnCharge($reqTotalRisques, $reqTestedRisques);
+		$kpis =  $this->orange_main_core->getMapping('Risque')->mapForTableauPriseEnCharge($reqTotalRisques, $reqTestedRisques);
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'tprc'));
 		return array('carto'=>$carto, 'kpis'=>$kpis, 'form'=>$form->createView());
 	}

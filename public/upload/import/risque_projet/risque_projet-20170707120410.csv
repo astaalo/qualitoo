@@ -1,0 +1,25 @@
+Risque;Causes;Libellé;Porteur;Email porteur;Date début;Délai;Commentaires;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial
+Risque de divulgation d'information confidentielle;exploitation/transmission non maîtrisée du répertoire des clients par un tiers durant l'exploitation;"Définir sur la plateforme:
+  - les règles d'accès au répertoire sur la plateforme
+  - les règles de sécurité: mots de passe forts, etc
+  - la traçabilité
+";Aby Sow Ka;aby.ka@orange-sonatel.com;;15/06/2017;3 niveaux de sécurité(accés uniquement aux admins);Soldé;;;;1;3;3;;3;2;4
+Risque de divulgation d'information confidentielle;exploitation/transmission non maîtrisée du répertoire des clients par Oberture;Exiger les preuves d'effacement de l'ensemble des données sur les clients sur leurs propres serveurs et les serveurs de secours, etc;Aby Sow Ka;aby.ka@orange-sonatel.com;;15/07/2017;courrier à adresser à Oberthur envoyé à DRJ - attente retour DRJ;En cours;;;;3;3;;;;;
+Risque de non respect des engagements commerciaux;Impossibilité de restituer leur répertoire aux clients qui avaient déjà souscrit au service;Voir avec la technique comment restituer les répertoires actuels aux clients sous une forme autre que excel;Aby Sow Ka;aby.ka@orange-sonatel.com;;30/05/2017;Possible avec format CSV;Soldé;Possibilité d'envoyer le fichier au format CSV;Préventif;Manuelle;3;3;3;;3;2;3
+Risque de non respect des dispositions juridiques et règlementaires;difficultés d'accès ou impossibilité d'accès au répertoire pour le client;"Dérouler les tests préprod sur la plateforme 
+Détourner les tests de fonctionnement du service ";Aby Sow Ka;aby.ka@orange-sonatel.com;;15/06/2017;pris en charge.;Soldé; Tests d'acceptance technique concluants;Préventif;Automatique;1;3;2;;3;2;3
+Risque de non respect des engagements commerciaux;difficultés d'accès ou impossibilité d'accès au répertoire pour le client;"Verrouiller avec la technique la redondance des serveurs de sauvegarde et les engagements sur les SLA (disponibilité des serveurs, temps de réponse, etc)
+
+";Aby Sow Ka;aby.ka@orange-sonatel.com;;30/06/2017;pris en charge. Monitoring au niveau de SMC à verrouiller;Non échu;;;;1;3;;;;;
+Risque de non respect des engagements commerciaux;Perte des informations du client;"Verrouiller avec la technique la redondance des serveurs de sauvegarde et les engagements sur les SLA (disponibilité des serveurs, temps de réponse, etc)
+
+Verrouiller avec DRJ la nécessité ou pas de faire signer un contrat ou avenant au client
+
+Prendre les dispositions nécessaires à dérouler en cas de perte du répertoire du client et les faire valider par DRJ
+
+";Aby Sow Ka;aby.ka@orange-sonatel.com;;30/06/2017;;Non échu;;;;1;3;;;;;
+Risque de fraude;Subtilisation du code du client par un tiers;;;;;;;;l'accès au web se fera en phase 2;Préventif;Manuelle;1;2;1;;3;2;
+Risque de lancement d'offre non fonctionnelle;Bugs de la plateforme;Verrouiller avec la technique la redondance des serveurs de sauvegarde et les engagements sur les SLA (disponibilité des serveurs, temps de réponse, etc);Aby Sow Ka;aby.ka@orange-sonatel.com;;30/06/2017;pris en charge. Monitoring au niveau de SMC à verrouiller;Non échu;;;;1;3;3;;3;2;3
+Risque de non respect des engagements commerciaux;Facturation du client sans accès au répertoire;Dérouler les tests pré lancment et s'assurer que toutes les requêtes du client sont bien concluantes;Aby Sow Ka;aby.ka@orange-sonatel.com;;15/06/2017;Tests prévus ce 19 mai;Soldé;Tests d'acceptance concluants;Préventif;Automatique;1;3;;;;;
+Risque de non traçabilité des opérations du SI;Non traçabilité des opérations du client;"S'assurer de la traçabilité des différentes opérations des clients
+Lui donner la possibilité de voir ses dernières opérations";Aby Sow Ka;aby.ka@orange-sonatel.com;;15/06/2017;trace disponible sur le customer care ;Soldé;tests d'accès aux dernières opérations (15jours) concluants;Préventif;Automatique;1;2;1;;3;;3

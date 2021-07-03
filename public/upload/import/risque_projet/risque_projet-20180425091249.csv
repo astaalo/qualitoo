@@ -1,0 +1,33 @@
+Risque;Causes réelles ou potentielles;descrption du plan d'action;Nom Porteur;Email porteur;Date début;Date fin;Avancement du plan d'action;Statut du plan d'action;Dispositif de contrôle;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial;Criticité;Maturité
+Risque de non respect des engagements commerciaux;Erreurs sur la solution vendue au client par le détaillant - réclamations client final;"Définir le mode de traitement des réclamations en cas d'erreur lors de la vente par les détaillants dans le parcours client
+
+Durant la formation s'assurer que le détaillant maîtrise bien le script de vente
+
+Tester le bon fonctionnement de la double validation et la réception des sms de confirmation par les clients";Raky Bilel Wane;racky.wane@orange-sonatel.com;;29/05/2018;les formations des retailers sont un préalable au fut externe qui permettra d'évaluer le parcours client (matrice simplicity par DGA/DECT);Non échu;double validation côté détaillant - sms de notification au client après l'achat;Préventif;Automatique;2;1;1;;2;;1;;2
+Risque de mauvaise prise en charge des demandes des clients externes;absence de canal de remontée des réclamations;"Définir le mode de traitement des réclamations en cas d'erreur lors de la vente par les détaillants dans le parcours client
+Identifier les canaux de remontée du traitement des réclamations";Raky Bilel Wane;racky.wane@orange-sonatel.com;;29/05/2018;;Non échu;;;;2;2;1;;2;;2;;2
+Risque de lancement de projet non fonctionnel;défaut de maîtrise de la solution par les détaillants;définir un plan de formation et de communication;Raky Bilel Wane;racky.wane@orange-sonatel.com;;29/05/2018;;Non échu;;;;3;1;1;;2;;1;;1
+Risque de lancement de projet non fonctionnel;erreurs de remontée des infos client;"S'assurer avec la technique que les packages suggérés correspondent bien aux profils des clients - tests sur échantillon
+Vérifier la conformité entre les informations de départ et d'arrivée du CBM";Raky Bilel Wane;racky.wane@orange-sonatel.com;;29/05/2018;Projet de mise en place d'un comité mensuel des offres de validation mensuel;Non échu;"packages définis selon les profils et les habitudes de consommation des clients
+Rédaction d'un process en cours sur le profiling, sa validation et la création des packages";préventif;Manuelle;2;1;1;;2;;1;;2
+Risque de non rentabilité des offres/projets;commisionnement supérieur aux CA;Etablir le BP et s'assurer que la VAN est positive;Raky Bilel Wane;racky.wane@orange-sonatel.com;;12/05/2018;;soldé;VAN positive dans le BP;Préventif;Manuelle;1;1;1;;;;;;3
+Risque de lancement de projet non fonctionnel;Vente des nouvelles offres par les détaillants en dépit du Seddo - plainte probabale des grossistes;"Veiller à intégrer systématiquement le grossiste (avec qui nous sommes en relation contractuelle) à tous les niveaux
+- Veiller aux pratiques anticoncurrentielles
+o Discrimination : tout avantage accordé à un détaillant devra être accordé à tous les détaillants se trouvant dans la même situation
+o Ne pas cloisonner les transactions ( limitations géographiques), ni répartir les marchés
+o Rester loyal vis-à-vis des différents acteurs de la chaine (grossistes , demi gros détaillants …)
+o Rester transparent
+o Veiller à ce que tous les acteurs de la chaine de distribution respectent les obligations de Sonatel ( qui reste dans tous les cas responsable) vis-à-vis du client final";Raky Bilel Wane;racky.wane@orange-sonatel.com;;30/11/2017;go obtenu de la drj;soldé;Accord de la DRJ obtenu sur l'offre;Préventif;Manuelle;2;1;1;;2;;1;;2
+Risque de non repsect des dispositions juridiques et réglementaires;rapport non contractualisé avec les détaillants;"Veiller à intégrer systématiquement le grossiste (avec qui nous sommes en relation contractuelle) à tous les niveaux
+- Veiller aux pratiques anticoncurrentielles
+o Discrimination : tout avantage accordé à un détaillant devra être accordé à tous les détaillants se trouvant dans la même situation
+o Ne pas cloisonner les transactions ( limitations géographiques), ni répartir les marchés
+o Rester loyal vis-à-vis des différents acteurs de la chaine (grossistes , demi gros détaillants …)
+o Rester transparent
+o Veiller à ce que tous les acteurs de la chaine de distribution respectent les obligations de Sonatel ( qui reste dans tous les cas responsable) vis-à-vis du client final";Raky Bilel Wane;racky.wane@orange-sonatel.com;;30/11/2017;go obtenu de la drj;soldé;Accord de la DRJ obtenu sur l'offre;Préventif;Manuelle;2;3;2;;3;2;3;;2
+Risque de fraude;modification manuelle des offres que doivent recevoir le client;;;;;;;;automatisation de la chaïne permettant in fine de suggérer des offres sans intervention manuelle;Préventif;Automatique;2;2;1;;2;;2;;2
+Risque de lancement de projet non fonctionnel;analyse biaisée des informations client ;;;;;;;;"plusieurs sources d'information (LMS, SAS, OTARI)
+analyse sur 3 mois comparée aux données du mois M-1 avant de lancer pour le mois M
+Segmentation mensuelle de la base et Tests mensuels sur toute la base et sur échantillon 
+Mise en place d'alertes sur les plateformes en temps réel
+Taux de fiabilité de 99,9% des plateformes";Préventif;Automatique;2;1;1;;2;;1;;2

@@ -1,0 +1,33 @@
+Risque;Causes;descrption du plan d'action;Nom Porteur;Email porteur;Date début;Date fin;Avancement du plan d'action;Statut du plan d'action;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;Commercial ;RH;Juridique;Image;Criticité;Maturité
+Risque de fraude;Non identification ou identification insuffisante des numéros;"S'assurer que l'ensemble des pièces justificatives nécessaires soient fournis lors de la souscription pour les nouveaux comptes
+Et pour ceux existant, s'assurer de leur régularité";Fatma Diop Touré;fatmadiop.toure@orange-sonatel.com;;22/06/2017;;solde;"Des codes d'erreurs sont généres par le système en plus d'une double verification par l'administrateur et le gestionnaire (les 2 niveaux de validation) .                     
+La creation est impossible pour un compte Light Seuls les clients full (identifiés à 100%) sont éligibles au  compte salaire sinon le système rejette le dépôt";préventif;Automatique;1;1;1;;;;;1;
+Risque de fraude;Intégration d'un numéro non salarié dans la liste pour qu'il bénéficie du tarif Flat;Contrôler mensuellement l'absence de rajout de numéro supplémentaire sans demande de la strcuture dans le SI pour qu'il bénéficie du tarif Flat;Fatma Diop Touré;fatmadiop.toure@orange-sonatel.com;;22/06/2017;;annulé;" le chargement se fait par le partenaire qui a a 2 profils Administrateur et Gestionnaire avec plusieurs nivaux de validation
+ Rapport généré automatique et délivré après chaque opération";préventif;manuelle;1;1;1;;;;;1;
+Risque de fraude;Paiement à des numéros rajoutés à la liste sans validation par la structure;Contrôler mensuellement la cohérence entre les numéros+montants  à positionner et ce qui a été fait;Fatma Diop Touré;fatmadiop.toure@orange-sonatel.com;;22/06/2017;;solde;Dans l'application, seuls les gestionnaires déclarés peuvent charger les listes de paiement et c'est validé par l'administrateur;préventif;manuelle;1;1;1;;;;;1;
+Risque de manque de peformance économique;Impossibilité de caper le montant du salaire positionné sur le compte client à cause de l'inexistence du multiwallet;Voir la possibilité de caper à un montant intermédiaire ;Fatma Diop Touré;fatmadiop.toure@orange-sonatel.com;;22/06/2017;;solde;solution multiwallet livrée , le wallet salaire sera utilisé , pas de montant capé ;préventif;manuelle;1;1;1;;;;;1;
+Risque de non respect des engagements commerciaux;Impossibilité de positionner le salaire sur un compte à cause du seuil paramétré faible;"S'assurer après création des comptes qui'ils sont bien positionnés en full
+Idem pour ceux existant";Fatma Diop Touré;fatmadiop.toure@orange-sonatel.com;;22/06/2017;;solde;"Traitement individuel des cas d'echec lors du positionnement en masse
+
+Le traitement ne passe pas si le compte n'est pas full .                              L'information reçue par l'Appli Mass cash in , le traitement se fait en relation avec SONATEL pour poursuivre ( les cas d'echec sont mis en attente )";préventif;manuelle;2;2;1;2;;;2;3;
+Risque de non respect des engagements commerciaux;Refus de l'opération de retrait par le distributeur (impossibilité pour le salarié de disposer de son argent);Evaluer dans le BP le coût de sensibilisation de tous les ditributeurs et voir la nécessité de les sensibiliser tous ou juste certains distri ciblés;Fatma Diop Touré;fatmadiop.toure@orange-sonatel.com;;22/06/2017;;solde;Seul le réseau kiosque est ciblé . Sensibilisation faite   sur le coût de retrait en banque plus élevé                                                             ;préventif;manuelle;1;2;1;2;;;2;2;
+Risque de non respect des engagements commerciaux;Positionement tardif du salaire;Préciser dans le contrat les délais nécessaires au positionnement des salaires et donc ceux à respecter par le partenaire à l'avance;Fatma Diop Touré;fatmadiop.toure@orange-sonatel.com;;22/06/2017;;solde;l'Appli Mass cash in indique la balance du partenaire pour lui permettre d'effectuer les depots                                             Engagement egalement de SNT à traiter dans les 48H (jours ouvrables) ayant suivi le virement si le partenarie le souhaite;préventif;manuelle;2;2;1;2;;;2;3;
+Risque de non respect des engagements commerciaux;Impossibilité technique de faire les positionnements dans les délais (SI défaillant, etc);"Inclure dans le contrat les cas de défaillance technique et de non respect des délais engagés
+Définir avec la BO avec la technique les scenarii de traitement";Fatma Diop Touré;fatmadiop.toure@orange-sonatel.com;;22/06/2017;;solde;Les incidents sur le reseau sont minimisés , le partenaire informé afin de lui permettre de poursuivre le traitement .;préventif;manuelle;2;2;1;2;;;2;3;
+Risque de non respect des dispositions juridiques et réglementaires;Engagements bancaires des salariés non respectés;;;;;;;;"Définition d'un seuil par la DRH de lentreprise à positionner sur les wallet salaires des employés
+Le virement bancaire reste le 1er moyen de paiement des salaires";préventif;Automatique;1;3;4;3;;2;2;3;
+Risque de lancement d'offre non fonctionnelle;Frais de cash out pour le salarié supérieur à la subvention par l'employé en cas de cash out successifs générant des frais supérieurs à la subvention de l'employé;Accompagner les entreprises dans une Communication pour sensibliser les salariés sur l'utilité de procéder au minimum de cash out pour ne pas subir de frais de retraits supérieurs à la subvention de l'entreprise;Fatma Diop Touré;fatmadiop.toure@orange-sonatel.com;;15/01/2018;;Non échu;;;;2;3;4;2;;;3;6;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;

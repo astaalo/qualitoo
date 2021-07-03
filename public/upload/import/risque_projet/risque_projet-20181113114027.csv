@@ -1,0 +1,55 @@
+Risque;Causes;Libellé;Porteur;email porteur;Date de début;Échéance;Commentaires;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Gravité;Finance;RH;Image;Juridique;Commercial ;Criticité;Maturité
+Risque de non respect des engagements commerciaux;absence d'accusé de réception au client de son déplafonnement (formulaire + CNI);Envoyer une EBM à DRPS pour la création du sms d'onformation au client suite au déplafonnement de son compte OM;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;26/11/2018;"le wording du sms a été changé et les tests sont concluants
+
+L'application développée par le pôle digital prévoit également d'envoyer des accusés de réception aux clients qui seront enregistrés - attente résultats tests de fonctionnalité";En cours;;;;1;2;1;;3;;2;2;3
+Risque de non respect des engagements commerciaux;non-respect du délai de 24hrs annoncé par OFMS ;Mise à jour du process de déplafonnement en intégrant le nouveau délai de réponse de 24hrs;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;21/11/2018;Revoir la nécessité de convertir la procédure en mode opératoire et la finaliser.;En cours;"Nouveau délai de réponse aux clients de 48hrs suite déplafonnement 
+procédure diffusée à DOM/DMK, DOM/DO et conformité (OFMS) et validée";préventif;Manuelle;1;2;1;;3;;2;2;3
+Risque de non respect des engagements commerciaux;inaccesibilité du formulaire;"Mettre en ligne le formulaire dans Intracom
+Faire un sms push avec le lien du formulaire pour les inviter à le télécharger 
+";Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;21/11/2018;Attente réception de l'application JO et tests de fonctionnalité;En cours;formulaire téléchargeable  sur le lien de Ndiombor;préventif;automatique;2;2;1;;3;;2;4;2
+Risque de non respect des engagements commerciaux;Bug (indisponibilité plateau digital, etc) suite push invitant les clients à télécharger le formulaire ;"Phasage du pushing de la base pour déplafonnement bien avant la JO
+Délai à réajuster suite bilan du pushing à la veille de la JO
+";Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;"BO (DO et OFMS) surdimensionnés (+20 machines pour DO; formation des rh suppl)
+Renforcement plateau digital: Duplication des CM (Community Managers) - augmentation du nombre de CC - fonctionnement en one roof avec l'agence de communication
+
+DRPS: dimensionnement réseau en fct des prévisions
+
+Le pushing sera géré hors JO
+";Annulé;Désactivation du sms par l'équipe de OFMS;préventif;automatique;1;2;1;;3;;2;2;3
+Risque de non respect des engagements commerciaux;Incapacité à absorber le flux (pour le plateau digital);"Phasage du pushing de la base pour déplafonnement bien avant la JO
+Délai à réajuster suite bilan du pushing à la veille de la JO
+";Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;"BO (DO et OFMS) surdimensionnés (+20 machines pour DO; formation des rh suppl)
+Renforcement plateau digital: Duplication des CM (Community Managers) - augmentation du nombre de CC - fonctionnement en one roof avec l'agence de communication
+
+DRPS: dimensionnement réseau en fct des prévisions
+
+Le pushing sera géré hors JO
+";Annulé;;;;2;2;1;;3;;2;4;2
+Risque de non respect des engagements commerciaux;absence de marge de manœuvre pour les clients dont le dossier ne peut être traité sur le terrain;"remontée des cas durs à travers l'appli développée par DD
+Renvoi des clients en agence
+
+Process à rédiger";Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;27/11/2018;Attente réception de l'application JO et tests de fonctionnalité;En cours;"L'appli pourra renseigner le statut des clients : light ou full
+Les infos du client seront renseignés sur l'appli qui remontera les informations vers le BO";préventif;automatique;2;2;1;;3;;2;4;2
+Risque de non respect des engagements commerciaux;Non-respect du délai de traitement de 24hrs annoncé aux clients par OFMS;"Phasage du pushing de la base pour déplafonnement bien avant la JO
+Délai à réajuster suite bilan du pushing à la veille de la JO
+";Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;;Non échu;;;;2;2;1;;3;;2;4;2
+risque de fraude;gratuité de la connexion des salariés participant à la JO: absence d'étanchéité;S'assurer auprès de la technique (tests à l'appui) de l'étanchéité de la base de numéros devant bénéficier de la gratuité;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;l'application consomme très peu de data;annulé;;;;1;2;4;1;3;1;2;2;3
+risque de fraude;réinitialisation code PIN, code OM sur le terrain;"Revoir le libellé dans la procédure. Normalement les 3  questions doivent être posées et non au choix.
+Renforcement du DO/BO pour le traitement des demandes lors de la JO";Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;"les réinitialisations ne sont pas traitées sur le terrain
+Remontées au BO pour traitement
+hors JO: kickoff pour refonte procédure";Annulé;;;;1;2;4;1;3;1;2;2;3
+risque de fraude;incapacité des participants JO à verrouiller les critères de sécurité;Abandonner les opérations de déblocage et de réinitialisation de compte OM ;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;;soldé; les opérations de déblocage et de réinitialisation de compte OM seront traitées par le BO en suivant le process existant;préventif;automatique;2;2;4;1;3;1;2;4;2
+Risque de manque de performance économique des offres/projets;refus des participants d'endosser la reponsabilité des risques liés au déblocage et réinitialisation de comptes OM;Abandonner les opérations de déblocage et de réinitialisation de compte OM ;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;;soldé;Les participants JO transfèrent les dossiers munis d'un CNI valide à DO/BO pour traitement, qui déroule une check-list de vérification;préventif;automatique;2;1;1;;1;;1;2;2
+Risque de non respect des engagements commerciaux;UV non positionnés pour les clients bénéficiaires;Identifier un moyen de s'assurer de la ventilation correcte du crédit en fonction des formulaires collectés sur le terrain;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;;Annulé;0 réclamation suite JO pour promsees de crédit selon les KPI fournis par DSC;préventif;automatique;1;2;1;;3;;2;2;3
+Risque de non respect des engagements commerciaux;dossiers client rejetés par le BO conformité;"Définir dans la check-list des participants les critères à respecter:
+ - liste des pièces acceptées
+ - validité des pièces présentées";Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;27/11/2018;Attente réception de l'application JO et tests de fonctionnalité;En cours;L'apllication indiquera les étapes à suivre;préventif;automatique;1;2;1;;3;;2;2;3
+Risque de dégradation de la qualité de service;Bug des différentes pateformes sollicitées;S'assurer auprès de la technique (tests à l'appui) de la planification du delta trafic attendu le jour de la JO et du renforcement du réseau;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;21/11/2018;attente retour technique;En cours;;;;3;2;1;;3;;2;6;1
+Risque de dimensionnement inadéquat du réseau;Bug techniqe lors du déblocage des comptes OM de moins de 1000F;"Fiabilier la base à débloquer
+Verrouiller avec la technique les prévisions de capacité permettant un déblocage en masse sans perturbations";Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;;Annulé;Process qui se fait déjà par DSVC en masse;préventif;automatique;1;2;1;;3;;2;2;3
+Risque de non maîtrise du stock;Rupture d'UV sur le terrain;;;;;;;;Plusieurs goodies seront proposés aux clients, pas uniquement les UV;préventif;Manuelle;1;2;1;;3;;2;2;3
+Risque sur la santé des hommes;Exposition au soleil et au stress des participants à la JO;Voir avec le CHSCT les précautions et dispositions à prendre pour assurer  l'intégrite physique et mentale des participants à la JO;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;30/10/2018;;soldé;"sélection de 2 traiteurs pour la fourniture de lunch box avec le soutien de la DAL
+Envoi d'UV aux équipes pour se restaurer sur le terrain avec contrôle de présence des agents terrain par la hotline DMC
+Fourniture de packs d'eau aux différentes équipes";préventif;Manuelle;2;1;1;1;1;;;2;2
+Risque de lancement d'offre ou de projet non fonctionnel;interfaçage entre l' application JO et Nomad EME non fonctionnelles;Dérouler les tests pour s'assurer du bon fonctionnement des interactions entre l'appli JO et les différentes autres applis nécessaires;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;27/11/2018;;En cours;;;;2;2;1;;3;;2;4;2
+Risque de fraude;exploitation frauduleuse des sims après la JO;Désactiver l'ensemble des puces à la fin de la journée;Aissatou diagne ;aissatou.diagne@orange-sonatel.com;;29/11/2018;;Non échu;;;;2;1;1;;1;;;2;2

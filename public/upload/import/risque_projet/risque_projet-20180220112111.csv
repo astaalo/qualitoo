@@ -1,0 +1,141 @@
+Risque;Causes;Libellé;Porteur;Email porteur;Échéances;Commentaires;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial
+Risque de manque de performance économique des offres/projet;cannibalisation de l'offre home simple;Intégrer dans le BP le gain potentiel de clients dans le scénario 1 et le communiquer au chef de produit home simple;Ndongo Touré;ndongo.toure@orange-sonatel.com;18/04/2016;;soldé;Existence d'un dispositif de survey sur l'offre home avec un tableau de bord au niveau DMBO/SPBF pour monitorer l'effet cannibalisation;Préventif;Manuelle;2;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;Cout elevé de la flybox pour les clients ;Etudier la possibilité d'offrir la gratuité de l'internet sur 3 mois limitée à 10 giga par mois.;Ndongo Touré;ndongo.toure@orange-sonatel.com;25/04/2016;;soldé;Baisse des tarifs de la flybox et pass de 2500F offerts à la souscription;Préventif;Manuelle;3;2;2;;2;;2
+Risque de non respect des dispositions juridiques et réglementaires;rupture unilatérale du contrat de vente en cas de mise en end of sale de l'offre KK (scénario 3);Procéder à la migration optionnelle de l'offre kheweul conformément à la recommandation de DRJ pour éviter une  rupture unilatérale du contrat de vente;Ndongo Touré;ndongo.toure@orange-sonatel.com;25/04/2016;;soldé;Dans les conditions générales de vente accompagnant les contrats commerciaux, une clause nous permet d'e stopper la commercialisation des offres et produits à tout moment. Mais dans ces cas nous sommes tenus d'honorer les contrats déjà signés jusqu'à la fin de leur validité;Préventif;Manuelle;1;2;1;;2;1;2
+Risque de livraison de projet non fonctionnel;couverture insuffisante de la 3G et 4G;Finaliser le plan de déploiement 3G/4G de T4 2016 pour augmenter le taux de couverture;Ndongo Touré;ndongo.toure@orange-sonatel.com;31/12/2016;;soldé;"Existence d'un plan de déploiement de la 3G durant le S1 2016
+Couverture actuelle de 90% des zones habitées en 3G";Préventif;Manuelle;2;2;2;;2;;2
+Risque de livraison de projet non fonctionnel;dimensionnement insuffisant du réseau ADSL;;;;;;;Existence d'un livrable ITN T0 qui assure la prise en charge du dimensionnemnt réseau ADSL;Préventif;Manuelle;2;2;2;;2;;2
+Risque de fraude;achat de pass avec une sim normale avec un volume plus abondant (pass dédié flybox);Réaliser des tests sur le blocage des pass dédiés flybox sur le modem et sim dédié avec BPQ  33 935 ;Ndongo Touré;ndongo.toure@orange-sonatel.com;26/10/2016;;Soldé;Existence d'un blocage des pass dédiés flybox sur le modem et sim dédié avec BPQ  33 935;Préventif;Automatique;1;2;2;;2;;2
+Risque de non maîtrise des stocks;Rupture des stocks de la flybox et la livebox;;;;;;;Définition de seuils de stock au niveau de DAL/APPS pour déclencher de nouvelles commandes;Préventif;Automatique;2;2;1;;2;;2
+Risque de dépendance vis-à-vis d'un fournisseur;Contractualisation avec un seul fournisseur pour la livebox et la flybox;;;;;;;Contractualisation figé avec un seul fournisseur pour les commandes de devices avec l'accord du Groupe Orange;Préventif;Manuelle;1;2;1;;2;;2
+Risque de manque de performance économique des offres/projet;Prix d'appel et mensualité plus chers que l'ancienne offre pack Adsl Kheweul;"Mettre en place :
+ - une communication 360° axée sur le confort et l'illimité
+ - une communication pédagogique pour orienter les clients KK vers cette nouvelle offre";Ndongo Touré;ndongo.toure@orange-sonatel.com;30/11/2016;;soldé;Réduction de 50% des tarifs;Préventif;Manuelle;1;2;2;;2;;2
+Risque de non respect des engagements commerciaux;Conditions de reprise non clairement identifiées/non maîtrisées par le CC;"Définir avec DRJ  les conditions de reprise des flybox à préciser dans le contrat
+Information des équipes concernées (front et bo) des conditions de reprise
+Mettre à la disposition des CC une fiche synthétique qui fera un focus sur l'option ""satisfait ou remboursé""
+Séparer le formulaire et le contrat de l'option ""satisfait ou remboursé""
+Rajouter l'option ""lu et approuvé"" sur le contrat
+";Ndongo Touré;ndongo.toure@orange-sonatel.com;30/01/2017;;soldé;tout achat de pass traduit une satisfaction. Dans ce cas la flybox ne peut être retournée. Clause embarquée dans le contrat;Préventif;Manuelle;1;2;1;;3;1;2
+Risque de manque de performance économique des offres/projet;Conditions de reprise non clairement identifiées/non maîtrisées par le CC;Définir dans le contrat les conditions de reprise des flybox;Ndongo Touré;ndongo.toure@orange-sonatel.com;30/01/2017;;soldé;;;;1;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;retour de matériel détérioré;Définir une check list de contrôle qui doit être déroulée lors du retour de la flybox par le client;Ndongo Touré;ndongo.toure@orange-sonatel.com;15/02/2017;;soldé;La check list de contrôle est intégrée dans le formulaire;Préventif;Manuelle;1;2;2;;2;;2
+Risque de non respect des engagements commerciaux;Rallonge de la file d'attente en agence à cause des tests sur les flybox retournés;"Chronométrer le temps nécessaire au test de la flybox et le prendre en compte
+Voir avec DV la date de lancement des CC relookés et en fonction de cela définir la position qui fera les reprises
+Estimer le pourcentage de reprises avec DFC - cela va influer sur la détermination du repreneur";Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;les tests lors des retours de flybox seront effectués par les commerciaux front;Préventif;Manuelle;1;2;1;;3;1;2
+Risque de manque de performance économique des offres/projet;impossibilité de revendre la flybox retournée;"Définir le process de remise des flybox retournés dans le stock et de reconditionnement pour la revente
+
+Etudier la possibilité de revendre les flybox retournés sur le site de jumia
+
+Définir la garantie ";Ndongo Touré;ndongo.toure@orange-sonatel.com;27/02/2017;;soldé;"2 pistes de solution:
+ - Phase1 : surfer sur le stock swap de 2% pour compenser les potentiels retours du modèle satisfait ou remboursé,
+utilisation de ces retours pour servir au SAV (intégration dans le stock swap de DAL),
+monitoring des retours pour ne pas dépasser les 2% (swap stock) – seuil à monitorer : 1% en Copil Stock
+ - Phase2 : intégrer le reconditionnement de ces modems dans le chantier à mettre en place pour  prestation externe avec DAL
+
+Option retenue: utiliser les flybox retournés comme du stock SAV en gardant les 2% en stock swap";Préventif;Manuelle;1;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;augmentation du taux de SVA avec la vente des flybox refurbished;Verrouiller l'état des flybox à remettre sur le marché ;Ndongo Touré;ndongo.toure@orange-sonatel.com;27/02/2017;;soldé;"2 pistes de solution:
+ - Phase1 : surfer sur le stock swap de 2% pour compenser les potentiels retours du modèle satisfait ou remboursé,
+utilisation de ces retours pour servir au SAV (intégration dans le stock swap de DAL),
+monitoring des retours pour ne pas dépasser les 2% (swap stock) – seuil à monitorer : 1% en Copil Stock
+ - Phase2 : intégrer le reconditionnement de ces modems dans le chantier à mettre en place pour  prestation externe avec DAL
+
+Option retenue: utiliser les flybox retournés comme du stock SAV en gardant les 2% en stock swap";Préventif;Manuelle;2;2;2;;2;;2
+Risque de non respect des engagements commerciaux;non respect du délai de remboursement;"Définir le mode de remboursement :
+ - par avoir
+ - en espèces
+ - par OM
+
+Vérifier la possibilité de créer dans oracle un compte sans charges pour pouvoir positionner le 1er dépôt d'UV OM
+
+Arbitrer entre augmenter le montant de la caisse d’avance de l’agence ou créer une caisse d’avance dédiée centralisée
+";Ndongo Touré;ndongo.toure@orange-sonatel.com;27/02/2017;;soldé;"2 pistes de solution:
+ - Remboursement via Orange Money avec possibilité de cash Out si le client choisit un remboursement par espèce (sim dédiée OM à remettre à chaque SCE dans ce cas) ? frais de retrait à supporter (RECO)
+ - en repli utilisation des caisses d’avance existantes à verrouiller avec un système « anti rupture » et gestion des accueils distants pour communiquer sur un délai unique de remboursement
+
+Décision: Vote d'un budget de 14millions dont 2millions/agence - remboursement par décaissement dans la casse d'avance par les SCE";Préventif;Manuelle;2;2;1;;3;1;2
+Risque de manque de performance économique des offres/projet;"absence de limite du nombre de fois auxquels je profite de l'option ""satisfait ou remboursé""";"Verrouiller la traçabilité de l'option ""satisfait ou remboursé"" dans le SI et limiter le nombre de fois auxquels le client peut en bénéficier et sous quel délai";Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;réalisé;"option profitable au client une fois/an sur Khéweul
+verrou dans le SI pour que le client ne puisse pas souscrire à une deuxième flybox
+
+""Process remboursement enclenché"" visible sur gaïa 
+cela permettra d'éviter que le client bénéficie plusieurs fois de l'option  ""satisfait ou remboursé""
+le client ne peut être remboursé que dans l'agence où il a procédé à l'achat";Préventif;Automatique;2;2;2;;2;;2
+Risque de fraude;"absence de limite du nombre de fois auxquels je profite de l'option ""satisfait ou remboursé""";"Verrouiller la traçabilité de l'option ""satisfait ou remboursé"" dans le SI et limiter le nombre de fois auxquels le client peut en bénéficier et sous quel délai";Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;"option profitable au client une fois/an sur Khéweul
+verrou dans le SI pour que le client ne puisse pas souscrire à une deuxième flybox";Préventif;Automatique;2;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;instabilité du réseau sur lequel sera basé sur l'offre flybox;Revoir avec la technique les engagements en terme de couverture et de qualité de service du réseau 3G et 4G ;Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;Informations sur les couvertures 3G et 4G fournies par DRPS;Préventif;Manuelle;2;2;2;;2;;2
+Risque de non respect des engagements commerciaux;Outil météo 3G non dynamique / non mis à jour (vente dans des zones qui ne sont plus couvertes ou qui sont saturées);"Voir avec DIS le taux de fiabilité de l'appli météo et son taux de disponibilité
+Evolution à apporter à l'outil pour intégrer la 4G - délai à verrouiller avec DRPS";Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;Mise en place d'un back up sur un autre serveur testé lors du déroulement du cahier de tests;Préventif;Automatique;2;2;1;;3;1;2
+Risque de non respect des engagements commerciaux;taux de surcharge du réseau non maîtrisé;Verrouiller avec DIS le taux de fiabilité de l'appli météo et son taux de disponibilité;Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;Mise en place d'un back up sur un autre serveur testé lors du déroulement du cahier de tests;Préventif;Automatique;2;2;1;;3;1;2
+Risque de manque de performance économique des offres/projet;absence de contrôle de la flybox lors du retour par le client (sur l'état et le fonctionnement et la complétude des accessoires);"Définir une check list de contrôle qui doit être déroulée par le CC  lors du retour de la flybox par le client
+Contrôle de 2e niveau à effectuer";Ndongo Touré;ndongo.toure@orange-sonatel.com;15/02/2017;;soldé;La check list de contrôle est intégrée dans le formulaire;Préventif;Manuelle;2;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;pass offerts perdus;Revoir le pass offert à la baisse pour inviter le client à recharger un pass (ex: 1Go au lieu de 10Go);Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;pass de 2Go offert à la souscription au lieu de 10Go;Préventif;Manuelle;2;2;2;;2;;2
+Risque de non respect des engagements commerciaux;reliquat de pass acheté par le client non remboursé après 7jrs ;"Voir avec DRJ la position à adopter pour les cas où les clients disposent d'un reliquat de pass
+Préciser dans le contrat que les pass achetés ne sont pas remboursés
+
+Traiter les cas de reliquat de pass en geste Co au cas par cas
+";Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;Réponse de DRJ:  les pass achetés ne sont pas remboursés;Préventif;Manuelle;2;2;1;;3;1;2
+Risque de manque de performance économique des offres/projet;conditions de stockage dégradées des flybox retournés;Définir les lieux et conditions de stockage des flybox retournés;Ndongo Touré;ndongo.toure@orange-sonatel.com;27/02/2017;;soldé;"2 pistes de solution:
+ - Phase1 : surfer sur le stock swap de 2% pour compenser les potentiels retours du modèle satisfait ou remboursé,
+utilisation de ces retours pour servir au SAV (intégration dans le stock swap de DAL),
+monitoring des retours pour ne pas dépasser les 2% (swap stock) – seuil à monitorer : 1% en Copil Stock
+ - Phase2 : intégrer le reconditionnement de ces modems dans le chantier à mettre en place pour  prestation externe avec DAL
+
+Option retenue: utiliser les flybox retournés comme du stock SAV en gardant les 2% en stock swap";Préventif;Manuelle;2;2;2;;2;;2
+Risque de non maîtrise des stocks;Absence de traçabilité des flybox retournés;Définir le mode de suivi des flybox et les outils nécessaires;Ndongo Touré;ndongo.toure@orange-sonatel.com;27/02/2017;;soldé;"2 pistes de solution:
+ - Phase1 : surfer sur le stock swap de 2% pour compenser les potentiels retours du modèle satisfait ou remboursé,
+utilisation de ces retours pour servir au SAV (intégration dans le stock swap de DAL),
+monitoring des retours pour ne pas dépasser les 2% (swap stock) – seuil à monitorer : 1% en Copil Stock
+ - Phase2 : intégrer le reconditionnement de ces modems dans le chantier à mettre en place pour  prestation externe avec DAL
+
+Option retenue: utiliser les flybox retournés comme du stock SAV en gardant les 2% en stock swap";Préventif;Manuelle;2;2;1;;2;;2
+Risque de non maîtrise des stocks;conditions de stockage dégradées des flybox retournés;Définir les lieux et conditions de stockage des flybox retournés;Ndongo Touré;ndongo.toure@orange-sonatel.com;27/02/2017;;soldé;"2 pistes de solution:
+ - Phase1 : surfer sur le stock swap de 2% pour compenser les potentiels retours du modèle satisfait ou remboursé,
+utilisation de ces retours pour servir au SAV (intégration dans le stock swap de DAL),
+monitoring des retours pour ne pas dépasser les 2% (swap stock) – seuil à monitorer : 1% en Copil Stock
+ - Phase2 : intégrer le reconditionnement de ces modems dans le chantier à mettre en place pour  prestation externe avec DAL
+
+Option retenue: utiliser les flybox retournés comme du stock SAV en gardant les 2% en stock swap";Préventif;Manuelle;2;2;1;;2;;2
+Risque de non respect des engagements commerciaux;renouvellement de la caisse d'avance non systématique en agence;"Voir avec les SCE (DRV1 et DRV3) les conditions qui s'offrent pour un remboursemnt rapide des clients en agence
+Diversifier les moyens de remboursement en introduisant OM et en jouant sur les délais";Ndongo Touré;ndongo.toure@orange-sonatel.com;27/02/2017;;soldé;"2 pistes de solution:
+ - Remboursement via Orange Money avec possibilité de cash Out si le client choisit un remboursement par espèce (sim dédiée OM à remettre à chaque SCE dans ce cas) ? frais de retrait à supporter (RECO)
+ - en repli utilisation des caisses d’avance existantes à verrouiller avec un système « anti rupture » et gestion des accueils distants pour communiquer sur un délai unique de remboursement
+
+Décision: Vote d'un budget de 14millions dont 2millions/agence - remboursement par décaissement dans la casse d'avance par les SCE";Préventif;Manuelle;2;2;1;;3;1;2
+Risque de non respect des engagements commerciaux;lourdeur du parcours client lors du retour de la flybox avec les pièces qui sont demandées (contrat, reçu, CIN, etc);Exiger juste laCIN et le reçu lors du retour de la flybox par le client ( Nous disposons de tous les autres justificatifs: contrat, etc) et le préciser dans les contrats;Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;Exigence de la CNI + le reçu original au client ;Préventif;Manuelle;2;2;1;;3;1;2
+Risque de non respect des engagements commerciaux;rallonge du délai de rétraction au cas par cas;Retenir un seul scénario de retour et verrouiller le délai à 7jours;Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;Délai maximum du Retour fixé au jour anniversaire;Préventif;Manuelle;1;2;1;;3;1;2
+Risque de manque de performance économique des offres/projet;absence de preuve de remboursement par UV;Attente décision mode de remboursement;Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;annulé;preuve: message reçu de Zebra lors de la réception d'UV;Préventif;Manuelle;1;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;durée des 7jours trop courte pour permettre au client de tester la solution - risque d'augmentation de l'insatisfaction et des retours;;;;;;;Durée retenue pour la période de rétractation: une semaine;Préventif;Manuelle;2;2;2;;2;;2
+Risque de fraude;itinérance de la flybox;Voir avec la technique la possibilité de verrouiller la flybox sur le fixe;Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;non réalisé;choix marketing de ne pas verrouiller l'option voix et l'option changement de voix;Préventif;Manuelle;2;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;remboursement par OM - coûts supplémentaires de 30% de fiscalité à cause  du cash out;Voir avec DRJ la possibilité de contourner le décaissement du cash out;Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;annulé;Coûts liés à la Fiscalité induite par les retraits cash ou intégrés dans le BP avec les prévisions sur les retours;Préventif;Manuelle;3;2;2;;2;;2
+Risque de non respect des engagements commerciaux;"Absence de définition des termes sur lesquels porte la satisfaction
+";"Dérouler une phase pilote 
+Motiver les raisons de la rétractation
+";Ndongo Touré;ndongo.toure@orange-sonatel.com;15/05/2017;;annulé;;;;2;2;1;;3;1;2
+Risque de fraude;"
+Usage frauduleux: seddo, etc
+";"Dérouler les tests pour s’assurer que tous les verrous (USSD, IVR, serveurs fixes) sont effectifs
+";Ndongo Touré;ndongo.toure@orange-sonatel.com;26/12/2016;;soldé;tests concluants sur les restrictions USSD, IVR, serveurs fixes;Préventif;Manuelle;2;2;2;;2;;2
+Risque de fraude;"Puces retournées non suspendues
+
+";"Dérouler un processus de contrôle sur les puces retournées qui doivent être suspendues pour éviter la fraude interne
+S'assurer que l'automatisation de la résiliation des puces côté HLR et IN une fois que le service est résilié sur simplissimo/nessico est bien fonctionnelle
+";Ndongo Touré;ndongo.toure@orange-sonatel.com;28/02/2017;;soldé;déroulé de la ckeck list de contrôle avec vérification de la sim retournée sur contrôle du numéro de la sim;Préventif;Manuelle;2;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;"Indisponibilité de l’outil météo
+";"Définir le mode de fonctionnement en cas d’indisponibilité de l’outil météo
+Valider avec Tidiane Cissé de DIS l'existence d'un lien vers le back up en cas de non fonctionnement/dindisponibilité du site météo
+";Ndongo Touré;ndongo.toure@orange-sonatel.com;27/01/2017;;réalisé;"Existence d'un back up de l'appli météo
+Supervision de l'appli par le SMC";Préventif;Automatique;2;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;Mise en service par erreur des demandes par les commerciaux;;;;;;;Résiliation de ls sim lors du retour de la flybox par le client;Préventif;Manuelle;2;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;non validation des ventes différées;;;;;;;Lancement de requêtes quotidiennes par les PCL pour extraire les demandes VA non MS pour une mise en service par les commerciaux front;Préventif;Manuelle;2;2;2;;2;;2
+Risque de manque de performance économique des offres/projet;impossibilité pour les clients d'acquérir plusieurs flybox;;;;;;;traitement au cas par cas au besoin pour les clients voulant souscrire à plusieurs offres flybox;Préventif;Manuelle;2;2;2;;2;;2
+Risque de non respect des engagements commerciaux;mise en service tardive des migrations de Keurgui Kheweul à Keurgui (incidents DINT - défaut de prse en charge des demandes - sous-effectif);;;;;;;Incident en cours de traitement au niveau de DINT/ 48 cas traités sur 200. suivi par DMGP;Préventif;Automatique;3;2;1;;3;1;2
+Risque de non respect des engagements commerciaux;Activation tardive des keurgui box;Sécuriser les délais de transmission en agence des dossiers clients ayant souscrit à la keurgui box (étudier l'option de transmission électronique);Ndongo Touré;ndongo.toure@orange-sonatel.com;15/05/2017;"Blocage dans gaïa pour un choix automatique des BPQ  
+
+Sensibilisation des commerciaux de Kaolack et Tamba où le problème était récurrent";soldé;"Délai d'activation annoncé au client de 48hrs
+Activation préalable au paiement ";Préventif;Manuelle;3;2;1;;3;1;2
+Risque de non respect des engagements commerciaux;Non respect du process de vente par les boutiques et VTO: absence d'étude d'éligibilité;Sécuriser les délais de transmission en agence des dossiers clients ayant souscrit à la keurgui box (étudier l'option de transmission électronique);Ndongo Touré;ndongo.toure@orange-sonatel.com;15/05/2017;;soldé;"Aiguillage journaliser des VTO par les agences sur la base de l'outil météo
+Activation préalable au paiement 
+Call de confirmation par l'agence avant activation de la keurgui box";Préventif;Manuelle;2;2;1;;3;1;2
+Risque de fraude;défaut de traçabilité du stock;;;;;;;déroulement du processa actuel de gestion des stocks VTO et boutiques;Préventif;Manuelle;2;2;2;;2;;2
+Risque de non respect des engagements commerciaux;non maîtrise du la durée de l'option satisfait ou remboursé;;;;;;;Déclenchement de l'option à l'activation du service - précisé comme tel dans le contrat de vente;Préventif;Manuelle;2;2;1;;3;1;2
+Risque de non respect des engagements commerciaux;Non respect du process de vente par les boutiques et VTO: absence d'étude d'éligibilité;Sur proposition de DV, utiliser l'outil nomad pour la vente en direct sur le terrain par les VTO de kheweul;Ndongo Touré;ndongo.toure@orange-sonatel.com;31/03/2018;EBM transmis à DSI - attente retour faisabilité;Non échu;;;;2;2;1;;3;1;2
+Risque de fraude;Inexistence de mode de traitement des flybox retournés;;;;;;;Retour des flybox au magasin central suite état des retours effectué en agence par les sce des agences;Préventif;Manuelle;1;2;2;;2;;2

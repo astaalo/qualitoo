@@ -240,6 +240,7 @@ class ChargementController extends BaseController {
 	 */
 	public function showErreurAction() {
 		$erreurs=$this->get('session')->get('erreurs_chargement');
+		var_dump($erreurs); exit;
 		$erreurs =unserialize($erreurs);
 		return array('erreurs'=>$erreurs);
 	}

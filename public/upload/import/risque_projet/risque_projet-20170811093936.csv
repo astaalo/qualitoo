@@ -1,0 +1,25 @@
+Risques;Causes (facteurs à l'origine de ces points d'attention);Libellé;Porteur;Mail du porteur;Échéance;Avancement;Commentaire;Statut;CONTRÔLE DESCRIPTION (réponses ou solutions aux points d'attention identifiés);Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridique;Commercial;Criticité
+Risque de non maîtrise des coûts;Souscription d'une puissance électrique non adaptée aux besoins d'énergie ( sous ou sur évaluation);;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;"Etude technique du projet réalisée par le bureau d'étude Corex avec un chantier énergie.
+Dimensionnement des 3 salles ITN de 1 Kw / m² ";;;1;2;2;;1;;;2
+Risque de non maîtrise des coûts;Absence d'optimisation des consommations d'électricité;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;"Etude technique du projet réalisé par le bureau d'étude Corex avec un chantier énergie.
+
+Mise en place d'un système modulaire dimensionné pour optimiser la consommation d'énergie 
+
+5 POD  vont être installés dans la salle avec des couloirs chauds et des couloirs froids";;;2;2;2;;1;;;4
+Risque d'indisponibilité de service;Panne d'électricité;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;Déploiement de 2 GE insonorisés par salle ITN d'une capacité de 650 KVA avec 2 cuves de 25 000 litres pouvant exclusivement assurer l'alimentation du site pendant 72hrs d'affilée chacun (contrat  de maintenance sur les GE);;;1;2;3;;1;;;3
+Risque d'indisponibilité de service;Absence de redondance du système de refroidissement des salles ITN;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;"2 systèmes de refroidissement par salles ITN (au nombre de 3) qui fonctionnent en parallèle voie A et B (1+1) avec la possibilité de basculer totalement sur un des sytèmes en cas d'indisponibilité de l'autre
+2 groupes electrogènes par salle";;;1;2;3;;1;;;3
+Risque de lancement d'offres ou de projets non fonctionnels;Sous ou sur évaluation des espaces de stockage (rack, taille des serveurs);;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;Espace de 250 m² par salle avec un aménagement de 90 racks (juste 2 POD seront utilisés au départ) basé sur les besoins actuels et futurs de sonatel et les prévisions business;;;1;2;3;;1;;;3
+Risque d'indisponibilité de service;rupture du lien backbone - datacenter;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;Déploiement de 3 circuits venant de: saly, thiès et guédiawaye;;;1;2;3;;1;;;3
+Risque de lancement d'offres ou de projets non fonctionnels;Non fiabilité des prévisions de bande passante;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;Mise en place d'une bande passante de plus de 20 GB entre le datacenter et le backbone;;;1;2;3;;1;;;3
+Risque de lancement d'offres ou de projets non fonctionnels;Sous dimensionnement des licences software;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;A voir dans la phase 2 du projet;;;1;2;3;;1;;;2
+Risque de lancement d'offres ou de projets non fonctionnels;Dysfonctionnement du système de surveillance de la température, de l'hygrométrie, ainsi que de la détection des inondations, des fuites et des incendies;"Finaliser l'installation de la gestion technique du bâtiment (GTB) (dispositif de supervision des équipement du bâtiment) et réaliser les tests de fonctionnalité  
+
+Mettre en place un système d'étalonnage des équipements de mesure pour avoir des données fiables (inclus dans la GTB)";Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;soldé;;;;1;2;3;;1;;;3
+Risque d'indisponibilité de service;Impulsion électromagnétiques ex EMP, foudre;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;Mise en place d'un paratonnerre;;;1;2;3;;1;;;3
+Risque de lancement d'offres ou de projets non fonctionnels;Non fiabilité de la transmission des données liée aux câbles;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;"Installation d'un câblage aérien. 
+Séparation des chemins de cables par type avec des codes couleurs : Fibre optique et cuivre, câblage sécurité incendie, courant fort, courant faible, supervision GBT
+Redondance du câblage par type";;;1;2;3;;1;;;3
+Risque de non maîtrise des stocks;Rupture de stock de pièces de rechange;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;Contrat de maintenance signé avec un prestataire avec un Listings des spares ;;;1;1;1;;1;;;1
+Risque de retard de lancement du projet;déploiement tardif du GTB;Rencontre DG Sonatel / DG CFAO pour discuter des modalités de livraison d’une GTB conforme dans un délai court;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;Suivi du projet en TTM;;;4;2;1;;2;;;8
+Risque de fraude;Accés non contrôlés aux salles serveurs;;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;;;;Mise en place de systèmes d'accès par biométrie dans les salles ITN et de vidéosurveillance;;;1;2;2;;1;;;2

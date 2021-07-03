@@ -1,0 +1,16 @@
+Risque;Causes;Libellé;Porteur;Email porteur;Date début;Échéances;Commentaire;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Finance;RH;Image;Juridik;Commercial;Synthèse = gravité
+Risque de fraude;cumul de crédit ou pass data pouvant être commercialisé ;Verrouiller les trois sous-compteurs - empêcher les transferts des sous-compteurs taanal avers d'autres sous-compteurs ou autres numéros;Ndongo Toure;ndongo.toure@orange-sonatel.com;;30/03/18;;Non échu;;;;1;1;;;;;1
+Risque de fraude;terminaison frauduleuse de sms;"Limiter le délai de validité des sms 
+Caper le nombre de sms en se basant sur la conso moyenne pour éviter des actes de revente de sms (ex: cannibalisme de web to sms, etc)";Ndongo Toure;ndongo.toure@orange-sonatel.com;;30/03/18;;Non échu;;;;1;1;;;;;1
+Risque de non respect des engagements commerciaux;restant de crédit non consommé non reconduit lors de la souscription d'un nouveau package;Effectuer les tests techniques jusqu'au lancement sur le report de crédit por s'assurer qe c'est bien effectué;Ndongo Toure;ndongo.toure@orange-sonatel.com;;30/03/18;;Non échu;;;;1;1;;;;;1
+Risque de manque de performance économique des offres;mauvais positionnement des compteurs sur la matrice de priorisation des compteurs au niveau de l'IN;"S'assurer que les compteurs tanal seront bien positionnés en priorité face aux autres types de compteur existants. 
+
+Séquencement actuel:
+ - sms: compteur bonus puis compteur rechargement
+ - voix:  wotel chrono, sargal, illimix durée intra formule, illimix durée offnet, yeukle durée illiminex, yeukle illimix durée on net, taanal, nouvelle gamme illimix on et off net, bonus, rechargement
+ - data: bonus, taanal, rechargement (=pass), facturation à l'acte";Ndongo Toure;ndongo.toure@orange-sonatel.com;;30/03/18;;Non échu;;;;1;1;;;;;1
+Risque de manque de performance économique des offres;cannibalisme de illimix;Facturer la voix plus chère sur l'offre taanal que sur l'illimix et privilégier la data;Ndongo Toure;ndongo.toure@orange-sonatel.com;;30/03/18;;Non échu;;;;2;1;;;;;1
+Risque de manque de performance économique des offres;facturation en fonction du profil;Evaluer l'avantage d'une facturation selon les profils déjà existants;Ndongo Toure;ndongo.toure@orange-sonatel.com;;30/03/18;;Non échu;;;;2;1;;;;;1
+Risque de lancement de services non fonctionnels;dysfonctionnement de l'algorithme;Finaliser l'algorithme de facturation au TO et dérouler les tests jusqu'au T2;Ndongo Toure;ndongo.toure@orange-sonatel.com;;30/03/18;;Non échu;;;;1;1;;;;;1
+Risque de lancement de services non fonctionnels;capacité du SMS-C limitée: ne supportant pas le volume de sms - client ne pouvant envoyer ou recevoir des sms ;Verrouiller avec la technique la capacité du sms-c pour supporter les envois/réceptions de sms;Ndongo Toure;ndongo.toure@orange-sonatel.com;;30/03/18;;Non échu;;;;1;1;;;;;1
+Risque de lancement de services non fonctionnels;parcours ussd non friendly;Evaluer les avis des clients sur les fonctionnalités de l'USSD lors des tests Fut;Ndongo Toure;ndongo.toure@orange-sonatel.com;;30/03/18;;Non échu;;;;2;1;;;;;1

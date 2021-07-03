@@ -1,0 +1,78 @@
+Site;Domaine;Activité/Equipement;Type (Activite ou equipement);Propriétaire;Danger;Mode Fonctionnement;Risque;Lieu;Manifestation;Dispositif de maitrise;Type de controle;Méthode de controle;Decription PA;Porteur;Date de debut;Date fin;Avancement;Statut;Probabilité/Exposition;Gravité;Criticité;Maturité
+Datacenter;Technique;Batiment;2;;Eaux pluviales;A;Risque sur la  santé des Hommes;Etres humains;;Installation de collecteurs au niveau du site pour assurer l'évacuation des eaux de pluies;Préventif;Manuelle;;;;;;;1;1;1;2
+Datacenter;Technique;Groupes Electrogène;2;;Bruit des  groupes électrogènes;N;Nuisance sonore;Etres humains, Faune;;" - 4 GE capotés et insonorisés 
+
+Respect des normes CE- Exigence réglementaire 60db à proximité des habitations les plus proches. ";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Groupes de froid;2;;Bruit des climatiseurs;N;Nuisance sonore;Etres humains, Faune;;" - Entretien mensuel des climatiseurs : contrat avec un prestataire 
+- Acquisition de climatiseurs (splits) moins bruyants ";Préventif;Manuelle;;;;;;;1;1;1;3
+Datacenter;Technique;Extracteur d'air;2;;Bruit des extracteurs d'air;N;Nuisance sonore;Etres humains, Faune;;"Extracteurs d'air dans les salles batteries (à plomb ouvert) fermées 
+Entretien périodique des extracteurs d'air";Préventif;Manuelle;;;;;;;1;1;1;3
+Datacenter;Technique;Salles techniques;2;;Bruit des équipements serveurs;N;Nuisance sonore;Etres humains, Faune;;serveurs installés dans des salles fermées;Préventif;Manuelle;;;;;;;1;1;1;2
+Datacenter;Technique;Salles techniques;2;;Bruit des équipements des groupes froid;N;Nuisance sonore;Etres humains, Faune;;Maintenance des groupes de froid;Préventif;Manuelle;;;;;;;2;1;2;2
+Datacenter;Technique;Gestion des Dechets;1;;Rejet de fumée en cas d'incinération;A;Pollution de l'air;Air;;Interdiction d'incinérer. ;Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Groupes Electrogène;2;;Dégagemement de CO2;N;Pollution de l'air;Air;;"Existence de contrat d'entretien périodique (toutes les 250 heures) des GE Installation de nouveaux GE
+Mise en place de filtre d'atténuation de la pollution de l'air";Préventif;Manuelle;;;;;;;2;3;6;3
+Datacenter;Technique;Groupes Electrogène;2;;Dégagement de NOx SO2 particules fines (GE);N;Pollution de l'air;Air;;Existence de contrat d'entretien périodique (toutes les 250 heures) des GE;Préventif;Manuelle;;;;;;;2;3;6;2
+Datacenter;Technique;Stations d'energie;2;;Accumulation d'hydrogène;N;Pollution de l'air;Air;Explosion et incident;" - Renouvellement de l'air au niveau des salles batteries avec les CTA (centrale de traitement d'air)
+- Existence d'une maintenance préventive des CTA";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Stations d'energie;2;;Surpression (ondes de choc);A;Pollution de l'air;Air;Explosion et incident;" - Renouvellement de l'air au niveau des salles batteries avec les CTA (centrale de traitement d'air)
+- Existence d'une maintenance préventive des CTA";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Dispositifs de coupure MT;2;;Fuite de gaz SF6 (fusible);A;Pollution de l'air;Air;;Existence de maintenance périodique des cellules MT;Préventif;Manuelle;;;;;;;1;3;3;3
+Datacenter;Technique;Climatisation;1;;Fuite de fluides frigorigènes ;A;Pollution de l'air;Air;;Entretien mensuel des groupes froid et des climatiseurs ;Préventif;Manuelle;;;;;;;1;3;3;2
+Datacenter;Technique;Batteries et Transformateurs;2;;dégagement d'hydrogène antimonié;N;Risque sur la  santé des Hommes;Etres humains;;"Installation de batteries à plomb étanches
+Installation de transformateurs secs avec des extracteurs d'air";Préventif;Manuelle;;;;;;;1;3;3;3
+Datacenter;Technique;Imprimante;2;;Rejet de cartouche de sauvegarde;N;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;Les cartouches sont collectées et detruites - Procédure de gestion des déchets;Préventif;Manuelle;;;;;;;1;1;1;3
+Datacenter;Technique;Serveur;2;;Déchets de serveurs ;N;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;"Existence d'une procédure de gestion des déchets 
+";Préventif;Manuelle;Déployer des bacs à déchets avec des étiquettes en plastic fixées ;angemarie.coly@orange-sonatel.com;;30/09/2017;;Non échu;2;1;2;2
+Datacenter;Technique;Maintenance préventive & Nettoiement;1;;Déversement de produits toxiques, corosifs ( grésil, gasoil, acide...);A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Utilisation de batteries étanches dans des salles fermées 
+- Les détergents utilisés pour le nettoiement sont dilués ";Préventif;Manuelle;;;;;;;1;3;3;3
+Datacenter;Technique;Gestion de la logistique;1;;Matériel et mobiliers à réformer laissés sur site;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;"Vente de matériel réformé organisé par le chef d'établissement. 
+Existence d'une procédure
+Matériel à réformer stocké au niveau de l'aire de stockage";Préventif;Manuelle;;;;;;;2;2;4;3
+Datacenter;Technique;Groupes Electrogène;2;;Déversement, fuite  de gasoil ou d'huile;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Utilisation de batteries étanches dans des salles fermées 
+- Les détergents utilisés pour le nettoiement sont dilués ";Préventif;Manuelle;;;;;;;1;3;3;3
+Datacenter;Technique;Groupes Electrogène;2;;Inadéquation capacité de la cuve et capacité du bac de retention;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;"Cuves enterrées dans des galleries étanches
+";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Groupes Electrogène;2;;Chiffons de nettoyage laissés sur place;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Le prestataire à l'obligation de remettre en l'état après entretien des groupes 
+- Un contrôle pour certification est effectué par Sonatel avant que le sous traitant ne quitte se site";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Groupes Electrogène;2;;Cartouche, huile morte, batteries laissées sur site;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Le prestataire à l'obligation de remettre en l'état après entretien des groupes 
+- Un contrôle pour certification est effectué par Sonatel avant que le sous traitant ne quitte se site";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Groupes Electrogène;2;;Fuite ou rejet d'eau glycolée des groupes électrogènes ;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Contrat d'entretien périodique des GE avec des prestataires 
+
+- Visite quotidienne des équipements et des salles techniques par les agents de Sonatel(checklist)";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Stations d'energie;2;;Fuite d'électrolyte des accumulateurs ou d'un déversement accidentel;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Contrat d'entretien périodique des stations d'énergie avec des prestataires 
+- Installation de batteries étanches
+- Visite quotidienne des équipements et des salles techniques par les agents de Sonatel(checklist)";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Transformateurs MT/BT;2;;Rejet de diélectrique (huile sans PCB/PCT);N;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;"Sites équipés de transformateurs secs (sans diélectrique)
+Existence d'un contrat d'entretien des transformateurs";Préventif;Manuelle;;;;;;;1;3;3;3
+Datacenter;Technique;Redresseurs et Onduleurs BT;2;;Déchets de matériel électrique et électronique ;N;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;Déchets de matériel électrique et électronique pris en compte dans la procédure de gestion des dechets;Préventif;Manuelle;;;;;;;1;1;1;3
+Datacenter;Technique;Salles techniques;2;;Chute de câbles, jarretières, fusibles;N;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Vente des chutes de câbles à l'ANARS 
+- Définition d'aires, de locaux de stockage pour les chutes de câbles
+- Communication sur les lieux de stockage";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Climatiseurs;2;;Fuite ou rejet d'eau glycolée de la climatisation;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Contrat d'entretien de la climatisation 
+- Existence d'installation pour l'évacuation des l'eau des CTA (centrales de traitement d'air)";Préventif;Manuelle;;;;;;;1;1;1;3
+Datacenter;Technique;Ordinateurs;2;;Rejet ordinateurs usagés et consommables informatiques;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Organisation du recyclage des cartouches d'imprimantes 
+- Les PC et serveurs HS sont aussi envoyés à la DAL 
+- Une vente annuelle est effectuée sur le matériel réformé";Préventif;Manuelle;Déployer des bacs à déchets avec des étiquettes en plastic fixées ;angemarie.coly@orange-sonatel.com;;30/09/2017;;Non échu;2;1;2;3
+Datacenter;Technique;Batteries;2;;Fuite d'acide;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;" - Utilisation de batteries étanches dans des salles fermées 
+";Préventif;Manuelle;;;;;;;1;3;3;3
+Datacenter;Technique;Toutes les activités;1;;Fuite d'eau des salles;A;Surconsommation d'eau;Ressources naturelles;;Installation d'un système de détection d'eau au niveau des salles et sur les faux planchers;Préventif;Manuelle;;;;;;;1;1;1;3
+Datacenter;Technique;Salles techniques;2;;Souscription d'une puissance électrique non adaptée aux besoins d'énergie ( sur évaluation);A;Surconsommation d'énergie;Ressources naturelles;;"Etude technique du projet réalisée par le bureau d'étude Corex avec un chantier énergie.
+Souscription d'une puissance de 700 watts Dimensionnement des 3 salles ITN de 1 Kw / m² 
+Suivi de l'évolution des consommations d'électrcité de site";Préventif;Manuelle;;;;;;;1;3;3;3
+Datacenter;Technique;Salles techniques;2;;Absence d'optimisation des consommations d'électricité;A;Surconsommation d'énergie;Ressources naturelles;;"Etude technique du projet réalisé par le bureau d'étude Corex avec un chantier énergie.
+
+Mise en place d'un système modulaire dimensionné pour optimiser la consommation d'énergie 
+
+2 POD (ensemble de distribution) sont installés dans la salle avec des couloirs chauds et des couloirs froids et chaque POD a son AES, climatisation et son UTA ";Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Gestion des Dechets;1;;Rejet de chaleur en cas d'incinération;A;Risque sur la  santé des Hommes;Etres humains;;Mise en lace des pictogrammes d'interdiction d'incinérer. ;Préventif;Manuelle;;;;;;;1;2;2;3
+Datacenter;Technique;Groupes Electrogène;2;;Vibrations du groupe électrogène;N;Risque sur la  santé des Hommes;Etres humains;;"Prise en compte de l'aspect """"vibration"""" des groupes electrogène dans les travaux d'ingénierie avec les plots anti vibratils pour atténuer les vibrations";Préventif;Manuelle;;;;;;;1;1;1;3
+Datacenter;Technique;Batiment;2;;Paratonnerre ionisant ;A;Risque sur la  santé des Hommes;Etres humains;;Installation de paratonnere Franklin à pointe non ionisant;Préventif;Manuelle;;;;;;;1;3;3;2
+Datacenter;Technique;Climatiseurs;2;;Présence de fluides frigorigènes ;A;Risque sur la  santé des Hommes;Etres humains;;Entretien mensuel des groupes froid et des climatiseurs ;Préventif;Manuelle;;;;;;;1;3;3;2
+Datacenter;Technique;Groupes de froid;2;;Explosion des récipients sous pression des groupes de froid;A;Risque sur la  santé des Hommes;Etres humains;;"Groupes de froid équipés de compresseurs de type ""scroll"" qui régulent la pression
+Ballon de stockage de l'eau glacée n'est pas sous pression";Préventif;Manuelle;;;;;;;1;3;3;3
+Datacenter;Technique;Batiment;2;;Eaux pluviales;A;Pollution des sols, sous sols et du bâtiment;Sols, Sous sols, Eau, Flore, Bâtiments;;Existence d'un système de drainage des eaux de pluies reliés à la canalisation de drainage des eaux de la zone;Préventif;Manuelle;;;;;;;1;4;4;3
+Datacenter;Technique;Salles techniques;2;;Attaque de foudre;A;Risque sur la  santé des Hommes;Sols, Sous sols, Eau, Flore, Bâtiments;;Installation de paratonnere et de parafoudre dans les tableaux electriques;Préventif;Manuelle;;;;;;;1;4;4;3
+Agence Tambacounda;Intervention;Batiment;2;;Inondation;A;Risque sur la  santé des Hommes;Etres humains;;;Préventif;Manuelle;Mettre en place un systéme de drainage des eaux de pluie pour éviter une inondation du site;CheikhTidiane_DIOP@orange-sonatel.com;;31/12/2017;;Non fait;2;3;6;2
+Tamba CI;Intervention;Batiment;2;;Inondation;A;Risque sur la  santé des Hommes;Etres humains;;;Préventif;Manuelle;Mettre en place un systéme de drainage des eaux de pluie pour éviter une inondation du site;CheikhTidiane_DIOP@orange-sonatel.com;;31/12/2017;;Non fait;2;3;6;2
+Ziguinchor MUX;Intervention;Batiment;2;;Inondation;A;Risque sur la  santé des Hommes;Etres humains;;Construction des caniveaux de drainage des eaux de pluie au niveau du site;Préventif;Manuelle;;;;;;;1;3;3;2

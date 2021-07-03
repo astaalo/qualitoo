@@ -1,0 +1,50 @@
+Risque;Causes;Libellé Plan d'action;Porteur;Email du porteur;Date de début;Date de fin;Avancement;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Proba;Synthèse = gravité;Financier;RH;Image;Juridique;Client;Criticité;Maturité
+Risque de divulgation d'informations confidentielles;perte/tronquage des données client suite utilisation par les SAVR-U;;;;;;;;"Voir le projet Orange Care : les SAVR-U ne toucheront plus les terminaux du client; ils guideront les clients
+Les données du client ne seront plus conservées à Orange mais juste transférées au besoin d'un terminal à un autre";préventif;manuelle;1;2;1;;2;1;2;2;
+Risque de lancement tardif du projet;Durée des travaux de réaménagement  longs (2mois annoncés pour le génie civil par DAL);;;;;;;;;;;3;2;;;2;;2;6;
+Risque de non respect des engagements commerciaux;indisponibilité de certains produits en franchise premium. Ex: les produits référencés;;;;;;;;Existence d'une clause sur la disponibilité des produits et des objectifs commerciaux;;;2;2;;;2;;2;4;
+Risque de manque de performance économique des offres/projets;Lenteur dans le recrutement des FP;;;;;;;;Processus de sélection des partenaires en phase finale au niveau des DRV;préventif;manuelle;1;2;2;;1;;;2;
+Risque de non fiabilité de la facturation;Accès non maîtrisé des franchises à nos SI Ex Nessico, simplissimo;Point à revoir avec DSC/DIS pour voir la cinématique d'enregistrement des opérations et les impacts dans Oracle;;;;;;;;préventif;manuelle;1;2;1;;3;2;3;2;
+Risque de non maîtrise des projets;manque de professionnalisme & expérience des OB et franchise;;;;;;;;"engagement de Orange sur le cahier de charge à former les RH des franchises et  à les accompagner
+""Subvention care ""fournie après évaluation aux franchies premium après évaluation semestrielle
+Intégration dans le contrat d'une clause sur les exigences sur le professionnalisme à l'endroit  des franchises
+consultation lancée pour avoir des partenaires 
+exigences sur la capacité financière des franchises, le niveau de professionnalisme, etc";préventif;manuelle;2;2;2;1;3;;3;5;
+Risque de non respect des dispositions juridiques et règlementaires;non respect de la réglementation portant sur les ERP;"Définir le type de gestion:
+ -  est-ce qu'ils utilisent nos process?
+ - est-ce qu'ils l'utilisent et npus leur dotons des moyens nécessaires
+ - est-ce qu'ils utilisent leur process et nous contrôlons
+
+Intégrer une clause QSE dans le contrat en tenant compte du type de gestion";Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;2;1;2;3;;;4;
+Risque de non-conformité QSE;non respect des normes ISO (prise en charge IPM, médecin, gestion des déchets, dispositif de sécurité incendie, conformité des GE, signalétique de sécurité, etc);"Définir le type de gestion:
+ -  est-ce qu'ils utilisent nos process?
+ - est-ce qu'ils l'utilisent et npus leur dotons des moyens nécessaires
+ - est-ce qu'ils utilisent leur process et nous contrôlons
+
+Intégrer une clause QSE dans le contrat en tenant compte du type de gestion";Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;1;1;;1;;;2;
+Risque de manque de performance économique des offres/projets;Non atteinte des objectifs de vente des franchises;Mettre en place une animation et des challenges pour soutenir les ventes des FP;Aminata Diouf;;;30-nov.-17;;Non échu;;préventif;manuelle;2;2;2;;1;;;3;
+Risque de non maîtrise des stocks;Déficit dans le suivi du stock du partenenaire et celui de Sonatel en dépôt vente chez le partenaire;Fixer un objectif au responsable Sonatel chargé du suivi du stock du partenenaire et celui de Sonatel en dépôt vente chez le partenaire;Aminata Diouf;;;30/11/2017;;Non échu;"les franchises achètent leur stock de produits pour les revendre.
+Ils sont objectivés sur le volume des ventes et perçoivent leurs marges sur les services vendus.
+Ils seront distributeurs agréés OM";préventif;manuelle;2;2;1;;2;;2;3;
+Risque de non maîtrise des stocks;Stock en dépôt vente chez le partenaire sans autorisation;Soumettre aux responsables habilités l'autorisation pour la commercialisation des produits en « dépôt-vente » chez le partenaire;Aminata Diouf;;;30/11/2017;;Non échu;;préventif;manuelle;2;2;1;;2;;2;3;
+Risque de non respect des engagements commerciaux;Dégradation de la QS commerciale des FP;"Mettre en place un pilotage mistery shopping sur les aspacts tarifs, respect des obligations contractuelles, propreté de l'accueil.
+
+Définir un plan de formation des RH des FP avec un système d'évaluation";Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;2;;;2;;2;4;
+Risque de manquements à l'éthique;Ecarts de comportement envers la clientèle;Mettre en place un pilotage mistery shopping sur les aspacts tarifs, respect des obligations contractuelles, propreté de l'accueil.;Aminata Diouf;;;15-nov.-17;;Non échu;"Existence d'une clause contractuelle sur l'expérience client et le niveau d'étude Bac + 2 pour le responsable de la FP et niveau Bac pour les commerciaux
+
+Mise en place d'un plan de formation pour les RH des FP";préventif;manuelle;2;2;1;;3;;3;5;
+Risque de réputation (image négative);Non affectation des temporaires avec des contrats en cours;;;;;;;;redéploiement des temporaires dont les contrats sont toujours en cours dans les autres agences;préventif;manuelle;1;2;1;;3;;3;2;
+Risque de manque de performance économique des offres/projets;détérioration des locaux de sonatel par les franchises;;;;;;;;Intégration dans le contrat d'une clause sur l'entretien des locaux;préventif;manuelle;2;2;2;;1;;;3;
+Risque de partenariat inefficace;conflit d'intérêt entre franchises premium et OB dans les même zones de chalandise;Prendre en compte dans le choix des franchises la position géographique des boutiques et le respect de leur zone de chalandise;Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;2;2;;2;;2;4;
+Risque de non fiabilité de l'information financière;impacts comptables de la facturation de nos produits en dépôt-vente ;Point à revoir avec Cheikh Mayacine seck et Rose Guedou;;;;;;;;;;3;1;1;;;;;3;
+Risque de non respect des dispositions juridiques et règlementaires;Requalification en CDI des contrats du personnel du Locataire Gérant en cas de faillite du partenaire ou en fin d'exploitation;Proposer au Locataire Gérant d’établir des CDD alignés sur la durée du contrat de LG pour son personnel afin d'éviter à Sonatel toute reprise du personnel en fin d’exploitation ;Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;2;1;2;3;;;4;
+Risque de redressement fiscal;Engagement de la responsabilité de Sonatel en cas de défaut de cotisations sociales des partenaires;Exiger du partenaire la transmission du quitus fiscal, de l'ipres permettant de s'assurer du respect de ses obligations fiscales et sociales;Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;2;1;;3;;;4;
+Risque de partenariat inefficace;Commissionnement inattractif après application des charges pour les franchises;Mettre à jour le BP coté partenaire en intégrant la redevance et toutes les autres charges (électricité, etc) pour s'assurer de la rentabilité du projet pour le partenaire;Aminata Diouf;;;30-nov.-17;;Non échu;Dans le BP, le commissionnement est fixé pour offrir aux partenaires un gain même après application des charges;préventif;manuelle;2;2;2;;2;;2;4;
+Risque de mauvais traitement des  reclamations clients;mauvaise prise en charge des suggestions et réclamations client;Définir le canal de remontée et le mode de traitement des suggestions et réclamations client;Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;2;1;1;3;1;3;4;
+Risque de manque de performance économique des offres/projets;dégradation du taux de ventes des services (abonnements, etc);Définir les KPI servant de base à la rémunération des FP sur les ventes d'abonnement;Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;2;2;;1;;;3;
+Risque de partenariat inefficace;Conditions de reprise non définie en fin de partenariat;Intégrer dans le contrat les conditions de reprise de l'agence dans le contrat en cas de non respect des conditions du contrat par le partenaire;Aminata Diouf;;;30-nov.-17;;Non échu;Dans le BP, le commissionnement est fixé pour offrir aux partenaires un gain même après application des charges;préventif;manuelle;1;2;2;;2;;2;2;
+Risque de redressement fiscal;Difficulté de remontée de la TVA facturée sur les opérations de dépôt vente;Donner un format de facture aux franchisés selon leur statut (personne physique ou société) pour la remontée de la TVA facturée sur les opérations de dépôt vente;Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;2;1;;3;;;4;
+risque de non fiabilité de l'information financière;Absence de visibilité sur les actifs Sonatel à affecter aux partenaires FP et aux RAVT;Etablir la situation des actifs à affecter aux partenaires FP et aux RAVT;Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;1;1;;;;;2;
+Risque de partenariat inefficace;Renouvellement non défini en cas d'usure ou en fin d'amortissement des mobiliers bureau et informatiques;Statuer sur le renouvellement en cas d'usure ou en fin d'amortissement des mobiliers bureau et informatiques;Aminata Diouf;;;30-nov.-17;;Non échu;;;;1;2;2;;2;;2;2;
+Risque de partenariat inefficace;Difficulté du partenaire à assurer la maintenance du matériel informatique selon les standards Sonatel;Statuer sur la prise en charge de la maintenance du matériel informatique entre Sonate et le partenaire;Aminata Diouf;;;30-nov.-17;;Non échu;;;;2;2;2;;2;;2;4;
+Risque de redressement fiscal;Evaluation forfaitaire de la subvention accordée aux partenaires;Procéder à une évaluation correcte de la a subvention accordée aux partenaires en fonction des consommations d'électricité, d'eau et carburant GE;Aminata Diouf;;;30-nov.-17;;Non échu;;;;3;2;1;;3;;;6;

@@ -1,0 +1,35 @@
+Risque;Causes;Libellé;Porteur;Email porteur;Échéances;Avancement;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;Commercial;RH;Juridik;Image
+Risque de livraison de services non fonctionnels;perte ou corruption des informations client lors de la migration;"Définir le mode de migration : en one shot ou en différentes étapes
+Définir un dry run et le mode de roll back";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;1;3;4;4;3;;1
+Risque de livraison de services non fonctionnels;Echec de la migration en one shot;"Définir le mode de migration : en one shot ou en différentes étapes
+Définir un dry run et le mode de roll back";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;1;3;4;4;3;;1
+Risque de divulgations d'informations confidentielles;copie des informations client par un tiers (fournisseur ou autre)  durant le projet;"Définir les différentes catégories d'accès,  leurs modes d'accès 
+Mettre en place un système de traçabilité des logs
+Définir la duére de conservation des logs";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;2;3;1;3;;3;3
+Risque de fraude;exploitation des informations client à des fins frauduleuses;"Définir les différentes catégories d'accès,  leurs modes d'accès 
+Mettre en place un système de traçabilité des logs
+Définir la duére de conservation des logs";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;2;3;3;4;;1;3
+Risque de livraison de services non fonctionnels;Absence de documentation détaillée sur la solution livrée;"Inclure dans le contrat la remise de la documentation comme condition à respecter par le fournisseur lors de la recette
+
+Rédaction des process qui doivent accompagner l'exploitation de la nouvelle version de gaïa";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;2;3;4;4;3;;1
+Risque de livraison de services non fonctionnels;Incompatibilité entre les outils de Cintel et ceux de Sofrecom ;"Etude de compatiblité des outils des différents intervenants à mener
+Définir les limites d'intervention de chaque fournisseur";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;2;3;4;4;3;;1
+Risque de livraison de services non fonctionnels;Dysfonctionnement de la chaîne automatique (ex: provisionning);"Définir le mode de migration : en one shot ou en différentes étapes
+Définir un dry run et le mode de roll back";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;2;3;4;4;3;;1
+Risque de livraison de services non fonctionnels;SI inadapté aux besoins des utilisateurs;"Revalider avec l'ensemble des parties prenantes la prise en compte des besoins métier avant le T1
+
+Planifier un programme de formation des utilisateurs sur la nouvelle interface";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;2;3;4;4;3;;1
+Risque de livraison de services non fonctionnels;incohérence des données après migration;"Définir le mode de migration : en one shot ou en différentes étapes
+Définir un dry run et le mode de roll back";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;2;3;4;4;3;;1
+Risque de livraison de services non fonctionnels;"Non conformite des spécifications ou
+écart entre ce qui existe dans le SI et ce qui est livré";"Définir le mode de migration : en one shot ou en différentes étapes
+Définir un dry run et le mode de roll back";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;3;3;4;4;3;;1
+Risque de fraude;Dysfonctionnement des interfaces entre gaïa et les applications avec lesquelles elle est interconnectée (ex: oracle, etc);Dérouler les tests de bon fonctionnement pour s'assurer que les interfaces sont bien connectées et fonctionnelles;Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;2;3;3;4;;1;3
+Risque de non fiabilité de la facturation;Dysfonctionnement des interfaces entre gaïa et les applications avec lesquelles elle est interconnectée servant à la facturation;Dérouler les tests de bon fonctionnement pour s'assurer que les interfaces sont bien connectées et fonctionnelles;Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;2;3;4;4;2;1;3
+Risque d'outil métier inadapté;Absence de formation des parties prenantes (commerciaux, support technique, etc);Définir un plan de formation des utilisateurs;Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;1;3;4;4;2;;1
+Risque de livraison de services non fonctionnels;Absence de transfert de compétences entre Sofrecom et l'équipe de SA;Inclure dans le contrat la remise de la documentation complète comme condition à respecter par le fournisseur lors de la recette;Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;1;3;4;4;3;;1
+Risque de non fiabilité de la facturation;Indisponibilité du SI après migration;"Fixer les nouveaux SLA et les discuter avec Sofrecom
+
+Définir le mode de migration : en one shot ou en différentes étapes
+Définir un dry run et le mode de roll back";Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;1;3;4;4;2;1;3
+Risque d'outil métier inadapté;module fidélisation non embarqué;Effectuer la demande d'activation du module fidélisation qui vient en natif dans le SI;Ibrahima Cissé;ibrahima.cisse@orange-sonatel.com;15/12/2017;;Non échu;;;;1;3;4;4;2;;1

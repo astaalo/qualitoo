@@ -1,0 +1,131 @@
+Risque;Causes;descrption du plan d'action;Nom Porteur;Email porteur;Date début;Date fin;Avancement du plan d'action;Statut du plan d'action;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Gravité;Financier;RH;Image;Juridique;Commercial;Criticité;Maturité
+Risque de mauvaise prise en charge des signalisations clients externes;Sous-dimensionnement des RH;Estimer le nombre de positions nécessaires pour une gestion optimale du flux d'appels conformément aux prévisions d'appels;Adama Sarr;;;30/03/2018;;Non échu;Déploiement d'un plan de crise et mise en place d'un effectif tampon pour toutes les situations de crise;Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;augmentation du flux d'appels;Estimer le nombre de positions nécessaires pour une gestion optimale du flux d'appels conformément aux prévisions d'appels;Adama Sarr;;;30/03/2018;;Non échu;Déploiement d'un plan de crise et mise en place d'un effectif tampon pour toutes les situations de crise;Préventif;Manuelle;3;3;1;2;4;3;4; 8   ;
+Risque de mauvaise prise en charge des signalisations clients externes;absence de consultation de l'historique du client;;;;;;;;"contrôle côte à côte des CCs
+écoute à distance à partir du BANDEAU ou du VERINT";Préventif;Manuelle;3;3;1;2;4;3;4; 8   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Indisponibilité de la plateforme (congestion, incidents, …);Définr le taux de disponibilité du plateau;Tidiane Cissé;;;30/03/2018;;Non échu;Définition de message d'indisponibilité du plateau ;Préventif;Manuelle;1;3;1;2;4;3;4; 3   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Inaccessibilité du site;"Mettre en place une stratégie de sécurisation 
+Mettre en place des  back up pour chaque application  
+Définir un mode de signalisation en cas d'indisponibilité des applis";Tidiane Cissé;;;30/03/2018;;Non échu;"
+
+
+";;;1;3;1;2;4;3;4; 3   ;
+Risque de mauvais accueil  des clients;Discours non-conforme au script;;;;;;;;" - Dispositif d'écoute en place (projet d'écoute) à nouveau avec DSC/DIS: VRINT)
+ - Formation des Conseillers
+ - Supervision des plateaux
+ - Evaluation des contacts";Préventif;Manuelle;1;3;1;;3;3;4; 3   ;
+Risque de mauvais accueil  des clients;"Comportement inadapté des CCs 
+";;;;;;;;" - Dispositif d'écoute en place (projet d'écoute) à nouveau avec DSC/DIS: VRINT)
+ - Formation des Conseillers
+ - Supervision des plateaux
+ - Evaluation des contacts";Préventif;Manuelle;1;3;1;;3;3;4; 3   ;
+Risque d'indisponibilité du service;Innacessibilité / Indisponibilité du plateau ;"Mettre en place une stratégie de sécurisation 
+Mettre en place des  back up pour chaque application  
+Définir un mode de signalisation en cas d'indisponibilité des applis";Tidiane Cissé;;;30/03/2018;;Non échu;"Message à l'attention des clients chargé en cas d'indisponbilité du plateau
+
+
+Site de repli: Talix";Préventif;Manuelle;2;3;3;;3;3;4; 7   ;
+Risque de divulgation d’informations confidentielles ;accés non sécurisé/autorisé aux données clients ;"Mettre en place le principe du bureau propre (pas d'utilisation des téléphones portables personnels, ni de papier, etc)
+Inclure dans les brieffings des CCs la sensibilisation sur la sensibilité des données clients";Adama Sarr;;;30/03/2018;;Non échu;" - Dispositif d'écoute en place (projet d'écoute) à nouveau avec DSC/DIS:  VRINT)
+ - écoute côte à côte
+ - Supervision des plateaux";Préventif;Manuelle;2;3;1;2;3;3;4; 5   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Mauvaise Qualification de la signalisation;;;;;;;;"-Formation des conseillers; 
+- Mise à disposition des CC d'une base de connaissances pour aider à la qualification des signalisations 
+- Diffusion des avis d'incidents Réseaux et des ATP aux différents plateaux pour information en vue de répondre aux clients; ";Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Maitrise insuffisante de l'activité par les CCs;;;;;;;;Déroulemnt de l'évaluation des contacts;Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Absence d'outils de diagnostics adéquats;Mettre en place les outils R2510 et SPG pour les tests des solutions fibre;Adama Sarr;;;30/03/2018;;Non échu;"- Utilisation de l'outil Maestro pour le test des lignes 
+
+";Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Volatilité du personnel intérimaire au niveau back office et front office;;;;;;;;"Suivi de la durée de validité des contrats des intérimaires
+
+'Déploiement d'un plan de crise et mise en place d'un effectif tampon pour toutes les situations de crise
+";Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Indisponibilité des CC (retards, absences, pauses…) ;;;;;;;;"- Organisation des heures de pause par le superviseur
+- Diffusion des statistiques par agent sur le niveau de performance
+ - Gestion administrative des RH (taux de présence, etc)
+
+'Déploiement d'un plan de crise et mise en place d'un effectif tampon pour toutes les situations de crise";Détectif;Manuelle;1;3;1;2;4;3;4; 3   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Absence de bouclage du traitement des signalisations des clients;;;;;;;;"Bouclage par le commercial qui a traité la signalisation si elle a été résolue en ligne
+Bouclage par PMT et BO en cas de traitement niveau 2
+
+Reporting quotidien sur l'état de traitement des signalisations
+
+";Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Absence d'information au client sur l'état d'avancement du traitement de sa signalisation;;;;;;;;Une position activité engagement est mise en place pour le suivi des signalisations en instance et un reporting est diffusé par la suite;Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Délais de relève longs (non respect des temps de cycle) ;;;;;;;;Suivi des délais de réponse aux clients par le BO;Préventif;Manuelle;1;3;1;2;4;3;4; 3   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Non respect des procédures;;;;;;;;" - Dispositif d'écoute en place avec DSC/DIS: VRINT
+ - Formation des Conseillers
+ - Supervision des plateaux";Détectif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Mauvais traitement des dérangements;;;;;;;;" - Ecoute des CC
+ - Plan de formation
+ - Mise à disposition des CC d'une base de connaissance et d'une base de script";Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Absence de saisie des signalisations dans le SI;;;;;;;;"
+
+Suivi journalier de l'historisation : 'Contrôle de cohérence : Rapprochement nombre d'appels reçus / nombre de signalisations enregistrées dans le bandeau et comparer  à ceux enregistré deans GAIA, l'écart est justifié par le fichier de suivi de cas non signalés (résiliations, déjà signalé, indisponibilité SI …
+";Préventif;Manuelle;1;3;1;2;4;3;4; 3   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Absence ou erreur de planification des signalisations;;;;;;;;Tirage d'une requête journalière par la position engagement pour détecter les cas de planification inachevées;Préventif;Manuelle;1;3;1;2;4;3;4; 3   ;
+Risque de mauvaise prise en charge des signalisations clients externes;non maîtrise du plan de charge ;;;;;;;;"
+Plan de charge défini avec l'outil WFM. Définition de schéma optimisé et non maximisé
+Application du Real Time Manager par les superviseurs en cas de sous-staffing dû à des événements extraoridnaires en traînant u pic d'appels sur le plateau";Préventif;Manuelle;1;3;1;2;4;3;4; 3   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Non suivi des PA;;;;;;;;"Suivi des PA sur  SUPER et coordination service
+Reporting quotidien sur l'état de traitement des signalisations
+
+";Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de non fiabilité de l'information pour le pilotage;erreur de codification par les CC;;;;;;;;"Suivi hebdo sur la précision de la remontée
+
+";Préventif;Manuelle;1;3;2;;2;;4; 3   ;
+Risque de fraude;accés non habilités aux applications/fonctionnalités sensibles par le CC;Intégrer la sensibilisation des CCs sur les risques auxquels ils sont exposés dans les parcours de formation;Adama Sarr;;;30/03/2018;;Non échu;;;;1;3;3;2;2;;4; 3   ;
+Risque de fraude;accés non habilités aux applications/fonctionnalités sensibles pour le CC;" - contrôles à appliquer:
+  -- Contrôle de la conformité des opérations  effectuées par les CCs sur les applications 
+   -- contrôle "" des opérations irrégulières "" des logs faits par DEX sur ZSMART
+
+ - limitation du nombre de profils pouvant  accéder aux applications - mettre à jour la matrice des habilitations
+ - réconciliation quotidiennes ou hebdo des actions effectuées vs les demandes tracées émises par les clients";Adama Sarr;;;30/03/2018;;Non échu;;;;1;3;3;2;2;;4; 3   ;
+Risque de non fiabilité de l'information pour le pilotage;"Absence de remontée de l'information issue du test sur la ligne du client par le CC non communiquée aux autres équipes (support, back office, etc) ---
+manque d'exhaustivité du 1er appel client dans le bandeau ";Sensibilisation des conseillers front  lors des brieffings;adama ndao;;;30/03/2018;;Non échu;"contrôle côte à côte 
+écoute à distance à partir du BANDEAU ou du VERINT
+Reporting quotidien sur les cas soldés, les cas en instance, etc";Préventif;Manuelle;2;3;2;;2;;4; 5   ;
+Risque de mauvaise prise en charge des signalisations clients externes;indisponibilité / dysfonctionnement de l'outil de test;Mettre à jour la cartographie des applications en intégrant les outils de test des solutions fibre: R2510 et SPG;Adama Sarr;;;30/03/2018;;Non échu;Existence d'une cartographie des risques des applications donnant les indications à dérouler en cas d'indisponibilité des applis de tests;Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Absence de remontée de l'information issue du test sur la ligne du client par le CC aux autres équipes (support, back office, etc);;;;;;;;Reporting quotidien sur les cas soldés, les cas en instance, etc;;Manuelle;2;3;1;2;4;3;4; 6   ;
+Risque de mauvaise prise en charge des signalisations clients externes;Innacessibilité / Indisponibilité du plateau ;"Mettre en place une stratégie de sécurisation 
+Mettre en place des  back up pour chaque application  
+Définir un mode de signalisation en cas d'indisponibilité des applis";Tidiane Cissé;;;30/03/2018;;Non échu;Message à l'attention des clients chargé en cas d'indisponbilité du plateau;Préventif;Manuelle;2;3;1;2;4;3;4; 6   ;
+risque sur la santé des hommes;agression verbale par les clients (stress);Planifier une formation à la gestion de stress pour les CCs;adama ndao;;;30/03/2018;;Non échu;"aménagement des horaires
+salle de repos
+service social
+
+Rappel au besoin des clients difficiles par les superviseurs
+
+Formation Actes dont gestion des conflits";préventif;Manuelle;2;2;1;;2;;; 3   ;
+risque sur la santé des hommes;surpeuplement des locaux (nuisance sonore);"Vérifier le respect de la distance réglementaire entre les différentes positions des CCs
+Prendre les dispositions nécessaires pour: les commodités (salles de repos, sanitaires, etc)";Cheikh Tidiane Diop;;;30/03/2018;;Non échu;"aménagement de la salle: textile d'insonorisation et faux plafond pour isoler la salle du bruit extérieur 
+séparateur entre les tables des CC (organisation en camembert)
+port de casques
+";préventif;Manuelle;3;2;1;;2;;; 5   ;
+risque sur la santé des hommes;Communications téléphoniques en continu (nuisance sonore);"Vérifier le respect de la distance réglementaire entre les différentes positions des CCs
+Prendre les dispositions nécessaires pour: les commodités (salles de repos, sanitaires, etc)";Cheikh Tidiane Diop;;;30/03/2018;;Non échu;"aménagement des horaires
+salle de détente
+pauses réglementaires
+Suivi médical par le médecin d'entreprise
+visite médicale annuelle
+Existence d'un système de routage des appels avec une distribution uniforme
+";préventif;Manuelle;3;2;1;;2;;; 5   ;
+risque sur la santé des hommes;sortie tardive des bureaux (stress);Vérifier avec le CHCST qu'il n'y a pas de risques spécifiques pour les CC HNO;Adama Sarr;;;30/03/2018;;Non échu;"Respect strict du découpage horaire
+Bus de ramassage à 22hrs
+Identification de CC HNO dédiés au créneau de nuit";préventif;Manuelle;2;2;1;;2;;; 3   ;
+risque sur la santé des hommes;surcharge de travail (stress);"Finaliser les fiches de poste intégrant les objectifs quanti et quali
+
+Finaliser le découpage horaire entre 8h et 22h";Adama Sarr;;;30/03/2018;;Non échu;"aménagement des horaires entre 8h et 22h
+
+Objectifs quanti et quali pour chaque CC";préventif;Manuelle;2;2;1;;2;;; 3   ;
+risque sur la santé des hommes;Position assise constante devant l'écran (troubles visuels);Fournir des ordinateurs avec des filtres intégrés;Adama Sarr;;;30/03/2018;;Non échu;"aménagement des horaires
+salle de détente
+pauses réglementaires";préventif;Manuelle;3;2;1;;2;;; 5   ;
+risque sur la santé des hommes;Position assise constante (troubles musculosquelettiques);Vérifier que le type de fauteuils distribués ne présente pas de risques TMS pour les CCs;Cheikh Tidiane Diop;;;30/03/2018;;Non échu;"fauteuils ergonomiques
+aménagement horaire: 5mns de pause toutes les deux heures";préventif;Manuelle;2;2;1;;2;;; 3   ;
+Risque de lancement de projet non fonctionnel;Absence de mise à jour des process impactés;Procéder à une cartographie des process et à une mise à jour de l'ensemble des process impactés;Aita Correa;;;30/03/2018;;Non échu;;;;2;2;1;2;3;3;3; 5   ;
+Risque de manquements à l'éthique;suppression de contrats des CCs en service chez les prestataires;;;;;;;;"recrutement transparent par Orange - les ressources du prestataire ne seront pas reprises d'office
+
+Redéploiement des CCs en charge par les prestataires";préventif;Manuelle;3;2;1;;3;;; 6   ;
+Risque de lancement de projet non fonctionnel;insuffisance du nombre de positions de CC;Estimer le nombre de positions nécessaires pour une gestion optimale du flux d'appels;Adama Sarr;;;30/03/2018;;Non échu;;;;2;2;1;2;3;3;3; 5   ;
+Risque de lancement de projet non fonctionnel;Réinternalisation budgétivore - augmentation des charges;BP à finaliser;Aissa Touré Ndiaye ;;;30/03/2018;Attente réception du BP;Non échu;;;;1;2;1;2;3;3;3; 2   ;

@@ -5,8 +5,10 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\DependencyInjection\Container;
 use App\Query\RisqueMetierQuery;
 use App\Entity\Chargement;
+use App\Entity\Risque;
 use App\Query\RisqueSSTEQuery;
 use App\Query\RisqueProjetQuery;
+use App\Repository\RisqueRepository;
 
 class Loader {
 

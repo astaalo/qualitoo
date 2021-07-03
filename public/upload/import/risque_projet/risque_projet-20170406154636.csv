@@ -1,0 +1,24 @@
+Risque (points d'attention);Causes (facteurs potentiels à l'origine de ces points d'attention);Libellé PA (réponses ou solutions en cours pour couvrir les points d'attention identifiés);Porteur;Email porteur;Date de début;Date de fin;Avancement;Statut;CONTRÔLE DESCRIPTION (réponses ou solutions mises en place por couvrir les points d'attention identifiés);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client;Criticité;Maturité 
+Risque de fraude;enregistrement de clients fictifs par les promoteurs;Objectiver les promoteurs sur le nombre de clients enregistrés;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;21/01/2017;;Non échu;objectifs définis pour chaque promoteur;préventif;Manuelle;3;1;1;;;;;;
+Risque de fraude;attribution aléatoire des goodies/cadeaux des jeux (gameloft, etc);définir le concept/scoring du jeu sur lesquels seront basés la distribution des cadeaux;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;21/01/2017;réunion prévue ce 31/03 pour définir le règlement;Non échu;;;;1;2;1;;;;2;;
+Risque de non respect des engagements commerciaux;pass non doublé suite achat pass éligible sur Orange et Moi (bonus positionné manuellement);Vérifier avec la technique (tests à l'appui) que le pass sera bien doublé automatiquement;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;21/01/2017;;Non échu;CMO modifié par un pass de 50Mo offert à tous les scool;préventif;Manuelle;2;2;1;2;;;2;;
+Risque de non respect des engagements commerciaux;bonus sargal non positionné;Vérifier avec la technique (tests à l'appui) que le pass sera bien doublé automatiquement;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;21/01/2017;;Non échu;il ne s'agit pas de doubler un pass, c'est un tirage au sort et les gagnants se verront positionnés 10Go;préventif;Manuelle;1;;;;;;;;
+Risque de fraude;positionnement manuel des pass 10Mo pour les school et 50Mo pour les bonus sargal;;;;;;;;Contrôle manuel des positionnements par DFC/CRA;Préventif;Automatique;3;1;1;;;;;;
+Risque de manque de performane économique;Jeux/cadeaux ouverts/offerts à des clients non inscrits sargal;Vérifier avec l'équipe Sargal les conditions d'accès aux jeux;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;21/01/2017;;Non échu;ok règlement effectué avec DRJ;Préventif;Automatique;2;1;1;;;;;;
+Risque de dégradation de la qualité de service;bug des plateformes (ISG et IN)  suite à une sursollicitation ;Envoyer l'EBM et S'assurer avec la technique de la capacité des plateformes requises à supporter le flux prévu dans le BP.;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;21/01/2017;ok, EBM restants (my canal) en cours ;Non échu;;;;1;2;1;2;;;2;;
+Risque de non respect des engagements commerciaux;absence de connexion ou connexion insuffisante sur les villages/bus;S'assurer avec DRPS de la bonne couverture réseau dans les zones où seront déployées les villages ou les bus;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;21/01/2017;;Non échu;il ne s'agit plsu d'une caravane digitale, c'est une caravane avec en majeur la vente de terminaux SWAP dans les zones fournies par DRPS;préventif;Manuelle;2;;;;;;;;
+Risque de lancement tardif ;"lancement tardif des nouvelles offres  ""KHEWEUL"", ""SINE SALOUM"", ""Eshop""
+et décalage des animations terrain";;;;;;;;Déroulement de la perco sans les lancements si ces derniers ne sont pas disponibles;correctif;Manuelle;3;1;1;;;;;;
+Risque de lancement tardif ;durée de 140 jours nécessaires à la perco non respectée - indisponibilité créa dans les temps;Demander le traitement en fast track  des créas à l'agence;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;21/01/2017;;Non échu;créas reçus avant le lancement de la perco;préventif;Manuelle;2;;;;;;;;
+Risque de lancement tardif ;EBM et briefs des promos non envoyées à DRPS et DMGP/DCCM;Centraliser les EBM restants et les briefs et faire un seul envoi à DRPS et DMGP/DCCM et piloter globalement;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;;ok, EBM restants (my canal) en cours ;;;;;2;;;;;;;;
+Risque de manque de performane économique;rupture des terminaux et sims 4G;Vérifier avec DMGP/SMTA la disponibilité des 30.000 terminaux prévus pour la vente et la capacité de réappro lors de l'atteinte du seuil;"Alioune Badara Ba
+Awa Diongue";aliounebadara.ba@orange-sonatel.com;;21/01/2017;;Non échu;stock disponible;préventif;Manuelle;1;;;;;;;;

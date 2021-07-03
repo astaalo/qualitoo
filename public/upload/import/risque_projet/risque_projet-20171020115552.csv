@@ -1,0 +1,61 @@
+Risque;Causes;Libellé Plan d'action;Porteur;Email porteur;Date de début;Date de fin;Avancement;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Proba;Gravité;Financier;RH;Image;Juridique;Client
+Risque de visibilité insuffisante de la marque;Absence de renouvellement des PLV pour la visibilité de Orange;Définir le canal de remontée en cas de dégradations des aménagements et PLV au niveau de la FP;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;maintien de la visibilité sur les bâtiments qui deviennent des franchises premium et s'ils sont bien placées sinon la visibilité est déplacée;préventif;manuelle;1;2;1;2;2;;1
+Risque de non respect des engagements commerciaux;absence d'interlocuteurs sur le SAV dans les franchises;Vu la mobilité des RAVT et SAVT faire assurer un minimum de SAV par les équipes de la franchise;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;"canal en ligne favorisé
+les RAVT et SAVT sont sur les sites 5agences et franchises( et demeurent les représentants de orange";préventif;manuelle;2;3;1;;3;;4
+Risque de non respect des engagements commerciaux;ensemble des outils nécessaires (applis SI) non mis à disposition des franchises;Prévoir les aspects suivants: logs individuels, traçabilité, etc dans la politique de sécurité;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;Accès à nos SI en cours d'étude avec les équipes de DSC//DIS et DSI;préventif;manuelle;2;3;1;;3;;4
+Risque de divulgation d'informations confidentielles;Usage détourné des informations client par les équipes de la franchise ;Identifier en collaboration avec DIS et DSI les restrictions à implementer pour éviter l'usage détourné de certaines informations clients Ex Export de données;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;préventif;manuelle;2;2;1;;3;;3
+Risque de divulgation d'informations confidentielles;perte/tronquage des données client suite utilisation par les SAVR-U;;;;;;;;"Voir le projet Orange Care : les SAVR-U ne toucheront plus les terminaux du client; ils guideront les clients
+Les données du client ne seront plus conservées à Orange mais juste transférées au besoin d'un terminal à un autre";préventif;automatique;1;2;1;;3;;3
+Risque de non maîtrise des stocks;Absence de sécurité dans la conservation du stock (le magasin sera-t-il affecté au RAVT ou au FP ???);A définir;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;préventif;manuelle;1;2;1;;3;;2
+Risque de lancement tardif du projet;exigences du contrat juridique à venir non embarquées dans les cahiers de charge proposés aux prestataires;Voir avec DRJ comment aligner le contrat avec le cdc déjà soumis aux prestataires;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;3;2;1;1;3;1;3
+Risque de lancement tardif du projet;Durée des travaux de réaménagement  longs (2mois annoncés pour le génie civil par DAL);;;;;;;;;;;3;2;1;1;3;1;3
+Risque de non respect des engagements commerciaux;indisponibilité de certains produits en franchise premium. Ex: les produits référencés;;;;;;;;Existence d'une clause sur la disponibilité des produits et des objectifs commerciaux;préventif;manuelle;2;3;1;;3;;4
+Risque de non rentabilité du projet;Lenteur dans le recrutement des FP;;;;;;;;Processus de sélection des partenaires en phase finale au niveau des DRV;préventif;manuelle;1;2;2;;1;;
+Risque de fraude;Accès non maîtrisé des franchises à nos SI;;;;;;;;Accès à nos SI en cours d'étude avec les équipes de DSC//DIS et DSI;préventif;manuelle;1;2;1;;3;2;3
+Risque de fraude;prix de vente pratiqués par les franchises non homologués par Orange (inférieurs ou supérieurs au prix de vente normal);Mettre en place un pilotage mistery shopping sur les aspacts tarifs, respect des obligations contractuelles, propreté de l'accueil.;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;2;2;1;;3;2;3
+Risque de non maîtrise des projets;manque de professionnalisme & expérience des OB et franchise;;;;;;;;"engagement de Orange sur le cahier de charge à former les RH des franchises et  à les accompagner
+
+""Subvention care ""fournie après évaluation aux franchies premium après évaluation semestrielle
+
+Intégration dans le contrat d'une clause sur les exigences sur le professionnalisme à l'endroit  des franchises
+
+consultation lancée pour avoir des partenaires 
+
+exigences sur la capacité financière des franchises, le niveau de professionnalisme, etc";préventif;manuelle;2;2;2;1;3;;3
+Risque de non rentabilité du projet;Vente de produits des concurrents Ex Tigo, Expresso;Intégrer une clause dans le contrat afin de contrôler les produits vendus par les FP;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;préventif;manuelle;4;2;2;;1;;
+Risque de non respect des dispositions juridiques et règlementaires;Non respect des exigences réglementaires (conformité dossiers client, etc) par les franchises;"Définir le canal de remontée des dossiers clients FP au niveau des ADV des DRV et au service Pilote Commande livraison pour la vérification de la conformité des dossiers clients FP
+
+Définir le mode de conservation et archivage des documents client";Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;reconduction dans les frachises des: NPS, Mystery shopping, primes sur les services à systématiser chez le client (bonus-malus);préventif;manuelle;2;2;1;;3;1;2
+Risque de non respect des dispositions juridiques et règlementaires;non respect de la réglementation portant sur les ERP;"Définir le type de gestion:
+ -  est-ce qu'ils utilisent nos process?
+ - est-ce qu'ils l'utilisent et npus leur dotons des moyens nécessaires
+ - est-ce qu'ils utilisent leur process et nous contrôlons
+
+Intégrer une clause QSE dans le contrat en tenant compte du type de gestion";Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;2;2;1;;3;1;2
+Risque (d'audit (contrôle et non détection);non respect des normes ISO (prise en charge IPM, médecin, gestion des déchets, dispositif de sécurité incendie, conformité des GE, signalétique de sécurité, etc);"Définir le type de gestion:
+ -  est-ce qu'ils utilisent nos process?
+ - est-ce qu'ils l'utilisent et npus leur dotons des moyens nécessaires
+ - est-ce qu'ils utilisent leur process et nous contrôlons
+
+Intégrer une clause QSE dans le contrat en tenant compte du type de gestion";Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;2;1;1;;1;;
+Risque de non rentabilité du projet;Non atteinte des objectifs de vente des franchises;Mettre en place une animation et des challenges pour soutenir les ventes des FP;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;préventif;manuelle;2;2;2;;1;;
+Risque de non maîtrise des stocks;Absence de visibilité sur le niveau de stock des franchises;;;;;;;;"les franchises achètent leur stock de produits pour les revendre.
+Ils sont objectivés sur le volume des ventes et perçoivent leurs marges sur les services vendus.
+Ils seront distributeurs agréés OM";préventif;manuelle;2;2;1;;3;;2
+Risque de non respect des engagements commerciaux;Dégradation de la QS commerciale des FP;"Mettre en place un pilotage mistery shopping sur les aspacts tarifs, respect des obligations contractuelles, propreté de l'accueil.
+
+Définir un plan de formation des RH des FP avec un système d'évaluation";Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;2;3;1;;3;;4
+Risque de manquements à l'éthique;Ecarts de comportement envers la clientèle;Mettre en place un pilotage mistery shopping sur les aspacts tarifs, respect des obligations contractuelles, propreté de l'accueil.;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;"Existence d'une clause contractuelle sur l'expérience client et le niveau d'étude Bac + 2 pour le responsable de la FP et niveau Bac pour les commerciaux
+
+Mise en place d'un plan de formation pour les RH des FP";;;2;2;1;;3;;3
+Risque de réputation (image négative);Non affectation des temporaires avec des contrats en cours;;;;;;;;redéploiement des temporaires dont les contrats sont toujours en cours dans les autres agences;préventif;manuelle;1;2;1;;3;;3
+Risque de non rentabilité du projet;détérioration des locaux de sonatel par les franchises;;;;;;;;Intégration dans le contrat d'une clause sur l'entretien des locaux;;;2;2;2;;1;;
+Risque de non rentabilité du projet;conflit d'intérêt entre franchises premium et OB dans les même zones de chalandise;Prendre en compte dans le choix des franchises la position géographique des boutiques et le respect de leur zone de chalandise;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;2;2;2;;1;;
+risque de non fiabilité de l'information financière;impacts comptables de la facturation de nos produits en dépôt-vente  (A confirmer avec Cheikh Mayacine);;;;;;;;;;;3;1;1;;;;
+Risque de non respect des dispositions juridiques et règlementaires;Non reprise par Sonatel  du personnel des franchises en cas de faillite du partenaire;A vérifier;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;2;2;1;;3;1;2
+Risque de redressement fiscal;Engagement de la responsabilité de Sonatel en cas de défaut de cotisations sociales des partenaires;A définir;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;2;2;1;;3;;
+Risque de partenariat inefficace;Commissionnement inattractif après application des charges pour les franchises;Mettre à jour le BP coté partenaire en intégrant la redevance pour s'assurer de la rentabilité du projet pour le partenaire;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;Dans le BP, le commissionnement est fixé pour offrir aux partenaires un gain même après application des charges;préventif;manuelle;2;2;2;2;2;;2
+Risque de mauvais traitement des  récréclamations clients;mauvaise prise en charge des suggestions et réclamations client;"Définir le canal de remontée et le mode de traitement des suggestions et réclamations client
+";Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;2;2;1;1;3;1;3
+Risque de non rentabilité du projet;dégradation du taux de ventes des services (abonnements, etc);Définir les KPI servant de base à la rémunération des FP sur les ventes d'abonnement;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;;;;2;2;2;;1;;
+Risque de partenariat inefficace;Non respect des conditions de gestion par le partenaire;Intégrer dans le contrat les conditions de reprise de l'agence dans le contrat en cas de non respect des coditions du contrat par le partenaire;Aminata Diouf;aminata.diouf@orange-sonatel.com;;15/11/2017;;Non échu;Dans le BP, le commissionnement est fixé pour offrir aux partenaires un gain même après application des charges;préventif;manuelle;2;2;2;2;2;;2

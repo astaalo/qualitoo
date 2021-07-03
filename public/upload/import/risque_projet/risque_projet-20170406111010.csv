@@ -1,0 +1,26 @@
+Risque (points d'attention);Causes (facteurs potentiels à l'origine de ces points d'attention);Libellé PA (réponses ou solutions en cours pour couvrir les points d'attention identifiés);Porteur;Email porteur;Date de début;Date de fin;Avancement;Statut;CONTRÔLE DESCRIPTION (réponses ou solutions mises en place por couvrir les points d'attention identifiés);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client;Criticité;Maturité 
+Risque d'indisponibilité de service;rupture du lien backbone - datacenter;;;;;;;;Déploiement de 3 circuits venant de: saly, thiès et guédiawaye;Préventif;Manuel;1;2;2;3;;2;2;;
+Risque de lancement d'offres ou de projets non fonctionnels;Non fiabilité des prévisions de bande passante;;;;;;;;Mise en place d'une bande passante de plus de 20 GB entre le datacenter et le backbone;Préventif;Manuel;1;2;3;;;;1;;
+Risque de lancement d'offres ou de projets non fonctionnels;Sous dimensionnement des licences software;;;;;;;;;Préventif;Manuel;1;2;3;;;;1;;
+Risque de lancement d'offres ou de projets non fonctionnels;Dysfonctionnement du système de surveillance de la température, de l'hygrométrie, ainsi que de la détection des inondations, des fuites et des incendies;"Finaliser l'installation de la gestion technique du batiment (GTB) et réaliser les tests de fonctionnalité 
+
+Mettre en place un système d'étalonnage des équipements de mesure pour avoir des données fiables (inclus dans la GTB)";Ange Marie Coly;angemarie.coly@orange-sonatel.com;;01/08/16;;Soldé;GTB installé, testé, approuvé (sondes t°, hydrométrie, détection d'eau et de  fumée) - les recettes provisoires sont terminées et les corrections des erreurs sont en cours;Préventif;Auto;1;2;3;;;;1;;
+Risque de lancement d'offres ou de projets non fonctionnels;Non fiabilité de la transmission des données liée aux câbles;;;;;31/10/2016;;Soldé;"Installation d'un câblage aérien. 
+Séparation des chemins de cables par type avec des codes couleurs : Fibre optique et cuivre, câblage sécurité incendie, courant fort, courant faible, supervision GBT
+Redondance du câblage par type";Préventif;Manuel;1;2;3;;;;1;;
+Risque de non maîtrise des stocks;Rupture de stock de pièces de rechange;;;;;31/10/2016;;Soldé;Contrat de maintenance signé avec un prestataire avec un Listings des spares ;Préventif;Manuel;1;1;1;;;;1;;
+Risque de fraude;Accés non contrôlés aux salles serveurs;;;;;;;;Mise en place de systèmes d'accès par biométrie dans les salles ITN et de vidéosurveillance;Préventif;Auto;1;2;2;;;;1;;
+Risque de non respect des engagements commerciaux;épuisement des pods (points of delivery);Définir un process pour la gestion capacitaire et énergétique du Datacenter;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;15/04/17;;En cours;"Espace de 250 m² par salle avec un aménagement de 90 racks (juste 2 POD seront utilisés au départ) basé sur les besoins actuels et futurs de sonatel et les prévisions business
+
+définition du mode d'organisation en cours
+
+recrutement de l'expert en cours
+choix de la solution du fournisseur en cours";Préventif;Manuel;3;2;2;3;;2;2;;
+Risque de non respect des engagements commerciaux;épuisement du précâblage (LAN et SAN);Définir un process pour la gestion capacitaire et énergétique du Datacenter;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;15/04/17;;En cours;"définition du mode d'organisation en cours
+
+recrutement de l'expert en cours
+choix de la solution du fournisseur en cours";Préventif;Manuel;3;;;;;;;;
+Risque d'indisponibilité de service;épuisement du précâblage (LAN et SAN);Définir un process pour la gestion capacitaire et énergétique du Datacenter;Ange Marie Coly;angemarie.coly@orange-sonatel.com;;15/04/17;;En cours;"définition du mode d'organisation en cours
+
+recrutement de l'expert en cours
+choix de la solution du fournisseur en cours";Préventif;Manuel;3;2;2;3;;2;2;;

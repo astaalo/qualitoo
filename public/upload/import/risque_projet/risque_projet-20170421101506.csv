@@ -1,0 +1,15 @@
+Risque (points d'attention);Causes (facteurs potentiels à l'origine de ces points d'attention);Libellé PA (réponses ou solutions en cours pour couvrir les points d'attention identifiés);Porteur;Email du porteur;Date de fin;Avancement;Statut;CONTRÔLE DESCRIPTION (réponses ou solutions mises en place por couvrir les points d'attention identifiés);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client
+Risque de non recouvrement des créances;"Non rechargement du client après emprunt
+";"Mettre en place la solidarité entre SOS voix et Data. Un client qui a un SOS en cours ou un SOS non remboursé ne peut souscrire à un autre SOS (voix ou data)
+
+Intégration des frais dans le BP pour minimiser les pertes dues aux emprunts non remboursés";Ndongo Touré;ndongo.toure@orange-sonatel.com;30/09/2016;;Non fait;"taux de non remboursement ou remboursement tardif de 1% sur SOS crédit
+";Préventif;Manuelle;1;1;1;;;;
+Risque de fraude;connexions par le client sans remboursement du prêt;Réaliser des tests d'appels sur des numéros avec des prêts en cours sur le module;Ndongo Touré;ndongo.toure@orange-sonatel.com;30/09/2016;;Non fait;;;;1;1;1;;;;1
+Risque de fraude;solde du prêt client sans rechargement par le client;S'assurer que les agents du BO n'auront pas la possibilité d'effacer les prêts en cours des clients;Ndongo Touré;ndongo.toure@orange-sonatel.com;15/10/2016;;Non fait;"Gestion de l'offre Sine sur la plateforme Zsmart
+Création des profils sur Zsmart validée par DSI et les supérieurs hiérarchiques";Préventif;Manuelle;1;1;1;;;;1
+Risque de manque de performance économique des offres ;Faiblesse du taux de recouvrement SOS data;;;;;;;Existence d'un tableau journalier et hebdomadaire sur les remboursements de crédit;Préventif;Manuelle;1;2;1;2;;;2
+Risque de manque de performance économique des offres ;Non souscription des clients à cause de la cherté des frais (si scénario 2);;;;;;;scénario pris en compte dans l'élaboration du BP;Préventif;Manuelle;2;2;1;2;;;2
+Risque d'indisponibilité du service;Module livré non fonctionnel;Réaliser les tests sur le module ZTE après implémentation;Ndongo Touré;ndongo.toure@orange-sonatel.com;30/09/2016;;Non fait;;;;1;2;1;3;;;2
+Risque de manque de performance économique des offres ;Impossibilité pour les clients ayant du crédit sur le compteur bonus de pouvoir faire du SOS Data;Modifier la lecture des compteurs crédit pour ne pas intégrer le compteur bonus et permettre d'activer le SOS Data;Ndongo Touré;ndongo.toure@orange-sonatel.com;30/09/2016;;Non fait;;;;1;2;1;2;;;2
+Risque de lancement tardif;retard de livraison du module;Piloter la livraison prévue au mois de juillet;Ndongo Touré;ndongo.toure@orange-sonatel.com;15/09/2016;;Non fait;;;;1;2;1;2;;;2
+Risque de manque de performance économique des offres ;non réception des pop up de prêt;S'assurer que les pop up sont bien envoyés et reçus par les clients aux échéances prévues;Ndongo Touré;ndongo.toure@orange-sonatel.com;15/09/2016;;Non fait;Les prêts seront effectués par le même module que les prêts voix ;Préventif;Manuelle;1;2;1;2;;;2

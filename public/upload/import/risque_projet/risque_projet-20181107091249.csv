@@ -1,0 +1,66 @@
+Risque;Causes;Libellé;Porteur;Email porteu ;Date début;Date de fin ;Avancement;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial;Criticité;Maturité;;;;;;;;;;;
+Risque de fraude;Failles dans le datacharging (ex IN, ISG) avec un accès gratuit au service;;;;;;;;"Existence d'un comité hebdomadaire de suivi des fraudes Data piloté par DEX/ERT
+
+Gestion des aspects sécurité des plateformes réseau (voir livrable technique)
+
+Renforcement de la sécurité via les DNS avec les boitiers SYSCURE";Préventif;Manuelle;2;1;1;;;;;2;2;;;;;;;;;;;
+Risque de lancement tardif d'offres innovantes ou promotionnelles par rapport à la concurrence, aux attentes clients ou à nos promesses;Retard dans la mise en place de la collecte des sites radio (mise en place fibre optique à la place du cuivre);Négociation de délais courts avec les fournisseurs en cas d'acquisition d'équipements;Modou Sall;Modou.Sall@orange-sonatel.com;;31/05/2015;;soldé;" - Etudes architecture technique bouclées au niveau de DRPS/DI/DAFC 
+
+- Demande adressée au fournisseur pour le renforcement des équipements de déploiement de la FO
+
+ - les extensios seront gérées hors TTM";Préventif;Manuelle;2;2;1;;2;;;4;2;;;;;;;;;;;
+Risque de non traçabilité des opérations dans les SI;Non identification des opérations LTE dans les SI;;;;;;;;"Décisionnel :
+ - Remontées des indicateurs relatifs à la LTE
+ - Prévoir reversement sur CA LTE 
+ - Les fichiers seront reçus selon le format actuel avec le dernier champ qui sera renseigné à «4G» actuellement ce champ est renseigné avec les valeurs «3G» ou «2G»";Préventif;Manuelle;1;1;1;;;;;1;3;;;;;;;;;;;
+Risque de non traçabilité des opérations dans les SI;Non identification des opérations LTE dans les SI;;;;;;;;"Médiation :
+ - Interco avec PLATINE.
+ - Identification des cas de trafic LTE
+";Préventif;Manuelle;1;1;1;;;;;1;3;;;;;;;;;;;
+Risque de manque de performance économique;Non obtention de l'autorisation d'exploiter les fréquences LTE;Elaborer un argmentaire pour rendre raisonnable les modalités financières d'exploitation du réseau LTE;Modou Sall;Modou.Sall@orange-sonatel.com;;31/05/2015;;soldé;"Existence d'un lobbying pour obtenir l'autorisation d'exploiter les fréquences LTE
+Piste: Possibilité d'utiliser les fréquences 1800 et faire du reframing dessus dans le cas où l'autorisation d'exploiter n'est pas obtenue pour les fréquences pures 4G
+
+argumentaire complet par DG fourni à l'ARTP
+";Préventif;Manuelle;2;4;4;;4;4;;8;2;;;;;;;;;;;
+Risque de non traçabilité des opérations dans les SI;Non identification des opérations LTE dans les SI;;;;;;;;Création de l’offre LTE dans les applications clients Prepaid/Postpaid (Simplissimo et POS);Préventif;Manuelle;1;1;1;;;;;1;3;;;;;;;;;;;
+Risque de lancement d'offres ou de projets non fonctionnels;Mauvaise collecte (Coupure ou fibre optique pas bien installée);;;;;;;;Choix du fournisseur Sagem pour s'assurer de la bonne collecte de la FOentre les antennes et le cœur de réseau;Préventif;Manuelle;1;2;2;;3;2;2;2;3;;;;;;;;;;;
+Risque de lancement d'offres ou de projets non fonctionnels;Absence de réactivité dans la réparation de la FO en cas de coupure;;;;;;;;"Formation des équipes d'intervention en interne et mise des processus pour la réparation
+
+Mise en place de SLA avec le fournisseur pour assurer la maintenance
+
+Supervision de la FO en temps réel par DEX avec l'outil de sup fourni par le fournsseur SAGEM";Préventif;Manuelle;2;2;2;;3;2;2;4;2;;;;;;;;;;;
+Risque de lancement d'offres ou de projets non fonctionnels;Couverture non homogène;;;;;;;;Choix des sites en fonction des critères de rentabilité définis par le marketing et la planification;Préventif;Manuelle;2;2;2;;3;2;2;4;2;;;;;;;;;;;
+Risque de dépendance vis-à-vis d'un fournisseur;Oberthur est le seul fournisseur Usim pour les clients 4G;;;;;;;;"Fourniture des premières puces par Oberthur.
+Possibilité de commander auprès de Oberthur ou de Morpho";Préventif;Manuelle;1;2;;;2;;2;2;3;;;;;;;;;;;
+Risque de lancement d'offres ou de projets non fonctionnels;Mauvaise intégration avec les réseaux (2G/3G existants);;;;;;;;" - Réseau EPC Ericson mis en place
+ - Activation CS fallback avec Huawei 
+ - Upgrade HLR avec Alcatel
+ - Ouverture du roaming 4G avec Orange France
+ - Existence de tests pour s'assurer de la bonne intégration du réseau";Préventif;Manuelle;1;2;2;;3;2;2;2;3;;;;;;;;;;;
+Risque de non maitrise des coûts;Achat d'équipement 4G lié à la fréquence 1800 Mhz alors que l'ARTP n'a pas encore attribué la frequence définitive (22 Mhz de reliquat disponible);Elaborer un argumentaire pour l'allocation des fréquences LTE 1800 Mzh à cause des investissements déjà réalisés sur ces équipements;Modou Sall;Modou.Sall@orange-sonatel.com;;31/05/2015;;soldé;Activation des fréquences 1800 avec accord ARTP;Préventif;Manuelle;1;2;2;;;;;2;3;;;;;;;;;;;
+Risque de lancement d'offres ou de projets non fonctionnels;Incompatibilité entre les terminaux existants des clients et la fréquence requise pour béneficier des services 4G;;;;;;;;Existence OTA permettant de detecter les terminaux compatibles;Préventif;Manuelle;3;2;2;;3;2;2;6;1;;;;;;;;;;;
+Risque de lancement d'offres ou de projets non fonctionnels;Choix des ressources fréquences non adaptées (basses fréquences pour la qualité de propagation et hautes fréquences pour la vitesse de telechargement);;;;;;;;Licence acquise avec la gamme 1800Mhz et celle 800Mhz;Préventif;Manuelle;1;2;2;;3;2;2;2;3;;;;;;;;;;;
+Risque de non respect des engagements commerciaux;Promesses non respectées (Débit insuffisant, temps de téléchargement, vitesse de connexion, HD);;;;;;;;"Existence de tests et envoi des débits maximaux en téléchargement liés à la fréquence à communiquer éventuellement aux clients
+Objectifs atteints lors des mesures du mois d'août avec une tendance correcte";Préventif;Manuelle;2;2;;;2;;2;4;2;;;;;;;;;;;
+Risque de non fiabilité de la facturation;Mode de facturation du SI non adapté (en fonction vitesse téléchargement ou quantité des données utilisées);;;;;;;;Définition de 3 scénarios de facturation définis par le marketing : au volume, offre spécifique 4G et offre VIP 4G only;Préventif;Manuelle;1;2;1;;2;1;2;2;3;;;;;;;;;;;
+Risque de saturation des ressources réseaux;Non allocation des ressources spectrales LTE en fonction de la taille du réseau (Ex Fréquence 1800 Mhz);;;;;;;;"Envoi d'un document sur la stratégie des fréquences souhaitées par Sonatel à l'ARTP avec des propositions
+Quelques perturbations post lancement réglées avec l'accélération de la mise en oeuvre du programme d'extension des capacités ";Préventif;Manuelle;2;3;;;3;;2;6;2;;;;;;;;;;;
+Risque de non respect des dispositions règlementaires;Non respect des obligations de couverture de l'ARTP (Ex couverture des zones non rentables);"Négocier avec l'ARTP pour limiter le programme de couverture à des sites rentables financièrement
+
+Feed back à l'ARTP par DRJ pour correction du contrat qui indique :
+   - le déploiement du réseau pilote à Dakar seulement alors que la petite côte est prévue
+   - la gratuité sur la 3G alors que c'est seulement la 4G pilote qui doit être gratuite";Modou Sall;Modou.Sall@orange-sonatel.com;;31/05/2015;;soldé;argumentaire complet par DG fourni à l'ARTP;Préventif;Manuelle;2;3;;;3;2;;6;2;;;;;;;;;;;
+Risque de sabotage ou de vandalisme;Liaison ou connectivité eNode B -> eNode B non sécurisée;Dérouler les tests et la mise en production de l'EPC;Modou Sall;Modou.Sall@orange-sonatel.com;;25/02/2017;;en cours ;Security Gateway avec la mise en œuvre de tunnels Ipsec entre eNode B & EPC déployé;Préventif;Manuelle;1;2;1;;3;;1;2;3;;;;;;;;;;;
+Risque de sabotage ou de vandalisme;Liaison ou connectivité eNode B -> coeur de réseau appelé « EPC » (Evolved Packet Core) non sécurisée;Dérouler les tests et la mise en production de l'EPC;Modou Sall;Modou.Sall@orange-sonatel.com;;25/02/2017;;en cours ;Déployer  Security Gateway avec la mise en œuvre de tunnels Ipsec entre eNode B & EPC;Préventif;Manuelle;1;2;1;;3;;1;2;3;;;;;;;;;;;
+Risque de dégradation de la qualité de service;Restrictions du fait de la mise en place de la fonctionnalité CSFB sur la CS9.0 (version actuelle des MSC);Déployer l'IMS qui va permettre de faire la voix sur la LTE sans recourir à la 3G;Mamadou Diop;mamadou_diop@orange-sonatel.com;;31/12/2017;;en cours ;Mise en place du CS fall Back qui permet de faire de la voix à travers la 3G;Préventif;Manuelle;1;2;;;3;1;2;2;3;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

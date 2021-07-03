@@ -1,0 +1,89 @@
+Risques;Causes;Libellé plan d'action;Porteur;Email porteur;Date début;Délai;Commentaires;Statut;Dispositifs de contrôle;Type;Méthode;Probabilité;Gravité;Finance;RH;Image;Juridik;Commercial
+Risque de non respect des dispositions juridiques et règlementaires;Emission de la monnaie électronique à crédit;"S'assurer du respect des disposition de l'article 5 de l’instruction BCEAO 08-056 2015 
+
+Pour le crédit, s'assurer:
+ - de l'ouverture d'un wallet  dédié au paiement des crédits accordés par Microcred à ses clients;
+ - que ce wallet dédié est alimenté en UV en contrepartie de fonds reçus  de Microcred.
+ - qu'il n'y a pas d'émission de monnaie électronique à crédit;
+
+Pour l'épargne, s'assurer qu'OFMS ne sert que de support pour ""la collecte de l'épargne et de sa rémunération"".";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;28/02/2018;Embarqué dans les exigences du cahier de charges;soldé;;;;1;2;1;;3;2;2
+Risque de non respect des dispositions juridiques et règlementaires;Paiement d'intérêts sur les fonds perçus en contrepartie des unités de monnaie électronique émises;S'assurer du respect des disposition de l'article 5 de l’instruction BCEAO 08-056 2015 ;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;28/02/2018;;soldé;;;;1;2;1;;3;2;2
+Risque de non respect des dispositions juridiques et règlementaires;Absence de couverture du risque crédit (absence de garantie pour que le client paie);"S'assurer du respect des engagements par les parties prenantes notamment les clients:
+ - S'assurer de la fiabilité des données de transaction sur les clients servant à leur scoring 
+ - Vérifier régulièrement (fréquence à définir) le respect des engagements par les parties prenantes.
+ - Définir le mode de traitement des clients ne respectant leurs engagements sur les remboursements: black listage, réduction du plafond, etc";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;;Redimensionnement du DWH - Datawarehouse (extension des serveurs) pour pouvoir envoyer les informations nécessaires au scoring daily;Non échu;;;;2;2;1;;3;2;2
+Risque de non rentabilité des offres/projets;Non remboursement des prêts par les clients;" - Monitorer le respect des échéances;
+ - Permettre au client de faire des demandes de report d'échéance avec une limite dans le temps
+ - Vérifier la pertinence du scoring et exactitude des calculs
+ - Définir le mode de traitement des clients ne respectant leurs engagements sur les remboursements: black listage, réduction du plafond, etc";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/08/2018;Monitoring du recouvrement par Microcred;Non échu;;;;1;1;1;;1;;
+Risque de lancement de projet non fonctionnel;Erreur sur le  scoring du client à l'octroi du prêt;Vérifier la pertinence du scoring et l'exactitude des calculs des montants des prêts et pourcentages - Tests à dérouler pour s'assurer du bon fonctionnement du modèle de scoring;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/08/2018;Modèle de scoring déjà utilisé par Microcred sur d'autres produits;Non échu;;;;1;2;1;1;3;2;2
+Risque de lancement de projet non fonctionnel;Erreur de calcul de l'intérêt sur l'épargne client en défaveur de l'Microcred;Vérifier la pertinence du scoring et l'exactitude des calculs des montants des prêts et pourcentages - Tests à dérouler pour s'assurer du bon fonctionnement du modèle de scoring;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/08/2018;Modèle de scoring déjà utilisé par Microcred sur d'autres produits;Non échu;;;;1;2;1;1;3;2;2
+Risque de fraude;Non utilisation des SIMS ayant servi à contracter le prêt par des clients de mauvaise foi (qui ne veut pas rembourser et qui ne veut pas être retrouver via le téléphone);" - Apprécier le niveau de perte par rapport au gain : contrôle à effectuer selon une fréquence à définir
+ - Taggage des cleints mauvais payeurs par OM et par Microcred 
+ - Scénario à définir en interne OFMS sur le traitement des cas de fraude";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/04/2018;"Microcred a souscrit à une assurance pour les crédits non remboursés
+
+Taggage des clients mauvais payeurs par OM et Microcred. Ils ne pourront plus accéder aux offres pico - tests à dérouler pour vérifier le bon fonctionnement du taggage
+";Non échu;;;;1;2;1;1;3;2;2
+Risque de non respect des engagements commerciaux;Non versement des intérêts de l'épargne aux clients;"S'assurer que Microcred dispose de moyens nécessaires (RH, matériels et financier) à la réussite de l'offre
+Verrouiller au niveau du contrat local la mise à disposition des fonds par Microcred";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;;Embarqué dans les exigences du cahier de charges;Non échu;;;;1;2;1;1;3;2;2
+Risque de non respect des engagements commerciaux;Non octroi du prêt malgré un bon scoring;Vérifier la pertinence du scoring et l'exactitude des calculs des montants des prêts et pourcentages;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;;Modèle de scoring déjà utilisé par Microcred sur d'autres produits;Non échu;;;;1;2;1;1;3;2;2
+Risque de non respect des engagements commerciaux;Erreur de calcul de l'intérêt sur l'épargne client en défaveur du client;Vérifier la pertinence du scoring et l'exactitude des calculs des montants des prêts et pourcentages;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;;Modèle de scoring déjà utilisé par Microcred sur d'autres produits;Non échu;;;;1;2;1;1;3;2;2
+Risque de communication non maitrisée ou inadaptée;"Communication inadéquate sur les modalités d'octroi et de remboursement du prêt (Prélèvement automatique des échéances échues sans accord du client/frais de retrait non intégré dans le montant consenti et à la charge du client; Restriction/blocage de services OM en cas d'impayé";"S'assurer de la mise en place d'un dispositif de communication adéquat et efficace ;
+S'assurer que Microcred dispose de moyens nécessaires (RH, matériels et financier) pour la réussite du service
+Vérifier que l'offre n'a pas d'impact négatif sur SA (% de réclamation et de plainte liées à l'offre)
+";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/08/2018;"Plan de communication 360° 
+50/50 entre microcred et OM ";Non échu;;;;1;2;1;;3;;1
+Risque de lancement de projet non fonctionnel;Incapacité de microcred à satisfaire les demandes éligibles;"S'assurer que Microcred dispose de moyens nécessaires (RH, matériels et financier) à la réussite de l'offre
+Verrouiller au niveau du contrat local la mise à disposition des fonds par Microcred";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;28/02/2018;Embarqué dans les exigences du cahier de charges;soldé;;;;1;2;1;1;3;2;2
+Risque de non respect des engagements commerciaux;Faillite de Microcred;"S'assurer de l'existence d'un dispositif garantissant le remboursement de l'épargne collectée par Microcred via Orange Money et Vérifier sa pertinence
+
+Demander à Microcred leur taux de recouvrement pour estimer le taux de fiabilité de leur modèle de scoring";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/04/2018;;Non échu;;;;1;2;1;1;3;2;2
+Risque de non respect des engagements commerciaux;Apurement du passif (remboursement de l'épargne collectée);"S'assurer de l'existence d'un dispositif garantissant le remboursement de l'épargne collectée par Microcred via Orange Money et Vérifier sa pertinence
+
+Demander à Microcred leur taux de recouvrement pour estimer le taux de fiabilité de leur modèle de scoring";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/04/2018;;Non échu;;;;1;2;1;1;3;2;2
+Risque de non respect des engagements commerciaux;Absence de dispositif garantissant le remboursement de l'épargne collectée par l'Microcred via Orange Money;"S'assurer de l'existence d'un dispositif garantissant le remboursement de l'épargne collectée par Microcred via Orange Money et Vérifier sa pertinence
+
+Demander à Microcred leur taux de recouvrement pour estimer le taux de fiabilité de leur modèle de scoring";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/04/2018;;Non échu;;;;1;2;1;1;3;2;2
+Risque de corruption;Collusion d'agent entre les RH de OM et ceux de Microcred pour bénéficier de solutions avantageuses;"Vérifier que le niveau de résilience du système de Microcred soutenant l'offre Microcred est satisfaisant: Dérouler les tests et s'assurer qu'ils sont concluants
+S'assurer de :
+ - que Microcred dispose d'une matrice de séparation des tâches au niveau de Microcred, 
+ - de la traçabilité des logs, 
+ - de la disponibilité de l'ensemble des transactions";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/08/2018;"Absence de visibilité sur la matrice de séparation des tâches de Microcred
+
+Traçabilité des logs existante pour OM
+
+Redimensionnement du DWH - Datawarehouse (extension des serveurs)  pour rendre disponible les transactions OM en temps réel";Non échu;;;;1;1;1;1;3;1;1
+Risque de fraude;Accord de crédit à des clients inéligibles;"Valider le mode de calcul du scoring avec Microcred
+S'assurer de :
+ - la conformité de la matrice de séparation des tâches au niveau de Microcred, 
+ - de la traçabilité des logs, 
+ - de la disponibilité de l'ensemble des transactions
+
+Demander à Microcred leur taux de recouvrement pour estimer le taux de fiabilité de leur modèle de scoring";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/04/2018;"Attente des tests pour s'assurer du bon fonctionnement du modèle de scoring qui est déjà utilisé par microcred sur d'autres produits. Il faudra juste intégrer les infos provenant de OM
+
+
+
+
+
+
+";Non échu;;;;1;2;1;1;3;2;2
+Risque d'indisponibilité du service;Incidents sur les plateformes de OM et/ou Microcred;"Verrouiller avec la technique côté SA le taux disponibilité du service OM 
+Verrouiller avec Microcred le taux de disponibilité de leurs plateformes concernées dans l'offre et l'existence d'un système de backup  - A mentionner dans le contrat d'application locale";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;30/03/2018;"Validation du contrat en cours avec précisions sur les SLA
+";Non échu;;;;2;2;1;;3;1;2
+Risque de lancement de projet non fonctionnel;Absence de monitoring du volume de prêt consentis;S'assurer de l'existence d'un dispositif permettant d'anticiper sur les erreurs/bug système (scoring, envoie d'UV  aux clients éligibles).;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/08/2018;Add on PICO rajouté sur Tango embarquant le monitoring;Non échu;;;;1;2;1;1;3;2;2
+Risque de divulgation d'informations confidentielles;Exploitation des données client à des fins frauduleuses;Définir le niveau de cryptage des données qui vont être communiquées à Microcred;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;30/03/2018;"Niveau de cryptage des données client imposé par Microcred
+Le nom et le numéro de téléphone n'y figurent pas";Non échu;;;;1;2;1;1;3;2;3
+Risque de non respect des dispositions juridiques et règlementaires;Exigence de Microcred de recevoir la totalité des informations client pour dérouler leur scoring;Voir avec OFMS et DRJ la réponse à apporter dans les plus brefs délais à Microcred pour qu'ils puissent finaliser leur modèle de scoring;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;30/03/2018;;Non échu;;;;4;2;1;;3;2;2
+Risque de non maitrise de l'offre;Formation inadéquate des ressources ;Dérouler le planning de formation avec DMC;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/08/2018;;Non échu;;;;1;1;1;;2;;1
+Risque de fraude;Existence de multi compte;"S'assurer que le client ne dispose pas de plusieurs comptes Orange Money
+Fiabiliser les infos sur les clients à  fournir à mirocred
+Définir la stratégie à retenir pour les clients disposant de plusieurs comptes OM";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;30/03/2018;Point embarqué dans l'EBM technique - Attente du livrable technique;Non échu;;;;2;2;1;1;3;2;2
+Risque de fraude;"Usurpation d'identité: subtilisation d'un téléphone d'autrui ou CA frauduleux
+ 
+Ex: Le fraudeur  fait un CA sur la SIM dans le but de réinitialiser son mot de passe OM et  accéder ainsi à son compte pour une demande de prêt";" - Introduire dans l'argumentaire à fournir aux plateaux l'impossibilité de faire des réinitialisations de code sur des comptes OM avec des demandes de crédit en cours
+
+ - S'assurer que la vérification des KYC soit effective au momment de la souscription";Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/08/2018;"Code OTP non prévu
+
+Délai de validation du crédit de 48hrs";Non échu;;;;1;2;1;1;3;2;2
+Risque de fraude;prêt accordé à un client full sur nomade mais dont les KYC ne sont pas encore validés;Verrouiller avec OFMS le statut full des clients déclarés comme tel: pour tout client full, tous les justificatifs doivent être disponibles et vérifiés en temps réel;Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;15/08/2018;;Non échu;;;;2;2;1;1;3;2;2
+Risque de lancement de projet non fonctionnel;Faible taux de clients full dans la base OM;Dérouler le plan boost (objectif de 50% en fin S2 et 90% en fin 2018);Aissatou Nanette Mbengue;aissatounanette.mbengue@orange-sonatel.com;;28/06/2018;;Non échu;;;;3;2;1;1;3;2;2

@@ -1,0 +1,48 @@
+Risque;Causes;Libellé PA;Porteur;Email porteur;Date début;Échéance;Commentaires;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Gravité;Finance;RH;Image;Juridique;Commercial 
+Risque de lancement d'offres ou de projets non fonctionnels;Sous dimensionnement de la plateforme l'USSD ;Attente retour de la techique sur la faisabilité de l'EBM;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/04/2017;;Soldé;"Existence d'un monitoring sur le taux de disponibilité de certaines plateformes comme l'USSD
+Etude de l'EBM positive";Préventif;Automatique;1;2;1;;2;;2
+Risque de partenariat inefficace;Perte de revenus pour les OB sur les opérations CA;;;;;;;;Les Orange Boutiques vont continuer à vendre les sims blanches;Préventif;Manuelle;1;2;;;2;;2
+Risque de lancement d'offres ou de projets non fonctionnels;Lenteurs de l'USSD;Attente retour de la techique sur la faisabilité de l'EBM;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/04/2017;;Soldé;"Existence d'un monitoring sur le taux de disponibilité de certaines plateformes comme l'USSD
+Etude de l'EBM positive";Préventif;Automatique;1;2;1;;2;;2
+Risque de fraude;Usurpation de numéro;"Réaliser des tests pour s'assurer de l'effectivité des contrôles en temps réel (données client saisies et les numéros fréquemment appelés par le client)
+
+Définir ce qu'est un numéro fréquemment appelé ";El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/06/2017;"Existence d'une requête permettant de définir ce qu'est un numéro fréquemment appelé. Définir la fréquence à retenir dans l'équipe projet
+
+Validation de la solution avec le BIG DATA pour fournir les numéros les plus fréquemment appelés.
+";Soldé;"Existence d'une réconciliation en temps réel entre les données saisies par le client et les données de Simplissimo 
+
+Mise en place d'un contrôle sur la saisie des numéros fréquemment appelés par le client avec les données d'appels du web service du Portail service client";Préventif;Automatique;2;2;;;2;;2
+Risque de fraude;swap sur des numéros actifs sur le réseau;Développer avec la technique l'impossibilité de faire des CA sur les sim en état actif sur le réseau. Dans ce cas le client sera invité à se rendre en agence ou dans une boutique.;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;04/10/2017;;Non échu;"Existence d'une réconciliation en temps réel entre les données saisies par le client et les données de Simplissimo 
+
+Mise en place d'un contrôle sur la saisie des numéros fréquemment appelés par le client avec les données d'appels du web service du Portail service client";Préventif;Automatique;3;2;;;2;;2
+Risque de non fiabilité des données clients;saisie erronnée des données d'identification du client;"Réaliser des tests pour s'assurer de l'effectivité des contrôles en temps réel (données client saisies et les numéros fréquemment appelés par le client)
+
+Définir ce qu'est un numéro fréquemment appelé ";El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/06/2017;"Existence d'une requête permettant de définir ce qu'est un numéro fréquemment appelé. Définir la fréquence à retenir dans l'équipe projet
+
+Validation de la solution avec le BIG DATA pour fournir les numéros les plus fréquemment appelés.
+";Soldé;"Existence d'une réconciliation entre les données saisies par le client et les données de Simplissimo à traver le code PUK/IMSI
+
+Mise en place d'un contrôle sur la saisie des numéros frequemment appelés par le client avec les données d'appels du web service du Portail service client";Préventif;Automatique;2;2;2;;3;2;2
+Risque de fraude;Indisponibilité de réconcilier les informations saisies par le cliente en temps réel avec les informations de simplissimo;"Vérifier avec DSI le taux de disponiblité de Simplissimo
+Voir quel message sera envoyé au client en cas d'impossibilité de réconcialiation des données";El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/04/2017;;Non échu;;;;1;2;;;2;;2
+Risque de non fiabilité des données clients;Saisie erronnée des données d'IMSI, PUK;Réaliser des tests pour s'assurer de l'effectivité des contrôles de conformité entre le couple (IMSI, PUK) saisie par le client et les données de simplissimo;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/04/2017;;Soldé;Existence d'un contrôle de conformité entre le couple (IMSI, PUK) saisie par le client avec les données de simplissimo;Préventif;Automatique;1;2;2;;3;2;2
+Risque de lancement tardif ;création tardive de fonctionnalité simplissimo pour permettre aux SAU-SAVR de traiter les cas d'echec de CA;;;;;;;;Existence d'un planning DIS sur les différentes étapes du projet avant la mise en production;Préventif;Manuelle;1;1;;;1;;2
+Risque de non fiabilité des données clients;Saisie erronnée des données d'IMSI, PUK;"S'assurer que le verrou suivant est bien fonctionnel:
+
+Permettre 3 tentatives de saisie au client avec un message lui demandant de se rendre en boutique ";El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;04/10/2017;;Non échu;"Existence d'un contrôle de conformité entre le couple (IMSI, PUK) saisie par le client avec les données de simplissimo
+
+";Préventif;Automatique;2;2;2;;3;2;2
+Risque de non traçabilité des opérations dans les SI;Pas de tracabilité du numéro de téléphone (MSISDN) embarqué dans le terminal qui a servi à effectuer l’opération de changement de carte SIM en selfcare;"Attente retour de DSI sur la faisabilité de l'EBM
+
+Réaliser des tests pour s'assurer de l'effectivité de la tracabilité des opérations demandées par DSC/DIS";El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/04/2017;;Soldé;Tests concluants. Traçabilité ok;Préventif;Automatique;1;2;;;2;;2
+Risque de fraude;Pas de tracabilité du numéro de téléphone (MSISDN) embarqué dans le terminal qui a servi à effectuer l’opération de changement de carte SIM en selfcare;Empêcher les nouvelles sims de faire du self swim swap - Définir les critères des sims à partir desquelles les clients peuvent faire du swap;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;04/10/2017;;Non échu;;;;2;2;;;2;;2
+Risque de non traçabilité des opérations dans les SI;Pas de tracabilité en cas d'échec  des identifiants de l’agent SAU-SAVR qui a réellement fait le CA dans SIMPLISISMO;Réaliser des tests pour s'assurer de l'effectivité de la tracabilité des opérations effectuées par le SAU/SAVR dans le profil;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/04/2017;;Soldé;Traçabilité de l'ensemble des interventions. Tests concluants;Préventif;Automatique;1;2;;;2;;2
+Risque de non fiabilité de l'information pour le pilotage;Absence de visibilité sur les cas d'échec de CA sur l'USSD;Définir la liste des KPI sur les cas d'échec de CA sur l'USSD;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;04/10/2017;;Non échu;;;;1;2;;;2;;2
+Risque de non maîtrise du stock;Activation par un commercial d'une sim blanche qui n'est pas initialement dans le stock de ce commercial;Réaliser des tests pour s'assurer de la décrementation du stock du commercial détenteur du stock intialement;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/04/2017;;Soldé;"Décrémentation du stock du commercial à l'image du process actuel
+
+Décrémentation de la base commune simplissimo de production pour l'activation des sims blanches des clients en cas d'assistance";Préventif;Automatique;2;1;1;;;;
+Risque de non maîtrise du stock;absence de limites sur le nombre de sims blanches que peut acheter un client final;;;;;;;;le concept du self sim swap est de vendre les sims sans identification des clients;Préventif;Automatique;3;1;1;;;;
+Risque de lancement d'offres ou de projets non fonctionnels;rupture de stocks des sims blanches;S'assurer de la correcte ventilation des sims blanches sur les différents points de vente et du respect de la vente selon les prévisions;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;04/10/2017;Attente retour DAL;Non échu;;;;1;2;1;;2;;2
+Risque de lancement d'offres ou de projets non fonctionnels;impossibilité de réutiliser une sim blanche dont le 1er swap a échoué;S'assurer avec la technique que les sims blanches avec un swap non abouti pourront être réutilisées pour d'utres swap;El Hadj Seydou Diao;es.diallo@orange-sonatel.com;;28/04/2017;;Soldé;tests concluants. Aucune limite sur le nombre de fois qu'une sim swap peut être utilisée;Préventif;Automatique;2;2;1;;2;;2
+Risque de fraude;Récupération d'un compte OM d'autrui;;;;;;;;"Pas de réinitialisation de code OM en ligne pour un numéro objet de Self Sim Swap dans les 7jours suivants
+";préventif;Manuelle;2;2;;;2;;2

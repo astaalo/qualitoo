@@ -1,0 +1,30 @@
+Risque (points d'attention);Causes (facteurs potentiels à l'origine de ces points d'attention);Libellé PA (réponses ou solutions en cours pour couvrir les points d'attention identifiés);Nom Porteur;Email porteur;Date début;Date fin;Avancement du plan d'action;Statut du plan d'action;CONTRÔLE DESCRIPTION (réponses ou solutions aux points d'attention identifiés);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client;Criticité;Maturité
+risque de non respect des engagements commerciaux;débit effectif inférieur au débit annoncé;"contractualiser le débit dédié et les sla fournis par les carriers
+Superviser le débit fourni au client
+Dérouler les tests nécessaires pour s'assurer de la founiture garantie du débit annoncé";Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/05/2018;;Non échu;"Monitoring du backbone en temps réel:
+- basculement sur le lien secours en cas de dégradation du lien principal en-deçà du lien de secours
+- correction de la ligne primaire s'il n'y a pas lieu de basculement";préventif;automatique;1;2;3;1;3;1;4;;3
+risque de non respect des engagements commerciaux;non interopératibilité des équipements de sonatel et ceux des carriers;S'assurer que le chantier technique déroule convenablement les configurations sur les équipements d'extrémité devant être interconnectés;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/05/2018;;Non échu;;;;2;2;3;1;3;1;4;;2
+Risque de dégradation de la QoS;rupture des câbles sous-marins;Mettre en place un lien secours vers le pop du carrier;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/05/2018;"Architecteure proposée par la technique:
+- lien dédié sur ace
+- secours internet sur sat3 (0 dépendance vis à vis de TIS)";Non échu;Obligation d'un taux de charge de 40% sur les liens Internet (ACE et SAT3) donc garantie du débit en cas de rupture de ACE;préventif;automatique;2;2;3;1;2;;2;;2
+risque de non respect des engagements commerciaux;dégradation de la qualité/débit vendue au client en cas de rupture de câble;Mettre en place un lien secours vers le pop du carrier;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/05/2018;"Architecteure proposée par la technique:
+- lien dédié sur ace
+- secours internet sur sat3 (0 dépendance vis à vis de TIS)";Non échu;"garantie des SLA sur notre backbone et jusqu'à notre dernier POP de sortie
+
+Résultats de bench fournis à la technique
+
+Obligation d'un taux de charge de 40% sur les liens Internet (ACE et SAT3) donc garantie du débit en cas de rupture de ACE";préventif;automatique;2;2;3;1;3;1;4;;2
+Risque de non rentabilité des offres/projets;lancement tardif du projet;intégration de la perte probable de CA dans le BP dû au retard de déploiement de l'offre;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/05/2018;;Non échu;;;;3;2;3;1;2;;;;1
+Risque de non rentabilité des offres/projets;offre de niveau 2 non disponible;Bien documenter dans l'offre l'indisponibilité du niveau 2 dans le secours pour les clients le désirant;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/05/2018;;Non échu;Le niveau 2 ne sera pas disponible sur secours avec l'Internet mais il sera disponible sur le lien primaire;préventif;automatique;2;2;3;1;2;;;;2
+Risque de non rentabilité des offres/projets;churn des clients vers les concurrents disposant déjà des offres Ethernet et disposant des câbles sous-marins (expresso, mauritel, orange CI, etc);Diligenter la mise en œuvre de l'offre Ethernet over SDH ;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/05/2018;;Non échu;;;;3;2;3;1;2;;;;1
+Risque de lancement de projet non fonctionnel;absence de garantie sur les SLA (sur le tronçon sénégal) fournie par la technique en local aux clients;"S'appuyer sur les sla de bench pour fournir des sla qui se rapprochent des standards internationaux
+
+Rajouter les VR (MTTR et MTTI) et évaluer  notre compétitivité sur le marché international";Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/05/2018;"Architecteure proposée par la technique:
+- lien dédié sur ace
+- secours internet sur sat3 (0 dépendance vis à vis de TIS)";Non échu;"garantie des SLA sur notre backbone et jusqu'à notre dernier POP de sortie
+
+Résultats de bench fournis à la technique
+
+Obligation d'un taux de charge de 40% sur les liens Internet (ACE et SAT3) donc garantie du débit en cas de rupture de ACE";préventif;automatique;3;3;3;1;3;;3;;1
+Risque de lancement de projet non fonctionnel;dépendance vis-à-vis d'un seul carrier (PCCW);;;;;;;;Possibilité à tout moment de renégocier un devis avec un autre carrier même sans contrat pré existant;préventif;manuelle;1;2;2;1;3;;3;;

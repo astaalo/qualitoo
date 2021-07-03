@@ -1,0 +1,46 @@
+Risque;Causes;Libellé;Porteur;Email porteur;Date début;Date fin;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial;Criticité;Maturité
+Risque de fraude;Divulgation de codes;;;;;;;" - Le Client initialise son code à l'inscription à OM (compte fourni avec code ""0000"" à changer obligatoirement par le client)
+ - Le Client a la possibilité de changer son code à partir de son menu directement";Préventif;Manuel;1;2;1;;2;3;2;2;
+Risque de fraude;Positionnement irrégulier d'UV dans un compte par un admin;;;;;;;" - Existence d'une matrice de distribution qui définit les flux entre les différents comptes (compte principal, comptes distributeurs et comptes clients)
+ - Existence d'une matrice des rôles qui définit les profils et leurs habilitations dans Tango";Préventif;Manuel;1;;;;;;;;
+Risque de fraude;Positionnement irrégulier d'UV dans un compte par un admin;;;;;;;Existence de logs et d'identifiants par utilisateur (y compris admins) tracés dans le SI;Détectif;Manuel;1;;;;;;;;
+Risque de fraude;Habilitation d'un client fraudeur (cible);;;;;;;" - Existence d'une procédure d'identification à l'inscription et pour tous les changements sur le compte
+ - En cas de décès du titulaire , le compte OM rentre dans l'héritage
+ - Existence de seuils en montant et en nombre de transactions (journaliers, hebdomadaires et mensuels)";Préventif;Manuel;1;;;;;;;;
+Risque de fraude;Habilitation d'un client fraudeur (cible);;;;;;;" - Contrôle mensuel des flux par la Banque partenaire 
+ - Rapprochement tous les 15 jours par la Banque partenaire de notre parc avec la liste noire des Nations Unies et remontée en cas de suspiscion ou de cas avéré pour résiliation du compte";Détectif;Manuel;1;;;;;;;;
+Risque de non traçabilité des opérations dans les SI;Suppressions irrégulières des transactions par les admins;"Conservation de l’archive des logs et des identifiants par utilisateur  dans l’outil Arcsight en cours d'étude ave Bytetech
+";Souleymane Ba;souleye.ba@orange-sonatel.com;1-janv.-16;30-juin-16;En cours;La traçabilité est assurée coté Middelware.;Détectif;Auto;1;1;1;;;;;1;
+Risque de non traçabilité des opérations dans les SI;Faible durée de conservations des transactions (3 mois) ; -  Assurer l'archivage  des informations financières conformément à la durée légale  de 10 ans.;Souleymane Ba;souleye.ba@orange-sonatel.com;1-janv.-16;30-juin-16;En cours;" - Existence de global reporting (lien avec Tango) qui donne les transactions journalières, hedo et mensuelles sur les produits sur au moins 1 an
+ - Intégration de WALL STREET dans le global reporting
+- Possibilité de recourir à Orange France pour avoir des informations sur des transactions anciennes dans Tango
+";Préventif;Manuel;2;;;;;;;;
+Risque de non traçabilité des opérations dans les SI;Indisponibilité des informations pertinentes pour le pilotage et les contrôles;;;;;;;"Distinction du compte WALL STREET  dans Tango pour des soucis de Reporting et de comptabilisation
+
+création d'une ligne d'encaissement pour les cartes OM dans GAIA";Préventif;Manuel;1;;;;;;;;
+Risque de lancement d'offres ou de projets non fonctionnels;Interconnexion des équipements Tango, plateforme OM et plateforme SGBS;;;;;;;Mise en place de 2 LS entre SGBS et Sonatel pour assurer la sécurité et la continuité du service ;Préventif;Auto;1;1;1;;1;;;1;
+Risque de non fiabilité de la facturation;Difficultés d'éclater les frais de transactions (entre SGBS, COMPENS);Prévoir dans le contrat avec la Banque un seuil d'écart tolérable entre leur fichier et le notre (transactions Tango) et préciser la source (fichier Banque ou Tango) qui fait foi;Souleymane Ba;souleye.ba@orange-sonatel.com;1-janv.-16;30-avr.-16;Non échu;" - Existence d'un compte Wall Street dans Tango et différenciation des transactions
+ - Détermination dans le contrat des taux de répartition avec la Banque
+ - Création d'un compte (équivalent à 3 jours de transactions) dépôt à la SGBS préalimenté 
+ - Réconciliation à J+1
+ - Envoi quotidien d'un fichier Rlys par SGBS contenant toute les transactions
+ - reversement à J+3 par DFC";Préventif;Manuel;1;2;1;;2;1;2;2;
+Risque de non respect des engagements commerciaux;Indisponibilité des plateformes orange money ;;;;;;;"Priorisation des SMS OM sur les SMS Telco
+Supervision des plateformes OM et USSD
+
+Mise en place de 2 LS entre SGBS et Sonatel pour assurer la sécurité et la continuité du service 
+";Préventif;Manuel;1;2;1;;2;2;2;2;
+Risque de non respect des engagements commerciaux;Transaction non aboutie dûe à une interruption du service des GAB (coupure liaison, rupture stock billets, bourrage…);Communiquer au client les conditions de remboursement en cas de retrait non abouti et identifier le canal de communication;Souleymane Ba;souleye.ba@orange-sonatel.com;1-janv.-16;15-avr.-16;Non échu;" - Cash In en différé du compte client en cas de non remise de la somme demandée 
+ - Information donnée au client par le 1441 suite appel du client";Préventif;Manuel;1;;;;;;;;
+Risque de non respect des dispositions juridiques et réglementaires;Client non informé des frais de retrait de 500F supplémentaires;Communiquer sur les frais de 500F supplémentaires et identifier le canal de communication (chantier comunication);Souleymane Ba;souleye.ba@orange-sonatel.com;1-janv.-16;15-avr.-16;Non échu;;;;1;2;1;;2;;3;2;
+Risque de non respect des engagements commerciaux;500frs prélevés sur le compte OM du client sans que le retrait ne soit effectif ;S'assurer lors des tests que les frais de 500F ne seront prélevés qu'une fois le rerait effectué;Souleymane Ba;souleye.ba@orange-sonatel.com;1-janv.-16;30-juin-16;soldé;les 500frs ne seront prélevés qu'une fois le retrait effectué. Tests effectués et concluants;Préventif;Manuel;1;;;;;;;;
+Risque de non respect des engagements commerciaux;Demande de code infructueuses;;;;;;;Mise en place des règles de sécurité et de disponibilité du serveur OTP logé à Orange France;Préventif;Auto;1;;;;;;;;
+Risque de divulgation d'information confidentielle;Transmission de la base des clients à des tiers;;;;;;;Clause de confidentialité incluse dans le contrat avec la banque partenaire;Préventif;Manuel;1;2;1;;3;3;2;2;
+Risque de non fiabilité de l'information financière;Difficultés de traitement (réconciliation) des fichiers de compensation pour les besoins des réglements;;;;;;;Choix de Tango ID qui fait l'objet de rapprochement électronique;Préventif;Manuel;1;1;1;;;;;1;
+Risque de non fiabilité de l'information financière;Erreur de règlement de la banque partenaire ;;;;;;;Réconciliation avec les données de la Banque avant paiement;Préventif;Manuel;1;;;;;;;;
+Risque de non fiabilité de l'information financière;Non différenciation des transactions WALL STREET des transactions standard Orange Money (Transactions via USSD…) au niveau des exports AP/GL ;"Présenter le projet à DFC/DPC pour reprécision de tous les besoins d'information au niveau de la Comptabilité et prise en compte dans le paramétrage de l'offre dans Tango
+
+Tests du déversement de Oracle dans Tango lors de la mise en production";Souleymane Ba;souleye.ba@orange-sonatel.com;1-janv.-16;15-mai-16;Non échu;Compte WALL STREET distinct dans Tango;Préventif;Auto;2;;;;;;;;
+Risque de partenariat inefficace;Mauvais choix du partenaire;;;;;;;Définition des critères de choix du partenaire;Préventif;Manuel;1;2;1;;2;1;2;2;
+Risque de partenariat inefficace;Discontinuité du service;;;;;;;Mise en place de 2 LS entre SGBS et Sonatel pour assurer la sécurité et la continuité du service ;Préventif;Auto;1;;;;;;;;
+Risque de lancement tardif ;HSM non redondé;Faire un retour sur la décision d'étudier en parrallèle la possibilité d'avoir une redondance automatique pour toute la chaine wall street Orange Money.;Souleymane Ba;souleye.ba@orange-sonatel.com;1-janv.-16;30-juin-16;En cours;HSM redondé;Préventif;Auto;3;1;1;;1;;;3;

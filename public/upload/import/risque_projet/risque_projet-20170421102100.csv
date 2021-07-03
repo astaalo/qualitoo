@@ -1,0 +1,38 @@
+Risque (points d'attention);Causes (facteurs potentiels à l'origine de ces points d'attention);Libellé PA (réponses ou solutions en cours pour couvrir les points d'attention identifiés);Porteur;Email du porteur;Date de fin;Avancement;Statut;CONTRÔLE DESCRIPTION (réponses ou solutions mises en place por couvrir les points d'attention identifiés);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client;Criticité;Maturité 
+Risque de fraude;Livraison de produits sans paiement par le client;"Verrouiller le paiement comme condition sinequanone au déclenchement du processus de livraison
+Procéder à des extractions régulières (reporting) pour détection des écarts ";Liliane Laoualy - Natacha Pinto;liliane.sambou@orange-sonatel.com;20/01/2017;;soldé;"Les commandes sont déclenchées par le paiement.
+Tous les achats sont validés en ligne par le client. Trois types de paiement: par CB, OM et paypal
+Call 2 de confirmation de la commande du client avant livraison";Préventif;Automatique;1;2;1;2;1;1;3;;
+Risque de fraude;usurpation d'identité lors du paiement par le client;"Formulaire d'identification à faire signer par le client lors de la livraison avec identification de la CNI à l'appui
+
+
+voir avec EL Hadj Diagne de OM les conditions de gestion du compte OM pour les btob
+
+Verrouiller les formats des champs d'identification (RC-NINEA, CNI, etc)";Liliane Laoualy - Natacha Pinto;liliane.sambou@orange-sonatel.com;31/03/2017;;Non échu;"logging du client avant d'arriver au stade du paiement
+ - le paiement par CB est fait sur une interface tierce
+ - paiement par OM: confirmation par le client avec un code court (OTP) généré automatiquement par le système et qu'il reçoit par sms  quand il paye
+
+Formulaire d'identification à faire signer par le client lors de la livraison avec identification de la CNI à l'appui";Préventif;Automatique;3;2;1;2;1;1;3;;
+Risque de fraude;Piratage de Eshop;"A vérifier avec DSI/DIF:
+ - preuve de régularité des contrôles effectués
+ - outils d'auto évaluation des contrôles effectués
+ - vérifications régulières et indépendantes
+ - rapprochement indépendant, 
+ - stratégie sécurité DSI
+
+Dérouler les tests avant la mise en production";"Liliane Laoualy - Natacha Pinto
+Souleymane Thiongane";liliane.sambou@orange-sonatel.com;25/01/2017;;soldé;"Implémentation des firewalls, de la gestion des mots de passe et des installations de secours finalisée
+
+stratégie de sécurité des
+
+tests effectués concluants - dernières erreurs en cours de correction";Préventif;Automatique;2;2;1;2;1;1;3;;
+Risque de fraude;insuffisance dans l'identification des admin et intervenants;"S'assurer de la traçabilité des opérations réalisées par les admins
+Identifier les différents intervenants sur le site et Définir leurs habilitations ";"Liliane Laoualy - Natacha Pinto
+Souleymane Thiongane";liliane.sambou@orange-sonatel.com;31/03/2017;admins utilisateurs à définir;Non échu;système de traçabilité ok;Préventif;Automatique;1;2;1;2;1;1;3;;
+Risque de fraude;nombre de retours illimités/client;"Calquer sur le modèle satisfait ou remboursé
+Définir les conditions de rétractation des clients";Liliane Laoualy - Natacha Pinto;liliane.sambou@orange-sonatel.com;31/03/2017;En attente des inputs de DFC ;en cours;;;;1;2;1;2;1;1;3;;
+risque de fraude;absence de détection de comportements frauduleux;Voir avec DFC/CRA si les dispositifs nécessaires à la détection de la fraude digitale existent. Sinon identifier ceux à mettre en place;Anta Dioum Gning;anta.dioum@orange-sonatel.com;31/03/2017;En attente des inputs de DFC ;en cours;;;;2;2;1;2;1;1;3;;
+risque de fraude;incompatibilité de tâches: enregistrement de la vente et régularisation de la vente;Conduire un atelier process avec DRC et Tenir compte de la séparation des tâches dans la mise en place de l'organisation - mise à jour des procédures; Natacha Pinto;MarieClaudiaNatacha.PINTO@orange-sonatel.com;20/01/2017;;soldé;"rédaction du process de prise de commande jusqu'à livraison ok
+process de vente calqué sur le mode de foctionnement actuel";Préventif;Manuelle;1;2;1;2;1;1;3;;
+Risque de fraude;Détournement des colis à livrer chez le client;"Conduire un atelier avec DFC sur le contrat et Contractualiser le paiement de pénalités si le produit n'est pas livré au client suivant les conditions annoncées
+Calquer sur le contrat shop in shop jumia ";Liliane Laoualy - Natacha Pinto;liliane.sambou@orange-sonatel.com;27/02/2017;;soldé;livraison par le coursier de DDE ou en coordination avec le gestionnaire de flotte des clients ;Préventif;Manuelle;1;2;1;2;1;1;3;;

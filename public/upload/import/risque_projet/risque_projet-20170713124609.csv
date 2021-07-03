@@ -1,0 +1,67 @@
+Risque (points d'attention);Causes (facteurs à l'origine des points d'attention);Libellé PA;Porteur;Email porteur;date début;Echeance;Commentaires;Statut;CONTRÔLE DESCRIPTION (réponses aux causes identifiées);Type de contrôle;Méthode de contrôle;Proba;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial
+Risque de non respect des dispositions juridiques et réglementaires;"Perception négative des clients ""surveillance de la vie privée"" ";"Définir les scripts des hotlines internes et externes à re adapter
+
+Réaliser des tests de tous les scripts sur un échantillon de clients ";Tidiane Cissé;tidiane.cisse@orange-sonatel.com;;28/02/2017;;Non échu;;;;1;3;1;;3;4;4
+Risque de non respect des dispositions juridiques et réglementaires;"Accord client non sollicité pour l'acceptation de la ""surveillance de la vie privée"" ";Finaliser la demande d'accord de la CDP;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;15/03/2017;;soldé;"Demande de l'accord de la CDP en cours
+Premier retour de la CDP. Procédure en cours
+
+Retour positif de la CDP sur tout ce qui est big data, cem, etc";Préventif;Manuelle;1;3;;;;;
+Risque de non respect des dispositions juridiques et réglementaires;Absence de définition des plages horaires d'envoi des messages aux clients;Définir les plages horaires d'envoi des messages aux clients selon les types de clients (voir process);Tidiane Cissé;tidiane.cisse@orange-sonatel.com;;28/02/2017;;Non échu;;;;1;3;;;;;
+Risque de non fiabilité des données clients;Non exhaustivité des données clients recupérées des sondes ;"Réaliser des tests sur des échantillons avant lancement du projet
+
+Réaliser le monitoring pour des maintenances curatives";Tidiane Cissé;tidiane.cisse@orange-sonatel.com;12/07/2017;26/07/2017;;Non échu;;;;1;2;1;;2;;2
+Risque de non fiabilité des données clients;Non fiabilité des données clients renseignées dans les SI;"Définir le mode et la fréquence de renseignement/mise à jour des données clients dans les SI concernés
+
+Voir avec le marketing le pourcentage d'assurance des informations client du SI";El H. Birahim Gueye;ebgueye@orange-sonatel.com;;31/07/2017;"Fréquence de remontée des infos venant de la base clients: 2fois/jour
+Incohérences détectées. Ex: de simplissimo: IMSI en double actif en même temps";Non échu;"Mise à jour semestrielle des contacts clients DDE
+Mode et fréquence définis dans la phase des spécifications. Attente phase test";Préventif;Manuelle;4;2;;;;;
+Risque de non fiabilité des données clients;Fréquence de refreshing des informations clients inadaptée;Définir les scripts de contrôle de l'alimentation des données;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;31/07/2017;Script développé en one shot. A industrialiser;En cours;;;;2;2;;;;;
+Risque de non traçabilité des informations;Absence de traçabilité des actions réalisées au niveau des plateformes CEM;"Définir les logs durant les spécifications fonctionnelles
+Relancer le fournisseur sur le niveau et type de log qu'il pourra fournir en dehors de connexion/déconnexion et audit";El H. Birahim Gueye;ebgueye@orange-sonatel.com;17/07/2017;21/07/2017;Les logs sont définis. A verrouiller dans les tests sécurité non encore déroulés;Non échu;;;;2;2;1;;2;2;3
+Risque de divulgation d'informations confidentielles;Accès aux données sensibles des clients. Ex: numéros de téléphone, nom du client, localisation;"S'assurer durant la phase de specification et de recettes qu'il y'a :
+ - les contrôles d'habilitation (call center; accès aux infos comportementales du client: appels-sms-transactions OM; etc)
+ - la définition de la politique d'habilitation
+- Définition des informations à masquer
+
+Vérifier que les contenus sont bien masqués (ex: contenu des sms, etc) et qu'ils ne sont accessibles à aucun niveau d'intervention (admin à agents front)";Tidiane Cissé;tidiane.cisse@orange-sonatel.com;;31/07/2017;;En cours;"Les sondes ne remontent pas les contenus des sms
+3 types de profils ont été dégagés: call center, marketing, technique
+Partage en cours avec le groupe sur un use case qui prendra en compte les problématiques fraude du big data
+
+Définition d'une matrice d'habilitation par profil par DSC/DIS";Préventif;Manuelle;3;3;1;;3;3;3
+Risque de divulgation d'informations confidentielles;Sécurisation insuffisante ou absente des accès (logique et physique) aux serveurs de la plateforme;"S'assurer que toute l'infrastructure se retrouve dans la salle data center
+
+Garantir l'application de la politique de sécurité des profils admins";Oumar SOW;oumar.sow@orange-sonatel.com;;28/02/2017;;soldé;"Les serveurs sont à Médina. 0 back up
+matrice d'habilitation ok";Préventif;Manuelle;2;3;;;;;
+Risque de divulgation d'informations confidentielles;Absence de cloisonnement des informations clients par univers Ex VIP, High value et entreprises (la question porte dans ce cas sur le mode de gestion/présentation des infos et les requêtes possibles VS le profil de ceux qui y interviennent et leur périmètre d'intervention);"Etudier la possibilité avec le fournisseur d'intégrer la gestion par portefeuille/gestion de flotte et par profil dans le SI CEM
+
+Voir les spécifications CRM B2B pour benchmarking et modalités d'application";Moustapha NIANG;moustaphaniang@orange-sonatel.com;;31/07/2017;;Non échu;fonctionnalité non embarquée. Fourniture d'un workaround. Les informations seront disponibles sous format csv;Préventif;Automatique;3;3;;;;;
+Risque d'indisponibilité de service;Dysfonctionnement des interfaces;Inclure le monitoring dans les outils de monitoring du SI;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;31/07/2017;;Non échu;;;;1;2;1;;2;;2
+Risque d'indisponibilité de service;Indisponibilité des plateformes de service;Identifier les liaisons critiques et définir le mode de redondance + monitoring;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;31/07/2017;"Les liaisons critiques sont déjà identifiées (3: big data-CEM, big data-CRM, sondes-big data) + réseau-big data
+Redondance non encore mise en place";Non échu;;;;2;2;;;;;
+Risque de lancement de projet non fonctionnel;Définition erronée des kpi à implémenter et à suivre;Mettre en place une phase de spécification détaillée avec l'intégrateur;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;28/02/2017;;soldé;"conduite de l'analyse de gap
+ateliers de spécifications tenus au technopole entre les 24 et 26 mai avec une définition du main kpi QOE ( qualité de l'expérience client)
+";Préventif;Manuelle;2;1;1;;1;;
+Risque de lancement de projet non fonctionnel;Implémentation erronée des kpi à suivre;;;;;;;;"Mode AGILE
+Livraison par lot et non pas par indicateur
+Développement en cours d'une interface par le fournisseur  qui permettra à SN de rajouter des indicateurs par petit groupe (à définir). Au-dlà, des change requests seront nécessaires
+
+point d'attention: s'assurer que les spécifications sont bien claires et que les recettes correctement faites";Préventif;Manuelle;2;1;;;;;
+Risque de lancement de projet non fonctionnel;Formation inadaptée ou insuffisante des différents intervenants/exploitants des infos;Intégrer les utilisateurs clés du SI CEM dans le groupe de projet à  former en 1er pour servir de formateurs relais;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;15/03/2017;Les utilisateurs clés sont déjà intégrés;soldé;;;;2;1;;;;;
+Risque de lancement de projet non fonctionnel;Difficultés à intégrer et exploiter les données de sortie;Spécifier tous les besoins de traitement externe lors de l'expression des besoins;Tidiane Cissé;tidiane.cisse@orange-sonatel.com;;28/02/2017;;soldé;"deux sortie possibles: visuel (graph) et sous forme de rapport (reporting, …)
+besoins de traitement calqués sur ceux du mali et Embarqués d'office";Préventif;Automatique;2;1;;;;;
+Risque de lancement de projet non fonctionnel;Données inaccessibles pour du monitoring en temps réel;"S'assurer que l'alimentation passe par le big data
+Redonder la partie web (l'IHM)";El H. Birahim Gueye;ebgueye@orange-sonatel.com;;15/03/2017;choix de ne pas redonder la partie web ;soldé;utilisation de la plateforme big data qui par essence redonde l'information;Préventif;Automatique;1;1;;;;;
+Risque de lancement de projet non fonctionnel;Process impactés non mis à jour;"Identifier tous les process impactés par le projet CEM au niveau des Directions DSC, DDE, DMGP et DRPS pour une mise à jour.
+
+Associer les PQSE pour une meilleure analyse/identification des process impactés";Tidiane Cissé;tidiane.cisse@orange-sonatel.com;;28/02/2017;;soldé;choix de partir sur deux used cases uniquement: les process impactés sont identifiés;Préventif;Manuelle;3;1;;;;;
+Risque de lancement de projet non fonctionnel;Organisation inadaptée/inachevée des départements impactés (service client, marketing, commercial, etc);Procéder à une sensibilisation des acteurs dans les différentes coordinations des directions impactées DSC, DDE, DMGP et DRPS.;Tidiane Cissé;tidiane.cisse@orange-sonatel.com;;28/02/2017;;soldé;Sensibilisation des acteurs effectuée dans les différentes coordinations des directions impactées: DSC, DDE, DMGP et DRPS.;Préventif;Manuelle;3;1;;;;;
+Risque de lancement tardif du projet;Tektronix, Otari, sondes (et autres applis sources d'infos comme Nomade, CRM) non opérationnel;Verrouiller en collaboration avec DAL/RSI tous les points d'attention liés à l'approvisionnement qui peuvent être sources de retard de lancement du projet;Abdoulaye Thiombane;abdoulaye.thiombane@orange-sonatel.com;;31/05/2016;;soldé;"Contrat en cours avec Tektronix -
+Utilisation des serveurs affectés au big data non encore utilisés en attendant l'arrivée de la commande de CEM";Préventif;Manuelle;3;1;1;;1;;
+Risque de lancement tardif du projet;Retard dans l'acquisition des serveurs ;Suivi avec DAL de la commande de serveurs en cours;Abdoulaye Thiombane;abdoulaye.thiombane@orange-sonatel.com;;31/05/2016;;soldé;Utilisation des serveurs affectés au big data non encore utilisés en attendant l'arrivée de la commande de CEM;Préventif;Manuelle;1;1;;;;;
+Risque de lancement tardif du projet;"Retard de mise à disposition du chef de projet et de l'admin
+Insuffisance des RH vs le besoin en JourHomme";Coordonner avec la DSI et la DRH la mise à disposition à temps des nouvelles ressources du projet;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;28/02/2017;;soldé;;;;3;1;;;;;
+Risque de lancement tardif du projet;Corruption des données durant le traitement;Valider les scripts de transformation (tests usine) à chaque livraison de fonction / cahier de recettes;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;31/07/2017;"Prévu pour l'extraction des données de sonde
+Toutes les fiches de tests sont déjà définis dans le livrable t1";En cours;;;;2;1;;;;;
+Risque de lancement de projet non fonctionnel;Non adhésion des équipes au CEM;Procéder à une sensibilisation des acteurs dans les différentes coordinations des directions impactées (DSC, DDE, DMGP) et DRPS.;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;15/03/2017;séances tenues avec DRPS, DMGP et DDE. Reste DSC;soldé;Séances tenues avec DRPS, DMGP et DDE. Reste à les tenir avec DSC;Préventif;Manuelle;2;1;;;;;
+Risque de lancement de projet non fonctionnel;échec dans l'intégration des données;;;;;;;;Tests progressifs à différentes phases avant la reette définitive;Préventif;Manuelle;2;1;;;;;
+Risque de lancement tardif du projet;Indisponibilité des RH devant convertir les infos big data;Sous-traiter avec une SSII;El H. Birahim Gueye;ebgueye@orange-sonatel.com;;30/05/2016;;soldé;Contractualisation avec une RH d'une SSI (IDYAL) payée en jour/homme;Préventif;Manuelle;3;1;;;;;

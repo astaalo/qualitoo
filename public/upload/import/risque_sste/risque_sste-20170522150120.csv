@@ -1,0 +1,227 @@
+SITE;Domaine d'activité;Activité/ Equipement;type(activite ou equipement);Propriétaire;Danger;Mode de fonctionnement;Risque;Lieu;Manifestation;Dispositif de maîtrise (contrôles);Type de contrôle;Méthode de contrôle;Description PA;Porteur;date de debut;date de fin;avancement du PA;Statut;Probabilité/Exposition;Gravité;Criticité;Maturité
+Mbour FH;;Véhicules;;;Absence d'airbag dans les véhicules;A;Risque d'accident;Poste de travail;Polytraumatisme (fracture, entorse, plaie ouverte…);Systématisation de l'acquisition des véhicules d'exploitation qui disposent d'airbag;Prévention;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Véhicules;;;Absence d'airbag dans les véhicules;A;Risque d'accident;;Polytraumatisme (fracture, entorse, plaie ouverte…);Systématisation de l'acquisition des véhicules d'exploitation qui disposent d'airbag;;;;;;;;;1;3;3;2
+Mbour FH;;Détecteur d'incendie;;;Absence de détecteurs d’incendie ou détecteurs HS ;A;Risque d'incendie;Environnement immédiat;Brûlures;"Les salles techniques sont doté de détecteurs d'incendies
+
+Un entretien des détecteurs est mis en œuvre par le sous traitant SODECI";Prévention;Manuel;;;;;;;1;4;4;3
+Mbour FH;;Intervention;;;Absence de formation en secourisme et incendie;A;Risque d'incendie;Poste de travail;Brûlures;Des formations ont été délivrées par DG/SECU sur l'utilisation des extincteurs;Prévention;Manuel;;;;;;;1;4;4;3
+Mbour FH;;Intervention;;;Absence de garde corps, harnais;A;Risque de chute de hauteur;Environnement immédiat;Polytraumatisme (fracture, entorse, plaie ouverte…);"EPI mis à disposition des agents d'intervention
+Sensibilisation des agents d'intervention sur l'obligation du port et l'utilisation des EPI";Protection;Manuel;;;;;;;1;3;3;3
+Mbour FH;;Intervention;;;Absence de port d'EPI;A;Risque d'accident;Poste de travail;Traumatisme, (voir Ndoumbé);" - Exsitence d'EPI mis à disposition des agents d'intervention
+ - Sensibilisation sur le port des EPI
+ - Visites inopinées sur le terrain pour le port des EPI par les CI";Protection;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Intervention;;;Absence de simulation d'évacuation des sites en cas d'incendie;A;Risque d'accident;Environnement immédiat;Asphixie, troubles respiratoires;Prise en en charge de la fonction sécurité dans l'organisation de l'entreprise;Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Assurer la sécurité;;;Absence de simulation d'évacuation des sites en cas d'incendie;A;Risque d'accident;Environnement immédiat;Asphixie, troubles respiratoires;Prise en en charge de la fonction sécurité dans l'organisation de l'entreprise;;;;;;;;;1;4;4;2
+Mbour FH;;Bâtiment;;;Absence d'extincteur d'incendie;A;Risque d'incendie;Environnement immédiat;Brûlures;Tous les sites sont dotés d'extincteurs d'incendie;Protection;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Entretien des locaux;;;Accumulation de déchets (prolifération de moustiques, insectes…) ;A;Risque biologique;Environnement immédiat;Paludisme, allergie ;"Procédure de gestion des déchets
+Déchets (batteries, câbles…) stockés dans aire de stockage et transfert à la DAL pour ventes aux clients ciblés
+Ventes organisées des autres déchets par l'agence suite autorisation de DAL
+Entretein quotidien du site par un prestataire chargé d'évacuer les déchets";Prévention;Manuel;;;;;;;2;2;4;3
+Mbour FH;;Intervention;;;Ambiance thermique froide (salles machines, travaux sur le terrain…);A;Risque d'hypothermie;Environnement immédiat;Coup de fraîcheur, engolure, rhumatisme, sécheresse de la peau, rhinite à répétition, malaise, syncope;"Agents ne restent pas longtemps dans la salle technique pour les besoins d'interventions
+Déménagement des agents installés dans les salles équipements";Protection;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Bâtiment;;;Boitiers électriques non couverts ;A;Risque de dégradation du bâtiment;Environnement immédiat;Polytraumatisme (fracture, traumatisme cranien);Signalisation des dysfonctionnements dans GEDAL et prise en charge des besoins exprimés par les CR par la DAL;Protection;automatique;;;;;;;2;2;4;2
+Mbour FH;;Groupe électrogène;;;Bruit du groupe électrogène;N;Risque de nuisance sonore;Poste de travail;Inconfort;"Les groupes électrogènes sont capotés donc insonorisés. Repect normes CE
+Exigence réglementaire 65db à proximité des habitations. 85db à 1m du groupe";Prévention;Manuel;;;;;;;3;1;3;2
+Mbour FH;;Groupe électrogène;;;Bruit du groupe électrogène;N;Risque de nuisance sonore;Poste de travail;Inconfort;"Les groupes électrogènes sont capotés donc insonorisés. Repect normes CE
+Exigence réglementaire 65db à proximité des habitations. 85db à 1m du groupe";Prévention;Manuel;;;;;;;2;1;2;2
+Mbour FH;Technique;Colocalisation (FH): Emetteurs Radio et TV;;;Chaleur dégagée par les émetteurs ;N;Risque de coup de chaleur;Poste de travail;Maux de tête, inconfort, anoxie, malaise;Les locaux abritant des équipements sont climatisés;Prévention;Manuel;;;;;;;2;1;2;2
+Mbour FH;;Climatiseur;;;Climatisation défectueuse;A;Risque de coup de chaleur;Poste de travail;Maux de tête, inconfort, anoxie, malaise;Contrat d'entretien et de maintenance de la climatisation avec Sahel Trading, Alvedeo;Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Climatiseur;;;Climatisation défectueuse;A;Risque de coup de chaleur;Poste de travail;Maux de tête, inconfort, anoxie, malaise;Contrat d'entretien et de maintenance de la climatisation avec Sahel Trading;Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Intervention;;;Conduite imprudente (sans port de ceinture, non respect limitation vitesse, conduite la nuit etc…);A;Risque d'accident;Poste de travail;Polytraumatisme (fracture, entorse, plaie ouverte…);"Formation et sensibilisation sur la sécurité routière et sur les règles de conduite par DG/SECU
+
+Conduite autorisée des véhicules par le personnel habilité
+
+";Prévention;Manuel;;;;;;;2;3;6;2
+Mbour FH;;Bâtiment;;;Court circuit/incendie;A;Risque d'incendie;Environnement immédiat;Brûlures;Maintenance préventive et curative des installations électriques par des prestataires;Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Bâtiment;;;Court circuit/incendie;A;Risque d'incendie;Environnement immédiat;Brûlures;Maintenance préventive et curative des installations électriques par des prestataires;Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Groupe électrogène;;;Déchets (huiles, filtres);N;Risque biologique;Environnement immédiat;Allergies, troubles respiratoires (asthme);" - Les contrats avec les prestataires exigent l'enlèvement des dechets.
+ - Sensibilisation des prestataires qui entretiennent les GE pour l'enlèvement systématique des huiles et filtres après les travaux d'entretien";Prévention;Manuel;;;;;;;2;2;4;3
+Mbour FH;;Intervention;;;Déplacement du personnel en pleine nuit ;A;Risque d'agression physique;Poste de travail;Traumatisme;Instructions régissant les interventions terrain des équipes techniques;Prévention;Manuel;;;;;;;2;4;8;2
+Mbour FH;;Intervention;;;Déplacements réguliers sur de longues distances;N;Risque d'accident;Poste de travail;Polytraumatisme (fracture, entorse, plaie ouverte…);"Sensibilisation sur la sécurité routière et sur les règles de conduite
+Entretien des véhicules d'interventions";Prévention;Manuel;;;;;;;2;4;8;2
+Mbour FH;;Bâtiment;;;Dépôt de déchets;N;Risque d'incendie;Environnement immédiat;Brûlures;"Les dechets sont soit récuperés par le prestataire, soit convoyé vers l'air de stockage au niveau du CI
+Dispositif de gestion des dechets piloté par DAL/APP";Prévention;Manuel;;;;;;;1;4;4;3
+Mbour FH;;Bâtiment;;;Dépôt de déchets;N;Risque d'incendie;Environnement immédiat;Brûlures;Les dechets sont soit récuperés par le prestataire, soit convoyé vers l'aire de stockage au niveau du CI;Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Groupe électrogène;;;Déversement de carburant à proximité du groupe électrogène lors du dépotage ;A;Risque d'incendie;Environnement immédiat;Brûlures;"Le dépotage est pris en charge par le fournisseur. Existence d'un contrat
+Vérification par le CI du respect des dispositions contractuelles lors des livraisons de carburant par le forunisseur";Prévention;Manuel;;;;;;;1;4;4;3
+Mbour FH;;Groupe électrogène;;;Déversement de carburant à proximité du groupe électrogène lors du dépotage ;A;Risque d'incendie;Environnement immédiat;Brûlures;Vérification par le CI du respect des dispositions contractuelles lors des livraisons de carburant par le forunisseur;Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Intervention;;;Déversement du mercure des néons cassés;A;Risque chimique;Poste de travail;Intoxication au mercure;Le prestataire est chargé de remplacer les ampoules et d'emporter les ampoules défectueuses;Prévention;Manuel;;;;;;;1;2;2;2
+Mbour FH;;Bâtiment;;;Déversement du mercure des néons cassés;A;Risque chimique;Poste de travail;Intoxication au mercure;Le prestataire est chargé de remplacer les ampoules et d'emporter les ampoules défectueuses;Prévention;;;;;;;;1;2;2;2
+Mbour FH;;Intervention;;;Eaux stagnantes;A;Risque de chute de plain pied;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);Pompage des eaux ;Protection;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Intervention;;;Echelle défectueuse (absence de patin plastique);A;Risque de chute de hauteur;Environnement immédiat;Polytraumatisme (fracture, entorse, plaie ouverte…);" - Procédure de réforme du matériel défectueux
+ - Remplacement des échelles défectueuses
+ - Adaptation des EPI en fonction des agents
+ - Réforme périodique les EPI dégradables (ceinture, échelles……)";Prévention;Manuel;;;;;;;1;3;3;4
+Mbour FH;;Climatiseur;;;Ecoulement de l'eau de climatisation;A;Risque de court circuit;Environnement immédiat;Brulûre, intoxication;"Réparation de évacuation de l'eau des climatiseur confiée à un prestataire
+
+Maintenance préventive de la climatisation";Prévention;Manuel;;;;;;;2;3;6;2
+Mbour FH;;Climatiseur;;;Ecoulement de l'eau de climatisation;A;Risque de court circuit;Environnement immédiat;Brulûre, intoxication;"Réparation de évacuation de l'eau des climatiseur confiée à un prestataire Matforce
+
+Maintenance préventive de la climatisation";Prévention;Manuel;;;;;;;1;3;3;3
+Mbour FH;;Intervention;;;Emanation de gaz;A;Risque de troubles respiratoires;Environnement immédiat;Anoxie, asphixie, maux de tête, allergies;"Existence d'extracteurs d'air dans les locaux abritant des équipements 
+Consigne sur l'aération des chambres avant les interventions techniques";Prévention;Manuel;;;;;;;3;3;9;2
+Mbour FH;;Intervention;;;Encombrement du sol par les câbles;A;Risque de chute de plain pied;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);"Procédure de gestion des déchets ( Collecte des chutes de câbles stockées dans les aires de stockage)
+
+Récupération des chutes de câbles par la DAL et organisation de la vente aux clients ciblés";Prévention;Manuel;;;;;;;1;3;3;4
+Mbour FH;;Intervention;;;Equipements de Protection Individuelle non adaptés ;A;Risque d'accident;Poste de travail;Traumatisme, (voir Ndoumbé);" - Existence d'EPI mis à disposition des agents d'intervention
+ - Renouvellement périodique des EPI ";Protection;Manuel;;;;;;;1;4;4;3
+Mbour FH;;Escabeau;;;Escabeau défectueux;A;Risque de chute de hauteur;Environnement immédiat;Polytraumatisme (fracture, entorse, plaie ouverte…);"Remplacement des escabeauX defectueux. 
+Expression du besoin envoyée à DAL";Protection;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Intervention;;;Etanchéité défectueuse;A;Risque de dégradation du bâtiment;Environnement immédiat;Polytraumatisme (fracture, traumatisme cranien);Signalisation des dysfonctionnements dans GEDAL et prise en charge des besoins exprimés par les CR par la DAL;Protection;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Intervention;;;Etanchéité défectueuse;A;Risque biologique;Poste de travail;Allergies, mycoses, champignons, intoxication au plomb;Programme annuel de travaux sur l'étancheité conduit par DAL;Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Intervention;;;Explosion;A;Risque d'incendie;Environnement immédiat;Brûlures;"Consigne sur l'aération des chambres avant les interventions
+
+Salles batteries équipées d'extracteurs d'air
+Maintenance préventive et curative des extracteurs d'air par des prestataires";Prévention;Manuel;;;;;;;2;4;8;2
+Mbour FH;;Intervention;;;Exposition aux radiations des antennes, émetteurs et fibres optiques;N;Risque d'irradiation;Poste de travail;Lésions cutanées, maux de tête, lésions occulaires, chutes de cheveux…;"Bonne fermeture des connecteurs, veiller à l'étancheité
+
+Limitation de l'accès aux sites à des agents habilités
+
+Règles de limitation des puissances en cas d'intervention Ex: blocage de l'antenne (locker) lors d'une intervention prolongée.";Prévention;Manuel;;;;;;;4;1;4;2
+Mbour FH;;Intervention;;;Extracteur d’air défectueux;A;Risque de nuisance olfactive;Environnement immédiat;"troubles respiratoires,
+réactions allergiques,
+Asthme
+Inconfort";"Signalisation des dysfonctionnements dans GEDAL pour prise en charge par la DAL pour la maintenance curative
+en relation avec le prestataire Solarcom ";Protection;Manuel;;;;;;;2;1;2;3
+Mbour FH;;Fauteuil;;;Fauteuis défectueux ou inadaptés;A;Risque de troubles musculo squelettiques;Poste de travail;Douleurs dorsales (colonne vertébrale);Remplacement des fauteuils inadaptés pour raison médicale par la DAL sur demande de DRH/SHT;Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Fauteuil;;;Fauteuis défectueux ou inadaptés;A;Risque de troubles musculo squelettiques;Poste de travail;Douleurs dorsales (colonne vertébrale);Remplacement des fauteuils inadaptés pour raison médicale par la DAL sur demande de DRH/SHT;Prévention;Manuel;;;;;;;1;2;2;2
+Mbour FH;;Fauteuil;;;Fauteuis défectueux ou inadaptés;A;Risque de troubles musculo squelettiques;Poste de travail;Douleurs dorsales (colonne vertébrale);Remplacement des fauteuils inadaptés pour raison médicale par la DAL sur demande de DRH/SHT;Prévention;Manuel;;;;;;;1;2;2;2
+Mbour FH;;Fauteuil;;;Fauteuis défectueux ou inadaptés;A;Risque de troubles musculo squelettiques;Poste de travail;Douleurs dorsales (colonne vertébrale);Remplacement des fauteuils inadaptés pour raison médicale par la DAL sur demande de DRH/SHT;Prévention;Manuel;;;;;;;1;2;2;2
+Mbour FH;;Groupe électrogène;;;Fuite de gazoil (dépotage);A;Risque de troubles respiratoires;Poste de travail;Allergies, rhinite;Vérification du respect des dispositions contractuelles par le CI lors de la livraisosn de carburant par le fournisseur;Prévention;Manuel;;;;;;;2;2;4;3
+Mbour FH;;Groupe électrogène;;;Fuite de gazoil (dépotage);A;Risque de troubles respiratoires;Poste de travail;Allergies, rhinite;Vérification du respect des dispositions contractuelles par le CI lors de la livraisosn de carburant par le fournisseur;Prévention;Manuel;;;;;;;2;2;4;3
+Mbour FH;;Intervention;;;Fuite de gazoil (dépotage);A;Risque chimique;Environnement immédiat;Troubles respiratoires, allergies, brûlures;"La correction des fuites est prise en charge par les équipes ou par le sous traitant
+
+Un contrat d'entretien est signé pour les groupes (Eydon et Oryx)
+
+Maintenance préventive mensuelle ou en fontion du nombre d'heures de fonctionnement remonté au prestataire";Prévention;Manuel;;;;;;;1;3;3;3
+Mbour FH;;Groupe électrogène;;;Fuite de gazoil (dépotage);A;Risque chimique;Environnement immédiat;Troubles respiratoires, allergies, brûlures;"La correction des fuites est prise en charge par les équipes ou par le sous traitant
+
+Un contrat d'entretien est signé pour les groupes (Eydon et Oryx)
+
+Maintenance préventive mensuelle ou en fontion du nombre d'heures de fonctionnement remonté au prestataire";Prévention;Manuel;;;;;;;1;3;3;3
+Mbour FH;;Intervention;;;Garde corps mal fixé (cordon de sécurité);A;Risque de chute de hauteur;Environnement immédiat;Polytraumatisme (fracture, entorse, plaie ouverte…);"Formation des agents travaillant en hauteur sur la sécurité
+
+Dotation de l'outillage pour les travaux en hauteur (ceinture, echelle, harnais)
+
+";Prévention;Manuel;;;;;;;1;3;3;3
+Mbour FH;;Intervention;;;Gêne causée par les rayons solaires;A;Risque de fatigue visuelle;Poste de travail;Maux de tête, douleurs occulaires;Signalisation des dysfonctionnements dans GEDAL et prise en charge des besoins exprimés par les CR par la DAL;Prévention;Manuel;;;;;;;2;1;2;2
+Mbour FH;;Bâtiment;;;Inexistence ou Blocage des issues de secours;A;Risque d'accident;Environnement immédiat;Asphixie, troubles respiratoires;"Prise en charge de la fonction sécurité dans l'organisation de l'entreprise
+Existence de consignes de sécurité";Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Bâtiment;;;Infiltration d’eau de pluie  ;A;Risque de court circuit;Environnement immédiat;Brulûre, intoxication;"Refection de l'étancheité pris en charge
+
+Maintenance de l'étancheité";Protection;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Intervention;;;Inhalation de poussières;A;Risque de troubles respiratoires;Poste de travail;Allergies, rhinite;"Entretien quotidien des locaux par un prestataire
+Dotation périodique de lait aux agents des fonctions les exposant à l'inhalation de poussières
+Mise à disposition de masques de protection pour les travaux de maintenance des équipes techniques 
+";Protection;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Intervention;;;Inhalation de substances chimiques;A;Risque chimique;Poste de travail;Troubles respiratoires;Echappements des GE rehaussés;Prévention;Manuel;;;;;;;2;3;6;2
+Mbour FH;;Bâtiment;;;Insuffisance de points lumineux (mauvais éclairage du site);A;Risque d'accident;Environnement immédiat;Polytraumatisme (fracture, entorse, plaie ouverte…);"Disponibilité d'un budget logistique dans l'agence pour la prise en charge des besoins d'achat autorisés
+
+Signalisation dans GEDAL des besoins logistiques à prendre en charge par la DAL";Prévention;Manuel;;;;;;;1;3;3;3
+Mbour FH;;Intervention;;;Intervention en monôme ;A;Risque d'accident;Poste de travail;Polytraumatisme (fracture, entorse, plaie ouverte…);A modifier;Prévention;Manuel;;;;;;;3;3;9;2
+Mbour FH;;Bâtiment;;;Locaux surchargés de papiers;A;Risque d'incendie;Environnement immédiat;Brûlures;"Entretien quotidien des locaux par un prestataire chargé d'évacuer les déchets
+
+Procédure d'archivage des documents";;;;;;;;;1;4;4;3
+Mbour FH;;Intervention;;;Manipulation de matériel électrique ( tests, configuration);A;Risque d'électrisation/électrocution;Poste de travail;Brûlures;"Formation des agents sur les interventions électriques pour le respect des normes
+
+Mise à disposition d'EPI (gants) de protection pour les interventions sur les équipements électriques";Prévention;Manuel;;;;;;;2;4;8;2
+Mbour FH;;Intervention;;;Manipulation de matériels usagés (sales);N;Risque biologique;Poste de travail;Infections, allergies;"Dotation d'EPI (masque, gants) pour le personnel des accueils
+
+Dotation de liquide antibactérien";Protection;Manuel;;;;;;;2;1;2;3
+Mbour FH;;Bâtiment;;;Manque d'eau (coupures d'eau;A;Risque biologique;Environnement immédiat;Légionellose, infection bactérienne, infection mycosique;Existence de réservoir d'eau Thiès;Protection;Manuel;;;;;;;1;2;2;2
+Mbour FH;;Bâtiment;;;Manque d'eau (coupures d'eau;A;Risque biologique;Environnement immédiat;Légionellose, infection bactérienne, infection mycosique;Existence de réservoir d'eau Thiès;Protection;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Bâtiment;;;Manque d'hygiène dans les toilettes;A;Risque biologique;Environnement immédiat;Légionellose, infection bactérienne, infection mycosique;"Entretien quotidien du site par un prestataire
+Les prestataires sont évalués chaque mois et certification des factures par le RA";Prévention;Manuel;;;;;;;2;2;4;3
+Mbour FH;;Bâtiment;;;Manque d'hygiène dans les toilettes;A;Risque biologique;Environnement immédiat;Légionellose, infection bactérienne, infection mycosique;"Entretien quotidien du site par un prestataire
+Les prestataires sont évalués chaque mois et certification des factures par le RA";Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Intervention;;;Manutention (déplacement d'objets lourds);N;Risque de chute de plain pied;Poste de travail;Traumatisme (fracture, entorse), douleurs musculaires;Sollicitation de prestataires pour la manutention des objets lourds;Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Intervention;;;Manutention (déplacement d'objets lourds);A;Risque de troubles musculo squelettiques;Poste de travail;Douleurs musculaires, hernies discale, lombalgie;Communication dans Intracom pour la manutention des objets par DRH/SHT;Protection;Manuel;;;;;;;2;3;6;2
+Mbour FH;;Véhicules;;;Mauvais état des véhicules;A;Risque d'accident;Poste de travail;Polytraumatisme (fracture, entorse, plaie ouverte…);"Maintenance préventive et curative des véhicules du parc de l'agence par des prestataires de services
+
+Propositions de réforme formulées à la DAL es véhicules amortis ou préssentant des dysfonctionnements ne pouvant pas permettre leur utilisation";Prévention;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Véhicules;;;Mauvais état des véhicules;A;Risque d'accident;Poste de travail;Polytraumatisme (fracture, entorse, plaie ouverte…);"Maintenance préventive et curative des véhicules du parc de l'agence par des prestataires de services
+
+Propositions de réforme formulées à la DAL es véhicules amortis ou préssentant des dysfonctionnements ne pouvant pas permettre leur utilisation";Prévention;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Intervention;;;Mauvaise position assise de l'agent ;A;Risque de troubles musculo squelettiques;Poste de travail;Douleurs dorsales (colonne vertébrale);"Communication dans Intracom sur les bonnes pratiques de position assise par DRH/SHT
+";Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Intervention;;;Plancher défectueux (mauvaise disposition,trous, instabilité, travaux en cours...;A;Risque d'accident;Environnement immédiat;Traumatisme cranien;"Programme annuel de travaux d'inspection des sites par la DAL pour la prise en charge des travaux de réfections nécessaires
+
+Prise en charge de toutes les signalisations formulées dans GEDAL";Prévention;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Intervention;;;Plancher défectueux (mauvaise disposition,trous, instabilité, travaux en cours...;A;Risque de chute de plain pied;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);"Les réparations des locaux sont prise en charge par la DAL.
+Exsitence d'un système de remontée via GEDAL ";Protection;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Intervention;;;Poussières;N;Risque biologique;Environnement immédiat;Légionellose, infection bactérienne, infection mycosique;"Existence de contrat de nettoiement et d'entretien quotien des locaux par des prestataires et la qualité des prestations est périodiquement évaluées par les agents
+
+Dans le cadre des travaux de maintenance préventive, le nettoiement de la poussière est effectué";Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Bâtiment;;;Poussières;A;Risque de nuisance olfactive;Environnement immédiat;"troubles respiratoires,
+réactions allergiques,
+Asthme
+Inconfort";Entretien quotidien des locaux par un prestataire et prestataions évaluées par les responsables avant certification des factures;Prévention;Manuel;;;;;;;3;1;3;2
+Mbour FH;;Bâtiment;;;Poussières;N;Risque biologique;Environnement immédiat;Légionellose, infection bactérienne, infection mycosique;"Existence de contrat de nettoiement et d'entretien quotien des locaux par des prestataires et la qualité des prestations est périodiquement évaluées par les agents
+
+Dans le cadre des travaux de maintenance préventive, le nettoiement de la poussière est effectué";Prévention;Manuel;;;;;;;3;2;6;3
+Mbour FH;;Bâtiment;;;Poussières;A;Risque de nuisance olfactive;Environnement immédiat;"troubles respiratoires,
+réactions allergiques,
+Asthme
+Inconfort";Entretien quotidien des locaux par un prestataire et prestataions évaluées par les responsables avant certification des factures;Prévention;Manuel;;;;;;;3;1;3;2
+Mbour FH;;Bâtiment;;;Présence d'animaux ( lézards, salamandre,souris, cafards…..);A;Risque biologique;Environnement immédiat;Morsures,envenimations maladies virales;"Opération semestrielle avec les prestataires de nettoiement pour dératiser et désinfecter
+
+Destruction des nids d'abeille en collaboration avec le service d'hygiene
+
+Clôture mise en place au niveau des locaux";Prévention;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Bâtiment;;;Présence d'animaux ( lézards, salamandre,souris, cafards…..);A;Risque biologique;Environnement immédiat;Brulûre, intoxication;" - Opération semestrielle avec les prestataires de nettoiement pour deratiser et desinfecter
+  - Destruction des nids d'abeille en collaboration avec le service d'hygiene
+ - Clôture mis en place au niveau des locaux";Prévention;Manuel;;;;;;;1;3;3;2
+Mbour FH;;Bâtiment;;;Présence d'animaux ( lézards, salamandre,souris, cafards…..);A;Risque biologique;Environnement immédiat;Brulûre, intoxication;"Dératisation semestrielle des locaux 
+
+Mis en place d'un traitement des termites au niveau de Thiès en collaboration avec le service d'hygiene";;;;;;;;;1;3;3;2
+Mbour FH;;Bâtiment;;;Présence d'herbes seches ou de branches sur le site;A;Risque d'incendie;Environnement immédiat;Brûlures;" - Le désherbage est pris en charge par les prestataires et gardiens des sites 
+ - Vérification si le désherbage est correctement effectué par les prestataires";Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Bâtiment;;;Prises non couvertes;A;Risque d'électrisation/électrocution;Environnement immédiat;Brûlures;Maintenance préventive et curative des installations électriques par un prestataire de services;Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Bâtiment;;;Prises non couvertes;A;Risque d'électrisation/électrocution;Environnement immédiat;Brûlures;Maintenance préventive et curative des installations électriques par un prestataire de services;Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Bâtiment;;;Prolifération de moustiques;N;Risque biologique;Environnement immédiat;Paludisme ;Contrat avec les prestataires qui distribuent des insecticides et procédent au pompage des locaux;Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Bâtiment;;;Prolifération de moustiques;N;Risque biologique;Environnement immédiat;Paludisme ;Contrat avec les prestataires qui distribuent des insecticides et procédent au pompage des locaux;Prévention;Manuel;;;;;;;2;2;4;2
+Mbour FH;;Intervention;;;Regards défectueux;A;Risque d'accident;Environnement immédiat;Polytraumatisme (fracture, entorse, plaie ouverte…);"Programme annuel de travaux d'inspection des sites par la DAL pour la prise en charge des travaux de réfections nécessaires
+
+Prise en charge de toutes les signalisations formulées dans GEDAL";Prévention;Manuel;;;;;;;1;3;3;3
+Mbour FH;;Bâtiment;;;Rejet mégot de cigarette;A;Risque d'incendie;Environnement immédiat;Brûlures;"Mise en place d'une signalisation ""Interdiction de fumer"" au niveau des sites";Protection;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Bâtiment;;;Rejet mégot de cigarette;A;Risque d'incendie;Environnement immédiat;Brûlures;"Mise en place d'une signalisation ""Interdiction de fumer"" au niveau des sites";Prévention;Manuel;;;;;;;1;4;4;2
+Mbour FH;;Véhicules;;;Rétroviseur arrière HS;A;Risque d'accident;Poste de travail;Polytraumatisme (fracture, entorse, plaie ouverte…);"Prise en charge par la DAL des signalisations enregistrées dans GEDAL
+
+Réforme ou réparation des véhicules présentant des dysfonctionnements";;;;;;;;;2;2;4;2
+Mbour FH;;Intervention;;;Sortie tardive des bureaux ;A;Risque d'agression physique;Poste de travail;Traumatisme;"Existence d'objectifs validés par tous les agents lors des séances d'évaluation SAPER
+
+Sécurisation des sites par un système de gardiennage supervisé par DG/SECU";Prévention;;;;;;;;1;4;4;2
+Mbour FH;;Groupe électrogène;;;Stockage de carburant (cuve du groupe électrogéne);N;Risque d'incendie;Environnement immédiat;Brûlures;" - Les cuves de carburant sont éloignées des locaux
+ - Mise en place d'une signalisation ""Risque d'incendie"" et ""Interdiction de fumer"" au niveau des zones stockage du carburant";Protection;Manuel;;;;;;;2;4;8;3
+Mbour FH;;Groupe électrogène;;;Stockage de carburant (cuve du groupe électrogéne);N;Risque d'incendie;Environnement immédiat;Brûlures;" - Les cuves de carburant sont éloignées des locaux
+ - Mise en place d'une signalisation ""Risque d'incendie"" et ""Interdiction de fumer"" au niveau des zones stockage du carburant";Protection;Manuel;;;;;;;2;4;8;2
+Mbour FH;;Intervention;;;Surcharge de travail ;A;Risque de stress;Poste de travail;Maux de tête, hypertension artérielle, troubles psychologique, cardiopathie;"Fixation des objectifs annuels validés par les agents dans SAPER
+
+Existence d'une étude sur le dimensionnement des RH et la productivité au niveau des tous les sites et activités";Prévention;Manuel;;;;;;;2;3;6;2
+Mbour FH;;Bâtiment;;;Toilettes défectueuses;A;Risque d'accident;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);"
+Dysfonctionnements signalés au responsable des ressources pour prise en charge par un prestataire en relation avec les RA et CI. 
+
+Signalisation dans GEDAL des dysfonctionnements à prendre en charge par la DAL";Protection;Manuel;;;;;;;2;2;4;3
+Mbour FH;;Bâtiment;;;Toilettes défectueuses;A;Risque d'accident;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);"
+Dysfonctionnements signalés au responsable des ressources pour prise en charge par un prestataire en relation avec les RA et CI. 
+
+Signalisation dans GEDAL des dysfonctionnements à prendre en charge par la DAL";Protection;Manuel;;;;;;;2;2;4;3
+Mbour FH;;Intervention;;;Travail en hauteur;N;Risque de chute de hauteur;Poste de travail;Polytraumatisme (fracture, entorse, plaie ouverte…);"Formation des agents traivaillant en hauteur sur la sécurité
+
+Dotation de l'outillage pour les travaux en hauteur (ceinture, echelle, harnais)
+
+Sensibilisation des agents";Prévention;Manuel;;;;;;;1;3;3;3
+Mbour FH;;Intervention;;;Utilisation de gaz butane;N;Risque d'incendie;Poste de travail;Brûlures;Existence d'un outil GSECU pour la signalisation des demandes de signalétique sécurité;;;;;;;;;2;4;8;2
+Mbour FH;;Entretien des locaux;;;Utilisation de produits d'entretien  (acide, eau de javel, pâte à cafard, désodorisant);N;Risque biologique;Poste de travail;Allergies, intoxicaton, brûlure;" - Les agents de la Société de nettoiement portent des gants
+ - Le nettoyage ne se fait pas en présence des occupants des bureaux (agents sortent)
+-Les produits sont rangés et conservés dans une caisse
+ - Nettoyage des magasins à la demande des gérants
+évaluation des prestataires de nettoyage par les agents (DRH)";Prévention;Manuel;;;;;;;2;2;4;3
+Mbour FH;;Prestataires nettoiemenent;;;Utilisation de produits d'entretien  (acide, eau de javel, pâte à cafard, désodorisant);N;Risque biologique;Poste de travail;Allergies, intoxicaton, brûlure;" - Les agents de la Société de nettoiement portent des gants
+ - Le nettoyage ne se fait pas en présence des occupants des bureaux (agents sortent)
+-Les produits sont rangés et conservés dans une caisse
+ - Nettoyage des magasins à la demande des gérants
+évaluation des prestataires de nettoyage par les agents (DRH)";Prévention;Manuel;;;;;;;2;2;4;3
+Mbour FH;;Intervention;;;Voisinage immédiat de l'antenne (surtout en cas de vent fort);A;Risque de chute d'objet lourd;Environnement immédiat;Traumatisme cranien, plaie ouverte;" - Maintenance préventive  et contrôle opérationnel
+ - Intégration de l'étude de la charge des pylones et de la durée de vie dans la maintenance
+ - Mise en place de haubans au niveau des pylônes";Prévention;Manuel;;;;;;;2;4;8;2

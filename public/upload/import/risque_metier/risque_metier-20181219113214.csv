@@ -1,0 +1,271 @@
+Macro Processus;Processus;Sous Processus;Sous-Entité;Activité;Risque;Causes;Description du plan d'action;Porteur;Email Porteur;Date de début;Date de fin;Avancement;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Proba;Gravité;Financier;RH;Image;Juridique;Client;Criticité;maturité CI
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Non respect des délais de réalisation des missions;Mettre en place des feuilles de temps à remplir par les auditeurs;Mohamed Mahi Barry;MohamedMahi.Barry@orange-sonatel.com;30/09/2018;31/12/2016;;Annulé;"- Elaboration d'un plan de charge de l'année tenant compte des contraintes connues.
+- Pilotage des missions
+ - Suivi des temps au niveau du planning d'audit détaillé par phase de mission";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Connaissance insuffisante des normes et techniques d'audit;Bench auprès de SONATEL pour méthode échantillonnage;Mohamed Mahi Barry;MohamedMahi.Barry@orange-sonatel.com;30/09/2018;31/12/2016;;Réalisé;" - Partage d'informations entre l'équipe et le Chef de Division ARQ
+ - Convocation de ARQ/OGN lors des séances de formation Groupe
+ - Conduite de mission conjointe avec SNT/ARQ
+ - Supervision du Chef de Division au jour le jour, de bout en bout, des travaux effectués par les équipes d'audit
+ - Auditeurs expérimentés
+";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Mauvaise perception et/ou manque d’intérêt des interlocuteurs de ARQ;;;;;;;;" - Envoi d'une lettre de mission et d'un plan d'approche décrivant les objectifs et le périmètre de la mission
+ - Réunion de restitution avec les audités pour la validation du projet de rapport";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Non maîtrise des activités à auditer;;;;;;;;" - Existence d'une phase de prise de connaissance matérialisée par un plan d'approche soumis aux audités
+ - Consultation des procédures du périmètre audité 
+ - Certains auditeurs ont le profil d'informaticien
+ - Formation des nouvelles recrues sur le principe de fonctionnement du réseau GSM (video de FT)";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Indisponibilité des compétences pour réaliser les missions domaine Finances;;;;;;;;Recrutement d'un auditeur qui a un profil financier;Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Turnover des auditeurs expérimentés;;;;;;;;Filiale encore jeune, pas encore beaucoup de départs;Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Retard dans la mise à disposition des informations/indisponibilité des interlocuteurs;New PA : suivi des délais de demande et de transmission des informations demandées par les Auditeurs par interlocuteur;Mohamed Mahi Barry;MohamedMahi.Barry@orange-sonatel.com;30/09/2018;31/12/2016;;Réalisé;" - Existence d'une charte d'audit précisant l'exigence de disponibilité des acteurs et des informations à la demande des auditeurs 
+ - Escalade et Relance effectuée avec copie N+1
+ - Auditeurs ont accès à certaines applications pour consultation et édition 
+ - Transmission d'une lettre de mission et du planning au démarrage de la mission";Préventif;Manuel;2;2;4;2;1;1;2;;2
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque de non maîtrise des risques;Non application des recommandations;;;;;;;;" - Suivi hebdomadaire des recommandations et remontée aux Directeurs
+ - Existence d'une procédure de suivi des recommandations ";Détectif;Manuel;2;2;2;2;2;1;2;;2
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Elaborer le programme d' audit et de contrôle général;Risque d'audit (non contrôle, non détection);Indisponibilité de la cartographie des risques;;;;;;;;"Les cartographies sont élaborées et mises à disposition par SNT/ARQ/RCI. 
+Input plan d'audit élaboré par SNT/ARQ/RCIpour ARQ/OGN";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Elaborer le programme d' audit et de contrôle général;Risque d'audit (non contrôle, non détection);Programme d’audit inadapté aux finalités du CI et  attentes des clients (mauvaise priorisation des activités…);;;;;;;;"
+- Choix des activités portant sur les risques liés aux enjeux stratégiques et financiers les plus critiques
+- capitalisation sur l' 'expérience
+-Existence d'un programme minimal groupe de CG
+- Exploitation des fiches d'expression de besoins d' audit des différentes entités (ARQ)";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Elaborer le programme d' audit et de contrôle général;Risque d'audit (non contrôle, non détection);Non fiabilité de la cartographie des risques;;;;;;;;"Les cartographies sont élaborées et mises à disposition par SNT/ARQ/RCI. 
+Programme d'audit et de contrôles généraux élaboré à partir de la cartographie des risques ";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Elaborer le programme d' audit et de contrôle général;Risque d'audit (non contrôle, non détection);Insuffisance de la remontée des besoins en missions de CG;;;;;;;;" - Collecte des besoins de CG avant l'élaboration du programme CG (début décembre) avec des relance au niveau des responsables opérationnels
+ - Connaissance des activités de la Filiale
+ - Existence d'un programme minimal Groupe";Préventif;Manuel;2;2;4;2;1;1;2;;2
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Elaborer le programme d' audit et de contrôle général;Risque d'audit (non contrôle, non détection);Retard d'élaboration du programme d'audit et de CG;;;;;;;;Existence d'une procédure d'élaboration du programme d' audit et de contrôles généraux;Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);"Incompétence ou manque d'expérience des auditeurs
+";;;;;;;;" - Phase de prise de connaissance avant le démarrage de la mission
+ - Supervision de bout en bout des missions par le Chef de Division ARQ
+ - Existence d'une procédure d'élaboration du programme d' audit et de contrôles généraux";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Non exhaustivité de la remontée des faits générateurs de mission d'enquête (volontaire ou involontaire);;;;;;;;"- Note sur l'obligation d'alerte diffusée dans l'intracom
+- Précision des faits délictueux dans le règlement interieur
+ - '-Diffusion de la charte de l'audit
+";Préventif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Retard de prise en charge des enquêtes ;;;;;;;;" - Les dossiers sensibles sont directement pris en charge par le Chef de Division ARQ/OGN
+ - Enquêtes priorisées ";Préventif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Multiplicité des dossiers d'enquête;;;;;;;;Les dossiers sensibles sont directement pris en charge par le Chef de Division ARQ/OGN;Préventif;Manuel;2;2;2;2;;2;2;;2
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Mauvaise qualification des faits;;;;;;;;"- Validation des rapports est  en place au niveau ARQ/OGN et intégre la revue de la qualification des infractions
+'- La procédure de pilotage d'une enquête oblige tout enquêteur à qualifier les faits ou évaluer le préjudice financier
+";Préventif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'atteinte à l'intégrité physique;Représailles à l'endroit des inspecteurs;;;;;;;;" - 'Confidentialité assurée dans le traitement des enquêtes
+ - Diffusion des rapports au DG et au directeur de l'entité concerné
+ - Respect du code de déontologie de l'auditeur (intégrité, objectivité et conscience professionnelle)";Préventif;Manuel;1;4;;4;3;;;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Complexité et caractère transversal des faits générateurs;;;;;;;;Recours aux structures supports ou au Groupe;Préventif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Insuffisance ou non réception des infos sur les faits ( Réseau et SI);;;;;;;;"- Demande de données aux structures supports
+- Demande d'explication et PV d'irrégularité ";Préventif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Volumétrie des données traitées;;;;;;;;"Analyse des données avec Excel ou Access en fonction du volume
+Utilisation du SAS de DRSI";;;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Non détection des dysfonctionnements du CI lors d'une mission d'enquête ;;;;;;;;" - L'évaluation des insuffisances sur le CI fait partie des objectifs assignés à chaque mission d'enquête. Il en est de même que l'évaluation du préjudice subi et la qualification des faits
+ - Existence d'une procédure de pilotage d'une mission d'enquête précisant le recours aux supports au besoins";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Carence dans la réalisation de la phase de prise de connaissance ( phase de prise de connaissance baclée);;;;;;;;Validation du plan d'approche, du programme de travail et la liste des inputs par le Chef de Division ARQ;Détectif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Complaisance ou défaut d'objectivité des auditeurs;;;;;;;;"Diffusion de la charte de l'audit
+Charte de déontologie de l'enquêteur signée par tous les auditeurs";Préventif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Non détermination des responsabilités au terme d'une mission d'enquête;;;;;;;;Identification de la cause qui empêche de situer les responsabilités et élaboration de recommandations aux structures concernées;Détectif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Non détection des cas de fraude et perte de revenu;;;;;;;;"- Approche orientée fraude et RA lors de l'élaboration des plans d'approche et programmes de travail
+- Réalisation des travaux de contrôle général sur la base de données exhaustives
+- Revue et validation des rapports par le Chef de Division ARQ
+";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Non respect des libertés individuelles par les auditeurs;;;;;;;;"Diffusion de la charte de l'audit
+Charte de déontologie de l'enquêteur signée par tous les auditeurs";Préventif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Communication du nom des auteurs des saisines ou alertes aux personnes mises en cause;;;;;;;;La sauvegarde de l'anonymat des auteurs de saisine est garanitie par les dispositions de l'obligation d'alerte;Préventif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque de divulgation d’information confidentielle ;Communication de données personnelles à des tiers;;;;;;;;Charte de déontologie de l'enquêteur signée par tous les auditeurs;;;1;2;1;2;3;2;3;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque d'inefficacité des missions d'enquête;Insuffisance dans la sensibilisation des personnes ressources sur la confidentialité des missions d'enquêtes;;;;;;;;" - Demandes d'informations dans le cadre des missions d'enquête  sont marquées ""confidentiel""
+ - Sensibilisation verbale des personnes ressources dans le cadre d'une enquête";Préventif;Manuel;1;2;2;2;;2;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque d'audit (non contrôle, non détection);Retard dans la production des livrables;"Mettre en place un indicateur de suivi des délais de réalisation des missions dans le tableau de bord ARQ
+Exemple indicateur : nombre de missions réalisées dans les délais fixés pour une mission d'audit";Mohamed Mahi Barry;MohamedMahi.Barry@orange-sonatel.com;30/09/2018;31/12/2016;;Réalisé;"- Pilotage hebdomadaire des activités
+- Coaching 
+- Accompagnement de ARQ sur toutes les missions";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Elaborer le reporting enquête;Risque de non fiabilité de l'information pour le pilotage;Retard dans la collecte et la transmission des données d'enquêtes au groupe;;;;;;;;" - Mise à disposition d'une fiche de collecte des données d'enquêtes par Sonatel
+ - Suivi des enquêtes dans le Weekly Report
+ - Suivi des missions réalisées dans le tableau de bord trimestriel ";Préventif;Manuel;1;2;1;2;1;;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Développement d’une activité de terminaison d’appels frauduleuse sur réseaux fixes (RTPC, RNIS) et Mobile (Simbox);;;;;;;;" - Existence d'un outil de détection de la fraude Simbox ""TBS Probe"" développé par FT
+ - Existence d'un outil de détection des fraudes Simbox développé par l'ARTP 
+ - Existence d'un outil interne développé par la DRSI ""Simless"" pour détecter les fraudes Simbox
+ - Mise en place de contrôles et d'analyses des transactions IAH
+ - Analyses par intervalles pour détection des fraudes Simbox
+ - Nouveaux outils en place : Killsimbox";Détectif;Manuel;4;2;3;;2;;2;;1
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Développement d’une activité de terminaison d’appels frauduleuse sur réseaux fixes (RTPC, RNIS) et Mobile (Simbox);;;;;;;;" - Existence d'outils de détection de fraude : FMS, LATRO (Simbox), TBSP, Analyse des ventes, Top 200 off net, on net, SIMLESS, …. 
+ - Mise en place programme Killing Simbox : analyse des potentiels (sims potentiellement simbox) et des sites cibles et désactivation ou brand préventive";Détectif;Manuel;4;2;3;;2;;2;;1
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Non appropriation de la lutte anti fraude par le personnel;;;;;;;;" - Sensibilisation sur la fraude pour tout le personnel OGN 
+ - Support de SONATEL
+ - Dispositif d'alerte pour les soupçons de fraude";Préventif;Manuel;1;2;3;;2;;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Demande d'abonnement de client indésirable (fraude à l'entrée);;;;;;;;" - Contrôle quotidien du top 20 des consommations
+ - Contrôle quotidien des HUR
+ - Mise en place de l'outil RAID de détection des fraudes";Détectif;Manuel;2;2;3;;2;;2;;2
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Non respect de la procédure d'identification client (absence de contrôle à l'entrée);;;;;;;;" - Il existe une procédure d'identification du client : un contrôle automatique et un recoupement entre les différentes informations fournies : nom, prénom, adresse, numéro contact (commercial appelle) est effectué.
+ - Sensibilisation du personnel sur la lutte contre la fraude";Détectif;Manuel;1;2;3;;2;;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Long délai de réception des HUR;;;;;;;;" - Existence de l'outil FRAUD-X pour la détection des fortes consommations en Roaming
+ - HUR OP envoyé par les autres opérateurs partenaires
+ - HUR MACH";Préventif;Manuel;1;2;3;;2;;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Non respect de la politique de lutte contre la fraude ;;;;;;;;Existence d'une politique de prévention et de détection de la fraude  au niveau de Orange Guinée ;Préventif;Manuel;1;2;3;;2;;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Non respect de la politique de lutte contre la fraude ;;;;;;;;Existence d'objectifs d'atteindre un montant Fraude et RA de 2% du CA;Préventif;Manuel;1;2;3;;2;;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Absence d'indicateurs de mesure de la performance de l'activité FRA;;;;;;;;" - Existence d'un tdb mensuel ""maquette FRA""
+ - Reporting quotidien des résultats des contrôles clés détection fraudes et RA";Préventif;Manuel;1;2;3;;2;;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Non détection de fraudes sur certains types de services  commercialisés par Orange Guinée;;;;;;;;" - Existence d'outils de détection de fraude : FMS, LATRO (Simbox), TBSP, Analyse des ventes, Top 200 off net, on net, SIMLESS, …. 
+ - Mise en place programme Killing Simbox : analyse des potentiels (sims potentiellement simbox) et des sites cibles et désactivation ou brand préventive";Préventif;Manuel;2;2;3;;2;;2;;2
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Non détection de fraudes sur certains types de services  commercialisés par Orange Guinée;;;;;;;;L'analyse des risques est incluse dans le processus d'élaboration des offres marketing et ITN (TTM);Préventif;Manuel;2;2;3;;2;;2;;2
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la démarche revenue assurance au sein du groupe;Risque de non fiabilité de la facturation;Non identification des risques RA;;;;;;;;" - Cartographie des flux de revenus : mise en place de la cartographie revenue assurance
+ - Déploiement d'un kit de contrôle sur la génération des revenus
+ - Existence d'un reporting RA mensuel
+ - Echanges avec FT sur les nouveaux contrôles FRA";Préventif;Manuel;1;2;2;;2;;;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la démarche revenue assurance au sein du groupe;Risque de non fiabilité de la facturation;Non identification des risques RA;;;;;;;;L'analyse des risques est incluse dans le processus d'élaboration des offres marketing et ITN (TTM);Préventif;Manuel;1;2;2;;2;;;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la démarche revenue assurance au sein du groupe;Risque de non fiabilité de la facturation;Non réalisation des contrôles RA;;;;;;;;" - Pilotage et reporting mensuel des contrôles RA par ARQ/FRA
+ - Copil RA suivi par le Sponsor FRA membre du CODIR (contrôle de la réalisation exhaustive des contrôles RA)";Préventif;Manuel;1;2;2;;2;;;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la démarche revenue assurance au sein du groupe;Risque de non fiabilité de la facturation;Non réalisation des contrôles RA;;;;;;;;Recensement de l’ensemble des risques RA à partir des flux de trafics et bench auprès du Groupe FT et en collaboration avec les opérationnels et mise en place de fiches de contrôles ;Préventif;Manuel;1;2;2;;2;;;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la démarche revenue assurance au sein du groupe;Risque de non fiabilité de la facturation;Non réalisation des contrôles RA;;;;;;;;" - Lettre de mission individuelle signées du DG pour le Business Leader (BL)
+ - Présentation du plan Opéra Groupe Sonatel aux BL et à leur structure (réseau Revenu Assurance)
+- Mise en place de correspondants RA dans les directions
+- Des objectifs RA ont été définis pour les Directeurs";Préventif;Manuel;1;2;2;;2;;;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la démarche revenue assurance au sein du groupe;Risque de non fiabilité de la facturation;Insuffisances dans le suivi de la performance;;;;;;;;" - Pilotage et reporting mensuel des contrôles RA par ARQ
+ - Mise en place d'un Copil RA pour Orange Guinée 
+ - Reporting quotidien RA";Préventif;Manuel;1;2;2;;2;;;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la démarche revenue assurance au sein du groupe;Risque de non fiabilité de la facturation;Contrôles RA inadaptés;;;;;;;;" - La cartographie et les contrôles RA ont été validés avec les acteurs concernés
+ - Existence d' un Copil RA pour Orange Guinée
+ - Existence de fiches de contrôles ";Préventif;Manuel;1;2;2;;2;;;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Déploiement d'une démarche de maîtrise des risques inadaptée;;;;;;;;" - Harmonisation de la démarche groupe de management des risques 
+ - Cartographie des risques réalisée par ARQ/RCI de SONATEL
+";Préventif;Manuel;1;2;2;2;2;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Déploiement d'une démarche de maîtrise des risques inadaptée;;;;;;;;;;;1;2;2;2;2;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Analyse non approfondie des causes d’incidents;;;;;;;;" - ARQ responsable des activités Fraudes et RA
+ - Analyse des incidents effectuée au niveau de DRSI
+ - Prise en compte des incidents dans la mise à jour de la catographie des risques ";Préventif;Manuel;2;2;2;2;2;1;2;;2
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Indisponibilité des compétences pour identifier les risques ITN;;;;;;;;"- Identification des risques en atelier avec les propriétaires de risques (chefs de projet, responsables opérationnels)
+ - Soutien de RCI SONATEL dans l'élaboration de la cartographie des risques
+- Bench au niveau du groupe";Préventif;Manuel;1;2;2;2;2;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Non exhaustivité des risques identifiés;Mettre à jour la base après remontées des risques par l’audit, contrôles généraux et enquêtes;Mohamed Mahi Barry;MohamedMahi.Barry@orange-sonatel.com;30/09/2018;31/12/2016;;Réalisé;"Formalisation au niveau groupe du processus d'identification des risques :
+- Identification des risques sur la base de la fiche de poste et des objectifs du propriétatire de risques pour éviter l'omission d'une activité
+ - La carto est réallisée sur la base de la carto des processus";Préventif;Manuel;1;2;2;2;2;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Mauvaise identification des interlocuteurs clés;;;;;;;;Identification des risques et des dispositifs de contrôles avec les propriétaires de processus et les responsables opérationnels de processus et validation avec les Directeurs;Préventif;Manuel;1;2;2;2;2;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Mauvaise qualité des évaluations;;;;;;;;" - Harmonisation de la démarche groupe de management des risques
+ - Existence d'une grille d'évaluation Groupe
+ - Evaluation par les propriétaires de risques avec le support de ARQ";Préventif;Manuel;1;2;2;2;2;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;inefficacité des dispositifs de traitement  risques;Elaborer le programme d'audit et de contrôles généraux à partir de la cartographie des risques et tester les dispositifs de traitement;Mohamed Mahi Barry;MohamedMahi.Barry@orange-sonatel.com;30/09/2018;31/12/2016;;Réalisé;Elaboration du programme d'audit et de contrôles généraux à partir de la cartographie des risques et test les dispositifs de traitement;;;1;2;2;2;2;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Insuffisance de compétence des risks managers;;;;;;;;"- Support RCI groupe
+- Formation groupe sur les risques et le contrôle interne";Préventif;Manuel;1;2;2;2;2;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Absence de dispositif de pilotage adéquat;;;;;;;;Harmonisation de la démarche groupe de management des risques;Préventif;Manuel;1;2;2;2;2;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Non exhaustivité de la documentation;;;;;;;;Revue des procédures par ARQ pour s'assurer de la documentation des points de contrôle;Préventif;Manuel;2;2;2;2;2;1;2;;2
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de non maîtrise des risques;Non prise en charge (ou prise en charge insuffisante) des aspects contrôle interne dans la gestion des entités opérationnelles (confusion contrôle interne/audit interne, assimilation à la direction de l'audit…);;;;;;;;"- Revue des procédures par ARQ pour s'assurer de la documentation des points de contrôle
+ - Sensibilisation sur les risques et le contrôle interne ";Préventif;Manuel;2;2;2;2;2;1;2;;2
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Assurer le support à la maîtrise des risques et le pilotage du CI;Risque de divulgation d’information confidentielle ;Diffusion non contrôlée de la base risques;;;;;;;;" - Limitation de la diffusion de la cartographie des risques aux propriétaires de risques ,aux responsables opérationnels des processus et aux auditeurs
+ - Définition des niveaux de marquage des documents et diffusion des pictogrammes de marquage";Préventif;Manuel;1;2;1;2;3;2;3;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Non prise en compte d'une exigence dans les dispositions;;;;;;;;Audits à blanc internes ou effectués par des cabinets.;Détectif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non maîtrise des risques;Récurrence des dysfonctionnements  ;;;;;;;;Organisation  de GAQ dont les thèmes sont choisis en fonction des types de dysfonctionnement (dysfonctionnements importants et/ou récurrents);Détectif;Manuel;2;2;2;2;2;2;3;;2
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non maîtrise des risques;Analyse non approfondie des causes d’incidents;;;;;;;;Analyse des causes d'incidents ou de dysfonctionnements lors du GAQ;Préventif;Manuel;2;2;2;2;2;1;2;;2
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Non application des dispositions prévues;;;;;;;;Audits qualité interne et audits internes pour détecter et corriger les non-conformité documentaires;Détectif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Non application des dispositions prévues;;;;;;;;Pilotage du système : cadre et outils définis.;Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Connaissance insuffisante de la stratégie de l'entreprise;;;;;;;;" - Pertinence des objectifs: prise en compte de critères: orientations de la DG, importance des activités
+- Réception des ODG 
+- Prise en compte de la vision du DG
+- Contribution au déploiement des ODG 
+ - Chef de Division ARQ participe aux comités de coordinations présentés par DG
+";Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Connaissance insuffisante des besoins et attentes des parties prenantes;;;;;;;;" - Prise en compte des ODG dans l'élaboration du plan Qualité
+- Dispositifs d'écoute clients : baromètre, rapport d'écoute réclamations, remontées spontanées, …)
+ - Veille normative et réglementaire";Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Non prise en compte d'une évolution réglementaire;;;;;;;;" - Analyse d'impact et mise à jour de la politique en cas d'évolution
+- SMQ bâti sur la base d'un référentiel";Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non fiabilité de l'information pour le pilotage;Non fiabilité des données en entrées;;;;;;;;Audit des processus;Détectif;Manuel;1;2;1;2;1;;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Produire les rapports : d'écoute, analyse des récla, Tdb , enquête sondage, pilotage des baromètres;Risque de non fiabilité de l'information pour le pilotage;Non fiabilité des données en entrées;;;;;;;;"Plusieurs niveaux de validation des données reçues (N+1 jusqu'au Directeur)
+";Détectif;Manuel;1;2;1;2;1;;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Produire les rapports : d'écoute, analyse des récla, Tdb , enquête sondage, pilotage des baromètres;Risque de non fiabilité de l'information pour le pilotage;Non fiabilité des données en entrées;;;;;;;;"Revue des indicateurs et modification si nécessaire (+ explication des modifications) lors des revues de processus et de direction.
+Mise en place d'un dictionnaire des indicateurs";Détectif;Manuel;1;2;1;2;1;;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Produire les rapports : d'écoute, analyse des récla, Tdb , enquête sondage, pilotage des baromètres;Risque de non fiabilité de l'information pour le pilotage;Modification de la loi de composition des indicateurs ;;;;;;;;"Revue des indicateurs et modification si nécessaire (+ explication des modifications) lors des revues de processus et de direction.
+Mise en place d'un dictionnaire des indicateurs";Détectif;Manuel;1;2;1;2;1;;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Produire les rapports : d'écoute, analyse des récla, Tdb , enquête sondage, pilotage des baromètres;Risque de non fiabilité de l'information pour le pilotage;Absence de pertinence des indicateurs ;;;;;;;;Validation des indicateurs par les propriétaires.;Préventif;Manuel;1;2;1;2;1;;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Produire les rapports : d'écoute, analyse des récla, Tdb , enquête sondage, pilotage des baromètres;Risque de non fiabilité de l'information pour le pilotage;Absence de pertinence des indicateurs ;;;;;;;;Revues de processus et revues de direction permettent de remettre à niveau les indicateurs. Planning des revues disponible.;Détectif;Manuel;1;2;1;2;1;;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Produire les rapports : d'écoute, analyse des récla, Tdb , enquête sondage, pilotage des baromètres;Risque de non fiabilité de l'information pour le pilotage;Non prise en compte (ou prise en compte insuffisante) des demandes et insatisfactions des clients;;;;;;;;"- Dispositif de collecte écoute spontanée: registre de suggestion, boîtes à suggestion, portail orange, centre d'appel, remontées des agents, réclamations (physiques, orales, mails) 
+- exploitation des données clients : rapports comité service client mensuels
+- Déclinaison des PA sur les réclamations par les structures concernées
+- Suivi du taux de prise en charge des besoins clients
+ - Barometre unique semestriel avec proposition de PA
+ - Existence d'une adresse remontées réseau OGN et suivi avec la Technique";Préventif;Manuel;1;2;1;2;1;;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Déploiement inadéquat de la politique Qualité;;;;;;;;Communication: séances de formation et de sensibilisation, Flash Qualité diffusé via la Com interne et journal, Qualitoor (campagnes de sensibilisation en régions), affichage;Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Déploiement inadéquat de la politique Qualité;;;;;;;;"Pilotage de la performance : 
+- outils de pilotage : tableau de bord qualité. 
+- Un tableau de bord pour chaque entité.
+- cadres de pilotage revues de processus et revues de Directions
+- moyens: orga intra ARQ et réseau qualité
+- audit qualité interne";Détectif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Absence de maîtrise sur des activités externalisées ;" - Planning de visite des fournisseurs , prestataires et distributeurs locaux à élaborer.
+ - Validation des échantillons de terminaux par ARQ
+";Mohamed Mahi Barry;MohamedMahi.Barry@orange-sonatel.com;30/09/2018;31/12/2016;;Réalisé;" - Contrats avec fournisseurs et sous traitants disponibles et applicables
+ - Validation des échantillons de cartes de recharge par ARQ";Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;Absence de maîtrise sur des activités externalisées ;;;;;;;;Formation des sous traitants et fournisseurs;Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Elaborer et déployer la politique Qualité;Risque de non-conformité du système qualité ;inadéquation des profils des correspondants du réseau qualité;;;;;;;;" - Formation du réseau qualité à l'audit qualité, aux normes et aux méthodes de résolution des problèmes. Plan de formation annuelle disponible.
+ - Objectifs SAPER fixés aux correspondants
+ - Binômes : renforcement du réseau
+ - Existence d'une lettre de mission qui définit les attributions des Correspondants Qualité
+- Plan de mise à niveau des Correspondants Qualité selon les compétences et le profil de chacun";Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Gérer la documentation Qualité;Risque de non-conformité du système qualité ;Instabilité organisationnelle ;;;;;;;;ARQ informée des réorganisations via la Com interne ;Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Gérer la documentation Qualité;Risque de non-conformité du système qualité ;Documentation inadaptée (Changement organisationnel);;;;;;;;Participation à la plupart des projets pouvant affecter le SMQ.;Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Gérer la documentation Qualité;Risque de non-conformité du système qualité ;Documentation inadaptée (Changement organisationnel);;;;;;;;Diffusion des notes de services sur l'organisation dans Intracom;Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Gérer la documentation Qualité;Risque de non-conformité du système qualité ;Documentation inadaptée (Changement organisationnel);;;;;;;;Revues de direction : points prévus portant sur les changements pouvant impacter le système.;Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Gérer la documentation Qualité;Risque de non-conformité du système qualité ;Documentation inadaptée (Changement organisationnel);;;;;;;;" - Mise à jour des procédures sur la base des notes d'information
+ - Organisation d'ateliers de mise à jour de la documentation suite aux réorganisations";Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Gérer la documentation Qualité;Risque de non-conformité du système qualité ;Non maitrise des compétences du réseau Qualité;;;;;;;;Formations et sensibilisation du réseau qualité;Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Gérer la documentation Qualité;Risque de non-conformité du système qualité ;Changement de dispositifs  internes des directions sans en informer ARQ;;;;;;;;"Sollicitation de ARQ par les Directions pour la mise à jour de la documentation en cas de réorganisation
+Management sensibilisé à remonter à ARQ les changements de dispositifs internes pouvant impacter la documentation";Préventif;Manuel;1;2;1;1;2;2;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Gérer la documentation Qualité;Risque de non intégrité et de non fiabilité des données;Vol, perte ou bug de l'ordinateur de la Responsable Qualité;;;;;;;;"Existence d'un sharepoint DRSI
+Mise en place de Bitlocker";Préventif;Manuel;1;2;;2;;;;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Gérer la documentation Qualité;Risque de non intégrité et de non fiabilité des données;Bug du SI (Qualitoo, Gesparq);Sauvegarde de la base par S2M toutes les 24h;Mohamed Mahi Barry;MohamedMahi.Barry@orange-sonatel.com;30/09/2018;31/12/2016;;Réalisé;;;;1;2;;2;;;;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Produire les rapports : d'écoute, analyse des récla, Tdb , enquête sondage, pilotage des baromètres;Risque de divulgation d’information confidentielle ;Manipulation de données sensibles par des intérimaires;;;;;30/06/2013;;;"Clauses de confidentialité incluses dans les contrats avec les cabinets prestataires des baromètres et études
+Existence d'une clause de confidentialité dans les contrats de stagiaires
+ARQ ne recrute plus d'intérimaires
+";Préventif;Manuel;2;2;1;2;3;2;3;;2
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Produire les rapports : d'écoute, analyse des récla, Tdb , enquête sondage, pilotage des baromètres;Risque de divulgation d’information confidentielle ;Téléchargement de document confidentiel à partir de Qualitoo;New PA : Etudier la possibilité de supprimer l'option téléchargement dans Qualitoo à OGN;Mohamed Mahi Barry;MohamedMahi.Barry@orange-sonatel.com;30/09/2018;31/12/2016;;Réalisé;Note de service diffusée sur l'interdiction de télécharger les procédures (rappels effectués lors des séances de sensibilisation);Préventif;Manuel;2;2;1;2;3;2;3;;2
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Conduire une mission d' audit qualité;Risque d'audit (non contrôle, non détection);Mauvaise estimation du temps de réalisation des missions;;;;;;;;Bench sur l'historique;Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Conduire une mission d' audit qualité;Risque d'audit (non contrôle, non détection);Indisponibilité des auditeurs internes  qualité;;;;;;;;" - Planning SMQ diffusé en début d'année
+ - Nombre suffisant d'auditeurs qualité (au moins 2 par Direction)";Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Conduire une mission d' audit qualité;Risque d'audit (non contrôle, non détection);Connaissance insuffisante des activités à auditer;;;;;;;;" - Phase de prise de connaissance avant démarrage de la mission
+ - Prise en comptes des profils lors de l'élaboration du programme
+ - Pilotage des missions par les acteurs de ARQ";Préventif;Manuel;2;2;4;2;1;1;2;;2
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Conduire une mission d' audit qualité;Risque d'audit (non contrôle, non détection);Mauvaise priorisation des activités ;;;;;;;;Balayage de tous les processus;Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Conduire une mission d' audit qualité;Risque d'audit (non contrôle, non détection);Manque d’intérêt des audités;;;;;;;;Existence de réunion de lancement des missions permettant d'informer sur l'apport de l'audit qualité;Préventif;Manuel;1;2;4;2;1;1;2;;3
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Absence d'outil de détection de la fraude Telco;;;;;;;;" - Existence d'outils de détection de fraude : FMS, LATRO (Simbox), TBSP, Analyse des ventes, Top 200 off net, on net, SIMLESS, …. 
+ - Mise en place programme Killing Simbox : analyse des potentiels (sims potentiellement simbox) et des sites cibles et désactivation ou brand préventive";Préventif;Manuel;2;2;3;;2;;2;;2
+Piloter l'entreprise;"Gérer les risques, le contrôle interne et piloter la
+démarche fraude et revenu assurance";Manager les risques, le contrôle Interne, Fraude & Revenue Assurance ;OGC/DAMRQ/DFRARCI;Piloter la mise en place des mécanismes de détection et de lutte contre la fraude;Risque de fraude ;Mauvaise analyse des alertes de fraude;;;;;;;;Echanges avec FT sur les contrôles FRA;Préventif;Manuel;1;2;3;;2;;2;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d' audit ou de CG;Risque de corruption;Acceptation d'avantages de lors de missions. Défaut d'intégrité des auditeurs;;;;;;;;Existence d'une charte d'audit;Préventif;manuel;1;3;2;;4;3;4;;3
+Piloter l'entreprise;Manager l'audit;Manager l'audit;OGC/DAMRQ/DAC;Conduire une mission d'enquête;Risque de corruption;Acceptation d'avantages de lors de missions. Défaut d'intégrité des inspecteurs;;;;;;;;"Existence d'une charte de déontologie des inspecteurs traitant de l'intégrité requise pour les inspecteurs
+Existence d'une charte d'audit";Préventif;manuel;1;3;2;2;3;3;;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Assurer la veille normative;Risque de veille inefficace;Défaut d'obtention ou de traitement des évolutions normatives;;;;;;;;"Abonnement au niveau de AFNOR et ASN
+Partage des informations par mails
+Charte de déontologie signé par tous les agents";;;1;2;1;3;3;;1;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Assurer la veille normative;Risque de veille inefficace;Référentiels d'audit, CG, RCI inappropriés;;;;;;;;Elaboration de guides de conduite des missions (AI, EQ, RCI), DPA adaptés à notre environnement et conformes aux normes et pratiques internationales, par les différents chefs de CR, avec mise à jour annuelle;Préventif;Manuel;1;1;1;1;1;;;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Assurer la veille normative;Risque de veille inefficace;Référentiels d'audit, CG, RCI obsolètes;;;;;;;;"- Veille normative, sur les bonnes pratiques et les outils assurée par SOM 
+Piste d'amélioration: mettre en place des outils de veille adaptés (abonnement à des revues et sites spécialisés, diffusion périodique de rapport de veille). Faire au besoin la mise à jour des guides méthodologiques - ( déploiement du dispositif de veille prévu dans le prgm SOM 2015)";Préventif;Manuel;1;1;1;1;1;;;;3
+Piloter l'entreprise;Déployer les normes et piloter l’amélioration continue;Piloter l’Amélioration continue ;OGC/DAMRQ/DMI;Assurer la veille normative;Risque de veille inefficace;Interprétation erronée des normes et bonnes pratiques;;;;;;;;Participation des collaborateurs de SOM à toutes les formations et RIT de la direction;Préventif;Manuel;2;1;1;1;1;;;;2

@@ -1,0 +1,24 @@
+Risque de fraude;connexion gratuite après la fin du bonus;"Vérifier avec la technique (tests à l'appui) que le compteur est bien bloqué après la fin du bonus  et que la priorisation des compteurs est bien respectée au niveau IN
+";Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;1;1;1;;;;;1;3
+Risque de fraude;Facturation en tarif happy hours / happy night en dehors des plages définies;Réaliser les tests pré/post lancement pour éviter des connexions, appels au-delà des forfaits sans facturation;Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;1-juil.-18;;Non échu;;;;2;1;1;1;;;1;2;2
+Risque de fraude;parrainage school sans accord du parrainé;;;;;;;;;;;1;1;1;;;;;1;3
+Risque de fraude;Attribution indue de points sargal;"Verrouiller l'automatisation de l'attribution des points sargal et le vérifier avec les tests pré-lancment de la perco
+Vérifier avec LMS la faisabilité des contrôles par échantillonnage hebdo du bon positionnement des réductions sargal";Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;1;1;1;;;;;1;3
+Risque de non respect des engagements commerciaux;positionnement tardif des bonus/illimix absence de positionnement des bonus;"Mettre en place 2 niveaux de test :
+ -  le premier avant le lancement pour s'assurer que le paramétrage est ok 
+ -  le 2ème à J (lancement)  
+Check par le 1441 et suivi par le service client pour vérifier le bien fondé des réclamations client
+Verrouiller avec la technique (tests à l'appui) le bon positionnement des  illimix";Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;1;2;1;2;;;3;2;3
+Risque de non respect des engagements commerciaux;impossibilité de se connecter après la fin du compteur bonus;"Vérifier avec la technique (tests à l'appui) qu'à la fin du bonus, le baculement sur le compteur principal est automatique et que le client  ne risque pas d'être bloqué si ce dernier est toujours crédité
+S'assurer ave la technique que la priorisation des compteurs est respectée";Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;1;2;1;2;;;3;2;3
+Risque de non respect des engagements commerciaux;bonus non utilisables sur les autres réseaux;Verrouiller avec la technique (tests à l'appui) le fonctionnement des bonus sur tous les réseaux;Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;1;2;1;2;;;3;2;3
+Risque de non respect des engagements commerciaux;non respect des délais de validité des points sargal;Verrouiller avec la technique (tests à l'appui) le respect des délais de validité des points  sargal;Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;1;2;1;2;;;3;2;3
+Risque de dégradation de la qualité de service;bug des plateformes (ISG et IN)  suite à une sursollicitation ;Envoyer l'EBM et S'assurer avec la technique de la capacité des plateformes requises à supporter le flux prévu dans le BP.;Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;1;2;1;2;;;3;2;3
+Risque de dimensionnement inadéquat du réseau;Sous-évaluation des impacts du projet sur les capacités des équipements réseaux (IN, SMSC, …) à cause notamment des happy hours 4G;Dérouler des tests pré lancement dans le cadre de l'EBM pour s'assurer de la capcité du réseau à supporter les happy hour en cours 4G;Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;2;2;1;2;;;3;2;
+Risque de non maîtrise du stock;rupture de stock des terminaux alcatel;Verrouiller avec le service DMBO/SMTA la disponibilité des terminaux à temps pour le début de la perco et durant le long de la perco;Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;1;2;1;2;;;3;2;3
+Risque de manque de performance économique des offres/projets;manque de communication sur l'offre;;;;;;;;des pushs sms sont envoyés aux clients apres dépôt du passe;;;1;1;1;1;;;;1;3
+Risque de fraude;revente du pass  par la boutique;"rattacher le depot du pass à l'IMEI du telephone vendu
+Rendre les bonus non transferables";Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;Préventif;Manuelle;4;2;1;2;2;;1;8;1
+Risque de dégradation de la qualité de service;bug suite à un mauvais parametrage des critères d’éligibilité (autres formules ou offres );;;;;;;;;;;4;2;1;3;;1;2;8;1
+Risque de fraude;Fraude sur les dépôts manuels;;;;;;;;Contrôle permanent des dépots manuels par ARQ/AI/GP;correctif;Manuelle;2;2;1;2;2;;1;4;2
+Risque de fraude;Multiples positionnements de pass;Verrouiller avec la technique (tests à l'appui) le positionnement  des bonus.;Awa DIONGUE;Awa.DIONGUE@orange-sonatel.com;19-avr.-18;30-juin-18;;Non échu;;;;1;2;1;2;2;;1;2;3

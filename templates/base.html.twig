@@ -92,8 +92,8 @@
                 <span class="scroll_down_menu"></span>
                 <ul style="display: none;">
                     {% for societe in societes %}
-                        {# <li ><a href="#" class="ajaxLink" modal-url={{ path('changement_societe', {id: societe.id}) }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li> #}
-                        <li ><a href="#" class="ajaxLink" modal-url={{ path('dashboard') }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li>
+                        <li ><a href="#" class="ajaxLink" modal-url={{ path('changement_societe', {id: societe.id}) }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li>
+                        {# <li ><a href="#" class="ajaxLink" modal-url={{ path('dashboard') }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li> #}
                     {% endfor %}
                 </ul>
 

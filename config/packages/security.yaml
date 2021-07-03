@@ -12,6 +12,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            switch_user: { role: ROLE_ADMIN, parameter: _want_to_be_this_user }
             pattern: ^/
             form_login:
                 provider: fos_userbundle

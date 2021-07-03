@@ -236,11 +236,10 @@ class ChargementController extends BaseController {
 	/**
 	 * @QMLogger(message="Affichage erreur du chargement")
 	 * @Route("/erreur_chargement", name="erreur_chargement")
-	 * @Template()
+	 * @Template("chargement/showErreur.html.twig")
 	 */
 	public function showErreurAction() {
 		$erreurs=$this->get('session')->get('erreurs_chargement');
-		var_dump($erreurs); exit;
 		$erreurs =unserialize($erreurs);
 		return array('erreurs'=>$erreurs);
 	}

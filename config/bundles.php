@@ -18,6 +18,7 @@ return [
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
     App\QuickMakingBundle\OrangeQuickMakingBundle::class => ['all' => true],
     App\MainBundle\OrangeMainBundle::class => ['all' => true],
+    App\SyntheseBundle\OrangeSyntheseBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Sonata\IntlBundle\SonataIntlBundle::class => ['all' => true],
     Shtumi\UsefulBundle\ShtumiUsefulBundle::class => ['all' => true],

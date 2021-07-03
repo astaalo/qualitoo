@@ -1,5 +1,5 @@
 <?php
-namespace Orange\SyntheseBundle\Document;
+namespace App\SyntheseBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 

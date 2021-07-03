@@ -1,5 +1,5 @@
 <?php
-namespace Orange\MainBundle\Mapping;
+namespace App\MainBundle\Mapping;
 
 class CauseMapping extends BaseMapping {
 	

@@ -1,7 +1,7 @@
 <?php
-namespace Orange\MainBundle\Mapping;
+namespace App\MainBundle\Mapping;
 
-use Orange\MainBundle\Entity\Risque;
+use App\Entity\Risque;
 
 class RisqueMapping extends BaseMapping {
 	

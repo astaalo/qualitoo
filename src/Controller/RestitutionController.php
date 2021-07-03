@@ -29,7 +29,7 @@ class RestitutionController extends BaseController {
 	 */
 	public function filterAction(Request $request) {
 		$entity = new Risque();
-		$form = $this->createForm($this->get('orange_main.core')->getCriteria('Restitution'), $entity);
+		$form = $this->createForm($this->orange_main_core->getCriteria('Restitution'), $entity);
 		$this->modifyRequestForForm($request, array(), $form);
 		$this->get('session')->set('restitution_criteria', $request->request->get($form->getName()));
 		return $this->redirect($this->generateUrl('la_restitution', array('id' => $entity->getCartographie()->getId())));
@@ -56,7 +56,7 @@ class RestitutionController extends BaseController {
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($request, $data, $form);
 		$em->getRepository(Risque::class)->getMatrice($form->getData(), $type, $probabiteKPIs, $graviteKPIs);
-		$entities = $this->get('orange_main.core')->getMapping('Risque')->mapForMatrice($probabiteKPIs, $graviteKPIs, $type, $form->getData());
+		$entities = $this->orange_main_core->getMapping('Risque')->mapForMatrice($probabiteKPIs, $graviteKPIs, $type, $form->getData());
 		return array('entities' => $entities, 'form' => $form->createView(), 'carto'=>$carto, 'type' => $type);
 	}
 	
@@ -69,7 +69,7 @@ class RestitutionController extends BaseController {
 // 			->setParameters($this->get('session')->get('restitution_parameters'))
 // 			->getArrayResult();
 		$data = array();
-		$url = $this->get('orange_main.core')->getReporting('Restitution')->extractMatriceSimple($request->request->get('image'), $data, $this->get('kernel')->getRootDir());
+		$url = $this->orange_main_core->getReporting('Restitution')->extractMatriceSimple($request->request->get('image'), $data, $this->get('kernel')->getRootDir());
 		//$reporting->getResponseAfterSave('php://output', 'Matrice de restitution');
 		return new JsonResponse(array('url' => $url));
 	}

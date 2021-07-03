@@ -1,15 +1,12 @@
-<?php 
-namespace App\Security\Authorization\Voter;
+<?php
 
+namespace App\Security\Voter;
+
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
-use App\Entity\Utilisateur;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use App\Entity\Risque;
 
-
-class RisqueVoter extends AbstractVoter {
+class RisqueVoter extends Voter {
 	
 	const CREATE 	  			= 'create';
 	const READ 	 		 		= 'read';
@@ -21,14 +18,27 @@ class RisqueVoter extends AbstractVoter {
 	const MATRICE       	    = 'matrice';
 	const ACCESS_ONE_RISQUE     = 'accesOneRisque';
 	
-	private $em;
-	
-	protected $container;
-	
-	public function __construct(EntityManager $em, ContainerInterface $container) {
-		$this->em = $em;
-		$this->container = $container;
-	}
+	protected function supports($attribute, $risque): bool
+    {
+        return in_array($attribute, [self::CREATE, self::READ, self::REJET, self::UPDATE, self::DELETE,
+			self::EXPORT_RISQUE, self::VALIDATE, self::MATRICE, self::ACCESS_ONE_RISQUE])
+			&& $risque instanceof \App\Entity\Risque;
+    }
+
+    protected function voteOnAttribute($attribute, $risque, TokenInterface $token): bool
+    {
+		
+        // if the user is anonymous, do not grant access
+        if (!$user instanceof UserInterface) {
+            return false;
+        }
+
+        // ... (check conditions and return true to grant permission) ...
+		if (in_array($attribute, [self::CREATE, self::READ, self::UPDATE, self::DELETE, self::ACTIVATE, self::DESACTIVATE])) {
+			return $user->hasRole('ROLE_ADMIN');
+		}
+		return false;
+    }
 	
 	protected function getSupportedAttributes() {
 		return array(self::CREATE, self::READ, self::UPDATE, self::DELETE, self::EXPORT_RISQUE, self::VALIDATE, self::MATRICE, self::ACCESS_ONE_RISQUE, self::REJET);

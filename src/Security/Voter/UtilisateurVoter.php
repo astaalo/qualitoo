@@ -6,8 +6,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class UtilisateurVoter extends Voter
-{
+class UtilisateurVoter extends Voter {
     const CREATE 	  	 = 'create';
 	const READ 	 		 = 'read';
 	const UPDATE 	 	 = 'update';
@@ -29,28 +28,9 @@ class UtilisateurVoter extends Voter
         }
 
         // ... (check conditions and return true to grant permission) ...
-        switch($attribute) {
-			case self::CREATE:
-				return $user->hasRole('ROLE_ADMIN');
-				break;
-			case self::READ:
-				return $user->hasRole('ROLE_ADMIN');
-				break;
-			case self::UPDATE:
-				return $user->hasRole(Utilisateur::ROLE_ADMIN);
-				break;
-			case self::DELETE:
-				break;
-			case self::ACTIVATE:
-				return $user->hasRole('ROLE_ADMIN');
-				break;
-			case self::DESACTIVATE:
-				return $user->hasRole('ROLE_ADMIN');
-				break;
-			default:
-				return false;
-				break;
+		if (in_array($attribute, [self::CREATE, self::READ, self::UPDATE, self::DELETE, self::ACTIVATE, self::DESACTIVATE])) {
+			return $user->hasRole('ROLE_ADMIN');
 		}
-        return false;
+		return false;
     }
 }

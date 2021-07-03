@@ -10,7 +10,7 @@ class Core {
 	 * @param string $name
 	 */
 	public function getMapping($name, $reporting = false) {
-		$class = sprintf('\Orange\%s\Mapping\%sMapping', $reporting ? 'SyntheseBundle' : 'MainBundle',$name);
+		$class = sprintf('\App\%s\Mapping\%sMapping', $reporting ? 'SyntheseBundle' : 'MainBundle',$name);
 		return new $class;
 	}
 	

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\MainBundle\Twig\AssetsExtension;
 use App\Service\Actions;
+use App\Service\Core;
 use App\Service\Loader;
 use App\Service\Status;
 use Doctrine\ORM\QueryBuilder;
@@ -25,8 +26,9 @@ class BaseController extends AbstractController
     protected $service_action;
     protected $service_assets_extension;
     protected $orange_main_loader;
+    protected $orange_main_core;
 
-    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader)
+    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core)
     {
         $this->getParameter = $params;
         $this->paginator = $paginator;
@@ -34,6 +36,7 @@ class BaseController extends AbstractController
         $this->service_action = $action;
         $this->service_assets_extension = $assets_extension;
         $this->orange_main_loader = $orange_main_loader;
+        $this->orange_main_core = $orange_main_core;
     }
 
      public static function getSubscribedServices(): array  //ON surcharge cette fonction pour ajouter nos services aux services existants #Spécialité Symfony4

@@ -1,74 +1,46 @@
 <?php 
-namespace App\Security\Authorization\Voter;
 
+namespace App\Security\Voter;
+
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
-use App\Entity\Utilisateur;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
-
-class ParametrageVoter extends AbstractVoter {
+class ParametrageVoter extends Voter {
 	const CREATE 	  	 = 'create';
 	const READ 	 		 = 'read';
 	const UPDATE 	 	 = 'update';
 	const DELETE	 	 = 'delete';
 	
-	private $em;
-	
-	protected $container;
-	
-	public function __construct(EntityManager $em, ContainerInterface $container) {
-		$this->em = $em;
-		$this->container = $container;
-	}
-	
-	protected function getSupportedAttributes() {
-		return array(self::CREATE, self::READ, self::UPDATE, self::DELETE);
-	}
-	
-	protected function getSupportedClasses() {
-		return array( 
-					 'App\Entity\Cause',
-					 'App\Entity\Critere',
-					);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * @see \Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter::isGranted()
-	 */
-	protected function isGranted($attribute, $entity, $user = null) {
-		$user = $this->container->get('security.context')->getToken()->getUser();
-		if(!$user instanceof UserInterface) {
-		} elseif($user->hasRole('ROLE_SUPER_ADMIN')) {
+	protected function supports($attribute, $entity): bool {
+        return in_array($attribute, [self::CREATE, self::READ, self::UPDATE, self::DELETE])
+			&& ($entity instanceof \App\Entity\Cause || $entity instanceof \App\Entity\Critere);
+    }
+
+    protected function voteOnAttribute($attribute, $entity, TokenInterface $token): bool {
+		$user = $token->getUser();
+		// if the user is anonymous, do not grant access
+        if (!$user instanceof UserInterface) {
+            return false;
+        } elseif($user->hasRole('ROLE_SUPER_ADMIN')) {
 			return true;
 		}
-		if (!$user instanceof Utilisateur) {
-			throw new \LogicException('The user is somehow not our User class!');
-		}
-		
+        // ... (check conditions and return true to grant permission) ...
 		switch($attribute) {
 			case self::CREATE:
-				if ($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_RISKMANAGER') || $user->hasRole('ROLE_RESPONSABLE')) {
-					return true;
-				}
-			break;
+				return $user->hasRoles(['ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_RESPONSABLE']);
+				break;
 			case self::READ:
-				if ($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_RISKMANAGER')) {
-					return true;
-				}
-			break;
+				return $user->hasRoles(['ROLE_ADMIN', 'ROLE_RISKMANAGER']);
+				break;
 			case self::UPDATE:
-				if ($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_RISKMANAGER')) {
-					return true;
-				}
-			break;
-			
+				return $user->hasRoles(['ROLE_ADMIN', 'ROLE_RISKMANAGER']);
+				break;
 			case self::DELETE:
-			break;
+				break;
+			default:
+				break;
 		}
 		return false;
 	}
-	
 }

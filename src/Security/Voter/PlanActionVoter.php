@@ -1,77 +1,49 @@
 <?php 
-namespace App\Security\Authorization\Voter;
 
+namespace App\Security\Voter;
+
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
-use App\Entity\Utilisateur;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use App\Entity\Risque;
-use App\Entity\Controle;
-use App\Entity\PlanAction;
 
-
-class PlanActionVoter extends AbstractVoter {
+class PlanActionVoter extends Voter {
 	
 	const CREATE 	  	  = 'create';
 	const READ 	 		  = 'read';
 	const UPDATE 	 	  = 'update';
 	const DELETE	 	  = 'delete';
 	const ACCESS_ONE_PA   = 'accesOnePa';
-	
-	private $em;
-	
-	protected $container;
-	
-	public function __construct(EntityManager $em, ContainerInterface $container) {
-		$this->em = $em;
-		$this->container = $container;
-	}
-	
-	protected function getSupportedAttributes() {
-		return array(self::CREATE, self::READ, self::UPDATE, self::DELETE,  self::ACCESS_ONE_PA);
-	}
-	
-	protected function getSupportedClasses() {
-		return array('App\Entity\PlanAction');
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * @see \Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter::isGranted()
-	 */
-	protected function isGranted($attribute, $pa, $user = null) {
-		$user = $this->container->get('security.context')->getToken()->getUser();
-		if(!$user instanceof UserInterface) {
-		} elseif($user->hasRole('ROLE_SUPER_ADMIN')) {
+
+	protected function supports($attribute, $risque): bool {
+        return in_array($attribute, [self::CREATE, self::READ, self::UPDATE, self::DELETE,  self::ACCESS_ONE_PA])
+			&& $risque instanceof \App\Entity\PlanAction;
+    }
+
+    protected function voteOnAttribute($attribute, $pa, TokenInterface $token): bool {
+		$user = $token->getUser();
+        // if the user is anonymous, do not grant access
+        if (!$user instanceof UserInterface) {
+            return false;
+        } elseif($user->hasRole('ROLE_SUPER_ADMIN')) {
 			return true;
 		}
-		if (!$user instanceof Utilisateur) {
-			throw new \LogicException('The user is somehow not our User class!');
-		}
-		
+        // ... (check conditions and return true to grant permission) ...
 		switch($attribute) {
 			case self::CREATE:
-				if ($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_RISKMANAGER') || $user->hasRole('ROLE_AUDITEUR') || $user->hasRole('ROLE_RESPONSABLE') || $this->isYourPA($pa)) {
-					return true;
-				}
-			break;
+				return ($user->hasRoles(['ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE']) || $this->isYourPA($pa));
+				break;
 			case self::UPDATE:
-				if ($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_RISKMANAGER') || $user->hasRole('ROLE_AUDITEUR') || $user->hasRole('ROLE_RESPONSABLE') || $this->isYourPA($pa)) {
-					return true;
-				}
-			break;
-			
+				return ($user->hasRoles(['ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE']) || $this->isYourPA($pa));
+				break;
 			case self::DELETE:
-				if ($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_RISKMANAGER') || $user->hasRole('ROLE_AUDITEUR')) {
-					return true;
-				}
-			break;
+				return ($user->hasRoles(['ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR']));
+				break;
 			case self::ACCESS_ONE_PA:
-				if($this->isYourPA($pa)){
-					return true;
-				}
-			break;
+				return $this->isYourPA($pa);
+				break;
+			default:
+				return false;
+				break;
 		}
 		return false;
 	}

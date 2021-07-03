@@ -25,7 +25,9 @@ class UtilisateurVoter extends Voter {
         // if the user is anonymous, do not grant access
         if (!$user instanceof UserInterface) {
             return false;
-        }
+        } elseif($user->hasRole('ROLE_SUPER_ADMIN')) {
+			return true;
+		}
 
         // ... (check conditions and return true to grant permission) ...
 		if (in_array($attribute, [self::CREATE, self::READ, self::UPDATE, self::DELETE, self::ACTIVATE, self::DESACTIVATE])) {

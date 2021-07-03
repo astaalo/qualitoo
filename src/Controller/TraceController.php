@@ -89,7 +89,7 @@ class TraceController extends BaseController
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Trace')->find($id);
 		$form = $this->createCreateForm($entity, 'Trace');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

@@ -146,7 +146,7 @@ class CauseController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Cause')->find($id);
 		$form = $this->createCreateForm($entity, 'Cause');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

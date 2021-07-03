@@ -99,7 +99,7 @@ class ConsequenceController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Consequence')->find($id);
 		$form = $this->createCreateForm($entity, 'Consequence');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

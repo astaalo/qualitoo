@@ -210,7 +210,7 @@ class PlanActionController extends BaseController {
 		$form = $this->createCreateForm($entity, 'PlanAction', array(
 				'attr' => array('type_statut' => $this->getMyParameter('types', array('statut', 'plan_action')), 'em' => $em) 
 			));
-		$request = $this->get('request');
+		$request = $request;
 		if($request->getMethod() == 'POST') {
 			$form->handleRequest($request);
 			if($form->isValid()) {

@@ -132,7 +132,7 @@ class StructureController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Structure')->find($id);
 		$form = $this->createCreateForm($entity, 'Structure');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

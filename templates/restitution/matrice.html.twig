@@ -35,7 +35,7 @@
 
 {% block content_config %}
 	<div id="filter_content" hidden>
-		{% include 'OrangeMainBundle:KPI:filter.html.twig' with {form: form, link : app.request.attributes.get('_route')} %}
+		{% include 'KPI/filter.html.twig' with {form: form, link : app.request.attributes.get('_route')} %}
 	</div>
 	<div id="main_content" class="content" style="background-color: #fff;">
 		<div class="tableName" style="width: 60%;display: inline-block;vertical-align: top;">

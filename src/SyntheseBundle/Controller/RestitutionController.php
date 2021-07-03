@@ -33,7 +33,7 @@ class RestitutionController extends BaseController {
 		$this->denyAccessUnlessGranted('matrice', $entity, 'Accés non autorisée!');
 		
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$dm->getRepository('OrangeSyntheseBundle:Risque')->getMatrice($form->getData(), $type, $probabiteKPIs, $graviteKPIs);
 		/*foreach($probabiteKPIs as $probabiteKPI) {
 			var_dump($probabiteKPI);echo '<br><br>';

@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Evaluation;
 use App\Entity\Menace;
 use App\Entity\Risque;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -74,7 +75,7 @@ class MenaceRepository extends ServiceEntityRepository
     public function getRisquesAveresByPeriode($criteria){
         $criteria = $criteria ? $criteria : new \App\Entity\Risque();
         $risqueRepo = $this->_em->getRepository(Risque::class);
-        $evalBuilder = $this->_em->getRepository('OrangeMainBundle:Evaluation')
+        $evalBuilder = $this->_em->getRepository(Evaluation::class)
             ->createQueryBuilder('ev')
             ->innerJoin('ev.risque','risk')
             ->select('MAX(ev.id) ')

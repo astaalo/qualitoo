@@ -103,7 +103,7 @@ class AvancementController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Avancement')->find($id);
 		$form = $this->createCreateForm($entity, 'Avancement');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

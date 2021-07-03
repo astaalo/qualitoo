@@ -115,7 +115,7 @@ class QuestionController extends BaseController{
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Question')->find($id);
 		$form = $this->createCreateForm($entity, 'Question');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

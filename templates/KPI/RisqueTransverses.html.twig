@@ -21,7 +21,7 @@
 
 {% block content_config %}
 <div id="filter_content" hidden>
-									{% include 'OrangeMainBundle:KPI:filter.html.twig' with {show_filter_for : 'rt',form: form,link : app.request.attributes.get('_route') , carto:carto} %}
+									{% include 'KPI/filter.html.twig' with {show_filter_for : 'rt',form: form,link : app.request.attributes.get('_route') , carto:carto} %}
 								</div>
 <div id="main_content" class="content" style="background-color: #fff;">
  <div class="content" > <br  class="clear"/>

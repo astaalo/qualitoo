@@ -141,7 +141,7 @@ class RisqueController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		return array('form' => $form->createView(),'position'=>intval($position));
 	}
 	

@@ -170,7 +170,7 @@ class MenaceController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Menace')->find($id);
 		$form = $this->createCreateForm($entity, 'Menace');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

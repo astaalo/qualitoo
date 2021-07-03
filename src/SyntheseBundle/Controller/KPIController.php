@@ -19,7 +19,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Repartition et comparaison criticite")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/{type}/rcc", name="rcc")
-	 * @Template("OrangeMainBundle:KPI:RepartitionCriticite.html.twig")
+	 * @Template("KPI/RepartitionCriticite.html.twig")
 	 */
 	public function repartitionComparaisonCriticiteAction(Request $request,$carto,$type) {
 		$dm = $this->get('doctrine_mongodb')->getManager();
@@ -40,7 +40,7 @@ class KPIController extends BaseController {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		if($type<=1 && $carto<=2) {
 		    $gravites= $dm->getRepository('OrangeSyntheseBundle:Risque')->getGraviteByRisqueStructure($form->getData(),$type)->execute();
 			$matuProb = $dm->getRepository('OrangeSyntheseBundle:Risque')->getMaturiteProbabiliteByRisqueStructure($form->getData(), $type)->getQuery()->execute()->toArray();
@@ -67,7 +67,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Repartition  criticite par risque")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/rrc", name="rrc")
-	 * @Template("OrangeMainBundle:KPI:RepartitionRisqueCriticite.html.twig")
+	 * @Template("KPI/RepartitionRisqueCriticite.html.twig")
 	 */
 	public function repartitionRisqueCriticiteAction(Request $request,$carto) {
 		$dm = $this->get('doctrine_mongodb')->getManager();
@@ -81,7 +81,7 @@ class KPIController extends BaseController {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$req = $dm->getRepository('OrangeSyntheseBundle:Risque')->getMaturiteGraviteProbabilteByRisque($form->getData())->getQuery()->execute();
 		$kpis = $this->get('orange_main.core')->getMapping('Risque', true)->mapForTableauRisqueCriticite($req);
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rrc'));
@@ -92,7 +92,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Risques transverses")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/rt", name="rt")
-	 * @Template("OrangeMainBundle:KPI:RisqueTransverses.html.twig")
+	 * @Template("KPI/RisqueTransverses.html.twig")
 	 */
 	public function risqueTransversesAction(Request $request,$carto){
 		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
@@ -107,7 +107,7 @@ class KPIController extends BaseController {
 				$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$kpis=$this->getDoctrine()->getRepository(Risque::class)->risqueTransverses($form->getData())->getQuery()->getArrayResult();
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rt'));
 		return array('carto'=> $carto, 'kpis'=>$kpis, 'form'=>$form->createView());
@@ -117,7 +117,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Details d'un risque transverse")
 	 * @Method({"GET","POST"})
 	 * @Route("/{menace_id}/{occurence}/{carto}/details_rt", name="details_rt")
-	 * @Template("OrangeMainBundle:KPI:details_rt.html.twig")
+	 * @Template("KPI/details_rt.html.twig")
 	 */
 	public function detailsRTAction(Request $request,$menace_id,$occurence,$carto){
 		$entity = $this->getDoctrine()->getRepository(Menace::class)->find($menace_id);
@@ -137,7 +137,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Comparaison des controles")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/cmc", name="cmc")
-	 * @Template("OrangeMainBundle:KPI:compareControle.html.twig")
+	 * @Template("KPI/compareControle.html.twig")
 	 */
 	public function compareControleAction(Request $request,$carto){
 		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
@@ -152,7 +152,7 @@ class KPIController extends BaseController {
 				$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		return array('carto'=> $carto, 'form'=>$form->createView());
 	}
 	
@@ -174,7 +174,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Taux de prise en charge des risques")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/tprc", name="tprc")
-	 * @Template("OrangeMainBundle:KPI:tauxPriseChargeRisqueControle.html.twig")
+	 * @Template("KPI/tauxPriseChargeRisqueControle.html.twig")
 	 */
 	public function tauxPriseChargeRisqueControleAction(Request $request,$carto){
 		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
@@ -190,7 +190,7 @@ class KPIController extends BaseController {
 		}
 		
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$reqTotalRisques = $this->getDoctrine()->getRepository(Risque::class)-> getMenacesTotalByYear($form->getData())->getQuery()->getArrayResult();
 		$reqTestedRisques = $this->getDoctrine()->getRepository(Quiz::class)-> getRisquesTesterByYear($form->getData())->getQuery()->getArrayResult();
 		$kpis =  $this->get('orange_main.core')->getMapping('Risque')->mapForTableauPriseEnCharge($reqTotalRisques, $reqTestedRisques);
@@ -200,7 +200,7 @@ class KPIController extends BaseController {
 	/**
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/rav", name="rav")
-	 * @Template("OrangeMainBundle:KPI:RisquesAveres.html.twig")
+	 * @Template("KPI/RisquesAveres.html.twig")
 	 */
 	public function risquesAveresAction(Request $request,$carto){
 		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
@@ -215,7 +215,7 @@ class KPIController extends BaseController {
 				$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$kpis = $this->getDoctrine()->getRepository(Menace::class)->getRisquesAveresByPeriode($form->getData())->getQuery()->execute();
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rav'));
 		return array('carto'=>$carto, 'kpis'=>$kpis, 'form'=>$form->createView());
@@ -225,7 +225,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Evolution ICG")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/eicg", name="eicg")
-	 * @Template("OrangeMainBundle:KPI:evolutionICG.html.twig")
+	 * @Template("KPI/evolutionICG.html.twig")
 	 */
 	public function evolutionICGAction(Request $request,$carto) {
 		$dm = $this->get('doctrine_mongodb')->getManager();
@@ -241,7 +241,7 @@ class KPIController extends BaseController {
 				$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$req = $dm->getRepository('OrangeSyntheseBundle:Evaluation')->getMaturiteGraviteProbabiliteByRisqueByYear($form->getData())->execute();
 		$map = function($value) { 
 			$value['id'] = $value['mId'];unset($value['mId']);$value['maturite']=(int)$value['maturite'];

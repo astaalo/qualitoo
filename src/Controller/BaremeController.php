@@ -45,7 +45,7 @@ class BaremeController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository(TypeGrille::class)->find($id);
 		$form = $this->createCreateForm($entity, 'TypeGrille', array('attr' => array('em' => $em)));
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

@@ -169,7 +169,7 @@ class ProjetController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Projet')->find($id);
 		$form = $this->createCreateForm($entity, 'Projet');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

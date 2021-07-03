@@ -208,7 +208,7 @@ class ControleController extends BaseController {
 		$em = $this->getDoctrine ()->getManager ();
 		$entity = $em->getRepository('App\Entity\Controle')->find($id);
 		$form = $this->createCreateForm($entity, 'Controle', array('attr' => array ('em' => $em)));
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod () == 'POST') {
 			$form->handleRequest($request);
 			if ($form->isValid ()) {

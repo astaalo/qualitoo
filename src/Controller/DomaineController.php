@@ -224,7 +224,7 @@ class DomaineController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\DomaineImpact')->find($id);
 		$form = $this->createCreateform($entity, 'DomaineImpact');
-		$form->bind($this->get('request'));
+		$form->bind($request);
 		if($form->isValid()) {
 			$em->persist($entity);
 			//var_dump($entity);exit;
@@ -244,7 +244,7 @@ class DomaineController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\DomaineActivite')->find($id);
 		$form = $this->createCreateForm($entity, 'DomaineActivite');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {
@@ -266,7 +266,7 @@ class DomaineController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository(DomaineSite::class)->find($id);
 		$form = $this->createCreateForm($entity, 'DomaineSite');
-		$request = $this->get('request');
+		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

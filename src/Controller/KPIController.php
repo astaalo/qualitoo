@@ -2,7 +2,12 @@
 namespace App\Controller;
 
 use App\Annotation\QMLogger;
+use App\Entity\Activite;
+use App\Entity\Equipement;
+use App\Entity\Menace;
 use App\Entity\Quiz;
+use App\Entity\Site;
+use App\Entity\Structure;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,7 +25,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Repartition et comparaison criticite")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/{type}/rcc", name="rcc")
-	 * @Template("OrangeMainBundle:KPI:RepartitionCriticite.html.twig")
+	 * @Template("KPI/RepartitionCriticite.html.twig")
 	 */
 	public function repartitionComparaisonCriticiteAction(Request $request,$carto,$type){
 		$graphe= array('Maturité'=>array() , 'Criticité'=>array());
@@ -29,9 +34,9 @@ class KPIController extends BaseController {
 			: (($type  == 1) ? ($carto <=2  ? Departement::class : Site::class )
 				: ($type == 2  ? ($carto !=2 ? Activite::class : Projet::class) : Equipement::class));
 		
-		$this->denyAccessUnlessGranted('rcc', new Risque(), 'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('rcc', new Risque(), 'Accés non autorisé!');
 					
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
 			$this->get('session')->set('risque_criteria', $request->request->get($form->getName()));
@@ -40,17 +45,17 @@ class KPIController extends BaseController {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		if($type<=1 && $carto<=2){
 			$structures = $this->getDoctrine()->getRepository(Structure::class)->listByType($type)->getQuery()->getArrayResult();
 		    $gravites= $this->getDoctrine()->getRepository(Risque::class)->getGraviteByRisqueStructure($form->getData(),$type)->getQuery()->getArrayResult();
 			$matuProb= $this->getDoctrine()->getRepository(Risque::class)->getMaturiteProbabiliteByRisqueStructure($form->getData(),$type)->getQuery()->getArrayResult();
-			$kpis = $this->get('orange_main.core')->getMapping('Risque')->mapForTableauCriticiteAndGraviteByStructure($gravites,$matuProb,$type, $form->getData());
+			$kpis = $this->orange_main_core->getMapping('Risque')->mapForTableauCriticiteAndGraviteByStructure($gravites,$matuProb,$type, $form->getData());
 		}elseif ($type==1 && $carto>2){
 			$sites = $this->getDoctrine()->getRepository(Site::class)->listAllQueryBuilder()->getQuery()->getArrayResult();
 			$gravites= $this->getDoctrine()->getRepository(Risque::class)->getGraviteByRisqueSite($form->getData())->getQuery()->getArrayResult();
 			$matuProb= $this->getDoctrine()->getRepository(Risque::class)->getMaturiteProbabiliteBySite($form->getData())->getQuery()->getArrayResult();
-			$kpis = $this->get('orange_main.core')->getMapping('Risque')->mapForTableauCriticiteAndGraviteBySite($gravites,$matuProb);
+			$kpis = $this->orange_main_core->getMapping('Risque')->mapForTableauCriticiteAndGraviteBySite($gravites,$matuProb);
 		}elseif ($type>=2){
 			$aggregates = $this->getDoctrine()->getRepository($choixRepo)->listAllQueryBuilder()->getQuery()->getArrayResult();
 			$kpis  = $this->getDoctrine()->getRepository(Risque::class)->getMaturiteGraviteByType($form->getData(),$type)->getQuery()->getArrayResult();
@@ -79,7 +84,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Repartition  criticite par risque")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/rrcc", name="rrcc")
-	 * @Template("OrangeMainBundle:KPI:RepartitionRisqueCriticite.html.twig")
+	 * @Template("KPI/RepartitionRisqueCriticite.html.twig")
 	 */
 	public function repartitionRisqueCriticiteAction(Request $request,$carto) {
 		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
@@ -92,7 +97,7 @@ class KPIController extends BaseController {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$req= $this->getDoctrine()->getRepository(Risque::class)->getMaturiteGraviteProbabilteByRisque($form->getData())->getQuery()->getArrayResult();
 		$kpis = $this->get('orange_main.core')->getMapping('Risque')->mapForTableauRisqueCriticite($req);
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rrc'));
@@ -103,12 +108,12 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Risques transverses")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/rt", name="rt")
-	 * @Template("OrangeMainBundle:KPI:RisqueTransverses.html.twig")
+	 * @Template("KPI/RisqueTransverses.html.twig")
 	 */
 	public function risqueTransversesAction(Request $request,$carto){
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
-		$this->denyAccessUnlessGranted('rt', new Risque(), 'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('rt', new Risque(), 'Accés non autorisé!');
 		
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
@@ -118,7 +123,7 @@ class KPIController extends BaseController {
 				$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$kpis=$this->getDoctrine()->getRepository(Risque::class)->risqueTransverses($form->getData())->getQuery()->getArrayResult();
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rt'));
 		return array('carto'=> $carto, 'kpis'=>$kpis, 'form'=>$form->createView());
@@ -128,7 +133,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Details d'un risque transverse")
 	 * @Method({"GET","POST"})
 	 * @Route("/{menace_id}/{occurence}/{carto}/details_rt", name="details_rt")
-	 * @Template("OrangeMainBundle:KPI:details_rt.html.twig")
+	 * @Template("KPI/details_rt.html.twig")
 	 */
 	public function detailsRTAction(Request $request,$menace_id,$occurence,$carto){
 		$entity = $this->getDoctrine()->getRepository(Menace::class)->find($menace_id);
@@ -148,22 +153,22 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Comparaison des controles")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/cmc", name="cmc")
-	 * @Template("OrangeMainBundle:KPI:compareControle.html.twig")
+	 * @Template("KPI/compareControle.html.twig")
 	 */
 	public function compareControleAction(Request $request,$carto){
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
-		$this->denyAccessUnlessGranted('cmc', new Risque(), 'Accés non autorisé!');
-		
+		//$this->denyAccessUnlessGranted('cmc', new Risque(), 'Accés non autorisé!');
+		;
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
 			$this->get('session')->set('risque_criteria', $request->request->get($form->getName()));
 			return new JsonResponse($this->generateUrl('cmc', array('carto'=>$carto)));
-		}elseif($this->get('session')->get('risque_criteria')==null || count($this->get('session')->get('controle_criteria'))==0) {
+		}elseif($this->get('session')->get('risque_criteria')==null || $this->get('session')->get('controle_criteria') && count($this->get('session')->get('controle_criteria'))==0) {
 				$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		return array('carto'=> $carto, 'form'=>$form->createView());
 	}
 	
@@ -174,7 +179,7 @@ class KPIController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Controle')->getControles($form->getData());
 		$this->get('session')->set('export', array('kpis' => serialize($queryBuilder->getQuery()->execute()), 'type'=>'Risque','source'=>'cmc'));
@@ -211,12 +216,12 @@ class KPIController extends BaseController {
 	/**
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/rav", name="rav")
-	 * @Template("OrangeMainBundle:KPI:RisquesAveres.html.twig")
+	 * @Template("KPI/RisquesAveres.html.twig")
 	 */
 	public function risquesAveresAction(Request $request,$carto){
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
-		$this->denyAccessUnlessGranted('rav', new Risque(), 'Accés non autorisé!');
+		//$this->denyAccessUnlessGranted('rav', new Risque(), 'Accés non autorisé!');
 		
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
@@ -226,7 +231,7 @@ class KPIController extends BaseController {
 				$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$kpis = $this->getDoctrine()->getRepository(Menace::class)->getRisquesAveresByPeriode($form->getData())->getQuery()->execute();
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rav'));
 		return array('carto'=>$carto, 'kpis'=>$kpis, 'form'=>$form->createView());
@@ -236,7 +241,7 @@ class KPIController extends BaseController {
 	 * @QMLogger(message="KPI: Evolution ICG")
 	 * @Method({"GET","POST"})
 	 * @Route("/{carto}/eeicg", name="eeicg")
-	 * @Template("OrangeMainBundle:KPI:evolutionICG.html.twig")
+	 * @Template("KPI/evolutionICG.html.twig")
 	 */
 	public function evolutionICGAction(Request $request,$carto){
 		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
@@ -251,7 +256,7 @@ class KPIController extends BaseController {
 				$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$this->modifyRequestForForm($this->get('request'), $data, $form);
+		$this->modifyRequestForForm($request, $data, $form);
 		$req = $this->getDoctrine()->getRepository(Risque::class)->getMaturiteGraviteProbabiliteByRisqueByYear($form->getData())->getQuery()->getArrayResult();
 		$kpis =  $this->get('orange_main.core')->getMapping('Risque')->mapForTableauICGByYear($req);
 		$graphe = $this->get('orange_main.core')->getMapping('Risque')->mapForGrapheICGByYear($req);

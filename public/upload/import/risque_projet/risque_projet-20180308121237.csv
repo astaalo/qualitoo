@@ -1,0 +1,34 @@
+Risque;Causes;Libellé;Porteur;Email porteur;date début;Échéance;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Gravité;Finance;Commercial ;RH;Juridique;Image
+Risque de fraude;connexion gratuite après la fin du bonus;"Vérifier avec la technique (tests à l'appui) que le compteur est bien bloqué après la fin du bonus  et que la priorisation des compteurs est bien respectée au niveau IN
+Réaliser les tests pré lancement pour éviter des connexions ou appels au-delà des forfaits sans facturation";Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;1;1;1;;;;
+Risque de fraude;Dépôts frauduleux sur les compteurs bonus;"Automatiser le dépôt des bonus et s'assurer avec des tests que c'est bien effectif
+
+Définir  un contrôle de suivi post-lancement  hebdo  de niveau 1 par DMGP portant sur le volume vs CA  sur la base d'extractions  
+";Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;"Existence des contrôles RA suivants :
+Contrôles hebdo mensuels par DFC/CRA sur le provisionning (connexion sans pass) et tarif billing (contrôle de la faturation hors pass)
+Corrélations avec les contrôles FRA de DEX/ASN puis reporting mensuel
+
+Contrôle sur la durée de validité des pass/forfaits sur le compteur principal englobant le compteur bonus sur un Top 20 de numéros mais il n’y a pas de contrôles spécifiques sur les compteurs bonus parce que les bonus s’y accumulent et il n’est plus possible de les discerner et de savoir sur quel caping adresser le contrôle
+
+";Préventif;Manuelle;1;1;1;;;;
+Risque de fraude;tirage frauduleux;Verrouiller la présence d'un huissier lors des tirages;Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;1;1;1;;;;
+Risque de fraude;Détournement des dons et des cadeaux;"Intégrer la présentation de la CNI par le bénéficiaire du cadeau/don pour les gagnants des jeux
+
+Envoyer au prestataire une liste avec les  coordonnées des  bénéficiaires (noms, numéros de téléphone, adresse) 
+Prévoir :
+ - une  décharge après livraison avec un point de suivi journalier pour voir ce qui ont reçu ou pas. 
+ - Un 1er appel pour prévenir le client de la livraison
+ - Un 2eme Appels après la livraison
+ - un retrait par le client lui même auprès du prestataire jusqu'à J-5 de la korité";Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;1;1;1;;;;
+Risque de fraude;Attribution inopinée des points sargal;"Verrouiller l'automatisation de l'attribution des points sargal et le vérifier avec les tests pré-lancment de la perco
+Vérifier avec DMS la faisabilité des contrôles par échantillonnage hebdo du bon positionnement des réductions sargal";Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;1;1;1;;;;
+Risque de non respect des engagements commerciaux;positionnement tardif des bonus ou absence de positionnement des bonus;"Mettre en place 2 niveaux de test :
+ -  le premier avant le lancement pour s'assurer que le paramétrage est ok 
+ -  le 2ème à J (lancement)  
+Check par le 1441 et suivi par le service client pour vérifier le bien fondé des réclamations client";Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;1;2;1;2;;;3
+Risque de non respect des engagements commerciaux;impossibilité de se connecter après la fin du compteur bonus;"Vérifier avec la technique (tests à l'appui) qu'à la fin du bonus, le baculement sur le compteur principal est automatique et que le client  ne risque pas d'être bloqué si ce dernier est toujours crédité
+S'assurer ave la technique que la priorisation des compteurs est respectée";Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;1;2;1;2;;;3
+Risque de non respect des engagements commerciaux;non respect des délais de validité des bonus;Verrouiller avec la technique (tests à l'appui) le respect des délais de validité des bonus ;Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;1;2;1;2;;;3
+Risque de dégradation de la qualité de service;bug des plateformes (ISG et IN)  suite à une sursollicitation ;Envoyer l'EBM et S'assurer avec la technique de la capacité des plateformes requises à supporter le flux prévu dans le BP.;Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;1;2;1;2;;;3
+Risque de dimensionnement inadéquat du réseau;Sous-évaluation des impacts du projet sur les capacités des équipements réseaux (IN, SMSC, …) à cause notamment des happy hours 4G;Dérouler des tests pré lancement dans le cadre de l'EBM pour s'assurer de la capcité du réseau à supporter les happy hour en cours 4G;Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;2;2;1;2;;;3
+Risque de non maîtrise du stock;rupture de stock des terminaux alcatel;Verrouiller avec le service DMBO/STA la disponibilité des terminaux à temps pour le début de la perco et durant le long de la perco;Ndeye Khoyane Cama;ndeyekhoyane.cama@orange-sonatel.com;;30/03/2018;Non échu;;;;1;2;1;2;;;3

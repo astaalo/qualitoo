@@ -1,0 +1,34 @@
+Risque;Causes;Libellé Plan d'action (ce qui est prévu pour éviter ou maitriser le risque);Porteur;Email porteur;Date début;Echéance;Commentaires;Statut;CONTRÔLE DESCRIPTION (ce qui est mis en place pour éviter ou maitriser la survenance du risque);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client
+Risque de fraude;Utlisation des services de la plateforme cloud sans la souscription du client ;Etudier la possibilité de mettre en place un outil d'authentification qui va permettre aux clients de valider les transactions initiées au niveau de la plateforme via son terminal;Safietou Kane;safietou.kane3@orange-sonatel.com;;30/11/2017;"Attente finalisation reprise du portail cloudpro en interne géré actuellement par Numerit
+
+Fournisseur identifié: Mobile Connect _ gestion de l'authentification durant le paiement en ligne dans les projets Eshop ou Selfcare web";annulé;Accès à l'offre via les identifiants avec des mots passe forts ;préventif;automatique;1;2;1;;3;;2
+Risque de non recouvrement des créances clients;Factures impayées clients CLOUD;Prévoir pour l'option prépaiement de l'offre cloud une fonctionnalité qui va obliger le client à payer sa facture avant de bénéficier du service.;Safietou Kane;safietou.kane3@orange-sonatel.com;;30/05/2016;;Soldé;"Solidarité de créance pour 3/4 des clients de l'offre cloud qui étaient clients DDE avant l'avenement de l'offre cloud. 
+
+Existence de l'option prépaiement de l'offre cloud une fonctionnalité qui va diminuer les potentielles impayées";préventif;automatique;3;2;2;;2;2;
+Risque de fraude;provisionning d'un client par le partenaire pour bénéficier gratuitement du service;;;;;;;;Existence d'une réconciliation mensuelle du reporting du partenaire et avec les données back office d'activation et de facturation;préventif;manuelle;1;2;1;;3;;2
+Risque de fraude;Utilisations simultanées du login et mot de passe par plusieurs structures (PME/PMI);Tester la désactivation de la possibilité de connexion simultanée de 2 ou 3 personnes avec le même profil.;Safietou Kane;safietou.kane3@orange-sonatel.com;;30/11/2017;Attente finalisation reprise du portail cloudpro en interne géré actuellement par Numerit;En cours;"Génération par la plateforme cloud d'un login pour l'administrateur de l'application par client.
+
+Désactivation de la possibilité de connexion simultanée de 2 ou 3 personnes avec le même profil";préventif;automatique;3;2;1;;3;;2
+Risque de non tracabilité des opérations;Bug de l'interface client au niveau de la plateforme cloud;;;;;;;;"Redondance géographique de la plateforme cloud
+
+Monitoring en temps réel par la DSI, Alerte par mail et sms
+Traçabilité existante sur les applications";préventif;manuelle;2;1;;;1;;
+risque de non respect des engagements commerciaux;Indisponibilité plateforme Cloud Sonatel;;;;;;;;"Redondance géographique de la plateforme cloud
+
+Monitoring en temps réel par la DSI, Alerte par mail et sms
+Traçabilité existante sur les applications";préventif;automatique;1;2;1;;2;2;4
+Risque de divulgation d'informations confidentielles;Utlisation non autorisée des informations clients Ex plateforme de Polaris;Vérifier avec le Groupe Orange la confidentialité des clients pour l'offre Polaris;Safietou Kane;safietou.kane3@orange-sonatel.com;;30/11/2017;"Offre gérée en interne
+
+";annulé;Restriction des accès aux serveurs de gestion des données clients de la plateforme cloud de Sonatel;préventif;manuelle;3;2;1;;3;3;
+Risque de divulgation d'informations confidentielles;Utlisation non autorisée des informations clients Ex plateforme de Polaris;Verrouiller avec la technique la conservation de la confidentialité des données clients;Safietou Kane;safietou.kane3@orange-sonatel.com;;30/11/2017;;Non échu;Restriction des accès aux serveurs de gestion des données clients de la plateforme cloud de Sonatel;préventif;automatique;3;2;1;;3;3;
+Risque de non respect des dispositions juridiques et règlementaires;Utlisation non autorisée des informations clients Ex plateforme de Polaris;"Définir la liste des personnes qui auront accès aux infos + les droits/habilitations
+Vérifier que toutes les actions sont tracées";Safietou Kane;safietou.kane3@orange-sonatel.com;;30/11/2017;;En cours;Restriction des accès aux serveurs de gestion des données clients de la plateforme cloud de Sonatel;préventif;automatique;3;2;1;;3;3;
+Risque de non rentabilité des offres/projets;concurrents plus matures sur les 2 nouvelles offres et le marché ex Google et Office 365;Etudier la possibilité de refonte tarifaire de l'offre cloud pour la rendre plus compétitive.;Safietou Kane;safietou.kane3@orange-sonatel.com;;01/08/2016;;Soldé;Intégration du cloud dans les offres d'accès internet de DDE;"préventif
+correctif";manuelle;2;2;2;;;;
+Risque de saturation des ressources;serveurs sous-dimensionnés par rapport aux sollicitations  avec l'intégration de nouvelles applications et le paiement en ligne;Soumettre à la validation de DRJ le stockage des données clients  au niveau du datacnter pour les 2 nouvelles solutions à intégrer à l'offre Cloud. ;Safietou Kane;safietou.kane3@orange-sonatel.com;;15/07/2017;;Non échu;"Dimensionnement effectué sur la base des prévisions du marketing jusqu'en 2019.
+
+2 nouvelles solutions ( Polaris et business drive) sur la marché B2B sont stockées au niveau du Groupe Orange pour Drive et Polaris";préventif;manuelle;1;3;1;;3;2;4
+Risque de non fiabilité des données clients;Inexactitude des informations d'identification fournies par les clients qui ne se déplacent pas en accueil pour la souscription;;;;;;;;"Existence d'une contrôle back office pour s'assurer de l'exactitude des informations d'identification fournies par les clients
+
+Chaque souscription est couplée à un numérofixe du client existant dans Gaia";préventif;manuelle;1;2;;;2;;2
+risque de non respect des engagements commerciaux;Suspension ou résiliation à tort alors que le client a payé l'abonnement;;;;;;;;Existence d'une réconciliation périodique entre les paiements effectués au niveau du portail cloud et le compte bancaire Sonatel.;préventif;manuelle;1;2;1;;2;2;4

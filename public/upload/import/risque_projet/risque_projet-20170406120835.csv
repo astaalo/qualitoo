@@ -1,0 +1,27 @@
+Risque (points d'attention);Causes (facteurs potentiels à l'origine de ces points d'attention);Libellé PA (réponses ou solutions en cours pour couvrir les points d'attention identifiés);Porteur;Email porteur;Date de début;Date de fin;Avancement;Statut;CONTRÔLE DESCRIPTION (réponses ou solutions mises en place por couvrir les points d'attention identifiés);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client;Criticité;Maturité 
+Risque de lancement d'offres ou de projets non fonctionnels;Non fiabilité des prévisions de bande passante;;;;;;;;Mise en place d'une bande passante de plus de 20 GB entre le datacenter et le backbone;Préventif;Manuelle;1;2;3;;1;;;;
+Risque de lancement d'offres ou de projets non fonctionnels;Sous dimensionnement des licences software;;;;;;;;;;;1;2;3;;1;;;;
+risque de lancement tardif du projet;réception tardive des équipements (firewall);;;;;;;;suivi régulier par le copil hebdo;Préventif;Manuelle;3;2;;2;;;2;;
+Risque de non maîtrise des stocks;Rupture de stock de pièces de rechange;;;;;;;;Contrat de maintenance signé avec un prestataire avec un Listings des spares ;Préventif;Manuelle;1;1;1;;1;;;;
+Risque de livraison de services non fonctionnels;dysfonctionnement après intégration;Réaliser durant la phase de recette tous les tests nécessaires par étape avant lancement y compris ceux de régression;Pape Djibril Gueye;papadjibril.gueye@orange-sonatel.com;;31/05/2017;;Non échu;"redondance physique et logique de tous les équipements
+supervision H24 par le SMC
+prévisions d'équipements spare ";Préventif;Automatique;2;4;4;;;;;;
+risque de lancement tardif du projet;Dépouillement tardif des offres - défaut de synchronisation entre SA et le GOS;;;;;;;;suivi régulier par le copil hebdo;Préventif;Manuelle;4;2;;2;;;2;;
+risque de lancement tardif du projet;réponse tardive du fournisseur sur l'intégration des équipements;;;;;;;;suivi régulier par le copil hebdo;Préventif;Manuelle;4;2;;2;;;2;;
+Risque d'indisponibilité de service;Perte de service sur certaines applications;;;;;;;;interopérabilité sur le GOS: identification des applications/informations critiques qui pourront être transférées/sauvegardées au GOS en cas de besoin;Préventif;Automatique;2;2;2;3;;2;2;;
+Risque de dépendance vis-à-vis d'un fournisseur;un seul intégrateur intervenant sur le datacenter;;;;;;;;"choix de travailler avec un seul fournisseur qui servira d'interface avec les autres fournisseurs
+contrats signés de manière individuelle avec chaque fournisseur
+interopérabilité avec le GOS";Préventif;Manuelle;2;3;4;;;;1;;
+Risque de dépendance vis-à-vis d'un fournisseur;compétences concentrées chez le fournisseur;;;;;;;;"transfert de compétences avec le fournisseur qui assurera la maintenance niveau 2
+interopérabilité avec le GOS";Préventif;Manuelle;2;2;2;2;2;;;;
+Risque d'indisponibilité de service;rupture des liens d'interconnexion entre les différents centraux;;;;;;;;"3 chemins différents avec des supports différents
+Gestion des flux et débits en cours
+
+deux arrivées FO physiques(construction du 3ème chemin en cours) fonctionnelles sur 3 chemins logiques différents";Préventif;Manuelle;1;2;2;3;;2;2;;
+Risque de non respect des engagements commerciaux;besoins commerciaux non pris en charge;;;;;;;;"prise en compte des besoins CI
+Mise à jour en cours des besoins mktg tenant compte des offres à lancer";Préventif;Manuelle;2;2;3;;2;;2;;
+Risque de fraude;accès logique non sécurisé;;;;;;;;Attente retour du choix de gestion avec le GOS;Préventif;Manuelle;2;3;2;3;2;;3;;
+Risque de manque de performance économique;lancement tardif des projets suivants : extension capacitaire et sécurisation de Omega;;;;;;;;Suivi des projets en iTTM;Préventif;Manuelle;3;3;4;;;;1;;
+Risque de non maitrise des couts;Couts d'intégration des équipements élévés;;;;;;;;Attente retour coordination avec le GOS;Préventif;Manuelle;3;4;4;;;;;;
+risque de lancement tardif du projet;délai d'intégration des équipements non maitrisé;;;;;;;;Attente retour coordination avec le GOS;Préventif;Manuelle;3;2;;2;;;2;;
+Risque de lancement d'offres ou de projets non fonctionnels;Mode d'organisation non adapté à la gestion d'un datacenter;;;;;;;;Attente retour coordination avec le GOS;Préventif;Manuelle;3;2;3;;;;1;;

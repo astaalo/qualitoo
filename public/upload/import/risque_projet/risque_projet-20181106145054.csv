@@ -1,0 +1,47 @@
+Risque;Causes réelles ou potentielles;Libellé;Porteur;Email porteur;Date de début;Date fin;Avancement;Statut;CONTRÔLE DESCRIPTION;Type;Méthode;Probabilité;Gravité;Finance;RH;Image;Juridik;Commercial;Criticité;Maturité
+Risque de fraude ;téléchargement et revente du contenu;S'assurer durant la phase test que les DRM sont bien verrouillés et inaccessibles sur les téléphones;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/03/2018;;Non échu;Le téléchargement ne pourra pas se faire en dehors de l'application;préventif;automatique;1;1;1;;1;;;;3
+Risque de fraude ;Défaut d'identification du client;"Verrouiller la sécurité dans l'accès au service (sms, otp, etc) et Rendre les champs suivants obligatoires: Nom, prénom, numéro de téléphone, mot de passe
+";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;;;1;1;1;;1;;;;3
+Risque de fraude ;Piratage: accès au contenu payant sans paiement effectif;Verrouiller les modes de sécurité  qui vont accompagner les différents modes de paiement retenus: cb, om, airtime;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;;;1;1;1;;1;;;;3
+Risque de fraude ;absence de traçabilité des logs sur la plateforme;Verrouiller avec la DSI, le traçage des logs de la plateforme sur Arcsight;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;;;2;1;1;;1;;;;2
+Risque de manque de performance économique des offres/projets;Coût d'acquision des contenus élevés;"Prévoir un budget d'acquisition de contenus dans le cadre du projet et ne pas s'adosser uniquement sur le budget du département DSD/content factory
+
+";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;"le projet assure juste l'acquisition de la plateforme 
+
+l'exploitation sera à la charge du département DSD/content marketing";Non échu;La stratégie est d'acquérir que des contenus locaux qui sont beaucoup moins chers;préventif;manuelle;2;2;2;;;;;;2
+Risque de manque de performance économique des offres/projets;Téléchargement sans débit du compte client;S'assurer lors des tests que les paiements seront bien enregistrés avec retour sur la transaction ok avant accès du client au contenu;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;;;1;2;2;;;;;;3
+Risque de manque de performance économique des offres/projets;Insuffisance des contenus;"Prévoir un budget d'acquisition de contenus dans le cadre du projet et ne pas s'adosser uniquement sur le budget du département DSD/content factory
+
+";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;"le projet assure juste l'acquisition de la plateforme 
+
+l'exploitation sera à la charge du département DSD/content marketing";Non échu;;préventif;manuelle;1;2;2;;;;;;3
+Risque de lancement de projet non fonctionnel;Refus du modèle de sharing sur les contenus à venir ;Validation des aspects sharing avec la DRJ et signature du contrat contenus;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/03/2018;;Non échu;;;;3;3;3;;3;;3;;1
+Risque de lancement de projet non fonctionnel;Insuffisance de la capacité de sauvegarde des serveurs;Verrouiller avec le datacenter l'allocation des ressources nécessaires à l'hébergement des serveurs de la plateforme;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;"étude de provisionning faite sur 5ans
+hébergement prévu au datacenter";Non échu;;;;1;3;3;;3;;3;;3
+Risque de non respect des engagements commerciaux;zones couvertes par la 3G et la 4G limitées;"Communiquer sur les zones à couverture 3G et 4G
+
+Envoyer des sms de notification en cas de dégradation de la connectivité
+
+dérouler les tests pour s'assurer du bon fonctionnement des débits";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/03/2018;;Non échu;connexions possibles en wifi également;préventif;automatique;2;3;3;;3;;3;;2
+Risque de non respect des engagements commerciaux;Indisponibilité des contenus annoncés sur l'application (problème technique);S'assurer, tests à l'appui, que tous les contenus annoncés seront disponibles avec un check technique;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/03/2018;;Non échu;;préventif;manuelle;1;3;3;;3;;3;;3
+Risque de non respect des engagements commerciaux;Débit du compte client sans possibilité de visualiser;"S'assurer lors des tests techniques que le taux d'erreur est le plus minimal possible
+Etablir un canal de réclamatios disponible sur l'appli et de manière classique (1441, etc)";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/03/2018;;Non échu;;;;2;3;3;;3;;3;;2
+Risque de non respect des engagements commerciaux;Indisponibilité de l'application;"Redonder les serveurs et définir un process HD
+Superviser les serveurs en temps réel
+Signer un contrat de maintenance";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;préventif;manuelle;2;3;3;;3;;3;;2
+Risque de lancement tardif d'offres innovantes ou promotionnelles par rapport à la concurrence, aux attentes clients ou à nos promesses;mise à disposition tardive de la plateforme;"Piloter avec le support de la DAL, la mise à disposition dans les temps de la plateforme
+
+Inclure dans le contrat, avec le support de DRJ, des pénalités sur les retards";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;contrainte posée: déploiement en 6mois;Non échu;"processus de choix du fournisseur en cours
+commission technique finalisée";préventif;manuelle;2;3;3;;;;;;2
+Risque de dégradation de la qualité de service;Lenteur ou interruption de téléchargement;"Annoncer sur le site les prérequis nécessaires au streaming
+S'assurer, tests à l'appui, que les performances techniques de la plateforme sont aux bonnes valeurs de référence";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/03/2018;;Non échu;contenus hébergés dans un cahe qui est sur notre réseau;préventif;automatique;2;3;3;;3;;3;;2
+Risque de dégradation de la qualité de service;bug ou lenteurs de la plateforme suite sursollicitations;"Verrouiller la prise en compte des prévisions de consommation sur la plateforme
+Définir des seuils d'alerte de la plateforme";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;préventif;;2;3;3;;3;;3;;2
+Risque de dégradation de la qualité de service;sursollicitation du réseau mobile;Verrouiller avec la technqiue la prise en compte des prévisions de consommation;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;préventif;;2;3;3;;3;;3;;2
+Risque de dégradation de la qualité de service;Maîtrise insuffisante de la solution - défaut de transfert de compétence;Verrouiller, avec le support de la DRJ, le transfert de compétences par le fournisseur avec les équipes techniques;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;;;1;3;3;;;;3;;3
+Risque de non traçabilité des opérations dans les SI;Suppression de la table de traçage;S'assurer de la conservation des données client (transactions, connexions, etc) durant la durée de prescription à verrouiller avec DRJ;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;;;1;2;3;;;1;;;3
+Risque de non respect des dispositions juridiques et règlementaires;Chargement de contenus dont la date de validité est dépassée ;Définir le process de chargement des contenus;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/12/2018;;Non échu;;préventif;manuelle;2;2;3;;3;1;3;;2
+Risque de non respect des dispositions juridiques et règlementaires;SMS de confirmation non délivrés suite à un achat;S'assurer lors des tests que les sms de notif sont délivrés systématiquement ;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/03/2018;;Non échu;;;;1;2;3;;3;1;3;;3
+Risque de non respect des dispositions juridiques et règlementaires;contenu erroné du sms de confirmation;"S'assurer lors des tests que les contenus des sms sont bien précis.
+";Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/03/2018;;Non échu;;;;1;2;3;;3;1;3;;3
+Risque de divugation d'inormations confidentielles;accès non maîtrisé aux informations client;Verrouiller les profils ayant accès à la plateforme et la sécurité autour login et mots de passe;Jean Pierre Seydou Ndaw;JeanPierreSeydou.NDAW@orange-sonatel.com;;31/03/2018;;Non échu;;;;1;2;1;;3;1;1;;3

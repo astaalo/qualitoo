@@ -1,0 +1,20 @@
+Risque;Causes;Libellé PA;Porteur;Email porteur;Date début;Délai;Commentaires;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial;Criticité;Maturité
+Risque de non respect des engagements commerciaux;minimum de 100Mo impossible à partager;"Lever la contrainte et laisser la possibilité au client de partager la totalité de son pass s'il le souhaite 
+
+Modifier l'EBM en tenant compte de ce point";André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.Com;;17/07/2017;;En cours;;;;2;2;1;;2;;2;;
+Risque de fraude;Détournement d'usage du volume offert;"Verrouiller l'impossibilité pour le bénéficiaire de partager à nouveau les données dont il a bénéficiées
+
+Modifier l'EBM en tenant compte de ce point";André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.Com;;17/07/2017;;En cours;"Le bénéficiaire vient consommer dans le godet du donateur.
+Les unités d'octet ne sortent pas du godet du donateur";Préventif;Automatique;2;1;1;;1;;;;
+Risque de non respect des engagements commerciaux;impossibilité pour le bénéficiaire de faire son propre opt out;"Donner la possibilité au bénéficiaire de faire son propre opt out
+
+Modifier l'EBM en tenant compte de ce point";André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.Com;;17/07/2017;;En cours;;;;2;2;;;;;;;
+Risque de non respect des engagements commerciaux;USSD non fonctionnel: impossibilité pour le client d'avoir accès aux informations sur son compte;S'assurer de la disponibilité partagée à 100% des différents canaux  d'accès au service de partage (USSD, Orange et moi, selfcare web);André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.Com;;15/10/2017;"Parcours client Orange & Moi en cours de construction
+Selfcare Web non encore lancé
+";Non échu;"Parcours client USSD déjà défini
+";Préventif;Manuelle;2;2;;;;;;;
+Risque de fraude;bénéficiaire pouvant consommer au-delà de la limite imposée par le donnateur dans le godet de ce dernier;Verrouiller la limite du bénéficiaire afin qu'il ne puisse pas consommer au-delà du volume offert par le donateur;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.Com;;15/10/2017;;Non échu;;;;1;1;;;;;;;
+Risque de projet non fonctionnel;Module livré non fonctionnel;Verrouiller la tenue et suivi des tests sur le module ;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.Com;;15/10/2017;;Non échu;;;;1;1;1;;;;;;
+Risque de lancement tardif;retard de livraison du module;Verrouiller avec DAL et DRPS/DI le suivi de l'AO groupe et la mise à disposition de la solution;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.Com;;15/10/2017;choix de la solution ZTE - négociation prix groupe en cours;En cours;;;;1;1;1;;;;;;
+Risque de non respect des engagements commerciaux;non réception des sms de confirmation;Dérouler les tests après implémentation et verrouiller la réception des sms de confirmation;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.Com;;15/10/2017;;Non échu;;;;1;2;;;;;;;
+Risque de fraude;extension du délai de validité du godet du bénéficiaire;Verrouiller le délai de vailidté unique à celui du pass acheté par le donateur;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.Com;;15/10/2017;;Non échu;Le bénéficiaire vient consommer dans le godet du donateur. Le délai de validité du donateur est le seul valable;Préventif;Manuelle;1;1;;;;;;;

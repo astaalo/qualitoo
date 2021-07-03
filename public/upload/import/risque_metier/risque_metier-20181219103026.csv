@@ -1,0 +1,141 @@
+Macro Processus;Processus;Sous Processus;Sous-Entité;Activité;Risque;Causes;Description du plan d'action;Porteur;email porteur;Date de début;Date de fin;Avancement;Statut;Contrôle description;Type de controle;Methode de contrôle;Probabilité;Gravité;Financier;Ressources Humaines;Images;Juridique;Commercial;Criticité;Maturité CI
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Suivi du payplan;Risque de démotivation du personnel ;Objectifs inadaptés au potentiel du marché;;;;;;;;"Les objectifs sont fixés en fonction du CA réalisé des années n et du CA potentiel de l'année n+1 (offres dans le pipe et comportements du marché)
+
+Coordination avec DM/AMA pour une meilleure estimation du potentiel du marché
+
+Récactualisation des objectifs au début de chaque semestre";Préventif;Manuelle;2;1;1;1;1;;1;2;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Suivi du payplan;Risque de démotivation du personnel ;Rémunération non motivante;;;;;;;;sondage effectué auprès des commerciaux au S1 2018 qui est ressorti avec des taux de satisfaction de 80% et de compréhension de 100%;Préventif;Manuelle;1;1;1;1;1;;1;1;3
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Suivi du payplan;Risque de démotivation du personnel ;Reconnaissance insuffisante des vendeurs;;;;;;;;"sondage effectué auprès des commerciaux au S1 2018 qui est ressorti avec des taux de satisfaction de 80% et de compréhension de 100%
+
+challenge mensuel par DVE sur le meilleur vendeur du mois";Préventif;Manuelle;2;1;1;1;1;;1;2;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Suivi du payplan;Risque de non fiabilité de l'information pour le pilotage;Indisponibilité du CRM (outil principal);;;;;;;;"Signature d'un contrat de service entre DSI et DDE en oct 18
+tenue trimestrielle d'une revue business entre DDEet DSI
+coordination hebdo avec la Elob et le support en Roumanie pour la prise en charge des dysfonctionnements
+Menu de traitement des instances disponible dans le CRM pour le suivi";Préventif;Manuelle;1;1;1;2;1;;1;1;3
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Suivi du payplan;Risque de non fiabilité de l'information pour le pilotage;Non fiabilité du suivi et du pilotage des opérations commerciales (ex: outils inadaptés de suivi des performances des commerciaux);;;;;;;;"croisement entre les extractions des bases de données (CRM, gaïa, nessico)
+les chiffres de gaïa et nessico (CA opé) sont fournis par DDE/DM
+fichier de suivi manuel - projet d'automatisation de ce suivi";Préventif;Manuelle;2;1;1;2;1;;1;3;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Développement de l'utilisation du CRM;Risque de contenus non fonctionnels;régression lors de la migration au CRM360;;;;;;;;Choix de migrer que la partie Etat lors de la migration au CRM360 et d'attendre la deuxième phase présentant toutes les fonctionnalités pour migrer totalement ;Préventif;Manuelle;2;2;2;;1;;2;3;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Développement de l'utilisation du CRM;Risque de contenus non fonctionnels;Lenteur dans la prise en compte et la livraison des besoins sur le CRM par la Elob et à terme par la DSI;;;;;;;;"Les demandes envoyées à la Elob portent essentiellement sur des modifications de configuration.
+coordination hebdo avec la Elob et le support en Roumanie pour la prise en charge des dysfonctionnements
+Menu de traitement des instances disponible dans le CRM pour le suivi";Préventif;Manuelle;2;2;2;;1;;2;3;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Développement de l'utilisation du CRM;Risque de contenus non fonctionnels;absence d'adhésion des équipes (vendeurs, DRC, etc) au CRM;;;;;;;;"Collecte des besoins des différentes équipes par DDE/TEC/STCB en guise de roadmap 
+Traitement des demandes au fil de l'eau avec le soutien de la Elob";Préventif;Manuelle;2;2;2;;1;;2;3;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Piloter la conformité COPC et l'amélioration du service client;Risque de non-conformité du systéme de management intégré (QSE, COPC);Abence de maîtrise des supports techniques sur le terrain et de l'exécution des contrats;;;;;;;;"présentation en codir d'un rapport mensuel sur les performances avec des GAQ à la clé
+Sensibilisation et communication avec DRPS en continu";Préventif;Manuelle;4;2;1;;2;;2;7;1
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Piloter la conformité COPC et l'amélioration du service client;Risque de non-conformité du systéme de management intégré (QSE, COPC);Non atteinte des exigences méthodes et performances requises pour la certification COPC;;;;;;;;"Certification de toute l'équipe de DDE/TEC en COPC
+Mise en place d'un planning de formation COPC pour toutes les équipes de DDE
+Mise en place d'une équipe projet chargée de conduire le changement de paradygme
+Tenue trimestrielle d'un copil COPC
+Supports structurés avec la ELob 1fois/3semaines à travers des audits spécifiques
+Tenue hebdo de la pilperf DRC: indicateurs ";Préventif;Manuelle;2;2;1;;2;;2;3;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Piloter la conformité COPC et l'amélioration du service client;Risque de non-conformité du systéme de management intégré (QSE, COPC);Insuffisance des RH pour piloter la transformation client;;;;;;;;Demande traitée avec DDE;Préventif;Manuelle;2;2;1;;2;;2;3;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Piloter la performance et l'expérience client;Risque de non fiabilité de l'information pour le pilotage;réponses des clients du baromètre unique non fiables à cause de la volumétrie du questionnaire;;;;;;;;"Nombre de questions du sondage revu à la baisse de 80 à 39 questions
+
+écoute client à travers également: Call de bouclage suite livraison, sondage d'interaction, exploitation des remontées au niveau des plateaux et lors des journées OBS
+
+Suivi mensuel des sondages qui sont dans la table F
+
+Reporting hebdo et mensuel des call de bouclage sur les motifs de satisfaction et/ou d'insatisfaction ";Préventif;Manuelle;2;2;2;;3;;2;5;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Piloter la performance et l'expérience client;Risque de non fiabilité de l'information pour le pilotage;questions des sondanges non réalisés en interne non adaptées à la réalité du terrain;;;;;;;;"écoute client à travers également: Call de bouclage suite livraison, sondage d'interaction, exploitation des remontées au niveau des plateaux et lors des journées OBS
+
+Mise en place de quickwin sur le top 10 princiaples douleurs client recensées ";Préventif;Manuelle;2;2;2;;3;;2;5;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Piloter la performance et l'expérience client;Risque de non fiabilité de l'information pour le pilotage;indisponibilité ou disponibilité tardive des sondages;;;;;;;;Des actions sont en cours avec ARQ pour améliorer  cette situation  où les résultats ont été reçus tardivement sur S1 2018 et ont impacté les indicateurs COPC et les PA d'amélioration;Préventif;Manuelle;3;2;2;;3;;2;7;1
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Piloter la performance et l'expérience client;Risque de non fiabilité de l'information pour le pilotage;non représentativité de l'échantillon du sondage OMEA (60 clients#DAS mobile et pme/pmi uniquement adressés);;;;;;;;"écoute client à travers également: Call de bouclage suite livraison, sondage d'interaction, exploitation des remontées au niveau des plateaux et lors des journées OBS
+
+Suivi mensuel des sondages qui sont dans la table F
+
+Reporting hebdo et mensuel des call de bouclage sur les motifs de satisfaction et/ou d'insatisfaction ";Préventif;Manuelle;4;2;2;;3;;2;9;1
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion de la qualité et des performances des process du service client;Risque de non fiabilité des informations pour le pilotage;manque de fiabilité des données issues des SI (Ex: Infomart, CC Pulse, etc) ;;;;;;;;"Retraitement des données issues des SI
+Etude de solutions en cours par les supports (DSC/DIS) sur les incohérences des données pour Infomart et CCPulse";Préventif;Manuelle;2;1;1;;1;;;2;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion de la qualité et des performances des process du service client;Risque de mauvaise prise en charge des demandes clients internes;déficit d'animation sur le suivi de la performance;;;;;;;;"Publications hebdo du TDB pour mettre en place des quick-win
+Publication mensuelle du TDB pour pilotage de la table F";Préventif;Manuelle;1;1;1;;1;;2;1;3
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion de la qualité et des performances des process du service client;Risque de non fiabilité des informations pour le pilotage;indisponibilité des SI fournisant les informations nécessaires;;;;;;;;"Contrats de service existants avec DSC, DFC et DSI 
+Contrats de service en cours de validation avec DRPS, DRH
+Contrats de service avec ARQ en conseption";Préventif;Manuelle;2;1;1;;1;;;2;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion de la qualité et des performances des process du service client;Risque de non fiabilité des informations pour le pilotage;Absence de sauvegarde automatisée des informations ;;;;;;;;"Existence d'un sharepoint pour TEC
+Besoins digitaux remontés au pôle digital  pour prise en charge";Préventif;Manuelle;2;1;1;;1;;;2;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion de la qualité et des performances des process du service client;Risque de mauvaise prise en charge des demandes clients internes;Défaut de pise en charge et de réalisation dans les délais des PA;;;;;;;;Suivi des PA avec super et pilotage hebdo avec le reporting et mensuel lors du COPIL COPC;Préventif;Manuelle;2;1;1;;1;;2;3;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion de la qualité et des performances des process du service client;Risque de non fiabilité des informations pour le pilotage;Indisponibilité dans le CRM de fonctionnalités nécessaires au suivi des KPI du COPC;;;;;;;;Prise en charge des besoins CRM non adressés au fil de l'eau par DDE/TEC/STCB;Préventif;Manuelle;2;1;1;;1;;;2;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion des ressources humaines (recrutement, formation, vérification des compétences, suivi RH, …);Risque d'inadéquation profil/poste;exigences minimales non conformes à la mission visée par l'entité qui recrute;;;;;;;;"Réception de la mission visée par le recrutement de la part des entités à recruter puis validation collégiale des exigences identifiées
+";Préventif;Manuelle;1;2;1;2;2;;2;2;3
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion des ressources humaines (recrutement, formation, vérification des compétences, suivi RH, …);Risque d'inadéquation profil/poste;Tests de recutement des exigences minimales inadaptés;;;;;;;;"Conception des tests selon la norme COPC
+Benchmarking auprès de DSC lors de la conception des tests
+Tests tous les 3mois après recrutement
+Formation et accompagnement pendant 6 semaines au maximum après recrutement";Préventif;Manuelle;1;2;1;2;2;;2;2;3
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion des ressources humaines (recrutement, formation, vérification des compétences, suivi RH, …);Risque d'inadéquation profil/poste;Fuites sur les tests de recrutement;;;;;;;;Tests de recrutement non diffusés au-delà de TEC;Préventif;Manuelle;1;2;1;2;2;;2;2;3
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion des ressources humaines (recrutement, formation, vérification des compétences, suivi RH, …);Risque d'inadéquation profil/poste;quorum non atteint pour dispenser les formations et entrer en salle;;;;;;;;Mise en place du plan B: fomation et accompagnement individulaisé (non faits en salle);Préventif;Manuelle;2;2;1;2;2;;2;4;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion des ressources humaines (recrutement, formation, vérification des compétences, suivi RH, …);Risque d'inadéquation profil/poste;qualité perfectible des RH déjà recrutés;;;;;;;;"Vérifications périodiques des compétences et des connaissances des RH, surveillance du coaching (écoute d'appels), suivi de la performance individuelle (performances), sondage sur la satisfaction des RH par trimestre
+Suivi mensuel des remontées du personnel
+Entretien trimistriel sur les performances individuelles de chaque RH";Préventif;Manuelle;1;2;1;2;2;;2;2;3
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion des ressources humaines (recrutement, formation, vérification des compétences, suivi RH, …);Risque d'inadéquation profil/poste;Absenc de suivi des KPI orientées RH;;;;;;;;"5 indicateurs majeurs sont définis par COPC: turn-over, absentéisme, qualité du recrutement, recrutement dans les délais, qualité de la formation . Leur analyse se fait de manière trimestrielle et l'application des PA se fait au prochain recutement
+";Préventif;Manuelle;1;2;1;2;2;;2;2;3
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion des ressources humaines (recrutement, formation, vérification des compétences, suivi RH, …);Risque d'inadéquation profil/poste;Manque de fiabilité des données de suivi des RH découlant du défaut d'automatisation, ex: suivi de l'absentéisme;;;;;;;;"collecte mensuelle des données auprès des superviseurs des plateaux
+Date limite de traitement manuel: 31 déc 18. A partir de cette date, les traitements ne se feront que dans l'outil Monitoring";Préventif;Manuelle;2;2;1;2;2;;2;4;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion des ressources humaines (recrutement, formation, vérification des compétences, suivi RH, …);Risque d'inadéquation profil/poste;Défaut d'expertise RH - manque de maîtrise de l'activité RH et absence d'orientation COPC par la DRH;;;;;;;;"Partenaire RH de DDE formée COPC
+Demande adressée à ARQ afin que les managers et que le pool RH soient informées puis formées sur les invariants RH à maîtriser
+Suivi de la norme COPC";Préventif;Manuelle;2;2;1;2;2;;2;4;2
+Développer (les marchés, produits, services, la communication), vendre, facturer, recouvrer et gérer la relation avec les clients Entreprises et Etat ;"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";"Assurrer le pilottage de la performance du marché
+Entreprise et Etat et Expérience client";SNT DDE \ TEC;Gestion des ressources humaines (recrutement, formation, vérification des compétences, suivi RH, …);Risque de manque de performance économique;défaut de prise en charge des clients à cause du turn-over élevé des RH;;;;;;;;"Coût du turn-over calculé chaque année
+Contre-performance constatée sur les activités en front et back office
+Redispatching des tâches au besoin pour les activités support
+Piste d'amélioration en cours d'étude: Lisser les recrutements pour avoir un turn-over lissé";Préventif;Manuelle;2;2;1;;2;;3;4;2

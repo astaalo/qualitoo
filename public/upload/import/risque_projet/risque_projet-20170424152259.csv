@@ -1,0 +1,82 @@
+Risque;Causes;Libellé;Porteur;Mail du porteur;Échéance;Avancement;Commentaires;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Gravité;Finance;Commercial ;RH;Juridique;Image
+Risque de non respect des engagements commerciaux;migrations non souhaitées/prévues (à cause d'une segmentation erronée);"Différencier les offres avec des bundles différents en se basant sur les profils (voice centric et data centric)
+ 
+S’assurer que les clients auront bien la possibilité de migrer gratuitement d'un profil à un autre jusqu'à 3 mouvements.  ";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;17-avr.-17;;;Soldé;Différencier les offres avec des bundles différents en se basant sur les profils (voice centric et data centric);préventif;manuelle;2;2;;2;;;2
+Risque de non respect des engagements commerciaux;migrations non souhaitées/prévues (à cause d'une segmentation erronée);"Dérouler le  CBM (Customer Base Management) pour des campagnes ciblées de migration 
+
+Check sur le script qui permettra de lancer la migration en masse avant T3
+S’assurer que la base de migration fournie est propre et comporte tous les SVA
+";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;30/06/2017;;;Non échu;;;;2;2;;2;;;2
+Risque de non respect des dispositions juridiques et réglementaires ;Migration forcée d'un client ne désirant pas changer de formule (prunning de door war);"Définir un plan d’action (comm et expérience client) pour prendre en compte l’impact client
+
+Revoir le point avec DRJ pour verrouiller l'aspect réglementaire dans le cas où le client ne veut pas migrer";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;30/04/2017;;"
+Ateliers simplification expérience client en cours";Non échu;"
+Existence d’une alternative pour les clients de migrer vers un segment iso qui est ""hybrid » ensuite une migration ciblée vers ""new classic » 
+
+Impact étudié entre DW et Middle
+
+
+Evolution de l'offre Doorwar comme les autres offres du scoop Soleil avec un changement de naming, une évolution du plan tarifaire et des bundles (data en plus car les comportements tarifaires ont révélé que les clients consommaient beaucoup de data dans l'offre doorwar traditionnelle)
+
+migration de 50% des clients door war vers la formule hybride et du reste vers la formule classique
+";préventif;manuelle;3;1;1;;;1;1
+Risque de manque de performance économique;Rejet par le client des nouvelles offres;;Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;;;Atliers siplification expérience client en cours;;"Nouvelles offres basées sur les habitudes de conso et les résultats des focus groupe et du NPS (Net  Promotor Score)
+Abondance mise en avant
+Migration ouverte pour le client si son segment de base ne lui correspond plus";préventif;manuelle;2;3;4;;;;1
+Risque de manque de performance économique;Formule Scool plus attractive que les autres formules;;Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;;;;;Le tarif du scool n'est attractif que si tu es dans la communauté scool;préventif;manuelle;1;3;4;;;;1
+Risque de manque de performance économique;Extension de la durée de validité du crédit à l'illimité et du bonus à 1mois;Faire le bilan de l'extension de la durée de validité du crédit à 6 mois avant de prendre une autre décision d'extension;Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;10/09/2016;;;Soldé;la durée moyenne après étude d'épuisement du crédit chez le client est de 3jours ;préventif;manuelle;1;3;4;;;;1
+Risque de manque de performance économique;cannibalisation de la formule 9900F d'illimix par la 4900F ;;Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;;;;;Cibles différentes pour chaque bundle;préventif;manuelle;2;3;4;;;;1
+Risque de manque de performance économique;perte de revenus à cause des tarifs des new scool et new KAO;;Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;;;;;"BP positif dans les scenarii 2 (KAO à 1,3f et illimx 4900 sur 5h ) et 3 (KAO à 1,3F et illimx 4900 sur 5h)
+Choix porté sur le scénario 2";préventif;manuelle;2;3;4;;;;1
+Risque de manque de performance économique;Offres du concurrent Tigo beaucoup plus avantageuses (Jotaay 10.000 F);"Revoir la politique promotionnelle non embarquée dans la refonte avec la définition d'un plan d'animation dans le plan mktg 2017 (ex: bonus ciblés, promos sur les illimix, etc)
+
+Voir comment enrichir la proposition pour le segment purement Voix. (suite Costrat)";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;17-avr.-17;;"Refonte lancée sur la partie refonte
+Illimix 4900 lancé";Soldé;"Destruction de valeur en proposant un pass de moins de 10.000F.
+Décision de répondre avec des offres promotionnelles: plan de riposte Jotaay depuis le 08/12/16 - illimix 500 + 15mns de bonus offerts; illimix 4900+bonus100%; etc (voir dossier plan de riposte)";préventif;manuelle;2;3;4;;;;1
+Risque de non respect des dispositions juridiques et réglementaires ;incitation à l'achat des très jeunes - responsabilité éthique et sociale;Prendre en compte des contraintes réglementaires dans la campagne de communication;Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;30/06/2017;;;Non échu;Vente du service avec un terminal dont les applis sont dédiées à des jeunes;préventif;manuelle;2;1;1;;;1;1
+Risque de non respect des dispositions juridiques et réglementaires ;non identification des plus jeunes (ne disposant pas de CNI);;;Alimatou.Mbaye@orange-sonatel.com;;;;;Identification de tous les clients et suppression des numéros non identifiés dans le cadre du projet Identif;préventif;manuelle;1;1;1;;;1;1
+Risque de dimensionnement inadéquat du réseau;Sous-évaluation des impacts du projet sur les capacités des équipements réseaux (IN, SMSC, …) à cause notamment des busy hours (ex: 20hrs);"Etude d'extension du busy hour en cours
+Dérouler des tests pré lancement dans le cadre de l'EBM
+
+Retravailler avec la technique le delta trafic  induit par l'offre Soleil et proposer un nouveau planning optimisé de T3";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;17-avr.-17;;;Soldé;Planning optimisé au T1;préventif;manuelle;2;2;1;2;;;3
+Risque de communication inadaptée;Incompréhension par le client à cause du flux d'information trop volumineux dans la communication;Phaser et allèger la communication - All supports (digital, télé, radio, presse);Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;30/06/2017;;;Non échu;"lancement en 3 phases: 
+phase 1: avant ramadan (lancement 4900, 1000 + extension validité crédit)
+phase 2: lancement des bundles et scoop orange (plan tarifaire, amémioration parcours client, premium, etc)
+phase3: lancement kirène";préventif;manuelle;2;2;1;1;;;3
+Risque de non intégrité et de non fiabilité des données;Mauvais paramétrage de l'offre (bonus, tarifs…);"Dérouler des campagnes de tests pré lancement sur les sims pilotes après modification des tarifs par DRPS et les tests de régression
+";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;17/04/2017;;;Soldé;"Contrôles mensuels par le RA des plans tarifaires des offres et des compteurs
+Tests de la phase 2 concluants. Ils seront renforcés par une autre série de tests T3 et un FUT";préventif;manuelle;1;1;1;;;1;
+Risque de non respect des engagements commerciaux;Bonus Sargal non positionnés ou positionnés tardivement;"Définir le process d'attribution des bonus
+Réaliser les tests pré lancement
+
+
+";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;17/04/2017;;;Soldé;Tests de la phase 2 concluants. Ils seront renforcés par une autre série de tests T3 et un FUT;préventif;manuelle;2;2;;2;;;2
+Risque de non respect des engagements commerciaux;SVA non reconduits après la migration;"S’assurer que lors de la migration les SVA des clients sont conservés- qu’il n y a pas de régression
+Dérouler des tests de migration pour pouvoir inclure dans le script les services qu’on perd lors de la migration";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;30/06/2017;;;Soldé;Tests de la phase 2 concluants. Ils seront renforcés par une autre série de tests T3 et un FUT;préventif;manuelle;1;2;;2;;;2
+Risque de fraude;connexions ou appels au-delà des forfaits sans facturation;"Définir une maquette de suivi post-lancement avec les kpi à indexer sur la base d'extractions (fréquence à définir)
+Cahier de tests pré lancement à dérouler - fait";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;30/06/2017;;;Soldé;"Existence des contrôles RA suivants :
+Contrôles hebdo mensuels par DFC/CRA sur le provisionning (connexion sans pass) et tarif billing (contrôle de la faturation hors pass)
+Corrélations avec les contrôles FRA de DEX/ASN puis reporting mensuel
+
+Contrôle sur la durée de validité des pass/forfaits sur le compteur principal englobant le compteur bonus sur un Top 20 de numéros mais il n’y a pas de contrôles spécifiques sur les compteurs bonus parce que les bonus s’y accumulent et il n’est plus possible de les discerner et de savoir sur quel caping adresser le contrôle
+";Détectif;manuelle;1;1;1;;;;1
+Risque de non respect des engagements commerciaux;Impossibilité de souscrire à l'offre illimix mensuel en cas d'indisponibilité de la plateforme;"Présenter les impacts juridiques et réglementaires des offres exclusives via orange money. (suite Costrat)
+Le positionner comme incentive plutôt que de créer une exclu distri sur OM";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;30/06/2017;;;Soldé;Les achats sur OM permettent de bénéficier d'incentives mais OM n'est plus un canal  exclusif de distribution;;;2;2;;2;;;2
+Risque de non respect des engagements commerciaux;dysfonctionnement du menu dans OM (impossibilité de souscrire aux offres et de bénéficier des promos);"Verrouiller avec la technique le pourcentage de garantie d'accessibilité de l'USSD
+Quid de l'évolution de l'appli Orange Money?";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;17/04/2017;;;Soldé;tests d'accessibilité à la plateforme consluants à 100%;préventif;Automatique;2;2;;2;;;2
+Risque de non respect des dispositions juridiques et réglementaires ;non-conformité des dossiers client;Mettre à jour le process de recrutement pour inclure la collaboration avec les points patisen avec focus sur le mode de recrutement et la remontée des infos client;Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;17/04/2017;;point pris en charge par DOM;annulé;;;;2;1;1;;;1;1
+Risque de lancement tardif ;Glissement du planning de déploiement de la nouvelle plateforme IN;"
+Proposer un nouveau planning tenant compte de la sécurisation de l’IN
+";Awa Diallo Bao;awa.diallo@orange-sonatel.com;;;;Soldé;Planning optimisé au T1;préventif;manuelle;2;1;1;;;;
+Risque de fraude;Dépôts frauduleux sur les compteurs bonus;"Définir :
+ - un contrôle de suivi post-lancement  hebdo  de niveau 1 par DMGP portant sur le volume vs CA  sur la base d'extractions 
+ - un contrôle plus pérenne par DFC/CRA
+
+Réaliser les tests pré lancement pour éviter des connexions ou appels au-delà des forfaits sans facturation 
+";Alimatou Mbaye;Alimatou.Mbaye@orange-sonatel.com;30/06/2017;;;en cours;"Existence des contrôles RA suivants :
+Contrôles hebdo mensuels par DFC/CRA sur le provisionning (connexion sans pass) et tarif billing (contrôle de la faturation hors pass)
+Corrélations avec les contrôles FRA de DEX/ASN puis reporting mensuel
+
+Contrôle sur la durée de validité des pass/forfaits sur le compteur principal englobant le compteur bonus sur un Top 20 de numéros mais il n’y a pas de contrôles spécifiques sur les compteurs bonus parce que les bonus s’y accumulent et il n’est plus possible de les discerner et de savoir sur quel caping adresser le contrôle
+
+";Détectif;manuelle;1;1;1;;;;1

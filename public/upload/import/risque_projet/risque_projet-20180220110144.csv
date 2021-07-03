@@ -1,0 +1,84 @@
+Risque;Causes;Libellé;Porteur;Email porteur;Échéances;Commentaire;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial
+Risque de fraude;consommation illimitée non facturée;"Mettre en place des seuils d'alerte data mobile qui se rapprochent le plus des pass à la place d'un seuil élevé de 5 Go de consommation journalière data mobile.
+
+Demander à la technique la possibilité de faire des extractions liant le pass, le montant pour renforcer les contrôles Fraude & Revenue Assurance";Lucien Ehemba;lucien.ehemba@orange-sonatel.com;15/04/2016;;Soldé;"Verrouillage  automatique à l’épuisement du forfait (pass)
+
+Mise en place d’un seuil d’alerte de consommation de 5 Go par jour au niveau du SI Nikira
+
+Contrôle RA Data 5 : Contrôle mensuel des connections effectuées via des proxy frauduleux
+
+Contrôle RA Data 11 : Contrôle mensuel des connexions sans pass";Préventif;Manuelle;1;1;1;;;;
+Risque de lancement tardif d'offres innovantes ou promotionnelles par rapport à la concurrence, aux attentes clients ou à nos promesses;Licence d’exploitation LTE non délivrée;Attente des résultats négociations du groupe projet iTTM.;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;29/04/2016;;Soldé;Licence acquise;Préventif;Manuelle;1;2;1;;2;;
+Risque de lancement d'offre non fonctionnelle;Tests techniques non concluants;Effectuer les tests techniques jusqu'au lancement;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;04/07/2016;;Soldé;"tests pré lancement concluants 
+Tests quotidiens pendant un mois post lancement avec prise en compte et traitement des remontées à l'adresse ""plaintes4G""";Préventif;Manuelle;1;4;4;;4;;4
+Risque de manque de performance économique des offres;volume de vente sous évaluée ou surévaluée;;;;;;;"Nombre de pass vendus/mois et Projection sur le nombre de clients potentiels 4G envoyé à DFC pour les simuls nécessaires dans le BP
+Reconduction de tous les forfaits 3G sur l'offre 4G";Préventif;Manuelle;2;2;1;;2;;2
+Risque de non respect des engagements commerciaux;zone couverte par la 4G très limitée;"Communiquer aux clients les zones couvertes et celles non couvertes par la 4G.
+";André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;04/07/2016;;Soldé;"Les clients seront basculés en 3G dans les zones non couvertes.
+En cas de basculement en 3G, la facturation est comprise dans le forfait.
+Le roaming est facturé séparément du forfait.
+139 sites couverts à mi-septembre sur Dakar, Petite Côte (saly, saumone, mbour) et Touba";Préventif;Manuelle;2;2;1;;2;;2
+Risque de non respect des engagements commerciaux;débit non garanti;Garantir un débit max et non min pour éviter les barrières à l'entrée pour les clients.;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/04/2016;;Soldé;Un débit max et non min est garanti pour éviter les barrières à l'entrée pour les clients.;Préventif;Manuelle;1;2;1;;2;;2
+Risque de manque de performance économique des offres;Gamme de forfaits limitée;;;;;;;"Nombre de pass vendus/mois et Projection sur le nombre de clients potentiels 4G envoyé à DFC pour les simulations nécessaires dans le BP
+
+Reconductin de tous les forfaits 3G sur l'offre 4G";Préventif;Manuelle;1;2;1;;2;;2
+Risque de non respect des engagements commerciaux;Indisponibilité des terminaux et devices;"Suivre avec DMGP/DMBO l’état du stock et s’assurer à temps de la commande  du reliquat selon les besoins du BP
+";André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/08/2016;;soldé;"Commande de 11 000 terminaux prévus sur 2015 par DMGP/DMBO
+A peu près 2000  terminaux ont déjà été commercialisés. Les prévisions de stock par DMGP/DMBO seront revues à l'obtention de la licence après fixation de la date de lancement";Préventif;Manuelle;2;2;1;;2;;2
+Risque de non respect des engagements commerciaux;Indisponibilité ou rupture des sims 4G;Commande de 100 000 puces supplémentaires 128K;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/08/2016;;Soldé;"Premier stock de 130 000 puces en cours d'utilisation. Commande de 200.000 puces supplémentaires reçues
+Envoi de sms push aux client haut de marché au lancement pour qu'ils s'équipent en puce 4G";Préventif;Manuelle;1;2;1;;2;;2
+Risque de dépendance envers les fournisseurs;Existence d'un seul fournisseur sur les sims 4G;Réaliser des tests sur les sims 4G avec le second fournisseur Morpho pour éviter tout risque de dépendance;Modou Sall;modou.sall@orange-sonatel.com;15/08/2016;;soldé;;;;2;1;1;;;;
+Risque de manque de performance économique des offres;indisponibilité de terminaux compatibles 4G;"Suivre avec DMGP/DMBO l’état du stock et s’assurer à temps de la commande  du reliquat selon les besoins du BP
+Finaliser les tests sur les clés et le dominos pour mise sur le marché";André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;31/07/2016;;soldé;"Les terminaux nokia et les tablettes mediapad ont déjà été commercialisés. Les prévisions de stock par DMGP/DMBO seront revues à l'obtention de la licence après fixation de la date de lancement
+5 références de termnaux disponibles en agence: Iphone, samsung, nokia lumia et tablettes médiapad
+Attente livraison des dominos 4G et de 3 autres références: Alcatel rise 51, tablette pixi 3,
+Commande à lancer pour Samsung J1 Ace
+Tests concluants sur tous les devices
+";Préventif;Manuelle;2;2;1;;2;;2
+Risque de manque de performance économique des offres;indisponibilité de terminaux compatibles 4G;Véifier l'exactitude des prévisions du stock pour qu'ils tiennent jusqu'en fin d'année en tenant compte du lancement prochain de la perco findan;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/10/2016;;Soldé;"Les terminaux nokia et les tablettes mediapad ont déjà été commercialisés. Les prévisions de stock par DMGP/DMBO seront revues à l'obtention de la licence après fixation de la date de lancement
+5 références de termnaux disponibles en agence: Iphone, samsung, nokia lumia et tablettes médiapad
+Attente livraison des dominos 4G et de 3 autres références: Alcatel rise 51, tablette pixi 3,
+Commande à lancer pour Samsung J1 Ace
+Tests concluants sur tous les devices
+
+Stock global piloté par DMBO/SMTA
+";Préventif;Manuelle;2;2;1;;2;;2
+Risque de non maîtrise du stock;pas de stock dédié à la 4G;"Suivre avec DMGP/DMBO l’état du stock et s’assurer à temps de la commande  du reliquat selon les besoins du BP
+Finaliser les tests sur les clés et le dominos pour mise sur le marché";André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;31/07/2016;;soldé;"Les terminaux nokia et les tablettes mediapad ont déjà été commercialisés. Les prévisions de stock par DMGP/DMBO seront revues à l'obtention de la licence après fixation de la date de lancement
+5 références de termnaux disponibles en agence: Iphone, samsung, nokia lumia et tablettes médiapad
+Attente livraison des dominos 4G et de 3 autres références: Alcatel rise 51, tablette pixi 3,
+Commande à lancer pour Samsung J1 Ace
+Tests concluants sur tous les devices";Préventif;Manuelle;2;2;1;;2;;
+Risque de non fiabilité de la facturation;Erreur de facturation sur les consommations à l'acte après la fin du pass volume;;;;;;;Ce mode de facturation est déjà éprouvé avec la 3G;Préventif;Automatique;1;1;1;;;;
+Risque de manque de performance économique des offres;Absence de visibilité sur le coût de la licence;Attente des résultats négociations du groupe projet iTTM.;Modou Sall;modou.sall@orange-sonatel.com;15/04/2016;;soldé;Maintien de la gamme data actuele et rajout de 2 pass internet supplémentaires;Préventif;Manuelle;1;2;1;;2;;2
+Risque de fraude;positionnement frauduleux des 1Go offert;Contrôle quotidien des activations déjà faites des 1Go offert;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;30/09/2016;;Soldé;"Suite à un changement de sim 3G pour une sim 4G, le pass 1 Go est positionné automatiquement dès activation de la nouvelle sim.
+
+Pour la promo 10Go offert pour nouveaux clients 4G disposant d’un terminal compatible, le délai de positionnement du Pass reste inchangé, chaque lundi après vérification du terminal utilisé.
+
+Contrôle quotidien des numéros ayant reçu le bonus de 1Go";Préventif;Automatique;1;1;1;;;;
+Risque de fraude;activation frauduleuse des 1Go sur des sims non 4G;Suivre la demande adressée à la technique pour une automatisation du positionnement des 1Go offerts sur les changements de sim en sim 4G ;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/04/2017;attente des ERQ;Soldé;"Suite à un changement de sim 3G pour une sim 4G, le pass 1 Go est positionné automatiquement dès activation de la nouvelle sim.
+
+Pour la promo 10Go offert pour nouveaux clients 4G disposant d’un terminal compatible, le délai de positionnement du Pass reste inchangé, chaque lundi après vérification du terminal utilisé.
+
+Contrôle quotidien des numéros ayant reçu le bonus de 1Go";Préventif;Automatique;1;1;1;;;;
+Risque de fraude;activation des 10Go sur un numéro dans un téléphone non 4G;;;;;;;vérification sur décisionnel et otari avant activation tous les lundis des 10Go pour les clients ayant changé leur sim en sim 4G ;Préventif;Automatique;1;1;1;;;;
+Risque de non respect des engagements commerciaux;10 Go non activé pour le client (mise à jour tardive ou erreur de mise à jour des bases otari et décisionnel);Inclure dans le process de demander aux clients qui réclament au niveau du 1441 la non activation de leur 10Go de se rendre en agence pour vérification du terminal compatible 4G et positionnement des 10Go ;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;07/04/2017;attente des ERQ;Soldé;vérification sur décisionnel et otari avant activation tous les lundis des 10Go pour les clients ayant changé leur sim en sim 4G ;Préventif;Automatique;1;2;1;;2;;2
+Risque de non respect des engagements commerciaux;Non activation des 1Go offert à l'ativation de la 4G;Suivre la demande adressée à la technique pour une automatisation du positionnement des 1Go offerts sur les changements de sim en sim 4G;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/04/2017;attente des ERQ;Soldé;"Suite à un changement de sim 3G pour une sim 4G, le pass 1 Go est positionné automatiquement dès activation de la nouvelle sim.
+
+Pour la promo 10Go offert pour nouveaux clients 4G disposant d’un terminal compatible, le délai de positionnement du Pass reste inchangé, chaque lundi après vérification du terminal utilisé.
+
+Contrôle quotidien des numéros ayant reçu le bonus de 1Go";Préventif;Automatique;1;2;1;;2;;2
+Risque de non respect des engagements commerciaux;Activation tardive de la 4G;;;;;;;"Automatisation de l'activation de la 4G et Re sensibilisation des commerciaux au respect du process d'activation des puces mis à jour
+Correction des bugs techniques";Préventif;Automatique;2;2;1;;2;;2
+Risque de non respect des engagements commerciaux;Non activation de la 4G après le changement de la sim;;;;;;;"Signalisation des rejets par DSC puis traitement par DSVC
+Traitement des remontées quotidiennes pour corriger les puces non activées
+Automatisation de l'activation de la 4G et Re sensibilisation des commerciaux au respect du process d'activation des puces mis à jour
+";Préventif;Manuelle;2;2;1;;2;;2
+Risque de fraude;positionnement du pass abonnement après la fin de l'abonnement;Verrouiller avec le chantier technique la suspension des positionnements en fin d'abonnement et dérouler les tests pour confirmer leur effectivité;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/03/2018;;Non échu;;;;1;1;1;;;;
+Risque de non respect des engagements commerciaux;absence de notification d'opt out au client;Tester les notifications faites au client en cas de non rechargement de crédit pour lui signifier la fin de son abonnement;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/03/2018;;Non échu;;;;1;2;1;;2;;2
+Risque de non respect des engagements commerciaux;Absence de notification au client des différentes étapes: épuisement du forfait, renouvellement du forfait, expiration du forfait;Testesr le bon envoi des différentes notifications au client de l'abonnement à la fin de l'abonnement;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/03/2018;;Non échu;;;;1;2;1;;2;;2
+Risque de non respect des dispositions juridiques et règlementaires;impssibilité d'opt out pour le client;Valider avec DRJ l'impssibilité d'opt out pour le client;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/03/2018;"Attente retour DRJ sur l'imposibilité pour le client de faire de l'opt out une fois qu'il s'est engagé pour l'abonnement
+
+Quand le client ne dispose pas de crédit, le service n'est plus positionné. C'est considéré comme du opt out";Non échu;;;;2;2;1;;3;1;3
+Risque de non respect des engagements commerciaux;cumul du pass abonnment non effectué durant l'abonnement;Dérouler les tests pour s'assurer du positionnement du cumul au cours de l'abonnement;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/03/2018;;Non échu;;;;1;2;1;;2;;2
+Risque de non respect des engagements commerciaux;cumul non supprimé à la fin de l'abonnement;Dérouler les tests pour s'assurer de l'effacement du cumul à la fin de l'abonnement;André Nicolas Sarr;andrenicolas.sarr@orange-sonatel.com;15/03/2018;;Non échu;Compteur abonnement différent du compteur pass classique;Préventif;Manuelle;1;2;1;;2;;2

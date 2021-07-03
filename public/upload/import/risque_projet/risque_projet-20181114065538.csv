@@ -1,0 +1,40 @@
+Risque (points d'attention);Causes (facteurs potentiels à l'origine de ces points d'attention);Libellé PA (réponses ou solutions en cours pour couvrir les points d'attention identifiés);Porteur;email porteur;Date de début;Echéance;Commentaires;Statut;CONTRÔLE DESCRIPTION (réponses ou solutions aux points d'attention identifiés);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client;Criticité;Maturité
+Risque de non respect des engagements commerciaux;perte de service sur notre pop distant;Définir le Process de maintenance + relève dérangement ;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/07/2018;;Soldé;"L'offre de Telehouse inclut l'intervention de niveau 1
+Emission de tickets au fournisseur en cas de perturbations nécessitant une interventionhors du périmètre du niveau 1
+
+Routeur supervisé au même titre que tous les équipements du backbone de sonatel par sonatel
+
+Contrat avec Telehouse (Sonatel-Telehouse) signé et codifié";préventif;automatique;1;3;1;;4;;4;3;3
+Risque de non respect des engagements commerciaux;débit effectif inférieur au débit annoncé;contractualiser le débit dédié et les sla;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/07/2018;;Soldé;SLA et COS MPLS revus et mis aux normes internationales;préventif;manuelle;1;3;1;;4;;4;3;3
+Risque de non respect des engagements commerciaux;dégradation de la qualité/débit vendue au client en cas de rupture de câble;Définir les différentes COS sur le MPLS et les intégrer dans le contrat de vente;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/12/2018;contrat client à finaliser en mi-déc;en cours;"Priorisation des flux embarquée sur le MPLS avec les COS
+
+Basculement des clients sur les liens secours disponibles (SAT3) ou achat de capacité chez un opérateur (shuntlfold)";préventif;automatique;2;3;1;;4;;4;6;2
+Risque d'incident technique;rupture des câbles sous-marins;Se reférer à la chaîne de support en cas de coupure de câble existante et lepréciser dans le parcours client;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/07/2018;;Soldé;Offre (scenarii 2 &3) comprenant un secours sur la BPI (Sat3)  + Shuntfold en cas de nécessité;préventif;manuelle;1;2;1;;3;;3;2;3
+Risque d'incident technique;lenteur dans la réactivité en cas de problèmes niveaux 2 ou 3 sur le pop distant;Définir le Process de maintenance + relève dérangement ;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/06/2018;Telehouse ne fait que du niveau 1 qui n'inclut pas la supervision;Soldé;"L'offre de Telehouse inclut l'intervention de niveau 1
+Emission de tickets au fournisseur en cas de perturbations nécessitant une interventionhors du périmètre du niveau 1
+
+Routeur supervisé au même titre que tous les équipements du backbone de sonatel par sonatel
+
+Contrat avec Telehouse (Sonatel-Telehouse) signé et codifié";préventif;automatique;1;2;1;;3;;3;2;3
+Risque de manque de performance économique des offres/projets;lancement tardif du projet;intégrer la perte probable de CA dans le BP;Aissatou Ndir;aissatoundir@orange-sonatel.com;;09/05/2018;;Soldé;Offre rentable à partir de la deuxième année dans le BP;préventif;automatique;1;1;1;;1;;;1;3
+Risque de manque de performance économique des offres/projets;SLA non alignés sur les standards internationaux;Conduire un bench et étudier techniquement la mise en œuvre et la garantie de SLA aux standards internationaux;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/07/2018;;Soldé;SLA et COS MPLS revus et mis aux normes internationales;préventif;manuelle;1;1;1;;1;;;1;3
+Risque de manque de performance économique des offres/projets;prix non compétitifs (charges POP distant > nombre de clients);Optimiser les coûts pour avoir des tarifs compétitifs;Aissatou Ndir;aissatoundir@orange-sonatel.com;;09/05/2018;"Attente offre du fournisseur Telehouse pour estimer la pose de notre pop à paris
+Bench sur les tarifs du marché pour s'aligner si on est moins cher. Si on est plus cher, analyse à refaire
+attente finalisation BP";Soldé;Tarifs alignés sur ceux du marché en se basant sur le bench de PCCW, Orange et Téléfonica;préventif;automatique;2;1;1;;1;;;2;2
+Risque de manque de fiabilité de la facturation;type de liaisons non embarqué dans gaïa;Configurer avec DSC/DIS dans Gaïa le mode de facturation des liaisons EoMPLS et tester le bon fonctionnement lors des tests FUT;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/12/2018;Attente issue des tests FUT;en cours;;;;2;1;1;;;;;2;2
+risque de non respect des engagements commerciaux;débit effectif inférieur au débit annoncé;"contractualiser le débit dédié et les sla fournis par les carriers
+Superviser le débit fourni au client
+Dérouler les tests nécessaires pour s'assurer de la founiture garantie du débit annoncé";Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/12/2018;Attente issue des tests FUT;Non échu;"Monitoring du backbone en temps réel:
+- basculement sur le lien secours en cas de dégradation du lien principal en-deçà du lien de secours
+- correction de la ligne primaire s'il n'y a pas lieu de basculement";préventif;automatique;1;2;3;1;3;1;4;2;3
+risque de non respect des engagements commerciaux;non interopératibilité des équipements de sonatel et ceux des carriers;S'assurer que le chantier technique déroule convenablement les configurations sur les équipements d'extrémité devant être interconnectés et les tester;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/12/2018;Attente issue des tests FUT;Non échu;;;;2;2;3;1;3;1;4;4;2
+Risque de manque de performance économique des offres/projets;offre de niveau 2 non disponible;Bien documenter dans l'offre l'indisponibilité du niveau 2 dans le secours pour les clients le désirant;Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/12/2018;contrat client à finaliser en mi-déc;Non échu;Le niveau 2 ne sera pas disponible sur secours avec l'Internet mais il sera disponible sur le lien primaire;préventif;automatique;2;1;1;;1;;;2;2
+Risque de lancement d'offre ou de projet non fonctionnel;absence de garantie sur les SLA (sur le tronçon sénégal) fournis par la technique en local aux clients;"S'appuyer sur les sla de bench pour fournir des sla qui se rapprochent des standards internationaux. 
+Rajouter les VR (MTTR et MTTI) et évaluer  notre compétitivité sur le marché international";Aissatou Ndir;aissatoundir@orange-sonatel.com;;15/12/2018;"Architecteure proposée par la technique:
+- lien dédié sur ace
+- secours internet sur sat3 (0 dépendance vis à vis de TIS)
+Attente issue des tests FUT";Non échu;"garantie des SLA sur notre backbone et jusqu'à notre dernier POP de sortie
+
+Résultats de bench fournis à la technique
+
+Obligation d'un taux de charge de 40% sur les liens Internet (ACE et SAT3) donc garantie du débit en cas de rupture de ACE";préventif;automatique;3;3;3;1;3;;3;9;1

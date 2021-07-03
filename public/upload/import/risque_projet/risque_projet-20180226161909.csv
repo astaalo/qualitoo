@@ -1,0 +1,24 @@
+Risque;Causes;Libellé Plan d'action (ce qui est prévu pour éviter ou maitriser le risque);Porteur;Email Porteur;Echéance;Commentaires;Statut;CONTRÔLE DESCRIPTION (ce qui est mis en place pour éviter ou maitriser la survenance du risque);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client
+Risque de non respect des dispositions juridiques et règlementaires;Perte des données client lors de la migration de l'ancienne plateforme vers la nouvelle plateforme;"Verrouiller:
+ - la sauvegarde de l'ensemble des données des clients sur un serveur de back up avant la migration
+ - le respect de la sauvegarde des données au niveau du technocentre pendat les durées légales de conservation avec l'appui de DRJ ";Safietou Kane DDE;safietou.kane3@orange-sonatel.com;27/02/2018;;Non échu;;;;3;2;1;1;3;2;2
+Risque de non respect des dispositions juridiques et règlementaires;Perte des données client lors de la migration de l'ancienne plateforme vers la nouvelle plateforme;"Procéder à des tests sur échantillon
+Définir le mode de migration des données ";Safietou Kane DDE;safietou.kane3@orange-sonatel.com;15/03/2018;;Non échu;;;;3;2;1;1;3;2;2
+Risque de divulgation d'informations confidentielles;Utilisation non autorisée des informations clients ;Définir la politique de sécurité (Restriction des accès aux serveurs de gestion des données clients des intervenants);Safietou Kane DDE;safietou.kane3@orange-sonatel.com;15/03/2018;;Non échu;;;;2;2;2;1;3;2;3
+Risque de fraude;absence de traçabilité des logs;Verrouiller avec le fournisseur la traçabilité des logs sur leur plateforme et leur exploitabilité;Safietou Kane DDE;safietou.kane3@orange-sonatel.com;27/02/2018;;Non échu;;;;2;2;1;;3;;2
+Risque de dégradation de la qualité de service;indisponibilité d'une ou des fonctionnalités de la plateforme;"Verrouiller avec DSI les niveaux de SLA sur la plateforme
+Back upper les serveurs qui hébergent la plateforme. Définir le mode de fonctionnement des secours: actif/actif ou actif/passif";Safietou Kane DDE;safietou.kane3@orange-sonatel.com;15/03/2018;;Non échu;;;;2;2;1;;3;;2
+Risque de manque de performance économique des offres/projets;concurrents plus matures sur les 2 nouvelles offres et le marché ex Google et Office 365;Etudier la possibilité de refonte tarifaire de l'offre cloud pour la rendre plus compétitive.;Safietou Kane DDE;safietou.kane3@orange-sonatel.com;15/03/2018;;Non échu;;;;3;3;2;;3;;
+Risque de saturation des ressources réseau;serveurs sous-dimensionnés par rapport aux sollicitations  avec l'intégration de nouvelles applications et le paiement en ligne;Hébergement des serveurs au niveau du datacenter ;Safietou Kane DDE;safietou.kane3@orange-sonatel.com;27/02/2018;;Non échu;;;;2;2;1;;2;2;4
+Risque de non respect des engagements commerciaux;Suppression ou résiliation à tort de compte client;Instaurer un contrôle les extractions hebdo des abonnements et résiliations sur la plateforme pour détecter les anomalies;Safietou Kane DDE;safietou.kane3@orange-sonatel.com;30/04/2018;;Non échu;;;;3;2;1;;2;2;4
+Risque de non respect des engagements commerciaux;erreurs de paramétrage  des comptes client;"Verrouiller :
+ - la liste des profils sur la migration
+ - la liste des profils pouvant créer et paramétrer les comptes client
+ - l'existence d'une séparation des tâches
+ - les niveaux de validation des créations de compte";Safietou Kane DDE;safietou.kane3@orange-sonatel.com;15/03/2018;;Non échu;;;;3;2;1;;2;2;4
+Risque de non respect des engagements commerciaux;paramétrage frauduleux des comptes client (octroi d'avantages indus, etc);"Verrouiller :
+ - la liste des profils sur la migration
+ - la liste des profils pouvant créer et paramétrer les comptes client
+ - l'existence d'une matrice de séparation des tâches
+ - la traçabilité des logs";Safietou Kane DDE;safietou.kane3@orange-sonatel.com;15/03/2018;;Non échu;;;;1;2;1;;2;2;4
+Risque de lancement d'offre ou de projet non fonctionnel;défaut de maîtrise de la solution en interne sonatel;Verouiller avec le fournisseur (avec l'aide de la DAL) le transfert de compétences ainsi que la transmission de la documentation avant la recette;Safietou Kane DDE;safietou.kane3@orange-sonatel.com;27/02/2018;;Non échu;;;;1;1;1;;;;

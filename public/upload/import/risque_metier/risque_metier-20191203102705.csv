@@ -1,0 +1,84 @@
+Macro Processus;Processus;Sous Processus;Sous-Entité;Activité;Risque;Causes;Description du plan d'action;Porteur;Date de début;Date de fin;Avancement;Statut;Contrôle description;Type de controle;Methode de contrôle;Probabilité;Gravité;Financier;Commercial;Images;Ressources Humaines;Juridique;Maturité CI
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Professionnalisation et parcours vendeur;Risque de manque d'efficacité des actions commerciales;Non maîtrise du nouveau produit par le commercial;;;;;;;"Formation de la force de vente : 
+ - Programme d'accompagnement (formation continue et de maintien) pour les vendeurs agence
+
+Information des agents lors de lancement d'offres ou de promotions par liste de diffusion pour tout le monde, séances en présenciel exceptionnellement (au besoin)
+
+Séances de partage avec les RA avec présentation des check-list. Les RA seront chargés de partager avec les équipes
+
+Evaluations a chaud pour les formations initiales
+
+Identification en cours avec la DRH pour les évaluations à froid";Préventif;Manuelle;1;1;1;1;1;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Professionnalisation et parcours vendeur;Risque de manque d'efficacité des actions commerciales;Indisponibilité de supports d'information sur les lieux de vente;;;;;;;" - Déploiement des supports digitaux pour une information des clients sur les produits et services : smart table, borne tactile, totem dynamique, TV led, etc
+Mise en place d'un budget pour la production des supports par DV en cas de refonte globale";Préventif;Manuelle;3;1;1;1;1;;;1
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Professionnalisation et parcours vendeur;Risque de développement insuffisant des ventes;Non maîtrise des fonctionnalités du SI (Gaïa) par le commercial;;;;;;;"Formation de la force de vente : 
+ - Programme d'accompagnement (formation continue et de maintien) pour les vendeurs agence
+
+Information des agents lors de lancement d'offres ou de promotions par liste de diffusion pour tout le monde, séances en présenciel exceptionnellement (au besoin)
+
+Séances de partage avec les RA avec présentation des check-list. Les RA seront chargés de partager avec les équipes
+
+Evaluations a chaud pour les formations initiales
+
+Identification en cours avec la DRH pour les évaluations à froid";Préventif;Manuelle;1;1;1;1;2;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Professionnalisation et parcours vendeur;Risque de développement insuffisant des ventes;Prise de commande non conforme dans le SI par les commerciaux (non application des procédures);;;;;;;Reporting anomalies produit par DSC + contrôle continu des dossiers client par DVTC/PCQ qui permet d'identifier les erreurs de saisie dans les dossiers client et leur correction;Préventif;Manuelle;2;1;1;1;2;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de développement insuffisant des ventes;Non maîtrise du nouveau produit par le commercial;;;;;;;"Formation de la force de vente : 
+ - Programme d'accompagnement (formation continue et de maintien) pour les vendeurs agence
+
+Information des agents lors de lancement d'offres ou de promotions par liste de diffusion pour tout le monde, séances en présenciel exceptionnellement (au besoin)
+
+Séances de partage avec les RA  avec présentation de l'offre. Les RA seront chargés de partager avec les équipes
+
+Evaluations a chaud pour les formations initiales
+
+Identification en cours avec la DRH pour les évaluations à froid";Préventif;Manuelle;1;1;1;1;2;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de développement insuffisant des ventes;Rupture de stocks ou stocks limités;;;;;;;"PPCO pilote le stock des agences
+mise à disponibilité du stock par la supply chain ";Préventif;Manuelle;3;1;1;1;2;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de développement insuffisant des ventes;Indisponibilité du support de communication en Agence au lancement de l'offre;;;;;;;"- Check list d'introduction des offres intégrant les supports de comm en interne agences 
+- Maintien des supports digitaux de communication en Agence";Préventif;Manuelle;2;1;1;1;2;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de lancement d'offre ou de projet non fonctionnel;Tests SI des offres/promos non exhaustifs;;;;;;; - Check list de lancement des offres ou promos à dérouler avant chaque lancement.  - Go de lancement donné par MPEC pour l'introduction de l'offre dans le réseau DV quand les tests sont ok;Préventif;Manuelle;1;3;1;4;3;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de lancement d'offre ou de projet non fonctionnel;Tests SI des offres/promos non réalisés;;;;;;; - Check list de lancement des offres ou promos à dérouler avant chaque lancement.  - Go de lancement donné par MPEC pour l'introduction de l'offre dans le réseau DV quand les tests sont ok;Préventif;Manuelle;1;3;1;4;3;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de lancement d'offre ou de projet non fonctionnel;Régression technique SI;;;;;;;les lancements d'offres ou promos ne se font qu'après confirmation que tous les tests sont bons le jour-j;Détectif;Manuelle;1;3;1;4;3;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de lancement d'offre ou de projet non fonctionnel;Indisponibilité du stock au lancement;;;;;;;Gestion du stock par PPCO qui vérifie la disponibilité du stock avant lancement des offres et promos;Préventif;Manuelle;1;3;1;4;3;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de manque d'efficacité des actions commerciales;Non maîtrise du nouveau produit par le commercial;;;;;;;" - Partage de l'offre avec les RA à J-13 qui doit dupliquer la l'information en interne
+
+Formation de la force de vente : 
+ - Programme d'accompagnement (formation continue et de maintien) pour les vendeurs agence
+
+Information des agents lors de lancement d'offres ou de promotions par liste de diffusion pour tout le monde, séances en présenciel exceptionnellement (au besoin)
+
+
+Séances de partage avec les RA avec présentation des check-list. Les RA seront chargés de partager avec les équipes
+
+Evaluations a chaud pour les formations initiales
+
+Identification en cours avec la DRH pour les évaluations à froid";Préventif;Manuelle;1;2;1;4;2;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de manque d'efficacité des actions commerciales;Retard de lancement des offres/promos;;;;;;; - échanges hebdo entre DV/MPEC et DMGP/DMC sur les offres en instancedéroulement de la check list d'introduction des offres au niveau des agences;Détectif;Manuelle;1;2;1;4;2;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de manque d'efficacité des actions commerciales;Rupture de stock des offres/promos en agence - circuit d'appro inadapté - fiabilité perfectible du SI;;;;;;;"PPCO pilote le stock des agences
+mise à disponibilité du stock par la supply chain ";Préventif;Manuelle;3;2;1;4;2;;;1
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Merchandising et expérience client;Risque d'une communication non maîtrisée ou inadaptée;Affichage d'image sans droits;;;;;;;"Coordination avec la comm qui valide les visuels à afficher
+
+Tous les visuels diffusés au niveau du réseau commercial sont validés par toutes les structures com des différentes BU";Préventif;Manuelle;1;2;1;4;2;;2;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Merchandising et expérience client;Risque de manque d'efficacité des actions commerciales;Stock de terminaux demo dédié au merchandising inexistant;;;;;;;Déploiement de Smart table et coordination avec DMGP pour la mise à disposition des terminaux tests;Correctif;Manuelle;3;1;1;1;1;;;1
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Merchandising et expérience client;Risque de manque d'efficacité des actions commerciales;Visibilité insuffisante des produits et services au niveau des points de vente;;;;;;;"Coordination avec le marketing et la com pour les changements de support
+
+Le responsable merchandising de MPEC fait des visites régulières en agence et relève les supports de comm périmés et traite avec toutes les BU Communication";Préventif;Manuelle;1;1;1;1;1;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Merchandising et expérience client;Risque de manque d'efficacité des actions commerciales;Incident technique sur les supports digitaux Ex RQM, totem et borne;;;;;;;"Existence d'une qualification des dysfonctionnements par MPEC sur Right Q
+
+Mise en place d'une chaine niveau 1 au sein de MPEC, niveau 2 DSI et niveau 3 partenaire";Préventif;Manuelle;1;1;1;1;1;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Professionnalisation et parcours vendeur;risque de formation inadaptée;contenus des formations ne répondant pas aux besoins des commerciaux;;;;;;;"Elaboration des modules de formation avec les chefs de produit DMGP et DDE et les experts métier (dans DV ou dans d'autres directions)
+
+Mise à jour des modules de formation par les formateurs tous les 6 mois";Préventif;Manuelle;1;2;1;4;2;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Professionnalisation et parcours vendeur;risque de formation inadaptée;Formateurs de DV non mis à niveau;;;;;;;"Recrutement en interne des formateurs DV avec un circuit de recrutement particulier, avec des profils complémentaires
+Formation des formateurs de assurés par le skill center de SNT/DRH selon les besoins";Préventif;Manuelle;1;2;1;4;2;;;3
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Professionnalisation et parcours vendeur;risque de formation inadaptée;moyens insuffisants pour dérouler les formations (disponibilité salles dédiées/ordinateurs/formateurs, etc);;;;;;;"Acquisition d'ordinateurs portables propres à DV pour les besoins des formations
+Attribution de salles au besoin au niveau du skill center ou usage de la salle de réunion de DV";Préventif;Manuelle;3;2;1;4;2;;;1
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Merchandising et expérience client;Risque de mauvaise prise en charge des demandes clients externes;recueil insuffisant des avis des clients sur la prise en charge commerciale - Renseignement insuffisant de RQM;;;;;;;"Implémentation du NPS (Net Promotor Score) vocal
+Note NPS= nbre de clients promoteurs - nbre de clients détracteurs
+Rappel de tous les clients détracteurs par les RA
+Affectation d'une RH à l'animation du RQM agence (Responsable Expérience Client) avec le transfert du reporting à PPCO";Préventif;Manuelle;2;2;1;2;3;;;2
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Merchandising et expérience client;Risque de mauvaise prise en charge des demandes clients externes;exploitation biaisée des remontées client;;;;;;;"reporting hebdo de l'ensemble des agences (DMA, DMT et taux de NPS)
+reporting mensuel lors de la BR
+";Préventif;Manuelle;2;2;1;2;3;;;2
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;Merchandising et expérience client;Risque de mauvais accueil;prise en charge déficiente des clients à l'accueil des agences : accueil par les vigiles;;;;;;;sensibilisation des vigiles par les RA durant les one minute meetigs du matin;Préventif;Manuelle;2;2;1;2;3;;;2
+DV_Piloter et Vendre les Produits et Services Grand public, Professionnel et Distributeur partenaire;MPEC_Piloter l’expérience client sur le canal agences et franchises ;;SNT DV \ MPEC;pilotage des offres et promos;Risque de manque d'efficacité des actions commerciales;absence d'interlocuteur dédié chez les franchises pour piloter les formations/informations sur les offres/promos;;;;;;;Création d'une liste de diffusion pour informer les franchises de toutes les offres et promos au besoin;Préventif;Manuelle;3;2;1;4;2;;;1

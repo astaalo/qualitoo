@@ -1,0 +1,71 @@
+Risque;Causes réelles ou potentielles;Libellé;Porteur;Mail du porteur;Échéance;Avancement;Commentaires;Etat;CONTRÔLE DESCRIPTION;TYPE DE CONTRÔLE;METHODE DE CONTRÔLE;Probabilité;Gravité;Finance;Commercial;RH;Juridik;Image
+Risque de fraude ;Défaut d'identification du client;"Rendre les champs suivants obligatoires: Nom, prénom, numéro de téléphone, mot de passe
+
+Voir au niveau des filiales l'ayant déjà commercialisé les statistiques sur les cas de fraude";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;en cours;;;;1;1;1;;;;
+Risque de fraude ;Piratage: accès au contenu payant sans paiement effectif;"Identifier les sources de piratage et les verrous nécessaires adaptés
+
+
+Voir au niveau des filiales l'ayant déjà commercialisé les statistiques sur les cas de fraude";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;en cours;flux d'échanges sécurisé avec le partenaire: par vpn ou https;préventif;Automatique;1;1;1;;;;
+Risque de fraude ;fraude sur le paiement;Voir au niveau des filiales l'ayant déjà commercialisé les statistiques sur les cas de fraude;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;"choix de paiement par paypal (redirection, ils ont déjà leus système de sécurité), om (paiement avec code OTP) et airtime (prélèvement sur le crédit)
+";préventif;Automatique;2;1;1;;;;
+Risque de non respect des engagements commerciaux;zones couvertes par la 3G et la 4G limitées;"Communiquer sur les zones àcouverture 3G et 4G
+
+Envoyer des sms de notification en cas de dégradation de la connectivité
+
+dérouler les tests pour s'assurer du bon fonctionnement des débits";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/05/2017;;;non échu;"L'application calibre le flux d'informations qu'il fournit en fonction du débit détecté
+
+affichage d'un message d'information quand le débit est trop bas et arrêt du système
+
+disponibilité de l'application en mode hors ligne ";préventif;Automatique;2;2;1;2;;;2
+Risque de manque de performance économique des offres/projets;Coût d'acquision des contenus chez les partenaires élevés;"Développer une politique de standardisaton des prix excepté les offres d'exclusivité
+
+Faire valider le modèle le taux de pourcentage de sharing par DFC
+Voir avec DMGP la possibilité de développer des offres d'accompagnement (partage du crédit des postpayés, connectivité)";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;en cours;"décision d'aller sur du revenu sharing
+ - 15-85 quand Orange apporte les contenus
+ - 70-30 quand Baatin (ou un autre partenaire) apporte les contenus 
+
+Tarifs des offres definis par Sonatel";préventif;manuelle;1;1;1;;;;
+Risque de manque de performance économique des offres/projets;Insuffisance des contenus;"Exploiter les contrats VOD, Dalal tones, et tous ceux sur lesquels il n'y a pas de limite de format
+Faire du benchmarking et copter des partnaires qui ont déjà des contrats avec d'autres filiales";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;en cours;"Partenaire technique choisi suite à un appel d'offres
+
+Recherche de partenaires sur le marché par le service acquisition de contenus après lancement et suite capitalisation sur l'expérience avec Baatin";préventif;manuelle;1;1;1;;;;
+Risque de lancement de projet non fonctionnel;Insuffisance de la capacité de sauvegarde des serveurs;Effectuer des prévisions de volumétrie en se basant sur les études sur les habitudes de conso et les potentiels contrats;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;;;;1;2;1;4;;1;
+Risque de non respect des dispositions juridiques et règlementaires;Chargement de contenus non validés par les partenaires (contenu, conformité, etc);"Définir le process de chargement des contenus et définir dans le contrat les clauses liées au chargement
+
+Prévoir dans le contrat avec les partenaires, les éventuelles sanctions en cas de fraude";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;Validation des contenus par Orange avant parution au public;préventif;manuelle;2;2;1;2;;1;2
+Risque de non respect des engagements commerciaux;Indisponibilité des contenus annoncés sur l'application (problème technique);S'assurer que tous les contenus annoncés seront disponibles avec un check technique;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;SLA foruni par le partenaire (Baatin) sur la disponibilité des contenus;préventif;manuelle;1;2;1;2;;;2
+Risque de non respect des engagements commerciaux;Indisponibilité de l'application;"Redonder les serveurs et définir un process HD
+Superviser les serveurs en temps réel
+Signer un contrat de maintenance";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;"SLA foruni par le partenaire (Baatin) sur la gestion de la plateforme
+
+Supervision de la plateforme par SMC ";préventif;manuelle;2;2;1;2;;;2
+Risque de manque de performance économique des offres/projets;Téléchargement sans débit du compte client;S'assurer lors des tests que les paiements seront bien enregistrés avec retour sur la transaction ok avant accès du client au contenu;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;;;;1;1;1;;;;
+Risque de dégradation de la qualité de service;Lenteur ou interruption de téléchargement;"Mesures de gestion à mettre en œuvre - alertes, etc. Vérifier que c'est bien intégré dans les SLA de Baatin
+Voir comment s'incorporer aux robots d'asset pour la supervision du réseau en temps réel
+
+Défiinr des seuils d'alerte avec la sup
+
+Identifier le mode de communication sur la qualité du réseau
+
+Voir la possibilité de jouer sur les encodages pour avoir des contenus de qualité différentes proposées selon le débit";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;17/04/2017;;;soldé;"L'application calibre le flux d'inforations qu'il fournit en fonction du débit détecté
+
+affichage d'un message d'information quand le débit est trop bas et arrêt du système";préventif;Automatique;2;2;1;2;;;2
+Risque de lancement tardif d'offres innovantes ou promotionnelles par rapport à la concurrence, aux attentes clients ou à nos promesses;disponibilité tardive de la plateforme;Choix à faire sur le mode d'acquisition: Achat ou développement;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;17/04/2017;;;soldé;"partenaire déjà choisi suite à un appel d'offres.
+hosting avec revenu sharing";préventif;manuelle;2;1;1;;;;
+Risque de dégradation de la qualité de service;bug ou lenteurs de la plateforme suite sursollicitations;"Verrouiller les prévisions 
+Définir des seuils d'alerte de la plateforme par le partenaire";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;"Prévisions de trafic effectués
+La plateforme du partenaire a la capacité d'absorber les prévisions de conso";préventif;Automatique;2;2;1;2;;;2
+Risque de dégradation de la qualité de service;sursollicitation du réseau mobile;Voir les prévisions réseau et en tenir compte dans l'EBM;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;"Prévisions de trafic effectués
+La plateforme du partenaire a la capacité d'absorber les prévisions de conso";préventif;Automatique;2;2;1;2;;;2
+Risque de dégradation de la qualité de service;Bug de l'interfaçage entre SNT et le partenaire;Verrouiller avec le partenaire technique la contractualisation des SLA exigés;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;SLA défini par le partenaire technique sur les liens d'interaface;préventif;manuelle;1;2;1;2;;;2
+Risque de non respect des engagements commerciaux;Débit du compte client sans possibilité de visualiser;"S'assurer lors des tests techniques que le taux d'erreur est le plus minime possible
+Etablir un canal de réclamatios disponible sur l'appli et de manière classique (1441, etc)";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;;;;2;2;1;2;;;2
+Risque de non traçabilité des opérations dans les SI;Suppression de la table de traçage;"Mettre en place un back office disponible aux partenaires qui retracera toutes les informations (achat, nombre de connexions, reporting, etc)
+Vérifier que la restauration en cas de perte des données est bien embarquée dans les SLA";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;;;;1;1;1;;;1;
+Risque de non respect des dispositions juridiques et règlementaires;SMS de confirmation non délivrés suite à un achat;S'assurer lors des tests que les sms de notif sont délivrés systématiquement ;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;;;;1;2;1;2;;1;2
+Risque de non respect des dispositions juridiques et règlementaires;contenu erroné du sms de confirmation;"S'assurer lors des tests que les contenus des sms sont ok.
+Voir statistiques avec senkiosk";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;;;;1;2;1;2;;1;2
+Risque de manque de performance économique des offres/projets;Statistques non fiables pour un reversement exact et à temps du partenaire;"
+S'assurer que les consommations bien tracées et conservées sur la plateforme
+Assurer une confrontation des données entre la plateforme du partanaire et l'IN de SNT
+Verrouiller avec DFC le mode et le délai des reversements";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;31/03/2017;;;non échu;;;;1;1;1;;;;

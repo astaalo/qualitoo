@@ -1,0 +1,19 @@
+Risque;Causes;Libellé;Porteur;Mail du porteur;Délai;Avancement;Commentaires;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;Commercial;RH;Juridik;Image;Criticité
+Risque de manque de performance économique des offres ;partage à nouveau du volume transféré;Mettre en œuvre le positionnement du volume offert sur le compteur bonus et donc l'impossibilité de partager à nouveau le volume de connexion;Ndongo Touré;ndongo.toure@orange-sonatel.com;30/06/2015;;;soldé;aucun bonus ne peut être transféré. Tests CTC concluants;préventif;Automatique;1;2;2;;;;;2
+Risque de fraude;partage à nouveau du volume transféré;Mettre en œuvre le positionnement du volume offert sur le compteur bonus et donc l'impossibilité de partager à nouveau le volume de connexion;Ndongo Touré;ndongo.toure@orange-sonatel.com;30/06/2016;;;soldé;aucun bonus ne peut être transféré. Tests CTC concluants;préventif;Automatique;1;1;1;;;;;1
+Risque de fraude;possibilités illimitées de faire du seddo;"Mettre en place les restrictions définies: 20F/ transaction (seddo), 
+Nbre max de seddo/jour: 2
+Nbre max de seddo/semaine: 3
+Nbre max de seddo/mois: 7
+Volume max de seddo/jour: 1Go
+Volume max de seddo/semaine: 1,5Go
+Volume max de seddo/mois: 3Go
+Minimum pour faire un seddo: 11Go
+Pass minimum pour un seddo: 5Mo
+Pass maximum pour un seddo: 500Mo
+Cloisonnement seddo: Diamono-Diamono et Kirène-Kirène";Ndongo Touré;ndongo.toure@orange-sonatel.com;30/06/2016;;;soldé;tests CTC concluants;préventif;Automatique;1;1;1;;;;;1
+Risque de fraude;Partage sans l'aval du propriétaire du numéro;Mettre en place le mot de passe sur Orange et moi et le code secret sur l'USSD;Ndongo Touré;ndongo.toure@orange-sonatel.com;15/05/2017;;abitrage: décision à prendre  sur l'exigence du code  pin;en cours;;;;1;1;1;;;;;1
+Risque de non respect des engagements commerciaux;Transfert de crédit à la place du volume;S'assurer lors des tests de l'index du compte pass au lieu du compte rechargement;Ndongo Touré;ndongo.toure@orange-sonatel.com;30/06/2016;;;soldé;tests CTC concluants;préventif;Automatique;2;2;;2;;;1;3
+Risque de non respect des engagements commerciaux;bug de la plateforme;Soumettre à la validation du Costrat le choix de l'IN à la place de Zebra pour le transfert Data.;Ndongo Touré;ndongo.toure@orange-sonatel.com;13/06/2016;;;soldé;Choix de ZTE depuis le T1;préventif;Manuelle;1;2;;2;;;1;2
+Risque de lancement tardif;retard de livraison du module;Piloter la livraison prévue au mois de juillet 2016;Ndongo Touré;ndongo.toure@orange-sonatel.com;30/06/2016;;;soldé;plteforme livrée en novembre 2016;préventif;Manuelle;1;2;2;;;;;2
+Risque de livraison de projet non fonctionnel;module non fonctionnel à la livraison;Réaliser les tests sur la fonctionnalité du module après implémentation;Ndongo Touré;ndongo.toure@orange-sonatel.com;30/06/2016;;;soldé;tests CTC concluants;préventif;Automatique;1;1;1;;;;;1

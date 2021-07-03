@@ -1,0 +1,24 @@
+Risques;Causes;Description du plan d'action;Porteur;Email du porteur;Date de début;Date de fin;Avancement;Statut;Contrôle description (solutions mises en place);Type de controle;Methode de contrôle;Probabilité;Gravité;Financier;RH;Images;Juridique;Commercial;Criticité ;Maturité
+Risque de non maîtrise des stocks;Vol de stock Ex sim ou terminaux;Equiper le shop de Dakar city d'un coffre fort pour éviter le vol de stock;Mouhammad Abdel Khadre NDOYE ;akndoye@orange-sonatel.com;;31/08/2018;;Non échu;"Mise en place d'un bouclage journalier effectué responsable shop à J+1
+Equipement des shops d'un coffre fort à l'exception de Dakar City";préventif;Manuelle;1;2;1;;2;;2;;3
+Risque de fraude;Vol d'espèces (Caisse ou Coffre fort);;;;;;;;"Le partenaire 2TS est responsable su reversemennt des recettes dans les caisses de Sonatel à J+1 à l'exception des ventes du week end reversées le lundi suivant.
+
+Le contrat de partenariat stipule que 2TS doit rembourser en cas d'écart ou de manquement sur le stock et les encaissements";préventif;Manuelle;1;1;;;1;1;;;3
+Risque de non maîtrise des stocks;Ecarts sur stock;;;;;;;;"Mise en place d'un bouclage journalier effectué par le responsable shop à J+1
+Le contrat de partenariat stipule que 2TS doit rembourser en cas d'écart ou de manquement sur le stock et les encaissements";préventif;Manuelle;1;2;1;;2;;2;;3
+Risque de gestion non optimisée de la trésorerie;Ecarts (positif et négatif) sur encaissements non justifiés;;;;;;;;"Mise en place d'un bouclage journalier effectué par le responsable shop à J+1
+Le contrat de partenariat stipule que 2TS doit rembourser en cas d'écart ou de manquement sur le stock et les encaissements";préventif;Manuelle;1;1;1;;;;;;3
+Risque de non maîtrise des stocks;Manque de traçabilité des mouvements de stocks Ex vente hors SI;;;;;;;;Mise en place d'inventaire mensuel à la travers la réconciliation le stock physique et le stock Nessico et Gaia qui va permettre de detecter des ventes de stock hors SI;préventif;Manuelle;1;2;1;;2;;2;;3
+Risque de non maîtrise des stocks;Retard de chargement d’IMEI des stocks de terminaux;;;;;;;;"Création du compte client dans Nessico et encaissement des fonds en avoir sur le compte du client
+
+Remontée du retard de chargement au magasin pour permettre la régularisation";préventif;Manuelle;2;2;1;;2;;2;;2
+Risque de non respect des dispositions juridiques et réglementaires;Fixation des horaires de travail Ex lien de subordination;;;;;;;;Le responsable de shop est en relation avec 2TS via le superviseur des shops de 2TS qui communique les horaires au personnel de 2TS.;préventif;Manuelle;1;2;1;;3;3;;;3
+Risque de fraude;Oubli de désactivation ou de mise à jour des profils et logins avec un turnover elevé ;;;;;;;;Les demandes d'accès sont enregitrées dans Agasi avec la définition des profils nécessaires au déroulement de leurs activités;préventif;Manuelle;1;1;;;1;1;;;3
+Risque de divulgation d'informations confidentielles;Accès des informations sur le détail de communication Ex Gaia, Simplissimo, Nessico etc;;;;;;;;Les vendeurs des shops n'ont pas accès à Zsmart et à la fonctionnalité qui donne le détail des communications clients dans Gaia ;préventif;Manuelle;1;2;;;2;1;2;;3
+Risque de manque de fiabilité des informations sur les clients;Mauvaise identification ou erreurs de saisie des informations clients;;;;;;;;Existence d'un contrôle de DSC/DIS sur les anomalies de saisie des informations clients avec un scoring qui embarque les shops;préventif;Manuelle;2;1;1;;1;1;;;2
+Risque de fraude;Partage de profils entre vendeurs de shops;Procéder à l'attribution des profils personnalisés des vendeurs des shops;Mouhammad Abdel Khadre NDOYE ;akndoye@orange-sonatel.com;;31/08/2018;;Non échu;;;;4;1;;;1;1;;;1
+Risque de non maîtrise des stocks;Rupture de stocks;;;;;;;;Définition d'un seuil de 2 semaines de consommations pour les shops avec le projet supply chain ;préventif;Manuelle;2;2;1;;2;;2;;2
+Risque de non maîtrise des stocks;Indisponibilité cash in ou cah out;;;;;;;;"Accès web journalier au channel user report qui permet de voir le montant d'UV disponible sur chaque sim
+
+Pour le cash out, il y'a un plafond au minimum de 1 000 000 f cfa sauf pour Dakar city avec le problème de coffre fort";préventif;Manuelle;2;2;1;;2;;2;;2
+Risque de manque de performance économique des offres/projets;Shops de sarrault et Dakar City non rentables;Etudier la reduction des effectifs de Sarrault et Dakar city pour rentabiliser le projet et mettre à jour le BP;Mouhammad Abdel Khadre NDOYE ;akndoye@orange-sonatel.com;;31/08/2018;;Non échu;;;;2;1;1;;;;;;2

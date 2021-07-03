@@ -1,0 +1,65 @@
+Risque;Causes;Libellé;Porteur;Email porteur;Date début;Échéances;Commentaires;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial
+Risque de livraison de services non fonctionnels;perte des informations client ou corruption des informations client (identification, souscription, etc) lors de la migration;"définir des KPI qui vont être définis avec l'équipe projet et le fournisseur et qui vont être suivis, portant entre autres sur:
+- nombre d'abonnés
+- type de service
+- check après chaque migration";Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;31/10/2017;;Non échu;"existence d'un back up en local sur le SDM puis transfert sur un serveur externe
+restauration du back up en cas d'échec de migration: chargement du back up puis roll back";préventif ;Automatique;2;1;1;;;;
+Risque de livraison de services non fonctionnels;Echec de la migration ou migration inachevée;"migrations partielles; check après migration";Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;30/11/2017;;Non échu;;;;2;1;;;;;
+Risque de divulgations d'informations confidentielles;Accès non maîtrisé aux informations clients;définition de loggins et mots de passe et de droits pour chaque utilisateur;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Non échu;;;;1;3;3;;3;2;2
+Risque de lancement tardif ;Absence d'experts sur des métiers donnés;;;;;;;;"participation au projet:
+ - GNOC (responsable mise en service)
+ - contributeurs des différents départements";préventif;Manuelle;1;2;1;;2;2;2
+Risque de lancement tardif ;tests non concluants lors des acceptances;mise en place d'un cahier de tests;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Non échu;;;;2;2;;;;;
+Risque de divulgations d'informations confidentielles;copie des informations client par un tiers;définition de loggins et mots de passe et de droits pour chaque utilisateur;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Non échu;;;;1;2;;;;;
+Risque de livraison de services non fonctionnels;Qualité insuffisante de la documentation sur la solution livrée;formation + transfert de compétence à effectuer par le fournisseur;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Non échu;;;;1;1;;;;;
+Risque de choix technologiques inopportuns;système fournisseur inadapté aux besoins;Choix final du fournsseur à effectuer;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/07/2017;;Soldé;"solutions présentées par les fournisseurs correspondant exactement aux besoins du projet
+Choix porté sur ZTE
+";préventif ;Manuelle;1;2;3;;2;;2
+Risque de livraison de services non fonctionnels;incohérence des données après migration;;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;;;;"restauration du back up: chargement du back up puis roll back
+système de pénalités imposé au fournisseur";préventif;Automatique;2;1;;;;;
+Risque de livraison de services non fonctionnels;"Non-conformité ou
+écart entre ce qui est implementé actuellement dans le SI et ce qui est livré";;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;;;;"restauration du back up: chargement du back up puis roll back
+système de pénalités imposé au fournisseur";préventif;Automatique;1;1;;;;;
+Risque de fraude;Dysfonctionnement des interfaces;outil de supervision dédié - OSS outil d'expoitation de maintenance et de supervision à fournir par le fournisseur;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;;;Soldé;"les équipements des fournisseurs seront connectés à leurs switchs
+ce sont leurs switchs qui seront connectés à nos retours
+déroulement du module sécurité
+Outil de supervision fourni par ZTE - mentionné dans le contrat";préventif ;Automatique;1;2;3;2;2;2;2
+Risque d'incident technique;insuffisance énergie;attente des rapports élargis;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Soldé;"survey réalisé 
+Rapports sur le survey énergie reçu: Rajout de deux armoires (A et B) à Thiès et une armoire à Technopole";préventif ;Manuelle;1;2;3;;2;;2
+Risque d'incident technique;incompatibilité des équipements du fournisseur avec les équipements réseau existant;;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;;;;" - les équipements des fournisseurs seront connectés à leurs switchs
+ - ce sont les switchs qui seront connectés à nos retours
+ - déroulement du module sécurité";;;1;2;;;;;
+Risque d'incident technique;Dysfonctionnement des interfaces;;;;;;;;;;;1;2;;;;;
+Risque d'incident technique;insuffisance énergie - Réception tardive des armoires énergie à Thiès;Installation des armoires énergie au niveau de Thiès et Technopole;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/07/2017;;Non échu;"survey réalisé 
+Rapports sur le survey énergie reçu: Rajout de deux armoires (A et B) à Thiès et une armoire à Technopole";préventif ;Manuelle;3;2;3;;2;;2
+Risque de lancement tardif ;Réception tardive des armoires énergie à Thiès;;;;;;;;Escalade au niveau de la hiérarchie pour accélérer les délais;préventif ;Manuelle;3;2;;;;;
+Risque d'outil métier inadapté;Absence de formation/transfert de compétence;formation + transfert de compétence à effectuer par le fournisseur;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Non échu;;;;1;3;3;;2;;2
+Risque de non fiabilité de la facturation;Indisponibilité du SI;tests sur les infos clients et leurs spécifications après chaque migration en se basant sur les kpi ;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/11/2017;Décision sur le mode de migration non encore prise - Attente livrable technique de ZTE;Non échu;"équipe de DINT qui fait du provisionning sur le SDM
+interconnexion des SI commerciaux au KPSA
+provisionning manuel par ""activation activ""
+";préventif ;Manuelle;1;2;1;;2;;2
+Risque de fraude;non suppresion des comptes tests  après lancement ;suppression des comptes de test;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/11/2017;;Non échu;;;;1;2;;;;;
+Risque de fraude;accès non autorisé du fournisseur à certaines fonctionnalités;définition de loggins et mots de passe et de droits pour chaque utilisateur;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Non échu;audit sécurité pendant le déroulement du projet ;préventif ;Manuelle;1;2;;;;;
+Risque de livraison de services non fonctionnels;non suivi du renouvellement des licences ;;;;;;;;alerte au niveau du système en cas d'atteinte de la limite de la capacité client couverte par la licence et de besoin d'extension;préventif ;Automatique;1;1;;;;;
+Risque de livraison de services non fonctionnels;absence de redondance   des  serveurs;;;;;;;;"3 sites de redeondance géographique (2+2+2)
+et une redondance local pour les deux types d'équipements:
+ - la signalisation: n+k où n=k
+ - la base clients: 1+1
+";préventif ;Automatique;1;1;;;;;
+Risque de lancement tardif ;mise à disposition tardive des équipements;piloter la livraison des équipements par le fournisseur annoncée sous 6 semaines;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/07/2017;;Soldé;"réservation du nombre de ports au niveau de la DI (IP)
+6 semaines de livraison annoncés par le fournisseur
+
+Délai ten par le fournisseur";préventif ;Manuelle;2;2;;;;;
+Risque d'indisponibilité du service;Surcharge des capacités des CPU ;;;;;;;;dimensionnement effectué au niveau de la planification;préventif ;Manuelle;1;2;3;;2;;2
+Risque d'indisponibilité du service;Interruption du service pendant le projet;rédaction d'un plan de migration;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;Attente livrable technique de ZTE;Non échu;restauration du back up: chargement du back up puis roll back;préventif ;Automatique;3;2;;;;;
+Risque de non respect des dispositions juridiques et réglementaires;Non information de l'ARTP  lors de la  periode de migration ;plan de communication et SAV à définir avec les chantiers parcours client et marketing;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Non échu;;;;1;2;3;;2;2;
+Risque de non respect des dispositions juridiques et réglementaires;Non respect des clauses du contrat par le  fournisseur de la solution ;système de pénalités imposé au fournisseur;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;;;Soldé;système de pénalités imposé au fournisseur;préventif ;Manuelle;1;2;;;;;
+Risque d'incident technique;Non respect du délai de rétablissement  du service en  cas de non succès  de l'opération de migration ;;;;;;;;;;;2;2;;;;;
+Risque de fraude;Absence de mots de passe a sécuritée forte (chiffres, lettres et caractères spéciaux) et personnalisés d'accès;audit par la sécurité sur la plateforme;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Non échu;spécification des mots de passe demandés dans le cahier de charge;préventif ;Automatique;1;2;;;;;
+Risque de fraude;Absence de définition des durées d'expiration des mots de passe;audit par la sécurité;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;15/10/2017;;Non échu;spécification des mots de passe demandés dans le cahier de charge;préventif ;Automatique;1;2;;;;;
+Risque de fraude;Absence de modification du mot de passe par défaut.;;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;;;;;;;1;2;;;;;
+Risque de fraude;Accès à la PFS à partir de n'importe quel réseau (LAN/WAN).;autorisation sur les adresses IP - à vérifier;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;30/06/2017;Attente réception architecture et attribution des subnets;En cours;;;;1;2;;;;;
+Risque de fraude;Non sécurisation des différents ports utilisés par la PFS;;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;;;;sécurité sur les protocoles du réseau et sécurité SI;préventif ;Automatique;1;2;;;;;
+Risque de fraude;Absence de procédure d'authentification des différents accès à la PFS ;;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;;;;;;;1;2;;;;;
+Risque de fraude;Ouverture de ports inutilisés sur tous les serveurs de la plateforme ;sélection des ports en fonction de l'architecture de l'intégration ;Anna Abdoulaye Diallo;annaabdoulaye.diallo@orange-sonatel.com;;30/06/2017;Attente réception architecture et attribution des subnets;En cours;;;;1;2;;;;;
+Risque de fraude;Partage de comptes super admin sur la plateforme ;;;;;;;;;;;2;2;;;;;

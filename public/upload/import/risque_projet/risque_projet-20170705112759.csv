@@ -1,0 +1,32 @@
+Risque;Causes;Libellé Plan d'action;Porteur;Email porteur;Date de début;Echaéance;Commentaires;Etat;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial;Criticité;Maturité
+Risque de fraude;Fourniture de pièces justificatives falsifiées par le client à l'entrée en relation;;;;;;;;"Le souscripteur fournit: 
+l'original de la CIN
+Une facture d'eau, d'électricité ou de téléphone à son nom
+ou un  relevé de compte datant de moins de 3 mois";préventif;manuelle;2;1;1;;;;;2;
+Risque de fraude;Non désactivation des puces de test;;;;;;;;Collecte et désactivation des puces à la fin du projet;préventif;manuelle;1;1;1;;;;;1;
+Risque de fraude;communication au-delà du caping (voix, data et illimité);Réaliser des tests dans le cadre du projet  et dans le cadre du parcours client pour éviter des communications au-delà du caping (voix, data et illimité);Serigne Mor Dieng;serignemor.dieng@orange-sonatel.com;;30/06/2017;;Soldé;Tests concluants pour les bloqués, pour les ouverts la demande de monitoring de la base clients ouverts  disposant de l'illimité est faite au service fraude;préventif;automatique;1;1;1;;;;;1;
+Risque de fraude;communication au-delà du caping (voix, data et illimité);Réaliser des tests dans le cadre du projet  et dans le cadre du parcours client pour éviter des communications au-delà du caping (voix, data et illimité);Serigne Mor Dieng;serignemor.dieng@orange-sonatel.com;;30/06/2017;;Soldé;Tests concluants pour les bloqués, pour les ouverts la demande de monitoring de la base clients ouverts  disposant de l'illimité est faite au service fraude;préventif;automatique;1;1;1;;;;;1;
+Risque de lancement d'offres ou de projets non fonctionnels;Demande de downgrade du client avant la fin de la durée de souscription alors qu'il a bénéficié d'un terminal HG avec la 1e offre souscrite;;;;;;;;Existence d'une clause de dissuasion dans le contrat avec le paiement d'une pénalité égale à la redevance de la durée d'abonnement restante qui couvre le cout du terminal;préventif;manuelle;2;1;1;;;;;2;
+Risque de lancement d'offres ou de projets non fonctionnels;Demande d'upgrade du client avant la fin de la durée de souscription pour bénéficier potentiellement d'un terminal Haut Gamme;;;;;;;;Possibilité d'upgrade offerte au client mais sans changement de terminal qui ne peut intervenir qu'à la fin du contrat de souscription;préventif;manuelle;2;1;1;;;;;2;
+Risque de non recouvrement des créances;Utilisation du forfait + terminal sans paiement de la redevance à la fin du mois;;;;;;;;"Mise en place d'un chronogramme de recouvrement allant de la restriction jusqu'au contentieux si nécessaire
+
+Mise en place d'une avance sur consommation pour prévenir tout risque d'impayé. 
+
+Accès du client au terminal sous conditions: connu dans la base, bon payeur. si c'est un NA, impossibilité de souscrire d'entrée au forfait+terminal";préventif;automatique;2;2;2;;;;;4;
+Risque de manque de performance économique  des nouvelles offres;Erreur de positionnement du forfait au niveau technique;Mettre en place un script au niveau de l’IN qui positionnera automatiquement les forfaits des abonnés concernés (en faisant un scan des profils pelican).;Thilo Tall;serignemor.dieng@orange-sonatel.com;;30/06/2017;"tests concluants. Attente résultats des tests de régression pour le confirmer.
+Sera mis en place lors de la production";Soldé;Mise en place d'un script entre nessico, kpsa et l'IN qui positionne automatiquement les forfaits des abonnés - tests concluants;préventif;automatique;2;2;2;;;;;4;
+Risque de redresement fiscal;Application de taxes au terminal dans le bundle forfait-terminal;Receuillir la décision de la fiscalité et de la trésorerie pour statuer sur la composition du bundle ;Chef de projet;serignemor.dieng@orange-sonatel.com;;15/04/2016;;Soldé;Intégration du terminal dans le bundle. Il est présenté comme un service et donc taxé ;préventif;manuelle;1;3;2;2;3;3;3;3;
+risque de non respect des engagements commerciaux;Retard de positionnement du forfait pour un client donnée;;;;;;;;La plateforme IN positionne automatiquement le forfait le 1er de chaque mois pour tout client ayant souscrit à l'offre;préventif;automatique;1;2;;;1;;2;2;
+Risque de non respect des engagements commerciaux;Non activation du numéro favori;Réaliser des tests dans le cadre du chantier technique et dans le cadre du parcours client pour vérifier que le service activation du numéro favori est fonctionnel.;Serigne Mor Dieng;serignemor.dieng@orange-sonatel.com;;15/06/2017;;Soldé;Tests déroulés sur le paramétrage du numéro favori concluants ;préventif;automatique;2;2;;;1;;2;3;
+Risque de manque de performance économique  des nouvelles offres;Non limitation du nombre de numéros favoris ou du nombre de renouvellement du numéro favori;;;;;;;;"Double vérification de la correcte confgurationi des offres et promos dans l'IN : Collaborateur + Chef de service 
+
+Réalisation de tests techniques et marketing pour s'assurer de la conformité à l'EBM du marketing
+
+Tracabilité des logs pour remonter aux transactions";préventif;manuelle;2;2;2;;;;;4;
+Risque de rupture des stocks;Indisponibilité des stocks de terminal;;;;;;;;"Utilisation du stock disponible en agence
+Réception hebdo de la fiche des stocks de la part de DV/DSVM et contrôle du seuil puis alerte DMGP
+Ciblage des terminaux pour les animations et contrôle de leur disponibilité";préventif;manuelle;1;2;1;;2;;2;2;
+Risque de non fiabilité de la facturation;Bug du SI (POS) à la prise de commande;;;;;;;;"Possibilité d'encaissement manuel des frais d'accès en cas de bug du SI (POS) à la prise de commande
+
+Mise à jour du SI POS en cas de disponibilité";préventif;manuelle;1;2;1;;;;3;2;
+Risque de manque de performance économique  des nouvelles offres;cumul d'abondance Ex clients souscrivant à une offre d'abondance et qui en demande une autre offre d'abondance;;;;;;;;existence d'une matrice de compatibilité entre les différentes options d'abondance auxquelles le client peut souscrire;préventif;manuelle;1;2;2;;;;;2;

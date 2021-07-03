@@ -1,0 +1,27 @@
+Risque;Causes;Libellé;Porteur;Email porteur;Date de début;Échéance;Commentaires;Statut;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Probabilité;Gravité;Finance;RH;Image;Juridique;Commercial 
+Risque de fraude;lancement d'une requête de facturation supérieure au montant communiqué au client par le partenaire;"Définir des plafonds tarifaires pour chaque transaction
+Inclure dans:
+ -  le contrat une clause protégeant orange en cas de requête de surfacturation par le partenaire
+ - les sms de facturation la signature du partenaire. A aucun moment le client ne devra sentir que c'est Orange qui facture - soldé
+Réaliser un benchmarking auprès du technocentre pour identifier les solutions en cours pour sécuriser le point sur la surfacturation";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;15/02/2016;;en cours;"modèle de sms défini: nom du partenaire+nom du service+montant du service envoyé par Orange
+
+
+";préventif;manuelle;2;2;1;;3;2;2
+Risque de non respect des engagements commerciaux;Absence de livraison de messages de retour sur la requête de facturation par Orange;"Effectuer des tests de facturation à 0F par les robots sur des échantillons et test de la supervision des robots d'asset par SMC
+Définir des engagements sur la disponibilité de la solution
+";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;15/02/2016;;Non echu;Supervision 24H/24, 7j/7 de la plateforme SDP par le SMC et le GOS au niveau du technocentre;préventif;automatique;1;2;1;;2;;2
+Risque de retard de paiement des fournisseurs et autres partenaires;Erreurs de traitement sur les reversements;Finaliser les conditions de paiement avec DFC dans le contrat;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;15/02/2016;;en cours;"Reversement sur la base du même process utilisé pour SMS+
+Conditions de paiement stipulées dans le contrat groupe";préventif;manuelle;1;2;2;;2;;1
+Risque de dégradation de la qualité de service;Sursollicitation du réseau par un dysfonctionnement de l'application du partenaire;Superviser le fonctionnement du service en H24 pour détecter les pics inhabituels de fonctionnement ;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;15/02/2016;;Non echu;Accès du chef de projet à la base de reporting;préventif;manuelle;1;2;2;;;;
+Risque de lancement d'offres non fonctionnel;Erreurs d'intégration par le partenaire;Distribuer aux agrégateurs toute la documentation nécessaire pour réaliser l'intégration des partenaires qui souscriront à la solution;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;15/02/2016;;Non echu;;;;1;1;1;;1;1;2
+Risque de manque de performance économique;Tarifs des agrégateurs trop chers - commissionnemnt supérieur au pourcentage suggéré par sonatel;Identifier avec DRJ el moyen de contrôler le respect du commissionnemnt par les agrégateurs ( dans le cas où nous sommes tenus de le faire);Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;16/02/2016;;Non echu;Clause dans le contrat exigeant aux agrégateurs de ne pas commissionner plus de 10%;préventif;manuelle;1;1;;;;;
+Risque de lancement d'offres non fonctionnel;Documentation inappropriée;Dérouler des tests FUT avant lancement avec quelques partenaires avec renseignement d'un questionnaire;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;30/10/2016;;Non echu;;;;1;1;;;;;
+Risque de non respect des dispositions juridiques et règlementaires;Services non délivrés aux clients finaux par le partenaire après paiement par le client;Verrouiller dans le contrat la non implication de Orange dans le processus de distribution ;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;30/10/2016;;Non echu;;;;1;1;1;;;1;
+Risque de manque de performance économique;cannibalisation de OM;"Tenir compte de la cannibalisation durant l'élaboration du BP et évaluer la perte probable sur OM, etc. 
+Coordonner avec les chef des autres produits pour limiter la cible et le périmètre de l'offre de chaque structure
+Définir avec l’équipe OM le pourcentage du CA OM )menacé et identifier communément les PA idoines
+";Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;31/12/2016;;Non echu;"Sharing revenu avec API Billing à hauteur de 30% sur les revenus contre 3% pour OM.
+Avec API Billing on ne peut acheter que les services et contenus digitaux or avec OM on peut tout acheter.";Préventif;manuelle;2;1;1;;;;
+Risque de non respect des engagements commerciaux;Décallage entre le message envoyé par l'agrégateur et celui envoyé aux clients par Orange;;;;;;;;Connexion entre le SDP, l'IN et le SMS-C: : formatage du messae envoyé aux clients sur la base des données d'entrée fournies par le partenaire après validation du type de message;préventif;automatique;1;2;;;;;
+Risque de non respect des engagements commerciaux;Indisponibilité du SMS-C;Vérifier avec le GOS la possibilité de renvoyer tous les sms non délivrés quand il ya eu facturation;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;31/01/2017;;Non echu;Supervision lien SMSC-SDP en H24;préventif;automatique;1;2;;;;;
+Risque de lancement tardif;Retard de mise en service de Nessico;Evaluer l'opportunité et la possibilité de lancer les prepaid en phase 1 selon le planning de Nessico;Jean Charles Mendy;jeancharles.mendy@orange-sonatel.com;;31/01/2017;;Non echu;;;;2;3;3;;;;

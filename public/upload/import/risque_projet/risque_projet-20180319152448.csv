@@ -1,0 +1,31 @@
+Risque;Causes;descrption du plan d'action;Nom Porteur;Email porteur;Date de début;Date de fin;Avancement du plan d'action;Statut du plan d'action;CONTRÔLE DESCRIPTION;Type de contrôle;Méthode de contrôle;Proba;Synthèse = gravité;Finance;RH;Image;Juridique;Commercial;Criticité;Maturité
+Risque de non respect des engagements commerciaux;Retard de réception de la clé d'activation (lien entre le compte bancaire et le nom OM) pour l'inscription au service;;;;;;;;"Définition d'une durée de 4H pour générer la clé d'activation
+Sensibilisation des partenaires pour l'activation de la clé en agence";Préventif;Manuelle;1;2;;;1;;2;1;3
+Risque de lancement d'offres ou de projets non fonctionnels;Difficulté d'interconnexion entre Tango et le SI de la banque;Réaliser des tests pour s'assurer de la fonctionnalité de l'interface Tango et le SI de la Banque;El Hadji Ndiaga MBAYE;ElHadjiNdiaga.MBAYE@orange-sonatel.com;31-déc.-17;31-déc.-17;;Soldé;Existence d'une supervision 7jours/7 et 24H/24 de l'interface Tango et SI de la banque;Préventif;Manuelle;1;1;1;;1;;;1;3
+Risque de lancement d'offres ou de projets non fonctionnels;Limitation non effective des seuils de transactions définies;;;;;;;;Paramétrage des seuils plafonds OM de 2 000 000 dans l'add on pour toute opération bank to wallet et wallet to bank;Préventif;Manuelle;1;1;1;;1;;;1;3
+Risque de non fiabilité de l'information financière;Insuffisance de synchronisation des opérations wallet & banque;;;;;;;;"Réalisation de tests après paramétrage pour s'assurer de la synchronisation des opérations wallet & banque.
+
+Mise en place d'une chaine de support pour la remontée des réclamations partenaires";Préventif;Manuelle;1;1;1;;1;;;1;3
+Risque de non fiabilité de l'information financière;Difficultés de traitement (réconciliation) des fichiers de compensation entre Tango et SI UBA;;;;;;;;"Mise à disposition journalière d'un fichier de réconciliation à la banque
+
+Echange de factures mensuelles avec la banque pour servir de base de calcul des commissions sur les transactions";Préventif;Manuelle;2;1;1;;1;;;2;2
+Risque de non fiabilité de l'information financière;Non différenciation des transactions Omba UBA des transactions standard Omba clients;Réaliser des tests pour s'assurer du correct taggage des transactions Omba UBA pour les différencier des transactions standard Omba clients;El Hadji Ndiaga MBAYE;ElHadjiNdiaga.MBAYE@orange-sonatel.com;31-déc.-17;28-févr.-18;;Soldé;;;;2;1;1;;1;;;2;2
+Risque de non respect des engagements commerciaux;Erreur client OM sur le numéro de compte bancaire à mouvementer;;;;;;;;Mise en place de 2 niveaux de vérification de la saisie correcte du numéro de compte bancaire du partenaire pour le linkage des 2 comptes : SMS de prévalidation coté Sonatel et la 2e vérification de la banque;Préventif;Manuelle;1;2;;;1;;2;1;3
+Risque de non respect des engagements commerciaux;Absence de définition des modalités de recyclage des UV collectées par la banque;;;;;;;;Mise en place d'un compte tampon de UBA dans Tango pour monitorer les réceptions et décrémentations d'UV;Préventif;Manuelle;1;2;;;1;;2;1;3
+Risque de fraude;Liaison de son compte bancaire ou le compte d'un tiers au compte OM d'un client par un Agent de la Banque;;;;;;;;" - La liaison entre les 2 comptes est validée par le client via un code OTP (one time password) délivré par le systéme et que le client reçoit par SMS). 
+
+Le client communique le code à l'Agent de Banque qui initie la liaison et un autre agent valide la liaison avec un profil différent.
+
+ - Client reçoit une notification pour confirmer le link entre son compte bancaire et son compte OM
+
+- Les transactions se font à partir du téléphone du client qui utilise son code secret ";Préventif;Manuelle;1;2;1;;2;;2;2;3
+Risque de mauvais traitement des réclamations;Difficulté des clients à faire les transferts wallet to bank ou bank to wallet;;;;;;;;"Réalisation de tests après paramétrage pour s'assurer de la synchronisation des opérations wallet & banque.
+
+Mise en place d'une chaine de support pour la remontée des réclamations partenaires";Préventif;Manuelle;1;2;;;2;1;2;;3
+Risque de non fiabilité de la facturation;Erreur sur les commissions à reverser à UBA;;;;;;;;"Echange de factures mensuelles avec la banque pour servir de base de calcul des commissions sur les transactions
+
+Bank to wallet : partage commission 50% / 50% 
+Wallet to Bank : partage commission 41,75% pour UBA / 58, 25%  pour Sonatel";Préventif;Manuelle;1;1;1;;1;;;;3
+Risque de ruture de stock;Absence d'UV dans le compte de UBA ds Tango;;;;;;;;Mise en place de seuils d'alerte pour éviter toute rupture d'UV dans le compte tampon UBA dans Tango;Préventif;Manuelle;1;2;1;;2;;2;;3
+Risque de non tracabilité des opérations dans les SI;Absence de définition des conditions d'archivage des transactions et des logs de connexion;;;;;;;;"Les données des transactions OM sont dispos sur Global reporting pendant 3 mois.
+Au déla des 3 mois, les données sont stockées dans des serveurs TEX logés à la DRPS ";Préventif;Manuelle;1;1;;;1;;;;3

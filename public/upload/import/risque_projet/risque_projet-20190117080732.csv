@@ -1,0 +1,61 @@
+Risque (points d'attention);Causes (facteurs à l'origine de ces points d'attention);Libellé Plan d'action (ce qui est prévu pour éviter ou maitriser le risque);Porteur;Email porteur;Date début;Echéance;Commentaires;Statut;CONTRÔLE DESCRIPTION (ce qui est mis en place pour éviter ou maitriser la survenance du risque);Type de contrôle;Méthode de contrôle;Probabilité;Synthèse = gravité;Finance;RH;Image;Juridik;Commercial;Criticité
+Risque de fraude;Exploitation de l'ID (formule centrex) en dehors du réseau de l'entreprise sur les devices mobiles ou possibilité d'émettre des appels qui ne soient pas facturés;Verrouiller dans l'offre centrex la limitation des usages au réseau de l'entreprise, simple ou étendu;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;"se rapprocher de la planification pour voir si des cas de fraude ont été rencontrés et si oui, bencher sur les dispositifs de cotrôle mis en place
+
+Option centrex mise en stand by parce que les fonctionnalités collaboration ne sont pas comprises dans les versions actuelles. DRPS est en étude de solutions
+Seul le trunking est testé";gelé;;;;1;1;1;;1;;;
+Risque de lancement de projet non fonctionnel;canaux IP non fonctionnels;Définir le mode de supervision sur les lignes du client, tests à l'appui, afin de prévenir la dégradation de la qualité de la ligne et s'assurer que l'ensemble des canaux auxquels le client a souscrits sont bien fonctionnels ;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;30-nov.-18;"acquisition d'outil de supervision prévu dans les 3/4 années à venir
+
+se rapprocher de la planification pour voir ce qui est prévu pour l'outil de supervision
+
+Possibilité de combiner Otari et le N2510 pour la supervision de la qualité de la ligne - proposition en cours d'étude avec le groupe";non échu;;;;1;2;1;;3;;3;
+Risque de non respect des engagements commerciaux;dysfonctionnement/rejet du forfait: facturation des appels dans le forfait;Verrouiller, test T2 à l'appui, la facturation spécifique dans le forfait et la facturation au tarif en cours hors du forfait;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;18-janv.-19;"tests d'acceptance sur la facturation en cours
+transmission des cdr - attente retour DSC/DIS";en cours;;;;3;2;1;;3;;3;
+Risque de non respect des engagements commerciaux;Indisponibilité du provisionning automatique;Verrouiller la chaîne de provisionning auto et le traitement des rejets;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-janv.-19;provisionning auto nok - attente retour DIS sur la mise en place du provisionning auto;en cours;;;;3;2;1;;3;;3;
+Risque de non respect des engagements commerciaux;espace administrateur inaccessible ou non fonctionnel pour les clients centrex;Lister toutes les fonctionnalités liées au Centrex nécessaire dans l'espace administrateur et verrouiller avec le contributeur IT que c'est bien embarqué dans l'outil selfcare;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;"Dernier release du selfcare en cours de développement
+Attente de la confirmation de la technique sur notre capacité à réaliser l'offre centrex";gelé;;;;1;2;1;;3;;3;
+Risque de non respect des engagements commerciaux;espace administrateur inaccessible ou non fonctionnel pour les clients centrex;Verrouiller le bon fonctionnement des outils de l'espace administrateur dans le selfcare ;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;"Dernier release du selfcare en cours de développement
+Attente de la confirmation de la technique sur notre capacité à réaliser l'offre centrex";gelé;;;;1;2;1;;3;;3;
+Risque de non respect des engagements commerciaux;dégradation de la qualité de la voix sur le lien;"Calculer le nombre de canaux max par ligne en fonction des débits
+S'assurer du taggage correct des paquets voix au niveau des MSAN pour une priorisation dans le backbone
+Verrouiller, tests à l'appui, la garantie de la qualité de la voix sur cette offre";Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;"Possibilité de combiner Otari et le N2510 pour la supervision de la qualité de la ligne - proposition en cours d'étude avec le groupe
+
+qualité de la voix lors des tests sur ftth et adsl satisfaisants";en cours;;;;1;2;1;;3;;3;
+Risque d'indisponibilité du service;coupure d'électricité (absence de batterie sur les livebox);voir la possibilité de faire des renvois d'appels sur des mobiles au choix du client, tests T2 à l'appui;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;28-févr.-19;recherche de solutions en cours avec le groupe, d'ici le T3;en cours;;;;2;2;1;;3;;3;
+Risque d'indisponibilité du service;Perte du service (voix et internet);Etudier la proposition de solutions de secours sur chemin différencié avec la problématique d'avoir plusieurs canaux simultanés;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;"En cas d'injoignabilité de client sur le fixe, possibilité de basculer l'appel sur un 2e numéro fixe ou mobile au choix du client
+
+La redondance des liens est assurée
+Les serveurs sont en géoredondance";non échu;;;;2;2;1;;3;;3;
+Risque de lancement de projet non fonctionnel;absence de maîtrise de la livraison client;Rédiger le mode opératoire côté technique de la prise de commande à la livraison du client;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-mars-19;;non échu;;;;2;2;1;;3;;3;
+Risque de lancement de projet non fonctionnel;livebox BtoB incompatibles ou avec des pertes de service;Dérouler les tests de foncftionnalités sur les livebox;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-mars-19;"Tests en cours sur la 240 avec le fournisseur (One access)
+Les soucis avec la livebox 140 sont remontés au fournisseur One access en attendant son retour
+
+tests d'acceptance consluants sur la 240 (offre haut de marché qui va avec un pbx). Attente issue des tests FUT
+
+livebox proV4 à tester (offre entrée de marché - intègre un mini pbx)
+
+la 140 est abandonnée car elle a des probèmes de synchro
+
+";en cours;;;;2;2;1;;3;;3;
+Risque de non fiabilité de la facturation;impossibilité de facturer le service d'audio conférence sur gaïa directement;Voir avec DEX et DIS comment les informations de facturation peuvent être remontés à gaïa;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;15-août-18;Problème de facturation levé suite au contournement du problème de réservation de ressources pour la conférence;Soldé;Problème de facturation levé suite au contournement du problème de réservation de ressources pour la conférence;préventif;automatique;2;2;1;;3;;3;
+Risque de lancement de projet non fonctionnel;paramétrage manuel: device management non encore acquis;Finaliser l'acquisition de l'outil device management qui permet de piloter les poste à distance ou de faire des configuration etc;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;;gelé;;;;2;2;1;;3;;3;
+Risque de lancement de projet non fonctionnel;défaut de maîtrise de l'outil device management à acquérir;"Verrouiller sur le device management :
+ - le transfert de compétences par le fournisseur 
+ - la chaîne de support";Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;;gelé;;;;2;2;1;;3;;3;
+Risque de lancement de projet non fonctionnel;absence de supervision de la qualité de service sur les lignes du client;Coordonner avec le contributeur technique pour identifier une solution permettant la supervision de la ligne afin de garantir la qualité des communications sur la ligne et garantir les SLA sur lesquels on s'engage.;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;30-nov.-18;"L’équipement disponible est le N25-10 qui permet de connaître l’état de la ligne du client : soit opérationnelle soit en dérangement. Cet outil ne permet pas de mesurer la qualité de service offerte au client. 
+
+L’accès ADSL est exclu pour garantir une bonne qualité de service voix et data. Les types d'accès proposés seront du VDSL et de la FO.
+
+La deuxième solution est de prioriser la voix.
+
+Possibilité de combiner Otari et le N2510 pour la supervision de la qualité de la ligne - proposition en cours d'étude avec le groupe";en cours;U portal au niveau de l'IMS qui permet l'administration;préventif;automatique;4;2;1;;3;;3;
+Risque de lancement de projet non fonctionnel;zones non équipées en fo ou vdsl;"Tenir un point entre DRPS, DI et DDE pour définir le type d'offre qui va être proposé aux clients se trouvant dans une zone non équipée en FO ou VDSL sachant que l'ADSL n'est plus ciblée
+
+Voir la possibilité d'agréger plusieurs canaux adsl pour pouvoir offrir 6 canaux aux clients";Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-mars-19;"Proposition de la solution adsl avec caping du nombre de canaux pour maintenir le niveau de qualité suite tests
+
+Tests d'accpetance concluants - Attente issue tests FUT";non échu;Proposition de la solution adsl avec caping du nombre de canaux pour maintenir le niveau de qualité suite tests;préventif;manuelle;2;2;1;;3;;3;
+Risque de lancement de projet non fonctionnel;accès indisponible aux historiques de consommation pour le client Centrex;Etudier la possibilité pour le client de consulter ses historiques de communication et verrouiller la faisabilité de cette option;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;Attente de la confirmation de la technique sur notre capacité à réaliser l'offre centrex;gelé;;;;1;2;1;;3;;3;
+Risque de lancement de projet non fonctionnel;absence de traçabilité des modifications apportées sur l'option centrex;Etudier la possibilité pour le client de consulter ses historiques de communication et verrouiller la faisabilité de cette option;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;Attente de la confirmation de la technique sur notre capacité à réaliser l'offre centrex;gelé;;;;1;2;1;;3;;3;
+Risque de lancement de projet non fonctionnel;incompatibilité des pbx ;Dérouler les tests avec les ipbx et les pabx en intégrant les pbx plug;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-mars-19;"Cible: NA uniquement. Donc les clients seront sur des IPBX. Tests d'acceptnace consluants. Attente tests FUT
+
+fonctionnalités en dysfonctionnemet: renvois et indication de coûts par appel";en cours;;;;1;2;1;;3;;3;
+Risque de manque de performance économique des offres/projets;Limite des SVA proposés pour avoir une offre différenciante;Coordonner avec huawei pour une preésentation de l'ensemble des SVA disponibles sur l'IMS ;Amadou Gueye;amadou.gueye@orange-sonatel.com;01/07/2018;31-oct.-18;Etude la solution centrex de Broadsoft en cours qui embarque les SVA que Huawei n'embarque pas;gelé;;;;2;1;1;;1;;;

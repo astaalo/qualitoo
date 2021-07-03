@@ -1,0 +1,114 @@
+Site;Domaine;Activité/Equipement;type;Propriétaire;Danger;Mode Fonctionnement;Risque;Lieu;Manifestation;Dispositif de maitrise;Type de controle;Méthode de controle;Decription PA;Porteur;Date début;Date fin;Avancement;Statut;Probabilité/Exposition;Gravité;Criticité;Maturité;;
+"Foyer 
+Sacré-Cœur";Sécurité;Toutes les activités;1;;Absence de détecteurs d’incendie;A;Risque d'incendie;Environnement immédiat;Brûlures;détecteur d’incendie installé au niveau de la salle technique;Préventif;Manuelle;;;;;;;1;4;4;2;;
+"Foyer 
+Sacré-Cœur";Sécurité;Extincteur d'incendie;2;;Absence de formation en secourisme et incendie;A;Risque d'incendie;Environnement immédiat;Brûlures;Formation d'agents sur l'utilisation des extincteurs d'incendie;Préventif;Manuelle;inclure les agents de SC Foyer dans les prochaines formations incendie et secourisme;latsouck.diouf@orange-sonatel.com;01/05/2018;31/05/2018;;Non échu;2;4;8;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Absence de passage pour handicapé;A;Risque d'accident;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);;;;Installation de passage pour handicapés au niveau du site Foyer SC;CheikhTidiane_DIOP@orange-sonatel.com;01/05/2018;31/12/2018;;Non échu;2;2;4;1;;
+"Foyer 
+Sacré-Cœur";Sécurité;Toutes les activités;1;;Absence de plan d'évacuation des sites en cas de sinistre;A;Risque d'accident;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);Plan d'évacuation du site affiché;Préventif;Manuelle;réaliser et afficher le plan d'évacuation du site Foyer SC;latsouck.diouf@orange-sonatel.com;01/05/2018;31/05/2018;;Non échu;2;2;4;2;;
+"Foyer 
+Sacré-Cœur";Sécurité;Toutes les activités;1;;Absence de simulation d'évacuation des sites en cas d'incendie;A;Risque d'accident;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);Simulation d'évacuation du site en cas d'incendie réalisée;Préventif;Manuelle;Réaliser un test d'évacuation au niveau de l'immeuble Foyer SC;latsouck.diouf@orange-sonatel.com;01/05/2018;31/05/2018;;Non échu;2;2;4;2;;
+"Foyer 
+Sacré-Cœur";Sécurité;Toutes les activités;1;;Insuffisance de points lumineux (mauvais éclairage du site);A;Risque d'accident;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);installation de  lampes dans la cour du site de Foyer SC;Préventif;Manuelle;;;;;;;1;2;2;2;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Accumulation de déchets et herbes;A;Risque d'incendie;Environnement immédiat;Paludisme, allergie;Enlèvement des ordures deux fois par semaine par le prestataire de nettoiement;Préventif;Manuelle;organiser un desencombrement (+desherbage) du site et demander aux prestaires  de ne pas abandonner de dechets au niveau du GE;mamecheikh.mbaye@orange-sonatel.com;01/05/2018;31/05/2018;;Non échu;3;4;12;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Accumulation de déchets ;A;Risque biologique;Environnement immédiat;Paludisme, allergie;Enlèvement des ordures deux fois par semaine par le prestataire de nettoiement;Préventif;Manuelle;organiser un desencombrement (+desherbage) du site et demander aux prestaires  de ne pas abandonner de dechets au niveau du GE;mamecheikh.mbaye@orange-sonatel.com;01/05/2018;31/05/2018;;Non échu;3;1;3;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Défaut d'entretien des réservoirs d'eau;A;Risque biologique;Environnement immédiat;Paludisme, allergie;dotation du site de fontaines à eau;Préventif;Manuelle;Faire l'entretien du réservoir d'eau du foyer Sacré-Cœur;amadou.cisse@orange-sonatel.com;01/05/2018;30/06/2018;;Non fait;2;1;2;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Dégagement de fumée du groupe électrogène;A;Risque biologique;Environnement immédiat;Paludisme, allergie;La hotte du groupe est posée en hauteur;Préventif;Manuelle;;;;;;;2;1;2;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;absence de réfectoire;N;Risque biologique;Environnement immédiat;Paludisme, allergie;;;;aménager la salle de reserve du RDC en refectoire pour le foyer SC;CheikhTidiane_DIOP@orange-sonatel.com;01/05/2018;30/06/2018;;Non fait;4;1;4;1;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Manque d'hygiène dans les toilettes ;A;Risque biologique;Environnement immédiat;Paludisme, allergie;""" - Sensibilisation des utilisateurs des toilettes du rez-de chaussée
+- Affiches posées""";Préventif;Manuelle;;;;;;;3;1;3;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;securité/nettoyage;1;;utilisation de la salle technique comme salle de repos par les  vigiles;A;Risque d'électrisation/électrocution;Environnement immédiat;Brûlures;;;;Interdire au vigile l'utilisation de la salle technique comme salle de repos.;mamadou.gueye@orange-sonatel.com;01/05/2018;31/12/2018;;Non fait;2;4;8;1;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;securité/nettoyage;1;;utilisation de la salle technique comme salle de repos par les vigiles;A;Risque d'hypothermie;Environnement immédiat;Coup de fraîcheur, engolure, rhumatisme, sécheresse de la peau, rhinite à répétition, malaise, syncope;;;;Interdire aux vigiles l'utilisation de la salle technique comme salle de repos.;mamadou.gueye@orange-sonatel.com;01/05/2018;31/12/2018;;Non fait;2;2;4;1;;
+"Foyer 
+Sacré-Cœur";Service client;BO Technique DDE;2;;Agression téléphonique;N;Risque de stress;Poste de travail;Maux de tête, hypertension artérielle, troubles psychologique, cardiopathie;"Formation sur la gestion de clients difficiles (ACTES relationnel)
+
+Aménagement de 3 pauses d'une durée de 5 mn à 10 mn
+
+Aménagement de salle de détente avec des fauteuils des fauteuils et une télévision";Préventif;Manuelle;;;;;;;2;3;6;2;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Bruit du groupe électrogène;N;Risque de nuisance sonore;Environnement immédiat;Inconfort;Groupe électrogène isolé ;Préventif;Manuelle;;;;;;;1;1;1;2;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Bruit de la salle de sport ;N;Risque de nuisance sonore;Environnement immédiat;Inconfort;;;;Supprimer le Sledge Hammer (pneu +massue) du programme de la salle de sport;Alassane.TACKO@orange-sonatel.com;01/05/2018;30/04/2018;;Soldé;1;1;1;1;;
+"Foyer 
+Sacré-Cœur";Logistique;Groupe électrogène;2;;Déversement de carburant à proximité du groupe électrogène lors du dépotage;A;Risque d'incendie;Environnement immédiat;Brûlures;"""Bac de rétention au niveau de la cuve
+Supervision des dépotages""";Préventif;Manuelle;;;;;;;1;4;4;3;;
+"Foyer 
+Sacré-Cœur";Logistique;Groupe électrogène;2;;Stockage de carburant (cuve du groupe électrogéne);A;Risque d'incendie;Environnement immédiat;Brûlures;Extincteurs d'incendie  présents sur  site;Préventif;Manuelle;;;;;;;1;4;4;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Ecoulement de l'eau de climatisation;A;Risque de dégradation du bâtiment;Environnement immédiat;Allergies, mycoses, champignons;"Contrat d'entretien des climatiseurs
+Dysfonctionnements signalés à DAL";Préventif;Manuelle;;;;;;;2;2;4;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Entretien des climatiseurs aux heures de travail (poussières et humidité);N;Risque de troubles respiratoires;Poste de travail;Allergies, troubles respiratoires (asthme);Nettoyage des climatiseurs en dehors des bureaux;Préventif;Manuelle;;;;;;;2;2;4;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Fauteuils défectueux ou inadaptés;A;Risque de troubles musculo squelettiques;Poste de travail;Mal de dos;Fauteuils défectueux signalé à la DAL pour remplacement;Préventif;Manuelle;;;;;;;1;2;2;2;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Fumée du groupe électrogène;A;Risque de nuisance olfactive;Environnement immédiat;Gènes, inconfort;""" - Groupe électrogène neuf (ancien remplacé)
+ - Pot d'échappement haut""";Préventif;Manuelle;;;;;;;1;1;1;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Odeur du carburant lors du remplissage des cuves (Echappement de gaz);N;Risque de nuisance olfactive;Environnement immédiat;Gènes, inconfort;Groupe électrogène isolé ;Préventif;Manuelle;;;;;;;1;1;1;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Tabagisme passif ;A;Risque de nuisance olfactive;Environnement immédiat;Gènes, inconfort;"
+ - Il est interdit de fumer à l'intérieur du bâtiment (bureaux et couloirs)
+ -  Affiches """"interdiction de fumer"""" dans les couloirs""";Préventif;Manuelle;;;;;;;1;1;1;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Surcharge de travail;A;Risque de stress;Poste de travail;Maux de tête, hypertension artérielle, troubles psychologique, cardiopathie;"""Fixation des objectifs annuels validés par les agents dans SAPER
+
+Existence d'une étude sur le dimensionnement des RH et la productivité au niveau des tous les sites et activités""";Préventif;Manuelle;;;;;;;3;1;3;2;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Gêne causée par les rayons solaires;A;Risque de fatigue visuelle;Poste de travail;Maux de tête, douleurs occulaires;Rideaux et filtres au niveau des fenêtres qui donnent sur la cour;Préventif;Manuelle;;;;;;;1;1;1;3;;
+"Foyer 
+Sacré-Cœur";Service client;BO Technique DDE;2;;Position assise constante;A;Risque de fatigue visuelle;Poste de travail;Maux de tête, douleurs occulaires;""" - Diffusion sur Intracom des différentes attitudes (se lever toutes les 2 h de la position pendant 10min), formation sur site sur ces aspects
+ - Inscription d'un point QSE trimestriel dans les différents cadres de pilotage des directions
+ - Ordinateurs disposent de filtre intégré""";Préventif;Manuelle;;;;;;;2;1;2;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Encombrement du sol par les câbles;A;Risque de chute de plain pied;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);Câblage et installation électrique défectueux signalé dans Gedal;Préventif;Manuelle;Désencombrer le site de Foyer Sacré Cœur ;mamecheikh.mbaye@orange-sonatel.com;01/05/2018;15/07/2018;;Non échu;2;2;4;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Inquiétude (règlement de problèmes et gestion des sensibilités, plan de carrière, etc...);A;Risque de stress;Poste de travail;Maux de tête, hypertension artérielle, troubles psychologique, cardiopathie;"
+
+Ouverture de 2 salles de sport : Siège & Orange body training";Préventif;Manuelle;;;;;;;2;3;6;2;;
+"Foyer 
+Sacré-Cœur";Salle sport;Accueillir les clients Orange Body training ;1;;Mauvaise odeur des toilettes;A;Risque de nuisance olfactive;Environnement immédiat;Inconfort;""" - Affiches sur les règles d'utilisation à l'intérieur des toilettes
+ - Sensibilisation à l'utilisation des toilettes""";Préventif;Manuelle;;;;;;;2;1;2;3;;
+"Foyer 
+Sacré-Cœur";Sécurité;Toutes les activités;1;;Insécurité dans la zone;N;Risque d'agression physique;Poste de travail;Traumatisme;"""Murs du site de Sacré-Cœur relevés
+
+";Préventif;Manuelle;;;;;;;1;2;2;3;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Acces  au site par  les clients de la salle de sport (externes).;A;Risque d'agression physique;Poste de travail;Traumatisme;"les clients de la salle de sport n'ont pas acces au locaux de travail.
+Application de la politique d'acces aux locaux de sonatel";Préventif;Manuelle;;;;;;;4;2;8;3;;
+"Foyer 
+Sacré-Cœur";Service client;BO Technique DDE;2;;Longues communications téléphoniques;N;Risque de perte de voix;Poste de travail;Aphonie;""" - Diffusion sur Intracom des différentes attitudes (se lever toutes les 2 h de la position pendant 10min), formation sur site sur ces aspects
+ - Inscription d'un point QSE trimestriel dans les différents cadres de pilotage des directions
+ - Ordinateurs disposent de filtre intégré""";Préventif;Manuelle;;;;;;;2;2;4;2;;
+"Foyer 
+Sacré-Cœur";Service client;BO Technique DDE;2;;Position assise constante;A;Risque de troubles musculo squelettiques;Poste de travail;Mal de dos;""" - Diffusion sur Intracom des différentes attitudes (se lever toutes les 2 h de la position pendant 10min), formation sur site sur ces aspects
+ - Inscription d'un point QSE trimestriel dans les différents cadres de pilotage des directions
+ - Ordinateurs disposent de filtre intégré""";Préventif;Manuelle;;;;;;;2;2;4;2;;
+"Foyer 
+Sacré-Cœur";Service client;Toutes les activités;1;;Utilisation constante du téléphone;A;Risque de troubles musculo squelettiques;Poste de travail;Mal de dos;Le casque micro fait partie du package de l'agent front;Préventif;Manuelle;;;;;;;2;2;4;2;;
+"Foyer 
+Sacré-Cœur";Service client;BO Technique DDE;2;;Surpeuplement des locaux;A;Risque biologique;Poste de travail;Grippe, tuberculose, conjonctivite virale (appollo);""" - Population du site réorganisée
+ - Définition d'un plan de réaménagement pour éviter le surpeuplement du local";Préventif;Manuelle;;;;;;;3;3;9;3;;
+"Foyer 
+Sacré-Cœur";Salle sport;Accueillir les clients Orange Body training ;1;;Sortie tardive des bureaux;N;Risque d'agression physique;Poste de travail;Traumatisme;  ;;;faire une sensibilisation des vigiles du site ;mamecheikh.mbaye@orange-sonatel.com;01/05/2018;15/04/2018;;Soldé;1;4;4;1;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Toutes les activités;1;;Utilisation de produits d'entretien  (acide, eau de javel, pâte à cafard, désodorisant);A;Risque chimique;Poste de travail;Idem risque biologique, troubles occulaires;""" - Les agents de la Société de nettoiement portent des gants
+ - Le nettoyage ne se fait pas en présence des occupants des bureaux (agents sortent)
+-Les produits sont rangés et conservés dans une caisse
+ - Nettoyage des magasins à la demande des gérants
+évaluation des prestataires de nettoyage par les agents (DRH)""";Préventif;Manuelle;;;;;;;1;2;2;2;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Bâtiment;2;;absence de parking dédié;N;Risque d'accident;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);Diffusion de note sur les régles de parking devant les sites de Sonatel ;Préventif;Manuelle;;;;;;;2;2;4;2;;
+"Foyer 
+Sacré-Cœur";Administratif & service client;Bâtiment;2;;bureau de l'ANARS  situé à l'étage;N;Risque de chute de plain pied;Environnement immédiat;Traumatisme (fracture, entorse, plaie ouverte…);"
+signalisation sol glissant lors du nettoiement par le prestaire
+Existence d'un outil de signalisation des dysfonctionnements à la DAL ( GEDAL) suivi de la prise en charge par le chef d'établissement";Préventif;Manuelle;;;;;;;1;3;3;3;;

@@ -1,0 +1,91 @@
+Risque (points d'attention);Causes (facteurs potentiels à l'origine de ces points d'attention);Libellé PA (réponses ou solutions en cours pour couvrir les points d'attention identifiés);Porteur;Email porteur;Date début;Echéance;Commentaires;Statut;CONTRÔLE DESCRIPTION (réponses ou solutions mises en place por couvrir les points d'attention identifiés);Type de contrôle;Méthode de contrôle;Proba;Gravité;financier;RH;Image;Juridique;Client
+Risque de lancement de projet non fonctionnel ;Absence d'outil de monitoring sur la fibre permettant de monitorer le débit souscrit par le client;;;;;;;;"Outil remis en route par DRPS (qui ne sera pas facturé au client) – Tests en cours
+Choix de cet outil parce qu’il supervise trois éléments";Préventif;Manuelle;3;2;2;;2;;3
+Risque de non respect des engagements commerciaux;Absence d'outil de monitoring sur la fibre permettant de monitorer le débit souscrit par le client;"Dérouler les tests et verrouiller les prérequis chez le client pour un fonctionnement de l’outil en iso
+";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;"outil de monitoring sur les LS
+pour le FO: dispositif de tests lors de l'installation";Non échu;"Outil remis en route par la DRPS qui ne sera pas facturé au client – Tests en cours
+Choix de cet outil parce qu’il supervise trois éléments
+
+L'outil de monitoring portera sur les LS. Pour la FO un dispositif sera déployé lors de l'installation pour s'assurer  que le client possède les prérequis pour une bonne qualité du débit.
+
+Des offres alternatives seront proposées pour amplifier le débit indoor";Préventif;Manuelle;3;3;2;;3;;4
+Risque de lancement tardif d'offres;"Mise en place tardive de l’organisation de DDE/DRC
+";Piloter avec DRC la mise à disposition des ressources nécessaires pour THD;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;16/03/2017;;annulé;le THD s'appuiera sur les RH et lorganisation existantes;Préventif;Manuelle;3;1;1;;;;1
+Risque de lancement tardif d'offres;"non-respect du séquencement au T3 parce que le T3 est phasé
+";Définir les points de contrôle pour le respect du séquencement;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;17/03/2017;;annulé;suivi du projet en costrat;;;2;1;;;;;
+Risque de manque de performance économique;Rallonge de la chaîne PCL (augmentation d'un interlocuteur supplémentaire sur l'après-vente - RFP);Exploiter la piste d'un parcours client spécifique end to end aux offres THD;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;17/03/2017;;annulé;"Réorganisation de DRC en cours qui va prendre en compte la mise en place d’un parcours dédié avec des positions dédiées pour le THD
+
+le THD s'appuiera sur les RH et lorganisation existantes";Préventif;Manuelle;3;2;;;;;
+Risque de non respect des engagements commerciaux;Incapacité à respecter le délai de déploiement (de 8jrs) souhaité par le marketing;"Réduire le délai de déploiement en accord avec la technique pour arriver en mettant en place une équipe dédiée au déploiement du THD
+
+Procéder à la mise à jour des procédures impactées par le projet
+
+Définir des PA similaires à ceux sur l’offre home (GAQ Adsl) pour monitorer les délais de déploiement
+
+Dérouler un suivi post lancement de 3 mois
+
+Définir les KPI qui permettront d'avoir le délai exact d'installation par la technique. exploitation pendant la phase pilote
+
+Définir le mode de ristourne au client dans les cas où les délais ne sont pas respectés";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;Non échu;"Engagement de DRPS sur les 8jours
+";Préventif;Manuelle;3;3;;;;;
+Risque de non respect des engagements commerciaux;Non respect du délai de relève des dérangements ou incidents;"Partir du taux de respect des VR du reporting de DDE/DRC pour verrouiller avec la technique sur les délais de relève client du projet THD
+
+Définir une organisation (type ATR) centrée autour des clients THD (A étudier dansle cadre du parcours client THD end to end)
+
+Définir les KPI qui permettront d'avoir le délai exact d'installation par la technique. exploitation pendant la phase pilote
+";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;Non échu;;;;3;3;;;;;
+Risque de manque de performance économique;Non respect du délai de relève des dérangements ou incidents;"Partir du taux de respect des VR du reporting de DDE/DRC pour verrouiller avec la technique sur les délais de relève client du projet THD
+
+Définir une organisation (type ATR) centrée autour des clients THD (A étudier dansle cadre du parcours client THD end to end)
+
+
+Définir les KPI qui permettront d'avoir le délai exact d'installation par la technique. exploitation pendant la phase pilote
+
+Définir le mode de ristourne au client si les délais ne sont pas respectés";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;Non échu;"Attente du debrief avec la technique DRPS/DINT sur la faisabilité des délais
+
+";Préventif;Manuelle;3;2;;;;;
+Risque de manque de performance économique;Récupération tardive du CA - lenteur dans le déploiement de la fibre;"Verrouiller avec la technique le planning de déploiement de la fibre et adapter le BP en fonction
+
+Définir un séquencement de migration des clients en fonction des types de cartes sur lesquelles ils seront raccordés";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;en cours;"Planning de déploiement:
+Phase 1 sur l’existant
+Phase 2 sur les extensions
+";;;3;2;;;;;
+Risque de non respect des engagements commerciaux;impossibilité de garantir le débit au-delà du dernier routeur sur la liaison;"Conduire une étude d'impact sur l'occupation de la bande passante par les business et l'opportunité d’augmenter la BP BtoB en prélevant sur la BP affectée aux BtoC de créer une bande passante dédiée pour chaque client
+
+
+Projet de différenciation des pools d'adresses iP des résidentiels et des business
+
+Etude d'opportunité de création de liens avec Orange Abidjan ou Equant ";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;17/03/2017;;soldé;Validation par DGA de l'augmentation de la bange passante. Installation de 3STM16 supplémentaires;;;3;3;;;;;
+Risque de retard de lancement tardif des offres/projet;Réception tardive des autorisations de génie civil à Diamniadio qui est la zone prioritaire - impossibilité de conduire les travaux GC pour la FO;"Finaliser l'étude de couverture par FH
+
+Conduire un lobbying au niveau de la hiérarchie DRPS pour une accélération des travaux de génie civil ou une obtention des autorisations nécessaires";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;en cours;"Etude anticipée de couverture par FH de la zone de diamniadio
+";préventif;manuelle;3;2;2;;;;
+Risque de retard de lancement tardif des offres/projet;Retard sur l’octroie des fréquences;Anticiper les demandes de fréquences du projet THD au niveau de l’ARTP;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;en cours;"Demande suivie dorénavant par DRJ en personne sur injonction de DG
+
+Focus dans le projet sur la partie FO";préventif;manuelle;2;2;;;;;
+Risque de retard de lancement tardif des offres/projet;Retard sur les projets FITV et IMS;"Dérouler le projet et Prévoir le T2 de la phase 1 du projet seulement après le lancement des projet FITV et IMS pour les parties étant impactées par FITV (outil d’éligibilité) et IMS (voix sur IP) 
+2017: mbacké et grand-dakar
+";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;17/03/2017;;annulé;"L’outil de test couvre les technologies xdsl et non la fibre optique
+";préventif;manuelle;3;2;;;;;
+Risque de manque de performance économique;cannibalisation des offres existantes home et des offres en cours d'élaboration (projet kheweul, refonte adsl, etc);"Procéder à la migration de tous les clients adsl sur vdsl en intégrant tous les coûts associés  avec CGBU selon les scenarios de conditions de migration définis.
+
+Valider avec DRJ les impacts règlementaires à prendre en compte pour ls différents scénarios de migration. 
+
+Dérouler la stratégie intermédiaire de fidélisation des clients existants";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;17/03/2017;;annulé;"enrichissement de la gamme home à travers home express
+
+";préventif;manuelle;2;2;2;;;;
+Risque de non respect des engagements commerciaux;Impossibilité pour le client d'atteindre le THD après migration (sur les VDSL);"Définir les conditions de migration (distance avec les équipements réseau, pré requis chez le client, etc)
+
+Dérouler les tests durant la phase pilote pour s'assurer que le client va atteindre le THD après migration";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;Non échu;"un dispositif sera déployé lors de l'installation pour s'assurer  que le client possède les prérequis pour une bonne qualité du débit.
+
+Des offres alternatives seront proposées pour amplifier le débit indoor";préventif;manuelle;2;3;;;;;
+Risque de non respect des engagements commerciaux;Non fiabilité de l'outil de mesure de l'eligibilité du client à l'offre THD au niveau de la position commerciale;Réaliser des tests avec l'équipe projet FiTV sur la fiabilité de l'outil de mesure de l'eligibilité du client à l'offre THD au niveau de la position commerciale;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;l'IMS dont on parle ici c'est plutôt l'IP Multimedia System;annulé;;;;2;3;;;;;
+Risque de manque de performance économique;Limite de la zone d'éligibilité des clients au THD;Procéder avec la technique à une exacte délimitation des zones éligibles et de la fiabilité de la mise à jour de la cartographie réseau sur la base de la liste des clients ciblés;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;Non échu;Décision de proposer l'offre d'abor aux clients sur les zons déjà équipées en FO (plateau, corniche , etc);;;2;2;;;;;
+Risque de manque de performance économique;Frais d'Accès aux Services élevés à l'offre THD;Réduire au maximum les FAS en essayant de les lisser sur les redevances.;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;17/03/2017;;soldé;"Intégrer dans les dispositifs : Autorisation DG de l’annulation des FAS quand le client  s’engage sur une longue durée
+
+L'offre FO n'est plus positionnée en premium. Les taris seront à peu près les mêmes que ceux de l'adsl";préventif;Manuelle;1;2;;;;;
+Risque de manque de performance économique;cherté des tarifs du THD avec les coûts induits (FTTX, IMS, etc);"Prendre en compte dans le BP les coûts relatifs aux technologies et frais RH à intégrer
+Adapter le discours marketing pour mettre en avant les avantages QOS et les SVA";Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;Non échu;carte VDSL déjà existante dans le réseau;préventif;Manuelle;1;2;;;;;
+Risque de fraude;Installation de routeur par le client pour faire de la voix sur IP avec le surplus de débit;Identifier avec le chantier technique et avec le concours de DFC/CRA les verrous sécurité à poser;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;Non échu;;;;2;2;1;;;2;
+Risque de non respect des engagements commerciaux;Erreurs de migration vers l'offre THD;Réaliser des tests pour éviter des erreurs de migration de l'offre BIO 10 mega max vers l'offre THD;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;Non échu;;;;2;3;;;;;
+Risque de non respect des engagements commerciaux;SVA non reconduits après la migration;Réaliser des tests pour s'assurer de la reconduction des SVA après la migration;Mame Rose Astou Sarr;mame roseastou.sarr@orange-sonatel.com;;31/07/2017;;Non échu;;;;2;3;;;;;

@@ -7,7 +7,6 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class RisqueVoter extends Voter {
-	
 	const CREATE 	  			= 'create';
 	const READ 	 		 		= 'read';
 	const REJET                 = 'rejet';
@@ -27,41 +26,14 @@ class RisqueVoter extends Voter {
 
     protected function voteOnAttribute($attribute, $risque, TokenInterface $token): bool
     {
-		
+		$user = $token->getUser();
         // if the user is anonymous, do not grant access
         if (!$user instanceof UserInterface) {
             return false;
-        }
-
-        // ... (check conditions and return true to grant permission) ...
-		if (in_array($attribute, [self::CREATE, self::READ, self::UPDATE, self::DELETE, self::ACTIVATE, self::DESACTIVATE])) {
-			return $user->hasRole('ROLE_ADMIN');
-		}
-		return false;
-    }
-	
-	protected function getSupportedAttributes() {
-		return array(self::CREATE, self::READ, self::UPDATE, self::DELETE, self::EXPORT_RISQUE, self::VALIDATE, self::MATRICE, self::ACCESS_ONE_RISQUE, self::REJET);
-	}
-	
-	protected function getSupportedClasses() {
-		return array('App\Entity\Risque');
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * @see \Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter::isGranted()
-	 */
-	protected function isGranted($attribute, $risque, $user = null) {
-		$user = $this->container->get('security.context')->getToken()->getUser();
-		if(!$user instanceof UserInterface) {
-		} elseif($user->hasRole('ROLE_SUPER_ADMIN')) {
+        } elseif($user->hasRole('ROLE_SUPER_ADMIN')) {
 			return true;
 		}
-		if (!$user instanceof Utilisateur) {
-			throw new \LogicException('The user is somehow not our User class!');
-		}
-		
+        // ... (check conditions and return true to grant permission) ...
 		switch($attribute) {
 			case self::CREATE:
 				if($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_RISKMANAGER') || $user->hasRole('ROLE_AUDITEUR') || $user->hasRole('ROLE_RESPONSABLE')) {
@@ -130,7 +102,7 @@ class RisqueVoter extends Voter {
 			break;
 		}
 		return false;
-	}
+    }
 	
 	/**
 	 * @param Risque $entity

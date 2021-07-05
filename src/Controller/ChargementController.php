@@ -193,7 +193,7 @@ class ChargementController extends BaseController {
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->modifyRequestForForm($request, $data, $form);
 		$entity->setCartographie($form->getData()->getCartographie());
-		//$this->denyAccessUnlessGranted('read', $entity,'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('read', $entity,'Accés non autorisé!');
 		return array('form' => $form->createView(),'position'=>intval($position) ,'id_import'=>$id,'rapport'=>$chargement->getRapport());
 	}
 	

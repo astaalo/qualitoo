@@ -24,7 +24,7 @@ class CritereController extends BaseController {
 		$entity = new Critere();
 		$entities = $em->getRepository(TypeGrille::class)->findByTypeEvaluationId($this->getMyParameter('ids', array('type_evaluation', 'impact')));
 		
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		
 		return array('entities' => $entities);
 	}
@@ -39,7 +39,7 @@ class CritereController extends BaseController {
 		$cartographie = $em->getRepository('App\Entity\Cartographie')->find($id);
 		$entity = new Critere();
 		
-		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
 		
 		$form   = $this->CreateForm(CritereType::class, $entity->init($cartographie, 4), array('attr' => array('em' => $em)));
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
@@ -72,7 +72,7 @@ class CritereController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Critere')->find($id);
 		
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		
 		return array('entity' => $entity);
 	}
@@ -87,7 +87,7 @@ class CritereController extends BaseController {
 		$entity = $em->getRepository('App\Entity\Critere')->find($id);
 		$form = $this->createCreateForm($entity, CritereType::class, array('attr' => array('em' => $em)));
 		
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

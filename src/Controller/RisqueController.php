@@ -60,7 +60,7 @@ class RisqueController extends BaseController {
 		$this->modifyRequestForForm($request, $data, $form);
 		$entity->setCartographie($form->getData()->getCartographie());
 		
-		//$this->denyAccessUnlessGranted('read', $entity,'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('read', $entity,'Accés non autorisé!');
 		
 		return array('form' => $form->createView(),'position'=>intval($position));
 	}
@@ -240,7 +240,7 @@ class RisqueController extends BaseController {
 		$risque->setCartographie($this->getDoctrine()->getManager()->getRepository('App\Entity\Cartographie')->find($cartographie_id));
 		$entity->setRisque($risque);
 		
-		//$this->denyAccessUnlessGranted('create', $entity->getRisque(),'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('create', $entity->getRisque(),'Accés non autorisé!');
 		
 		$form   = $this->createForm($type, $entity);
 		return $this->render($view, array('entity' => $entity, 'form' => $form->createView(), 'cartographie_id'=>$cartographie_id));
@@ -627,7 +627,7 @@ class RisqueController extends BaseController {
 			$this->createNotFoundException("Le risque n'existe pas dans la base");
 		}
 		
-		//$this->denyAccessUnlessGranted('accesOneRisque', $risque, 'Accés Non Autorisé!');
+		$this->denyAccessUnlessGranted('accesOneRisque', $risque, 'Accés Non Autorisé!');
 		
 		return array('entity' => $risque);
 	}

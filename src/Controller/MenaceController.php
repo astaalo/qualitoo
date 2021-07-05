@@ -83,7 +83,7 @@ class MenaceController extends BaseController {
 	 */
 	public function indexAction() {
 		$entity= new Menace();
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		
 		return array();
 	}
@@ -107,7 +107,7 @@ class MenaceController extends BaseController {
 	public function newAction() {
 		$entity = new Menace();
 		$form   = $this->createForm(MenaceType::class, $entity);
-		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 
@@ -154,7 +154,7 @@ class MenaceController extends BaseController {
 		$entity = $em->getRepository('App\Entity\Menace')->find($id);
 		$form = $this->createForm(MenaceType::class, $entity);
 		
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

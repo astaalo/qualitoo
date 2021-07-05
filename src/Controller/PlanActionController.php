@@ -179,7 +179,7 @@ class PlanActionController extends BaseController {
 		$planaction = $em->getRepository('App\Entity\PlanAction')->find($id);
 		if(! $planaction)
 			throw $this->createNotFoundException('Aucun controle trouvé pour cet id : ' . $id);
-		// $this->denyAccessUnlessGranted('accesOnePa', $planaction, 'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('accesOnePa', $planaction, 'Accés non autorisé!');
 		return array('entity' => $planaction);
 	}
 	

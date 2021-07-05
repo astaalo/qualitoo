@@ -27,7 +27,7 @@ class ActiviteController extends BaseController
 	public function indexAction()
 	{
 		$entity = new Activite();
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 
 		if (!$this->get('session')->get('activite_criteria')) {
 			$this->get('session')->set('activite_criteria', array());
@@ -76,7 +76,7 @@ class ActiviteController extends BaseController
 	{
 		$em = $this->getDoctrine()->getManager();
 		$activite = $em->getRepository('App\Entity\Activite')->find($id);
-		//$this->denyAccessUnlessGranted('read', $activite, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('read', $activite, 'Accés non autorisé');
 		return array('entitie' => $activite);
 	}
 
@@ -89,7 +89,7 @@ class ActiviteController extends BaseController
 	{
 		$em = $this->getDoctrine()->getManager();
 		$activite = $em->getRepository('App\Entity\Activite')->find($id);
-		//$this->denyAccessUnlessGranted('delete', $activite, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('delete', $activite, 'Accés non autorisé');
 		$processus = $activite->getProcessus();
 		if (count($activite->getRisque()) <= 0) {
 			$em->remove($activite);
@@ -116,7 +116,7 @@ class ActiviteController extends BaseController
 		}
 		$form   = $this->createForm(ActiviteType::class, $entity);
 
-		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
 	}
@@ -155,7 +155,7 @@ class ActiviteController extends BaseController
 		$entity = $em->getRepository('App\Entity\Activite')->find($id);
 		$form = $this->createForm(ActiviteType::class, $entity);
 
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

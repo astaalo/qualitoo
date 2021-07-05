@@ -23,7 +23,7 @@ class QuestionController extends BaseController{
 		$em = $this->getDoctrine()->getManager();
 		$entity= new Question();
 		$entities = $em->getRepository(Question::class)->listAll();
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		return array('entities' => $entities);
 	}
 	
@@ -47,7 +47,7 @@ class QuestionController extends BaseController{
 		$entity = new Question();
 		$form = $this->createForm( QuestionType::class, $entity);
 		
-		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -99,7 +99,7 @@ class QuestionController extends BaseController{
 		$entity = $em->getRepository('App\Entity\Question')->find($id);
 		$form = $this->createCreateForm($entity, QuestionType::class);
 		
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView(),'id'=>$id);
 	}

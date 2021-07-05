@@ -228,7 +228,7 @@ class ProjetController extends BaseController {
 		$entity = $em->getRepository('App\Entity\Projet')->find($id);
 		if($entity == null)
 			$this->createNotFoundException("Ce projet n'existe pas!");
-		//$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');
 		if($request->getMethod()=='POST') {
             $charg = $em->getRepository('App\Entity\Chargement')->findByProjet($id);
             $risque = $em->getRepository('App\Entity\RisqueProjet')->findByProjet($id);

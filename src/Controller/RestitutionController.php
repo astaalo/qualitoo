@@ -52,7 +52,7 @@ class RestitutionController extends BaseController {
 		} 	elseif($this->get('session')->get('risque_criteria')==null || count($this->get('session')->get('risque_criteria'))==0) {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
-		//$this->denyAccessUnlessGranted('matrice', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('matrice', $entity, 'Accés non autorisée!');
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($request, $data, $form);
 		$em->getRepository(Risque::class)->getMatrice($form->getData(), $type, $probabiteKPIs, $graviteKPIs);

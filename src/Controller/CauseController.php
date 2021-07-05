@@ -25,7 +25,7 @@ class CauseController extends BaseController {
 	public function indexAction() {
 		$entity = new Cause();
 		$this->get('session')->set('risquehascause_criteria', array());
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		return array();
 	}
 	
@@ -118,7 +118,7 @@ class CauseController extends BaseController {
 		if(!$cause)
 			throw new EntityNotFoundException('Entité avec ce id non trouvé ');
 			
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		return array('entity' => $cause);
 	}
 	
@@ -131,7 +131,7 @@ class CauseController extends BaseController {
 	public function editAction($id, $page = 0) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Cause')->find($id);
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		$form = $this->createCreateForm($entity, CauseType::class);
 		return array('entity' => $entity, 'form' => $form->createView(), 'page' => $page);
 	}

@@ -34,7 +34,7 @@ class KPIController extends BaseController {
 			: (($type  == 1) ? ($carto <=2  ? Departement::class : Site::class )
 				: ($type == 2  ? ($carto !=2 ? Activite::class : Projet::class) : Equipement::class));
 		
-		//$this->denyAccessUnlessGranted('rcc', new Risque(), 'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('rcc', new Risque(), 'Accés non autorisé!');
 					
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		if($request->getMethod()=='POST') {
@@ -113,7 +113,7 @@ class KPIController extends BaseController {
 	public function risqueTransversesAction(Request $request,$carto){
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
-		//$this->denyAccessUnlessGranted('rt', new Risque(), 'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('rt', new Risque(), 'Accés non autorisé!');
 		
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
@@ -158,7 +158,7 @@ class KPIController extends BaseController {
 	public function compareControleAction(Request $request,$carto){
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
-		//$this->denyAccessUnlessGranted('cmc', new Risque(), 'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('cmc', new Risque(), 'Accés non autorisé!');
 		;
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
@@ -195,7 +195,7 @@ class KPIController extends BaseController {
 	public function tauxPriseChargeRisqueControleAction(Request $request,$carto){
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
-		//$this->denyAccessUnlessGranted('tprc', new Risque(), 'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('tprc', new Risque(), 'Accés non autorisé!');
 		
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
@@ -221,7 +221,7 @@ class KPIController extends BaseController {
 	public function risquesAveresAction(Request $request,$carto){
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
-		//$this->denyAccessUnlessGranted('rav', new Risque(), 'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('rav', new Risque(), 'Accés non autorisé!');
 		
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());

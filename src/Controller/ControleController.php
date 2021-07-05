@@ -158,7 +158,7 @@ class ControleController extends BaseController {
 		if (! $controle)
 			throw $this->createNotFoundException('Aucun controle trouvé pour cet id : ' . $id);
 		
-		//$this->denyAccessUnlessGranted('accesOneCtrl', $controle, 'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('accesOneCtrl', $controle, 'Accés non autorisé!');
 		return array('entity' => $controle);
 	}
 	

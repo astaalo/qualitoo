@@ -50,7 +50,7 @@ class UtilisateurController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$user = $em->getRepository('App\Entity\Utilisateur')->find($id);
 		$form = $this->createForm(UtilisateurFormType::class, $user);
-		//$this->denyAccessUnlessGranted('update', $user,'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('update', $user,'Accés non autorisé!');
 		$form->setData($user);
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
@@ -72,7 +72,7 @@ class UtilisateurController extends BaseController {
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$utilisateur = $em->getRepository('App\Entity\Utilisateur')->find($id);
-		//$this->denyAccessUnlessGranted('read', $utilisateur,'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('read', $utilisateur,'Accés non autorisé!');
 		return array('entity' => $utilisateur);
 	}
 	 

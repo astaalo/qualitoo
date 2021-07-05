@@ -21,7 +21,7 @@ class SiteController extends BaseController {
 	 */
 	public function indexAction() {
 		$entity= new Site();
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		return array();
 	}
 	
@@ -45,7 +45,7 @@ class SiteController extends BaseController {
 		$entity = new Site();
 		$form   = $this->CreateForm(SiteType::class, $entity);
 		
-		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -94,7 +94,7 @@ class SiteController extends BaseController {
 		$entity = $em->getRepository('App\Entity\Site')->find($id);
 		$form = $this->CreateForm(SiteType::class, $entity);
 		
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -129,7 +129,7 @@ class SiteController extends BaseController {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('App\Entity\Site')->find($id);
 
-        //$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+        $this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
         return ['entity' => $entity];
     }
 
@@ -142,7 +142,7 @@ class SiteController extends BaseController {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('App\Entity\Site')->find($id);
 
-        //$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+        $this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 
         $entity->setEtat(true);
         $em->persist($entity);
@@ -160,7 +160,7 @@ class SiteController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Site')->find($id);
 		
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		
 		$entity->setEtat(false);
 		$em->persist($entity);

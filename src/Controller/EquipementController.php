@@ -31,7 +31,7 @@ class EquipementController extends BaseController
     public function indexAction()
     {
     	$entity= new Equipement();
-    	//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+    	$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
         $this->get('session')->set('equipement_criteria', array());
 		return array();
     }
@@ -104,7 +104,7 @@ class EquipementController extends BaseController
         $entity->setType($type);
         $form   = $this->createForm(EquipementType::class, $entity);
         
-        //$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+        $this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 
         return array(
             'entity' => $entity,
@@ -150,7 +150,7 @@ class EquipementController extends BaseController
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Equipement entity.');
         }
-        //$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+        $this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
         $editForm = $this->createEditForm($entity);
         return array(
             'entity'      => $entity,

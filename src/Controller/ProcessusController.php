@@ -24,7 +24,7 @@ class ProcessusController extends BaseController {
 	 */
 	public function indexAction() {
 		$entity= new Processus();
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		if(!$this->get('session')->get('processus_criteria')) {
 			$this->get('session')->set('processus_criteria', array());
 		}
@@ -70,7 +70,7 @@ class ProcessusController extends BaseController {
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
 		$processus = $em->getRepository('App\Entity\Processus')->find($id);
-		//$this->denyAccessUnlessGranted('read', $processus, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('read', $processus, 'Accés non autorisé');
 		return array('entitie' => $processus);
 	}
 	
@@ -87,7 +87,7 @@ class ProcessusController extends BaseController {
 			throw $this->createNotFoundException('Aucun processus trouvé pour cet id : ' . $id);
 		}
 		
-		//$this->denyAccessUnlessGranted('delete', $processus, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('delete', $processus, 'Accés non autorisé');
 		if ($request->getMethod () == 'POST') {
 			if(count($activites) > 0 || count($processus->getChildren()) > 0 || count($processus->getProjet()) > 0) {
 				$this->get('session')->getFlashBag()->add('error', "Le processus ne peut pas etre supprimé. Il est lié à des activités ou sous-processus ou projets.");
@@ -114,7 +114,7 @@ class ProcessusController extends BaseController {
 			$entity->setParent($processus);
 		}
 		$form   = $this->createForm(ProcessusType::class, $entity);
-		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
 	}
 	
@@ -150,7 +150,7 @@ class ProcessusController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Processus')->find($id);
 		$form = $this->CreateForm(ProcessusType::class, $entity);
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	

@@ -24,7 +24,7 @@ class DomaineController extends BaseController {
 	 */
 	public function indexAction() {
 		$entity = new DomaineActivite();
-		// $this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisée!');
 		return array();
 	}
 	
@@ -70,7 +70,7 @@ class DomaineController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$cartographie = $em->getRepository('App\Entity\Cartographie')->find($id);
 		$entity = new DomaineImpact();
-		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
 		$form = $this->CreateForm(DomaineImpactType::class, $entity->setCartographie($cartographie));
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -82,7 +82,7 @@ class DomaineController extends BaseController {
 	*/
 	public function newForActiviteAction(){
 		$entity = new DomaineActivite();
-		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
 		$form = $this->createForm(DomaineActiviteType::class, $entity);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -194,7 +194,7 @@ class DomaineController extends BaseController {
 		$entity = $em->getRepository('App\Entity\DomaineActivite')->find($id);
 		$form = $this->createCreateform($entity, DomaineActiviteType::class);
 
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		
 		return array('entity' => $entity, 'form' =>$form->createView());
 	}

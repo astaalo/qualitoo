@@ -25,7 +25,7 @@ class StructureController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		
 		$entity= new Structure();
-		//$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		
 		return array();
 	}
@@ -69,7 +69,7 @@ class StructureController extends BaseController {
 		$entity = new Structure();
 		$form   = $this->CreateForm(StructureType::class, $entity);
 		
-		//$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -118,7 +118,7 @@ class StructureController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Structure')->find($id);
 		$form = $this->createCreateForm($entity, StructureType::class);
-		//$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -162,7 +162,7 @@ class StructureController extends BaseController {
 		if($entity == null)
 			$this->createNotFoundException("Cette structure n'existe pas!");
 		
-		//$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');
 		if($request->getMethod()=='POST') {
 			//var_dump($entity); exit();
 			//$em->remove($entity);

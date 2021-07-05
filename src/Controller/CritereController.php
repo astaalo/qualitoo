@@ -48,7 +48,7 @@ class CritereController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoi des donnees saisies lors de la creation d'un critere")
 	 * @Route("/creer_critere", name="creer_critere")
-	 * @Template("OrangeMainBundle:Critere:new.html.twig")
+	 * @Template("critere/new.html.twig")
 	 */
 	public function createAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
@@ -96,7 +96,7 @@ class CritereController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'un critere")
 	 * @Route ("/{id}/modifier_critere", name="modifier_critere")
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Critere:edit.html.twig")
+	 * @Template("critere/edit.html.twig")
 	 */
 	public function updateAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();

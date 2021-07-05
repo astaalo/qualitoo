@@ -140,7 +140,7 @@ class CauseController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modfication de la cause")
 	 * @Route ("/{id}/{page}/modifier_cause", name="modifier_cause", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Cause:edit.html.twig")
+	 * @Template("cause/edit.html.twig")
 	 */
 	public function updateAction($id, $page) {
 		$em = $this->getDoctrine()->getManager();

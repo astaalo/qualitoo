@@ -102,7 +102,7 @@ class DomaineController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoi des donnees saisies lors de la creation d'un domaine d'impact")
 	 * @Route("/creer_domaine_impact", name="creer_domaine_impact")
-	 * @Template("OrangeMainBundle:Domaine:newForImpact.html.twig")
+	 * @Template("domaine/newForImpact.html.twig")
 	 */
 	public function createForImpactAction(Request $request){
 		$entity = new DomaineImpact();
@@ -122,7 +122,7 @@ class DomaineController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoi des donnees saisies lors de la creation d'un domaine d'activite")
 	 * @Route("/creer_domaine_activite", name="creer_domaine_activite")
-	 * @Template("OrangeMainBundle:Domaine:newForActivite.html.twig")
+	 * @Template("domaine/newForActivite.html.twig")
 	 */
 	public function createForActiviteAction(Request $request) {
 		$entity = new DomaineActivite();
@@ -140,7 +140,7 @@ class DomaineController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoi des donnees saisies lors de la creation d'un domaine de site")
 	 * @Route("/creer_domaine_site", name="creer_domaine_site")
-	 * @Template("OrangeMainBundle:Domaine:newForSite.html.twig")
+	 * @Template("domaine/newForSite.html.twig")
 	 */
 	public function createForSiteAction(Request $request) {
 		$entity = new DomaineSite();
@@ -218,7 +218,7 @@ class DomaineController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'un domaine d impact")
 	 * @Route("/{id}/modifier_domaine_impact", name="modifier_domaine_impact", requirements={"id"= "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Domaine:editForImpact.html.twig")
+	 * @Template("domaine/editForImpact.html.twig")
 	 */
 	public function updateForImpactAction($id) {
 		$em = $this->getDoctrine()->getManager();
@@ -238,7 +238,7 @@ class DomaineController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'un domaine  d'activite")
 	 * @Route ("/{id}/modifier_domaine_activite", name="modifier_domaine_activite", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Domaine:editForActivite.html.twig")
+	 * @Template("domaine/editForActivite.html.twig")
 	 */
 	public function updateForActiviteAction($id) {
 		$em = $this->getDoctrine()->getManager();
@@ -260,7 +260,7 @@ class DomaineController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'un domaine de site")
 	 * @Route ("/{id}/modifier_domaine_site", name="modifier_domaine_site", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Domaine:editForSite.html.twig")
+	 * @Template("domaine/editForSite.html.twig")
 	 */
 	public function updateForSiteAction($id) {
 		$em = $this->getDoctrine()->getManager();

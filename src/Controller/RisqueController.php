@@ -511,7 +511,7 @@ class RisqueController extends BaseController {
 	/**
 	 * @QMLogger(message="Rejeter un risque")
 	 * @Route("/{id}/rejet_risque", name="rejet_risque")
-	 * @Template("OrangeMainBundle:HistoryEtatRisque:new.html.twig")
+	 * @Template("historyEtatRisque/new.html.twig")
 	 */
 	public function rejetAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();

@@ -39,7 +39,7 @@ class NotificationController extends BaseController {
 	/**
      * @QMLogger(message="afficher toutes les notifications")
      * @Route("/les_notifs", name="les_notifs")
-     * @Template("OrangeMainBundle:Notification:index.html.twig")
+     * @Template("notification/index.html.twig")
      */
 	public function showUnreadNotificationAction(Request $request){
 		return array();

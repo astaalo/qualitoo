@@ -51,7 +51,7 @@ class SocieteController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoi des données saisies lors de la creation d'une societe")
 	 * @Route("/creer_societe", name="creer_societe")
-	 * @Template("OrangeMainBundle:Societe:new.html.twig")
+	 * @Template("societe/new.html.twig")
 	 */
 	public function createAction(Request $request) {
 		$entity = new Societe();
@@ -99,7 +99,7 @@ class SocieteController extends BaseController {
 	 * @QMLogger(message="Envoi des données saisies lors de la modification d'une societe")
 	 * @Route ("/{id}/modifier_societe", name="modifier_societe", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Societe:edit.html.twig")
+	 * @Template("societe/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

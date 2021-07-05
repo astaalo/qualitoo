@@ -100,7 +100,7 @@ class ControleController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoi données saisies lors de creation d'un controle")
 	 * @Route("/creer_controle", name="creer_controle")
-	 * @Template("OrangeMainBundle:Controle:new.html.twig")
+	 * @Template("controle/new.html.twig")
 	 */
 	public function createAction(Request $request) {
 		$em = $this->getDoctrine ()->getManager ();
@@ -202,7 +202,7 @@ class ControleController extends BaseController {
 	 * @QMLogger(message="Modification d'un controle")
 	 * @Route ("/{id}/modifier_controle", name="modifier_controle", requirements={ "id"= "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Controle:edit.html.twig")
+	 * @Template("controle/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine ()->getManager ();

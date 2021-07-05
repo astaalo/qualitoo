@@ -38,7 +38,7 @@ class AuditController extends BaseController
      *
      * @Route("/creer_audit", name="creer_audit")
      * @Method("POST")
-     * @Template("OrangeMainBundle:Audit:new.html.twig")
+     * @Template("audit/new.html.twig")
      */
     public function createAction(Request $request)
     {

@@ -71,7 +71,7 @@ class EquipementController extends BaseController
      * @QMLogger(message="Envoi des donnees saisies lors de la creation d'un equipement")
      * @Route("/{type}/creer_equipement", name="creer_equipement")
      * @Method("POST")
-     * @Template("OrangeMainBundle:Equipement:new.html.twig")
+     * @Template("equipement/new.html.twig")
      */
     public function createAction(Request $request,$type)
     {

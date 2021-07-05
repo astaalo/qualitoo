@@ -122,11 +122,11 @@ class ProcessusController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la creation d'un processus")
 	 * @Route("/{id}/ajouter_processus", name="ajouter_processus")
 	 * @Route("/creer_processus", name="creer_processus")
-	 * @Template("OrangeMainBundle:Processus:new.html.twig")
+	 * @Template("processus/new.html.twig")
 	 */
 	public function createAction(Request $request, $id = null) {
 		$entity = new Processus();
-		$form   = $this->createCreateForm($entity, 'Processus');
+		$form   = $this->createCreateForm($entity, ProcessusType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -158,7 +158,7 @@ class ProcessusController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'un processus")
 	 * @Route ("/{id}/modifier_processus", name="modifier_processus", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Processus:edit.html.twig")
+	 * @Template("processus/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

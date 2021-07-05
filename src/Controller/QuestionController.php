@@ -109,7 +109,7 @@ class QuestionController extends BaseController{
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'une question")
 	 * @Route ("/{id}/modifier_question", name="modifier_question", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Question:edit.html.twig")
+	 * @Template("question/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

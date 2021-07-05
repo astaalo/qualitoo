@@ -91,7 +91,7 @@ class FamilleController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'une famille")
 	 * @Route ("/{id}/modifier_famille", name="modifier_famille", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Famille:edit.html.twig")
+	 * @Template("famille/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

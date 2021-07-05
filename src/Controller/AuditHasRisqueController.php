@@ -40,7 +40,7 @@ class AuditHasRisqueController extends Controller
      *
      * @Route("/", name="audithasrisque_create")
      * @Method("POST")
-     * @Template("OrangeMainBundle:AuditHasRisque:new.html.twig")
+     * @Template("auditHasRisque/new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -174,7 +174,7 @@ class AuditHasRisqueController extends Controller
      *
      * @Route("/{id}", name="audithasrisque_update")
      * @Method("PUT")
-     * @Template("OrangeMainBundle:AuditHasRisque:edit.html.twig")
+     * @Template("auditHasRisque/edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {

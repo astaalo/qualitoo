@@ -97,7 +97,7 @@ class AvancementController extends BaseController {
 	/**
 	 * @Route ("/{id}/modifier_avancement", name="modifier_avancement", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Avancement:edit.html.twig")
+	 * @Template("avancement/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

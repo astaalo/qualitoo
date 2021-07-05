@@ -83,7 +83,7 @@ class TraceController extends BaseController
 	/**
 	 * @Route ("/{id}/modifier_trace", name="modifier_trace", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Trace:edit.html.twig")
+	 * @Template("trace/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

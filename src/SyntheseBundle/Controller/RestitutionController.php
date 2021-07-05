@@ -16,7 +16,7 @@ class RestitutionController extends BaseController {
 	/**
 	 * @QMLogger(message="Affichage matrice par carto")
 	 * @Route("/{carto}/{type}/la_restitution", name="la_restitution")
-	 * @Template("OrangeMainBundle:Restitution:matrice.html.twig")
+	 * @Template("restitution/matrice.html.twig")
 	 */
 	public function matriceAction(Request $request, $carto, $type) {
 		$dm = $this->get('doctrine_mongodb')->getManager();

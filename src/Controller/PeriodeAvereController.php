@@ -37,7 +37,7 @@ class PeriodeAvereController extends BaseController
      * @QMLogger(message="Envoi des données saisies lors de le creation d'une periode averee")
      * @Route("/creer_periode_avere", name="creer_periode_avere")
      * @Method("POST")
-     * @Template("OrangeMainBundle:PeriodeAvere:new.html.twig")
+     * @Template("periodeAvere/new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -88,4 +88,3 @@ class PeriodeAvereController extends BaseController
     }
 
 }
-	

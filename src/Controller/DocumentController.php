@@ -103,7 +103,7 @@ class DocumentController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoi des donnees saisies lors de la creation du dcument ")
 	 * @Route("/{type}/creer_document", name="creer_document")
-	 * @Template("OrangeMainBundle:Document:new.html.twig")
+	 * @Template("document/new.html.twig")
 	 */
 	public function createAction(Request $request,$type) {
 		$entity = new Document();
@@ -140,7 +140,7 @@ class DocumentController extends BaseController {
 	 * @QMLogger(message="Suppression d'un document ")
 	 * @Method({"GET","POST"})
 	 * @Route ("/{id}/supprimer_document", name="supprimer_document", requirements={ "id"=  "\d+"})
-	 * @Template("OrangeMainBundle:Document:confirmDeletion.html.twig")
+	 * @Template("document/confirmDeletion.html.twig")
 	 */
 	public function supprimeAction(Request $request,$id) {
 		$em = $this->getDoctrine()->getManager();
@@ -179,7 +179,7 @@ class DocumentController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification du dcument ")
 	 * @Route ("/{id}/modifier_document", name="modifier_document", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Document:edit.html.twig")
+	 * @Template("document/edit.html.twig")
 	 */
 	public function updateAction(Request $request,$id) {
 		$em = $this->getDoctrine()->getManager();

@@ -15,12 +15,12 @@ class ProcessusType extends AbstractType
 		
 			->add('libelle', null, array('label' => 'Libellé'))
 			->add('parent', null, array('label' => 'Processus parent', 'attr' => array('class' => 'chzn-select')))
-			->add('origine', null, array('label' => 'Processus origine', 'empty_data' => 'Choisir le processus origine'
+			->add('origine', null, array('label' => 'Processus origine', 'placeholder' => 'Choisir le processus origine'
 					,'attr' => array('class' => 'chzn-select')))
 			->add('structure', EntityType::class, array('label' => 'Structure','class' => 'App\Entity\Structure', 'attr' => array('class' => 'chzn-select'), 'query_builder'=>function(StructureRepository $sr){
 					          return $sr->filter();
 					 }))
-			->add('typeProcessus', null, array('empty_data' => 'Choisir un type de processus ...','attr'=>array('class'=>'chzn-select')))
+			->add('typeProcessus', null, array('placeholder' => 'Choisir un type de processus ...','attr'=>array('class'=>'chzn-select')))
 			->add('description');
 	}
 	

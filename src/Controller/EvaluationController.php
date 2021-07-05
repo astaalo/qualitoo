@@ -70,7 +70,7 @@ class EvaluationController extends BaseController{
 	 * @QMLogger(message="Envoi des donnees saisies lors de la creation d'une evaluation")
 	 * @Route("/{id}/creer_evaluation", name="creer_evaluation")
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Evaluation:new.html.twig")
+	 * @Template("evaluation/new.html.twig")
 	 */
 	public function createAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
@@ -126,7 +126,7 @@ class EvaluationController extends BaseController{
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'une evaluation")
 	 * @Route ("/{id}/modifier_evaluation", name="modifier_evaluation", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Evaluation:edit.html.twig")
+	 * @Template("evaluation/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

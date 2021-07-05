@@ -135,7 +135,7 @@ class PlanActionController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisie lors d'un ajout de plans d'action")
 	 * @Route("/creer_planaction", name="creer_planaction")
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:PlanAction:new.html.twig")
+	 * @Template("planAction/new.html.twig")
 	 */
 	public function createAction(Request $request) {
 		$entity = new PlanAction();
@@ -202,7 +202,7 @@ class PlanActionController extends BaseController {
 	 * @QMLogger(message="Mdification d'un plan d'action")
 	 * @Route("/{id}/modifier_planaction", name="modifier_planaction", requirements={ "id"= "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:PlanAction:edit.html.twig")
+	 * @Template("planAction/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

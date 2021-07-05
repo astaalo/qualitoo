@@ -93,7 +93,7 @@ class ConsequenceController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'une consequence")
 	 * @Route ("/{id}/modifier_consequence", name="modifier_consequence", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Consequence:edit.html.twig")
+	 * @Template("consequence/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

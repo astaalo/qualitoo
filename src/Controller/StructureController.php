@@ -77,7 +77,7 @@ class StructureController extends BaseController {
 	/**
 	 * @QMLogger(message="Envoi des donnees saisies lors de la creation")
 	 * @Route("/creer_structure", name="creer_structure")
-	 * @Template("OrangeMainBundle:Structure:new.html.twig")
+	 * @Template("structure/new.html.twig")
 	 */
 	public function createAction(Request $request) {
 		$entity = new Structure();
@@ -126,7 +126,7 @@ class StructureController extends BaseController {
 	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'une structure")
 	 * @Route ("/{id}/modifier_structure", name="modifier_structure", requirements={ "id"=  "\d+"})
 	 * @Method("POST")
-	 * @Template("OrangeMainBundle:Structure:edit.html.twig")
+	 * @Template("structure/edit.html.twig")
 	 */
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();

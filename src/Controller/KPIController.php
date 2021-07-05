@@ -322,19 +322,20 @@ class KPIController extends BaseController {
 	 * @return array
 	 */
 	protected function addRowInTableControle($entity) {
+	    $carto = $this->getMyParameter('ids')['carto'];
 		if($entity->getRisque()->getCartographie()->getId()<=2){
 				return array(
 						$entity->getRisque()->getDirection()->__toString(),
-						$entity->getRisque()->getStructreOrSite()->__toString(),
+						$entity->getRisque()->getStructreOrSite($carto)->__toString(),
 						$entity->getRisque()->getActivite()->__toString(),
 						$entity->getRisque()->__toString(),
 						'<a href="'.$this->generateUrl('details_controle', array('id'=>$entity->getId())).'">controle</a>',
-						$entity->getMaturiteTheorique()->getValeur().'<b><=></b>'.$entity->getMaturiteTheorique()->getLibelle(),
+                        $entity->getMaturiteTheorique() ? $entity->getMaturiteTheorique()->getValeur().'<b><=></b>'.$entity->getMaturiteTheorique()->getLibelle() : 'non renseigné',
 						$entity->getMaturiteReel()
 				);
 		}else{
 				return array(
-						$entity->getRisque()->getStructreOrSite()->__toString(),
+						$entity->getRisque()->getStructreOrSite($carto)->__toString(),
 						$entity->getRisque()->getActivite()->__toString(),
 						$entity->getRisque()->__toString(),
 						'<a href="'.$this->generateUrl('details_controle', array('id'=>$entity->getId())).'">controle</a>',

@@ -1328,18 +1328,18 @@ class Risque implements NotificationInterface {
     	}
     }
     
-    public function getStructreOrSite() {
+    public function getStructreOrSite($carto = null) {
     	switch($this->cartographie->getId()) {
-    		case self::$carto['metier']:
+    		case $carto['metier']:
     			$libelle = $this->risqueMetier ? $this->risqueMetier->getStructure() : null;
     		break;
-    		case self::$carto['projet']:
+    		case $carto['projet']:
     			$libelle = $this->risqueProjet ? $this->risqueProjet->getStructure() : null;
     		break;
-    		case self::$carto['sst']:
+    		case $carto['sst']:
     			$libelle = $this->risqueSST  ? $this->risqueSST->getSite() : null;
     		break;
-    		case self::$carto['environnement']:
+    		case $carto['environnement']:
     			$libelle = $this->risqueEnvironnemental ? $this->risqueEnvironnemental->getSite() : null;
     		break;
     		default:

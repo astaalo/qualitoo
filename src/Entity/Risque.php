@@ -928,7 +928,7 @@ class Risque implements NotificationInterface {
 	/**
 	 * @return Mixed
 	 */
-	public function getRisqueData() {
+	public function getRisqueData($carto = null) {
 		if($this->cartographie==null) {
 			return null;
 		}

@@ -22,7 +22,7 @@ class ControleRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry, ParameterBagInterface $param, Security $security)
     {
         parent::__construct($registry, Controle::class);
-        //$this->_ids		= $param->get('ids');
+        $this->_ids		= $param->get('ids');
         $this->_states	= $param->get('states');
         $this->_user	= $security->getUser();
     }
@@ -139,7 +139,7 @@ class ControleRepository extends ServiceEntityRepository
                 ->andWhere('t.id in (:traitement)')
                 ->setParameter('traitement', $traitementIds);
         }
-        $data = $criteria->getRisque()?$criteria->getRisque()->getRisqueData():null;
+        $data = $criteria->getRisque()?$criteria->getRisque()->getRisqueData($this->_ids['carto']):null;
         if($data==null) {
         } elseif($data->isPhysical()) {
             if($data->getSite()) {

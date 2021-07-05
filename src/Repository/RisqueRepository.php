@@ -159,7 +159,7 @@ class RisqueRepository extends ServiceEntityRepository
         if($criteria->getCartographie()) {
             $queryBuilder->andWhere('cg.id = :cartographieId')->setParameter('cartographieId', $criteria->getCartographie()->getId());
         }
-        $data = $criteria->getRisqueData();
+        $data = $criteria->getRisqueData($this->_ids['carto']);
         if($data==null) {
         } elseif($criteria->isPhysical()) {
             if($data->getSite()) {
@@ -471,7 +471,7 @@ class RisqueRepository extends ServiceEntityRepository
         if($criteria->getMenace()) {
             $queryBuilder->andWhere('r.menace = :menace')->setParameter('menace', $criteria->getMenace());
         }
-        $data = $criteria->getRisqueData();
+        $data = $criteria->getRisqueData($this->_ids['carto']);
         if(!$criteria->isPhysical() && $data){
             if($data->getDirection() || $data->getStructure()) {
                 $structure = $data->getStructure() ? $data->getStructure() : ($data->getDirection() ? $data->getDirection() : null);

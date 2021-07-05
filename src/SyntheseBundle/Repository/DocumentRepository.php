@@ -56,7 +56,7 @@ class DocumentRepository extends Repository
 		if($criteria->getCartographie()) {
 			$queryBuilder->field('cartographie')->equals($criteria->getCartographie()->getId());
 		}
-		$data = $criteria->getRisqueData();
+		$data = $criteria->getRisqueData($this->_ids['carto']);
 		if($data==null) {
 		} elseif($criteria->isPhysical()) {
 			if($data->getSite()) {

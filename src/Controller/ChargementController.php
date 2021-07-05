@@ -256,11 +256,12 @@ class ChargementController extends BaseController {
 	 * @return array
 	 */
 	protected function addRowInTable($entity) {
+	    $carto = $this->getMyParameter('ids')['carto'];
 		if($entity->getCartographie()->getId()<=2)
 			return array(
 					$entity->getCode(),
-					$entity->isPhysical()==false?($entity->getRisqueData()?($entity->getRisqueData()->getProcessus()?$entity->getRisqueData()->getProcessus()->__toString():''):''):'',
-					$entity->getStructreOrSite()?$entity->getStructreOrSite()->__toString():'',
+					$entity->isPhysical()==false?($entity->getRisqueData($carto)?($entity->getRisqueData($carto)->getProcessus()?$entity->getRisqueData($carto)->getProcessus()->__toString():''):''):'',
+					$entity->getStructreOrSite($carto)?$entity->getStructreOrSite($carto)->__toString():'',
 					$entity->getActivite()?$entity->getActivite()->__toString():'',
 					$entity->getMenace() ? $entity->getMenace()->__toString() : 'Non renseigné',
 					'<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="'.$this->generateUrl('cause_of_risque', array('id' => $entity->getId())).'">'.$entity->getCauseOfRisque()->count().'</a>',
@@ -270,7 +271,7 @@ class ChargementController extends BaseController {
 			else
 				return array(
 						$entity->getCode(),
-						$entity->getStructreOrSite()?$entity->getStructreOrSite()->__toString():'',
+						$entity->getStructreOrSite($carto)?$entity->getStructreOrSite($carto)->__toString():'',
 						$entity->getActivite()?$entity->getActivite()->__toString():'',
 						$entity->getMenace() ? $entity->getMenace()->__toString() : 'Non renseigné',
 						'<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="'.$this->generateUrl('cause_of_risque', array('id' => $entity->getId())).'">'.$entity->getCauseOfRisque()->count().'</a>',

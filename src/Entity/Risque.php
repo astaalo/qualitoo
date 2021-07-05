@@ -934,16 +934,16 @@ class Risque implements NotificationInterface {
 		}
 		$data = null;
 		switch($this->cartographie->getId()) {
-			case self::$carto['metier']:
+			case $carto['metier']:
 				$data = $this->risqueMetier;
 				break;
-			case self::$carto['projet']:
+			case $carto['projet']:
 				$data = $this->risqueProjet;
 				break;
-			case self::$carto['sst']:
+			case $carto['sst']:
 				$data = $this->risqueSST;
 				break;
-			case self::$carto['environnement']:
+			case $carto['environnement']:
 				$data = $this->risqueEnvironnemental;
 				break;
 		}

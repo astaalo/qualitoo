@@ -53,7 +53,7 @@ class ControleController extends BaseController {
 	 * @Template()
 	 */
 	public function filterAction(Request $request) {
-		$form = $this->createForm(new ControleCriteria ());
+		$form = $this->createForm(ControleCriteria::class);
 		if ($request->getMethod () == 'POST') {
 			$this->get('session')->set('controle_criteria', $request->request->get($form->getName ()));
 			return new JsonResponse ();
@@ -87,7 +87,7 @@ class ControleController extends BaseController {
 		
 		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé!');
 		
-		$form = $this->createCreateForm($entity, 'Controle', array('attr' => array (
+		$form = $this->createCreateForm($entity, ControleType::class, array('attr' => array (
 						'em' => $em 
 				) 
 		));
@@ -194,7 +194,7 @@ class ControleController extends BaseController {
 		$em = $this->getDoctrine ()->getManager ();
 		$entity = $em->getRepository('App\Entity\Controle')->find($id);
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé!');
-		$form = $this->createCreateForm($entity, 'Controle', array('attr' => array ('em' => $em)));
+		$form = $this->createCreateForm($entity, ControleType::class, array('attr' => array ('em' => $em)));
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -204,11 +204,10 @@ class ControleController extends BaseController {
 	 * @Method("POST")
 	 * @Template("controle/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine ()->getManager ();
 		$entity = $em->getRepository('App\Entity\Controle')->find($id);
-		$form = $this->createCreateForm($entity, 'Controle', array('attr' => array ('em' => $em)));
-		$request = $request;
+		$form = $this->createCreateForm($entity, ControleType::class, array('attr' => array ('em' => $em)));
 		if ($request->getMethod () == 'POST') {
 			$form->handleRequest($request);
 			if ($form->isValid ()) {
@@ -346,7 +345,7 @@ class ControleController extends BaseController {
 	 */
 	public function exportAction(Request $request) {
 		$em = $this->getDoctrine ()->getManager ();
-		$form = $this->createForm(new ControleCriteria ());
+		$form = $this->createForm(ControleCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('controle_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Controle')->listAllQueryBuilder($form->getData ())->getQuery ()->getResult ();
 		$traitements = $em->getRepository('App\Entity\Traitement')->findAll ();

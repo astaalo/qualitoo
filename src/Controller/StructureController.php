@@ -157,7 +157,7 @@ class StructureController extends BaseController {
 	 * @Template()
 	 */
 	public function deleteAction(Request $request, $id){
-		$em = $this->getDoctrine()->getEntityManager();
+		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Structure')->find($id);
 		if($entity == null)
 			$this->createNotFoundException("Cette structure n'existe pas!");

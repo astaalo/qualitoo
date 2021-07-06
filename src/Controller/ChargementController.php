@@ -102,7 +102,7 @@ class ChargementController extends BaseController {
 	 * @Template("chargement/new.html.twig")
 	 */
 	public function createAction(Request $request,$id) {
-		$em=$this->getDoctrine()->getEntityManager();
+		$em=$this->getDoctrine()->getManager();
 		$entity = new Chargement();
 		$carto = $em->getRepository('App\Entity\Cartographie')->find($id);
 		$domaines =  $em->getRepository('App\Entity\DomaineImpact')->findBy(array('cartographie'=>$carto,'lvl'=>0));
@@ -216,7 +216,7 @@ class ChargementController extends BaseController {
 	 * @Template()
 	 */
 	public function deleteRisquesImportesAction(Request $request, $id) {
-		$em=$this->getDoctrine()->getEntityManager();
+		$em=$this->getDoctrine()->getManager();
 		$chargement = $em->getRepository('App\Entity\Chargement')->find($id);
 		if($chargement == null)
 			$this->createNotFoundException("Ce chargement n'existe pas!");

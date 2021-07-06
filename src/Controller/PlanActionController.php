@@ -40,10 +40,10 @@ class PlanActionController extends BaseController {
 	/**
 	 * @QMLogger(message="Filtre sur les plans d'action")
 	 * @Route("/filtrer_les_planactions", name="filtrer_les_planactions")
-	 * @Template()
+	 * @Template("planAction/filter.html.twig")
 	 */
 	public function filterAction(Request $request) {
-		$form = $this->createForm(new PlanActionCriteria());
+		$form = $this->createForm(PlanActionCriteria::class);
 		if($request->getMethod() == 'POST') {
 			$this->get('session')->set('planaction_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -56,10 +56,10 @@ class PlanActionController extends BaseController {
 	/**
 	 * @QMLogger(message="Filtre sur les dispositifs")
 	 * @Route("/filtrer_les_dispositifs", name="filtrer_les_dispositifs")
-	 * @Template()
+	 * @Template("planAction/filter.html.twig")
 	 */
 	public function filterDispositifAction(Request $request) {
-		$form = $this->createForm(new PlanActionCriteria());
+		$form = $this->createForm(PlanActionCriteria::class);
 		if($request->getMethod() == 'POST') {
 			$this->get('session')->set('dispositif_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -245,7 +245,7 @@ class PlanActionController extends BaseController {
 	 */
 	public function exportAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new PlanActionCriteria());
+		$form = $this->createForm(PlanActionCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('planaction_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\PlanAction')->listAllQueryBuilder($form->getData())->getQuery()->getResult();
 		$data = $this->orange_main_core->getMapping('PlanAction')->mapForExport($queryBuilder);
@@ -259,7 +259,7 @@ class PlanActionController extends BaseController {
 	 * @Template()
 	 */
 	public function exportDispositifAction(Request $request) {
-		$form = $this->createForm(new PlanActionCriteria());
+		$form = $this->createForm(PlanActionCriteria::class);
 		if($request->getMethod() == 'POST') {
 			$this->get('session')->set('dispositif_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -275,7 +275,7 @@ class PlanActionController extends BaseController {
 	 * @Template()
 	 */
 	public function deleteAction(Request $request,$id){
-		$em = $this->getDoctrine()->getEntityManager();
+		$em = $this->getDoctrine()->getManager();
 		$planAction = $em->getRepository('App\Entity\PlanAction')->find($id);
 		if(!$planAction)
 			throw new EntityNotFoundException("plan d'action n'existe pas!");
@@ -287,7 +287,7 @@ class PlanActionController extends BaseController {
 			return new JsonResponse(array('status' => 'success', 'text' => 'Le plan d\'action a bien été supprimé avec succés'));
 			
 		}
-		return new Response($this->renderView('OrangeMainBundle:PlanAction:delete.html.twig', array('entity' => $planAction)));
+		return new Response($this->renderView('planAction/delete.html.twig', array('entity' => $planAction)));
 	}
 	
 	/**

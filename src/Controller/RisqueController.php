@@ -580,7 +580,7 @@ class RisqueController extends BaseController {
 	 * @Template()
 	 */
 	public function deleteAction(Request $request, $id){
-		$em = $this->getDoctrine()->getEntityManager();
+		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Risque')->find($id);
 		if($entity == null)
 			$this->createNotFoundException("Ce risque n'existe pas!");

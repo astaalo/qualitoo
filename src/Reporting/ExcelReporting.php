@@ -6,7 +6,7 @@ class ExcelReporting extends \PHPExcel   {
 	
 	/**
 	 * @param string $path
-	 * @return PHPExcel_Writer_IWriter
+	 * @return \PHPExcel_Writer_IWriter
 	 */
 	public function save($path) {
 		$objWriter = \PHPExcel_IOFactory::createWriter($this, 'Excel2007');

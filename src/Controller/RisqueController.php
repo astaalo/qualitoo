@@ -450,7 +450,7 @@ class RisqueController extends BaseController {
 			$view   ='risque/validation_metier.html.twig';
 		} elseif ($cartographie_id==2) {
 			$entity = $em->getRepository('App\Entity\RisqueProjet')->findOneBy(array('risque'=>$risque));
-			$form   = $this->createForm(new RisqueProjetType(), $entity);
+			$form   = $this->createForm(RisqueProjetType::class, $entity);
 			$view   ='risque/validation_projet.html.twig';
 		} elseif($cartographie_id==3) {
 			$entity = $em->getRepository('App\Entity\RisqueSST')->findOneBy(array('risque'=>$risque));
@@ -464,9 +464,9 @@ class RisqueController extends BaseController {
 			$entity = new Risque();
 			$form=new RisqueType();
 		}
-		
+
 		$this->denyAccessUnlessGranted('validate', $risque,'Accés non autorisé!');
-		
+
 		// set to true to activate entity validation
 		$entity->getRisque()->setHasToBeValidated($this->getMyParameter('states',array('risque','a_valider')));
 		if($request->getMethod()=='POST') {
@@ -507,7 +507,7 @@ class RisqueController extends BaseController {
 		return $this->render($view, array('entity' => $entity, 'form' => $form->createView(), 'id' => $id));
 	}
 
-	
+
 	/**
 	 * @QMLogger(message="Rejeter un risque")
 	 * @Route("/{id}/rejet_risque", name="rejet_risque")
@@ -517,11 +517,11 @@ class RisqueController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$etat = $this->getMyParameter('states',array('risque','rejete'));
 		/**
-		 * 
+		 *
 		 * @var Risque $risque
 		 */
 		$risque = $em->getRepository('App\Entity\Risque')->find($id);
-		
+
 		if(!$risque) {
 			throw $this->createNotFoundException('Aucun risque trouvé pour cet id : '.$id);
 		}
@@ -550,8 +550,8 @@ class RisqueController extends BaseController {
 		}
 		return array('form'=>$form->createView(), 'id'=>$id);
 	}
-	
-	
+
+
 	/**
 	 * @QMLogger(message="Suppression d'une cause de risque")
 	 * @Route("/{id}/supprimer_cause_du_risque", name="supprimer_cause_du_risque")
@@ -560,10 +560,10 @@ class RisqueController extends BaseController {
 	public function supprimeCauseOfRisqueAction(Request $request, $id){
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\RisqueHasCause')->find($id);
-		
+
 		if(!$entity)
 			throw $this->createNotFoundException('Aucun cause trouvé pour cet id : '.$id);
-		
+
 		if($request->getMethod()=='POST'){
 			$entity->getRisque()->setTobeMigrate(true);
 			$em->remove($entity);
@@ -572,8 +572,8 @@ class RisqueController extends BaseController {
 		}
 		return new Response($this->renderView('risque/supprimeCauseOfRisque.html.twig', array('entity' => $entity)));
 	}
-	
-	
+
+
 	/**
 	 * @QMLogger(message="Suppression d'un risque")
 	 * @Route("/{id}/suppression_risque", name="suppression_risque")
@@ -584,7 +584,7 @@ class RisqueController extends BaseController {
 		$entity = $em->getRepository('App\Entity\Risque')->find($id);
 		if($entity == null)
 			$this->createNotFoundException("Ce risque n'existe pas!");
-		
+
 		$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');
 		if($request->getMethod()=='POST') {
 			// $dm = $this->get('doctrine_mongodb')->getManager();
@@ -596,7 +596,7 @@ class RisqueController extends BaseController {
 		return new Response($this->renderView('risque/delete.html.twig', array('entity' => $entity)));
 	}
 
-	
+
 	/**
 	 * @QMLogger(message="Affichage d'un risque")
 	 * @Route("/{id}/details_risque", name="details_risque", requirements={ "id"= "\d+"})
@@ -614,7 +614,7 @@ class RisqueController extends BaseController {
 		return array('entity' => $entity);
 	}
 
-	
+
 	/**
 	 * @QMLogger(message="Affichage d'un risque")
 	 * @Route("/{id}/apercu_risque", name="apercu_risque", requirements={ "id"= "\d+"})
@@ -626,13 +626,13 @@ class RisqueController extends BaseController {
 		if($risque==null) {
 			$this->createNotFoundException("Le risque n'existe pas dans la base");
 		}
-		
+
 		$this->denyAccessUnlessGranted('accesOneRisque', $risque, 'Accés Non Autorisé!');
-		
+
 		return array('entity' => $risque);
 	}
 
-	
+
 	/**
 	 * @QMLogger(message="Modification d'un risque")
 	 * @Route ("/{id}/edition_risque", name="edition_risque", requirements={ "id"=  "\d+"})
@@ -644,15 +644,15 @@ class RisqueController extends BaseController {
 		$cartographie_id=$risque->getCartographie()->getId();
 		if($cartographie_id==1){
 			$entity = $em->getRepository('App\Entity\RisqueMetier')->findOneBy(array('risque'=>$id));
-			$form   = $this->createForm(new RisqueMetierType(), $entity);
+			$form   = $this->createForm(RisqueMetierType::class, $entity);
 			$view   ='risque/new_risque_metier.html.twig';
 		} elseif ($cartographie_id==2){
 			$entity = $em->getRepository('App\Entity\RisqueProjet')->findOneBy(array('risque'=>$id));
-			$form   = $this->createForm(new RisqueProjetType(), $entity);
+			$form   = $this->createForm(RisqueProjetType::class, $entity);
 			$view   ='risque/new_risque_projet.html.twig';
 		} elseif($cartographie_id==3) {
 			$entity = $em->getRepository('App\Entity\RisqueSST')->findOneBy(array('risque'=>$id));
-			$form   = $this->createForm(new RisqueSSTType(), $entity);
+			$form   = $this->createForm(RisqueSSTType::class, $entity);
 			$view   ='risque/new_risque_sst.html.twig';
 		} elseif($cartographie_id==4){
 			$entity = $em->getRepository('App\Entity\RisqueEnvironnemental')->findOneBy(array('risque'=>$id));
@@ -664,7 +664,7 @@ class RisqueController extends BaseController {
 		}
 		$this->denyAccessUnlessGranted('update', $risque, 'Accés Non Autorisé!');
 		$form->handleRequest($request);
-		if ($form->isValid()) {
+		if ($form->isSubmitted() && $form->isValid()) {
 			$risque->setDateSaisie(new \DateTime('NOW'));
 			$risque->setTobeMigrate(true);
 			$em->persist($entity);
@@ -678,6 +678,10 @@ class RisqueController extends BaseController {
 				return $this->redirect($this->generateUrl('nouveau_controle_de_risque', array('risque_id' => $id)));
 			}
 		}
+		if (!$entity){
+            $this->get('session')->getFlashBag()->add('error', "Type de risque introuvable !");
+            return $this->redirect($request->headers->get('referer'));
+        }
 		return $this->render($view, array('entity' => $entity, 'form' => $form->createView(), 'id'=>$id ));
 	}
 	

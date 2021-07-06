@@ -351,8 +351,8 @@ class ControleController extends BaseController {
 		$traitements = $em->getRepository('App\Entity\Traitement')->findAll ();
 		$data = $this->orange_main_core->getMapping('Controle')->mapForExport($queryBuilder, $traitements);
 		$reporting = $this->orange_main_core->getReporting('Controle')->extract($data);
-		$reporting->getResponseAfterSave('php://output', 'Controles');
-		return $this->redirect($this->generateUrl('les_controles'));
+        return $reporting->getResponseAfterSave('php://output', 'Controles');
+		//return $this->redirect($this->generateUrl('les_controles'));
 	}
 	
 	/**

@@ -41,7 +41,7 @@ class RisqueHasCauseType extends AbstractType
 					return $er->createQueryBuilder('r')->innerJoin('r.typeGrille', 'tg')->innerJoin('tg.typeEvaluation', 'te')
 						->where('tg.cartographie = :cartographie')->andWhere('te.id = :typeEvaluation')
 						->setParameters(array('cartographie'=>$risque->getCartographie(), 'typeEvaluation'=>TypeEvaluation::$ids['cause']));
-				}, 'placeholder' => 'Choisir un niveau ...', 'choices_as_values' => true));
+				}, 'placeholder' => 'Choisir un niveau ...'));
 			
 			$event->getForm()->add('normalGrille', EntityType::class, array('class' => 'App\Entity\Grille', 'query_builder' => function($er) use($risque) {
 					return $er->createQueryBuilder('r')->where('r.typeGrille = :typeGrille')
@@ -53,7 +53,7 @@ class RisqueHasCauseType extends AbstractType
 						->setParameter('typeGrille', $risque->getTypeGrilleCauseBy(ModeFonctionnement::$ids['anormal']));
 				}, 'placeholder' => 'Choisir un niveau ...'));
 			
-			if($event->getName()==FormEvents::SUBMIT) {
+			if($event->getForm()==FormEvents::SUBMIT) {
 				$grille = $event->getData()->getFinalGrille();
 				$event->getData()->setGrille($grille);
 				$event->getForm()->get('grille')->submit($grille ? $grille->getId() : null);

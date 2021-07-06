@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Criteria\ControleCriteria;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -259,14 +260,14 @@ class PlanActionController extends BaseController {
 	 * @Template()
 	 */
 	public function exportDispositifAction(Request $request) {
-		$form = $this->createForm(PlanActionCriteria::class);
-		if($request->getMethod() == 'POST') {
-			$this->get('session')->set('dispositif_criteria', $request->request->get($form->getName()));
-			return new JsonResponse();
-		} else {
-			$this->modifyRequestForForm($request, $this->get('session')->get('dispositif_criteria'), $form);
-			return array('form' => $form->createView());
-		}
+        $em = $this->getDoctrine ()->getManager ();
+        $form = $this->createForm(PlanActionCriteria::class);
+        $this->modifyRequestForForm($request, $this->get('session')->get('dispositif_criteria'), $form);
+        $queryBuilder = $em->getRepository('App\Entity\PlanAction')->listAllQueryBuilder($form->getData ())->getQuery ()->getResult ();
+        $traitements = $em->getRepository('App\Entity\Traitement')->findAll ();
+        $data = $this->orange_main_core->getMapping('PlanAction')->mapForExport($queryBuilder, $traitements);
+        $reporting = $this->orange_main_core->getReporting('PlanAction')->extract($data);
+        return $reporting->getResponseAfterSave('php://output', 'PlanAction');
 	}
 	
 	/**

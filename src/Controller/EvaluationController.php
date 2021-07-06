@@ -191,8 +191,8 @@ class EvaluationController extends BaseController{
 		$form = $this->createForm(new EvaluationCriteria()); 
 		$this->modifyRequestForForm($request, $this->get('session')->get('evaluation_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Evaluation')->listQueryBuilder($form->getData());
-		$data = $this->get('orange_main.core')->getMapping('Evaluation')->mapForBasicExport($queryBuilder->getQuery()->getResult());
-		$reporting = $this->get('orange_main.core')->getReporting('Risque')->extractByRisque($data);
+		$data = $this->orange_main_core->getMapping('Evaluation')->mapForBasicExport($queryBuilder->getQuery()->getResult());
+		$reporting = $this->orange_main_core->getReporting('Risque')->extractByRisque($data);
 		$reporting->getResponseAfterSave('php://output', 'Cartographie des risques');
 	}
 	

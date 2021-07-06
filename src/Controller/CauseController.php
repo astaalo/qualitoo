@@ -177,8 +177,8 @@ class CauseController extends BaseController {
 		$form = $this->createForm(new CauseCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('risquehascause_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Cause')->listAllQueryBuilder($form->getData());
-		$data = $this->get('orange_main.core')->getMapping('Cause')->mapForBasicExport($queryBuilder->getQuery()->getResult());
-		$reporting = $this->get('orange_main.core')->getReporting('Cause')->extractByCause($data);
+		$data = $this->orange_main_core->getMapping('Cause')->mapForBasicExport($queryBuilder->getQuery()->getResult());
+		$reporting = $this->orange_main_core->getReporting('Cause')->extractByCause($data);
 		$reporting->getResponseAfterSave('php://output', 'Extraction des causes');
 	}
 	

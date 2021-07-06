@@ -248,8 +248,8 @@ class PlanActionController extends BaseController {
 		$form = $this->createForm(new PlanActionCriteria());
 		$this->modifyRequestForForm($request, $this->get('session')->get('planaction_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\PlanAction')->listAllQueryBuilder($form->getData())->getQuery()->getResult();
-		$data = $this->get('orange_main.core')->getMapping('PlanAction')->mapForExport($queryBuilder);
-		$reporting = $this->get('orange_main.core')->getReporting('PlanAction')->extract($data);
+		$data = $this->orange_main_core->getMapping('PlanAction')->mapForExport($queryBuilder);
+		$reporting = $this->orange_main_core->getReporting('PlanAction')->extract($data);
 		return $reporting->getResponseAfterSave('php://output', 'PlanActions');
 	}
 	

@@ -74,7 +74,9 @@
 			{% for entity in entities %}
 				<li>
 					<span style="width: 90%;display: inline-block;">{{ loop.index }} - {{ entity['libelle'] is defined ? entity['libelle'] : '' }}</span>
-					<span style="width: 9%;display: inline-block;text-align: center;font-size: 16px;background-color: {{ colors[entity['criticite']] is defined ? colors[entity['criticite']] : 'white' }};">{{ entity['criticite'] is defined ? entity['criticite']|round :''}}</span>
+					{% if entity.criticite is defined %}
+						<span style="width: 9%;display: inline-block;text-align: center;font-size: 16px;background-color: {{ colors[entity['criticite']] is defined ? colors[entity['criticite']] : 'white' }};">{{ entity['criticite'] is defined ? entity['criticite']|round :''}}</span>
+					{% endif %}
 				</li>
 			{% endfor %}
 			</ul>

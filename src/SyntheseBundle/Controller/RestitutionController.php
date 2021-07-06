@@ -22,7 +22,7 @@ class RestitutionController extends BaseController {
 		$dm = $this->get('doctrine_mongodb')->getManager();
 		$probabiteKPIs = $graviteKPIs = false;
 		$entity = new Risque();
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
 			$this->get('session')->set('risque_criteria', $request->request->get($form->getName()));
@@ -38,7 +38,7 @@ class RestitutionController extends BaseController {
 		/*foreach($probabiteKPIs as $probabiteKPI) {
 			var_dump($probabiteKPI);echo '<br><br>';
 		}exit;*/
-		$entities = $this->get('orange_main.core')->getMapping('Risque', true)->mapForMatrice($probabiteKPIs, $graviteKPIs, $type, $form->getData());
+		$entities = $this->orange_main_core->getMapping('Risque', true)->mapForMatrice($probabiteKPIs, $graviteKPIs, $type, $form->getData());
 		return array('entities' => $entities, 'form' => $form->createView(), 'carto'=>$carto, 'type' => $type);
 	}
 

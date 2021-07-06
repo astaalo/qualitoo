@@ -705,15 +705,15 @@ class RisqueController extends BaseController {
 		$criteria = $this->get('session')->get('risque_criteria');
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listValidQueryBuilder($form->getData())->getQuery()->getResult();
 		if($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'metier'))) {
-			$data = $this->get('orange_main.core')->getMapping('Risque')->mapForExportMetier($queryBuilder, $form->getData()->getCartographie());
+			$data = $this->orange_main_core->getMapping('Risque')->mapForExportMetier($queryBuilder, $form->getData()->getCartographie());
 		} elseif($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'projet'))) {
- 			$data = $this->get('orange_main.core')->getMapping('Risque')->mapForExportProjet($queryBuilder, $form->getData()->getCartographie());
+ 			$data = $this->orange_main_core->getMapping('Risque')->mapForExportProjet($queryBuilder, $form->getData()->getCartographie());
 		} elseif($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'sst'))) {
-			$data = $this->get('orange_main.core')->getMapping('Risque')->mapForExportSST($queryBuilder, $form->getData()->getCartographie());
+			$data = $this->orange_main_core->getMapping('Risque')->mapForExportSST($queryBuilder, $form->getData()->getCartographie());
 		} elseif($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'environnement'))) {
-			$data = $this->get('orange_main.core')->getMapping('Risque')->mapForExportEnvironnemental($queryBuilder, $form->getData()->getCartographie());			
+			$data = $this->orange_main_core->getMapping('Risque')->mapForExportEnvironnemental($queryBuilder, $form->getData()->getCartographie());
 		}
-		$reporting = $this->get('orange_main.core')->getReporting('Risque')->extract($data, $criteria['cartographie'], $this->getUser()->getSociete());
+		$reporting = $this->orange_main_core->getReporting('Risque')->extract($data, $criteria['cartographie'], $this->getUser()->getSociete());
 		return $reporting->getResponseAfterSave('php://output', 'Cartographie des risques ');
 	}
 

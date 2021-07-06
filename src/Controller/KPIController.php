@@ -83,11 +83,11 @@ class KPIController extends BaseController {
 	/**
 	 * @QMLogger(message="KPI: Repartition  criticite par risque")
 	 * @Method({"GET","POST"})
-	 * @Route("/{carto}/rrcc", name="rrcc")
+	 * @Route("/{carto}/rrc", name="rrc")
 	 * @Template("KPI/RepartitionRisqueCriticite.html.twig")
 	 */
 	public function repartitionRisqueCriticiteAction(Request $request,$carto) {
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->denyAccessUnlessGranted('rrc', new Risque(), 'Accés non autorisé!');
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('risque_criteria', array());
@@ -99,7 +99,7 @@ class KPIController extends BaseController {
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($request, $data, $form);
 		$req= $this->getDoctrine()->getRepository(Risque::class)->getMaturiteGraviteProbabilteByRisque($form->getData())->getQuery()->getArrayResult();
-		$kpis = $this->get('orange_main.core')->getMapping('Risque')->mapForTableauRisqueCriticite($req);
+		$kpis = $this->orange_main_core->getMapping('Risque')->mapForTableauRisqueCriticite($req);
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'rrc'));
 		return array('carto'=> $carto, 'kpis'=>$kpis, 'form'=>$form->createView());
 	}
@@ -240,11 +240,11 @@ class KPIController extends BaseController {
 	/**
 	 * @QMLogger(message="KPI: Evolution ICG")
 	 * @Method({"GET","POST"})
-	 * @Route("/{carto}/eeicg", name="eeicg")
+	 * @Route("/{carto}/eicg", name="eicg")
 	 * @Template("KPI/evolutionICG.html.twig")
 	 */
 	public function evolutionICGAction(Request $request,$carto){
-		$form = $this->createForm(new RisqueCriteria(), new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
 		$this->denyAccessUnlessGranted('eicg', new Risque(), 'Accés non autorisé!');
 		
@@ -258,8 +258,8 @@ class KPIController extends BaseController {
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($request, $data, $form);
 		$req = $this->getDoctrine()->getRepository(Risque::class)->getMaturiteGraviteProbabiliteByRisqueByYear($form->getData())->getQuery()->getArrayResult();
-		$kpis =  $this->get('orange_main.core')->getMapping('Risque')->mapForTableauICGByYear($req);
-		$graphe = $this->get('orange_main.core')->getMapping('Risque')->mapForGrapheICGByYear($req);
+		$kpis =  $this->orange_main_core->getMapping('Risque')->mapForTableauICGByYear($req);
+		$graphe = $this->orange_main_core->getMapping('Risque')->mapForGrapheICGByYear($req);
 		$this->get('session')->set('export', array('kpis' => serialize($kpis), 'type'=>'Risque','source'=>'eicg'));
 		return array('carto'=>$carto, 'kpis'=>$kpis, 'form'=>$form->createView(), 'graphe'=>$graphe);
 	}
@@ -279,23 +279,23 @@ class KPIController extends BaseController {
 		$type=isset($session['type'])?$session['type']:null;
 		$source=$session['source'];
 		if($source=='rcc')
-			$reporting = $this->get('orange_main.core')->getReporting('Kpi')->extractRCC($data, $type);
+			$reporting = $this->orange_main_core->getReporting('Kpi')->extractRCC($data, $type);
 		elseif($source=='rrc')
-			$reporting = $this->get('orange_main.core')->getReporting('Kpi')->extractRRC($data);
+			$reporting = $this->orange_main_core->getReporting('Kpi')->extractRRC($data);
 		elseif($source=='rt')
-			$reporting = $this->get('orange_main.core')->getReporting('Kpi')->extractRT($data);
+			$reporting = $this->orange_main_core->getReporting('Kpi')->extractRT($data);
 		elseif($source=='details_metier_rt')
-			$reporting = $this->get('orange_main.core')->getReporting('Kpi')->extractDetailsRTMetier($data,$em);
+			$reporting = $this->orange_main_core->getReporting('Kpi')->extractDetailsRTMetier($data,$em);
 		elseif($source=='details_env_rt')
-			$reporting = $this->get('orange_main.core')->getReporting('Kpi')->extractDetailsRTEnv($data,$em);
+			$reporting = $this->orange_main_core->getReporting('Kpi')->extractDetailsRTEnv($data,$em);
 		elseif($source=='tprc')
-			$reporting = $this->get('orange_main.core')->getReporting('Kpi')->extractTPRC($data,$em);
+			$reporting = $this->orange_main_core->getReporting('Kpi')->extractTPRC($data,$em);
 		elseif($source=='cmc')
-			$reporting = $this->get('orange_main.core')->getReporting('Kpi')->extractCMC($data,$em);
+			$reporting = $this->orange_main_core->getReporting('Kpi')->extractCMC($data,$em);
 		elseif($source=='rav')
-			$reporting = $this->get('orange_main.core')->getReporting('Kpi')->extractRAV($data,$em);
+			$reporting = $this->orange_main_core->getReporting('Kpi')->extractRAV($data,$em);
 		elseif($source=='eicg')
-			$reporting = $this->get('orange_main.core')->getReporting('Kpi')->extractEICG($data);
+			$reporting = $this->orange_main_core->getReporting('Kpi')->extractEICG($data);
 		
 		$reporting->getResponseAfterSave('php://output', 'Extractions Kpis');
 		return $this->redirect($this->generateUrl('les_risques'));
@@ -307,7 +307,7 @@ class KPIController extends BaseController {
 	 * @Template()
 	 */
 	public function filterAction(Request $request,$link,$carto,$type) {
-		$form = $this->createForm(new RisqueCriteria());
+		$form = $this->createForm(RisqueCriteria::class);
 		if($request->getMethod()=='POST') {
 				$this->get('session')->set('risque_criteria', $request->request->get($form->getName()));
 				return new JsonResponse();

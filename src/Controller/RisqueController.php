@@ -103,7 +103,7 @@ class RisqueController extends BaseController {
 		$datas=array();
 		if($request->getMethod()=='POST'){
 			$dispatcher = $this->container->get('event_dispatcher');
-			$event=new CartoEvent($this->container);
+			$event = $this->cartoEvent;
 			$form->handleRequest($request);
 			if(strlen($entity->getRisque()->toTransferts)>0) {
 				$datas=explode(',',str_replace(" ", "",$entity->getRisque()->toTransferts));
@@ -496,7 +496,7 @@ class RisqueController extends BaseController {
 				}
 				$entity->getRisque()->setTobeMigrate(true);
 				$em->persist($entity);
-				$event=new CartoEvent($this->container);
+				$event = $this->cartoEvent;
 				$event->setRisque($entity->getRisque());
 				$dispatcher->dispatch(OrangeMainBundle::RISQUE_VALIDATED,$event);
 				$this->service_status->logEtatRisque($risque,$this->getUser(),"Validation de la fiche de risque!");

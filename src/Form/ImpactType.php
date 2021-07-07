@@ -31,7 +31,7 @@ class ImpactType extends AbstractType
 								->setParameters(array('domaine' => $domaine, 'etat' => true));
 					}, 'placeholder' => 'Choisir un critère ...', 'attr' => array('class' => 'chzn-select select_child')
 				));
-			if($event->getName()==FormEvents::SUBMIT) {
+			if($event->getForm()->getName()==FormEvents::SUBMIT) {
 				$event->getForm()->get('critere')->submit($critere ? $critere->getId() : null);
 			}
 		}

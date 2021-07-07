@@ -231,7 +231,7 @@ class Evaluation
 	
 	/**
 	 * Get date Evaluation
-	 * @return DateTime
+	 * @return \DateTime
 	 */
 	public function getDateEvaluation() {
 		return $this->dateEvaluation;
@@ -356,7 +356,7 @@ class Evaluation
 	
 	/**
 	 * Set Risque
-	 * @param \Risque $risque
+	 * @param Risque $risque
 	 * @return Evaluation
 	 */
 	public function setRisque($risque) {
@@ -369,7 +369,7 @@ class Evaluation
 	
 	/**
 	 * Set Precedant
-	 * @param \Evaluation $precedant
+	 * @param Evaluation $precedant
 	 * @return Evaluation
 	 */
 	public function setPrecedant($precedant) {
@@ -432,7 +432,7 @@ class Evaluation
 	}
 	
 	/**
-	 * @param Domaine $domaine
+	 * @param DomaineSite $domaine
 	 * return boolean
 	 */
 	public function hasDomaine($domaine) {
@@ -443,7 +443,7 @@ class Evaluation
 	}
 	
 	/**
-	 * @param Domaine $domaine
+	 * @param DomaineSite $domaine
 	 * return EvaluationHasImpact
 	 */
 	public function getIOEByDomaine($domaine) {
@@ -518,7 +518,7 @@ class Evaluation
 			$probabilite = $this->causeOfEvaluation->count() ? round($probabilite / $this->causeOfEvaluation->count()): 0;
 		} else {
 			foreach($this->causeOfEvaluation as $causeOfEvaluation) {
-				$probabilite = max($probabilite, $causeOfEvaluation->getGrille()->getValeur());
+				$probabilite = $causeOfEvaluation->getGrille() ? max($probabilite, $causeOfEvaluation->getGrille()->getValeur()) : $probabilite;
 			}
 		}
 		if($probabilite) {

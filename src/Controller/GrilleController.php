@@ -4,6 +4,7 @@
  */
 namespace App\Controller;
 
+use App\Entity\Grille;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -21,9 +22,9 @@ class GrilleController extends BaseController{
 	 * @Route("/grille_by_critere", name="grille_by_critere")
 	 * @Template()
 	 */
-	public function listByCritereAction() {
+	public function listByCritereAction(Request $request) {
 	  $em = $this->getDoctrine()->getManager();
-	  $arrData = $em->getRepository('App\Entity\Grille')->listByCritere($this->getRequest()->request->get('id'));
+	  $arrData = $em->getRepository(Grille::class)->listByCritere($request->request->get('id'));
 	  $output = array(0 => array('id' => '', 'libelle' => 'Choisir un niveau ...'));
 	  foreach ($arrData as $data) {
 			$output[] = array('id' => $data['id'], 'libelle' => $data['libelle']);

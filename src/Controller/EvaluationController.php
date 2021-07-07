@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Form\EvaluationType;
+use App\MainBundle\OrangeMainBundle;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -10,7 +11,6 @@ use App\Entity\Evaluation;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Criteria\EvaluationCriteria;
 use App\Entity\Risque;
-use App\Event\CartoEvent;
 use App\Annotation\QMLogger;
 
 class EvaluationController extends BaseController{
@@ -79,11 +79,11 @@ class EvaluationController extends BaseController{
 		$entity = new Evaluation();
 		$entity->setRisque($risque);
 		$entity->setEvaluateur($this->getUser());
-		$form   = $this->createCreateForm($entity->newEvaluation($risque), 'Evaluation', array('attr' => array('em' => $em)));
+		$form   = $this->createCreateForm($entity->newEvaluation($risque), EvaluationType::class, array('attr' => array('em' => $em)));
 		if($request->getMethod()=='POST'){
 			$form->handleRequest($request);
 			$dispatcher = $this->container->get('event_dispatcher');
-			$event=new CartoEvent($this->container);
+			$event = $this->cartoEvent;
 			$entity->cleanUselessImpact();
 			$entity->computeProbabilite();
 			$entity->computeGravite();
@@ -138,7 +138,7 @@ class EvaluationController extends BaseController{
 			$form->bind($request);
 			if ($form->isValid()) {
 				$dispatcher = $this->container->get('event_dispatcher');
-				$event=new CartoEvent($this->container);
+				$event = $this->cartoEvent;
 				$entity->cleanUselessImpact();
 				$entity->computeProbabilite();
 				$entity->computeGravite();

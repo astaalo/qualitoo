@@ -25,7 +25,7 @@ class AuditHasRisqueType extends AbstractType
      */
     public function onSetData(FormEvent $event) {
     /*	if($event->getData() && null != $event->getData()->getRisque()) {
-    					if($event->getName()==FormEvents::SUBMIT) {
+    					if($event->getForm()->getName()==FormEvents::SUBMIT) {
     						$maturite = $event->getData()->getMaturite();
     						$event->getData()->setMaturite($maturite);
     					}

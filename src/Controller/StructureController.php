@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Form\HierarchieType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -36,7 +37,7 @@ class StructureController extends BaseController {
 	 * @Template()
 	 */
 	public function filterAction(Request $request) {
-		$form = $this->createForm(new StructureType());
+		$form = $this->createForm(StructureType::class);
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('structure_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -81,7 +82,7 @@ class StructureController extends BaseController {
 	 */
 	public function createAction(Request $request) {
 		$entity = new Structure();
-		$form   = $this->createCreateForm($entity, 'Structure');
+		$form   = $this->createCreateForm($entity, StructureType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -128,11 +129,10 @@ class StructureController extends BaseController {
 	 * @Method("POST")
 	 * @Template("structure/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Structure')->find($id);
-		$form = $this->createCreateForm($entity, 'Structure');
-		$request = $request;
+		$form = $this->createCreateForm($entity, StructureType::class);
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {
@@ -185,7 +185,7 @@ class StructureController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$structure = $em->getRepository('App\Entity\Structure')->findOneByFullname($request->request->get('value'));
 		$entity = Hierarchie::createFromStructure($structure);
-		$form = $this->createCreateForm($entity, 'Hierarchie');
+		$form = $this->createCreateForm($entity, HierarchieType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -194,7 +194,7 @@ class StructureController extends BaseController {
 	 * @Template()
 	 */
 	public function chooseStructureInModalAction(Request $request) {
-		$form = $this->createForm(new ChooseStructureType());
+		$form = $this->createForm(ChooseStructureType::class);
 		return array('form' => $form->createView());
 	}
 	
@@ -218,7 +218,7 @@ class StructureController extends BaseController {
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \Orange\QuickMakingBundle\Controller\BaseController::setFilter()
+	 * @see \App\BaseController::setFilter()
 	 */
 	protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
 		parent::setFilter($queryBuilder, array('q.code', 'q.libelle'), $request);

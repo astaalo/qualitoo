@@ -163,7 +163,7 @@ class ProcessusController extends BaseController {
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Processus')->find($id);
-		$form = $this->createCreateForm($entity, 'Processus');
+		$form = $this->createCreateForm($entity, ProcessusType::class);
 		$form->bind($request);
 		if ($form->isValid()) {
 			$em->persist($entity);

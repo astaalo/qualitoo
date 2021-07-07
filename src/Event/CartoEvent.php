@@ -43,7 +43,7 @@ class CartoEvent extends Event
 	 * 
 	 * @param Container $container
 	 */
-	public function __construct(Container $container)
+	public function __construct($container)
 	{
 		$this->entityManager=$container->get('doctrine.orm.entity_manager');
 	}

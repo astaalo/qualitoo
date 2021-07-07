@@ -26,7 +26,7 @@ class DocumentController extends BaseController {
 		$position=$this->get('session')->get('document_criteria')['typeDocument'];
 		
 		$data = $this->get('session')->get('document_criteria');
-		$form = $this->createForm(new DocumentCriteria(), new Document(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+		$form = $this->createForm(DocumentCriteria::class, new Document(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->modifyRequestForForm($request, $data, $form);
 		return array('form' => $form->createView(),'position'=>intval($position));
 	}
@@ -72,7 +72,7 @@ class DocumentController extends BaseController {
 	 */
 	public function listAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new DocumentCriteria());
+		$form = $this->createForm(DocumentCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('document_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Document')->getDocumentsByType($form->getData());
 		return $this->paginate($request, $queryBuilder);
@@ -96,7 +96,7 @@ class DocumentController extends BaseController {
 		$typeDocument = $this->getDoctrine()->getRepository(TypeDocument::class)->find($type);
 		$currrentYear = date('Y');
 		$entity->setTypeDocument($typeDocument);
-		$form   = $this->createCreateForm($entity, 'Document');
+		$form   = $this->createCreateForm($entity, DocumentType::class);
 		return array('entity' => $entity, 'form' => $form->createView(), 'type'=>$type, 'year'=>$currrentYear);
 	}
 
@@ -107,7 +107,7 @@ class DocumentController extends BaseController {
 	 */
 	public function createAction(Request $request,$type) {
 		$entity = new Document();
-		$form   = $this->createCreateForm($entity, 'Document');
+		$form   = $this->createCreateForm($entity, DocumentType::class);
 		$typeDocument = $this->getDoctrine()->getRepository(TypeDocument::class)->find($type);
 		$entity->setTypeDocument($typeDocument);
 		$currrentYear = date('Y');
@@ -171,7 +171,7 @@ class DocumentController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Document')->find($id);
-		$form = $this->createCreateForm($entity, 'Document');
+		$form = $this->createCreateForm($entity, DocumentType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -184,7 +184,7 @@ class DocumentController extends BaseController {
 	public function updateAction(Request $request,$id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Document')->find($id);
-		$form = $this->createCreateForm($entity, 'Document');
+		$form = $this->createCreateForm($entity, DocumentType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->handleRequest($request);

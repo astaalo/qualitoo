@@ -113,7 +113,7 @@ class ChargementController extends BaseController {
 			$entity->addCritere($object);
 		}
 		$entity->setCartographie($carto);
-		$form =$this->createCreateForm($entity, 'Chargement');
+		$form =$this->createCreateForm($entity, ChargementType::class);
 		if($id!=$this->getMyParameter('ids', array('carto', 'metier'))){
 			$form->remove('direction');
 		}

@@ -55,7 +55,7 @@ class AvancementController extends BaseController {
 	public function createAction(Request $request,$id) {
 		$entity = new Avancement();
 		$em = $this->getDoctrine()->getManager();
-		$form   = $this->createCreateForm($entity, 'Avancement');
+		$form   = $this->createCreateForm($entity, AvancementType::class);
 		$pa = $em->getRepository('App\Entity\PlanAction')->find($id);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
@@ -90,7 +90,7 @@ class AvancementController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Avancement')->find($id);
-		$form = $this->createCreateForm($entity, 'Avancement');
+		$form = $this->createCreateForm($entity, AvancementType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -102,7 +102,7 @@ class AvancementController extends BaseController {
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Avancement')->find($id);
-		$form = $this->createCreateForm($entity, 'Avancement');
+		$form = $this->createCreateForm($entity, AvancementType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);

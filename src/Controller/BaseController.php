@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Event\CartoEvent;
 use App\MainBundle\Twig\AssetsExtension;
 use App\Service\Actions;
 use App\Service\Core;
@@ -11,7 +12,9 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,8 +30,9 @@ class BaseController extends AbstractController
     protected $service_assets_extension;
     protected $orange_main_loader;
     protected $orange_main_core;
+    protected $cartoEvent;
 
-    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core)
+    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core, CartoEvent $cartoEvent)
     {
         $this->getParameter = $params;
         $this->paginator = $paginator;
@@ -37,6 +41,7 @@ class BaseController extends AbstractController
         $this->service_assets_extension = $assets_extension;
         $this->orange_main_loader = $orange_main_loader;
         $this->orange_main_core = $orange_main_core;
+        $this->cartoEvent = $cartoEvent;
     }
 
      public static function getSubscribedServices(): array  //ON surcharge cette fonction pour ajouter nos services aux services existants #Spécialité Symfony4
@@ -46,7 +51,7 @@ class BaseController extends AbstractController
              //'monolog.logger.trace' => 'Psr\Log\LoggerInterface',
              //'orange_main.status' => 'App\Service\Status',
              //'orange_ca.mailer' => 'App\Service\Mailer'
-             'twig.extension.assets' => AssetsExtension::class
+             'event_dispatcher' => EventDispatcherInterface::class
 
          ]);
      }

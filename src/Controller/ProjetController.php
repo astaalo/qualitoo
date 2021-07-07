@@ -125,7 +125,7 @@ class ProjetController extends BaseController {
 		$entity = new Projet();
 		$processus = $id ? $em->getRepository('App\Entity\Processus')->find($id) : null;
 		$entity->setProcessus($processus);
-		$form   = $this->createCreateForm($entity, 'Projet');
+		$form   = $this->createCreateForm($entity, ProjetType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$entity->setSociete($this->getUser()->getSociete());
@@ -155,7 +155,7 @@ class ProjetController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Projet')->find($id);
-		$form = $this->createCreateForm($entity, 'Projet');
+		$form = $this->createCreateForm($entity, ProjetType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -168,7 +168,7 @@ class ProjetController extends BaseController {
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Projet')->find($id);
-		$form = $this->createCreateForm($entity, 'Projet');
+		$form = $this->createCreateForm($entity, ProjetType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);

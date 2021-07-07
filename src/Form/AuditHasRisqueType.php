@@ -16,7 +16,7 @@ class AuditHasRisqueType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-		            ->add('maturite', null, array('empty_value' => 'Maturité réel ...', 'label'=>'Maturité', 'attr' => array('class' => 'chzn-select chzn-done')))
+		            ->add('maturite', null, array('placeholder' => 'Maturité réel ...', 'label'=>'Maturité', 'attr' => array('class' => 'chzn-select chzn-done')))
         ;
            // $builder->addEventListener(FormEvents::SUBMIT, array($this, 'onSetData'));
     }

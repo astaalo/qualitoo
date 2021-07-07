@@ -17,12 +17,12 @@ class RelanceType extends AbstractType
         $builder
             ->add('nbDebut')
             ->add('nbFrequence')
-            ->add('phase',null,array('label' => 'A partir de la phase','empty_value' => 'Choisir', 'attr' => array('class' => 'chzn-select')))
+            ->add('phase',null,array('label' => 'A partir de la phase','placeholder' => 'Choisir', 'attr' => array('class' => 'chzn-select')))
             ->add('dateCreation')
             ->add('isActif', null, array('label' => 'Activer les relances', 'required' => true,'attr' => array('class' => 'on_off_checkbox')))
             ->add('societe')
-            ->add('uniteTpsDebut',  null, array('empty_value' => 'Choisir ', 'attr' => array('class' => 'chzn-select')))
-            ->add('uniteTpsFrequence',  null, array('empty_value' => 'Choisir', 'attr' => array('class' => 'chzn-select')))
+            ->add('uniteTpsDebut',  null, array('placeholder' => 'Choisir ', 'attr' => array('class' => 'chzn-select')))
+            ->add('uniteTpsFrequence',  null, array('placeholder' => 'Choisir', 'attr' => array('class' => 'chzn-select')))
         ;
     }
     

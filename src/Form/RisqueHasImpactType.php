@@ -10,9 +10,9 @@ class RisqueHasImpactType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add($builder->create('domaine', 'hidden')->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\DomaineImpact')))
+		$builder->add($builder->create('domaine', HiddenType::class)->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\DomaineImpact')))
 			->add('impact', new ImpactType(), array('attr' => array('em' => $options['attr']['em'])))
-			->add('grille', null, array('empty_value' => 'Choisir un niveau ...'));
+			->add('grille', null, array('placeholder' => 'Choisir un niveau ...'));
 	}
 	
 	public function configureOptions(OptionsResolver $resolver)

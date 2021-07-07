@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\ExecutionType;
+use App\MainBundle\OrangeMainBundle;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -15,7 +17,7 @@ use App\Entity\PlanAction;
 use App\Entity\Execution;
 use App\Criteria\ControleCriteria;
 use App\Event\CartoEvent;
-use App\OrangeMainBundle;
+//use App\OrangeMainBundle;
 use App\Form\QuizType;
 use App\Annotation\QMLogger;
 
@@ -105,21 +107,19 @@ class ControleController extends BaseController {
 	public function createAction(Request $request) {
 		$em = $this->getDoctrine ()->getManager ();
 		$entity = new Controle ();
-		$form = $this->createForm(new ControleType (), $entity, array (
-				'attr' => array (
-						'em' => $em 
-				) 
-		));
+		$form = $this->createForm(ControleType::class, $entity, array ('attr' => array ('em' => $em)));
 		$form->handleRequest($request);
 		if ($form->isValid ()) {
 			$dispatcher = $this->container->get('event_dispatcher');
-			$event = new CartoEvent($this->container);
+			$event = $this->cartoEvent;
 			$event->setControle($entity);
 			$dispatcher->dispatch(OrangeMainBundle::CTRL_CREATED, $event);
 			$entity->getRisque()->setTobeMigrate(true);
 			$em->persist($entity);
 			$em->flush ();
-			if ($request->request->has('add_another')) {
+            $this->get('session')->getFlashBag()->add('success', "Contrôle ajouté avec succés.");
+
+            if ($request->request->has('add_another')) {
 				$route = $this->generateUrl('nouveau_controle_de_risque', array (
 						'risque_id' => $entity->getRisque ()->getId () 
 				));
@@ -212,7 +212,7 @@ class ControleController extends BaseController {
 			$form->handleRequest($request);
 			if ($form->isValid ()) {
 				$dispatcher = $this->container->get('event_dispatcher');
-				$event = new CartoEvent($this->container);
+				$event = $this->cartoEvent;
 				$event->setControle($entity);
 				$dispatcher->dispatch(OrangeMainBundle::CTRL_VALIDATED, $event);
 				$entity->getRisque()->setTobeMigrate(true);
@@ -286,7 +286,7 @@ class ControleController extends BaseController {
 		
 		$this->denyAccessUnlessGranted('evaluer', $controle, 'Accés non autorisé!');
 		
-		$form = $this->createForm(new QuizType(), $quiz, array ('attr' => array ('em' => $em)));
+		$form = $this->createForm(QuizType::class, $quiz, array ('attr' => array ('em' => $em)));
 		if ($request->getMethod () == 'POST') {
 			$form->handleRequest($request);
 			if ($form->isvalid ()) {
@@ -311,7 +311,7 @@ class ControleController extends BaseController {
 		$em = $this->getDoctrine ()->getManager ();
 		$entity = new Execution ();
 		$controle = $em->getRepository('App\Entity\Controle')->find($id);
-		$form = $this->createCreateForm($entity, 'Execution');
+		$form = $this->createCreateForm($entity, ExecutionType::class);
 		return array ('entity' => $controle, 'form' => $form->createView());
 	}
 	
@@ -324,7 +324,7 @@ class ControleController extends BaseController {
 		$controle = $em->getRepository('App\Entity\Controle')->find($id);
 		$entity->setControle($em->getReference(Controle::class, $id));
 		$entity->setExecuteur($this->getUser ());
-		$form = $this->createCreateForm($entity, 'Execution');
+		$form = $this->createCreateForm($entity, ExecutionType::class);
 		$form->bind($request);
 		$entity->upload();
 		if ($form->isValid()) {

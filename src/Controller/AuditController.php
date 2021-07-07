@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\AuditType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -43,7 +44,7 @@ class AuditController extends BaseController
     public function createAction(Request $request)
     {
         $entity = new Audit();
-        $form = $this->createCreateForm($entity, 'Audit');
+        $form = $this->createCreateForm($entity, AuditType::class);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -83,7 +84,7 @@ class AuditController extends BaseController
     		$auditOfRisque -> setDateAjout(new \DateTime("NOW"));
     		$entity->addRisque($auditOfRisque);
     	}
-    	$form   = $this->createCreateForm($entity, 'Audit');
+    	$form   = $this->createCreateForm($entity, AuditType::class);
     	if($request->getMethod()=='POST'){
     		$entity -> setAuteur($this->getUser());
 	    	$form->handleRequest($request);

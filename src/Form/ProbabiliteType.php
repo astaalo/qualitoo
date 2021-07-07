@@ -18,9 +18,9 @@ class ProbabiliteType extends AbstractType
     {
         $builder
             ->add('libelle', null, array('label' => 'Libellé  '))
-            ->add('trace', null, array('label' => 'Trace ', 'empty_value' => 'Choisir la trace'
+            ->add('trace', null, array('label' => 'Trace ', 'placeholder' => 'Choisir la trace'
             		,'attr' => array('class' => 'chzn-select')))
-            ->add('entite', null, array('label' => 'Entite ', 'empty_value' => 'Choisir l\'entite'
+            ->add('entite', null, array('label' => 'Entite ', 'placeholder' => 'Choisir l\'entite'
             		,'attr' => array('class' => 'chzn-select')))
         ;
     }

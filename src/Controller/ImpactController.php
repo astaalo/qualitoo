@@ -70,7 +70,7 @@ class ImpactController extends BaseController {
 	 */
 	public function exportAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new ImpactCriteria()); 
+		$form = $this->createForm(ImpactCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('impact_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Impact')->listQueryBuilder($form->getData());
 		$data = $this->orange_main_core->getMapping('Impact')->mapForBasicExport($queryBuilder->getQuery()->getResult());

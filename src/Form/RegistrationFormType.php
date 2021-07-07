@@ -32,7 +32,7 @@ class RegistrationFormType extends AbstractType
             ->add('nom', null, array('label' => 'Nom', 'attr' => array('class' => 'smallinput')))
             ->add('roles', ChoiceType::class, array('label' => 'Profil', 'choices' => array('ROLE_USER' => 'Utilisateur simple', 'ROLE_ADMIN' => 'Administrateur'), 'multiple' => true
             		,'attr' => array('class' => 'chzn-select')))
-            ->add('structure', EntityType::class, array('label' => 'Structure', 'attr'=>array('empty_value' => 'Choisir la structure ...', 'class'=>'chzn-select'),'class' => 'App\Entity\Structure',
+            ->add('structure', EntityType::class, array('label' => 'Structure', 'attr'=>array('placeholder' => 'Choisir la structure ...', 'class'=>'chzn-select'),'class' => 'App\Entity\Structure',
             				'query_builder'=>function($sr){
             				return $sr->filter();
             				}))
@@ -42,7 +42,7 @@ class RegistrationFormType extends AbstractType
             ->add('societeOfAdministrator',null, array(
                 'label' => 'Est administrateur de',
                 'attr'=>array(
-                    'empty_value' => 'Choisir la société ...',
+                    'placeholder' => 'Choisir la société ...',
                     'class'=>'chzn-select', 'multiple' => 'multiple'),
                 'class' => 'App\Entity\Societe',
                 'query_builder'=>function($sr){
@@ -50,12 +50,12 @@ class RegistrationFormType extends AbstractType
                 }
             ))
             
-            ->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('empty_value' => 'Choisir la société ...','class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe',
+            ->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('placeholder' => 'Choisir la société ...','class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe',
             'query_builder'=>function($sr){
             return $sr->listUserSocieties();
             }
             ))
-            ->add('societeOfRiskManager',null, array('label' => 'Est risque manager de','class' => 'App\Entity\Societe', 'attr'=>array('empty_value' => 'Choisir la société ...', 'class'=>'chzn-select', 'multiple' => 'multiple'),
+            ->add('societeOfRiskManager',null, array('label' => 'Est risque manager de','class' => 'App\Entity\Societe', 'attr'=>array('placeholder' => 'Choisir la société ...', 'class'=>'chzn-select', 'multiple' => 'multiple'),
             'query_builder'=>function($sr){
             return $sr-> listUserSocieties();
             }

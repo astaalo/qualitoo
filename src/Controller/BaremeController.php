@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use App\Annotation\QMLogger;
+use Symfony\Component\HttpFoundation\Request;
 
 class BaremeController extends BaseController {
 	/**
@@ -41,11 +42,10 @@ class BaremeController extends BaseController {
 	 * @Method("POST")
 	 * @Template("bareme/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository(TypeGrille::class)->find($id);
-		$form = $this->createCreateForm($entity, 'TypeGrille', array('attr' => array('em' => $em)));
-		$request = $request;
+		$form = $this->createCreateForm($entity, TypeGrilleType::class, array('attr' => array('em' => $em)));
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

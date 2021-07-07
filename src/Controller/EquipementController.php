@@ -76,7 +76,7 @@ class EquipementController extends BaseController
     public function createAction(Request $request,$type)
     {
         $entity = new Equipement();
-        $form = $this->createCreateForm($entity, 'Equipement');
+        $form = $this->createCreateForm($entity, EquipementType::class);
         $form->handleRequest($request);
 		$entity->setType($type);
 		$entity->setEtat(true);

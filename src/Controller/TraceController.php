@@ -38,7 +38,7 @@ class TraceController extends BaseController
 	 */
 	public function newAction() {
 		$entity = new Trace();
-		$form   = $this->createCreateForm($entity, 'Trace');
+		$form   = $this->createCreateForm($entity, TraceType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -48,7 +48,7 @@ class TraceController extends BaseController
 	 */
 	public function createAction(Request $request) {
 		$entity = new Trace();
-		$form   = $this->createCreateForm($entity, 'Trace');
+		$form   = $this->createCreateForm($entity, TraceType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -76,7 +76,7 @@ class TraceController extends BaseController
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Trace')->find($id);
-		$form = $this->createCreateForm($entity, 'Trace');
+		$form = $this->createCreateForm($entity, TraceType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -88,7 +88,7 @@ class TraceController extends BaseController
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Trace')->find($id);
-		$form = $this->createCreateForm($entity, 'Trace');
+		$form = $this->createCreateForm($entity, TraceType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);

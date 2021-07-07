@@ -57,7 +57,7 @@ class SiteController extends BaseController {
 	 */
 	public function createAction(Request $request) {
 		$entity = new Site();
-		$form   = $this->createCreateForm($entity, 'Site');
+		$form   = $this->createCreateForm($entity, SiteType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$entity->setSociete($this->getUser()->getStructure()->getSociete());
@@ -108,7 +108,7 @@ class SiteController extends BaseController {
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Site')->find($id);
-		$form = $this->createCreateForm($entity, 'Site');
+		$form = $this->createCreateForm($entity, SiteType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);

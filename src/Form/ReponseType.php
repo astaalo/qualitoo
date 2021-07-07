@@ -15,7 +15,7 @@ class ReponseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add($builder->create('question', 'hidden')->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\Question')))
+        $builder->add($builder->create('question', HiddenType::class)->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\Question')))
             ->add('valide', null, array('attr' => array('class' => 'on_off_checkbox')));
     }
     

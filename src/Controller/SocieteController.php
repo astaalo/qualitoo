@@ -44,7 +44,7 @@ class SocieteController extends BaseController {
 	 */
 	public function newAction() {
 		$entity = new Societe();
-		$form   = $this->createCreateForm($entity, 'Societe');
+		$form   = $this->createCreateForm($entity, SocieteType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 
@@ -55,7 +55,7 @@ class SocieteController extends BaseController {
 	 */
 	public function createAction(Request $request) {
 		$entity = new Societe();
-		$form   = $this->createCreateForm($entity, 'Societe');
+		$form   = $this->createCreateForm($entity, SocieteType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -91,7 +91,7 @@ class SocieteController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Societe')->find($id);
-		$form = $this->createCreateForm($entity, 'Societe');
+		$form = $this->createCreateForm($entity, SocieteType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -104,7 +104,7 @@ class SocieteController extends BaseController {
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Societe')->find($id);
-		$form = $this->createCreateForm($entity, 'Societe');
+		$form = $this->createCreateForm($entity, SocieteType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);

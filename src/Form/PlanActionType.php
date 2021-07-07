@@ -2,6 +2,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvent;
@@ -18,18 +19,19 @@ class PlanActionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$type_statut= $options['attr']['type_statut'];
-        $builder->add($builder->create('risque', 'hidden')->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\Risque')))
+        $builder->add($builder->create('risque', HiddenType::class)->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\Risque')))
 			->add('libelle', null, array('label' => 'Description du plan d\'action'))
         	->add('statut', null, array('attr' => array('class' => 'chzn-select'), 'query_builder' => function($er) use($type_statut) {
         		return $er->createQueryBuilder('r')->where('r.type = :type')->andWhere('r.etat = :etat')
         			->setParameters(array('type' => $type_statut, 'etat' => true));
-        	}))->add($builder->create('controle', 'hidden')->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\Controle')))
+        	}))->add($builder->create('controle', HiddenType::class)->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\Controle')))
         	->add('dateDebut', null, array('input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
         	->add('dateFin', null, array('input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-y'))
-        	->add('porteur', null, array('empty_value' => 'Choisir le porteur ...', 'attr' => array('class' => 'chzn-select')))
-        	->add('superviseur', null, array('empty_value' => 'Choisir le superviseur ...', 'attr' => array('class' => 'chzn-select')))
-        	->add('causeOfRisque', null, array('property' => 'cause'))
-        	->add('description', null, array('label' => 'Etat d\'avancement'))
+        	->add('porteur', null, array('placeholder' => 'Choisir le porteur ...', 'attr' => array('class' => 'chzn-select')))
+        	->add('superviseur', null, array('placeholder' => 'Choisir le superviseur ...', 'attr' => array('class' => 'chzn-select')))
+            //->add('causeOfRisque', null, array('property' => 'cause'))
+            ->add('causeOfRisque', null)
+            ->add('description', null, array('label' => 'Etat d\'avancement'))
         	;
 		$builder->addEventListener(FormEvents::SUBMIT, function(FormEvent $event) { 
 				$this->addCauseOnEvent($event);
@@ -45,11 +47,11 @@ class PlanActionType extends AbstractType
 	public function addCauseOnEvent(FormEvent $event) {
 		if(null != $risque = $event->getData()->getRisque()) {
 			$causeOfRisque = $event->getData()->getCauseOfRisque();
-			$event->getForm()->add('causeOfRisque', null, array('empty_value' => 'Choisir une cause ...', 'query_builder' => function($er) use($risque) {
+			$event->getForm()->add('causeOfRisque', null, array('placeholder' => 'Choisir une cause ...', 'query_builder' => function($er) use($risque) {
 					return $er->createQueryBuilder('r')->where('r.risque = :risque')->setParameter('risque', $risque);
-				}, 'label' => 'Nom de la cause', 'property' => 'cause', 'attr' => array('class' => 'chzn-select full')
+				}, 'label' => 'Nom de la cause', 'attr' => array('class' => 'chzn-select full')
 			));
-			if($event->getName()==FormEvents::SUBMIT) {
+			if($event->getForm()->getName()==FormEvents::SUBMIT) {
 				$event->getForm()->get('causeOfRisque')->submit($causeOfRisque ? $causeOfRisque->getId() : null);
 			}
 		}

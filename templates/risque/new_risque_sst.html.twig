@@ -23,30 +23,30 @@
 				<label class="other_label"><input class="other" target-id="{{ form.risque.identification.libelle.vars.id }}" type="checkbox" />Saisir le nom du risque</label>
 				{{ form_widget(form.risque.identification.libelle, {'show': false}) }}
 			{% endset %}
-			
+
 			{% set responsableCodeBefore %}
 				Responsable du site choisi : {{ form_widget(form.proprietaire) }}
 				<br><br>
 			{% endset %}
-			
+
 			{% set activiteCodeAfter %}
 				<label class="other_label"><input class="other" target-id="{{ form.risque.identification.activite.vars.id }}" type="checkbox" />Saisir le nom de l'activité</label>
 				{{ form_widget(form.risque.identification.activite, {'show': false}) }}
 			{% endset %}
-			
+
 			{% set causeSheepItTemplate %}
 				{% include 'extra/sheepIt_template.html.twig' with
 					{
 						'id': form.risque.causeOfRisque.vars.id,
-						'prototype' : form.risque.causeOfRisque.vars.prototype, 
+						'prototype' : form.risque.causeOfRisque.vars.prototype,
 						'prototypeTemplate' : 'risque/risque_danger_prototype.html.twig',
-						'addText': 'Ajouter un danger', 
+						'addText': 'Ajouter un danger',
 						'removeAllText': 'Supprimer toutes les dangers',
 						'noFormText': 'Aucun danger n\'est encore identifiée !',
 					}
 				%}
 			{% endset %}
-			
+
 			{% set causeDataForm, impactDataForm = '', '' %}
 			{% for causeForm in form.risque.causeOfRisque %}
 				{% set row %}
@@ -63,7 +63,7 @@
 				{% set causeDataForm = causeDataForm ~ row %}
 			{% endfor %}
 			{% set causeDataForm, impactDataForm = '[%s]'|format(causeDataForm|raw), '[%s]'|format(impactDataForm|raw) %}
-			
+
 				 	{{ form_row(form.site) }}
 					{{ form_row(form.risque.identification.responsable, {'code_before' : responsableCodeBefore, 'show': false}) }}
 					{{ form_row(form.domaineActivite) }}
@@ -96,7 +96,7 @@
 				}*/
 			}
 		});
-		
+
 		// code to execute after Select ajax load
 		function afterStructureReload() {
 			$("#{{ form.equipement.vars.id }} option[value='{{ form.equipement.vars.value }}']").attr('selected', 'selected');
@@ -114,7 +114,7 @@
 				target.parent().show();
 			}
 		});
-		
+
 		$('label input[type="checkbox"].other').on('change', function(e) {
 			var target = $('#' + $(this).attr('target-id'));
 			toggle(target.closest('div'), this.checked);
@@ -125,7 +125,7 @@
 
 		// on ProfilRisque change
 
-	
+
 	</script>
 	<script type="text/javascript">
 $(function() {
@@ -138,12 +138,12 @@ $nouvelle_causeLib=$( ".risque_cause_row .section:eq(2)" );
 		} else {
 			$newCauz.hide(  );
 		}
-		
-			
+
+
 	});
 });
 </script>
-	
+
 {% endblock %}
 
 {% set codeAfterResponsableUpdate %}
@@ -157,24 +157,24 @@ $nouvelle_causeLib=$( ".risque_cause_row .section:eq(2)" );
 
 {% include 'extra/sheepit.html.twig' with {
 				with_script: true,
-				content: '#' ~ form.risque.causeOfRisque.vars.id, 
+				content: '#' ~ form.risque.causeOfRisque.vars.id,
 				options: '{' ~
-					'iniFormsCount: 1, 
-					 minFormsCount: 0,  
+					'iniFormsCount: 1,
+					 minFormsCount: 0,
 					 maxFormsCount: 100,
-					 indexFormat: "__name__", 
-					 data: ' ~ causeDataForm ~ ', 
-					 separator: "", allowRemoveAll: true, ' ~ 
+					 indexFormat: "__name__",
+					 data: ' ~ causeDataForm ~ ',
+					 separator: "", allowRemoveAll: true, ' ~
 					 'afterAdd: function(source, addForm ,causeDataForm) {    },' ~
 					 'afterFill: function(source, addForm, value) { refreshChosen($(addForm).find(".cl_cause"), value.cause); }, ' ~
 					 'removeAllConfirmationMsg: "Vous êtes sur le point de supprimer toutes les causes liées à ce risque. Voulez vous vraiment continuer ?", ' ~
 					 'afterRemoveCurrent: function(source) {  } ' ~
-					 '}', 
-				embeddedForm: form.risque.causeOfRisque, 
-				error_fields: {0 :'cause', 'newCause': { 0:'libelle' }} 
+					 '}',
+				embeddedForm: form.risque.causeOfRisque,
+				error_fields: {0 :'cause', 'newCause': { 0:'libelle' }}
 			}
  %}
-{% include 'extra/updateField.html.twig' with 
-	{parent: form.site, fieldId: 'responsable', url: path('get_responsable_by_site'), key: 'id', empty_child: 0, codeAfter: codeAfterResponsableUpdate} 
+{% include 'extra/updateField.html.twig' with
+	{parent: form.site, fieldId: 'responsable', url: path('get_responsable_by_site'), key: 'id', empty_child: 0, codeAfter: codeAfterResponsableUpdate}
 %}
 {% endblock %}

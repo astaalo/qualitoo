@@ -218,4 +218,6 @@ services:
         tags:
             - { name: twig.extension }
 
-
+    App\Event\CartoEvent:
+        public: true
+        arguments: [ "@service_container" ]

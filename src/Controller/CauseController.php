@@ -80,7 +80,7 @@ class CauseController extends BaseController {
 	 */
 	public function newAction() {
 		$entity = new Cause();
-		$form   = $this->createCreateForm($entity, 'Cause');
+		$form   = $this->createCreateForm($entity, CauseType::class);
 		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -92,7 +92,7 @@ class CauseController extends BaseController {
 	 */
 	public function createAction(Request $request) {
 		$entity = new Cause();
-		$form   = $this->createCreateForm($entity, 'Cause');
+		$form   = $this->createCreateForm($entity, CauseType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -145,7 +145,7 @@ class CauseController extends BaseController {
 	public function updateAction($id, $page) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Cause')->find($id);
-		$form = $this->createCreateForm($entity, 'Cause');
+		$form = $this->createCreateForm($entity, CauseType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
@@ -174,7 +174,7 @@ class CauseController extends BaseController {
 	 */
 	public function exportAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new CauseCriteria());
+		$form = $this->createForm(CauseCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('risquehascause_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Cause')->listAllQueryBuilder($form->getData());
 		$data = $this->orange_main_core->getMapping('Cause')->mapForBasicExport($queryBuilder->getQuery()->getResult());

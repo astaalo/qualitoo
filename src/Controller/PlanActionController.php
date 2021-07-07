@@ -2,6 +2,11 @@
 namespace App\Controller;
 
 use App\Criteria\ControleCriteria;
+use App\Entity\Controle;
+use App\Entity\Risque;
+use App\Entity\Statut;
+use App\Form\PlanActionType;
+use App\MainBundle\OrangeMainBundle;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -101,7 +106,7 @@ class PlanActionController extends BaseController {
 	 * @Route("/nouveau_planaction", name="nouveau_planaction")
 	 * @Route("/{risque_id}/nouveau_planaction", name="nouveau_planaction_de_risque")
 	 * @Route("/{controle_id}/saisie_planaction", name="saisie_planaction")
-	 * @Template()
+	 * @Template("planAction/new.html.twig")
 	 */
 	public function newAction($risque_id = null, $controle_id = null) {
 		$entity = new PlanAction();
@@ -113,7 +118,7 @@ class PlanActionController extends BaseController {
 		} elseif($risque_id) {
 			$entity->setRisque($this->getDoctrine()->getManager()->getRepository(Risque::class)->find($risque_id));
 		}
-		$form = $this->createCreateForm($entity, 'PlanAction', array(
+		$form = $this->createCreateForm($entity, PlanActionType::class, array(
 				'attr' => array(
 						'em' => $this->getDoctrine()->getManager(),
 						'type_statut' => $this->getMyParameter('types', array(
@@ -141,19 +146,20 @@ class PlanActionController extends BaseController {
 	public function createAction(Request $request) {
 		$entity = new PlanAction();
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createCreateForm($entity, 'PlanAction', array(
+		$form = $this->createCreateForm($entity, PlanActionType::class, array(
 				'attr' => array('em' => $em, 'type_statut' => $this->getMyParameter('types', array('statut', 'plan_action'))) 
 			));
 		$form->handleRequest($request);
 		if($form->isValid()) {
 			$dispatcher = $this->container->get('event_dispatcher');
-			$event = new CartoEvent($this->container);
-			$entity->setStatut($em->getReference('OrangeMainBundle:Statut', $this->getMyParameter('ids', array('statut', 'plan_action', 'non_fait'))));
+			$event = $this->cartoEvent;
+			$entity->setStatut($em->getReference(Statut::class, $this->getMyParameter('ids', array('statut', 'plan_action', 'non_fait'))));
 			$event->setPlanAction($entity);
 			$dispatcher->dispatch(OrangeMainBundle::PA_CREATED, $event);
 			$entity->getRisque()->setTobeMigrate(true);
 			$em->persist($entity);
 			$em->flush();
+            $this->get('session')->getFlashBag()->add('success', "Plan d'action ajouté avec succés.");
 			if($request->request->has('add_another')) {
 				$route = $this->generateUrl('nouveau_planaction_de_risque', array('risque_id' => $entity->getRisque()->getId()));
 			} elseif($request->request->has('add_and_pass')) {
@@ -193,7 +199,7 @@ class PlanActionController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\PlanAction')->find($id);
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé!');
-		$form = $this->createCreateForm($entity, 'PlanAction', array(
+		$form = $this->createCreateForm($entity, PlanActionType::class, array(
 				'attr' => array('type_statut' => $this->getMyParameter('types', array('statut', 'plan_action')), 'em' => $em) 
 			));
 		return array('entity' => $entity, 'form' => $form->createView());
@@ -205,18 +211,17 @@ class PlanActionController extends BaseController {
 	 * @Method("POST")
 	 * @Template("planAction/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\PlanAction')->find($id);
-		$form = $this->createCreateForm($entity, 'PlanAction', array(
+		$form = $this->createCreateForm($entity, PlanActionType::class, array(
 				'attr' => array('type_statut' => $this->getMyParameter('types', array('statut', 'plan_action')), 'em' => $em) 
 			));
-		$request = $request;
 		if($request->getMethod() == 'POST') {
 			$form->handleRequest($request);
 			if($form->isValid()) {
 				$dispatcher = $this->container->get('event_dispatcher');
-				$event = new CartoEvent($this->container);
+				$event = $this->cartoEvent;
 				$event->setPlanAction($entity);
 				$dispatcher->dispatch(OrangeMainBundle::PA_VALIDATED, $event);
 				$entity->getRisque()->setTobeMigrate(true);

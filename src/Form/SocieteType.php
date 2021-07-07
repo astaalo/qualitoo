@@ -13,9 +13,9 @@ class SocieteType extends AbstractType
 		$builder->add('libelle', null, array('label' => 'Libellé', 'attr' => array('class' => 'medium')))
 			->add('file', null, array('label' => 'Icône', 'attr' => array('class' => 'file fileupload')))
 			->add('famille', null, array('label' =>'Familles',
-					'empty_value' => '-- Chosir les familles --', 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple')))
+					'placeholder' => '-- Chosir les familles --', 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple')))
 			->add('profilRisque', null, array('label' =>'Profil risque',
-					'empty_value' => '-- Chosir les profils risques --', 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple')));
+					'placeholder' => '-- Chosir les profils risques --', 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple')));
 	}
 	
 	public function configureOptions(OptionsResolver $resolver)

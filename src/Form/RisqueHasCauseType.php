@@ -26,7 +26,8 @@ class RisqueHasCauseType extends AbstractType
 			))
 	        ->add('carto', null, array('data'=>$carto))
 			->add('newCause',CauseType::class)->add('grille')
-			->add('modeFonctionnement', null, array('class' => 'App\Entity\ModeFonctionnement', 'expanded' => true, 'required' => true))
+            //->add('modeFonctionnement', null, array('class' => 'App\Entity\ModeFonctionnement', 'expanded' => true, 'required' => true))
+            ->add('modeFonctionnement', null, array('class' => 'App\Entity\ModeFonctionnement', 'expanded' => false, 'required' => true))
 			->add('choice', CheckboxType::class, array('label' => 'Saisir la cause', 'required' => false, 'mapped' => false, 'attr' => array('class' => 'choix')));
 		$builder->addEventListener(FormEvents::SUBMIT, array($this, 'onSetData'));
 		$builder->addEventListener(FormEvents::POST_SET_DATA, array($this, 'onSetData'));

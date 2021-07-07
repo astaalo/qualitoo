@@ -53,7 +53,7 @@ class CritereController extends BaseController {
 	public function createAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = new Critere();
-		$form   = $this->createCreateForm($entity, 'Critere', array('attr' => array('em' => $em)));
+		$form   = $this->createCreateForm($entity, CritereType::class, array('attr' => array('em' => $em)));
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em->persist($entity);
@@ -101,7 +101,7 @@ class CritereController extends BaseController {
 	public function updateAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Critere')->find($id);
-		$form = $this->createCreateForm($entity, 'Critere', array('attr' => array('em' => $em)));
+		$form = $this->createCreateForm($entity, CritereType::class, array('attr' => array('em' => $em)));
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

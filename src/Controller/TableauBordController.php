@@ -40,7 +40,7 @@ class TableauBordController extends BaseController {
 	 */
 	public function newAction() {
 		$entity = new TableauBord();
-		$form   = $this->createCreateForm($entity, 'TableauBord');
+		$form   = $this->createCreateForm($entity, TableauBordType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 

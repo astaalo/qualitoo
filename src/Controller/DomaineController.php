@@ -3,6 +3,7 @@ namespace  App\Controller;
 
 use App\Form\DomaineActiviteType;
 use App\Form\DomaineImpactType;
+use App\Form\DomaineSiteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -126,7 +127,7 @@ class DomaineController extends BaseController {
 	 */
 	public function createForActiviteAction(Request $request) {
 		$entity = new DomaineActivite();
-		$form   = $this->createCreateForm($entity, 'DomaineActivite');
+		$form   = $this->createCreateForm($entity, DomaineActiviteType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -144,7 +145,7 @@ class DomaineController extends BaseController {
 	 */
 	public function createForSiteAction(Request $request) {
 		$entity = new DomaineSite();
-		$form   = $this->createCreateForm($entity, 'DomaineSite');
+		$form   = $this->createCreateForm($entity, DomaineSiteType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -177,7 +178,7 @@ class DomaineController extends BaseController {
 	public function editForImpactAction($id){
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\DomaineImpact')->find($id);
-		$form = $this->createCreateform($entity, 'DomaineImpact');
+		$form = $this->createCreateform($entity, DomaineImpactType::class);
 		
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		
@@ -210,7 +211,7 @@ class DomaineController extends BaseController {
 
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisée!');
 		
-		$form = $this->createCreateform($entity, 'DomaineSite');
+		$form = $this->createCreateform($entity, DomaineSiteType::class);
 		return array('entity' => $entity, 'form' =>$form->createView());
 	}
 	
@@ -223,7 +224,7 @@ class DomaineController extends BaseController {
 	public function updateForImpactAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\DomaineImpact')->find($id);
-		$form = $this->createCreateform($entity, 'DomaineImpact');
+		$form = $this->createCreateform($entity, DomaineImpactType::class);
 		$form->bind($request);
 		if($form->isValid()) {
 			$em->persist($entity);
@@ -243,7 +244,7 @@ class DomaineController extends BaseController {
 	public function updateForActiviteAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\DomaineActivite')->find($id);
-		$form = $this->createCreateForm($entity, 'DomaineActivite');
+		$form = $this->createCreateForm($entity, DomaineActiviteType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
@@ -262,11 +263,10 @@ class DomaineController extends BaseController {
 	 * @Method("POST")
 	 * @Template("domaine/editForSite.html.twig")
 	 */
-	public function updateForSiteAction($id) {
+	public function updateForSiteAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository(DomaineSite::class)->find($id);
-		$form = $this->createCreateForm($entity, 'DomaineSite');
-		$request = $request;
+		$form = $this->createCreateForm($entity, DomaineSiteType::class);
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

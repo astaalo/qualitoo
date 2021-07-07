@@ -55,7 +55,7 @@ class ConsequenceController extends BaseController {
 	public function createAction(Request $request) {
 		$entity = new Consequence();
 		$entity->setEntite($this->getUser()->getEntite());
-		$form   = $this->createCreateForm($entity, 'Consequence');
+		$form   = $this->createCreateForm($entity, ConsequenceType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -85,7 +85,7 @@ class ConsequenceController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Consequence')->find($id);
-		$form = $this->createCreateForm($entity, 'Consequence');
+		$form = $this->createCreateForm($entity, ConsequenceType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -98,7 +98,7 @@ class ConsequenceController extends BaseController {
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Consequence')->find($id);
-		$form = $this->createCreateForm($entity, 'Consequence');
+		$form = $this->createCreateForm($entity, ConsequenceType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);

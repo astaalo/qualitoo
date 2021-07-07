@@ -2,6 +2,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvents;
@@ -12,8 +13,8 @@ class ImpactType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('critere', null, array('empty_value' => 'Choisir un critère ...'));
-		$builder->add($builder->create('domaine', 'hidden')->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\DomaineImpact')));
+		$builder->add('critere', null, array('placeholder' => 'Choisir un critère ...'));
+		$builder->add($builder->create('domaine', HiddenType::class)->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\DomaineImpact')));
 		$builder->addEventListener(FormEvents::SUBMIT, array($this, 'onSetData'));
 		$builder->addEventListener(FormEvents::POST_SET_DATA, array($this, 'onSetData'));
 	}
@@ -28,7 +29,7 @@ class ImpactType extends AbstractType
 						return $er->createQueryBuilder('r')
 								->where('r.domaine = :domaine')->andWhere('r.etat = :etat')
 								->setParameters(array('domaine' => $domaine, 'etat' => true));
-					}, 'empty_value' => 'Choisir un critère ...', 'attr' => array('class' => 'chzn-select select_child')
+					}, 'placeholder' => 'Choisir un critère ...', 'attr' => array('class' => 'chzn-select select_child')
 				));
 			if($event->getName()==FormEvents::SUBMIT) {
 				$event->getForm()->get('critere')->submit($critere ? $critere->getId() : null);

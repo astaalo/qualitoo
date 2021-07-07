@@ -41,7 +41,7 @@ class FamilleController extends BaseController {
 	 */
 	public function newAction() {
 		$entity = new Famille();
-		$form   = $this->createCreateForm($entity, 'Famille');
+		$form   = $this->createCreateForm($entity, FamiileType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 
@@ -52,7 +52,7 @@ class FamilleController extends BaseController {
 	 */
 	public function createAction(Request $request) {
 		$entity = new Famille();
-		$form   = $this->createCreateForm($entity, 'Famille');
+		$form   = $this->createCreateForm($entity, FamiileType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -83,7 +83,7 @@ class FamilleController extends BaseController {
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Famille')->find($id);
-		$form = $this->createCreateForm($entity, 'Famille');
+		$form = $this->createCreateForm($entity, FamiileType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -96,7 +96,7 @@ class FamilleController extends BaseController {
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Famille')->find($id);
-		$form = $this->createCreateForm($entity, 'Famille');
+		$form = $this->createCreateForm($entity, FamiileType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);

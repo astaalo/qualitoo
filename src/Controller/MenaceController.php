@@ -118,7 +118,7 @@ class MenaceController extends BaseController {
 	 */
 	public function createAction(Request $request) {
 		$entity = new Menace();
-		$form   = $this->createCreateForm($entity, 'Menace');
+		$form   = $this->createCreateForm($entity, MenaceType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -169,7 +169,7 @@ class MenaceController extends BaseController {
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Menace')->find($id);
-		$form = $this->createCreateForm($entity, 'Menace');
+		$form = $this->createCreateForm($entity, MenaceType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);

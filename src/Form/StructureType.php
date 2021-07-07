@@ -13,8 +13,8 @@ class StructureType extends AbstractType
         $builder
         	->add('code', null, array('label' => 'Nom '))
             ->add('libelle', null, array('label' => 'Nom complet '))
-        	->add('typeStructure', null, array('label' => 'Type de structure ', 'attr' => array('empty_value' => 'Choisir un type de structure ...', 'class' => 'chzn-select')))
-            ->add('parent', null, array('label' => 'Structure parente ', 'attr' => array('empty_value' => 'Choisir une structure ...', 'class' => 'chzn-select')));
+        	->add('typeStructure', null, array('label' => 'Type de structure ', 'attr' => array('placeholder' => 'Choisir un type de structure ...', 'class' => 'chzn-select')))
+            ->add('parent', null, array('label' => 'Structure parente ', 'attr' => array('placeholder' => 'Choisir une structure ...', 'class' => 'chzn-select')));
 	}
 	
 	public function configureOptions(OptionsResolver $resolver)

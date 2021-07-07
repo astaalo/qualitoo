@@ -42,7 +42,7 @@ class ActiviteController extends BaseController
 	 */
 	public function filterAction(Request $request)
 	{
-		$form = $this->createForm(new ActiviteCriteria());
+		$form = $this->createForm(ActiviteCriteria::class);
 		if ($request->getMethod() == 'POST') {
 			$this->get('session')->set('activite_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -129,7 +129,7 @@ class ActiviteController extends BaseController
 	public function createAction(Request $request, $id = null)
 	{
 		$entity = new Activite();
-		$form   = $this->createCreateForm($entity, 'Activite');
+		$form   = $this->createCreateForm($entity, ActiviteType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -165,12 +165,11 @@ class ActiviteController extends BaseController
 	 * @Method("POST")
 	 * @Template("activite/edit.html.twig")
 	 */
-	public function updateAction($id)
+	public function updateAction($id, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Activite')->find($id);
-		$form = $this->createCreateForm($entity, 'Activite');
-		$request = $request;
+		$form = $this->createCreateForm($entity, ActiviteType::class);
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
 			if ($form->isValid()) {

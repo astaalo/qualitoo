@@ -27,7 +27,7 @@ class ControleType extends AbstractType
 			->add('periodicite', null, array('placeholder'=> 'Choisir la périodicité ...', 'attr' => array('class' => 'chzn-select')))
 			->add('grille', null, array('label'=>"Maturité",'placeholder'=> 'Choisir la maturité ...', 'attr' => array('class' => 'chzn-select')))
             //->add('causeOfRisque', null, array('property' => 'cause'))
-            ->add('causeOfRisque', null, array('property_path' => 'cause'))
+            ->add('causeOfRisque', null)
             ->add('description', null, array('label' => 'Description du controle', 'attr'=>array('style'=>'width:95%')))
 		;
 		$builder->addEventListener(FormEvents::SUBMIT, array($this, 'addCauseOnEvent'));

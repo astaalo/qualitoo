@@ -18,9 +18,9 @@ class TraceType extends AbstractType
     {
         $builder
             ->add('description', null, array('label' => 'Description'))
-            ->add('typeTrace', null, array('label' =>'TypeTrace', 'empty_value' => 'choisir Type trace'
+            ->add('typeTrace', null, array('label' =>'TypeTrace', 'placeholder' => 'choisir Type trace'
             		,'attr' => array('class' => 'chzn-select')))
-            ->add('utilisateur', null, array('label' =>'Utilisateur', 'empty_value' => 'choisir utilisateur '
+            ->add('utilisateur', null, array('label' =>'Utilisateur', 'placeholder' => 'choisir utilisateur '
             		,'attr' => array('class' => 'chzn-select')))
         ;
     }

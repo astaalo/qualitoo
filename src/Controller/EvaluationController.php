@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Form\EvaluationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -30,7 +31,7 @@ class EvaluationController extends BaseController{
 	 * @Template()
 	 */
 	public function filterAction(Request $request) {
-		$form = $this->createForm(new EvaluationCriteria());
+		$form = $this->createForm(EvaluationCriteria::class);
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('evaluation_criteria', $request->request->get($form->getName()));
 			return new JsonResponse();
@@ -62,7 +63,7 @@ class EvaluationController extends BaseController{
 		$em = $this->getDoctrine()->getManager();
 		$risque = $em->getRepository('App\Entity\Risque')->find($id);
 		$entity = new Evaluation();
-		$form = $this->createCreateForm($entity->newEvaluation($risque), 'Evaluation', array('attr' => array('em' => $em)));
+		$form = $this->createCreateForm($entity->newEvaluation($risque), EvaluationType::class, array('attr' => array('em' => $em)));
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -131,7 +132,7 @@ class EvaluationController extends BaseController{
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Evaluation')->find($id);
-		$form = $this->createCreateForm($entity, 'Evaluation', array('attr' => array('em' => $em)));
+		$form = $this->createCreateForm($entity, EvaluationType::class, array('attr' => array('em' => $em)));
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);
@@ -188,7 +189,7 @@ class EvaluationController extends BaseController{
 	 */
 	public function exportAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$form = $this->createForm(new EvaluationCriteria()); 
+		$form = $this->createForm(EvaluationCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('evaluation_criteria'), $form);
 		$queryBuilder = $em->getRepository('App\Entity\Evaluation')->listQueryBuilder($form->getData());
 		$data = $this->orange_main_core->getMapping('Evaluation')->mapForBasicExport($queryBuilder->getQuery()->getResult());

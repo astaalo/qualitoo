@@ -21,7 +21,7 @@ class ConsequenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('domaine', null ,array('label' => 'Domaine', 'empty_value' => 'Choisir un domaine'
+            ->add('domaine', null ,array('label' => 'Domaine', 'placeholder' => 'Choisir un domaine'
             		,'attr' => array('class' => 'chzn-select')))
         	->add('critere', 'collection', array('type' => new CritereType()
         											));

@@ -71,7 +71,7 @@ class AuditHasRisqueController extends Controller
      */
     private function createCreateForm(AuditHasRisque $entity)
     {
-        $form = $this->createForm(new AuditHasRisqueType(), $entity, array(
+        $form = $this->createForm(AuditHasRisqueType::class, $entity, array(
             'action' => $this->generateUrl('audithasrisque_create'),
             'method' => 'POST',
         ));
@@ -160,7 +160,7 @@ class AuditHasRisqueController extends Controller
     */
     private function createEditForm(AuditHasRisque $entity)
     {
-        $form = $this->createForm(new AuditHasRisqueType(), $entity, array(
+        $form = $this->createForm(AuditHasRisqueType::class, $entity, array(
             'action' => $this->generateUrl('audithasrisque_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

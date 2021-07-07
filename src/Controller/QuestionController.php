@@ -62,7 +62,7 @@ class QuestionController extends BaseController{
 		$entities = $em->getRepository('App\Entity\Question')->listAll();
 		$count= count($entities);
 		$entity = new Question();
-		$form   = $this->createCreateForm($entity, 'Question');
+		$form   = $this->createCreateForm($entity, QuestionType::class);
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -114,7 +114,7 @@ class QuestionController extends BaseController{
 	public function updateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Question')->find($id);
-		$form = $this->createCreateForm($entity, 'Question');
+		$form = $this->createCreateForm($entity, QuestionType::class);
 		$request = $request;
 		if ($request->getMethod() == 'POST') {
 			$form->bind($request);

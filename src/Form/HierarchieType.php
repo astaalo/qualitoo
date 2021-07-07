@@ -12,11 +12,11 @@ class HierarchieType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
         $builder
-        	->add('entiteOne', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'empty_value' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')))
-        	->add('entiteTwo', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'empty_value' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')))
-        	->add('entiteThree', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'empty_value' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')))
-        	->add('entiteFour', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'empty_value' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')))
-        	->add('entiteFive', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'empty_value' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')));
+        	->add('entiteOne', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'placeholder' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')))
+        	->add('entiteTwo', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'placeholder' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')))
+        	->add('entiteThree', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'placeholder' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')))
+        	->add('entiteFour', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'placeholder' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')))
+        	->add('entiteFive', 'entity', array('class' => Structure::class, 'label' => 'Entité', 'placeholder' => 'Choisir une entité ...', 'attr' => array('class' => 'chzn-select')));
 	}
 	
 	public function configureOptions(OptionsResolver $resolver)

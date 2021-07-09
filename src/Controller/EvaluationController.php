@@ -60,6 +60,7 @@ class EvaluationController extends BaseController{
 	 * @Template()
 	 */
 	public function newAction($id) {
+	    //dd($this->getMyParameter('ids', ['type_evaluation'])['cause']);
 		$em = $this->getDoctrine()->getManager();
 		$risque = $em->getRepository('App\Entity\Risque')->find($id);
 		$entity = new Evaluation();

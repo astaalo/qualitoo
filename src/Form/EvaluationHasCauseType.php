@@ -2,7 +2,9 @@
 namespace App\Form;
 
 use App\Entity\Grille;
+use Psr\Container\ContainerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,6 +15,11 @@ use App\Entity\TypeEvaluation;
 
 class EvaluationHasCauseType extends AbstractType
 {
+    protected $ids;
+    public function __construct(ContainerInterface $container)
+    {
+        $this->ids = $container->getParameter('ids');
+    }
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('cause', null, array('placeholder' => 'Choisir une cause ...', 'label'=>'Choisir une cause', 'attr' => array('class' => 'chzn-select chzn-done')));
@@ -30,7 +37,7 @@ class EvaluationHasCauseType extends AbstractType
 			$event->getForm()->add('grille', null, array('query_builder' => function($er) use($risque) {
 					return $er->createQueryBuilder('r')->innerJoin('r.typeGrille', 'tg')->innerJoin('tg.typeEvaluation', 'te')
 						->where('tg.cartographie = :cartographie')->andWhere('te.id = :typeEvaluation')
-						->setParameters(array('cartographie'=>$risque->getCartographie(), 'typeEvaluation'=>TypeEvaluation::$ids['cause']));
+						->setParameters(array('cartographie'=>$risque->getCartographie(), 'typeEvaluation'=>$this->ids['type_evaluation']['cause']));
 				}, 'placeholder' => 'Choisir un niveau ...'));
 			$event->getForm()->add('normalGrille', EntityType::class, array('label'=>'Normal','class' => Grille::class, 'query_builder' => function($er) use($risque) {
 					return $er->createQueryBuilder('r')->where('r.typeGrille = :typeGrille')

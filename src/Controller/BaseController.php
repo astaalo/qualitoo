@@ -23,7 +23,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BaseController extends AbstractController
 {
-    private $getParameter;
     private $paginator;
     protected $service_status;
     protected $service_action;
@@ -34,7 +33,6 @@ class BaseController extends AbstractController
 
     public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core, CartoEvent $cartoEvent)
     {
-        $this->getParameter = $params;
         $this->paginator = $paginator;
         $this->service_status = $status;
         $this->service_action = $action;

@@ -48,17 +48,17 @@
 				  	</div>
 					<!-- Form template-->
 					{% for causeOfEvaluationForm in form.causeOfEvaluation %}
-					{% if causeOfEvaluationForm.vars.value.cause  is not empty %}
-				  	<div type="cause">
-				  		<div style="width: 40%;display: inline-block;">
-					    	<label>{{ causeOfEvaluationForm.vars.value.cause }}</label>
-					    	<div hidden>{{ form_widget(causeOfEvaluationForm.cause) }}</div>
-				    	</div>
-				  		<div style="width: 10%;display: inline-block;vertical-align: bottom;">
-				    	</div>
-				  		<div class="" style="width: 45%;display: inline-block;vertical-align: bottom;margin-top: 10px;margin-left: 20px;">
-				  		{% if entity.risque.isPhysical %}
-							fffff
+						{% if causeOfEvaluationForm.vars.value.cause is not empty %}
+						{{ dump(causeOfEvaluationForm.vars.value.cause) }}
+						<div type="cause">
+							<div style="width: 40%;display: inline-block;">
+								<label>{{ causeOfEvaluationForm.vars.value.cause }}</label>
+								<div hidden>{{ form_widget(causeOfEvaluationForm.cause) }}</div>
+							</div>
+							<div style="width: 10%;display: inline-block;vertical-align: bottom;">
+							</div>
+							<div class="" style="width: 45%;display: inline-block;vertical-align: bottom;margin-top: 10px;margin-left: 20px;">
+							{% if entity.risque.isPhysical %}
 							{% if causeOfEvaluationForm.vars.value.modeFonctionnement.id==1 %}
 								<div class="section-form-perso" style="display: inline-block;width: 45%">
 									{{ form_errors(causeOfEvaluationForm.normalGrille) }}
@@ -70,13 +70,13 @@
 									{{ form_row(causeOfEvaluationForm.anormalGrille, {attr: {class: 'chzn-select'}}) }}
 								</div>
 							{% endif%}
-					    {% else %}
-					    	{{ form_errors(causeOfEvaluationForm.grille) }}
-					    	{{ form_widget(causeOfEvaluationForm.grille, {attr: {class: 'chzn-select fullL'}}) }}
-					    {% endif %}
-				    	</div>
-				  	</div>
-				  	{% endif %}
+							{% else %}
+								{{ form_errors(causeOfEvaluationForm.grille) }}
+								{{ form_widget(causeOfEvaluationForm.grille, {attr: {class: 'chzn-select full'}}) }}
+							{% endif %}
+							</div>
+						</div>
+						{% endif %}
 				  	{% endfor %}
 				  	<!-- /Form template-->
 				</div>

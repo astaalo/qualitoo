@@ -193,7 +193,7 @@ class PlanActionController extends BaseController {
 	/**
 	 * @QMLogger(message="Modification d'un plan d'action")
 	 * @Route("/{id}/edition_planaction", name="edition_planaction", requirements={ "id"= "\d+"})
-	 * @Template()
+	 * @Template("planAction/edit.html.twig")
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();

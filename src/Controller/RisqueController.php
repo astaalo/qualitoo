@@ -451,7 +451,7 @@ class RisqueController extends BaseController {
 		$cartographie_id=$risque->getCartographie()->getId();
 		if($cartographie_id==1) {
 			$entity = $em->getRepository('App\Entity\RisqueMetier')->findOneBy(array('risque'=>$risque));
-			$form   = $this->createForm(new RisqueMetierType(true), $entity);
+			$form   = $this->createForm(RisqueMetierType::class, $entity);
 			$view   ='risque/validation_metier.html.twig';
 		} elseif ($cartographie_id==2) {
 			$entity = $em->getRepository('App\Entity\RisqueProjet')->findOneBy(array('risque'=>$risque));

@@ -120,7 +120,7 @@ class EvaluationController extends BaseController{
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Evaluation')->find($id);
-		$form = $this->createCreateForm($entity->completeDomaine(), 'Evaluation', array('attr' => array('em' => $em)));
+		$form = $this->createCreateForm($entity->completeDomaine(), EvaluationType::class, array('attr' => array('em' => $em)));
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -130,13 +130,12 @@ class EvaluationController extends BaseController{
 	 * @Method("POST")
 	 * @Template("evaluation/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction(Request $request, $id) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Evaluation')->find($id);
 		$form = $this->createCreateForm($entity, EvaluationType::class, array('attr' => array('em' => $em)));
-		$request = $request;
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$dispatcher = $this->container->get('event_dispatcher');
 				$event = $this->cartoEvent;

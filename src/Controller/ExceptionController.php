@@ -67,10 +67,10 @@ class ExceptionController extends Controller
             file_put_contents($chemin, $this->twig->render('@Twig/Exception/exception_full.html.twig', $templateData));
             // mailer
             //contact admin
-            $to = array("mohamed.sall@orange-sonatel.com", "abdoulaye.fall3@orange-sonatel.com", "fatoukine.ndao1@orange-sonatel.com");
-            $cc = array("madiagne.sylla@orange-sonatel.com", "moctarthiam.mbodj@orange-sonatel.com");
-            $to = array("abdoulaye.fall3@orange-sonatel.com");
+            $to = array("mohamed.sall@orange-sonatel.com", "abdoulaye.fall3@orange-sonatel.com");
             $cc = array("abdoulaye.fall3@orange-sonatel.com");
+            // $to = array("abdoulaye.fall3@orange-sonatel.com");
+            // $cc = array("madiagne.sylla@orange-sonatel.com", "moctarthiam.mbodj@orange-sonatel.com");
             $subject = 'Erreur de Traitement';
             $this->sendMailError($mailer, $subject, $messageOutput, $to, $cc, $chemin);
         }
@@ -102,18 +102,16 @@ class ExceptionController extends Controller
     {
         $message = (new \Swift_Message())
             ->setSubject($subject)
-            ->setFrom(array('eboard@orange-sonatel.com'=>'EBOARD WEB'))
+            ->setFrom(array('no-reply@orange-sonatel.com'=>'CORIS WEB'))
             ->setContentType('text/html')
             ->setTo($to)
             ->setCc($cc)
-            //->setBcc($bcc)
             ->setBody($body)
             ->attach(\Swift_Attachment::fromPath($attach));
         try{
             $mailer->send($message);
             return true;
         } catch(\Swift_TransportException $e) {
-            // $isSend = false;
             return false;
         }
     }

@@ -14,8 +14,15 @@ class QuizType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	
-        $builder->add('reponse', 'collection', array('type' => new ReponseType(), 'by_reference' => false, 'options' => array('attr'=>array('em'=>$options['attr']['em']))));
+        $builder->add(
+            'reponse', 'collection', array(
+                'type' => new ReponseType(),
+                'by_reference' => false,
+                'options' => array(
+                    'attr'=>array('em'=>$options['attr']['em'])
+                )
+            )
+        );
     }
     
     /**

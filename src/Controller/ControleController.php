@@ -286,7 +286,7 @@ class ControleController extends BaseController {
 		
 		$this->denyAccessUnlessGranted('evaluer', $controle, 'Accés non autorisé!');
 		
-		$form = $this->createForm(QuizType::class, $quiz, array ('attr' => array ('em' => $em)));
+		$form = $this->createCreateForm($quiz, QuizType::class, array ('attr' => array ('em' => $em)));
 		if ($request->getMethod () == 'POST') {
 			$form->handleRequest($request);
 			if ($form->isvalid ()) {

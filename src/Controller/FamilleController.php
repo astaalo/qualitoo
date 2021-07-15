@@ -93,13 +93,13 @@ class FamilleController extends BaseController {
 	 * @Method("POST")
 	 * @Template("famille/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Famille')->find($id);
 		$form = $this->createCreateForm($entity, FamiileType::class);
-		$request = $request;
+
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$em->flush();

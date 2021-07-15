@@ -164,7 +164,7 @@ class ProcessusController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Processus')->find($id);
 		$form = $this->createCreateForm($entity, ProcessusType::class);
-		$form->bind($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em->persist($entity);
 			$lib_sans_spec = $this->replaceSpecialChars($entity->getLibelle());

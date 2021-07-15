@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Annotation\QMLogger;
 use App\Entity\Processus;
+use App\Entity\RisqueMetier;
 use App\Form\ActiviteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -135,7 +136,9 @@ class ActiviteController extends BaseController
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($entity);
 			$em->flush();
-			if ($id) {
+            $this->get('session')->getFlashBag()->add('success', "Activité ajoutée avec succés.");
+
+            if ($id) {
 				return $this->redirect($this->generateUrl('details_processus', array('id' => $entity->getProcessus()->getId())));
 			} else {
 				return $this->redirect($this->generateUrl('les_activites'));
@@ -171,7 +174,7 @@ class ActiviteController extends BaseController
 		$entity = $em->getRepository('App\Entity\Activite')->find($id);
 		$form = $this->createCreateForm($entity, ActiviteType::class);
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$this->getDoctrine()->getRepository(RisqueMetier::class)->createQueryBuilder('rm')
@@ -185,7 +188,8 @@ class ActiviteController extends BaseController
 					->where('IDENTITY(rm.activite) = :activite')->setParameter('activite', $entity->getId())
 					->getQuery()->execute();
 				$em->flush();
-				return $this->redirect($this->generateUrl('les_activites'));
+                $this->get('session')->getFlashBag()->add('success', "Activité modifiée avec succés.");
+                return $this->redirect($this->generateUrl('les_activites'));
 			}
 		}
 		return array('entity' => $entity, 'form' => $form->createView());

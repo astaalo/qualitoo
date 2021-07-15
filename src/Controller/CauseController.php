@@ -142,13 +142,13 @@ class CauseController extends BaseController {
 	 * @Method("POST")
 	 * @Template("cause/edit.html.twig")
 	 */
-	public function updateAction($id, $page) {
+	public function updateAction($id, $page, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Cause')->find($id);
 		$form = $this->createCreateForm($entity, CauseType::class);
-		$request = $request;
+
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$risques_of_cause = $entity->getRisqueHasCause();
 				foreach($risques_of_cause as $roc) {

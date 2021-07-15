@@ -134,7 +134,7 @@ class StructureController extends BaseController {
 		$entity = $em->getRepository('App\Entity\Structure')->find($id);
 		$form = $this->createCreateForm($entity, StructureType::class);
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$entity->setName($entity->getName());
 				if($entity->getChildren()->count()>0)

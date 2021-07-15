@@ -99,13 +99,13 @@ class AvancementController extends BaseController {
 	 * @Method("POST")
 	 * @Template("avancement/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Avancement')->find($id);
 		$form = $this->createCreateForm($entity, AvancementType::class);
-		$request = $request;
+
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$em->flush();

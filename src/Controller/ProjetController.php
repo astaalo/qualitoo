@@ -131,6 +131,7 @@ class ProjetController extends BaseController {
 			$entity->setSociete($this->getUser()->getSociete());
 			$em->persist($entity);
 			$em->flush();
+            $this->get('session')->getFlashBag()->add('success', "Projet ajouté avec succés.");
 			return $this->redirect($this->generateUrl('details_processus', array('id' => $entity->getProcessus()->getId())));
 		}
 		return array('entity' => $entity, 'form' => $form->createView(), 'processus_id' => $id);
@@ -165,13 +166,13 @@ class ProjetController extends BaseController {
 	 * @Method("POST")
 	 * @Template("projet/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Projet')->find($id);
 		$form = $this->createCreateForm($entity, ProjetType::class);
-		$request = $request;
+
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$this->getDoctrine()->getRepository('App\Entity\RisqueProjet')->createQueryBuilder('rp')

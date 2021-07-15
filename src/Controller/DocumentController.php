@@ -185,7 +185,7 @@ class DocumentController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Document')->find($id);
 		$form = $this->createCreateForm($entity, DocumentType::class);
-		$request = $request;
+
 		if ($request->getMethod() == 'POST') {
 			$form->handleRequest($request);
 			if ($form->isValid()) {

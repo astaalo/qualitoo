@@ -225,7 +225,7 @@ class DomaineController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\DomaineImpact')->find($id);
 		$form = $this->createCreateform($entity, DomaineImpactType::class);
-		$form->bind($request);
+		$form->handleRequest($request);
 		if($form->isValid()) {
 			$em->persist($entity);
 			//var_dump($entity);exit;
@@ -241,13 +241,13 @@ class DomaineController extends BaseController {
 	 * @Method("POST")
 	 * @Template("domaine/editForActivite.html.twig")
 	 */
-	public function updateForActiviteAction($id) {
+	public function updateForActiviteAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\DomaineActivite')->find($id);
 		$form = $this->createCreateForm($entity, DomaineActiviteType::class);
-		$request = $request;
+
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$em->flush();
@@ -268,7 +268,7 @@ class DomaineController extends BaseController {
 		$entity = $em->getRepository(DomaineSite::class)->find($id);
 		$form = $this->createCreateForm($entity, DomaineSiteType::class);
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$em->flush();

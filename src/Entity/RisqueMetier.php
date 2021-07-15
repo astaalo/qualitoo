@@ -29,7 +29,7 @@ class RisqueMetier {
 	private $risque;
 	
 	/**
-	 * @var \Processus
+	 * @var Processus
 	 * @ORM\ManyToOne(targetEntity="Processus", cascade={"persist", "merge"})
 	 * @ORM\JoinColumns({
 	 *   @ORM\JoinColumn(name="processus_id", referencedColumnName="id")

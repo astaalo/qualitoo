@@ -53,7 +53,7 @@ class UtilisateurController extends BaseController {
 		$this->denyAccessUnlessGranted('update', $user,'Accés non autorisé!');
 		$form->setData($user);
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em->persist($user);
 				$em->flush();

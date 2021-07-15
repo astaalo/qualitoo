@@ -166,13 +166,12 @@ class MenaceController extends BaseController {
 	 * @Method("POST")
 	 * @Template("menace/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Menace')->find($id);
 		$form = $this->createCreateForm($entity, MenaceType::class);
-		$request = $request;
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$em->flush();

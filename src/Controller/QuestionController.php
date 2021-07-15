@@ -111,13 +111,13 @@ class QuestionController extends BaseController{
 	 * @Method("POST")
 	 * @Template("question/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Question')->find($id);
 		$form = $this->createCreateForm($entity, QuestionType::class);
-		$request = $request;
+
 		if ($request->getMethod() == 'POST') {
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$em->flush();

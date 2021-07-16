@@ -218,6 +218,7 @@ class ControleController extends BaseController {
 				$entity->getRisque()->setTobeMigrate(true);
 				$em->persist($entity);
 				$em->flush ();
+                $this->get('session')->getFlashBag()->add('success', "Contrôle modifié avec succés.");
 				if ($request->request->has('edit_another')) {
 					if (null != $controle = $entity->nextControle ()) {
 						$route = $this->generateUrl('edition_controle', array (

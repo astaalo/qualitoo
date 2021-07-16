@@ -206,7 +206,7 @@ class PlanActionController extends BaseController {
 	}
 	
 	/**
-	 * @QMLogger(message="Mdification d'un plan d'action")
+	 * @QMLogger(message="Modification d'un plan d'action")
 	 * @Route("/{id}/modifier_planaction", name="modifier_planaction", requirements={ "id"= "\d+"})
 	 * @Method("POST")
 	 * @Template("planAction/edit.html.twig")
@@ -227,6 +227,7 @@ class PlanActionController extends BaseController {
 				$entity->getRisque()->setTobeMigrate(true);
 				$em->persist($entity);
 				$em->flush();
+                $this->get('session')->getFlashBag()->add('success', "Plan d'action modifié avec succés.");
 				if($request->request->has('edit_another')) {
 					$route = $this->generateUrl('nouveau_planaction_de_risque', array('risque_id' => $entity->getRisque()->getId()));
 				} elseif($request->request->has('edit_and_pass')) {

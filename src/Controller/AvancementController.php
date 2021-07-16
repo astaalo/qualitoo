@@ -65,6 +65,7 @@ class AvancementController extends BaseController {
 			$entity->setEtat(1);
 			$em->persist($entity);
 			$em->flush();
+            $this->get('session')->getFlashBag()->add('success', "Avancement ajouté avec succés.");
 			return $this->redirect($this->generateUrl('dashboard'));
 		}
 		return array('entity' => $entity, 'form' => $form->createView(), 'id'=>$id);

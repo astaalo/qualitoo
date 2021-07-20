@@ -181,7 +181,8 @@ class ProjetController extends BaseController {
 					->where('IDENTITY(rp.projet) = :projet')->setParameter('projet', $entity->getId())
 					->getQuery()->execute();
 				$em->flush();
-				return $this->redirect($this->generateUrl('les_projets'));
+                $this->get('session')->getFlashBag()->add('success', "Projet a été modifiée avec succés.");
+                return $this->redirect($this->generateUrl('les_projets'));
 			}
 		}
 		return array('entity' => $entity, 'form' => $form->createView());

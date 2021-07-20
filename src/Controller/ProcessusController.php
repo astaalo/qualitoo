@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Annotation\QMLogger;
+use App\Entity\RisqueMetier;
+use App\Entity\RisqueProjet;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -130,9 +132,10 @@ class ProcessusController extends BaseController {
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
+            $entity->setLibelleSansCarSpecial($this->replaceSpecialChars($entity->getLibelle()));
 			$em->persist($entity);
-			$em->flush();
-			if($entity->getParent()) {
+			$em->flush();$this->get('session')->getFlashBag()->add('success', "Processus ajouté avec succés.");
+            if($entity->getParent()) {
 				return $this->redirect($this->generateUrl('details_processus', array('id' => $entity->getParent()->getId())));
 			} else{
 				return $this->redirect($this->generateUrl('les_processus'));
@@ -160,7 +163,7 @@ class ProcessusController extends BaseController {
 	 * @Method("POST")
 	 * @Template("processus/edit.html.twig")
 	 */
-	public function updateAction($id) {
+	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Processus')->find($id);
 		$form = $this->createCreateForm($entity, ProcessusType::class);
@@ -168,7 +171,7 @@ class ProcessusController extends BaseController {
 		if ($form->isValid()) {
 			$em->persist($entity);
 			$lib_sans_spec = $this->replaceSpecialChars($entity->getLibelle());
-			$this->getDoctrine()->getRepository('OrangeMainBundle:Processus')->createQueryBuilder('p')
+			$this->getDoctrine()->getRepository('App\Entity\Processus')->createQueryBuilder('p')
 				 ->update()->set('p.libelleSansCarSpecial', ':lib')
 				 ->where('p.id = :id')
 				 ->setParameter('id', $entity->getId())
@@ -179,7 +182,7 @@ class ProcessusController extends BaseController {
 				->set('rm.structure', $entity->getStructure()->getId())
 				->where('IDENTITY(rm.processus) = :processus')->setParameter('processus', $entity->getId())
 				->getQuery()->execute();
-			$this->getDoctrine()->getRepository('OrangeMainBundle:RisqueProjet')->createQueryBuilder('rp')
+			$this->getDoctrine()->getRepository(RisqueProjet::class)->createQueryBuilder('rp')
 				->update()
 				->set('rp.structure', $entity->getStructure()->getId())
 				->where('IDENTITY(rp.processus) = :processus')->setParameter('processus', $entity->getId())

@@ -8,9 +8,11 @@ use App\Form\QuestionType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Question;
 use App\Annotation\QMLogger;
+use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends BaseController{
 	
@@ -59,7 +61,7 @@ class QuestionController extends BaseController{
 	 */
 	public function createAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('App\Entity\Question')->listAll();
+		$entities = $em->getRepository('App\Entity\Question')->listAll()->getQuery()->getResult();
 		$count= count($entities);
 		$entity = new Question();
 		$form   = $this->createCreateForm($entity, QuestionType::class);
@@ -69,14 +71,13 @@ class QuestionController extends BaseController{
 			$entity->setPosition($count+1);
 			$em->persist($entity);
 			$em->flush();
-			
-			return $this->redirect($this->generateUrl('les_questions'));
-		}
-		return array('entity' => $entity, 'form' => $form->createView());
+            return new JsonResponse(array('status' => 'success', 'text' => 'La question a bien été ajoutée avec succés'));
+        }
+		return new Response($this->renderView('question/new.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 	
 	/**
-	 * @QMLogger(message="DEatils d'une question")
+	 * @QMLogger(message="Details d'une question")
 	 * @Route("/{id}/details_question", name="details_question", requirements={ "id"=  "\d+"})
 	 * @Template()
 	 */
@@ -84,7 +85,7 @@ class QuestionController extends BaseController{
 		$em = $this->getDoctrine()->getManager();
 		$question = $em->getRepository('App\Entity\Question')->find($id);
 		
-		$this->denyAccessUnlessGranted('read', $processus, 'Accés non autorisé');
+		$this->denyAccessUnlessGranted('read', $question, 'Accés non autorisé');
 		
 		return array('entity' => $question);
 	}
@@ -119,12 +120,12 @@ class QuestionController extends BaseController{
 		if ($request->getMethod() == 'POST') {
 			$form->handleRequest($request);
 			if ($form->isValid()) {
-				$em->persist($entity);
-				$em->flush();
-				return $this->redirect($this->generateUrl('les_questions'));
-			}
+                $em->persist($entity);
+                $em->flush();
+                return new JsonResponse(array('status' => 'success', 'text' => 'La question modifiée avec succés'));
+            }
 		}
-		return array('entity' => $entity, 'form' => $form->createView());
+		return new Response($this->renderView('question/new.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 	
 	/**
@@ -154,7 +155,7 @@ class QuestionController extends BaseController{
 	 */
 	public function changePositionAction($sens) {
 		$em = $this->getDoctrine()->getManager();
-		$entities = $em->getRepository('App\Entity\Question')->listAll();
+		$entities = $em->getRepository('App\Entity\Question')->listAll()->getQuery()->getResult();
 		$entity= new Question();
 		
 		$this->denyAccessUnlessGranted('changePosition', $entity,'Accés non autorisée');

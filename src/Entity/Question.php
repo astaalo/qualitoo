@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\QuestionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=QuestionRepository::class)
@@ -21,6 +22,7 @@ class Question
      * @var string
      *
      * @ORM\Column(name="libelle", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $libelle;
 
@@ -34,6 +36,7 @@ class Question
     /**
      * @var integer
      * @ORM\Column(name="cotation", type="integer", length=1, nullable=false)
+     * @Assert\NotBlank()
      */
     private $cotation;
 

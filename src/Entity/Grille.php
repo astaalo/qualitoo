@@ -202,6 +202,12 @@ class Grille
         $this->niveauImpact = $niveau;
         $this->setNote($data->count() ? $data->first() : null);
         return $this;
+        /*$data = $typeGrille ? $typeGrille->getNote()->filter(function($note) use($niveau) {
+                    return $note->getValeur()==$niveau;
+                }) : null;
+        $this->niveauImpact = $niveau;
+        $this->setNote($data && $data->count() ? $data->first() : null);
+        return $this;*/
     }
 
     public function getNiveauImpact() {

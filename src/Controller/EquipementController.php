@@ -13,6 +13,7 @@ use App\Criteria\EquipementCriteria;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Form\EquipementType;
 use App\Annotation\QMLogger;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Equipement controller.
@@ -87,7 +88,7 @@ class EquipementController extends BaseController
             return new JsonResponse(array('status' => 'success', 'text' => 'L\'ajout s\'est déroulé avec succés'));
         }
 
-        return new Response($this->renderView('OrangeMainBundle:Equipement:new.html.twig', array('entity' => $entity, 'type'   => $type,'form' => $form->createView())), 303);
+        return new Response($this->renderView('equipement/new.html.twig', array('entity' => $entity, 'type'   => $type,'form' => $form->createView())), 303);
     }
 
 
@@ -201,7 +202,7 @@ class EquipementController extends BaseController
 	            return new JsonResponse(array('status' => 'success', 'text' => 'Modification avec succés'));
 	        }
        }
-       return new Response($this->renderView('OrangeMainBundle:Equipement:edit.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+        return new Response($this->renderView('equipement/edit.html.twig', array('entity' => $entity, 'form' => $editForm->createView())), 303);
     }
     /**
      * Deletes a Equipement entity.

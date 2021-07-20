@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Controller\BaseController;
 use App\Repository\CartographieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -135,7 +136,7 @@ class Cartographie
      */
     public function getTypeGrilleImpact() {
         $data = $this->typeGrille->filter(function($typeGrille) {
-            return $typeGrille->getTypeEvaluation()->getId()==TypeEvaluation::$ids['impact'];
+            return $typeGrille->getTypeEvaluation()->getId()==BaseController::$ids['type_evaluation']['impact'];
         });
         return $data->count() ? $data->first() : null;
     }
@@ -146,7 +147,7 @@ class Cartographie
      */
     public function getTypeGrilleCause() {
         $data = $this->typeGrille->filter(function($typeGrille) {
-            return $typeGrille->getTypeEvaluation()->getId()==TypeEvaluation::$ids['cause'];
+            return $typeGrille->getTypeEvaluation()->getId()==BaseController::$ids['type_evaluation']['cause'];
         });
         return $data->count() ? $data->first() : null;
     }

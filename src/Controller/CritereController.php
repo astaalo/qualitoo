@@ -107,7 +107,8 @@ class CritereController extends BaseController {
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$em->flush();
-				return $this->redirect($this->generateUrl('les_criteres'));
+                $this->get('session')->getFlashBag()->add('success', "Le critere a été modifié avec succés.");
+                return $this->redirect($this->generateUrl('les_criteres'));
 			}
 		}
 		return array('entity' => $entity, 'form' => $form->createView());

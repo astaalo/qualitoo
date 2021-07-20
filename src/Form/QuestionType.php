@@ -15,9 +15,9 @@ class QuestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle', null, array('label' => 'Libellé', 'attr' => array('class' => 'full')))
+            ->add('libelle', null, array('label' => 'Libellé', 'required' => false, 'attr' => array('class' => 'full')))
             ->add('cotation', null, array('attr' => array('class' => 'xsmall')))
-            ->add('etat', null, array('label' => 'Actif','attr' => array('class' => 'on_off_checkbox')));
+            ->add('etat', null, array('label' => 'Actif', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')));
     }
     
     /**

@@ -30,6 +30,8 @@ class BaseController extends AbstractController
     protected $orange_main_loader;
     protected $orange_main_core;
     protected $cartoEvent;
+    static $ids;
+    static $states;
 
     public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core, CartoEvent $cartoEvent)
     {
@@ -40,6 +42,8 @@ class BaseController extends AbstractController
         $this->orange_main_loader = $orange_main_loader;
         $this->orange_main_core = $orange_main_core;
         $this->cartoEvent = $cartoEvent;
+        self::$ids = $params->get('ids');
+        self::$states = $params->get('states');
     }
 
      public static function getSubscribedServices(): array  //ON surcharge cette fonction pour ajouter nos services aux services existants #Spécialité Symfony4

@@ -91,12 +91,12 @@ class DomaineController extends BaseController {
 	/**
 	 * @QMLogger(message="Creation d'un domaine de site")
 	* @Route("/nouveau_domaine_site", name="nouveau_domaine_site")
-	* @Template()
+	* @Template("domaine/newForSite.html.twig")
 	*/
 	public function newForSiteAction() {
 		$entity = new DomaineSite();
 		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisée!');
-		$form = $this->createCreateForm($entity,'DomaineSite');
+		$form = $this->createCreateForm($entity,DomaineSiteType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -107,16 +107,16 @@ class DomaineController extends BaseController {
 	 */
 	public function createForImpactAction(Request $request){
 		$entity = new DomaineImpact();
-		$form = $this->createCreateForm($entity,'DomaineImpact');
+		$form = $this->createCreateForm($entity,DomaineImpactType::class);
 		$form->handleRequest($request);
-		if($form->isValid()){
+		if($form->isSubmitted() && $form->isValid()){
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($entity);
 			$em->flush();
 			$this->addFlash('success', 'Le domaine a été créé avec succès');
 			return new JsonResponse(array('status' => 'success', 'text' => 'Le domaine a été créé avec succès'));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Domaine:newForImpact.html.twig', array('entity' => $entity, 'form' =>$form->createView())), 303);
+		return new Response($this->renderView('domaine/newForImpact.html.twig', array('entity' => $entity, 'form' =>$form->createView())), 303);
 	}
 
 	
@@ -135,7 +135,7 @@ class DomaineController extends BaseController {
 			$em->flush();
 			return new JsonResponse(array('status' => 'success', 'text' => 'Le domaine a été créé avec succès'));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Domaine:newForActivite.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+		return new Response($this->renderView('domaine/newForActivite.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 
 	/**
@@ -153,7 +153,7 @@ class DomaineController extends BaseController {
 			$em->flush();
 			return new JsonResponse(array('status' => 'success', 'text' => 'Le domaine a été créé avec succès'));
 		}
-		return new Response($this->renderView('OrangeMainBundle:Domaine:newForSite.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+		return new Response($this->renderView('domaine/newForSite.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 	
 	/**
@@ -203,7 +203,7 @@ class DomaineController extends BaseController {
 	/**
 	 * @QMLogger(message="Modification d'un domaine de site")
 	 * @Route("/{id}/edition_domaine_site", name="edition_domaine_site", requirements={"id"= "\d+"})
-	 * @Template()
+	 * @Template("domaine/editForSite.html.twig")
 	 */
 	public function editForSiteAction($id) {
 		$em = $this->getDoctrine()->getManager();
@@ -221,7 +221,7 @@ class DomaineController extends BaseController {
 	 * @Method("POST")
 	 * @Template("domaine/editForImpact.html.twig")
 	 */
-	public function updateForImpactAction($id) {
+	public function updateForImpactAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\DomaineImpact')->find($id);
 		$form = $this->createCreateform($entity, DomaineImpactType::class);
@@ -254,7 +254,7 @@ class DomaineController extends BaseController {
 				return new JsonResponse(array('status' => 'success', 'text' => "L'enregistrement a bien été mis à jour"));
 			}
 		}
-		return new Response($this->renderView('OrangeMainBundle:Domaine:editForActivite.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+		return new Response($this->renderView('domaine/editForActivite.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 	
 	/**
@@ -275,7 +275,7 @@ class DomaineController extends BaseController {
 				return new JsonResponse(array('status' => 'success', 'text' => "L'enregistrement a bien été mis à jour"));
 			}
 		}
-		return new Response($this->renderView('OrangeMainBundle:Domaine:editForSite.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
+		return new Response($this->renderView('domaine/editForSite.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}
 	
 	/**

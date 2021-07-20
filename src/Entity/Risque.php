@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 
+use App\Controller\BaseController;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\Absctract\NotificationInterface;
@@ -390,6 +391,8 @@ class Risque implements NotificationInterface {
 		$this->causeOfRisque = new \Doctrine\Common\Collections\ArrayCollection();
 		$this->impactOfRisque = new \Doctrine\Common\Collections\ArrayCollection();
 		$this->dateSaisie=new \DateTime("NOW");
+        self::$states = BaseController::$states['risque'];
+        self::$carto = BaseController::$ids['carto'];
 	}
 	
 	/**

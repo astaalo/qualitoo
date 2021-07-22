@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Controller\BaseController;
 use Doctrine\ORM\QueryBuilder;
 use App\Entity\Utilisateur;
 
@@ -18,7 +19,7 @@ class BaseRepository extends EntityRepository
 	public function findAll() {
 		return $this->filterBySociete($this->createQueryBuilder('q'))->getQuery()->execute();
 	}
-	
+
 	public function filterBySocieteOLD(QueryBuilder $queryBuilder, $alias = null) {
 		if(!$alias) {
 			$aliases = $queryBuilder->getRootAliases();
@@ -41,8 +42,9 @@ class BaseRepository extends EntityRepository
         return $queryBuilder;
     }
 
-	public static function filterByProfile(QueryBuilder $queryBuilder, $alias = null, $role = null, $user = null) {
-		if(!$alias) {
+	public static function filterByProfile(QueryBuilder $queryBuilder, $alias = null, $role = null) {
+		$user = BaseController::$_user;
+	    if(!$alias) {
 			$aliases = $queryBuilder->getRootAliases();
 			$alias = $aliases[0];
 		}

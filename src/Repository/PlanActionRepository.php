@@ -122,13 +122,13 @@ class PlanActionRepository extends ServiceEntityRepository
      */
     public function applyFilterByProfile($queryBuilder) {
         if($this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN)) {
-            $queryBuilder = BaseRepository::filterByProfile($queryBuilder, null, Utilisateur::ROLE_SUPER_ADMIN,$this->_user);
+            $queryBuilder = BaseRepository::filterByProfile($queryBuilder, null, Utilisateur::ROLE_SUPER_ADMIN);
         } elseif($this->_user->hasRole(Utilisateur::ROLE_ADMIN)) {
-            $queryBuilder=BaseRepository::filterByProfile($queryBuilder, 's', Utilisateur::ROLE_ADMIN,$this->_user);
+            $queryBuilder=BaseRepository::filterByProfile($queryBuilder, 's', Utilisateur::ROLE_ADMIN);
         } elseif($this->_user->hasRole(Utilisateur::ROLE_RISKMANAGER)) {
-            $queryBuilder = BaseRepository::filterByProfile($queryBuilder, 's', Utilisateur::ROLE_RISKMANAGER,$this->_user);
+            $queryBuilder = BaseRepository::filterByProfile($queryBuilder, 's', Utilisateur::ROLE_RISKMANAGER);
         } elseif($this->_user->hasRole(Utilisateur::ROLE_AUDITEUR)) {
-            $queryBuilder = BaseRepository::filterByProfile($queryBuilder, 's', Utilisateur::ROLE_AUDITEUR,$this->_user);
+            $queryBuilder = BaseRepository::filterByProfile($queryBuilder, 's', Utilisateur::ROLE_AUDITEUR);
         } elseif($this->_user->hasRole(Utilisateur::ROLE_RESPONSABLE)) {
             if((null!=$structure=$this->_user->getStructure()) && $this->_user->getManager()==true) {
                 $queryBuilder->orWhere('IDENTITY(rm.structure) IN (:structureIds) OR IDENTITY(rp.structure) IN (:structureIds)')->setParameter('structureIds', $structure->getChildrenIds());

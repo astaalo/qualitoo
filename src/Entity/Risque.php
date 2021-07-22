@@ -391,8 +391,6 @@ class Risque implements NotificationInterface {
 		$this->causeOfRisque = new \Doctrine\Common\Collections\ArrayCollection();
 		$this->impactOfRisque = new \Doctrine\Common\Collections\ArrayCollection();
 		$this->dateSaisie=new \DateTime("NOW");
-        self::$states = BaseController::$states['risque'];
-        self::$carto = BaseController::$ids['carto'];
 	}
 	
 	/**
@@ -563,7 +561,7 @@ class Risque implements NotificationInterface {
 	 */
 	public function getTypeGrilleCauseBy($modeFonctionnementId) {
 		$data = $this->cartographie->getTypeGrille()->filter(function($typeGrille) use($modeFonctionnementId) {
-			return $typeGrille->getEtat() && $typeGrille->getTypeEvaluation()->getId() == TypeEvaluation::$ids['cause'] && 
+			return $typeGrille->getEtat() && $typeGrille->getTypeEvaluation()->getId() == BaseController::$ids['type_evaluation']['cause'] &&
 				(($typeGrille->getModeFonctionnement()==null && $modeFonctionnementId==null) || 
 						($typeGrille->getModeFonctionnement() && $typeGrille->getModeFonctionnement()->getId()==$modeFonctionnementId)
 					);
@@ -954,23 +952,23 @@ class Risque implements NotificationInterface {
 	}
 	
 	public function isValidated() {
-		return $this->getEtat() == Risque::$states['valide'];
+		return $this->getEtat() == BaseController::$states['risque']['valide'];
 	}
 	public function hasToBeValidated() {
-		return $this->getEtat() == Risque::$states['a_valider'];
+		return $this->getEtat() == BaseController::$states['risque']['a_valider'];
 	}
 	public function setHasToBeValidated($hasToBeValidated) {
-		$this->etat = Risque::$states['a_valider'];
+		$this->etat = BaseController::$states['risque']['a_valider'];
 		return $this;
 	}
 	public function isRejected() {
-		return $this->getEtat() == Risque::$states['rejete'];
+		return $this->getEtat() == BaseController::$states['risque']['rejete'];
 	}
 	public function isPending() {
-		return $this->getEtat() == Risque::$states['en_cours'];
+		return $this->getEtat() == BaseController::$states['risque']['en_cours'];
 	}
 	public function isIdentified() {
-		return $this->getEtat() == Risque::$states['nouveau'];
+		return $this->getEtat() == BaseController::$states['risque']['nouveau'];
 	}
 	
 	/**
@@ -1131,7 +1129,7 @@ class Risque implements NotificationInterface {
 	 * check if risque is SST or environmental
 	 */
 	public function isPhysical() {
-		return in_array($this->cartographie->getId(), array(Cartographie::$ids['sst'], Cartographie::$ids['environnement']));
+		return in_array($this->cartographie->getId(), array(BaseController::$ids['carto']['sst'], BaseController::$ids['carto']['environnement']));
 	}
 	
 	/**
@@ -1212,7 +1210,7 @@ class Risque implements NotificationInterface {
 	 * @return boolean
 	 */
 	public function isRisqueMetier() {
-		return $this->cartographie->getId()==self::$carto['metier'];
+		return $this->cartographie->getId()==BaseController::$ids['carto']['metier'];
 	}
 
     /**
@@ -1244,7 +1242,7 @@ class Risque implements NotificationInterface {
 	 * @return boolean
 	 */
 	public function isRisqueProjet() {
-		return $this->cartographie->getId()==self::$carto['projet'];
+		return $this->cartographie->getId()==BaseController::$ids['carto']['projet'];
 	}
 
     /**
@@ -1276,7 +1274,7 @@ class Risque implements NotificationInterface {
 	 * @return boolean
 	 */
 	public function isRisqueSST() {
-		return $this->cartographie->getId()==self::$carto['sst'];
+		return $this->cartographie->getId()==BaseController::$ids['carto']['sst'];
 	}
 
     /**
@@ -1308,7 +1306,7 @@ class Risque implements NotificationInterface {
 	 * @return boolean
 	 */
 	public function isRisqueEnvironnemental() {
-		return $this->cartographie->getId()==self::$carto['environnement'];
+		return $this->cartographie->getId()==BaseController::$ids['carto']['environnement'];
 	}
     
     public function getActivite() {
@@ -1789,8 +1787,8 @@ class Risque implements NotificationInterface {
     	$arrData = array();
     	$data = array('risque' => $this->id, 'cartographie' => $this->cartographie->getId());
     	$data['menace'] = array('id' => $this->menace->getId(), 'libelle'=>$this->menace->getLibelle());
-    	if(in_array($this->cartographie->getId(), array(Cartographie::$ids['metier'], Cartographie::$ids['projet']))) {
-    		$risqueData = $this->cartographie->getId()==Cartographie::$ids['metier'] ? $this->risqueMetier : $this->risqueProjet;
+    	if(in_array($this->cartographie->getId(), array(BaseController::$ids['carto']['metier'], BaseController::$ids['carto']['projet']))) {
+    		$risqueData = $this->cartographie->getId()==BaseController::$ids['carto']['metier'] ? $this->risqueMetier : $this->risqueProjet;
     		if($risqueData==null) {
     			return null;
     		}
@@ -1804,14 +1802,14 @@ class Risque implements NotificationInterface {
     				$data['direction'] = array('id' => $direction->getId());
     			}
     		}
-    		if($this->cartographie->getId()==Cartographie::$ids['metier'] && $risqueData->getActivite()) {
+    		if($this->cartographie->getId()==BaseController::$ids['carto']['metier'] && $risqueData->getActivite()) {
     			$data['activite'] = array('id' => $risqueData->getActivite()->getId());
-    		} elseif($this->cartographie->getId()==Cartographie::$ids['projet'] && $risqueData->getProjet()) {
+    		} elseif($this->cartographie->getId()==BaseController::$ids['carto']['projet'] && $risqueData->getProjet()) {
     			$data['projet'] = array('id' => $risqueData->getProjet()->getId());
     		}
     	}
-    	if(in_array($this->cartographie->getId(), array(Cartographie::$ids['sst'], Cartographie::$ids['environnement']))) {
-    		$risqueData = $this->cartographie->getId()==Cartographie::$ids['sst'] ? $this->risqueSST : $this->risqueEnvironnemental;
+    	if(in_array($this->cartographie->getId(), array(BaseController::$ids['carto']['sst'], BaseController::$ids['carto']['environnement']))) {
+    		$risqueData = $this->cartographie->getId()==BaseController::$ids['carto']['sst'] ? $this->risqueSST : $this->risqueEnvironnemental;
     		if($risqueData==null) {
     			return null;
     		}
@@ -1845,8 +1843,8 @@ class Risque implements NotificationInterface {
     public function showValuesAsToMigrate() {
     	$data = array('risque' => $this->id, 'cartographie' => $this->cartographie->getId(), 'causes' => array(), 'impacts' => array());
     	$data['menace'] = array('id' => $this->menace->getId(), 'libelle'=>$this->menace->getLibelle());
-    	if(in_array($this->cartographie->getId(), array(Cartographie::$ids['metier'], Cartographie::$ids['projet']))) {
-    		$risqueData = $this->cartographie->getId()==Cartographie::$ids['metier'] ? $this->risqueMetier : $this->risqueProjet;
+    	if(in_array($this->cartographie->getId(), array(BaseController::$ids['carto']['metier'], BaseController::$ids['carto']['projet']))) {
+    		$risqueData = $this->cartographie->getId()==BaseController::$ids['carto']['metier'] ? $this->risqueMetier : $this->risqueProjet;
     		if($risqueData==null) {
     			return null;
     		}
@@ -1860,14 +1858,14 @@ class Risque implements NotificationInterface {
     				$data['direction'] = array('id'=>$direction->getId(), 'name'=>$direction->getName(), 'libelle'=>$direction->getLibelle());
     			}
     		}
-    		if($this->cartographie->getId()==Cartographie::$ids['metier'] && $risqueData->getActivite()) {
+    		if($this->cartographie->getId()==BaseController::$ids['carto']['metier'] && $risqueData->getActivite()) {
     			$data['activite'] = array('id' => $risqueData->getActivite()->getId(), 'libelle'=>$risqueData->getActivite()->getLibelle());
-    		} elseif($this->cartographie->getId()==Cartographie::$ids['projet'] && $risqueData->getProjet()) {
+    		} elseif($this->cartographie->getId()==BaseController::$ids['carto']['projet'] && $risqueData->getProjet()) {
     			$data['projet'] = array('id' => $risqueData->getProjet()->getId(), 'libelle'=>$risqueData->getProjet()->getLibelle());
     		}
     	}
-    	if(in_array($this->cartographie->getId(), array(Cartographie::$ids['sst'], Cartographie::$ids['environnement']))) {
-    		$risqueData = $this->cartographie->getId()==Cartographie::$ids['sst'] ? $this->risqueSST : $this->risqueEnvironnemental;
+    	if(in_array($this->cartographie->getId(), array(BaseController::$ids['carto']['sst'], BaseController::$ids['carto']['environnement']))) {
+    		$risqueData = $this->cartographie->getId()==BaseController::$ids['carto']['sst'] ? $this->risqueSST : $this->risqueEnvironnemental;
     		if($risqueData==null) {
     			return null;
     		}

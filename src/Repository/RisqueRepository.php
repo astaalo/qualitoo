@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Controller\BaseController;
 use App\Entity\Activite;
 use App\Entity\Risque;
 use App\Entity\Utilisateur;
@@ -282,11 +283,11 @@ class RisqueRepository extends ServiceEntityRepository
     {
         if($this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN)) {
         } elseif($this->_user->hasRole(Utilisateur::ROLE_ADMIN)) {
-            $queryBuilder = $this->filterByProfile($queryBuilder, 's', Utilisateur::ROLE_ADMIN );
+            $queryBuilder = BaseRepository::filterByProfile($queryBuilder, 's', Utilisateur::ROLE_ADMIN);
         } elseif( $this->_user->hasRole(Utilisateur::ROLE_RISKMANAGER)) {
-            $queryBuilder = $this->filterByProfile($queryBuilder, 's', Utilisateur::ROLE_RISKMANAGER );
+            $queryBuilder = BaseRepository::filterByProfile($queryBuilder, 's', Utilisateur::ROLE_RISKMANAGER);
         } elseif($this->_user->hasRole(Utilisateur::ROLE_AUDITEUR)) {
-            $queryBuilder = $this->filterByProfile($queryBuilder, 's', Utilisateur::ROLE_AUDITEUR );
+            $queryBuilder = BaseRepository::filterByProfile($queryBuilder, 's', Utilisateur::ROLE_AUDITEUR);
         } elseif( $this->_user->hasRole(Utilisateur::ROLE_RESPONSABLE) && $criteria->getCartographie() && $criteria->isPhysical()==false ) {
             if((null!=$structure=$this->_user->getStructure()) && $this->_user->isManager()) {
                 $queryBuilder->andWhere('IDENTITY(rm.structure) IN (:structureIds) OR IDENTITY(rp.structure) IN (:structureIds) ')

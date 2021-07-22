@@ -2,6 +2,8 @@
 
 namespace App\Security\Voter;
 
+use App\Entity\Risque;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -84,4 +86,10 @@ class RisqueVoter extends Voter {
 		$qb->andWhere('r.id =:id ')->setParameter('id', $risque->getId());
 		return count($qb->getQuery()->getArrayResult())>0;
 	}
+
+	protected $em;
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
 }

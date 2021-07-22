@@ -1,6 +1,7 @@
 <?php
 namespace App\Form;
 
+use App\Controller\BaseController;
 use App\Entity\Grille;
 use Psr\Container\ContainerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -41,11 +42,11 @@ class EvaluationHasCauseType extends AbstractType
 				}, 'placeholder' => 'Choisir un niveau ...'));
 			$event->getForm()->add('normalGrille', EntityType::class, array('label'=>'Normal','class' => Grille::class, 'query_builder' => function($er) use($risque) {
 					return $er->createQueryBuilder('r')->where('r.typeGrille = :typeGrille')
-						->setParameter('typeGrille', $risque->getTypeGrilleCauseBy(ModeFonctionnement::$ids['normal']));
+						->setParameter('typeGrille', $risque->getTypeGrilleCauseBy(BaseController::$ids['mode_fonctionnement']['normal']));
 				}, 'placeholder' => 'Choisir un niveau ...'));
 			$event->getForm()->add('anormalGrille', EntityType::class, array('label'=>'Anormal','class' => Grille::class, 'query_builder' => function($er) use($risque) {
 					return $er->createQueryBuilder('r')->where('r.typeGrille = :typeGrille')
-						->setParameter('typeGrille', $risque->getTypeGrilleCauseBy(ModeFonctionnement::$ids['anormal']));
+						->setParameter('typeGrille', $risque->getTypeGrilleCauseBy(BaseController::$ids['mode_fonctionnement']['anormal']));
 				}, 'placeholder' => 'Choisir un niveau ...'));
 			if($event->getForm()->getName()==FormEvents::SUBMIT) {
 				$grille = $event->getData()->getFinalGrille();

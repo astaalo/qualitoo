@@ -54,13 +54,15 @@ class RisqueController extends BaseController {
 	 * @Template()
 	 */
 	public function indexAction(Request $request) {
-		$position=$this->get('session')->get('risque_criteria')['cartographie'];
+		$position= $this->get('session')->get('risque_criteria') ? $this->get('session')->get('risque_criteria')['cartographie'] : null;
 		$entity=new Risque();
 		if($this->get('session')->get('risque_criteria')==null || count($this->get('session')->get('risque_criteria'))==0) {
 			$this->get('session')->set('risque_criteria', array('cartographie' => $this->getMyParameter('ids', array('carto', 'metier'))));
 		}
 		$data = $this->get('session')->get('risque_criteria');
-		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
+        $position= $position ? $position : $this->get('session')->get('risque_criteria')['cartographie'];
+
+        $form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->modifyRequestForForm($request, $data, $form);
 		$entity->setCartographie($form->getData()->getCartographie());
 		

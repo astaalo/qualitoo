@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class BaseController extends AbstractController
 {
@@ -32,8 +33,9 @@ class BaseController extends AbstractController
     protected $cartoEvent;
     static $ids;
     static $states;
+    static $_user;
 
-    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core, CartoEvent $cartoEvent)
+    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core, CartoEvent $cartoEvent, Security $security)
     {
         $this->paginator = $paginator;
         $this->service_status = $status;
@@ -44,6 +46,7 @@ class BaseController extends AbstractController
         $this->cartoEvent = $cartoEvent;
         self::$ids = $params->get('ids');
         self::$states = $params->get('states');
+        self::$_user = $security->getUser();
     }
 
      public static function getSubscribedServices(): array  //ON surcharge cette fonction pour ajouter nos services aux services existants #Spécialité Symfony4

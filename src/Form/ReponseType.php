@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Question;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Form\DataTransformer\EntityToIdTransformer;
@@ -15,7 +17,7 @@ class ReponseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add($builder->create('question', HiddenType::class)->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], '\App\Entity\Question')))
+        $builder->add($builder->create('question', HiddenType::class)->addModelTransformer(new EntityToIdTransformer($options['attr']['em'], Question::class)))
             ->add('valide', null, array('attr' => array('class' => 'on_off_checkbox')));
     }
     

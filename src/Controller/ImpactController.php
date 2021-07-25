@@ -59,7 +59,10 @@ class ImpactController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$impact = $em->getRepository('App\Entity\RisqueHasImpact')->find($id);
+		$impact = $em->getRepository('App\Entity\RisqueHasImpact')->findOneByImpact($id);
+        if (!$impact) {
+            throw $this->createNotFoundException('Aucun impact trouvé pour cet id : ' . $id);
+        }
 		return array('entity' => $impact);
 	}
 	

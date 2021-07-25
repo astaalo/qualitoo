@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,10 +16,10 @@ class QuizType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
-            'reponse', 'collection', array(
-                'type' => new ReponseType(),
+            'reponse', CollectionType::class, array(
+                'entry_type' => ReponseType::class,
                 'by_reference' => false,
-                'options' => array(
+                'entry_options' => array(
                     'attr'=>array('em'=>$options['attr']['em'])
                 )
             )

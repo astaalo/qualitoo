@@ -478,10 +478,10 @@ class RisqueController extends BaseController {
 		$entity->getRisque()->setHasToBeValidated($this->getMyParameter('states',array('risque','a_valider')));
 		if($request->getMethod()=='POST') {
 			$form->handleRequest($request);
-			if ($form->isValid()) {
+			//if ($form->isValid()) {
 				$dispatcher = $this->container->get('event_dispatcher');
 				$em = $this->getDoctrine()->getManager();
-				$entity->getRisque()->setEtat($this->getMyParameter('states',array('risque', 'en_cours')));
+				$entity->getRisque()->setEtat($this->getMyParameter('states',array('risque', 'valide')));
 				$entity->getRisque()->setValidateur($this->getUser());
 				$entity->getRisque()->setDateValidation(new \DateTime("NOW"));
 				foreach ($entity->getRisque()->getCauseOfRisque() as $rha){
@@ -509,7 +509,7 @@ class RisqueController extends BaseController {
 				} else {
 					return $this->redirect($this->generateUrl('nouveau_controle_de_risque', array('risque_id' => $id)));
 				}
-			}
+			//}
 		}
 		return $this->render($view, array('entity' => $entity, 'form' => $form->createView(), 'id' => $id));
 	}
@@ -552,7 +552,7 @@ class RisqueController extends BaseController {
 				$this->get('session')->getFlashBag()->add('success', "Le risque a été rejeté. Une notification sera envoyé au concerné.");
 				return new Response($this->redirect($this->generateUrl('les_risques_rejetes')));
 			}else{
-				return new Response($this->renderView('OrangeMainBundle:HistoryEtatRisque:new.html.twig', array('form'=>$form->createView(), 'id'=>$id)), 303);
+				return new Response($this->renderView('historyEtatRisque/new.html.twig', array('form'=>$form->createView(), 'id'=>$id)), 303);
 			}
 		}
 		return array('form'=>$form->createView(), 'id'=>$id);
@@ -845,19 +845,20 @@ class RisqueController extends BaseController {
 	
 	/**
 	 * {@inheritDoc}
-	 * @see \Orange\QuickMakingBundle\Controller\BaseController::setFilter()
+	 * @see \App\Controller\BaseController::setFilter()
 	 */
 	protected function setFilter(\Doctrine\ORM\QueryBuilder $queryBuilder, $aColumns, \Symfony\Component\HttpFoundation\Request $request) {
-		$alias = $queryBuilder  ->innerJoin('r.causeOfRisque', 'cOfRis')
-								->leftJoin('cOfRis.cause', 'cos')
-								->leftJoin('cOfRis.planAction','plas')
-								->leftJoin('cOfRis.controle','ctrls');
-		parent::setFilter($queryBuilder, array('m.libelle', 'plas.libelle','ctrls.description','plas.description','ctrls.description','cos.libelle'), $request);
+//		$alias = $queryBuilder  ->innerJoin('r.causeOfRisque', 'cOfRis')
+//								->leftJoin('cOfRis.cause', 'cos')
+//								->leftJoin('cOfRis.planAction','plas')
+//								->leftJoin('cOfRis.controle','ctrls');
+        //parent::setFilter($queryBuilder, array('m.libelle', 'plas.libelle','ctrls.description','plas.description','ctrls.description','cos.libelle'), $request);
+        parent::setFilter($queryBuilder, array('m.libelle'), $request);
 	}
 	
 	/**
 	 * {@inheritDoc}
-	 * @see \Orange\QuickMakingBundle\Controller\BaseController::setOrder()
+	 * @see \App\Controller\BaseController::setOrder()
 	 */
 	protected function setOrder(\Doctrine\ORM\QueryBuilder $queryBuilder, $aColumns, \Symfony\Component\HttpFoundation\Request $request) {
 		parent::setOrder($queryBuilder, array(null, null, null, null, 'r.dateSaisie'), $request);
@@ -865,7 +866,7 @@ class RisqueController extends BaseController {
 	
 	/**
 	 * {@inheritDoc}
-	 * @see \Orange\QuickMakingBundle\Controller\BaseController::setOrder()
+	 * @see \App\Controller\BaseController::setOrder()
 	 */
 	protected function setOrderForUncompleted(\Doctrine\ORM\QueryBuilder $queryBuilder, $aColumns, \Symfony\Component\HttpFoundation\Request $request) {
 		parent::setOrder($queryBuilder, array(null, null, null, 'r.dateSaisie'), $request);
@@ -873,7 +874,7 @@ class RisqueController extends BaseController {
 	
 	/**
 	 * {@inheritDoc}
-	 * @see \Orange\QuickMakingBundle\Controller\BaseController::setOrder()
+	 * @see \App\Controller\BaseController::setOrder()
 	 */
 	protected function setOrderForRejected(\Doctrine\ORM\QueryBuilder $queryBuilder, $aColumns, \Symfony\Component\HttpFoundation\Request $request) {
 		parent::setOrder($queryBuilder, array(null, null, null, 'r.dateSaisie'), $request);
@@ -881,7 +882,7 @@ class RisqueController extends BaseController {
 	
 	/**
 	 * {@inheritDoc}
-	 * @see \Orange\QuickMakingBundle\Controller\BaseController::setOrder()
+	 * @see \App\Controller\BaseController::setOrder()
 	 */
 	protected function setOrderForUnValidated(\Doctrine\ORM\QueryBuilder $queryBuilder, $aColumns, \Symfony\Component\HttpFoundation\Request $request) {
 		parent::setOrder($queryBuilder, array(null, null, null, 'r.dateSaisie'), $request);

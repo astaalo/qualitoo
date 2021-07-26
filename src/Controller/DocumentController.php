@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Form\DocumentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

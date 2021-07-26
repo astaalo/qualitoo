@@ -45,27 +45,36 @@
 			
 			<table class="show_table" >
 				<tbody>
-				<tr>
-					<th style="width:140px;" >Evaluation courante</th>
-				</tr>
-				{% if entitie.ICG is not empty %}
-				<tr>
-					<th style="width:140px;" >Probabilité</th>
-					<td style="padding-left: 70px;">{{ entitie.probabilite }}</td>
-				</tr>
-				<tr>
-					<th style="width:140px;" >Gravité</th>
-					<td style="padding-left: 70px;">{{ entitie.gravite }}</td>
-				</tr>
-				<tr>
-					<th style="width:140px;" >Indice de criticité</th>
-					<td style="padding-left: 70px;">{{ entitie.ICG }}</td>
-				</tr>
-				{% else %}
-				<tr>
-					<th style="width:140px;color: red;font-weight: bold;font-size: 16px;" colspan="2">Les risques de l'activité ne sont pas encore évalués</th>
-				</tr>
-				{% endif %}
+					{% if errorOnRisque == false %}
+						{% if entitie.ICG is not empty %}
+							<tr>
+								<th style="width:140px;" >Evaluation courante</th>
+							</tr>
+							<tr>
+								<th style="width:140px;" >Probabilité</th>
+								<td style="padding-left: 70px;">{{ entitie.probabilite }}</td>
+							</tr>
+							<tr>
+								<th style="width:140px;" >Gravité</th>
+								<td style="padding-left: 70px;">{{ entitie.gravite }}</td>
+							</tr>
+							<tr>
+								<th style="width:140px;" >Indice de criticité</th>
+								<td style="padding-left: 70px;">{{ entitie.ICG }}</td>
+							</tr>
+						{% else %}
+							<tr>
+								<th style="width:140px;color: red;font-weight: bold;font-size: 16px;" colspan="2">Les risques de l'activité ne sont pas encore évalués</th>
+							</tr>
+						{% endif %}
+					{% else %}
+						<div style="color: red;font-weight: bold;font-size: 16px; margin-left: 30px">
+							Erreur rencontrée lors de l'extraction des risques avec le/les ID(s) suivants:
+							{% for id in dataId %}
+								{{ id }};
+							{% endfor %}
+						</div>
+					{% endif %}
 				</tbody>
 			</table>
 		</table>
@@ -83,7 +92,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for rm in entitie.risque if rm.risque.etat==global_states.risque.valide %}
+					{% for rm in entitie.risque if errorOnRisque == false and rm.risque.etat==global_states.risque.valide %}
 					 <tr>
 						<td >{{ rm.risque.code }}</td>
 						<td >{{ rm.risque.menace }}</td>

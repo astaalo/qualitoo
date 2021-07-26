@@ -261,17 +261,22 @@ class Activite
      * @return
      */
     public function getICG() {
-    $icg = $number = 0;
-    foreach($this->risque as $rm) {
-        $risque=$rm->getRisque();
-        if($risque->getProbabilite() && $risque->getGravite()) {
-            $icg += $risque->getProbabilite() * $risque->getGravite();
-            $number = $number + 1;
+        $icg = $number = 0;
+        foreach($this->risque as $rm) {
+            $risque=$rm->getRisque();
+            if($risque->getProbabilite() && $risque->getGravite()) {
+                $icg += $risque->getProbabilite() * $risque->getGravite();
+                $number = $number + 1;
+            }
         }
+        $icg = $icg ? $icg/$number : 0;
+        return $icg ? ($icg < 1 ? 1 : round($icg)) : null;
     }
-    $icg = $icg ? $icg/$number : 0;
-    return $icg ? ($icg < 1 ? 1 : round($icg)) : null;
-}
+
+    public function __sleep()
+    {
+        return null;
+    }
 
     /**
      * @param RisqueMetier $risque

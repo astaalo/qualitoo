@@ -3,8 +3,11 @@ namespace App\Controller;
 
 use App\Annotation\QMLogger;
 use App\Entity\Processus;
+use App\Entity\Risque;
 use App\Entity\RisqueMetier;
 use App\Form\ActiviteType;
+use App\Repository\RisqueRepository;
+use Doctrine\ORM\EntityNotFoundException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -73,12 +76,24 @@ class ActiviteController extends BaseController
 	 * @Template()
 	 *
 	 */
-	public function showAction($id)
+	public function showAction($id, RisqueRepository $risqueRepo)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$activite = $em->getRepository('App\Entity\Activite')->find($id);
 		$this->denyAccessUnlessGranted('read', $activite, 'Accés non autorisé');
-		return array('entitie' => $activite);
+
+		$dataId = array();
+        $errorOnRisque = false ;
+		foreach ($activite->getRisque() as $rm){
+            try {
+                $dataId[] = $rm->getRisque()->getId();
+                $rm->getRisque()->getCartographie();
+            } catch (EntityNotFoundException $e){
+                $errorOnRisque = true;
+                //break;
+            }
+        }
+		return array('entitie' => $activite, 'errorOnRisque' => $errorOnRisque, 'dataId' => $dataId);
 	}
 
 	/**

@@ -19,7 +19,7 @@
 	</div>
 	<div class="clear"></div>
 	<div class="contentForm">
-	<form  novalidate="novalidate"  action="{{ path('modifier_document',{id : entity.id}) }}" {{ form_enctype(form) }}  method="POST">
+	<form  novalidate="novalidate"  action="{{ path('modifier_document',{id : entity.id}) }}" method="POST">
 	    {{ form_row(form._token) }}
 		{{ form_row(form.libelle) }}
 		<div style="display: none">

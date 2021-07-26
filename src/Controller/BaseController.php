@@ -8,6 +8,7 @@ use App\Service\Actions;
 use App\Service\Core;
 use App\Service\Loader;
 use App\Service\Status;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query;
 use Knp\Component\Pager\PaginatorInterface;
@@ -34,8 +35,9 @@ class BaseController extends AbstractController
     static $ids;
     static $states;
     static $_user;
+    static $em;
 
-    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core, CartoEvent $cartoEvent, Security $security)
+    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core, CartoEvent $cartoEvent, Security $security, EntityManagerInterface $em)
     {
         $this->paginator = $paginator;
         $this->service_status = $status;
@@ -47,6 +49,7 @@ class BaseController extends AbstractController
         self::$ids = $params->get('ids');
         self::$states = $params->get('states');
         self::$_user = $security->getUser();
+        self::$em = $em;
     }
 
      public static function getSubscribedServices(): array  //ON surcharge cette fonction pour ajouter nos services aux services existants #Spécialité Symfony4

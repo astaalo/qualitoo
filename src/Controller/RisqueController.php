@@ -326,7 +326,8 @@ class RisqueController extends BaseController {
 	 * @Template("risque/transferedRisques.html.twig")
 	 */
 	public function transferedRisquesAction(Request $request) {
-		$position=$this->get('session')->get('risque_criteria')['cartographie'];
+        $position= $this->get('session')->get('risque_criteria') ? $this->get('session')->get('risque_criteria')['cartographie'] : null;
+        //$position=$this->get('session')->get('risque_criteria')['cartographie'];
 		if($this->get('session')->get('risque_criteria')==null || count($this->get('session')->get('risque_criteria'))==0) {
 			$position=$this->getMyParameter('ids', array('carto', 'metier'));
 			$this->get('session')->set('risque_criteria', array('cartographie' => $this->getMyParameter('ids', array('carto', 'metier'))));

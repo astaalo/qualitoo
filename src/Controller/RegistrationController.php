@@ -69,31 +69,30 @@ class RegistrationController extends BaseController
             return $event->getResponse();
         }
 
-        
+        $this->denyAccessUnlessGranted('create', $this->getUser(), 'Accés non autorisé');
+
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $event = new FormEvent($form, $request);
                 $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-                $role= 'ROLE_ANNONCEUR';
-                $session = $this->container->get('session');
-                if ($session->get('role_livreur') && $session->get('role_livreur') == 'ROLE_LIVREUR') {
-                    $role = 'ROLE_LIVREUR';
-                }
-                $user->setRoles([$role]);
+//                $role= 'ROLE_ANNONCEUR';
+//                $session = $this->container->get('session');
+//                if ($session->get('role_livreur') && $session->get('role_livreur') == 'ROLE_LIVREUR') {
+//                    $role = 'ROLE_LIVREUR';
+//                }
+//                $user->setRoles([$role]);
                 $this->userManager->updateUser($user);
 
-                if (null === $response = $event->getResponse()) {
-                    $url = $this->generateUrl('fos_user_registration_confirmed');
-                    $response = new RedirectResponse($url);
-                }
+                $url = $this->generateUrl('les_utilisateurs');
+                $this->get('session')->getFlashBag()->add('success', "L'utilisateur a été ajouté avec succés.");
+                $response = new RedirectResponse($url);
 
                 $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
                 return $response;
             }
-
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
 

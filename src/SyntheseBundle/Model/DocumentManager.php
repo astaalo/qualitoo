@@ -3,6 +3,7 @@ namespace App\SyntheseBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ObjectRepository;
+use MongoDB\Client;
 use MongoDB\Client as Connection;
 //use Doctrine\MongoDB\Connection;
 use Doctrine\Common\EventManager;
@@ -17,10 +18,15 @@ class DocumentManager extends \Doctrine\ODM\MongoDB\DocumentManager
      */
     private $_parameters;
 
-    public static function create(Connection $conn = null, Configuration $config = null, EventManager $eventManager = null)
+    /*public static function create(Connection $conn = null, Configuration $config = null, EventManager $eventManager = null)
     {
         $dm = parent::create($conn, $config, $eventManager);
         return new DocumentManager($dm->getConnection(), $dm->getConfiguration(), $dm->getEventManager());
+    }*/
+
+    public static function create(?Client $client = null, ?Configuration $config = null, ?EventManager $eventManager = null): \Doctrine\ODM\MongoDB\DocumentManager
+    {
+        return new static($client, $config, $eventManager);
     }
     
     /**

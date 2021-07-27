@@ -489,7 +489,8 @@ class RisqueController extends BaseController {
 				$entity->getRisque()->setEtat($this->getMyParameter('states',array('risque', 'valide')));
 				$entity->getRisque()->setValidateur($this->getUser());
 				$entity->getRisque()->setDateValidation(new \DateTime("NOW"));
-				foreach ($entity->getRisque()->getCauseOfRisque() as $rha){
+                $entity->getRisque()->setToBeMigrate(true);
+                foreach ($entity->getRisque()->getCauseOfRisque() as $rha){
 					$cause = $rha->getCause();
 					$cause->setEtat(true);
 					$lib = $cause->getLibelle();
@@ -701,7 +702,7 @@ class RisqueController extends BaseController {
 	/**
 	 * @QMLogger(message="Affichage d'une cause d'un risque")
 	 * @Route("/{id}/cause_of_risque", name="cause_of_risque")
-	 * @Template()
+	 * @Template("risque/causeOfRisques.html.twig")
 	 */
 	public function causeOfRisquesAction(Request $request,$id){
 		$entity = $this->getDoctrine()->getRepository('App\Entity\Risque')->find($id);

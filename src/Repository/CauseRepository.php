@@ -19,32 +19,37 @@ class CauseRepository extends ServiceEntityRepository
         parent::__construct($registry, Cause::class);
     }
 
-    // /**
-    //  * @return Cause[] Returns an array of Cause objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
+    /**
+     * @param integer $risqueId
+     * @return array
+     */
+    public function getByRisqueId($risqueId) {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+            ->select('c.id, c.libelle')
+            ->innerJoin('c.risqueOfCause', 'roc')
+            ->innerJoin('roc.risque', 'r')
+            ->where('r.id = :risqueId')
+            ->setParameter('risqueId', $risqueId)
+            ->getQuery()->getArrayResult();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Cause
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+    /* (non-PHPdoc)
+     * @see \Orange\QuickMakingBundle\Repository\EntityRepository::listAllQueryBuilder()
+     */
+    public function listAllQueryBuilder($criteria = null) {
+        $criteria = $criteria ? $criteria : new Cause();
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->innerJoin('c.risqueHasCause', 'rhc')
+            ->innerJoin('rhc.risque', 'r');
+        if($criteria->menace) {
+            $queryBuilder->andWhere('r.menace = :menace')->setParameter('menace', $criteria->menace);
+        }
+        if($criteria->getFamille()) {
+            $queryBuilder->andWhere('c.famille = :famille')->setParameter('famille', $criteria->getFamille());
+        }
+        if($criteria->getCartographie()) {
+            $queryBuilder->andWhere('r.cartographie IN (:cartographie)')->setParameter('cartographie', array($criteria->getCartographie()->getId()));
+        }
+        return $queryBuilder;
     }
-    */
 }

@@ -95,6 +95,8 @@ parameters:
             activite:     3
             risque:       4
             aucun:        0
+    env(MONGODB_URL): ''
+    env(MONGODB_DB): ''
 
 services:
     # default configuration for services in *this* file

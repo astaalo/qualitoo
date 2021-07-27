@@ -63,7 +63,7 @@ class EquipementController extends BaseController
     	$form = $this->createForm(EquipementCriteria::class, new Equipement());
     	$this->modifyRequestForForm($request, $this->get('session')->get('equipement_criteria'), $form);
     	$criteria = $form->getData();
-    	$queryBuilder = $em->getRepository('App\Entity\Equipement')->listAllQueryBuilder($criteria);
+    	$queryBuilder = $em->getRepository(Equipement::class)->listAllQueryBuilder($criteria);
     	return $this->paginate($request, $queryBuilder);
     }
    

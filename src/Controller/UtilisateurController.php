@@ -120,7 +120,7 @@ class UtilisateurController extends BaseController {
 		$utilisateur->setEnabled(false);
 		$em->persist($utilisateur);
 		$em->flush();
-		$this->get('session')->getFlashBag()->add('notice', "L'utilisateur a été bien désactivé");
+		$this->get('session')->getFlashBag()->add('success', "L'utilisateur a été bien désactivé");
 		return $this->redirect($this->generateUrl('les_utilisateurs'));
 	}
 	  

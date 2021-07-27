@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Annotation\QMLogger;
+use App\Entity\Societe;
 use App\Entity\TypeDocument;
 use App\Repository\TypeDocumentRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -28,7 +29,7 @@ class DashboardController extends BaseController
         $utilisateur = $this->getUser();
         if($this->getUser() && !$this->getUser()->getSociete()){
             $id = $this->getUser()->getStructure()->getSociete()->getId();
-            $entite = $em->getRepository('Societe')->find($id);
+            $entite = $em->getRepository(Societe::class)->find($id);
             $utilisateur->setSociete($entite);
             $em->persist($utilisateur);
             $em->flush();

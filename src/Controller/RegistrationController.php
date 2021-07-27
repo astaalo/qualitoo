@@ -72,6 +72,10 @@ class RegistrationController extends BaseController
         $this->denyAccessUnlessGranted('create', $this->getUser(), 'Accés non autorisé');
 
         $form = $this->createForm(RegistrationFormType::class, $user);
+//        $data = array();
+//        $data['fos_user_registration'] = array('plainPassword' => ['first' => 'aaaa', 'second' => 'aaaa']);
+//        $request->request->replace($data); // CREATE PASSWORD
+
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
@@ -84,14 +88,15 @@ class RegistrationController extends BaseController
 //                }
 //                $user->setRoles([$role]);
                 $this->userManager->updateUser($user);
-
                 $url = $this->generateUrl('les_utilisateurs');
                 $this->get('session')->getFlashBag()->add('success', "L'utilisateur a été ajouté avec succés.");
-                $response = new RedirectResponse($url);
+                //$response = new RedirectResponse($url);
+                //$this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+                //$url = $this->generateUrl('resetting_expired', ['token' => $token ], UrlGeneratorInterface::ABSOLUTE_URL);
+                //$body = $this->renderView('@FOSUser/Registration/email.html.twig', ['url' => $url, 'username' =>$user->getUsername()]);
+                //$this->mailer->sendMel('Création de compte', $body, $user->getEmail());
 
-                $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
-                return $response;
+                return new RedirectResponse($url);
             }
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);

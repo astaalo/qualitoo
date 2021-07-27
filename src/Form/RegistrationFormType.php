@@ -14,6 +14,8 @@ namespace App\Form;
 use App\Entity\Utilisateur;
 use FOS\UserBundle\Form\Type\RegistrationFormType as AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Repository\StructureRepository;
 use App\Repository\SocieteRepository;
@@ -60,7 +62,19 @@ class RegistrationFormType extends AbstractType
             return $sr-> listUserSocieties();
             }
             ))
-    		->add('connectWindows', null, array('label' => 'Connexion avec compte windows', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')));
+    		->add('connectWindows', null, array('label' => 'Connexion avec compte windows', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
+            ->add('plainPassword', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'options' => array(
+                    'translation_domain' => 'FOSUserBundle',
+                    'attr' => array(
+                        'autocomplete' => 'off',
+                    ),
+                ),
+                'first_options' => array('label' => 'form.password'),
+                'second_options' => array('label' => 'form.password_confirmation'),
+                'invalid_message' => 'fos_user.password.mismatch',
+            ));
     }
 
     /**

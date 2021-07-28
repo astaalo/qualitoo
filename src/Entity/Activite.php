@@ -273,11 +273,6 @@ class Activite
         return $icg ? ($icg < 1 ? 1 : round($icg)) : null;
     }
 
-    public function __sleep()
-    {
-        return null;
-    }
-
     /**
      * @param RisqueMetier $risque
      * @return Activite

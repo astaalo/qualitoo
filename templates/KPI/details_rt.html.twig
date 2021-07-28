@@ -50,8 +50,8 @@
 					<tbody>
 					{% for risque in risques %}
 						<tr>
-							<td><div class="th_wrapp">{{ risque.structreOrSite.direction.code }}</div></td>
-							<td><div class="th_wrapp">{{ risque.structreOrSite.code }}</div></td>
+							<td><div class="th_wrapp">{{ risque.structreOrSite.direction.code | default('') }}</div></td>
+							<td><div class="th_wrapp">{{ risque.structreOrSite.code | default('') }}</div></td>
 							<td><div class="th_wrapp">{{ risque.activite }}</div></td>
 							<td><div class="th_wrapp">{{ risque.probabilite }} * {{ risque.gravite }} = {{ risque.probabilite * risque.gravite }} ou {{ risque.criticite|show_status }}</div></td>
 						</tr>
@@ -70,7 +70,7 @@
 					<tbody>
 					{% for risque in risques %}
 						<tr>
-							<td><div class="th_wrapp">{{ risque.structreOrSite }}</div></td>
+							<td><div class="th_wrapp">{{ risque.structreOrSite | default('') }}</div></td>
 							<td><div class="th_wrapp">{{ risque.activite }}</div></td>
 							<td><div class="th_wrapp">{{ risque.probabilite }} * {{ risque.gravite }} = {{ risque.probabilite * risque.gravite }} ou {{ risque.criticite|show_status }}</div></td>
 						</tr>

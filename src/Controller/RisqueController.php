@@ -742,10 +742,10 @@ class RisqueController extends BaseController {
 		$data = array($entity->getCode());
         $carto = $this->getMyParameter('ids')['carto'];
 		if($entity->getCartographie()->getId()<=2) {
-				$data[] = $entity->isPhysical()==false && $entity->getRisqueData($carto) && $entity->getRisqueData($carto)->getProcessus()
-						? $entity->getRisqueData($carto)->getProcessus()->__toString() : '';
+				$data[] = $entity->isPhysical()==false && $entity->getRisqueData() && $entity->getRisqueData()->getProcessus()
+						? $entity->getRisqueData()->getProcessus()->__toString() : '';
 		}
-		$data[] = $entity->getStructreOrSite($carto) ? $entity->getStructreOrSite($carto)->__toString() : '';
+		$data[] = $entity->getStructreOrSite() ? $entity->getStructreOrSite()->__toString() : '';
 		$data[] = $entity->getActivite() ? $entity->getActivite()->__toString() : '';
 		$data[] = $entity->getMenace() ? $entity->getMenace()->__toString() : 'Non renseigné';
 		$data[] = '<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="'.$this->generateUrl('cause_of_risque', array('id' => $entity->getId())).'">'.$entity->getCauseOfRisque()->count().'</a>';
@@ -797,8 +797,8 @@ class RisqueController extends BaseController {
 		return array(
 				'<td  width="35" ><input type="checkbox" name="avered[]" class="chkbox"  value="'.$entity->getId().'" id="check'.$entity->getId().'"/></td>',
 				$entity->getCode(),
-				$entity->getRisqueData($carto)?($entity->getRisqueData($carto)->getActivite()?$entity->getRisqueData($carto)->getActivite()->__toString():''):'',
-				$entity->getRisqueData($carto)?($entity->getRisqueData($carto)->getProcessus()?$entity->getRisqueData($carto)->getProcessus()->__toString():''):'',
+				$entity->getRisqueData()?($entity->getRisqueData()->getActivite()?$entity->getRisqueData()->getActivite()->__toString():''):'',
+				$entity->getRisqueData()?($entity->getRisqueData()->getProcessus()?$entity->getRisqueData()->getProcessus()->__toString():''):'',
 				$entity->getMenace() ? $entity->getMenace()->__toString() : 'Non renseigné',
 				//$entity->getUtilisateur() ? $entity->getUtilisateur()->__toString() : null,
 				$entity->getDateSaisie()->format('d/m/Y'),

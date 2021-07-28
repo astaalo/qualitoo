@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -257,5 +258,13 @@ class EquipementController extends BaseController
     			$entity->getLibelle(),
     			$this->service_action->generateActionsForEquipement($entity)
     	);
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see \App\Controller\BaseController::setFilter()
+     */
+    protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
+        parent::setFilter($queryBuilder, array('q.code', 'q.libelle'), $request);
     }
 }

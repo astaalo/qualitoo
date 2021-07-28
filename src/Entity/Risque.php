@@ -929,7 +929,8 @@ class Risque implements NotificationInterface {
 	/**
 	 * @return Mixed
 	 */
-	public function getRisqueData($carto = null) {
+	public function getRisqueData() {
+        $carto = BaseController::$ids['carto'];
 		if($this->cartographie==null) {
 			return null;
 		}
@@ -1329,7 +1330,8 @@ class Risque implements NotificationInterface {
     	}
     }
     
-    public function getStructreOrSite($carto = null) {
+    public function getStructreOrSite() {
+        $carto = BaseController::$ids['carto'];
     	switch($this->cartographie->getId()) {
     		case $carto['metier']:
     			$libelle = $this->risqueMetier ? $this->risqueMetier->getStructure() : null;

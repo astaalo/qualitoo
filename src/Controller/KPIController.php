@@ -3,8 +3,10 @@ namespace App\Controller;
 
 use App\Annotation\QMLogger;
 use App\Entity\Activite;
+use App\Entity\Cartographie;
 use App\Entity\Equipement;
 use App\Entity\Menace;
+use App\Entity\Projet;
 use App\Entity\Quiz;
 use App\Entity\Site;
 use App\Entity\Structure;
@@ -140,8 +142,9 @@ class KPIController extends BaseController {
 		
 		$this->denyAccessUnlessGranted('drt', new Risque(), 'Accés non autorisé!');
 		
-		$risques   = $this->getDoctrine()->getRepository(Risque::class)->getGraviteByMenaceStructure($entity,$carto)->getQuery()->execute();
+		$risques = $this->getDoctrine()->getRepository(Risque::class)->getGraviteByMenaceStructure($entity,$carto)->getQuery()->execute();
 		$cartographie=$this->getDoctrine()->getRepository(Cartographie::class)->find($carto);
+		//dd($risques[0]->getStructreOrSite()->getDirection());
 		if($carto<=2)
 		    $this->get('session')->set('export', array('kpis' => serialize($risques), 'type'=>'Risque','source'=>'details_metier_rt'));
 		else
@@ -326,7 +329,7 @@ class KPIController extends BaseController {
 		if($entity->getRisque()->getCartographie()->getId()<=2){
 				return array(
 						$entity->getRisque()->getDirection()->__toString(),
-						$entity->getRisque()->getStructreOrSite($carto)->__toString(),
+						$entity->getRisque()->getStructreOrSite()->__toString(),
 						$entity->getRisque()->getActivite()->__toString(),
 						$entity->getRisque()->__toString(),
 						'<a href="'.$this->generateUrl('details_controle', array('id'=>$entity->getId())).'">controle</a>',
@@ -335,7 +338,7 @@ class KPIController extends BaseController {
 				);
 		}else{
 				return array(
-						$entity->getRisque()->getStructreOrSite($carto)->__toString(),
+						$entity->getRisque()->getStructreOrSite()->__toString(),
 						$entity->getRisque()->getActivite()->__toString(),
 						$entity->getRisque()->__toString(),
 						'<a href="'.$this->generateUrl('details_controle', array('id'=>$entity->getId())).'">controle</a>',

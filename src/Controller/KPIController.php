@@ -20,6 +20,7 @@ use App\Entity\Controle;
 use Blameable\Fixture\Document\Type;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Criteria\ControleCriteria;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class KPIController extends BaseController {
 
@@ -299,9 +300,10 @@ class KPIController extends BaseController {
 			$reporting = $this->orange_main_core->getReporting('Kpi')->extractRAV($data,$em);
 		elseif($source=='eicg')
 			$reporting = $this->orange_main_core->getReporting('Kpi')->extractEICG($data);
-		
-		$reporting->getResponseAfterSave('php://output', 'Extractions Kpis');
-		return $this->redirect($this->generateUrl('les_risques'));
+
+		return $this->file($reporting, 'Extractions Kpis.xlsx', ResponseHeaderBag::DISPOSITION_INLINE);
+		//$reporting->getResponseAfterSave('php://output', 'Extractions Kpis');
+		//return $this->redirect($this->generateUrl('les_risques'));
 	}
 	
 	/**

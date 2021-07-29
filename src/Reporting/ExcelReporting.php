@@ -2,72 +2,72 @@
 namespace App\Reporting;
 
 
-class ExcelReporting extends \PHPExcel   {
-	
-	/**
-	 * @param string $path
-	 * @return \PHPExcel_Writer_IWriter
-	 */
-	public function save($path) {
-		$objWriter = \PHPExcel_IOFactory::createWriter($this, 'Excel2007');
-		ob_end_clean();
-		$objWriter->save($path);
-		return $objWriter;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class ExcelReporting extends AbstractController   {
+	protected function save($spreadsheet)
+	{
+		$writer = new Xlsx($spreadsheet);
+		$temp_file = tempnam(sys_get_temp_dir(), uniqid().'.xlsx');
+		$writer->save($temp_file);
+		return $temp_file;
 	}
-	
-	/**
-	 * @param string $filename
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-	public function sendHeaders($filename) {
-		$response = new \Symfony\Component\HttpFoundation\Response();
-		$response->headers->set('Content-Disposition', sprintf('attachment;filename=%s.xlsx', $filename));
-		$response->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		$response->headers->set('Content-Transfer-Encoding', 'binary');
-		$response->headers->set('Cache-Control', 'must-revalidate, post-check=0, pre-check=0');
-		$response->headers->set('Expires', 0);
-		return $response->sendHeaders();
-	}
-	
-	/**
-	 * @param string $path
-	 * @param string $filename
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-	public function getResponseAfterSave($path, $filename) {
-		$response = $this->sendHeaders($filename);
-		$this->save($path);
-		return $response;
-	}
-	
+
 	/**
 	 * @param array $columns
 	 * @param string $defaultWidth
 	 * @param array $columnsWidth
 	 */
-	protected function setDimensionColumns($columns = array(), $defaultWidth = null, $columnsWidth= array()) {
+	protected function setDimensionColumns($sheet, $columns = array(), $defaultWidth = null, $columnsWidth= array()) {
 		foreach($columns as $column) {
-			$this->getActiveSheet()->getColumnDimension($column)->setWidth($defaultWidth);
+			$sheet->getColumnDimension($column)->setWidth($defaultWidth);
 		}
 		foreach($columnsWidth as $column => $width) {
-			$this->getActiveSheet()->getColumnDimension($column)->setWidth($width);
+			$sheet->getColumnDimension($column)->setWidth($width);
 		}
 	}
 	
-	protected function setColors($columns, $color) {
-		$this->getActiveSheet()->getStyle($columns)->applyFromArray(array(
-						'fill' => array('type' => \PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => $color))
-				));
+	protected function setColors($sheet, $columns, $color) {
+		$sheet
+			->getStyle($columns)
+			->getFill()
+			->setFillType(Fill::FILL_SOLID)
+			->getStartColor()->setARGB($color);
 	}
 	
 	/**
 	 * @param integer $row
 	 * @param array $data
 	 */
-	protected function setValues($row, $data = array()) {
+	protected function setValues($sheet, $row, $data = array()) {
 		foreach($data as $column => $label) {
-			$this->getActiveSheet()->setCellValue($column.$row, $label);
+			$sheet->setCellValue($column.$row, $label);
 		}
+	}
+
+	protected function addStyleEntete()
+	{
+		return array(
+		'font'  => array(
+			'bold'  => true,
+			'color' => array('rgb' => 'ffffff'),
+			'size'  => 12,
+			'name'  => 'Verdana'
+		));
+	}
+
+	protected function addAllBorder()
+	{
+		return [
+			'borders' => [
+				'allBorders' => [
+					'borderStyle' => Border::BORDER_THIN //fine border
+				]
+			]
+		];
 	}
 }
 ?>

@@ -1,4 +1,4 @@
-doctrine_mongodb:
+doctrine_mongodbbb:
     auto_generate_proxy_classes: false
     auto_generate_hydrator_classes: false
     document_managers:

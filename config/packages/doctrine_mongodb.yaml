@@ -1,4 +1,4 @@
-doctrine_mongodb:
+doctrine_mongodbb:
     auto_generate_proxy_classes: true
     auto_generate_hydrator_classes: true
     connections:

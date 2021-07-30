@@ -21,7 +21,7 @@ class KPIController extends \App\Controller\BaseController {
 	 * @Template("KPI/RepartitionCriticite.html.twig")
 	 */
 	public function repartitionComparaisonCriticiteAction(Request $request,$carto,$type) {
-		$dm = $this->container->get('doctrine_mongodb')->getManager();
+		//$dm = $this->container->get('doctrine_mongodb')->getManager();
 		$graphe= array('Maturité'=>array() , 'Criticité'=>array());
 		$choixRepo	= ($type  == 0)
 					?  'Direction'
@@ -69,7 +69,7 @@ class KPIController extends \App\Controller\BaseController {
 	 * @Template("KPI/RepartitionRisqueCriticite.html.twig")
 	 */
 	public function repartitionRisqueCriticiteAction(Request $request,$carto) {
-		$dm = $this->container->get('doctrine_mongodb')->getManager();
+		//$dm = $this->container->get('doctrine_mongodb')->getManager();
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->denyAccessUnlessGranted('rrc', new Risque(), 'Accés non autorisé!');
 		if($request->getMethod()=='POST') {
@@ -227,7 +227,7 @@ class KPIController extends \App\Controller\BaseController {
 	 * @Template("KPI/evolutionICG.html.twig")
 	 */
 	public function evolutionICGAction(Request $request,$carto) {
-		$dm = $this->container->get('doctrine_mongodb')->getManager();
+		//$dm = $this->container->get('doctrine_mongodb')->getManager();
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
 		$this->denyAccessUnlessGranted('eicg', new Risque(), 'Accés non autorisé!');

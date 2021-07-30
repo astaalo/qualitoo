@@ -8,6 +8,7 @@ use App\Service\Actions;
 use App\Service\Core;
 use App\Service\Loader;
 use App\Service\Status;
+use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query;
@@ -59,8 +60,8 @@ class BaseController extends AbstractController
              //'monolog.logger.trace' => 'Psr\Log\LoggerInterface',
              //'orange_main.status' => 'App\Service\Status',
              //'orange_ca.mailer' => 'App\Service\Mailer'
-             'event_dispatcher' => EventDispatcherInterface::class
-
+             'event_dispatcher' => EventDispatcherInterface::class,
+             'doctrine_mongodb' => ManagerRegistry::class
          ]);
      }
 

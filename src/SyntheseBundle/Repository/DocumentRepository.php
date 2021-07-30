@@ -2,7 +2,8 @@
 namespace App\SyntheseBundle\Repository;
 
 use App\Controller\BaseController;
-use Doctrine\ODM\MongoDB\DocumentRepository as Repository;
+//use Doctrine\ODM\MongoDB\DocumentRepository as Repository;
+use Doctrine\ODM\MongoDB\Repository\DocumentRepository as Repository;
 use App\Entity\Utilisateur;
 use App\Entity\Risque;
 use App\Entity\Cartographie;

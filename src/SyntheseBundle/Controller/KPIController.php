@@ -1,19 +1,18 @@
 <?php
-namespace Orange\SyntheseBundle\Controller;
+namespace App\SyntheseBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Orange\QuickMakingBundle\Controller\BaseController;
-use Orange\MainBundle\Criteria\RisqueCriteria;
-use Orange\MainBundle\Entity\Risque;
-use Orange\MainBundle\Entity\Controle;
+use App\Criteria\RisqueCriteria;
+use App\Entity\Risque;
+use App\Entity\Controle;
 use Blameable\Fixture\Document\Type;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Orange\QuickMakingBundle\Annotation\QMLogger;
+use App\Annotation\QMLogger;
 
-class KPIController extends BaseController {
+class KPIController extends \App\Controller\BaseController {
 
 	/**
 	 * @QMLogger(message="KPI: Repartition et comparaison criticite")
@@ -22,7 +21,7 @@ class KPIController extends BaseController {
 	 * @Template("KPI/RepartitionCriticite.html.twig")
 	 */
 	public function repartitionComparaisonCriticiteAction(Request $request,$carto,$type) {
-		$dm = $this->get('doctrine_mongodb')->getManager();
+		$dm = $this->container->get('doctrine_mongodb')->getManager();
 		$graphe= array('Maturité'=>array() , 'Criticité'=>array());
 		$choixRepo	= ($type  == 0)
 					?  'Direction'
@@ -70,7 +69,7 @@ class KPIController extends BaseController {
 	 * @Template("KPI/RepartitionRisqueCriticite.html.twig")
 	 */
 	public function repartitionRisqueCriticiteAction(Request $request,$carto) {
-		$dm = $this->get('doctrine_mongodb')->getManager();
+		$dm = $this->container->get('doctrine_mongodb')->getManager();
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->denyAccessUnlessGranted('rrc', new Risque(), 'Accés non autorisé!');
 		if($request->getMethod()=='POST') {
@@ -228,7 +227,7 @@ class KPIController extends BaseController {
 	 * @Template("KPI/evolutionICG.html.twig")
 	 */
 	public function evolutionICGAction(Request $request,$carto) {
-		$dm = $this->get('doctrine_mongodb')->getManager();
+		$dm = $this->container->get('doctrine_mongodb')->getManager();
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
 		$this->denyAccessUnlessGranted('eicg', new Risque(), 'Accés non autorisé!');
@@ -310,7 +309,7 @@ class KPIController extends BaseController {
 	
 	/**
 	 * @todo retourne le nombre d'enregistrements renvoyer par le résultat de la requête
-	 * @param \Orange\MainBundle\Entity\Controle $entity
+	 * @param \App\Entity\Controle $entity
 	 * @return array
 	 */
 	protected function addRowInTableControle($entity) {

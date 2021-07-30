@@ -1,14 +1,14 @@
 <?php
-namespace Orange\SyntheseBundle\Controller;
+namespace App\SyntheseBundle\Controller;
 
-use Orange\QuickMakingBundle\Controller\BaseController;
+use App\Controller\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Orange\MainBundle\Entity\Risque;
-use Orange\MainBundle\Criteria\RisqueCriteria;
-use Orange\QuickMakingBundle\Annotation\QMLogger;
+use App\Entity\Risque;
+use App\Criteria\RisqueCriteria;
+use App\Annotation\QMLogger;
 
 class RestitutionController extends BaseController {
 
@@ -19,7 +19,8 @@ class RestitutionController extends BaseController {
 	 * @Template("restitution/matrice.html.twig")
 	 */
 	public function matriceAction(Request $request, $carto, $type) {
-		$dm = $this->get('doctrine_mongodb')->getManager();
+		//$dm = $this->container->get('doctrine_mongodb')->getManager();
+        $dm = $this->container->get('doctrine_mongodb')->getManager();
 		$probabiteKPIs = $graviteKPIs = false;
 		$entity = new Risque();
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));

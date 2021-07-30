@@ -23,7 +23,7 @@ pipeline {
         stage('Installation des packets') {
             steps {
                 sh 'rm -rf vendor'
-                sh 'php74 -d memory_limit=-1 composer.phar update'
+                sh 'php74 -d memory_limit=-1 composer.phar install'
             }
         }
         /*stage('SonarQube Scan') {

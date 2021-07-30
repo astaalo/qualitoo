@@ -21,12 +21,4 @@ RUN chmod 777 /tmp/
 RUN chmod o+rwx /var/lib/php/sessions/
 RUN chown -R www-data:www-data /var/lib/php/sessions/
 
-RUN apt-get update;exit 0
-RUN apt-get -y install openssh-server openssh-client
-RUN service ssh start
-
-RUN sleep 10
-
-#USER $USER
-
 EXPOSE 80 80/tcp

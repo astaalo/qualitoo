@@ -10,8 +10,8 @@ pipeline {
         NAME = readMavenPom().getArtifactId()
         SERVICE_NAME = "${ARTIFACT_ID}-db"
         PROJECT_ENV = 'sonatelsa-coris-rec'
-        APP_ENV = 'prod'
-        APP_DEBUG = '0'
+        APP_ENV = 'dev'
+        APP_DEBUG = '1'
         APP_SECRET = '777fa4b759d4067ed9ee76f6b0d9d156'
         MAILER_URL="smtp://10.100.56.56:25"
         DATABASE_URL="mysql://coris:crs_pma@s2m@172.17.0.1:3306/coris?serverVersion=13&charset=utf8"
@@ -23,7 +23,7 @@ pipeline {
         stage('Installation des packets') {
             steps {
                 sh 'rm -rf vendor'
-                sh 'php74 -d memory_limit=-1 composer.phar install'
+                sh 'php74 -d memory_limit=-1 composer.phar update'
             }
         }
         /*stage('SonarQube Scan') {

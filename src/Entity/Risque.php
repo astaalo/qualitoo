@@ -16,8 +16,23 @@ use App\Entity\RisqueProjet;
 class Risque implements NotificationInterface {
 	static $profilRisqueIds;
 	static $types;
-	static $carto;
-	static $states;
+	static $carto = [
+        'metier' => 1,
+        'projet' => 2,
+        'sst' => 3,
+        'environnement' => 4
+    ];
+	static $states = [
+	    'abandonne' => -2,
+        'rejete' =>    -1,
+        'nouveau' => 0,
+        'a_valider' =>  2,
+        'en_cours' =>   3,
+        'valide' =>     1,
+        'transfere' =>  4
+    ];
+
+
 	
 	/**
 	 * @var integer 
@@ -930,7 +945,7 @@ class Risque implements NotificationInterface {
 	 * @return Mixed
 	 */
 	public function getRisqueData() {
-        $carto = BaseController::$ids['carto'];
+        $carto = self::$carto;
 		if($this->cartographie==null) {
 			return null;
 		}
@@ -1331,7 +1346,7 @@ class Risque implements NotificationInterface {
     }
     
     public function getStructreOrSite() {
-        $carto = BaseController::$ids['carto'];
+        $carto = self::$carto;
     	switch($this->cartographie->getId()) {
     		case $carto['metier']:
     			$libelle = $this->risqueMetier ? $this->risqueMetier->getStructure() : null;

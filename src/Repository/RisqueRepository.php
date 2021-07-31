@@ -58,7 +58,8 @@ class RisqueRepository extends ServiceEntityRepository
             ->innerJoin('r.cartographie', 'cg')
             ->innerJoin('r.societe', 's')
             ->leftJoin('rm.structure', 'sm')
-            ->leftJoin('rp.structure', 'sp');
+            ->leftJoin('rp.structure', 'sp')
+            ->orderby('r.dateSaisie', 'DESC');
         $this->applyFilterByProfile($queryBuilder, $criteria);
         return $queryBuilder;
     }
@@ -263,7 +264,8 @@ class RisqueRepository extends ServiceEntityRepository
             ->leftJoin('r.menace', 'm')
             ->leftJoin('r.criticite', 'c')
             ->leftJoin('r.cartographie', 'cg')
-            ->leftJoin('r.societe', 's');
+            ->leftJoin('r.societe', 's')
+            ->orderby('r.dateSaisie', 'DESC');
         $this->applyFilterByProfile($queryBuilder, $criteria);
         $queryBuilder->andWhere('r.etat = :etat')->setParameter('etat', $this->_states['risque']['valide']);
         $queryBuilder = $this->filterBuilder($queryBuilder, $criteria);
@@ -371,7 +373,8 @@ class RisqueRepository extends ServiceEntityRepository
             ->leftJoin('r.cartographie', 'cg')
             ->leftJoin('r.societe', 's')
             ->leftJoin('rm.structure', 'sm')
-            ->leftJoin('rp.structure', 'sp');
+            ->leftJoin('rp.structure', 'sp')
+            ->orderby('r.dateSaisie', 'DESC');
         $this->applyFilterByProfile($queryBuilder, $criteria);
         $queryBuilder->andWhere('r.etat = :etat')->setParameter('etat', $this->_states['risque']['nouveau']);
         $queryBuilder = $this->filterBuilder($queryBuilder, $criteria);
@@ -409,7 +412,8 @@ class RisqueRepository extends ServiceEntityRepository
             ->leftJoin('r.cartographie', 'cg')
             ->leftJoin('r.societe', 's')
             ->leftJoin('rm.structure', 'sm')
-            ->leftJoin('rp.structure', 'sp');
+            ->leftJoin('rp.structure', 'sp')
+            ->orderby('r.dateSaisie', 'DESC');
         $this->applyFilterByProfile($queryBuilder, $criteria);
         $queryBuilder->andWhere('r.etat = :etat')->setParameter('etat', $this->_states['risque']['nouveau']);
         $queryBuilder = $this->filterBuilder($queryBuilder, $criteria);
@@ -447,7 +451,8 @@ class RisqueRepository extends ServiceEntityRepository
             ->leftJoin('r.cartographie', 'cg')
             ->leftJoin('r.societe', 's')
             ->leftJoin('rm.structure', 'sm')
-            ->leftJoin('rp.structure', 'sp');
+            ->leftJoin('rp.structure', 'sp')
+            ->orderby('r.dateSaisie', 'DESC');
         $this->applyFilterByProfile($queryBuilder, $criteria);
         $queryBuilder->andWhere('r.etat = :etat')->setParameter('etat',$this->_states['risque']['rejete']);
         $this->filterBuilder($queryBuilder, $criteria);
@@ -467,7 +472,8 @@ class RisqueRepository extends ServiceEntityRepository
             ->leftJoin('r.menace', 'm')
             ->leftJoin('r.criticite', 'c')
             ->innerJoin('r.cartographie', 'cg')
-            ->leftJoin('r.societe', 's');
+            ->leftJoin('r.societe', 's')
+            ->orderby('r.dateSaisie', 'DESC');
         $this->applyFilterByProfile($queryBuilder, $criteria);
         $queryBuilder->andWhere('r.etat = :etat')
             ->setParameter('etat', $this->_states['risque']['valide'])

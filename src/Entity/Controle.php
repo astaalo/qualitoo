@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Controller\BaseController;
 use App\Entity\Absctract\NotificationInterface;
 use App\Repository\ControleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -610,7 +611,7 @@ class Controle implements NotificationInterface
      * @return boolean
      */
     public function inValidation() {
-        return in_array($this->getRisque()->getEtat(), array(Risque::$states['en_cours'], Risque::$states['a_valider'], Risque::$states['valide']));
+        return in_array($this->getRisque()->getEtat(), array(BaseController::$states['risque']['en_cours'], BaseController::$states['a_valider'], BaseController::$states['valide']));
     }
 
     /**

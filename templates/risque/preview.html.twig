@@ -24,7 +24,7 @@
 				<td style="padding-left: 70px;">{{ entity.menace ? entity.menace : (entity.identification.libelle? entity.identification.libelle :'Non renseigné') }}</td>
 			</tr>
 			{% if entity.cartographie.id == global_ids.carto.metier %}
-				{% include 'risque/show_metier.html.twig' with {entity: entity.risqueMetier} %}
+				{% include 'risque/show_metier.html.twig' with {entity: entity.risqueMetier, identification: entity.identification} %}
 			{% elseif entity.cartographie.id == global_ids.carto.projet %}
 				{% include 'risque/show_projet.html.twig' with {entity: entity.risqueProjet} %}
 			{% elseif entity.cartographie.id == global_ids.carto.sst %}

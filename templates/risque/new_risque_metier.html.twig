@@ -55,9 +55,9 @@
 				{% include 'extra/sheepIt_template.html.twig' with
 					{
 						'id': form.risque.causeOfRisque.vars.id,
-						'prototype' : form.risque.causeOfRisque.vars.prototype, 
+						'prototype' : form.risque.causeOfRisque.vars.prototype,
 						'prototypeTemplate' : 'risque/risque_cause_prototype.html.twig',
-						'addText': 'Ajouter une cause', 
+						'addText': 'Ajouter une cause',
 						'removeAllText': 'Supprimer toutes les causes',
 						'noFormText': 'Aucune cause n\'est encore identifiée !',
 					}
@@ -128,7 +128,7 @@
 			});
 		});
 		// code to execute after Select ajax load
-		
+
 		function afterDirectionReload() {
 			$("#{{ form.structure.vars.id }} option[value='{{ form.structure.vars.value }}']").attr('selected', 'selected');
 			$("#{{ form.structure.vars.id }}").trigger('liszt:updated');
@@ -171,11 +171,21 @@
 
 		// on ProfilRisque change
 
-	
+
 	</script>
 	
 {% endblock %}
 
+<script>
+	{% if form.direction.vars.value is empty %}
+		$('#{{ form.direction.vars.id }}').prepend("<option value>Choisir une direction ...</option>");
+		$('#{{ form.direction.vars.id }}').val(''); // if you want it to be automatically selected
+	{% endif %}
+	{% if form.risque.menace.vars.value is empty %}
+		$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
+		$('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected
+	{% endif %}
+</script>
 {% set codeAfterResponsableUpdate %}
 		var show = false;
 		if(result == 'Aucun') {
@@ -185,8 +195,8 @@
 		toggle(obj, show);
 {% endset %}
 {% if form.structure.vars.value is empty %}
-	{% include 'extra/reloadSelect.html.twig' with 
-		{parent: form.direction, child: form.structure, url: path('structure_by_parent'), key: 'id', empty_child: 1, functionAfter: 'afterDirectionReload'} 
+	{% include 'extra/reloadSelect.html.twig' with
+		{parent: form.direction, child: form.structure, url: path('structure_by_parent'), key: 'id', empty_child: 1, functionAfter: 'afterDirectionReload'}
 	%}
 {% endif %}
 {% include 'extra/reloadSelect.html.twig' with 

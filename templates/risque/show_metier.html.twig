@@ -19,5 +19,7 @@
 				<th style="width:140px;" >Activité:</th>
 				{% if entity.activite is defined and entity.activite is not empty%}
 					<td style="padding-left: 70px;"><a href="{{ path('details_activite', {id: entity.activite.id}) }}">{{ entity.activite }}</a></td>
+				{% else %}
+					<td style="padding-left: 70px;">{{ identification.activite | default('aucune') }}</td>
 				{% endif %}
 			</tr>

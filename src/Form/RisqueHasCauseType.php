@@ -17,9 +17,10 @@ class RisqueHasCauseType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$carto = $options['attr']['carto'];
-		$builder->add('cause', EntityType::class, array('placeholder' => 'Choisir ...', 'label'=>'Chosir la cause', 
-				'attr' => array('class' => 'no-chzn cl_cause'),
-				'class'=> 'App\Entity\Cause',
+		$builder->add('cause', EntityType::class, array('placeholder' => 'Choisir ...', 'label'=>'Chosir la cause',
+				//'attr' => array('class' => 'no-chzn cl_cause'),
+                'attr' => array('class' => 'cl_cause'),
+                'class'=> 'App\Entity\Cause',
 				'query_builder' => function($er) use($carto) {
 					return $er->createQueryBuilder('m')->innerJoin('m.cartographie', 'c')
 						->where('c.id = :cartographieId')->setParameter('cartographieId', $carto)->orderBy('m.libelle');

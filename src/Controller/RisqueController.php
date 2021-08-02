@@ -722,13 +722,16 @@ class RisqueController extends BaseController {
 		$criteria = $this->get('session')->get('risque_criteria');
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listValidQueryBuilder($form->getData())->getQuery()->getResult();
 		if($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'metier'))) {
-			$data = $this->orange_main_core->getMapping('Risque')->mapForExportMetier($queryBuilder, $form->getData()->getCartographie());
+		    $data = $this->orange_main_core->getMapping('Risque')->mapForExportMetier($queryBuilder, $form->getData()->getCartographie());
 		} elseif($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'projet'))) {
- 			$data = $this->orange_main_core->getMapping('Risque')->mapForExportProjet($queryBuilder, $form->getData()->getCartographie());
+            dd('two');
+		    $data = $this->orange_main_core->getMapping('Risque')->mapForExportProjet($queryBuilder, $form->getData()->getCartographie());
 		} elseif($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'sst'))) {
-			$data = $this->orange_main_core->getMapping('Risque')->mapForExportSST($queryBuilder, $form->getData()->getCartographie());
+            dd('three');
+		    $data = $this->orange_main_core->getMapping('Risque')->mapForExportSST($queryBuilder, $form->getData()->getCartographie());
 		} elseif($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'environnement'))) {
-			$data = $this->orange_main_core->getMapping('Risque')->mapForExportEnvironnemental($queryBuilder, $form->getData()->getCartographie());
+            dd('four');
+		    $data = $this->orange_main_core->getMapping('Risque')->mapForExportEnvironnemental($queryBuilder, $form->getData()->getCartographie());
 		}
 		$reporting = $this->orange_main_core->getReporting('Risque')->extract($data, $criteria['cartographie'], $this->getUser()->getSociete());
 		return $reporting->getResponseAfterSave('php://output', 'Cartographie des risques ');

@@ -177,10 +177,10 @@
 {% endblock %}
 
 <script>
-	{% if form.direction.vars.value is empty %}
+	{#{% if form.direction.vars.value is empty %}
 		$('#{{ form.direction.vars.id }}').prepend("<option value>Choisir une direction ...</option>");
 		$('#{{ form.direction.vars.id }}').val(''); // if you want it to be automatically selected
-	{% endif %}
+	{% endif %}#}
 	{% if form.risque.menace.vars.value is empty %}
 		$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
 		$('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected

@@ -134,6 +134,17 @@ $nouvelle_causeLib.hide();
 </script>
 {% endblock %}
 
+<script>
+	{% if form.site.vars.value is empty %}
+		$('#{{ form.site.vars.id }}').prepend("<option value>Choisir un site ...</option>");
+		$('#{{ form.site.vars.id }}').val(''); // if you want it to be automatically selected
+	{% endif %}
+	{% if form.risque.menace.vars.value is empty %}
+	$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
+	$('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected
+	{% endif %}
+</script>
+
 {% set codeAfterResponsableUpdate %}
 		var show = false;
 		if(result == 'Aucun') {

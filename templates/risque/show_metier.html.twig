@@ -2,7 +2,7 @@
 				<th style="width:140px;" >Responsable:</th>
 				<td style="padding-left: 70px;">{{ entity.responsable | default('Non renseigné') }}</td>
 			</tr>
-			{% set processus = entity.activite | default('') %}
+			{% set processus = entity.activite.processus | default('') %}
 			<tr>
 				<th style="width:140px;" >Structure:</th>
 				<td style="padding-left: 70px;">{{ processus.structure | default('') }} ({{ processus.structure.name | default('aucune') }})</td>

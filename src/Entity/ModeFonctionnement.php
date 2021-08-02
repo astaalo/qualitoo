@@ -16,7 +16,10 @@ class ModeFonctionnement
 	/**
 	 * @var array
 	 */
-	static $ids;
+	static $ids = [
+	    'normal' => 1,
+        'anormal' => 2
+    ];
 	
     /**
      * @var integer

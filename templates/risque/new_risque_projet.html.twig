@@ -157,6 +157,17 @@
 	
 {% endblock %}
 
+	<script>
+		{% if form.projet.vars.value is empty %}
+			$('#{{ form.projet.vars.id }}').prepend("<option value>Choisir un projet ...</option>");
+			$('#{{ form.projet.vars.id }}').val(''); // if you want it to be automatically selected
+		{% endif %}
+		{% if form.risque.menace.vars.value is empty %}
+			$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
+			$('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected
+		{% endif %}
+	</script>
+
 {% set codeAfterResponsableUpdate %}
 		var show = false;
 		if(result == 'Aucun') {

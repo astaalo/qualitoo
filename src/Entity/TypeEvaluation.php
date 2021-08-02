@@ -12,7 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TypeEvaluation
 {
-	static $ids;
+	static $ids = [
+        'cause' => 1,
+        'impact' => 2,
+        'maitrise' => 3,
+        'maturite' => 4
+    ];
 	
     /**
      * @var integer

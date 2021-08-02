@@ -12,7 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
 class TypeProcessus
 {
 	
-	static $ids;
+	static $ids = [
+        'macro' => 1,
+        'normal' => 2,
+        'sous' => 3
+    ];
 	
     /**
      * @var integer

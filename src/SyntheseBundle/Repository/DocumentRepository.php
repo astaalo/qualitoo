@@ -136,7 +136,7 @@ class DocumentRepository extends Repository
 			if((null!=$structure=$this->_user->getStructure()) && $this->_user->isManager()) {
 				$queryBuilder->field('structure.id')->in($structure->getChildrenIds());
 			}
-		} elseif($this->_user->hasRole(Utilisateur::ROLE_CHEFPROJET) && $criteria->getCartographie()->getId()==BaseController::$ids['carto']['projet']) {
+		} elseif($this->_user->hasRole(Utilisateur::ROLE_CHEFPROJET) && $criteria->getCartographie()->getId()==Cartographie::$ids['projet']) {
 			$queryBuilder->field('projet.id')->in($this->_user->getProjetIds());
 		} elseif(($this->_user->hasRole(Utilisateur::ROLE_PORTEUR) || $this->_user->hasRole(Utilisateur::ROLE_SUPERVISEUR)) && $criteria->isPhysical()==false) {
 			if($this->_user->hasStructureOfConsulteur()) {

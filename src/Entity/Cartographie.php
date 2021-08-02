@@ -14,7 +14,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Cartographie
 {
-    static $ids;
+    static $ids = [
+        'metier' => 1,
+        'projet' => 2,
+        'sst' => 3,
+        'environnement' => 4
+    ];
 
     /**
      * @ORM\Id
@@ -136,7 +141,7 @@ class Cartographie
      */
     public function getTypeGrilleImpact() {
         $data = $this->typeGrille->filter(function($typeGrille) {
-            return $typeGrille->getTypeEvaluation()->getId()==BaseController::$ids['type_evaluation']['impact'];
+            return $typeGrille->getTypeEvaluation()->getId()==TypeEvaluation::$ids['impact'];
         });
         return $data->count() ? $data->first() : null;
     }
@@ -147,7 +152,7 @@ class Cartographie
      */
     public function getTypeGrilleCause() {
         $data = $this->typeGrille->filter(function($typeGrille) {
-            return $typeGrille->getTypeEvaluation()->getId()==BaseController::$ids['type_evaluation']['cause'];
+            return $typeGrille->getTypeEvaluation()->getId()==TypeEvaluation::$ids['cause'];
         });
         return $data->count() ? $data->first() : null;
     }

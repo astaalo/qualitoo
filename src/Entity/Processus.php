@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProcessusRepository::class)
+ * @Gedmo\Tree(type="nested")
  */
 class Processus extends Tree implements TreeInterface
 {

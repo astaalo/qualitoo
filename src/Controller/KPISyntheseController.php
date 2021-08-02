@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\Quiz;
+use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -227,8 +228,8 @@ class KPISyntheseController extends BaseController {
 	 * @Route("/{carto}/eicg", name="eicg")
 	 * @Template("KPI/evolutionICG.html.twig")
 	 */
-	public function evolutionICGAction(Request $request,$carto) {
-		$dm = $this->container->get('doctrine_mongodb')->getManager();
+	public function evolutionICGAction(Request $request,$carto, ManagerRegistry $dm) {
+		//$dm = $this->container->get('doctrine_mongodb')->getManager();
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
 		$this->denyAccessUnlessGranted('eicg', new Risque(), 'Accés non autorisé!');
@@ -242,7 +243,7 @@ class KPISyntheseController extends BaseController {
 		}
 		$data = $this->get('session')->get('risque_criteria');
 		$this->modifyRequestForForm($request, $data, $form);
-		$req = $dm->getRepository('OrangeSyntheseBundle:Evaluation')->getMaturiteGraviteProbabiliteByRisqueByYear($form->getData())->execute();
+		$req = $dm->getRepository(\App\SyntheseBundle\Document\Evaluation::class)->getMaturiteGraviteProbabiliteByRisqueByYear($form->getData())->execute();
 		$map = function($value) { 
 			$value['id'] = $value['mId'];unset($value['mId']);$value['maturite']=(int)$value['maturite'];
 			$value['criticite']=(int)$value['probabilite']*(int)$value['gravite'];

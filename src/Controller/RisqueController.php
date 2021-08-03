@@ -600,7 +600,7 @@ class RisqueController extends BaseController {
 
 		$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');
 		if($request->getMethod()=='POST') {
-			// $dm = $this->container->get('doctrine_mongodb')->getManager();
+			// $dm = $this->container->get('doctrine_mongodb');
 			// $rm = $dm->createQueryBuilder('OrangeSyntheseBundle:Risque')->remove()->field('risque')->equals($entity->getId())->getQuery()->execute();
 			$em->remove($entity);
 			$em->flush();

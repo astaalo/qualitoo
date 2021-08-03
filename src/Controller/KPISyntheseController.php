@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Menace;
 use App\Entity\Quiz;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -13,6 +14,7 @@ use App\Entity\Controle;
 use Blameable\Fixture\Document\Type;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Annotation\QMLogger;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class KPISyntheseController extends BaseController {
 
@@ -23,7 +25,7 @@ class KPISyntheseController extends BaseController {
 	 * @Template("KPI/RepartitionCriticite.html.twig")
 	 */
 	public function repartitionComparaisonCriticiteAction(Request $request,$carto,$type) {
-		$dm = $this->container->get('doctrine_mongodb')->getManager();
+		$dm = $this->container->get('doctrine_mongodb');
 		$graphe= array('Maturité'=>array() , 'Criticité'=>array());
 		$choixRepo	= ($type  == 0)
 					?  'Direction'
@@ -71,7 +73,7 @@ class KPISyntheseController extends BaseController {
 	 * @Template("KPI/RepartitionRisqueCriticite.html.twig")
 	 */
 	public function repartitionRisqueCriticiteAction(Request $request,$carto) {
-		$dm = $this->container->get('doctrine_mongodb')->getManager();
+		$dm = $this->container->get('doctrine_mongodb');
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		$this->denyAccessUnlessGranted('rrc', new Risque(), 'Accés non autorisé!');
 		if($request->getMethod()=='POST') {
@@ -149,7 +151,7 @@ class KPISyntheseController extends BaseController {
 			$this->get('session')->set('risque_criteria', array());
 			$this->get('session')->set('risque_criteria', $request->request->get($form->getName()));
 			return new JsonResponse($this->generateUrl('cmc', array('carto'=>$carto)));
-		}elseif($this->get('session')->get('risque_criteria')==null || count($this->get('session')->get('controle_criteria'))==0) {
+		}elseif($this->get('session')->get('risque_criteria')==null || $this->get('session')->get('controle_criteria') && count($this->get('session')->get('controle_criteria'))==0) {
 				$this->get('session')->set('risque_criteria', array('cartographie' => $carto));
 		}
 		$data = $this->get('session')->get('risque_criteria');
@@ -228,8 +230,8 @@ class KPISyntheseController extends BaseController {
 	 * @Route("/{carto}/eicg", name="eicg")
 	 * @Template("KPI/evolutionICG.html.twig")
 	 */
-	public function evolutionICGAction(Request $request,$carto, ManagerRegistry $dm) {
-		//$dm = $this->container->get('doctrine_mongodb')->getManager();
+	public function evolutionICGAction(Request $request,$carto) {
+		$dm = $this->container->get('doctrine_mongodb');
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
 		
 		$this->denyAccessUnlessGranted('eicg', new Risque(), 'Accés non autorisé!');
@@ -288,9 +290,10 @@ class KPISyntheseController extends BaseController {
 			$reporting = $this->orange_main_core->getReporting('Kpi')->extractRAV($data,$em);
 		elseif($source=='eicg')
 			$reporting = $this->orange_main_core->getReporting('Kpi')->extractEICG($data);
-		
-		$reporting->getResponseAfterSave('php://output', 'Extractions Kpis');
-		return $this->redirect($this->generateUrl('les_risques'));
+
+		return $this->file($reporting, 'Extractions Kpis.xlsx', ResponseHeaderBag::DISPOSITION_INLINE);
+        //$reporting->getResponseAfterSave('php://output', 'Extractions Kpis');
+		//return $this->redirect($this->generateUrl('les_risques'));
 	}
 	
 	/**
@@ -322,7 +325,7 @@ class KPISyntheseController extends BaseController {
 						$entity->getRisque()->getActivite()->__toString(),
 						$entity->getRisque()->__toString(),
 						'<a href="'.$this->generateUrl('details_controle', array('id'=>$entity->getId())).'">controle</a>',
-						$entity->getMaturiteTheorique()->getValeur().'<b><=></b>'.$entity->getMaturiteTheorique()->getLibelle(),
+						$entity->getMaturiteTheorique() ? $entity->getMaturiteTheorique()->getValeur().'<b><=></b>'.$entity->getMaturiteTheorique()->getLibelle() : 'non renseigné',
 						$entity->getMaturiteReel()
 				);
 		}else{

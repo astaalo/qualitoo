@@ -5,7 +5,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
  * Risque
- * @MongoDB\Document(collection="risque", repositoryClass="Orange\SyntheseBundle\Repository\RisqueRepository")
+ * @MongoDB\Document(collection="risque", repositoryClass="App\SyntheseBundle\Repository\RisqueRepository")
  */
 class Risque {
 	

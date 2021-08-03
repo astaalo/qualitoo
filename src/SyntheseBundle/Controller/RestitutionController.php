@@ -19,8 +19,8 @@ class RestitutionController extends BaseController {
 	 * @Template("restitution/matrice.html.twig")
 	 */
 	public function matriceAction(Request $request, $carto, $type) {
-		//$dm = $this->container->get('doctrine_mongodb')->getManager();
-        $dm = $this->container->get('doctrine_mongodb')->getManager();
+		//$dm = $this->container->get('doctrine_mongodb');
+        $dm = $this->container->get('doctrine_mongodb');
 		$probabiteKPIs = $graviteKPIs = false;
 		$entity = new Risque();
 		$form = $this->createForm(RisqueCriteria::class, new Risque(), array('attr' => array('em' => $this->getDoctrine()->getManager())));

@@ -58,7 +58,7 @@ class DocumentRepository extends Repository
 		if($criteria->getCartographie()) {
 			$queryBuilder->field('cartographie')->equals($criteria->getCartographie()->getId());
 		}
-		$data = $criteria->getRisqueData($this->_ids['carto']);
+		$data = $criteria->getRisqueData();
 		if($data==null) {
 		} elseif($criteria->isPhysical()) {
 			if($data->getSite()) {
@@ -125,6 +125,7 @@ class DocumentRepository extends Repository
 	 */
 	public function applyFilterByProfile($queryBuilder, $criteria)
 	{
+        $this->_user = BaseController::$_user;
 		if($this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN)) {
 		} elseif($this->_user->hasRole(Utilisateur::ROLE_ADMIN)) {
 			$queryBuilder->field('societe')->equals($this->_user->getSociete()->getId());

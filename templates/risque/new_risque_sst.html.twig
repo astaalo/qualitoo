@@ -20,7 +20,7 @@
 	<div class="contentForm">
 		<form  novalidate="novalidate"  action="{{ entity.id is empty ? path('ajout_risque', {'cartographie_id': cartographie_id}) : path('edition_risque', {'id': id}) }}" method="POST">
 			{% set menaceCodeAfter %}
-				<label class="other_label"><input class="other" target-id="{{ form.risque.identification.libelle.vars.id }}" type="checkbox" />Saisir le nom du risque</label>
+				<label class="other_label"><input id="risque_checkbox" class="other" target-id="{{ form.risque.identification.libelle.vars.id }}" type="checkbox" />Saisir le nom du risque</label>
 				{{ form_widget(form.risque.identification.libelle, {'show': false}) }}
 			{% endset %}
 
@@ -123,9 +123,10 @@
 			}
 		});
 
-		// on ProfilRisque change
-
-
+		$('#risque_checkbox').click(function (){
+			$("#{{ form.risque.menace.vars.id }} option[value='']").attr('selected', 'selected');
+			$("#{{ form.risque.menace.vars.id }}").trigger('liszt:updated');
+		})
 	</script>
 	<script type="text/javascript">
 		$(function() {
@@ -146,12 +147,13 @@
 {% endblock %}
 
 	<script>
+		$('#{{ form.site.vars.id }}').prepend("<option value>Choisir un site ...</option>");
 		{% if form.site.vars.value is empty %}
-			$('#{{ form.site.vars.id }}').prepend("<option value>Choisir un site ...</option>");
 			$('#{{ form.site.vars.id }}').val(''); // if you want it to be automatically selected
 		{% endif %}
-		{% if form.risque.menace.vars.value is empty %}
+
 		$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
+		{% if form.risque.menace.vars.value is empty %}
 		$('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected
 		{% endif %}
 	</script>

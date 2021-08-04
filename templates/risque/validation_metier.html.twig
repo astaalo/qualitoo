@@ -19,7 +19,7 @@
 
 {% block content_config %}
 	<div class="contentForm">
-		
+
 			<form novalidate="novalidate" action="{{ path('validation_risque', {'id': id}) }}" method="post">
 				{% set causeDataForm, impactDataForm = '', '' %}
 			{% for causeForm in form.risque.causeOfRisque %}
@@ -34,18 +34,18 @@
 						{% endif %}
 				},
 				{% endset %}
-				
+
 				{% set causeDataForm = causeDataForm ~ row %}
 			{% endfor %}
 				{% set causeDataForm, impactDataForm = '[%s]'|format(causeDataForm|raw), '[%s]'|format(impactDataForm|raw) %}
 				{# 			/Cause and Impact sheepit data               #}
-				
+
 				{% set errorSteps = "" %}
-					
-					
+
+
 					{% set structureCodeBefore %}
 						{% if form.vars.value.activite is empty %}
-						<p>Structure saisie lors de l'identification du risque : 
+						<p>Structure saisie lors de l'identification du risque :
 							<span style="color: #222; font-weight: bold;">
 								{{ form.risque.identification.structure.vars.value == '' ? 'Aucune' : form.risque.identification.structure.vars.value }}
 							</span>
@@ -55,7 +55,7 @@
 					{% endset %}
 					{% set responsableCodeBefore %}
 						{% if form.vars.value.activite is empty %}
-						<p>Nom du responsable saisi lors de l'identification du risque : 
+						<p>Nom du responsable saisi lors de l'identification du risque :
 							<span style="color: #222; font-weight: bold;">
 								{{ form.risque.identification.responsable.vars.value == '' ? 'Aucun' : form.risque.identification.responsable.vars.value }}
 							</span>
@@ -66,7 +66,7 @@
 					{% endset %}
 					{% set processusCodeBefore %}
 						{% if form.vars.value.activite is empty %}
-						<p>Processus saisi lors de l'identification du risque : 
+						<p>Processus saisi lors de l'identification du risque :
 							<span style="color: #222; font-weight: bold;">
 								{{ form.risque.identification.processus.vars.value == '' ? 'Aucun' : form.risque.identification.processus.vars.value }}
 							</span>
@@ -74,21 +74,22 @@
 						Veuillez choisir le processus dans la liste ci-dessous : <br><br>
 						{% endif %}
 					{% endset %}
-					
+
 					{% set menaceCodeBefore %}
 						{% if form.vars.value.risque.menace is empty %}
-						<p>Nom saisi lors de l'identification du risque : 
+						<p>Nom saisi lors de l'identification du risque :
 							<span style="color: #222; font-weight: bold;">
 								{{ form.risque.identification.libelle.vars.value is empty ? 'Aucun' : form.risque.identification.libelle.vars.value }}
+								{{ form_widget(form.risque.identification.libelle, {'show': false}) }}
 							</span>
 						</p>
 						Veuillez choisir le nom du risque dans la liste ci-dessous : <br><br>
 						{% endif %}
 					{% endset %}
-					
+
 					{% set activiteCodeBefore %}
 						{% if form.vars.value.activite is empty %}
-						<p>Activité saisie lors de l'identification du risque : 
+						<p>Activité saisie lors de l'identification du risque :
 							<span style="color: #222; font-weight: bold;">
 								{{ form.risque.identification.activite.vars.value is empty ? 'Aucun' : form.risque.identification.activite.vars.value }}
 							</span>
@@ -102,8 +103,8 @@
 					{{ form_row(form.processus, {'code_before' : processusCodeBefore}) }}
 					{{ form_row(form.activite, {'code_before' : activiteCodeBefore}) }}
 					{{ form_row(form.risque.menace, {'code_before' : menaceCodeBefore}) }}
-					
-					
+
+
 					{% if not form.activite.vars.valid %}
 						{% set errorSteps = errorSteps ~ "1, " %}
 					{% endif %}
@@ -111,16 +112,16 @@
 						{% include 'extra/sheepIt_template.html.twig' with
 							{
 								'id': form.risque.causeOfRisque.vars.id,
-								'prototype' : form.risque.causeOfRisque.vars.prototype, 
+								'prototype' : form.risque.causeOfRisque.vars.prototype,
 								'prototypeTemplate' : 'risque/risque_cause_prototype.html.twig',
-								'addText': 'Ajouter une cause', 
+								'addText': 'Ajouter une cause',
 								'removeAllText': 'Supprimer toutes les causes',
 								'noFormText': 'Aucune cause n\'est encore identifiée !'
 							}
 						%}
 					{% endset %}
 					{{ form_row(form.risque.causeOfRisque, {'sheeptIt_template' : causeSheepItTemplate }) }}
-					
+
 					{% if not form.risque.causeOfRisque.vars.valid %}
 						{% set errorSteps = errorSteps ~ "2, " %}
 					{% endif %}
@@ -136,14 +137,14 @@
 				</div>
 			</div>
 			</form>
-	
+
 		</div>
 	</div>
 {% block add_script_js %}
 	<script type="text/javascript">
 $(function() {
 			$nouvelle_cause=$( ".risque_cause_row .section:eq(2)" );
-			
+
 			$nouvelle_cause.hide();
 				$('input[type="checkbox"].choix').live('change', function(e) {
 					$nouvelle_cause=$(this).parent().parent().parent().children('.section:last');
@@ -160,7 +161,7 @@ $(function() {
 			$("#{{ form.structure.vars.id }} option[value='{{ form.structure.vars.value }}']").attr('selected', 'selected');
 			$("#{{ form.structure.vars.id }}").trigger('liszt:updated');
 		}
-		
+
 		function afterStructureReload() {
 			$("#{{ form.processus.vars.id }} option[value='{{ form.processus.vars.value }}']").attr('selected', 'selected');
 			$("#{{ form.processus.vars.id }}").trigger('liszt:updated');
@@ -170,39 +171,46 @@ $(function() {
 			$("#{{ form.activite.vars.id }}").trigger('liszt:updated');
 		}
 
-		
+
 	</script>
-	
+
 {% endblock %}
-{% include 'extra/reloadSelect.html.twig' with 
-	{parent: form.direction, child: form.structure, url: path('structure_by_parent'), key: 'id', functionAfter: 'afterDirectionReload'} 
+
+    <script>
+		$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
+        {% if form.risque.menace.vars.value is empty %}
+            $('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected
+        {% endif %}
+    </script>
+{% include 'extra/reloadSelect.html.twig' with
+	{parent: form.direction, child: form.structure, url: path('structure_by_parent'), key: 'id', functionAfter: 'afterDirectionReload'}
 %}
 
-{% include 'extra/reloadSelect.html.twig' with 
-	{parent: form.structure, child: form.processus, url: path('get_processus_by_structure'), key: 'id', functionAfter: 'afterStructureReload'} 
+{% include 'extra/reloadSelect.html.twig' with
+	{parent: form.structure, child: form.processus, url: path('get_processus_by_structure'), key: 'id', functionAfter: 'afterStructureReload'}
 %}
 
-{% include 'extra/updateField.html.twig' with 
-	{parent: form.structure, fieldId: 'responsable', url: path('get_responsable_by_structure'), key: 'id'} 
+{% include 'extra/updateField.html.twig' with
+	{parent: form.structure, fieldId: 'responsable', url: path('get_responsable_by_structure'), key: 'id'}
 %}
 
-{% include 'extra/reloadSelect.html.twig' with 
-	{parent: form.processus, child: form.activite, url: path('get_activities_by_processus'), key: 'id', functionAfter: 'afterProcessusReload'} 
+{% include 'extra/reloadSelect.html.twig' with
+	{parent: form.processus, child: form.activite, url: path('get_activities_by_processus'), key: 'id', functionAfter: 'afterProcessusReload'}
 %}
 
 {% include 'extra/sheepit.html.twig' with {
 				with_script: true,
-				content: '#' ~ form.risque.causeOfRisque.vars.id, 
+				content: '#' ~ form.risque.causeOfRisque.vars.id,
 				options: '{' ~
-					'iniFormsCount: 0, 
-					minFormsCount: 0, 
-					indexFormat: "__name__", 
-					data: ' ~ causeDataForm ~ ', separator: "", allowRemoveAll: true, ' ~ 
+					'iniFormsCount: 0,
+					minFormsCount: 0,
+					indexFormat: "__name__",
+					data: ' ~ causeDataForm ~ ', separator: "", allowRemoveAll: true, ' ~
 					'afterAdd: function(source, addForm ,causeDataForm) { refreshChosen($(".cl_cause"),causeDataForm);  },' ~
 					'removeAllConfirmationMsg: "Vous êtes sur le point de supprimer toutes les causes liées à ce risque. Voulez vous continuer ?", ' ~
-					'}', 
+					'}',
 				embeddedForm: form.risque.causeOfRisque,
-				error_fields: {0:'cause', newCause: { 0:'libelle'} } 
+				error_fields: {0:'cause', newCause: { 0:'libelle'} }
 			}
  %}
 

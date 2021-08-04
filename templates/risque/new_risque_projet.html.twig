@@ -29,12 +29,12 @@
 			{% endset %}
 			
 			{% set projetCodeAfter %}
-				<label class="other_label"><input class="other" target-id="{{ form.risque.identification.projet.vars.id }}" type="checkbox" />Saisir le nom du projet</label>
+				<label class="other_label"><input id="projet_checkbox" class="other" target-id="{{ form.risque.identification.projet.vars.id }}" type="checkbox" />Saisir le nom du projet</label>
 				{{ form_widget(form.risque.identification.projet, {'show': false}) }}
 			{% endset %}
 			
 			{% set menaceCodeAfter %}
-				<label class="other_label"><input class="other" target-id="{{ form.risque.identification.libelle.vars.id }}" type="checkbox" />Saisir le nom du risque</label>
+				<label class="other_label"><input id="risque_checkbox" class="other" target-id="{{ form.risque.identification.libelle.vars.id }}" type="checkbox" />Saisir le nom du risque</label>
 				{{ form_widget(form.risque.identification.libelle, {'show': false}) }}
 			{% endset %}
 			
@@ -152,18 +152,27 @@
 		});
 
 
-	
+
+		$('#projet_checkbox').click(function (){
+			$("#{{ form.projet.vars.id }} option[value='']").attr('selected', 'selected');
+			$("#{{ form.projet.vars.id }}").trigger('liszt:updated');
+		})
+		$('#risque_checkbox').click(function (){
+			$("#{{ form.risque.menace.vars.id }} option[value='']").attr('selected', 'selected');
+			$("#{{ form.risque.menace.vars.id }}").trigger('liszt:updated');
+		})
 	</script>
 	
 {% endblock %}
 
 	<script>
+		$('#{{ form.projet.vars.id }}').prepend("<option value>Choisir un projet ...</option>");
 		{% if form.projet.vars.value is empty %}
-			$('#{{ form.projet.vars.id }}').prepend("<option value>Choisir un projet ...</option>");
 			$('#{{ form.projet.vars.id }}').val(''); // if you want it to be automatically selected
 		{% endif %}
+
+		$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
 		{% if form.risque.menace.vars.value is empty %}
-			$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
 			$('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected
 		{% endif %}
 	</script>

@@ -37,12 +37,12 @@
 			{% endset %}
 			
 			{% set activiteCodeAfter %}
-				<label class="other_label"><input class="other" target-id="{{ form.risque.identification.activite.vars.id }}" type="checkbox" />Saisir le nom de l'activité</label>
+				<label class="other_label"><input id="activite_checkbox" class="other" target-id="{{ form.risque.identification.activite.vars.id }}" type="checkbox" />Saisir le nom de l'activité</label>
 				{{ form_widget(form.risque.identification.activite, {'show': false}) }}
 			{% endset %}
 			
 			{% set menaceCodeAfter %}
-				<label class="other_label"><input class="other" target-id="{{ form.risque.identification.libelle.vars.id }}" type="checkbox" />Saisir le nom du risque</label>
+				<label class="other_label"><input id="risque_checkbox" class="other" target-id="{{ form.risque.identification.libelle.vars.id }}" type="checkbox" />Saisir le nom du risque</label>
 				{{ form_widget(form.risque.identification.libelle, {'show': false}) }}
 			{% endset %}
 			
@@ -171,18 +171,21 @@
 
 		// on ProfilRisque change
 
-
+		$('#activite_checkbox').click(function (){
+			$("#{{ form.activite.vars.id }} option[value='']").attr('selected', 'selected');
+			$("#{{ form.activite.vars.id }}").trigger('liszt:updated');
+		})
+		$('#risque_checkbox').click(function (){
+			$("#{{ form.risque.menace.vars.id }} option[value='']").attr('selected', 'selected');
+			$("#{{ form.risque.menace.vars.id }}").trigger('liszt:updated');
+		})
 	</script>
 	
 {% endblock %}
 
 <script>
-	{#{% if form.direction.vars.value is empty %}
-		$('#{{ form.direction.vars.id }}').prepend("<option value>Choisir une direction ...</option>");
-		$('#{{ form.direction.vars.id }}').val(''); // if you want it to be automatically selected
-	{% endif %}#}
+	$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
 	{% if form.risque.menace.vars.value is empty %}
-		$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
 		$('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected
 	{% endif %}
 </script>

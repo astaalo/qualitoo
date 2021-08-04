@@ -21,7 +21,7 @@
 		<form  novalidate="novalidate"  action="{{ entity.id is empty ? path('ajout_risque', {'cartographie_id': cartographie_id}) : path('edition_risque', {'id': id}) }}" method="POST">
 			
 			{% set menaceCodeAfter %}
-				<label class="other_label"><input class="other" target-id="{{ form.risque.identification.libelle.vars.id }}" type="checkbox" />Saisir le nom du risque</label>
+				<label class="other_label"><input id="risque_checkbox" class="other" target-id="{{ form.risque.identification.libelle.vars.id }}" type="checkbox" />Saisir le nom du risque</label>
 				{{ form_widget(form.risque.identification.libelle, {'show': false}) }}
 			{% endset %}
 			{% set responsableCodeBefore %}
@@ -117,31 +117,37 @@
 
 	</script>
 	<script type="text/javascript">
-$(function() {
-$nouvelle_causeLib=$( ".risque_cause_row .section:eq(2)" );
-$nouvelle_causeLib.hide();
-	$('input[type="checkbox"]').live('change', function(e) {
-		$newCauz  = $(this).parent().parent().parent().children('.section:eq(2)');
-		if($(this).prop( "checked" )) {
-			$newCauz.show(  );
-		} else {
-			$newCauz.hide(  );
-		}
-		
-			
-	});
-});
-</script>
+		$(function() {
+		$nouvelle_causeLib=$( ".risque_cause_row .section:eq(2)" );
+		$nouvelle_causeLib.hide();
+			$('input[type="checkbox"]').live('change', function(e) {
+				$newCauz  = $(this).parent().parent().parent().children('.section:eq(2)');
+				if($(this).prop( "checked" )) {
+					$newCauz.show(  );
+				} else {
+					$newCauz.hide(  );
+				}
+
+
+			});
+		});
+
+		$('#risque_checkbox').click(function (){
+			$("#{{ form.risque.menace.vars.id }} option[value='']").attr('selected', 'selected');
+			$("#{{ form.risque.menace.vars.id }}").trigger('liszt:updated');
+		})
+	</script>
 {% endblock %}
 
 <script>
+	$('#{{ form.site.vars.id }}').prepend("<option value>Choisir un site ...</option>");
 	{% if form.site.vars.value is empty %}
-		$('#{{ form.site.vars.id }}').prepend("<option value>Choisir un site ...</option>");
 		$('#{{ form.site.vars.id }}').val(''); // if you want it to be automatically selected
 	{% endif %}
-	{% if form.risque.menace.vars.value is empty %}
+
 	$('#{{ form.risque.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
-	$('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected
+	{% if form.risque.menace.vars.value is empty %}
+		$('#{{ form.risque.menace.vars.id }}').val(''); // if you want it to be automatically selected
 	{% endif %}
 </script>
 

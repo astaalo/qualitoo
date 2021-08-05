@@ -1,6 +1,7 @@
 <?php 
 namespace App\Controller;
 
+use App\Entity\Activite;
 use App\Entity\Menace;
 use App\Entity\RisqueHasCause;
 use App\Form\HistoryEtatRisqueType;
@@ -314,10 +315,10 @@ class RisqueController extends BaseController {
 				$em->persist($menace);
 			}
             // Sauvegarde l'id processus avec l'activité saisi dans la table Identification
-            if ($entity->getRisque() && $entity->getRisque()->getIdentification()->getActivite()) {
+            /*if ($entity->getRisque() && $entity->getRisque()->getIdentification()->getActivite()) {
                 $entity->getProcessus() ?
                     $entity->getRisque()->getIdentification()->setProcessus($entity->getProcessus()->getId()) : null;
-            }
+            }*/
 			// Sauvegarde de la base de données
 			$em->persist($entity->getRisque());
     		$em->persist($entity);
@@ -525,8 +526,18 @@ class RisqueController extends BaseController {
                     $em->persist($menace);
                     $entity->getRisque()->setMenace($menace);
                 }
-				//dd($entity);
-				$em->flush();
+                // Enregistrer l'activité saisi dans la table activité
+                if ($entity instanceof RisqueMetier && $entity->getProcessus() && !$entity->getActivite() && $entity->getRisque()->getIdentification()->getActivite()) {
+                    $activite = new Activite();
+                    $activite->setProcessus($entity->getProcessus());
+                    $activite->setLibelle($entity->getRisque()->getIdentification()->getActivite());
+                    $activite->setDescription($entity->getRisque()->getIdentification()->getActivite());
+                    $activite->setEtat(true);
+                    $activite->setLibelleSansCarSpecial($this->replaceSpecialChars($entity->getRisque()->getIdentification()->getActivite()));
+                    $em->persist($activite);
+                    $entity->setActivite($activite);
+                }
+                $em->flush();
 				$this->get('session')->getFlashBag()->add('success', "Le risque mis à jour avec succés. Merci de passer à la maitrise de ce risque.");
 				if($risque->getControle()->count()) {
 					return $this->redirect($this->generateUrl('edition_controle', array('id' => $risque->getControle()->first()->getId())));
@@ -573,13 +584,13 @@ class RisqueController extends BaseController {
 				$em->persist($entity);
 				$em->persist($risque);
 				// Remove cause saisi on rejecting risk
-				$rhc = $em->getRepository(RisqueHasCause::class)->findBy(['risque' => $id]);
+				/*$rhc = $em->getRepository(RisqueHasCause::class)->findBy(['risque' => $id]);
 				foreach ($rhc as $risk) {
                     $risk->getRisque()->removeCauseOfRisque($risk);
                     if(!$risk->getCause()->getEtat()) {
                         $em->remove($risk->getCause());
                     }
-                }
+                }*/
 				$em->flush();
 				$this->get('session')->getFlashBag()->add('success', "Le risque a été rejeté. Une notification sera envoyé au concerné.");
 				return new Response($this->redirect($this->generateUrl('les_risques_rejetes')));

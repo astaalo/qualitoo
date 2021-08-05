@@ -92,6 +92,7 @@
 						<p>Activité saisie lors de l'identification du risque :
 							<span style="color: #222; font-weight: bold;">
 								{{ form.risque.identification.activite.vars.value is empty ? 'Aucun' : form.risque.identification.activite.vars.value }}
+								{{ form_widget(form.risque.identification.activite, {'show': false}) }}
 							</span>
 						</p>
 						Veuillez choisir l'activité dans la liste ci-dessous : <br><br>

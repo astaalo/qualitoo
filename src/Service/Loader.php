@@ -91,6 +91,7 @@ class Loader {
 		$nextId = $this->em->getRepository(Risque::class)->getNextId();
 		$query->createTable($nextId);
 		$query->loadTable($chargement, $file->getPathname(), $this->web_dir, $nextId);
+		//dd($chargement);
         $query->updateTable($chargement,$this->ids,$this->em);
 		$query->migrateData($current_user, $this->em,$chargement,$this->ids);
 		$query->calculFinal($chargement, $this->ids);

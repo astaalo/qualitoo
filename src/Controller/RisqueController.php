@@ -117,7 +117,7 @@ class RisqueController extends BaseController {
 			}
 			// recupere les rp a transferer
 			$qb = $em->createQueryBuilder('m')->select('m');
-			$qb->from('OrangeMainBundle:RisqueProjet', 'm')->join('m.risque','r')->where($qb->expr()->in('r.id',$datas));
+			$qb->from(RisqueProjet::class, 'm')->join('m.risque','r')->where($qb->expr()->in('r.id',$datas));
 			$result = $qb->getQuery()->getResult();
 			foreach ($result as $value){
 				$value->getRisque()->setEtat($this->getMyParameter('states', array('risque', 'transfere')));

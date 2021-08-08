@@ -34,12 +34,24 @@
 	</form>
 </div>
 <script type="text/javascript">
-			var arrRisques=[];
- 			arrRisques = [];
- 			 $('#risqueTable input[type=checkbox].chkbox:checked').each(function(){
- 			       arrRisques.push($(this).val());
-   			  }); 
-   			     $('#myModal input#risque_metier_risque_toTransferts').attr('value', arrRisques.toString());
+	var arrRisques=[];
+	arrRisques = [];
+	 $('#risqueTable input[type=checkbox].chkbox:checked').each(function(){
+		   arrRisques.push($(this).val());
+	  });
+		 $('#myModal input#risque_metier_risque_toTransferts').attr('value', arrRisques.toString());
+
+
+	function afterDirectionReload() {
+		$("#{{ form.structure.vars.id }} option[value='{{ form.structure.vars.value }}']").attr('selected', 'selected');
+		$("#{{ form.structure.vars.id }}").trigger('liszt:updated');
+	}
+	function afterStructureReload() {
+		$("#{{ form.processus.vars.id }} option[value='{{ form.processus.vars.value }}']").attr('selected', 'selected');
+		$("#{{ form.processus.vars.id }}").trigger('liszt:updated');
+		$("#{{ form.activite.vars.id }} option[value='{{ form.activite.vars.value }}']").attr('selected', 'selected');
+		$("#{{ form.activite.vars.id }}").trigger('liszt:updated');
+	}
 </script>
 {% set codeAfterResponsableUpdate %}
 		var show = false;
@@ -49,12 +61,14 @@
 		var obj = $('#{{ form.risque.identification.responsable.vars.id }}').closest('div');
 		toggle(obj, show);
 {% endset %}
-{% include 'extra/reloadSelect.html.twig' with 
-		{parent: form.direction, child: form.structure, url: path('structure_by_parent'), key: 'id', empty_child: 1, functionAfter: 'afterDirectionReload'} 
+
+
+{% include 'extra/reloadSelect.html.twig' with
+	{parent: form.direction, child: form.structure, url: path('structure_by_parent'), key: 'id', empty_child: 1, functionAfter: 'afterDirectionReload'}
 %}
-{% include 'extra/reloadSelect.html.twig' with 
-	{parent: form.structure, child: form.processus, url: path('get_processus_by_structure'), key: 'id', empty_child: 1, functionAfter: 'afterStructureReload'} 
+{% include 'extra/reloadSelect.html.twig' with
+	{parent: form.structure, child: form.processus, url: path('get_processus_by_structure'), key: 'id', empty_child: 1, functionAfter: 'afterStructureReload'}
 %}
-{% include 'extra/reloadSelect.html.twig' with 
-	{parent: form.structure, child: form.activite, url: path('get_activities_by_structure'), key: 'id', empty_child: 1	, functionAfter: 'afterStructureReload'} 
+{% include 'extra/reloadSelect.html.twig' with
+	{parent: form.structure, child: form.activite, url: path('get_activities_by_structure'), key: 'id', empty_child: 1	, functionAfter: 'afterStructureReload'}
 %}

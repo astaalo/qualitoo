@@ -144,7 +144,7 @@ class ChargementController extends BaseController {
 		if($request->getMethod()=='POST') {
 			$form->handleRequest($request);
 			if($form->isValid()) {
-				try {
+				//try {
 					$data = $form->getData();
 					$number = $this->orange_main_loader->loadRisque($data['file'], $this->getUser(), $chargement);
 					$em->persist($chargement->generateRapport());
@@ -152,25 +152,25 @@ class ChargementController extends BaseController {
 					$to = $this->getUser()->getEmail();
 					$list_managers = $this->getUser()->getSociete()->getRiskManager();
 					$cc = array();
-					for($i=0; $i<count($list_managers); $i++) {
-						$cc[] = $list_managers[$i]->getEmail();
-					}
-					$bcc = array("mohamed.sall@orange-sonatel.com", "madiagne.sylla@orange-sonatel.com");
-					$mail = (\Swift_Message::newInstance());
-					$mail->setFrom(array(self::FROM => self::FROM_NAME))
-						 ->setTo($to)
-						 ->setCc($cc)
-						 ->setBcc($bcc)
-						 ->setBody($this->renderView('chargement/sendMailRapport.html.twig', 
-						 		array('chargement' => $chargement)) ,'text/html');
-					$this->get('mailer')->send($mail);
+					//for($i=0; $i<count($list_managers); $i++) {
+					//	$cc[] = $list_managers[$i]->getEmail();
+					//}
+					//$bcc = array("mohamed.sall@orange-sonatel.com", "madiagne.sylla@orange-sonatel.com");
+					//$mail = (\Swift_Message::newInstance());
+					//$mail->setFrom(array(self::FROM => self::FROM_NAME))
+					//	 ->setTo($to)
+					//	 ->setCc($cc)
+					//	 ->setBcc($bcc)
+					//	 ->setBody($this->renderView('chargement/sendMailRapport.html.twig',
+					//	 		array('chargement' => $chargement)) ,'text/html');
+					//$this->get('mailer')->send($mail);
 					$this->get('session')->getFlashBag()->add('success', "Le chargement s'est déroulé avec succés!.");
 					return $this->redirect($this->generateUrl('les_risques_importes', array('id'=>$chargement->getId())));
-				} catch (DBALException $e) {
-					$this->get('session')->set('erreurs_chargement', $e->getMessage());
-					$this->get('session')->getFlashBag()->add('error', "Des erreurs se sont produites au chargement!");
-					return array('form'=>$form->createView(), 'id'=>$id, 'chargement'=>$chargement);
-				}
+				//} catch (DBALException $e) {
+				//	$this->get('session')->set('erreurs_chargement', $e->getMessage());
+				//	$this->get('session')->getFlashBag()->add('error', "Des erreurs se sont produites au chargement!");
+				//	return array('form'=>$form->createView(), 'id'=>$id, 'chargement'=>$chargement);
+				//}
 			}
 		} else {
 			$this->get('session')->set('erreurs_chargement', null);

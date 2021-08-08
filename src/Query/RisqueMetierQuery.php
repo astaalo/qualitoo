@@ -2,6 +2,10 @@
 namespace App\Query;
 
 use App\Entity\Chargement;
+use App\Entity\Impact;
+use App\Entity\Risque;
+use App\Entity\Structure;
+use App\Entity\TypeProcessus;
 use Doctrine\ORM\EntityManager;
 use App\Entity\Utilisateur;
 use Doctrine\DBAL\DBALException;
@@ -100,7 +104,7 @@ class RisqueMetierQuery extends BaseQuery {
 		}
 		$query .= 'UPDATE temp_risquemetier SET menace_sans_carspec  = menace ;';
 		$query .= 'UPDATE temp_risquemetier SET cause_sans_carspec  = cause ;';
-		
+		/*
 		for($i = 0; $i < count($this->special_char); $i ++) {
 			if($chargement->getActivite()==null) {
 				$query .= "UPDATE temp_risquemetier SET sous_entite_sans_carspec  = REPLACE(sous_entite_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
@@ -111,7 +115,7 @@ class RisqueMetierQuery extends BaseQuery {
 			}
 			$query .= "UPDATE temp_risquemetier SET menace_sans_carspec  = REPLACE(menace_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
 			$query .= "UPDATE temp_risquemetier SET cause_sans_carspec  = REPLACE(cause_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
-			
+
 			if($chargement->getActivite()==null) {
 				$query .= "UPDATE structure SET name_sans_spec_char = REPLACE(name_sans_spec_char, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
 				$query .= "UPDATE processus SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
@@ -119,7 +123,7 @@ class RisqueMetierQuery extends BaseQuery {
 			}
 			$query .= "UPDATE menace SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
 			$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
-		}
+		}*/
 		if($chargement->getActivite()==null) {
 			$query .= "UPDATE temp_risquemetier t INNER JOIN structure s on lower(s.name_sans_spec_char) = lower(t.sous_entite_sans_carspec) SET t.sous_entite = s.id where s.root=" . $chargement->getDirection()->getId() . ";";
 		} else {
@@ -146,7 +150,7 @@ class RisqueMetierQuery extends BaseQuery {
 		}
 		$toString = serialize($erreurs);
 		if(count($erreurs) > 0) {
-			throw new DBALException($toString);
+			throw new \Exception($toString);
 		}
 		if($chargement->getActivite()==null) {
 			//creer macro , proc et ssproc inexistant
@@ -199,32 +203,33 @@ class RisqueMetierQuery extends BaseQuery {
 		$this->connection->prepare($query)->execute();
 		$erreurs = array();
 		$results = $this->connection->fetchAll("SELECT distinct id, sous_entite , sous_processus, activite, menace, cause ,email_porteur,statut, `type_ctrl`, `methode_ctrl` from temp_risquemetier");
-		for($i = 0; $i < count($results); $i ++) {
-			if(ctype_digit($results [$i] ['sous_processus']) == false) {
-				$erreurs [] = sprintf("Le sous processus a la ligne %s n'existe pas ", $i + 2);
-			}
-			if(ctype_digit($results [$i] ['activite']) == false) {
-				$erreurs [] = sprintf("L'activite à la ligne %s n'existe pas", $i + 2);
-			}
-			if(ctype_digit($results [$i] ['menace']) == false) {
-				$erreurs [] = sprintf("La menace à la ligne %s n'existe pas", $i + 2);
-			}
-			if(ctype_digit($results [$i] ['email_porteur']) == false && is_null($results [$i] ['email_porteur']) == false) {
-				$erreurs [] = sprintf("Le porteur à la ligne %s n'existe pas", $i + 2);
-			}
-			if(ctype_digit($results [$i] ['statut']) == false && is_null($results [$i] ['statut']) == false) {
-				$erreurs [] = sprintf("Le statut a la ligne %s n'existe pas ", $i + 2);
-			}
-			if(ctype_digit($results [$i] ['type_ctrl']) == false && is_null($results [$i] ['type_ctrl']) == false) {
-				$erreurs [] = sprintf("Le type de controle à la ligne %s est incorrecte ", $i + 2);
-			}
-			if(ctype_digit($results [$i] ['methode_ctrl']) == false && is_null($results [$i] ['methode_ctrl']) == false) {
-				$erreurs [] = sprintf("Le methode de controle à la ligne %s est incorrecte ", $i + 2);
-			}
-			if(ctype_digit($results [$i] ['cause']) == false) {
-				$erreurs [] = sprintf("La cause à la ligne %s n'existe pas ", $i + 2);
-			}
-		}
+//		for($i = 0; $i < count($results); $i ++) {
+//			if(ctype_digit($results [$i] ['sous_processus']) == false) {
+//				$erreurs [] = sprintf("Le sous processus a la ligne %s n'existe pas ", $i + 2);
+//			}
+//			if(ctype_digit($results [$i] ['activite']) == false) {
+//				$erreurs [] = sprintf("L'activite à la ligne %s n'existe pas", $i + 2);
+//			}
+//			if(ctype_digit($results [$i] ['menace']) == false) {
+//				$erreurs [] = sprintf("La menace à la ligne %s n'existe pas", $i + 2);
+//			}
+//			if(ctype_digit($results [$i] ['email_porteur']) == false && is_null($results [$i] ['email_porteur']) == false) {
+//				$erreurs [] = sprintf("Le porteur à la ligne %s n'existe pas", $i + 2);
+//			}
+//			if(ctype_digit($results [$i] ['statut']) == false && is_null($results [$i] ['statut']) == false) {
+//				$erreurs [] = sprintf("Le statut a la ligne %s n'existe pas ", $i + 2);
+//			}
+//			if(ctype_digit($results [$i] ['type_ctrl']) == false && is_null($results [$i] ['type_ctrl']) == false) {
+//				$erreurs [] = sprintf("Le type de controle à la ligne %s est incorrecte ", $i + 2);
+//			}
+//			if(ctype_digit($results [$i] ['methode_ctrl']) == false && is_null($results [$i] ['methode_ctrl']) == false) {
+//				$erreurs [] = sprintf("Le methode de controle à la ligne %s est incorrecte ", $i + 2);
+//			}
+//			if(ctype_digit($results [$i] ['cause']) == false) {
+//				$erreurs [] = sprintf("La cause à la ligne %s n'existe pas ", $i + 2);
+//			}
+//		}
+
 		$toString = serialize($erreurs);
 		if(count($erreurs) > 0) {
 			throw new DBALException($toString);
@@ -262,9 +267,18 @@ class RisqueMetierQuery extends BaseQuery {
 		// remplir la table temporaire risque
 		$query = "";
 		if($chargement->getActivite()) {
-			$query .= sprintf("UPDATE temp_risquemetier SET activite=%s, sous_processus=%s;", $chargement->getActivite()->getId(), $chargement->getActivite()->getProcessus()->getId());
+            $query .= sprintf("UPDATE temp_risquemetier SET activite=%s, sous_processus=%s, sous_entite='%s';", $chargement->getActivite()->getId(), $chargement->getActivite()->getProcessus()->getId(), $chargement->getActivite()->getProcessus()->getStructure()->getId());
+            if($chargement->getActivite()->getProcessus()->getTypeProcessus()->getId() == TypeProcessus::$ids['macro']) {
+                $chargement->getActivite()->getProcessus()->getParent() ? $query .= sprintf("UPDATE temp_risquemetier SET macro='%s';", $chargement->getActivite()->getProcessus()->getParent()->getId()) : null;
+            } else {
+                $chargement->getActivite()->getProcessus()->getParent() ? $query .= sprintf("UPDATE temp_risquemetier SET processus='%s';", $chargement->getActivite()->getProcessus()->getParent()->getId()) : null;
+                //if ($chargement->getActivite()->getProcessus()->getParent() && $chargement->getActivite()->getProcessus()->getParent()->getTypeProcessus()->getId() == TypeProcessus::$ids['macro'])
+                //{
+                //    $query .= sprintf("UPDATE temp_risquemetier SET macro='%s';", $chargement->getActivite()->getProcessus()->getParent()->getId());
+                //}
+            }
+
 		}
-		
 		$query .= "INSERT INTO temp_risque(menace_id, processus_id,activite_id)
 				  SELECT distinct menace, sous_processus, activite
 				  from temp_risquemetier;";

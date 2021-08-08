@@ -9,7 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Rapport {
 	
-	static $types;
+	static $types = [
+        'risque' => 1,
+        'cause' => 2,
+        'planAction' => 3,
+        'controle' => 4,
+        'impact' => 5
+    ];
 	
 	/**
      * @var integer

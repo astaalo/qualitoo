@@ -134,7 +134,7 @@ class RisqueMapping extends BaseMapping {
 	 * @param \App\Entity\Risque $risque
 	 */
 	private function putActiviteAndMeInArch($archRisque, &$data, &$domaine, $risque) {
-		foreach($archRisque as $key => $value) {
+        foreach($archRisque as $key => $value) {
 			if(count($value['children'])==0) {
 				$activiteId = $risque->getActivite()->getId();
 				$risqueId = $risque->getId();
@@ -142,7 +142,7 @@ class RisqueMapping extends BaseMapping {
 					$data[$key]['activite'][$activiteId] = array('name'=>$risque->getActivite()->getLibelle(), 'code'=>$risque->getActivite()->getCode() ,'risque'=>array());
 				}
 				$data[$key]['activite'][$activiteId]['risque'][$risqueId] = array(
-					'name'=>$risque->getMenace()->getLibelle(), 'cause'=>array(), 'impact'=>array(),'probabilite'=>$risque->getProbabilite(), 'gravite'=>$risque->getGravite(), 'code'=>$risque->getCode()
+					'name'=> $risque->getMenace() ? $risque->getMenace()->getLibelle() : null, 'cause'=>array(), 'impact'=>array(),'probabilite'=>$risque->getProbabilite(), 'gravite'=>$risque->getGravite(), 'code'=>$risque->getCode()
 				);
 				$this->putCauseInArch($data[$key]['activite'][$activiteId]['risque'][$risqueId], $risque);
 				$this->putImpactInArch($data[$key]['activite'][$activiteId]['risque'][$risqueId], $domaine, $risque);

@@ -21,9 +21,7 @@
 	<div class="content">
 		<div class="grid2" style="width: 49%; float: left;">
 			<div class="inner">
-				<form novalidate="novalidate"
-					action="{{ path('importer_les_risques',{id:id}) }}"
-					{{ form_start(form) }} method="POST">
+				{{ form_start(form, {action:path('importer_les_risques',{id:id})}) }}
 					{{ form_row(form._token) }}
 					{{ form_row(form.file) }}
 					<div class="section last">
@@ -35,7 +33,7 @@
 							<input type="reset" class="uibutton special" value="Effacer">
 						</div>
 					</div>
-				</form>
+				{{ form_end(form) }}
 				<p  style="color: red;"><u>NB:</u> Le format du fichier doit être .txt ou .csv avec séparateur point-virgule.</p>
 			</div>
 		</div>

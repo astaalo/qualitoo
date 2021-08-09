@@ -20,8 +20,9 @@ class ImportType extends AbstractType
 	{
 		$builder
 			    ->add('file', FileType::class, array('label' => 'Fichier', 'required' =>  true, 'attr' => array('accept' => 'text/csv')))
-				->add('add', SubmitType::class, array('label' => 'Importer', 'attr' => array('class' => 'btn btn-warning')))
-                ->add('cancel', ButtonType::class, array('label' => 'Réinitialiser', 'attr' => array('class' => 'btn btn-die cancel')));
+				//->add('add', SubmitType::class, array('label' => 'Importer', 'attr' => array('class' => 'btn btn-warning')))
+                //->add('cancel', ButtonType::class, array('label' => 'Réinitialiser', 'attr' => array('class' => 'btn btn-die cancel')))
+                ;
 	}
 	
 	/**

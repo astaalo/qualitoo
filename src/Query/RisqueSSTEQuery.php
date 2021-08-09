@@ -3,6 +3,8 @@
 namespace App\Query;
 
 use App\Entity\Chargement;
+use App\Entity\Impact;
+use App\Entity\Risque;
 use Doctrine\ORM\EntityManager;
 use App\Entity\Utilisateur;
 use Doctrine\DBAL\DBALException;
@@ -76,14 +78,14 @@ class RisqueSSTEQuery extends BaseQuery {
 		$erreurs = array ();
 		$query = "";
 		// Mettre a jour les Ids des sites
-		$query .= 'UPDATE site SET libelle_sans_carspecial  = libelle;';
+		/*$query .= 'UPDATE site SET libelle_sans_carspecial  = libelle;';
 		$query .= 'UPDATE domaine_activite SET libelle_sans_carspecial  = libelle ;';
 		$query .= 'UPDATE lieu SET libelle_sans_carspecial  = libelle;';
 		$query .= 'UPDATE manifestation SET libelle_sans_carspecial  = libelle ;';
 		$query .= 'UPDATE equipement SET libelle_sans_carspecial  = libelle ;';
 		$query .= 'UPDATE menace SET libelle_sans_carspecial  = libelle ;';
-		$query .= 'UPDATE cause SET libelle_sans_carspecial  = libelle ;';
-		
+		$query .= 'UPDATE cause SET libelle_sans_carspecial  = libelle ;';*/
+
 		$query .= 'UPDATE temp_risquesste SET site_sans_carspec = site;';
 		$query .= 'UPDATE temp_risquesste SET domaine_activite_sans_carspec = domaine_activite;';
 		$query .= 'UPDATE temp_risquesste SET lieu_sans_carspec  = lieu;';
@@ -91,7 +93,7 @@ class RisqueSSTEQuery extends BaseQuery {
 		$query .= 'UPDATE temp_risquesste SET activite_equipement_sans_carspec  = activite_equipement;';
 		$query .= 'UPDATE temp_risquesste SET menace_sans_carspec  = menace;';
 		$query .= 'UPDATE temp_risquesste SET cause_sans_carspec  = cause;';
-		
+
 		for($i = 0; $i < count ( $this->special_char ); $i ++) {
 			$query .= "UPDATE temp_risquesste SET site_sans_carspec  = REPLACE(site_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
 			$query .= "UPDATE temp_risquesste SET domaine_activite_sans_carspec  = REPLACE(domaine_activite_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
@@ -100,18 +102,18 @@ class RisqueSSTEQuery extends BaseQuery {
 			$query .= "UPDATE temp_risquesste SET activite_equipement_sans_carspec  = REPLACE(activite_equipement_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
 			$query .= "UPDATE temp_risquesste SET menace_sans_carspec  = REPLACE(menace_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
 			$query .= "UPDATE temp_risquesste SET cause_sans_carspec  = REPLACE(cause_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
-				
+
 			$query .= "UPDATE site SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
 			$query .= "UPDATE domaine_activite SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
 			$query .= "UPDATE lieu SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
 			$query .= "UPDATE manifestation SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
 			$query .= "UPDATE equipement SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
 			$query .= "UPDATE menace SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
-			$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
+			//$query .= "UPDATE cause SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
 		}
 		$query .= "UPDATE temp_risquesste SET type_equipement_activite = null where type_equipement_activite like '';";
 		$this->connection->prepare ( $query )->execute ();
-
+        //dd('stop');
 		$query = "";
 			//creer site inexistant
 			$query .=  "INSERT INTO `site`(`libelle`, `etat`, `responsable_id`, `societe_id`, `code`, `libelle_sans_carspecial`)

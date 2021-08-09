@@ -3,6 +3,7 @@
 namespace App\Query;
 
 use App\Entity\Chargement;
+use App\Entity\Impact;
 use Doctrine\ORM\EntityManager;
 use App\Entity\Utilisateur;
 use Doctrine\DBAL\DBALException;
@@ -81,7 +82,7 @@ class RisqueProjetQuery extends BaseQuery {
 			$query .= "UPDATE temp_risqueprojet SET cause_sans_carspec  = REPLACE(cause_sans_carspec, '".$this->special_char [$i]."', '{$this->replacement_char[$i]}');";
 				
 			$query .= "UPDATE menace SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '".$this->special_char [$i]."','{$this->replacement_char[$i]}');";
-			$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '".$this->special_char [$i]."','{$this->replacement_char[$i]}');";
+			//$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '".$this->special_char [$i]."','{$this->replacement_char[$i]}');";
 		}
 		$this->connection->prepare($query)->execute();
 
@@ -248,10 +249,12 @@ class RisqueProjetQuery extends BaseQuery {
 		$nextId = $em->getRepository(Impact::class)->getNextId();
 		$annee = date('Y');
 		// creation evaluation pour chaque risque
-		$query = "INSERT INTO `evaluation`(`evaluateur`, `validateur`, `criticite_id`, `risque_id`, `date_evaluation`, `probabilite`, `gravite`,  `transfered`, `annee`)
-				 SELECT ".$current_user->getId().",".$current_user->getId().", null, t.best_id,  NOW(), null, t.gravite, 1,".$annee." FROM temp_risqueprojet t where t.gravite !='' group by t.best_id;";
+        //$query = "INSERT INTO `evaluation`(`evaluateur`, `validateur`, `criticite_id`, `risque_id`, `date_evaluation`, `probabilite`, `gravite`,  `transfered`, `annee`)
+		//		 SELECT ".$current_user->getId().",".$current_user->getId().", null, t.best_id,  NOW(), null, t.gravite, 1,".$annee." FROM temp_risqueprojet t where t.gravite !='' group by t.best_id;";
+        $query = "INSERT INTO `evaluation`(`evaluateur`, `validateur`, `criticite_id`, `risque_id`, `date_evaluation`, `probabilite`, `gravite`,  `transfered`, `annee`)
+				 SELECT ".$current_user->getId().",".$current_user->getId().", t.criticite, t.best_id,  NOW(), t.probabilite, t.gravite, 1,".$annee." FROM temp_risqueprojet t where t.gravite !='' group by t.best_id;";
 
-		// remplir la table eval_has_cause
+        // remplir la table eval_has_cause
 		$query .= "INSERT INTO `evaluation_has_cause`(`evaluation_id`, `cause_id`, `mode_fonctionnement_id`, `grille_id`, `maturite_id`)
 				 select distinct e.id, rhc.cause_id, null, rhc.grille_id, null
 				 from evaluation e

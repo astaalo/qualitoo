@@ -104,7 +104,7 @@ class RisqueMetierQuery extends BaseQuery {
 		}
 		$query .= 'UPDATE temp_risquemetier SET menace_sans_carspec  = menace ;';
 		$query .= 'UPDATE temp_risquemetier SET cause_sans_carspec  = cause ;';
-		/*
+
 		for($i = 0; $i < count($this->special_char); $i ++) {
 			if($chargement->getActivite()==null) {
 				$query .= "UPDATE temp_risquemetier SET sous_entite_sans_carspec  = REPLACE(sous_entite_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
@@ -122,8 +122,8 @@ class RisqueMetierQuery extends BaseQuery {
 				$query .= "UPDATE activite SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
 			}
 			$query .= "UPDATE menace SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
-			$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
-		}*/
+			//$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
+		}
 		if($chargement->getActivite()==null) {
 			$query .= "UPDATE temp_risquemetier t INNER JOIN structure s on lower(s.name_sans_spec_char) = lower(t.sous_entite_sans_carspec) SET t.sous_entite = s.id where s.root=" . $chargement->getDirection()->getId() . ";";
 		} else {
@@ -203,32 +203,32 @@ class RisqueMetierQuery extends BaseQuery {
 		$this->connection->prepare($query)->execute();
 		$erreurs = array();
 		$results = $this->connection->fetchAll("SELECT distinct id, sous_entite , sous_processus, activite, menace, cause ,email_porteur,statut, `type_ctrl`, `methode_ctrl` from temp_risquemetier");
-//		for($i = 0; $i < count($results); $i ++) {
-//			if(ctype_digit($results [$i] ['sous_processus']) == false) {
-//				$erreurs [] = sprintf("Le sous processus a la ligne %s n'existe pas ", $i + 2);
-//			}
-//			if(ctype_digit($results [$i] ['activite']) == false) {
-//				$erreurs [] = sprintf("L'activite à la ligne %s n'existe pas", $i + 2);
-//			}
-//			if(ctype_digit($results [$i] ['menace']) == false) {
-//				$erreurs [] = sprintf("La menace à la ligne %s n'existe pas", $i + 2);
-//			}
-//			if(ctype_digit($results [$i] ['email_porteur']) == false && is_null($results [$i] ['email_porteur']) == false) {
-//				$erreurs [] = sprintf("Le porteur à la ligne %s n'existe pas", $i + 2);
-//			}
-//			if(ctype_digit($results [$i] ['statut']) == false && is_null($results [$i] ['statut']) == false) {
-//				$erreurs [] = sprintf("Le statut a la ligne %s n'existe pas ", $i + 2);
-//			}
-//			if(ctype_digit($results [$i] ['type_ctrl']) == false && is_null($results [$i] ['type_ctrl']) == false) {
-//				$erreurs [] = sprintf("Le type de controle à la ligne %s est incorrecte ", $i + 2);
-//			}
-//			if(ctype_digit($results [$i] ['methode_ctrl']) == false && is_null($results [$i] ['methode_ctrl']) == false) {
-//				$erreurs [] = sprintf("Le methode de controle à la ligne %s est incorrecte ", $i + 2);
-//			}
-//			if(ctype_digit($results [$i] ['cause']) == false) {
-//				$erreurs [] = sprintf("La cause à la ligne %s n'existe pas ", $i + 2);
-//			}
-//		}
+		for($i = 0; $i < count($results); $i ++) {
+			if(ctype_digit($results [$i] ['sous_processus']) == false && is_null($results [$i] ['sous_processus']) == false) {
+				$erreurs [] = sprintf("Le sous processus a la ligne %s n'existe pas ", $i + 2);
+			}
+			if(ctype_digit($results [$i] ['activite']) == false) {
+				$erreurs [] = sprintf("L'activite à la ligne %s n'existe pas", $i + 2);
+			}
+			if(ctype_digit($results [$i] ['menace']) == false) {
+				$erreurs [] = sprintf("La menace à la ligne %s n'existe pas", $i + 2);
+			}
+			if(ctype_digit($results [$i] ['email_porteur']) == false && is_null($results [$i] ['email_porteur']) == false) {
+				$erreurs [] = sprintf("Le porteur à la ligne %s n'existe pas", $i + 2);
+			}
+			if(ctype_digit($results [$i] ['statut']) == false && is_null($results [$i] ['statut']) == false) {
+				$erreurs [] = sprintf("Le statut a la ligne %s n'existe pas ", $i + 2);
+			}
+			if(ctype_digit($results [$i] ['type_ctrl']) == false && is_null($results [$i] ['type_ctrl']) == false) {
+				$erreurs [] = sprintf("Le type de controle à la ligne %s est incorrecte ", $i + 2);
+			}
+			if(ctype_digit($results [$i] ['methode_ctrl']) == false && is_null($results [$i] ['methode_ctrl']) == false) {
+				$erreurs [] = sprintf("Le methode de controle à la ligne %s est incorrecte ", $i + 2);
+			}
+			if(ctype_digit($results [$i] ['cause']) == false) {
+				$erreurs [] = sprintf("La cause à la ligne %s n'existe pas ", $i + 2);
+			}
+		}
 
 		$toString = serialize($erreurs);
 		if(count($erreurs) > 0) {
@@ -307,7 +307,7 @@ class RisqueMetierQuery extends BaseQuery {
 	 */
 	public function migrateCauseControleAndPlanAction($ids, $chargement,$current_user) {
 		// ajouter les causes des risques dans risque_has_cause
-		$query = " INSERT INTO `risque_has_cause`( `risque_id`, `cause_id`, `grille_id`,`transfered`)
+		$query = "INSERT INTO `risque_has_cause`( `risque_id`, `cause_id`, `grille_id`,`transfered`)
 				   select t.`best_id`, t.`cause`, g.id, 1
 				   from temp_risquemetier t
 				   left join type_grille tg on tg.type_evaluation_id =".$ids['type_evaluation']['cause']." and tg.cartographie_id=".$chargement->getCartographie()->getId()."
@@ -329,7 +329,8 @@ class RisqueMetierQuery extends BaseQuery {
 				   SELECT distinct t.email_porteur,t.porteur, t.statut, rhc.id, t.desc_pa, case when t.date_debut_pa='' then null else str_to_date(t.date_debut_pa,'%d/%m/%Y') end , case when t.date_fin_pa='' then null else str_to_date(t.date_fin_pa,'%d/%m/%Y') end, t.avancement,1
 				    from temp_risquemetier t inner join risque_has_cause rhc on rhc.cause_id = t.cause and rhc.risque_id=t.best_id where t.desc_pa!='';";
 		// ajouter les avancement des PAs
-		$query .= "INSERT INTO `avancement`(`acteur`, `plan_action_id`, `etat_avancement_id`, `date_action`, `description`, `etat`)
+
+        $query .= "INSERT INTO `avancement`(`acteur`, `plan_action_id`, `etat_avancement_id`, `date_action`, `description`, `etat`)
 				   select distinct ".$current_user->getId().", pa.id,null,now(), pa.description, 1
 				   from plan_action pa
 				   inner join risque_has_cause rhc on pa.risque_cause_id=rhc.id

@@ -91,7 +91,7 @@ class RisqueRepository extends DocumentRepository
 			foreach ($criteria->maturiteForKpi as $key =>$value) {
 				$valeurs_maturite_criteria [] = intval($value->getValeur());
 			}
-			$queryBuilder->field('maturite')->equals($valeurs_maturite_criteria);
+			$queryBuilder->expr()->field('maturite')->equals($valeurs_maturite_criteria);
 		}
 		return $queryBuilder;
 	}

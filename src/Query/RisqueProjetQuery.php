@@ -82,7 +82,7 @@ class RisqueProjetQuery extends BaseQuery {
 			$query .= "UPDATE temp_risqueprojet SET cause_sans_carspec  = REPLACE(cause_sans_carspec, '".$this->special_char [$i]."', '{$this->replacement_char[$i]}');";
 				
 			$query .= "UPDATE menace SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '".$this->special_char [$i]."','{$this->replacement_char[$i]}');";
-			//$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '".$this->special_char [$i]."','{$this->replacement_char[$i]}');";
+			$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '".$this->special_char [$i]."','{$this->replacement_char[$i]}');";
 		}
 		$this->connection->prepare($query)->execute();
 

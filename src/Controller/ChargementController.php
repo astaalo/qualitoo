@@ -46,7 +46,7 @@ class ChargementController extends BaseController {
 	 */
 	public function listeAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$queryBuilder = $em->getRepository('App\Entity\Chargement')->createQueryBuilder('c')->where('c.etat=1');
+		$queryBuilder = $em->getRepository('App\Entity\Chargement')->createQueryBuilder('c')->where('c.etat=1')->orderBy('c.date', 'DESC');
 		return $this->paginate($request, $queryBuilder,'addRowInTableChargement');
 	}
 	

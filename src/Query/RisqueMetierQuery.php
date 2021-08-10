@@ -122,7 +122,7 @@ class RisqueMetierQuery extends BaseQuery {
 				$query .= "UPDATE activite SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
 			}
 			$query .= "UPDATE menace SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
-			//$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
+			$query .= "UPDATE cause  SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','".$this->replacement_char[$i]."');";
 		}
 		if($chargement->getActivite()==null) {
 			$query .= "UPDATE temp_risquemetier t INNER JOIN structure s on lower(s.name_sans_spec_char) = lower(t.sous_entite_sans_carspec) SET t.sous_entite = s.id where s.root=" . $chargement->getDirection()->getId() . ";";

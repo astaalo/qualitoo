@@ -28,7 +28,7 @@ class Manifestation
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle_sans_carspecial",  type="string", length=255, nullable=true)
+     * @ORM\Column(name="libelle_sans_carspecial",  type="text", nullable=true)
      */
     private $libelleSansCarSpecial;
     

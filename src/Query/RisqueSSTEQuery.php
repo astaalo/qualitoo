@@ -78,13 +78,13 @@ class RisqueSSTEQuery extends BaseQuery {
 		$erreurs = array ();
 		$query = "";
 		// Mettre a jour les Ids des sites
-		/*$query .= 'UPDATE site SET libelle_sans_carspecial  = libelle;';
-		$query .= 'UPDATE domaine_activite SET libelle_sans_carspecial  = libelle ;';
-		$query .= 'UPDATE lieu SET libelle_sans_carspecial  = libelle;';
-		$query .= 'UPDATE manifestation SET libelle_sans_carspecial  = libelle ;';
-		$query .= 'UPDATE equipement SET libelle_sans_carspecial  = libelle ;';
-		$query .= 'UPDATE menace SET libelle_sans_carspecial  = libelle ;';
-		$query .= 'UPDATE cause SET libelle_sans_carspecial  = libelle ;';*/
+        $query .= 'UPDATE site SET libelle_sans_carspecial  = libelle;';
+        $query .= 'UPDATE domaine_activite SET libelle_sans_carspecial  = libelle ;';
+        $query .= 'UPDATE lieu SET libelle_sans_carspecial  = libelle;';
+        $query .= 'UPDATE manifestation SET libelle_sans_carspecial  = libelle ;';
+        $query .= 'UPDATE equipement SET libelle_sans_carspecial  = libelle ;';
+        $query .= 'UPDATE menace SET libelle_sans_carspecial  = libelle ;';
+        $query .= 'UPDATE cause SET libelle_sans_carspecial  = libelle ;';
 
 		$query .= 'UPDATE temp_risquesste SET site_sans_carspec = site;';
 		$query .= 'UPDATE temp_risquesste SET domaine_activite_sans_carspec = domaine_activite;';
@@ -109,12 +109,11 @@ class RisqueSSTEQuery extends BaseQuery {
 			$query .= "UPDATE manifestation SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
 			$query .= "UPDATE equipement SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
 			$query .= "UPDATE menace SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
-			//$query .= "UPDATE cause SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
+			$query .= "UPDATE cause SET libelle_sans_carspecial  = REPLACE(libelle_sans_carspecial, '" . $this->special_char [$i] . "','{$this->replacement_char[$i]}');";
 		}
 		$query .= "UPDATE temp_risquesste SET type_equipement_activite = null where type_equipement_activite like '';";
 		$this->connection->prepare ( $query )->execute ();
-        //dd('stop');
-		$query = "";
+        $query = "";
 			//creer site inexistant
 			$query .=  "INSERT INTO `site`(`libelle`, `etat`, `responsable_id`, `societe_id`, `code`, `libelle_sans_carspecial`)
 					    select distinct t.site, 1, null,".$current_user->getSociete ()->getId ().",null, t.site_sans_carspec
@@ -242,13 +241,13 @@ class RisqueSSTEQuery extends BaseQuery {
 	public function migrateData($current_user, $em, $chargement, $ids) {
 		$nextId = $em->getRepository ( Risque::class )->getNextId ();
 		// creer une table temporaire risque
-		$query = sprintf ( "DROP TABLE IF EXISTS `temp_risque`;
-				            CREATE TABLE `temp_risque` (  `id` int(11) NOT NULL AUTO_INCREMENT,
-														  `site_id` int(11) DEFAULT NULL,`domaine_activite_id` int(11) DEFAULT NULL,
-														  `equipement_id` int(11) DEFAULT NULL,`menace_id` int(11) DEFAULT NULL,
-														  `lieu_id` int(11) DEFAULT NULL,`manifestation_id` int(11) DEFAULT NULL,
-														  `proprietaire` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-				            PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=%s;", $nextId );
+		$query = sprintf ("DROP TABLE IF EXISTS `temp_risque`;
+                                    CREATE TABLE `temp_risque` (  `id` int(11) NOT NULL AUTO_INCREMENT,
+                                    `site_id` int(11) DEFAULT NULL,`domaine_activite_id` int(11) DEFAULT NULL,
+                                    `equipement_id` int(11) DEFAULT NULL,`menace_id` int(11) DEFAULT NULL,
+                                    `lieu_id` int(11) DEFAULT NULL,`manifestation_id` int(11) DEFAULT NULL,
+                                    `proprietaire` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+                                    PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=%s;", $nextId);
 		$this->connection->prepare ( $query )->execute ();
 
 		$this->migrateRisque ( $current_user, $chargement,$ids );

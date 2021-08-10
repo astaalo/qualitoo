@@ -15,6 +15,9 @@ pipeline {
         APP_SECRET = '777fa4b759d4067ed9ee76f6b0d9d156'
         MAILER_URL="smtp://10.100.56.56:25"
         DATABASE_URL="mysql://coris:crs_pma@s2m@172.17.0.1:3306/coris?serverVersion=13&charset=utf8"
+
+        MONGODB_URL="mongodb://10.137.20.54:27017"
+        MONGODB_DB="coris"
     }
     tools {
         maven "Maven_3.3.9"

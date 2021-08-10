@@ -131,8 +131,7 @@ class RisqueController extends BaseController {
 				$em->persist($riskMetier);
 				$em->flush();
 			}
-			$this->get('session')->getFlashBag()->add('success', "Le transfert s'est déroulé avec succés.");
-			return new Response($this->redirect($this->generateUrl('les_risques_a_transferer')));
+            return new JsonResponse(array('status' => 'success', 'text' => "Le transfert s'est déroulé avec succés."));
 		}
 		return new Response($this->renderView('risque/transfert.html.twig', array('entity' => $entity, 'form' => $form->createView())), 303);
 	}

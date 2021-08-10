@@ -271,7 +271,7 @@ class RisqueProjet {
     		}
     		foreach ($cor->getControle() as $key=>$ctrl){
     				$ctrl=clone $ctrl;
-    				$ctrl->setId(null);
+    				//$ctrl->setId(null);
     				$causeOfRisque->addControle($ctrl);
     		}
     		$riskMetier->getRisque()->addCauseOfRisque($causeOfRisque);

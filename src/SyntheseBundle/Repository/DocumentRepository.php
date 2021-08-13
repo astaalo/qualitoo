@@ -120,7 +120,6 @@ class DocumentRepository extends Repository
 	}
 	
 	/**
-	 * @param \Doctrine\DBAL\Query\QueryBuilder $queryBuilder
 	 * @param \App\Entity\Risque $criteria
 	 */
 	public function applyFilterByProfile($queryBuilder, $criteria)

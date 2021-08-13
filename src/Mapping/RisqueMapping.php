@@ -20,7 +20,7 @@ class RisqueMapping extends BaseMapping {
 		}
 		return $data;
 	}
-	
+
 	
 	/**
 	 * @param array $result
@@ -156,32 +156,32 @@ class RisqueMapping extends BaseMapping {
 	 * @param array $data
 	 * @param \App\Entity\Risque $risque
 	 */
-	private function putCauseInArch(&$data, $risque) {	
+	private function putCauseInArch(&$data, $risque) {
 		foreach($risque->getCauseOfRisque() as $cor) {
 			$causeId = $cor->getCause()->getId();
 			$controle = $cor->getControle();
 			$pa = $cor->getPlanAction();
 			if(!isset($data['cause'][$causeId])) {
 				$data['cause'][$causeId] = array(
-					'name'=>$cor->getCause()->getLibelle(), 
+					'name'=>$cor->getCause()->getLibelle(),
 					'famille'=> '-', 'probabilite' => $cor->getProbabilite(),
 					'controle'=>array(), 'pa'=>array(),
 					'mode' => $cor->getModeFonctionnement() ? $cor->getModeFonctionnement()->__toString() : ''
 				);
 				if($controle) {
-					foreach ($controle as $ctrl){
+					/*foreach ($controle as $ctrl){
 						$data['cause'][$causeId]['controle'][$ctrl->getId()] = array(
 							'id'=>$ctrl->getId(),
 							'code'=>$ctrl->getCode(), 'name'=>$ctrl->getDescription(), 'description'=>$ctrl->getDescription(),
 							'type'=>sprintf($ctrl->getTypeControle()), 'methode'=>sprintf($ctrl->getMethodeControle()),
 							'pa'=>$ctrl->getToPlanAction()
 						);
-					}
+					}*/
 				}
 				if($pa) {
 					foreach ($pa as $p){
 						$data['cause'][$causeId]['pa'][$p->getId()] = array(
-							'code'=>$p->getCode(), 'name'=>$p->getLibelle(), 'description'=>$p->getDescription(), 'porteur'=>sprintf($p->getPorteur()), 
+							'code'=>$p->getCode(), 'name'=>$p->getLibelle(), 'description'=>$p->getDescription(), 'porteur'=>sprintf($p->getPorteur()),
 							'statut'=>sprintf($p->getStatut()), 'date_debut' => $p->getDateDebut()?$p->getDateDebut()->format('d-m-Y'):'', 'date_fin' => $p->getDateFin()?$p->getDateFin()->format('d-m-Y'):'', 'avancement' => $p->getAvancementInText(),
 							'ctrl'=>$p->getToControle()
 						);

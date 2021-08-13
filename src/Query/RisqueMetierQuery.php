@@ -142,12 +142,6 @@ class RisqueMetierQuery extends BaseQuery {
 				$erreurs [] = sprintf("Le format de la date fin du PA a la ligne %s est incorrect ", $i + 2);
 			}
 		}
-		// Sous-entités inexistants
-		for($i = 0; $i < count($results); $i ++) {
-			if(ctype_digit($results [$i] ['sous_entite']) == false && $chargement->getActivite()==null) {
-				$erreurs [] = sprintf("La sous entite a la ligne %s n'existe pas ", $i + 2);
-			}
-		}
 		$toString = serialize($erreurs);
 		if(count($erreurs) > 0) {
 			throw new \Exception($toString);
@@ -228,11 +222,18 @@ class RisqueMetierQuery extends BaseQuery {
 			if(ctype_digit($results [$i] ['cause']) == false) {
 				$erreurs [] = sprintf("La cause à la ligne %s n'existe pas ", $i + 2);
 			}
+
+            // Sous-entités inexistants
+            for($i = 0; $i < count($results); $i ++) {
+                if(ctype_digit($results [$i] ['sous_entite']) == false && $chargement->getActivite()==null) {
+                    $erreurs [] = sprintf("La sous entite a la ligne %s n'existe pas ", $i + 2);
+                }
+            }
 		}
 
 		$toString = serialize($erreurs);
 		if(count($erreurs) > 0) {
-			throw new DBALException($toString);
+			throw new \Exception($toString);
 		}
 	}
 

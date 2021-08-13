@@ -31,6 +31,7 @@ use App\Entity\RisqueEnvironnemental;
 //use App\OrangeMainBundle;
 use App\Event\CartoEvent;
 use App\Annotation\QMLogger;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class RisqueController extends BaseController {
 	
@@ -757,8 +758,9 @@ class RisqueController extends BaseController {
 		$this->modifyRequestForForm($request, $this->get('session')->get('risque_criteria'), $form);
 		$criteria = $this->get('session')->get('risque_criteria');
 		$queryBuilder = $em->getRepository('App\Entity\Risque')->listValidQueryBuilder($form->getData())->getQuery()->getResult();
+
 		if($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'metier'))) {
-			$data = $this->orange_main_core->getMapping('Risque')->mapForExportMetier($queryBuilder, $form->getData()->getCartographie());
+            $data = $this->orange_main_core->getMapping('Risque')->mapForExportMetier($queryBuilder, $form->getData()->getCartographie());
 		} elseif($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'projet'))) {
  			$data = $this->orange_main_core->getMapping('Risque')->mapForExportProjet($queryBuilder, $form->getData()->getCartographie());
 		} elseif($criteria['cartographie']==$this->getMyParameter('ids', array('carto', 'sst'))) {
@@ -767,7 +769,8 @@ class RisqueController extends BaseController {
 			$data = $this->orange_main_core->getMapping('Risque')->mapForExportEnvironnemental($queryBuilder, $form->getData()->getCartographie());
 		}
 		$reporting = $this->orange_main_core->getReporting('Risque')->extract($data, $criteria['cartographie'], $this->getUser()->getSociete());
-		return $reporting->getResponseAfterSave('php://output', 'Cartographie des risques ');
+        return $this->file($reporting, 'Cartographie des risques.xlsx', ResponseHeaderBag::DISPOSITION_INLINE);
+        //return $reporting->getResponseAfterSave('php://output', 'Cartographie des risques ');
 	}
 
 	/**

@@ -759,7 +759,8 @@ class Risque implements NotificationInterface {
 				unset($data[$lastId] );
 			}
 			$lastId = $processus->getId();
-			$processus = $processus->getParent();
+			//$processus = $processus->getParent();
+            $processus = $processus != $processus->getParent() ? $processus->getParent() : null;
 		}
 		return $data;
 	}

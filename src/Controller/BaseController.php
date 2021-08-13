@@ -21,6 +21,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
@@ -33,12 +34,13 @@ class BaseController extends AbstractController
     protected $orange_main_loader;
     protected $orange_main_core;
     protected $cartoEvent;
+    static $session;
     static $ids;
     static $states;
     static $_user;
     static $em;
 
-    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core, CartoEvent $cartoEvent, Security $security, EntityManagerInterface $em)
+    public function __construct(ParameterBagInterface $params, PaginatorInterface $paginator, Status $status, Actions $action, AssetsExtension $assets_extension, Loader $orange_main_loader, Core $orange_main_core, CartoEvent $cartoEvent, Security $security, EntityManagerInterface $em, SessionInterface $session)
     {
         $this->paginator = $paginator;
         $this->service_status = $status;
@@ -47,6 +49,7 @@ class BaseController extends AbstractController
         $this->orange_main_loader = $orange_main_loader;
         $this->orange_main_core = $orange_main_core;
         $this->cartoEvent = $cartoEvent;
+        self::$session = $session;
         self::$ids = $params->get('ids');
         self::$states = $params->get('states');
         self::$_user = $security->getUser();

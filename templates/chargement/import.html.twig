@@ -26,9 +26,15 @@
 					{{ form_row(form.file) }}
 					<div class="section last">
 						<div>
-						    <a class="uibutton confirm"
-								href="{{ asset('upload/modele/modele_'~chargement.cartographie.libelle|replace({'é': 'e'})|lower~'.csv') }}">Télécharger
-								le modéle</a>
+							{% if chargement.activite %}
+								<a class="uibutton confirm" href="{{ asset('upload/modele/modele_metier_avec_activite_choisie.csv') }}">
+									Télécharger le modèle
+								</a>
+							{% else %}
+								<a class="uibutton confirm" href="{{ asset('upload/modele/modele_'~chargement.cartographie.libelle|replace({'é': 'e'})|lower~'.csv') }}">
+									Télécharger le modèle
+								</a>
+							{% endif %}
 							<button class="uibutton loading">Importer</button>
 							<input type="reset" class="uibutton special" value="Effacer">
 						</div>

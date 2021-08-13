@@ -1,8 +1,15 @@
 <?php	
 namespace App\Reporting;
 
+use App\Entity\Societe;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class RisqueReporting extends ExcelReporting {
-	
+	protected $sheet;
 	/**
 	 * @param array $data
 	 * @param integer $profilType
@@ -11,20 +18,20 @@ class RisqueReporting extends ExcelReporting {
 	public function extract($data, $cartographie_id, $societe) {
 		switch($cartographie_id) {
 			case 1:
-				$this->extractMetier($data, $societe);
+				$report = $this->extractMetier($data, $societe);
 				break;
 			case 2:
-				$this->extractProjet($data, $societe);
+                $report = $this->extractProjet($data, $societe);
 				break;
 			case 3:
-				$this->extractSite($data, $societe);
+                $report = $this->extractSite($data, $societe);
 				$this->setValues(1, array('G'=>'Danger'));
 				break;
 			case 4:
-				$this->extractSite($data, $societe);
+                $report = $this->extractSite($data, $societe);
 				break;
 		}
-		return $this;
+		return $report;
 	}
 	
 	/**
@@ -32,30 +39,46 @@ class RisqueReporting extends ExcelReporting {
 	 * @param Societe $societe
 	 */
 	public function extractMetier($data, $societe) {
-		$this->setDimensionColumns(array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'O'), 50);
-		$this->setDimensionColumns(array('J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y','Z'), 25);
-		$this->setValues(1, array('A'=>'Macro Processus', 'B'=>'Processus', 'C'=>'Sous Processus', 'D'=>'Entité', 'E'=>'Sous-Entité'));
-		$this->setValues(1, array('F'=>'Code Activité','G'=>'Activité', 'H'=>'Code risque', 'I'=>'Risque', 'J'=>'Causes', 
+        $spreadsheet = new Spreadsheet();
+        $this->sheet = $spreadsheet->getActiveSheet();
+
+        $this->setDimensionColumns($this->sheet, array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'O'), 50);
+        $this->setDimensionColumns($this->sheet, array('J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y','Z'), 25);
+        $this->sheet->setTitle("Prises en charges des risques");
+        $styleEntete = array(
+            'font'  => array(
+                'bold'  => true,
+                'color' => array('rgb' => 'ffffff'),
+                'size'  => 12,
+                'name'  => 'Verdana'
+            ));
+        $this->sheet->getStyle("A1:D1")->applyFromArray($styleEntete);
+
+        
+        $this->setValues($this->sheet,1, array('A'=>'Macro Processus', 'B'=>'Processus', 'C'=>'Sous Processus', 'D'=>'Entité', 'E'=>'Sous-Entité'));
+		$this->setValues($this->sheet,1, array('F'=>'Code Activité','G'=>'Activité', 'H'=>'Code risque', 'I'=>'Risque', 'J'=>'Causes', 
 								  'k'=>'Code PA','L'=>"Description du plan d'action", 'M'=>'Porteur'));
-		$this->setValues(1, array('N'=>'Date de début', 'O'=>'Date de fin', 'P'=>'Avancement', 'Q'=>'Statut','R'=>'Code Controle' ,'S'=>'Objectifs de controle'));
-		$this->setValues(1, array('T'=>'Contrôle description','U' =>'Type de controle' ,'V'=>'Methode de contrôle', 'W'=>'Probabilité', 'X'=>'Gravité'));
+		$this->setValues($this->sheet,1, array('N'=>'Date de début', 'O'=>'Date de fin', 'P'=>'Avancement', 'Q'=>'Statut','R'=>'Code Controle' ,'S'=>'Objectifs de controle'));
+		$this->setValues($this->sheet,1, array('T'=>'Contrôle description','U' =>'Type de controle' ,'V'=>'Methode de contrôle', 'W'=>'Probabilité', 'X'=>'Gravité'));
 		$column = 'Y';
 		foreach($data['domaine'] as $key=>$domaine) {
-			$this->getActiveSheet()->setCellValue($column.'1', $domaine['name']);
+			$this->sheet->setCellValue($column.'1', $domaine['name']);
 			$data['domaine'][$key]['column'] = $column;
 			$column++;
 		}
-		$this->getActiveSheet()->setCellValue($column++.'1', 'Maturité CI');
-		$this->getActiveSheet()->setCellValue($column++.'1', 'Criticité');
+		$this->sheet->setCellValue($column++.'1', 'Maturité CI');
+		$this->sheet->setCellValue($column++.'1', 'Criticité');
 		$row = 2;
 		foreach($data['carto'] as $processus) {
 			$this->extractByProcessus($processus, $data['domaine'] ,$row, $row, 1);
 		}
-		$this->getActiveSheet()->getStyle('A1:Z'.$this->getActiveSheet()->getHighestRow())->getAlignment()->setWrapText(true);
-		$this->setColors('A1:J1', 'FF6600');
-		$this->setColors('K1:Q1', 'CCCCCC');
-		$this->setColors('R1:V1', '2EFE2E');
-		$this->setColors(sprintf('W1:%s1', $column), 'FF6600');
+		$this->sheet->getStyle('A1:Z'.$this->sheet->getHighestRow())->getAlignment()->setWrapText(true);
+		$this->setColors($this->sheet, 'A1:J1', 'FF6600');
+		$this->setColors($this->sheet, 'K1:Q1', 'CCCCCC');
+		$this->setColors($this->sheet, 'R1:V1', '2EFE2E');
+		$this->setColors($this->sheet, sprintf('W1:%s1', $column), 'FF6600');
+        // Create your Office 2007 Excel (XLSX Format)
+        return $this->save($spreadsheet);
 	}
 	
 	/**
@@ -72,12 +95,12 @@ class RisqueReporting extends ExcelReporting {
 		$this->setValues(1, array('T'=>'Contrôle description','U' =>'Type de controle' ,'V'=>'Methode de contrôle', 'W'=>'Probabilité', 'X'=>'Gravité'));
 		$column = 'Y';
 		foreach($data['domaine'] as $key=>$domaine) {
-			$this->getActiveSheet()->setCellValue($column.'1', $domaine['name']);
+			$this->sheet->setCellValue($column.'1', $domaine['name']);
 			$data['domaine'][$key]['column'] = $column;
 			$column++;
 		}
-		$this->getActiveSheet()->setCellValue($column++.'1', 'Maturité CI');
-		$this->getActiveSheet()->setCellValue($column++.'1', 'Criticité');
+		$this->sheet->setCellValue($column++.'1', 'Maturité CI');
+		$this->sheet->setCellValue($column++.'1', 'Criticité');
 		$row = 2;
 		foreach($data['carto'] as $processus) {
 			$this->extractByProcessus($processus, $data['domaine'] ,$row, $row, 1);
@@ -128,8 +151,8 @@ class RisqueReporting extends ExcelReporting {
 				$this->extractByRisque($risque, $domaines, $row, $row);
 			}
 			for($index=$line;$index<$row;$index++) {
-				$this->getActiveSheet()->setCellValue('F'.$index, $activite['code']);
-				$this->getActiveSheet()->setCellValue('G'.$index, $activite['name']);
+				$this->sheet->setCellValue('F'.$index, $activite['code']);
+				$this->sheet->setCellValue('G'.$index, $activite['name']);
 			}
 			$line = $row;
 		}
@@ -141,23 +164,23 @@ class RisqueReporting extends ExcelReporting {
 			case 1:
 				if($level==$processus['type']) {
 					for($index=$line;$index<$row;$index++) {
-						$this->getActiveSheet()->setCellValue('A'.$index, $processus['name']);
-						$this->getActiveSheet()->setCellValue('D'.$index, $processus['structure']);
+						$this->sheet->setCellValue('A'.$index, $processus['name']);
+						$this->sheet->setCellValue('D'.$index, $processus['structure']);
 					}
 				}
 				break;
 			case 2:
 				if($level==$processus['type']) {
 					for($index=$line;$index<$row;$index++) {
-						$this->getActiveSheet()->setCellValue('B'.$index, $processus['name']);
-						$this->getActiveSheet()->setCellValue('E'.$index, $processus['structure']);
+						$this->sheet->setCellValue('B'.$index, $processus['name']);
+						$this->sheet->setCellValue('E'.$index, $processus['structure']);
 					}
 				}
 				break;
 			case 3:
 				if($level==$processus['type']) {
 					for($index=$line;$index<$row;$index++) {
-						$this->getActiveSheet()->setCellValue('C'.$index, $processus['name']);
+						$this->sheet->setCellValue('C'.$index, $processus['name']);
 					}
 				}
 				break;
@@ -178,8 +201,8 @@ class RisqueReporting extends ExcelReporting {
 			$this->extractBycause($cause, $domaines, $risque['impact'], $cause['probabilite'], $risque['gravite'],$row);
 		}
 		for($index=$start;$index<$row;$index++) {
-			$this->getActiveSheet()->setCellValue('H'.$index, $risque['code']);
-			$this->getActiveSheet()->setCellValue('I'.$index, $risque['name']);
+			$this->sheet->setCellValue('H'.$index, $risque['code']);
+			$this->sheet->setCellValue('I'.$index, $risque['name']);
 		}
 		return $this;
 	}
@@ -200,20 +223,20 @@ class RisqueReporting extends ExcelReporting {
 		$row += (count($cause['pa']) || count($cause['controle'])) ? 0 : 1;
 		if(isset($cause['pa'])) {
 			foreach ($cause['pa'] as $pa) {
-				$this->getActiveSheet()->setCellValue('K'.$row, $pa['code']);
-				$this->getActiveSheet()->setCellValue('L'.$row, $pa['name']);
-				$this->getActiveSheet()->setCellValue('M'.$row, $pa['porteur']);
-				$this->getActiveSheet()->setCellValue('N'.$row, $pa['date_debut']);
-				$this->getActiveSheet()->setCellValue('O'.$row, $pa['date_fin']);
-				$this->getActiveSheet()->setCellValue('P'.$row, $pa['avancement']);
-				$this->getActiveSheet()->setCellValue('Q'.$row, $pa['statut']);
+				$this->sheet->setCellValue('K'.$row, $pa['code']);
+				$this->sheet->setCellValue('L'.$row, $pa['name']);
+				$this->sheet->setCellValue('M'.$row, $pa['porteur']);
+				$this->sheet->setCellValue('N'.$row, $pa['date_debut']);
+				$this->sheet->setCellValue('O'.$row, $pa['date_fin']);
+				$this->sheet->setCellValue('P'.$row, $pa['avancement']);
+				$this->sheet->setCellValue('Q'.$row, $pa['statut']);
 				if(isset($pa['ctrl'])) {
 					$ctrl=&$pa['ctrl'];
-					$this->getActiveSheet()->setCellValue('R'.$row, $ctrl->getCode());
-					$this->getActiveSheet()->setCellValue('S'.$row, $ctrl->getDescription());
-					$this->getActiveSheet()->setCellValue('T'.$row, $ctrl->getDescription());
-					$this->getActiveSheet()->setCellValue('U'.$row, $ctrl->getTypeControle());
-					$this->getActiveSheet()->setCellValue('V'.$row, $ctrl->getMethodeControle());
+					$this->sheet->setCellValue('R'.$row, $ctrl->getCode());
+					$this->sheet->setCellValue('S'.$row, $ctrl->getDescription());
+					$this->sheet->setCellValue('T'.$row, $ctrl->getDescription());
+					$this->sheet->setCellValue('U'.$row, $ctrl->getTypeControle());
+					$this->sheet->setCellValue('V'.$row, $ctrl->getMethodeControle());
 				}
 				if($impacts!=null) {
 					$this->extractByImpact($domaines, $impacts,$row);
@@ -224,20 +247,20 @@ class RisqueReporting extends ExcelReporting {
 		$codePa=($ctrl!=null) ? $ctrl->getId() : 0;
 		foreach ($cause['controle'] as $ctrl) {
 			if($codePa!=$ctrl['id']) { 				
-				$this->getActiveSheet()->setCellValue('R'.$row, $ctrl['code']);
-				$this->getActiveSheet()->setCellValue('S'.$row, $ctrl['name']);
-				$this->getActiveSheet()->setCellValue('T'.$row, $ctrl['description']);
-				$this->getActiveSheet()->setCellValue('U'.$row, $ctrl['type']);
-				$this->getActiveSheet()->setCellValue('V'.$row, $ctrl['methode']);
+				$this->sheet->setCellValue('R'.$row, $ctrl['code']);
+				$this->sheet->setCellValue('S'.$row, $ctrl['name']);
+				$this->sheet->setCellValue('T'.$row, $ctrl['description']);
+				$this->sheet->setCellValue('U'.$row, $ctrl['type']);
+				$this->sheet->setCellValue('V'.$row, $ctrl['methode']);
 				if(isset($ctrl['pa'] )) {
 					$pa=&$ctrl['pa'];
-					$this->getActiveSheet()->setCellValue('K'.$row, $pa->getCode());
-					$this->getActiveSheet()->setCellValue('L'.$row, $pa->getLibelle());
-					$this->getActiveSheet()->setCellValue('M'.$row, sprintf($pa->getPorteur()));
-					$this->getActiveSheet()->setCellValue('N'.$row, $pa->getDateDebut()->format('d-m-Y'));
-					$this->getActiveSheet()->setCellValue('O'.$row, $pa->getDateFin()->format('d-m-Y'));
-					$this->getActiveSheet()->setCellValue('P'.$row, $pa->getAvancementInText());
-					$this->getActiveSheet()->setCellValue('Q'.$row, sprintf($pa->getStatut()));
+					$this->sheet->setCellValue('K'.$row, $pa->getCode());
+					$this->sheet->setCellValue('L'.$row, $pa->getLibelle());
+					$this->sheet->setCellValue('M'.$row, sprintf($pa->getPorteur()));
+					$this->sheet->setCellValue('N'.$row, $pa->getDateDebut()->format('d-m-Y'));
+					$this->sheet->setCellValue('O'.$row, $pa->getDateFin()->format('d-m-Y'));
+					$this->sheet->setCellValue('P'.$row, $pa->getAvancementInText());
+					$this->sheet->setCellValue('Q'.$row, sprintf($pa->getStatut()));
 				}
 			}
 			if($impacts!=null)
@@ -249,11 +272,11 @@ class RisqueReporting extends ExcelReporting {
 		for($index=$start;$index<$row;$index++) {
 			$column = end($domaines)['column']++;
 			$column++;
-			$this->getActiveSheet()->setCellValue('J'.$index, $cause['name']);
-			$this->getActiveSheet()->setCellValue('W'.$index, $probabilite);
-			$this->getActiveSheet()->setCellValue('X'.$index, $gravite);
-			$this->getActiveSheet()->setCellValue($column++.$index, $maturite);
-			$this->getActiveSheet()->setCellValue($column++.$index, $probabilite*$gravite);
+			$this->sheet->setCellValue('J'.$index, $cause['name']);
+			$this->sheet->setCellValue('W'.$index, $probabilite);
+			$this->sheet->setCellValue('X'.$index, $gravite);
+			$this->sheet->setCellValue($column++.$index, $maturite);
+			$this->sheet->setCellValue($column++.$index, $probabilite*$gravite);
 		}
 		return $this;
 	}
@@ -269,7 +292,7 @@ class RisqueReporting extends ExcelReporting {
 			foreach ($impacts as $cle=>$impact){
 				foreach ($impact['domaine'] as $cl=>$imp) {
 					if($cl==$key) {
-						$this->getActiveSheet()->setCellValue($domaine['column'].$row,$imp);
+						$this->sheet->setCellValue($domaine['column'].$row,$imp);
 					}
 				}
 			}
@@ -300,37 +323,37 @@ class RisqueReporting extends ExcelReporting {
 		if(isset($cause['controle'])) {
 			foreach ($cause['controle'] as $ctrl){
 				$this->extractByRisqueEnv($data, $row);
-				$this->getActiveSheet()->setCellValue('G'.$row, $cause['name']);
-				$this->getActiveSheet()->setCellValue('H'.$row, $cause['mode']);
-				$this->getActiveSheet()->setCellValue('L'.$row, $ctrl['description']);
-				$this->getActiveSheet()->setCellValue('M'.$row, $ctrl['type']);
-				$this->getActiveSheet()->setCellValue('N'.$row, $ctrl['methode']);
+				$this->sheet->setCellValue('G'.$row, $cause['name']);
+				$this->sheet->setCellValue('H'.$row, $cause['mode']);
+				$this->sheet->setCellValue('L'.$row, $ctrl['description']);
+				$this->sheet->setCellValue('M'.$row, $ctrl['type']);
+				$this->sheet->setCellValue('N'.$row, $ctrl['methode']);
 				if(isset($ctrl['pa'] )){
 					$pa=$ctrl['pa'];
-					$this->getActiveSheet()->setCellValue('O'.$row, $pa->getLibelle());
-					$this->getActiveSheet()->setCellValue('Q'.$row, sprintf($pa->getPorteur()));
-					$this->getActiveSheet()->setCellValue('R'.$row, $pa->getDateFin()->format('d-m-Y'));
-					$this->getActiveSheet()->setCellValue('S'.$row, $pa->getAvancementInText());
+					$this->sheet->setCellValue('O'.$row, $pa->getLibelle());
+					$this->sheet->setCellValue('Q'.$row, sprintf($pa->getPorteur()));
+					$this->sheet->setCellValue('R'.$row, $pa->getDateFin()->format('d-m-Y'));
+					$this->sheet->setCellValue('S'.$row, $pa->getAvancementInText());
 				}
-				$this->getActiveSheet()->setCellValue('T'.$row, $cause['probabilite']);
+				$this->sheet->setCellValue('T'.$row, $cause['probabilite']);
 				$row++;
 			}
 			if(isset($cause['pa'])) {
 				foreach ($cause['pa'] as $pa){
 					$this->extractByRisqueEnv($data, $row);
-					$this->getActiveSheet()->setCellValue('G'.$row, $cause['name']);
-					$this->getActiveSheet()->setCellValue('H'.$row, $cause['mode']);
-					$this->getActiveSheet()->setCellValue('O'.$row, $pa['name']);
-					$this->getActiveSheet()->setCellValue('Q'.$row, $pa['porteur']);
-					$this->getActiveSheet()->setCellValue('R'.$row, $pa['date_fin']);
-					$this->getActiveSheet()->setCellValue('S'.$row, $pa['statut']);
+					$this->sheet->setCellValue('G'.$row, $cause['name']);
+					$this->sheet->setCellValue('H'.$row, $cause['mode']);
+					$this->sheet->setCellValue('O'.$row, $pa['name']);
+					$this->sheet->setCellValue('Q'.$row, $pa['porteur']);
+					$this->sheet->setCellValue('R'.$row, $pa['date_fin']);
+					$this->sheet->setCellValue('S'.$row, $pa['statut']);
 					if(isset($pa['ctrl'] )){
 						$ctrl=&$pa['ctrl'];
-						$this->getActiveSheet()->setCellValue('L'.$row, $ctrl->getDescription());
-						$this->getActiveSheet()->setCellValue('M'.$row, sprintf($ctrl->getTypeControle()));
-						$this->getActiveSheet()->setCellValue('N'.$row, $ctrl->getMethodeControle()?$ctrl->getMethodeControle()->getLibelle():'');
+						$this->sheet->setCellValue('L'.$row, $ctrl->getDescription());
+						$this->sheet->setCellValue('M'.$row, sprintf($ctrl->getTypeControle()));
+						$this->sheet->setCellValue('N'.$row, $ctrl->getMethodeControle()?$ctrl->getMethodeControle()->getLibelle():'');
 					}
-					$this->getActiveSheet()->setCellValue('T'.$row, $cause['probabilite']);
+					$this->sheet->setCellValue('T'.$row, $cause['probabilite']);
 					$row++;
 				}
 			}
@@ -344,19 +367,19 @@ class RisqueReporting extends ExcelReporting {
 	 * @param unknown $row
 	 */
 	public function extractByRisqueEnv($data,$row){
-		$this->getActiveSheet()->setCellValue('A'.$row, $data['site']);
-		$this->getActiveSheet()->setCellValue('B'.$row, $data['domaine']);
-		$this->getActiveSheet()->setCellValue('C'.$row, '');
-		$this->getActiveSheet()->setCellValue('D'.$row, $data['equipement']);
-		$this->getActiveSheet()->setCellValue('E'.$row, $data['proprietaire']);
-		$this->getActiveSheet()->setCellValue('F'.$row, $data['code_risque']);
-		$this->getActiveSheet()->setCellValue('I'.$row, $data['risque']);
-		$this->getActiveSheet()->setCellValue('J'.$row, $data['lieu']);
-		$this->getActiveSheet()->setCellValue('K'.$row, $data['manifestation']);
-		//$this->getActiveSheet()->setCellValue('T'.$row, $data['probabilite']);
-		$this->getActiveSheet()->setCellValue('U'.$row, $data['gravite']);
-		$this->getActiveSheet()->setCellValue('V'.$row, $data['probabilite']*$data['gravite']);
-		$this->getActiveSheet()->setCellValue('W'.$row, ($data['probabilite']<3) ? (4-$data['probabilite']) : 1);
+		$this->sheet->setCellValue('A'.$row, $data['site']);
+		$this->sheet->setCellValue('B'.$row, $data['domaine']);
+		$this->sheet->setCellValue('C'.$row, '');
+		$this->sheet->setCellValue('D'.$row, $data['equipement']);
+		$this->sheet->setCellValue('E'.$row, $data['proprietaire']);
+		$this->sheet->setCellValue('F'.$row, $data['code_risque']);
+		$this->sheet->setCellValue('I'.$row, $data['risque']);
+		$this->sheet->setCellValue('J'.$row, $data['lieu']);
+		$this->sheet->setCellValue('K'.$row, $data['manifestation']);
+		//$this->sheet->setCellValue('T'.$row, $data['probabilite']);
+		$this->sheet->setCellValue('U'.$row, $data['gravite']);
+		$this->sheet->setCellValue('V'.$row, $data['probabilite']*$data['gravite']);
+		$this->sheet->setCellValue('W'.$row, ($data['probabilite']<3) ? (4-$data['probabilite']) : 1);
 	}
 }
 

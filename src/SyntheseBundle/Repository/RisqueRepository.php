@@ -79,19 +79,21 @@ class RisqueRepository extends DocumentRepository
 	public function getMaturiteProbabiliteByRisqueStructure($criteria,$lvl) {
 		ini_set('mongo.long_as_object', true);
 		$criteria = $criteria ? $criteria : new Risque();
-		$queryBuilder = $this->createQueryBuilder('q');
+        $queryBuilder = $this->createQueryBuilder('q');
+        $queryBuilder = $this->createAggregationBuilder('q');
 		$initial = array('count' => array('p'=>0, 'm'=>0), 'total_probabilite'=>0, 'total_maturite'=>0);
 		$key = 'function(value) { return { id: _TAG_.id, name: _TAG_.name, libelle: _TAG_.name, direction: value.direction.libelle } }';
 		$key = $lvl==0 ? str_replace('_TAG_', 'value.direction', $key) : str_replace('_TAG_', 'value.structure', $key);
-		$queryBuilder->group($key, $initial, 'reduceMPRS', array('finalize'=>'finalizeMPRS'));
-		$this->applyFilterByProfile($queryBuilder, $criteria);
-		$queryBuilder = $this->filterBuilder($queryBuilder, $criteria);
-		if(count($criteria->maturiteForKpi)>0) {
+		$this->applyFilterByProfile($queryBuilder->match(), $criteria);
+		$queryBuilder = $this->filterBuilder($queryBuilder->match(), $criteria);
+        //$queryBuilder->group($key, $initial, 'reduceMPRS', array('finalize'=>'finalizeMPRS'));
+        $queryBuilder->group();
+        if(count($criteria->maturiteForKpi)>0) {
 			$valeurs_maturite_criteria = array();
 			foreach ($criteria->maturiteForKpi as $key =>$value) {
 				$valeurs_maturite_criteria [] = intval($value->getValeur());
 			}
-			$queryBuilder->expr()->field('maturite')->equals($valeurs_maturite_criteria);
+			$queryBuilder->field('maturite')->equals($valeurs_maturite_criteria);
 		}
 		return $queryBuilder;
 	}

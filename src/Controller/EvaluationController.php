@@ -80,7 +80,7 @@ class EvaluationController extends BaseController{
 		$entity = new Evaluation();
 		$entity->setRisque($risque);
 		$entity->setEvaluateur($this->getUser());
-		$form   = $this->createCreateForm($entity->newEvaluation($risque), EvaluationType::class, array('attr' => array('em' => $em)));
+		$form = $this->createCreateForm($entity->newEvaluation($risque), EvaluationType::class, array('attr' => array('em' => $em)));
 		if($request->getMethod()=='POST'){
 			$form->handleRequest($request);
 			$dispatcher = $this->container->get('event_dispatcher');

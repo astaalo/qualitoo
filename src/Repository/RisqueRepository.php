@@ -1306,6 +1306,22 @@ class RisqueRepository extends ServiceEntityRepository
         return $queryBuilder->groupBy('r.id');
     }
 
+    public function checkDoublonsMetierrrrrrrrr()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('rm.id')
+            ->innerJoin('r.menace', 'm')
+            ->innerJoin('r.risque_metier', 'rm')
+            ->innerJoin('rm.activite', 'a')
+            ->innerJoin('rm.structure', 's')
+            ->innerJoin('rm.processus', 'p')
+            ->where('m.id = :menace')->setParameter('menace', 5)
+            ->where('s.id = :structure')->setParameter('structure', 564)
+            ->where('p.id = :processus')->setParameter('processus', 7)
+            ->where('a.id = :activite')->setParameter('activite', 15)
+            ;
+    }
+
     public function getNumberToMigrate() {
         $data = $this->createQueryBuilder('q')->select('COUNT(q.id) as number')->where('q.etat = 1 AND q.tobeMigrated = true')
             ->getQuery()

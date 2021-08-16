@@ -19,6 +19,22 @@ class RisqueProjetRepository extends ServiceEntityRepository
         parent::__construct($registry, RisqueProjet::class);
     }
 
+    public function checkDoublons()
+    {
+        return $this->createQueryBuilder('rp')
+            ->select('r.id')
+            ->innerJoin('rp.risque', 'r')
+            ->innerJoin('r.menace', 'm')
+            ->innerJoin('rp.activite', 'a')
+            ->innerJoin('rp.structure', 's')
+            ->innerJoin('rp.processus', 'p')
+            ->where('m.id = :menace')->setParameter('menace', 5)
+            ->andWhere('s.id = :structure')->setParameter('structure', 564)
+            ->andWhere('p.id = :processus')->setParameter('processus', 7)
+            ->andWhere('a.id = :activite')->setParameter('activite', 15)
+            ;
+    }
+    
     // /**
     //  * @return RisqueProjet[] Returns an array of RisqueProjet objects
     //  */

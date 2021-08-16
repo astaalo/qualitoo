@@ -33,4 +33,12 @@
 		</div>
 	</form>
 </div>
+
+
+	<script>
+		$('#{{ form.parent.vars.id }}').prepend("<option value>Choisir un parent ...</option>");
+		{% if form.parent.vars.value is empty %}
+		$('#{{ form.parent.vars.id }}').val(''); // if you want it to be automatically selected
+		{% endif %}
+	</script>
 {% endblock %}

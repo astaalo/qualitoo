@@ -32,6 +32,7 @@ use App\Entity\RisqueEnvironnemental;
 use App\Event\CartoEvent;
 use App\Annotation\QMLogger;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class RisqueController extends BaseController {
 	
@@ -329,7 +330,32 @@ class RisqueController extends BaseController {
     	return $this->render($view, array('entity' => $entity, 'form' => $form->createView(), 'cartographie_id'=>$cartographie_id));
 	}
 
-	/**
+    /**
+     * @QMLogger(message="Check doublon")
+     * @Route("/risk_check_doublons", name="risk_check_doublons")
+     */
+	public function risk_check_doublons(Request $request)
+    {
+        $menace_id = $request->get('menace_id');
+        $activite_id = $request->get('activite_id');
+        $processus_id = $request->get('processus_id');
+        $structure_id = $request->get('structure_id');
+
+        $em = $this->getDoctrine()->getManager();
+        $dataDoublon = $em->getRepository(RisqueMetier::class)->checkDoublons($menace_id,$activite_id,$processus_id,$structure_id);
+        $data = array();
+        $dataDoublon ? $data = $dataDoublon[0] : null;
+        if ($data) {
+            if ($data['etat'] == 1) {
+                $data['url'] = $this->generateUrl('details_risque', array('id' => $data['id']),UrlGeneratorInterface::ABSOLUTE_URL);
+            } else {
+                $data['url'] = $this->generateUrl('apercu_risque', array('id' => $data['id']),UrlGeneratorInterface::ABSOLUTE_URL);
+            }
+        }
+        return $this->json($data);
+    }
+
+    /**
 	 * @QMLogger(message="Risques a transferer")
 	 * @Route("/les_risques_a_transferer", name="les_risques_a_transferer")
 	 * @Template("risque/transferedRisques.html.twig")

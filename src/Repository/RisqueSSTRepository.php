@@ -19,6 +19,22 @@ class RisqueSSTRepository extends ServiceEntityRepository
         parent::__construct($registry, RisqueSST::class);
     }
 
+    public function checkDoublons()
+    {
+        return $this->createQueryBuilder('rm')
+            ->select('r.id')
+            ->innerJoin('rm.risque', 'r')
+            ->innerJoin('r.menace', 'm')
+            ->innerJoin('rm.activite', 'a')
+            ->innerJoin('rm.structure', 's')
+            ->innerJoin('rm.processus', 'p')
+            ->where('m.id = :menace')->setParameter('menace', 5)
+            ->andWhere('s.id = :structure')->setParameter('structure', 564)
+            ->andWhere('p.id = :processus')->setParameter('processus', 7)
+            ->andWhere('a.id = :activite')->setParameter('activite', 15)
+            ;
+    }
+
     // /**
     //  * @return RisqueSST[] Returns an array of RisqueSST objects
     //  */

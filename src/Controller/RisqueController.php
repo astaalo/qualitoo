@@ -144,7 +144,7 @@ class RisqueController extends BaseController {
 	 * @Route("/les_risques_a_tester", name="les_risques_a_tester")
 	 * @Template()
 	 */
-	public function risqueATesterAction() {
+	public function risqueATesterAction(Request $request) {
         $position= $this->get('session')->get('risque_criteria') ? $this->get('session')->get('risque_criteria')['cartographie'] : $this->getMyParameter('ids', array('carto', 'metier'));
         //$position=$this->get('session')->get('risque_criteria')['cartographie'];
 		if($this->get('session')->get('risque_criteria')==null || count($this->get('session')->get('risque_criteria'))==0) {
@@ -336,17 +336,43 @@ class RisqueController extends BaseController {
      */
 	public function risk_check_doublons(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $menace_id = $request->get('menace_id');
-        $activite_id = $request->get('activite_id');
         $processus_id = $request->get('processus_id');
         $structure_id = $request->get('structure_id');
 
-        $em = $this->getDoctrine()->getManager();
-        $dataDoublon = $em->getRepository(RisqueMetier::class)->checkDoublons($menace_id,$activite_id,$processus_id,$structure_id);
+        $activite_id = $request->get('activite_id') ? $request->get('activite_id') : null ;
+        $projet_id = $request->get('projet_id') ? $request->get('projet_id') : null ;
+        $site_id = $request->get('site_id') ? $request->get('site_id') : null ;
+        // Risque SST et ENVIRONNEMENTAL
+        if ($site_id) {
+            $menace_id = $request->get('menace_id');
+            $domaine_activite_id = $request->get('domaine_activite_id');
+            $equipement_id = $request->get('equipement_id');
+            $lieu_id = $request->get('lieu_id');
+            $manifestation_id = $request->get('manifestation_id');
+            $carto_id = $request->get('carto_id');
+        }
+
+        if ($activite_id) {
+            $dataDoublon = $em->getRepository(RisqueMetier::class)->checkDoublons($menace_id,$processus_id,$structure_id,$activite_id);
+        }
+        else if ($projet_id) {
+            $dataDoublon = $em->getRepository(RisqueProjet::class)->checkDoublons($menace_id,$processus_id,$structure_id,$projet_id);
+        }
+        else if ($site_id) {
+            if ($carto_id == $this->getMyParameter('ids', array('carto', 'sst')))
+                $dataDoublon = $em->getRepository(RisqueSST::class)->checkDoublons($menace_id,$site_id,$domaine_activite_id,$equipement_id,$lieu_id,$manifestation_id);
+
+
+            if ($carto_id == $this->getMyParameter('ids', array('carto', 'environnement')))
+                $dataDoublon = $em->getRepository(RisqueEnvironnemental::class)->checkDoublons($menace_id,$site_id,$domaine_activite_id,$equipement_id,$lieu_id,$manifestation_id);
+        }
+
         $data = array();
         $dataDoublon ? $data = $dataDoublon[0] : null;
-        if ($data) {
-            if ($data['etat'] == 1) {
+        if ($data && $data['nbRisk'] > 0) {
+            if ($data['etat'] == $this->getMyParameter('states', array('risque', 'valide')) || $data['etat'] == $this->getMyParameter('states', array('risque', 'transfere'))) {
                 $data['url'] = $this->generateUrl('details_risque', array('id' => $data['id']),UrlGeneratorInterface::ABSOLUTE_URL);
             } else {
                 $data['url'] = $this->generateUrl('apercu_risque', array('id' => $data['id']),UrlGeneratorInterface::ABSOLUTE_URL);

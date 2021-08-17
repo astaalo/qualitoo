@@ -128,10 +128,15 @@
 			$("#{{ form.structure.vars.id }} option[value='{{ form.structure.vars.value }}']").attr('selected', 'selected');
 			$("#{{ form.structure.vars.id }}").trigger('liszt:updated');
 		}
-		
+
 		function afterStructureReload() {
 			$("#{{ form.processus.vars.id }} option[value='{{ form.processus.vars.value }}']").attr('selected', 'selected');
 			$("#{{ form.processus.vars.id }}").trigger('liszt:updated');
+		}
+
+		function afterProcessusReload() {
+			$("#{{ form.projet.vars.id }} option[value='{{ form.projet.vars.value }}']").attr('selected', 'selected');
+			$("#{{ form.projet.vars.id }}").trigger('liszt:updated');
 		}
 		
 
@@ -190,8 +195,12 @@
 	{parent: form.direction, child: form.structure, url: path('structure_by_parent'), key: 'id', empty_child: 1, functionAfter: 'afterDirectionReload'} 
 %}
 {% endif %}
-{% include 'extra/reloadSelect.html.twig' with 
-	{parent: form.structure, child: form.processus, url: path('get_processus_by_structure'), key: 'id', empty_child: 1, functionAfter: 'afterStructureReload'} 
+{% include 'extra/reloadSelect.html.twig' with
+	{parent: form.structure, child: form.processus, url: path('get_processus_by_structure'), key: 'id', empty_child: 1, functionAfter: 'afterStructureReload'}
+%}
+
+{% include 'extra/reloadSelect.html.twig' with
+	{parent: form.processus, child: form.projet, url: path('get_projet_by_processus'), key: 'id', empty_child: 1, functionAfter: 'afterProcessusReload'}
 %}
 
 {% include 'extra/updateField.html.twig' with 
@@ -219,4 +228,5 @@
 			}
  %}
 
+	{% include 'risque/checkDoublonsRiskProjet.html.twig' %}
 {% endblock %}

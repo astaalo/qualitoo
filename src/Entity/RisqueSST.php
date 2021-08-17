@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * RisqueSST
  * @ORM\Table(name="risque_sst")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\RisqueSSTRepository")
  */
 class RisqueSST {
 

@@ -146,7 +146,7 @@
 		function afterProcessusReload() {
 			$("#{{ form.activite.vars.id }} option[value='{{ form.activite.vars.value }}']").attr('selected', 'selected');
 			$("#{{ form.activite.vars.id }}").trigger('liszt:updated');
-			
+
 		}
 		function renderCause(form) {
 			if($(form).find('.section:eq(2) input').val()) {
@@ -236,5 +236,5 @@
 			}
  %}
 
-	{% include 'risque/checkRiskDoublons.html.twig' %}
+	{% include 'risque/checkDoublonsRiskMetier.html.twig' %}
 {% endblock %}

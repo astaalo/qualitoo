@@ -19,19 +19,22 @@ class RisqueProjetRepository extends ServiceEntityRepository
         parent::__construct($registry, RisqueProjet::class);
     }
 
-    public function checkDoublons()
+    public function checkDoublons($menace_id,$processus_id,$structure_id,$projet_id)
     {
-        return $this->createQueryBuilder('rp')
-            ->select('r.id')
-            ->innerJoin('rp.risque', 'r')
+        return $this->createQueryBuilder('rm')
+            ->select('count(r.id) as nbRisk, r.id, r.etat')
+            ->innerJoin('rm.risque', 'r')
             ->innerJoin('r.menace', 'm')
-            ->innerJoin('rp.activite', 'a')
-            ->innerJoin('rp.structure', 's')
-            ->innerJoin('rp.processus', 'p')
-            ->where('m.id = :menace')->setParameter('menace', 5)
-            ->andWhere('s.id = :structure')->setParameter('structure', 564)
-            ->andWhere('p.id = :processus')->setParameter('processus', 7)
-            ->andWhere('a.id = :activite')->setParameter('activite', 15)
+            ->innerJoin('rm.projet', 'pr')
+            ->innerJoin('rm.structure', 's')
+            ->innerJoin('rm.processus', 'p')
+            ->where('r.etat >= :etat')->setParameter('etat', 0)
+            ->andWhere('m.id = :menace')->setParameter('menace', $menace_id)
+            ->andWhere('s.id = :structure')->setParameter('structure', $structure_id)
+            ->andWhere('p.id = :processus')->setParameter('processus', $processus_id)
+            ->andWhere('pr.id = :projet')->setParameter('projet', $projet_id)
+            ->getQuery()
+            ->getResult()
             ;
     }
     

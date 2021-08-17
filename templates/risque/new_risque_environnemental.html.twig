@@ -182,4 +182,6 @@
 {% include 'extra/updateField.html.twig' with 
 	{parent: form.site, fieldId: 'responsable', url: path('get_responsable_by_site'), key: 'id', empty_child: 0, codeAfter: codeAfterResponsableUpdate} 
 %}
+
+	{% include 'risque/checkDoublonsRiskSSTE.html.twig' %}
 {% endblock %}

@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * RisqueEnvironnemental
  * @ORM\Table(name="risque_environnemental")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\RisqueEnvironnementalRepository")
  */
 class RisqueEnvironnemental {
 

@@ -19,48 +19,26 @@ class RisqueSSTRepository extends ServiceEntityRepository
         parent::__construct($registry, RisqueSST::class);
     }
 
-    public function checkDoublons()
+    public function checkDoublons($menace_id,$site_id,$domaine_activite_id,$equipement_id,$lieu_id,$manifestation_id)
     {
-        return $this->createQueryBuilder('rm')
-            ->select('r.id')
-            ->innerJoin('rm.risque', 'r')
+        return $this->createQueryBuilder('rsst')
+            ->select('count(r.id) as nbRisk, r.id, r.etat')
+            ->innerJoin('rsst.risque', 'r')
             ->innerJoin('r.menace', 'm')
-            ->innerJoin('rm.activite', 'a')
-            ->innerJoin('rm.structure', 's')
-            ->innerJoin('rm.processus', 'p')
-            ->where('m.id = :menace')->setParameter('menace', 5)
-            ->andWhere('s.id = :structure')->setParameter('structure', 564)
-            ->andWhere('p.id = :processus')->setParameter('processus', 7)
-            ->andWhere('a.id = :activite')->setParameter('activite', 15)
-            ;
-    }
-
-    // /**
-    //  * @return RisqueSST[] Returns an array of RisqueSST objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
+            ->innerJoin('rsst.site', 'si')
+            ->innerJoin('rsst.domaineActivite', 'da')
+            ->innerJoin('rsst.equipement', 'e')
+            ->innerJoin('rsst.lieu', 'l')
+            ->innerJoin('rsst.manifestation', 'ma')
+            ->where('r.etat >= :etat')->setParameter('etat', 0)
+            ->andWhere('m.id = :menace')->setParameter('menace', $menace_id)
+            ->andWhere('si.id = :site')->setParameter('site', $site_id)
+            ->andWhere('da.id = :domaine')->setParameter('domaine', $domaine_activite_id)
+            ->andWhere('e.id = :equipement')->setParameter('equipement', $equipement_id)
+            ->andWhere('l.id = :lieu')->setParameter('lieu', $lieu_id)
+            ->andWhere('ma.id = :manifestation')->setParameter('manifestation', $manifestation_id)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?RisqueSST
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -19,7 +19,7 @@ class RisqueMetierRepository extends ServiceEntityRepository
         parent::__construct($registry, RisqueMetier::class);
     }
 
-    public function checkDoublons($menace_id,$activite_id,$processus_id,$structure_id)
+    public function checkDoublons($menace_id,$processus_id,$structure_id,$activite_id)
     {
         return $this->createQueryBuilder('rm')
             ->select('count(r.id) as nbRisk, r.id, r.etat')
@@ -28,8 +28,7 @@ class RisqueMetierRepository extends ServiceEntityRepository
             ->innerJoin('rm.activite', 'a')
             ->innerJoin('rm.structure', 's')
             ->innerJoin('rm.processus', 'p')
-            ->where('r.etat = :valide')->setParameter('valide', 1)
-            ->orWhere('r.etat = :a_valider')->setParameter('a_valider', 2)
+            ->where('r.etat >= :etat')->setParameter('etat', 0)
             ->andWhere('m.id = :menace')->setParameter('menace', $menace_id)
             ->andWhere('s.id = :structure')->setParameter('structure', $structure_id)
             ->andWhere('p.id = :processus')->setParameter('processus', $processus_id)

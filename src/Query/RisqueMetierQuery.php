@@ -149,15 +149,15 @@ class RisqueMetierQuery extends BaseQuery {
 		if($chargement->getActivite()==null) {
 			//creer macro , proc et ssproc inexistant
 			$this->createNewProcessus($ids, $chargement, $em);
-				$query  = "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.macro_sans_carspec) and p.lvl=0  SET t.macro = p.id where p.structure_id=" . $chargement->getDirection()->getId() . ";";
-				$query .= "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.processus_sans_carspec) and p.lvl=1  SET t.processus = p.id  where p.parent_id = t.macro and p.structure_id=t.sous_entite;";
-				$query .= "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.sous_processus_sans_carspec) and p.lvl=2 SET t.sous_processus = p.id where p.structure_id=t.sous_entite and p.parent_id = t.processus;";
-			//creer activite inexistant
-				$query .= "INSERT INTO `activite`( `processus_id`, `libelle`, `description`, `libelle_sans_carspecial`)
-					   select distinct t.sous_processus, t.activite, t.activite, t.activite_sans_carspec
-					   from temp_risquemetier t
-					   left join activite a on a.libelle_sans_carspecial =t.activite_sans_carspec and a.processus_id = t.sous_processus
-					   where a.id is null;";
+            $query  = "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.macro_sans_carspec) and p.lvl=0  SET t.macro = p.id where p.structure_id=" . $chargement->getDirection()->getId() . ";";
+            $query .= "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.processus_sans_carspec) and p.lvl=1  SET t.processus = p.id  where p.parent_id = t.macro and p.structure_id=t.sous_entite;";
+            $query .= "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.sous_processus_sans_carspec) and p.lvl=2 SET t.sous_processus = p.id where p.structure_id=t.sous_entite and p.parent_id = t.processus;";
+            //creer activite inexistant
+            $query .= "INSERT INTO `activite`( `processus_id`, `libelle`, `description`, `libelle_sans_carspecial`)
+                   select distinct t.sous_processus, t.activite, t.activite, t.activite_sans_carspec
+                   from temp_risquemetier t
+                   left join activite a on a.libelle_sans_carspecial =t.activite_sans_carspec and a.processus_id = t.sous_processus
+                   where a.id is null;";
 		}
 		// creer cause inexistant et les rattacher au carto
 		$query .= "INSERT INTO `cause`(`libelle`, `etat`, `description`, `libelle_sans_carspecial`)
@@ -246,7 +246,7 @@ class RisqueMetierQuery extends BaseQuery {
 		$nextId = $em->getRepository(Risque::class)->getNextId();
 		// creer une table temporaire risque
 		$query = sprintf("DROP TABLE IF EXISTS `temp_risque`;
-		             CREATE TABLE `temp_risque`(`id` int(11) NOT NULL AUTO_INCREMENT,`menace_id` int(11) DEFAULT NULL,`processus_id` int(11) DEFAULT NULL,`activite_id` int(11) DEFAULT NULL,`probabilite` int(11) DEFAULT NULL,
+		             CREATE TABLE `temp_risque`(`id` int(11) NOT NULL AUTO_INCREMENT,`menace_id` int(11) DEFAULT NULL,`processus_id` int(11) DEFAULT NULL,`activite_id` int(11) DEFAULT NULL,`probabilite` int(11) DEFAULT NULL,`risque_id_doublon` int(11) DEFAULT NULL,
 		             PRIMARY KEY(`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=%s;", $nextId);
 		$this->connection->prepare($query)->execute();
 
@@ -284,20 +284,26 @@ class RisqueMetierQuery extends BaseQuery {
 				  SELECT distinct menace, sous_processus, activite
 				  from temp_risquemetier;";
 
-		// inserer les risques dans la table risque
-		$query .= "INSERT INTO `risque`(`id`, `menace_id`, `utilisateur_id`, `societe_id`, `validateur`,   `cartographie_id`,   `date_saisie`, `date_validation`,`etat`, `relanced`)
-				   select t.id, t.menace_id," . $current_user->getId() . "," . $current_user->getSociete()->getId() . "," . $current_user->getId() . ", " . $chargement->getCartographie()->getId() . ", NOW(), NOW() ,1,0
-				   from temp_risque t;";
-
-		// renseigner dans la temp_risquemetier le bon id risque
-		$query .= "update temp_risquemetier t , temp_risque tr
+        // renseigner dans la temp_risquemetier le bon id risque
+        $query .= "update temp_risquemetier t , temp_risque tr
 				   set t.best_id=tr.id
 				   where tr.menace_id=t.menace and tr.processus_id=t.sous_processus and tr.activite_id=t.activite;";
+        $this->connection->prepare($query)->execute();
+
+        $this->checkDoublonMetier();
+//dd('gggg');
+		// inserer les risques dans la table risque
+		$query2 = "INSERT INTO `risque`(`id`, `menace_id`, `utilisateur_id`, `societe_id`, `validateur`,   `cartographie_id`,   `date_saisie`, `date_validation`,`etat`, `relanced`)
+				   select t.id, t.menace_id," . $current_user->getId() . "," . $current_user->getSociete()->getId() . "," . $current_user->getId() . ", " . $chargement->getCartographie()->getId() . ", NOW(), NOW() ,1,0
+				   from temp_risque t
+				   WHERE t.risque_id_doublon IS NULL;";
 
 		// inserer les risques dans la table risque_metier
-		$query .= "INSERT INTO `risque_metier`( `risque_id`, `processus_id`, `activite_id`, `structure_id`)
-				   SELECT distinct t.best_id, t.sous_processus, t.activite, t.sous_entite FROM temp_risquemetier t ;";
-		$this->connection->prepare($query)->execute();
+		$query2 .= "INSERT INTO `risque_metier`( `risque_id`, `processus_id`, `activite_id`, `structure_id`)
+				   SELECT distinct t.best_id, t.sous_processus, t.activite, t.sous_entite FROM temp_risquemetier t
+                   INNER JOIN temp_risque tr on tr.id=t.best_id
+                   WHERE tr.risque_id_doublon IS NULL;";
+		$this->connection->prepare($query2)->execute();
 	}
 
 	/**
@@ -509,4 +515,35 @@ class RisqueMetierQuery extends BaseQuery {
 			$query .= "update chargement set etat=1 where id=" . $chargement->getId() . ";";
 			$this->connection->prepare($query)->execute();
 	}
+
+
+    public function checkDoublonMetier()
+    {
+        $temp_risque = $this->connection->fetchAll("SELECT * FROM temp_risque;");
+        $data = array();
+        foreach ($temp_risque as $risk){
+            $req = "SELECT r.id FROM `risque_metier` rm
+                INNER JOIN risque r ON r.id = rm.risque_id
+                INNER JOIN menace m ON m.id = r.menace_id
+                INNER JOIN activite a ON a.id = rm.activite_id
+                INNER JOIN structure s ON s.id = rm.structure_id
+                INNER JOIN processus p ON p.id = rm.processus_id
+                INNER JOIN temp_risque tr ON m.id = tr.menace_id
+                WHERE m.id=".$risk['menace_id']." AND p.id=".$risk['processus_id']." AND a.id=".$risk['activite_id'].";";
+            $idRiskDoublon = $this->connection->fetchOne($req);
+
+            if ($idRiskDoublon) {
+                $req = "UPDATE temp_risque SET risque_id_doublon=".$idRiskDoublon.", id=".$idRiskDoublon." 
+                        WHERE menace_id=".$risk['menace_id']." AND processus_id=".$risk['processus_id']." AND activite_id=".$risk['activite_id'].";";
+
+                $req .= "update temp_risquemetier t , temp_risque tr
+				   set t.best_id=".$idRiskDoublon."
+				   where tr.menace_id=t.menace and tr.processus_id=t.sous_processus and tr.activite_id=t.activite;";
+
+                $this->connection->prepare($req)->execute();
+            }
+        }
+
+        //dd($data);
+    }
 }

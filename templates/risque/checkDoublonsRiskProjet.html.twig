@@ -3,7 +3,7 @@
         $("#{{ form.risque.menace.vars.id }} option[value='']").attr('selected', 'selected');
         $("#{{ form.risque.menace.vars.id }}").trigger('liszt:updated');
     });
-    
+
 	$('#{{ form.risque.menace.vars.id }}').change(function() {
 		if (this.value && $('#{{ form.projet.vars.id }}').val() && $('#{{ form.processus.vars.id }}').val()){
 			$.ajax({

@@ -246,7 +246,7 @@ class RisqueSSTEQuery extends BaseQuery {
                                     `site_id` int(11) DEFAULT NULL,`domaine_activite_id` int(11) DEFAULT NULL,
                                     `equipement_id` int(11) DEFAULT NULL,`menace_id` int(11) DEFAULT NULL,
                                     `lieu_id` int(11) DEFAULT NULL,`manifestation_id` int(11) DEFAULT NULL,
-                                    `proprietaire` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+                                    `proprietaire` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,`risque_id_doublon` int(11) DEFAULT NULL,
                                     PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=%s;", $nextId);
 		$this->connection->prepare ( $query )->execute ();
 
@@ -260,26 +260,29 @@ class RisqueSSTEQuery extends BaseQuery {
 		$query = "INSERT INTO temp_risque ( `site_id`,`domaine_activite_id`,`equipement_id`,`menace_id` ,`lieu_id`,`manifestation_id`)
 				  SELECT distinct `site`,`domaine_activite`,`activite_equipement`,`menace` ,`lieu`,`manifestation`
 				  from temp_risquesste;";
-		
-		//$this->connection->prepare ( $query )->execute ();
-		
-		// inserer les risques dans la table risque
-		$query .= "INSERT INTO `risque`(`id`, `menace_id`, `utilisateur_id`, `societe_id`, `validateur`,   `cartographie_id`,   `date_saisie`, `date_validation`,`etat`, `relanced`)
-				   select t.id, t.menace_id," . $current_user->getId () . "," . $current_user->getSociete ()->getId () . "," . $current_user->getId () . ", " . $chargement->getCartographie ()->getId () . ", NOW(), NOW() ,1,0
-				   from temp_risque t;";
-		
-		$table  = $chargement->getCartographie ()->getId ()==$ids['carto']['sst'] ? 'risque_sst' : 'risque_environnemental';
 
-		$query .= "update temp_risquesste t , temp_risque tr
+        $query .= "update temp_risquesste t , temp_risque tr
 				   set t.best_id=tr.id
 				   where tr.menace_id=t.menace and tr.site_id=t.site and tr.domaine_activite_id=t.domaine_activite and tr.equipement_id=t.activite_equipement
 				   and tr.lieu_id=t.lieu and tr.manifestation_id=t.manifestation;";
 
+		$this->connection->prepare($query)->execute();
+
+        $table  = $chargement->getCartographie ()->getId ()==$ids['carto']['sst'] ? 'risque_sst' : 'risque_environnemental';
+        $this->checkDoublonSSTE($table);
+        // inserer les risques dans la table risque
+		$query = "INSERT INTO `risque`(`id`, `menace_id`, `utilisateur_id`, `societe_id`, `validateur`,   `cartographie_id`,   `date_saisie`, `date_validation`,`etat`, `relanced`)
+				   select t.id, t.menace_id," . $current_user->getId () . "," . $current_user->getSociete ()->getId () . "," . $current_user->getId () . ", " . $chargement->getCartographie ()->getId () . ", NOW(), NOW() ,1,0
+				   from temp_risque t
+				   WHERE t.risque_id_doublon IS NULL;";
+
 		// inserer les risques dans la table risque_sst
 		$query .= "INSERT INTO {$table} (`risque_id`, `site_id`, `domaine_activite_id`, `equipement_id`, `lieu_id`, `manifestation_id`, `proprietaire`) 
 				   SELECT distinct t.best_id, t.site, t.domaine_activite, t.activite_equipement, t.lieu,t.manifestation,t.proprietaire 
-		           FROM temp_risquesste t ;";
-		$this->connection->prepare ( $query )->execute ();
+		           FROM temp_risquesste t
+                   INNER JOIN temp_risque tr on tr.id=t.best_id
+                   WHERE tr.risque_id_doublon IS NULL;";
+		$this->connection->prepare($query)->execute();
 	}
 
 	/**
@@ -447,4 +450,48 @@ class RisqueSSTEQuery extends BaseQuery {
 		$statement = $this->connection->prepare ( sprintf ( "DROP TABLE IF EXISTS `temp_risquesste`;DROP TABLE IF EXISTS `temp_risque`;DROP TABLE IF EXISTS `temp_impact`;" ) );
 		$statement->execute ();
 	}
+
+    public function checkDoublonSSTE($table)
+    {
+        $temp_risque = $this->connection->fetchAll("SELECT * FROM temp_risque;");
+        foreach ($temp_risque as $risk){
+            $req = "SELECT r.id FROM {$table} ta
+                INNER JOIN risque r ON r.id = ta.risque_id
+                INNER JOIN menace m ON m.id = r.menace_id
+                INNER JOIN site si ON si.id = ta.site_id
+                INNER JOIN domaine_activite da ON da.id = ta.domaine_activite_id
+                INNER JOIN equipement e ON e.id = ta.equipement_id
+                INNER JOIN lieu l ON l.id = ta.lieu_id
+                INNER JOIN manifestation ma ON ma.id = ta.manifestation_id
+                INNER JOIN temp_risque tr ON m.id = tr.menace_id
+                WHERE m.id=".$risk['menace_id']."
+                AND si.id=".$risk['site_id']." 
+                AND da.id=".$risk['domaine_activite_id']."
+                AND e.id=".$risk['equipement_id']."
+                AND l.id=".$risk['lieu_id']."
+                AND ma.id=".$risk['manifestation_id'].";";
+            $idRiskDoublon = $this->connection->fetchOne($req);
+
+            if ($idRiskDoublon) {
+                $req = "UPDATE temp_risque SET risque_id_doublon=".$idRiskDoublon.", id=".$idRiskDoublon." 
+                        WHERE menace_id=".$risk['menace_id']."
+                        AND site_id=".$risk['site_id']."
+                        AND domaine_activite_id=".$risk['domaine_activite_id']."
+                        AND equipement_id=".$risk['equipement_id']."
+                        AND lieu_id=".$risk['lieu_id']."
+                        AND manifestation_id=".$risk['manifestation_id'].";";
+
+                $req .= "update temp_risquesste r , temp_risque tr
+                        set r.best_id=".$idRiskDoublon."
+                        WHERE menace_id=".$risk['menace_id']."
+                        AND site_id=".$risk['site_id']."
+                        AND domaine_activite_id=".$risk['domaine_activite_id']."
+                        AND equipement_id=".$risk['equipement_id']."
+                        AND lieu_id=".$risk['lieu_id']."
+                        AND manifestation_id=".$risk['manifestation_id'].";";
+
+                $this->connection->prepare($req)->execute();
+            }
+        }
+    }
 }

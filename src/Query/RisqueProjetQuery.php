@@ -167,7 +167,7 @@ class RisqueProjetQuery extends BaseQuery {
 		$nextId = $em->getRepository(Risque::class)->getNextId();
 		// creer une table temporaire risque
 		$query = sprintf("DROP TABLE IF EXISTS `temp_risque`;
-				             CREATE TABLE `temp_risque`(`id` int(11) NOT NULL AUTO_INCREMENT,`menace_id` int(11) DEFAULT NULL,`processus_id` int(11) DEFAULT NULL,`projet_id` int(11) DEFAULT NULL,`probabilite` int(11) DEFAULT NULL,
+				             CREATE TABLE `temp_risque`(`id` int(11) NOT NULL AUTO_INCREMENT,`menace_id` int(11) DEFAULT NULL,`processus_id` int(11) DEFAULT NULL,`projet_id` int(11) DEFAULT NULL,`probabilite` int(11) DEFAULT NULL,`risque_id_doublon` int(11) DEFAULT NULL,
 				             PRIMARY KEY(`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=%s;", $nextId);
 		$this->connection->prepare($query)->execute();
 
@@ -191,18 +191,27 @@ class RisqueProjetQuery extends BaseQuery {
 	public function migrateRisque($current_user, $chargement) {
 		// remplir la table temporaire risque
 		$query = sprintf("INSERT INTO temp_risque (menace_id, processus_id, projet_id)
-				  SELECT distinct menace, processus, %s from temp_risqueprojet;", $chargement->getProjet()->getId());
-		// inserer les risques dans la table risque
-		$query .= "INSERT INTO `risque`(`id`, `menace_id`, `utilisateur_id`, `societe_id`, `validateur`,   `cartographie_id`,   `date_saisie`, `date_validation`,`etat`, `relanced`)
-				   select t.id, t.menace_id,".$current_user->getId().",".$current_user->getSociete()->getId().",".$current_user->getId().", ".$chargement->getCartographie()->getId().", NOW(), NOW() ,1,0
-				   from temp_risque t;";
+				                SELECT distinct menace, processus, %s
+                                from temp_risqueprojet;", $chargement->getProjet()->getId());
+        // renseigner dans la temp_risqueprojet le bon id risque
+        $query .= "update temp_risqueprojet t , temp_risque tr
+                   set t.best_id=tr.id
+                   where tr.menace_id=t.menace and tr.processus_id=t.sous_processus and tr.projet_id=t.projet;";
+        $this->connection->prepare($query)->execute();
 
-		// renseigner dans la temp_risqueprojet le bon id risque
-		$query .= "update temp_risqueprojet t , temp_risque tr set t.best_id=tr.id where tr.menace_id=t.menace;";
+        $this->checkDoublonProjet();
+
+		// inserer les risques dans la table risque
+		$query2 = "INSERT INTO `risque`(`id`, `menace_id`, `utilisateur_id`, `societe_id`, `validateur`,   `cartographie_id`,   `date_saisie`, `date_validation`,`etat`, `relanced`)
+				   select t.id, t.menace_id,".$current_user->getId().",".$current_user->getSociete()->getId().",".$current_user->getId().", ".$chargement->getCartographie()->getId().", NOW(), NOW() ,1,0
+				   from temp_risque t
+				   WHERE t.risque_id_doublon IS NULL;";
 		// inserer les risques dans la table risque_metier
-		$query .= sprintf("INSERT INTO `risque_projet`(`risque_id`, `processus_id`, `projet_id`, `structure_id`)
-				   SELECT distinct best_id, processus, %s, structure FROM temp_risqueprojet;", $chargement->getProjet()->getId());
-		$this->connection->prepare($query)->execute();
+		$query2 .= sprintf("INSERT INTO `risque_projet`(`risque_id`, `processus_id`, `projet_id`, `structure_id`)
+				   SELECT distinct best_id, processus, %s, structure FROM temp_risqueprojet
+                   INNER JOIN temp_risque tr on tr.id=t.best_id
+                   WHERE tr.risque_id_doublon IS NULL;", $chargement->getProjet()->getId());
+		$this->connection->prepare($query2)->execute();
 	}
 
 	/**
@@ -362,4 +371,32 @@ class RisqueProjetQuery extends BaseQuery {
 		$query .= "update chargement set etat=1 where id=".$chargement->getId().";";
 		$this->connection->prepare($query)->execute();
 	}
+
+
+    public function checkDoublonProjet()
+    {
+        $temp_risque = $this->connection->fetchAll("SELECT * FROM temp_risque;");
+        foreach ($temp_risque as $risk){
+            $req = "SELECT r.id FROM `risque_projet` rp
+                INNER JOIN risque r ON r.id = rp.risque_id
+                INNER JOIN menace m ON m.id = r.menace_id
+                INNER JOIN projet pr ON pr.id = rp.projet_id
+                INNER JOIN structure s ON s.id = rp.structure_id
+                INNER JOIN processus p ON p.id = rp.processus_id
+                INNER JOIN temp_risque tr ON m.id = tr.menace_id
+                WHERE m.id=".$risk['menace_id']." AND p.id=".$risk['processus_id']." AND pr.id=".$risk['projet_id'].";";
+            $idRiskDoublon = $this->connection->fetchOne($req);
+
+            if ($idRiskDoublon) {
+                $req = "UPDATE temp_risque SET risque_id_doublon=".$idRiskDoublon.", id=".$idRiskDoublon." 
+                        WHERE menace_id=".$risk['menace_id']." AND processus_id=".$risk['processus_id']." AND projet_id=".$risk['projet_id'].";";
+
+                $req .= "update temp_risqueprojet t , temp_risque tr
+				   set t.best_id=".$idRiskDoublon."
+				   where tr.menace_id=t.menace and tr.processus_id=t.sous_processus and tr.projet_id=t.projet;";
+
+                $this->connection->prepare($req)->execute();
+            }
+        }
+    }
 }

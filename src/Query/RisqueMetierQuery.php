@@ -322,6 +322,25 @@ class RisqueMetierQuery extends BaseQuery {
 				   left join grille g on tg.id  = g.type_grille_id and n.id = g.note_id
 				   group by t.best_id, t.cause;";
 
+		$query = "INSERT INTO `risque_has_cause`( `risque_id`, `cause_id`, `grille_id`,`transfered`)
+                  select t.`best_id`, t.`cause`, g.id, 1
+                  from temp_risquemetier t
+                  left join type_grille tg on tg.type_evaluation_id=".$ids['type_evaluation']['cause']." and tg.cartographie_id=".$chargement->getCartographie()->getId()."
+                  left join note n on tg.id  = n.type_grille_id and n.valeur = t.probabilite
+                  left join grille g on tg.id  = g.type_grille_id and n.id = g.note_id
+                  WHERE t.cause NOT IN (
+                      SELECT rhc.cause_id FROM risque_has_cause rhc
+                      WHERE rhc.cause_id = t.cause AND rhc.risque_id = t.best_id
+                  )
+                  group by t.best_id, t.cause;";
+
+		$query .= "UPDATE `risque_has_cause` rhc
+                   INNER JOIN temp_risquemetier t ON (t.cause = rhc.cause_id AND rhc.risque_id = t.best_id)
+                   left join type_grille tg on tg.type_evaluation_id =".$ids['type_evaluation']['cause']." and tg.cartographie_id=".$chargement->getCartographie()->getId()."
+                   left join note n on tg.id  = n.type_grille_id and n.valeur = t.probabilite
+                   left join grille g on tg.id  = g.type_grille_id and n.id = g.note_id
+                   SET rhc.grille_id = g.id;";
+
 		// ajouter les controles
 		$query .= "INSERT INTO `controle`( `risque_cause_id`, `methode_controle_id`,  `type_controle_id`, `maturite_theorique_id`, `description`,  `date_creation` ,`transfered`)
 				   	SELECT distinct rhc.id,  t.methode_ctrl, t.type_ctrl,

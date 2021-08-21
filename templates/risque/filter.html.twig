@@ -154,3 +154,10 @@
 	});
 	</script>
 {% endblock %}
+
+<script>
+	$('#{{ form.menace.vars.id }}').prepend("<option value>Choisir un risque ...</option>");
+	{% if form.menace.vars.value is empty %}
+	$('#{{ form.menace.vars.id }}').val(''); // if you want it to be automatically selected
+	{% endif %}
+</script>

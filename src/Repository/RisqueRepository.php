@@ -165,7 +165,7 @@ class RisqueRepository extends ServiceEntityRepository
         if($criteria->getCartographie()) {
             $queryBuilder->andWhere('cg.id = :cartographieId')->setParameter('cartographieId', $criteria->getCartographie()->getId());
         }
-        $data = $criteria->getRisqueData($this->_ids['carto']);
+        $data = $criteria->getRisqueData();
         if($data->getId()==null) {
         } elseif($criteria->isPhysical()) {
             if($data->getSite()) {

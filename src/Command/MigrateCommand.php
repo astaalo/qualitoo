@@ -1,10 +1,11 @@
 <?php
 namespace App\Command;
 
+use App\Entity\Risque;
+use App\EventListener\LogsListener;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Orange\QuickMakingBundle\EventListener\LogsListener;
 use MongoDB\Client;
 
 class MigrateCommand extends ContainerAwareCommand
@@ -36,7 +37,7 @@ class MigrateCommand extends ContainerAwareCommand
 		$db = $dm->selectDatabase('coris');
 		$collectionR = $db->createCollection('risque');
 		$collectionE = $db->createCollection('evaluation');
-		$risques = $this->getContainer()->get('doctrine.orm.entity_manager')->getRepository('OrangeMainBundle:Risque')->findToMigrate();
+		$risques = $this->getContainer()->get('doctrine.orm.entity_manager')->getRepository(Risque::class)->findToMigrate();
 		$index = 0;
 		foreach($risques as $risque) {
 			$data = $risque->showValuesAsToMigrate();

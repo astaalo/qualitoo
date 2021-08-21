@@ -32,7 +32,6 @@ class TransfertCommand extends ContainerAwareCommand
 				$em->persist($risk);
 				$em->flush();
 			}
-			
 		}
 		$output->writeln(utf8_encode('La commande s\'executée correctement!'));
 	}

@@ -33,7 +33,7 @@ class CauseMapping extends BaseMapping {
 	/**
 	 * @param array $archCause
 	 * @param array $data
-	 * @param \Orange\MainBundle\Entity\Cause $cause
+	 * @param App\Entity\Cause $cause
 	 */
 	private function putMeInArch($archCause, &$data, $cause) {
 		foreach($archCause as $key => $value) {

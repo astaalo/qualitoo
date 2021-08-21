@@ -207,7 +207,6 @@ class EvaluationHasCause
 	public function getFinalGrille() {
 		$grille = $this->grille;
 		if($this->evaluation->getRisque()->isPhysical()) {
-			//var_dump($this->grille->getId());exit;
 			$grille = $this->normalGrille ? $this->normalGrille : ($this->anormalGrille ? $this->anormalGrille : null);
 		}
 		return $grille;

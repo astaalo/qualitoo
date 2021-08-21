@@ -92,7 +92,7 @@ class RisqueMapping extends BaseMapping {
 	}
 	
 	/**
-	 * @param \Orange\MainBundle\Entity\Risque $risque
+	 * @param App\Entity\Risque $risque
 	 * @param array $data
 	 */
 	private function putComplementInRisque($risque, &$data) {
@@ -131,7 +131,7 @@ class RisqueMapping extends BaseMapping {
 	 * @param array $archRisque
 	 * @param array $data
 	 * @param array $domaine
-	 * @param \Orange\MainBundle\Entity\Risque $risque
+	 * @param App\Entity\Risque $risque
 	 */
 	private function putActiviteAndMeInArch($archRisque, &$data, &$domaine, $risque) {
 		foreach($archRisque as $key => $value) {
@@ -154,7 +154,7 @@ class RisqueMapping extends BaseMapping {
 
 	/**
 	 * @param array $data
-	 * @param \Orange\MainBundle\Entity\Risque $risque
+	 * @param App\Entity\Risque $risque
 	 */
 	private function putCauseInArch(&$data, $risque) {	
 		foreach($risque->getCauseOfRisque() as $cor) {
@@ -194,7 +194,7 @@ class RisqueMapping extends BaseMapping {
 	/**
 	 * @param array $data
 	 * @param array $domaine
-	 * @param \Orange\MainBundle\Entity\Risque $risque
+	 * @param App\Entity\Risque $risque
 	 */
 	private function putImpactInArch(&$data, &$domaine, $risque) {
 		foreach($risque->getImpactOfRisque() as $ior) {
@@ -452,7 +452,7 @@ class RisqueMapping extends BaseMapping {
 	}
 	
 	/**
-	 * @param \Orange\MainBundle\Entity\Risque $criteria
+	 * @param App\Entity\Risque $criteria
 	 * @return array
 	 */
 	public function mapForMatrice($probabiteKPIs, $graviteKPIs, $type, $criteria) { 

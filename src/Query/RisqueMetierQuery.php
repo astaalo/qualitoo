@@ -466,7 +466,9 @@ class RisqueMetierQuery extends BaseQuery {
 				  FROM temp_impact t;";
 
 		// remplir risque_has_impact
-		$query .= "INSERT INTO `risque_has_impact`(`risque_id`, `impact_id`, `grille_id`)
+        $query .= "DELETE FROM `risque_has_impact`
+                   WHERE risque_id = (select distinct t.risque_id from temp_impact t);";
+        $query .= "INSERT INTO `risque_has_impact`(`risque_id`, `impact_id`, `grille_id`)
 				  select  distinct t.risque_id, t.id, null
 				  from   temp_impact t;";
 

@@ -301,6 +301,25 @@ class RisqueSSTEQuery extends BaseQuery {
 				   left join grille g on tg.id = g.type_grille_id and n.id = g.note_id
 				   group by t.best_id, t.cause;";
 
+        $query = "INSERT INTO `risque_has_cause`( `risque_id`, `cause_id`, `grille_id`,`transfered`,`mode_fonctionnement_id`)
+				  select t.`best_id`, t.`cause`, g.id, 1,t.mode_fonctionnement
+                  from temp_risquesste t
+                  left join type_grille tg on t.mode_fonctionnement = tg.mode_fonctionnement_id and tg.type_evaluation_id =".$ids['type_evaluation']['cause']." and tg.cartographie_id=".$chargement->getCartographie()->getId()."
+				  left join note n on tg.id  = n.type_grille_id and n.valeur = t.probabilite
+                  left join grille g on tg.id  = g.type_grille_id and n.id = g.note_id
+                  WHERE t.cause NOT IN (
+                      SELECT rhc.cause_id FROM risque_has_cause rhc
+                      WHERE rhc.cause_id = t.cause AND rhc.risque_id = t.best_id
+                  )
+                  group by t.best_id, t.cause;";
+
+        $query .= "UPDATE `risque_has_cause` rhc
+                   INNER JOIN temp_risquesste t ON (t.cause = rhc.cause_id AND rhc.risque_id = t.best_id)
+                   left join type_grille tg on t.mode_fonctionnement = tg.mode_fonctionnement_id and tg.type_evaluation_id =".$ids['type_evaluation']['cause']." and tg.cartographie_id=".$chargement->getCartographie()->getId()."
+				   left join note n on tg.id  = n.type_grille_id and n.valeur = t.probabilite
+                   left join grille g on tg.id  = g.type_grille_id and n.id = g.note_id
+                   SET rhc.grille_id = g.id;";
+
 		// ajouter les controles
 		$query .= "INSERT INTO `controle`( `risque_cause_id`, `methode_controle_id`,  `type_controle_id`, `maturite_theorique_id`, `description`,  `date_creation` ,`transfered`,`grille_id`)
 				   SELECT distinct rhc.id,  t.methode_ctrl, t.type_ctrl,t.maturite,desc_ctrl, NOW(), 1, null
@@ -370,6 +389,9 @@ class RisqueSSTEQuery extends BaseQuery {
 				   from risque_has_impact rhi
 				   left join temp_impact t on t.risque_id=rhi.risque_id
 				   where rhi.id is not null;";*/
+
+        $query .= "DELETE FROM `risque_has_impact`
+                   WHERE risque_id = (select distinct t.risque_id from temp_impact t);";
 		$query .= "INSERT INTO `risque_has_impact`(`risque_id`, `impact_id`, `grille_id`)
 				  select distinct t.risque_id, t.id, null
 				  from temp_impact t;";

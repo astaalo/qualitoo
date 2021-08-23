@@ -196,7 +196,7 @@ class RisqueProjetQuery extends BaseQuery {
         // renseigner dans la temp_risqueprojet le bon id risque
         $query .= "update temp_risqueprojet t , temp_risque tr
                    set t.best_id=tr.id
-                   where tr.menace_id=t.menace and tr.processus_id=t.sous_processus and tr.projet_id=t.projet;";
+                   where tr.menace_id=t.menace and tr.processus_id=t.processus and tr.projet_id=t.projet;";
         $this->connection->prepare($query)->execute();
 
         $this->checkDoublonProjet();
@@ -221,13 +221,24 @@ class RisqueProjetQuery extends BaseQuery {
 	 */
 	public function migrateCauseControleAndPlanAction($ids, $chargement,$current_user) {
 		// ajouter les causes des risques dans risque_has_cause
-		$query = " INSERT INTO `risque_has_cause`(`risque_id`, `cause_id`, `grille_id`,`transfered`)
-				   select t.`best_id`, t.`cause`, g.id, 1
-				   from temp_risqueprojet t
-				   left join type_grille tg on tg.type_evaluation_id =".$ids['type_evaluation']['cause']." and tg.cartographie_id=".$chargement->getCartographie()->getId()."
-				   left join note n on tg.id  = n.type_grille_id and n.valeur = t.probabilite
-				   left join grille g on tg.id  = g.type_grille_id and n.id   = g.note_id
-				   group by t.best_id, t.cause;";
+		$query = "INSERT INTO `risque_has_cause`( `risque_id`, `cause_id`, `grille_id`,`transfered`)
+                  select t.`best_id`, t.`cause`, g.id, 1
+                  from temp_risqueprojet t
+                  left join type_grille tg on tg.type_evaluation_id=".$ids['type_evaluation']['cause']." and tg.cartographie_id=".$chargement->getCartographie()->getId()."
+                  left join note n on tg.id  = n.type_grille_id and n.valeur = t.probabilite
+                  left join grille g on tg.id  = g.type_grille_id and n.id = g.note_id
+                  WHERE t.cause NOT IN (
+                      SELECT rhc.cause_id FROM risque_has_cause rhc
+                      WHERE rhc.cause_id = t.cause AND rhc.risque_id = t.best_id
+                  )
+                  group by t.best_id, t.cause;";
+
+        $query .= "UPDATE `risque_has_cause` rhc
+                   INNER JOIN temp_risqueprojet t ON (t.cause = rhc.cause_id AND rhc.risque_id = t.best_id)
+                   left join type_grille tg on tg.type_evaluation_id =".$ids['type_evaluation']['cause']." and tg.cartographie_id=".$chargement->getCartographie()->getId()."
+                   left join note n on tg.id  = n.type_grille_id and n.valeur = t.probabilite
+                   left join grille g on tg.id  = g.type_grille_id and n.id = g.note_id
+                   SET rhc.grille_id = g.id;";
 
 		// ajouter les controles
 		$query .= "INSERT INTO `controle`(`risque_cause_id`, `methode_controle_id`,  `type_controle_id`, `maturite_theorique_id`, `description`,  `date_creation` ,`transfered`)
@@ -288,8 +299,10 @@ class RisqueProjetQuery extends BaseQuery {
 				  where chs.chargement_id=".$chargement->getId().";";
 
 		// remplir impact
-		$query .= "INSERT INTO `impact`(`id`, `critere_id`, `origine`, `date_creation`, `etat`)
-				  SELECT t.id , t.critere_id, t.origine, t.date_creation , t.etat FROM temp_impact t;";
+        $query .= "DELETE FROM `risque_has_impact`
+                   WHERE risque_id = (select distinct t.risque_id from temp_impact t);";
+		//$query .= "INSERT INTO `impact`(`id`, `critere_id`, `origine`, `date_creation`, `etat`)
+		//		  SELECT t.id , t.critere_id, t.origine, t.date_creation , t.etat FROM temp_impact t;";
 
 		// remplir risque_has_impact
 		$query .= "INSERT INTO `risque_has_impact`(`risque_id`, `impact_id`, `grille_id`)

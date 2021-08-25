@@ -196,7 +196,7 @@ class RisqueProjetQuery extends BaseQuery {
         // renseigner dans la temp_risqueprojet le bon id risque
         $query .= "update temp_risqueprojet t , temp_risque tr
                    set t.best_id=tr.id
-                   where tr.menace_id=t.menace and tr.processus_id=t.processus and tr.projet_id=t.projet;";
+                   where tr.menace_id=t.menace and tr.processus_id=t.processus";
         $this->connection->prepare($query)->execute();
 
         $this->checkDoublonProjet();
@@ -208,7 +208,7 @@ class RisqueProjetQuery extends BaseQuery {
 				   WHERE t.risque_id_doublon IS NULL;";
 		// inserer les risques dans la table risque_metier
 		$query2 .= sprintf("INSERT INTO `risque_projet`(`risque_id`, `processus_id`, `projet_id`, `structure_id`)
-				   SELECT distinct best_id, processus, %s, structure FROM temp_risqueprojet
+				   SELECT distinct best_id, processus, %s, structure FROM temp_risqueprojet t
                    INNER JOIN temp_risque tr on tr.id=t.best_id
                    WHERE tr.risque_id_doublon IS NULL;", $chargement->getProjet()->getId());
 		$this->connection->prepare($query2)->execute();
@@ -404,9 +404,9 @@ class RisqueProjetQuery extends BaseQuery {
                 $req = "UPDATE temp_risque SET risque_id_doublon=".$idRiskDoublon.", id=".$idRiskDoublon." 
                         WHERE menace_id=".$risk['menace_id']." AND processus_id=".$risk['processus_id']." AND projet_id=".$risk['projet_id'].";";
 
-                $req .= "update temp_risqueprojet t , temp_risque tr
-				   set t.best_id=".$idRiskDoublon."
-				   where tr.menace_id=t.menace and tr.processus_id=t.sous_processus and tr.projet_id=t.projet;";
+                $req .= "update temp_risqueprojet
+				         set best_id=".$idRiskDoublon."
+				         WHERE menace=".$risk['menace_id']." AND processus=".$risk['processus_id'].";";
 
                 $this->connection->prepare($req)->execute();
             }

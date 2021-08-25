@@ -94,6 +94,23 @@ class RisqueSSTEQuery extends BaseQuery {
 		$query .= 'UPDATE temp_risquesste SET menace_sans_carspec  = menace;';
 		$query .= 'UPDATE temp_risquesste SET cause_sans_carspec  = cause;';
 
+
+        $results = $this->connection->fetchAll("SELECT distinct id, date_debut_pa, date_fin_pa from temp_risquesste");
+        // Formats des dates d'échéances incorrects
+        for($i = 0; $i < count($results); $i ++) {
+            $dd = $results [$i] ['date_debut_pa'];
+            $df = $results [$i] ['date_fin_pa'];
+            if(!preg_match("/([012]?[1-9]|[12]0|3[01])\/(0?[1-9]|1[012])\/([0-9]{4})/", $dd) && $dd != '') {
+                $erreurs [] = sprintf("Le format de la date debut du PA a la ligne %s est incorrect ", $i + 2);
+            } if(!preg_match("/([012]?[1-9]|[12]0|3[01])\/(0?[1-9]|1[012])\/([0-9]{4})/", $df) && $df != '') {
+                $erreurs [] = sprintf("Le format de la date fin du PA a la ligne %s est incorrect ", $i + 2);
+            }
+        }
+        $toString = serialize($erreurs);
+        if(count($erreurs) > 0) {
+            throw new \Exception($toString);
+        }
+
 		for($i = 0; $i < count ( $this->special_char ); $i ++) {
 			$query .= "UPDATE temp_risquesste SET site_sans_carspec  = REPLACE(site_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
 			$query .= "UPDATE temp_risquesste SET domaine_activite_sans_carspec  = REPLACE(domaine_activite_sans_carspec, '" . $this->special_char [$i] . "', '{$this->replacement_char[$i]}');";
@@ -270,6 +287,7 @@ class RisqueSSTEQuery extends BaseQuery {
 
         $table  = $chargement->getCartographie ()->getId ()==$ids['carto']['sst'] ? 'risque_sst' : 'risque_environnemental';
         $this->checkDoublonSSTE($table);
+
         // inserer les risques dans la table risque
 		$query = "INSERT INTO `risque`(`id`, `menace_id`, `utilisateur_id`, `societe_id`, `validateur`,   `cartographie_id`,   `date_saisie`, `date_validation`,`etat`, `relanced`)
 				   select t.id, t.menace_id," . $current_user->getId () . "," . $current_user->getSociete ()->getId () . "," . $current_user->getId () . ", " . $chargement->getCartographie ()->getId () . ", NOW(), NOW() ,1,0
@@ -503,14 +521,14 @@ class RisqueSSTEQuery extends BaseQuery {
                         AND lieu_id=".$risk['lieu_id']."
                         AND manifestation_id=".$risk['manifestation_id'].";";
 
-                $req .= "update temp_risquesste r , temp_risque tr
-                        set r.best_id=".$idRiskDoublon."
-                        WHERE menace_id=".$risk['menace_id']."
-                        AND site_id=".$risk['site_id']."
-                        AND domaine_activite_id=".$risk['domaine_activite_id']."
-                        AND equipement_id=".$risk['equipement_id']."
-                        AND lieu_id=".$risk['lieu_id']."
-                        AND manifestation_id=".$risk['manifestation_id'].";";
+                $req .= "update temp_risquesste
+                        set best_id=".$idRiskDoublon."
+                        WHERE menace=".$risk['menace_id']."
+                        AND site=".$risk['site_id']."
+                        AND domaine_activite=".$risk['domaine_activite_id']."
+                        AND activite_equipement=".$risk['equipement_id']."
+                        AND lieu=".$risk['lieu_id']."
+                        AND manifestation=".$risk['manifestation_id'].";";
 
                 $this->connection->prepare($req)->execute();
             }

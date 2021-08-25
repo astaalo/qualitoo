@@ -151,7 +151,8 @@ class RisqueMetierQuery extends BaseQuery {
 			$this->createNewProcessus($ids, $chargement, $em);
             $query  = "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.macro_sans_carspec) and p.lvl=0  SET t.macro = p.id where p.structure_id=" . $chargement->getDirection()->getId() . ";";
             $query .= "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.processus_sans_carspec) and p.lvl=1  SET t.processus = p.id  where p.parent_id = t.macro and p.structure_id=t.sous_entite;";
-            $query .= "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.sous_processus_sans_carspec) and p.lvl=2 SET t.sous_processus = p.id where p.structure_id=t.sous_entite and p.parent_id = t.processus;";
+            //$query .= "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.sous_processus_sans_carspec) and p.lvl=2 SET t.sous_processus = p.id where p.structure_id=t.sous_entite and p.parent_id = t.processus;";
+            $query .= "UPDATE temp_risquemetier t INNER JOIN processus p on lower(p.libelle_sans_carspecial) = lower(t.sous_processus_sans_carspec) and p.lvl=2 SET t.sous_processus = p.id where p.structure_id=t.sous_entite;";
             //creer activite inexistant
             $query .= "INSERT INTO `activite`( `processus_id`, `libelle`, `description`, `libelle_sans_carspecial`)
                    select distinct t.sous_processus, t.activite, t.activite, t.activite_sans_carspec
@@ -368,6 +369,15 @@ class RisqueMetierQuery extends BaseQuery {
 
 	public function  createNewProcessus($ids,$chargement,$em){
 		// creer macro inexistant
+
+        $query  =   "UPDATE temp_risquemetier t 
+                    INNER JOIN structure s on lower(s.name_sans_spec_char) = lower(t.sous_entite_sans_carspec)
+                    SET t.sous_entite = s.id where s.id=(
+                        SELECT DISTINCT s.id FROM structure s
+                        WHERE lower(t.sous_entite_sans_carspec) = lower(s.name_sans_spec_char)
+                    );";
+        $this->connection->prepare($query)->execute();
+
 		$query = "select distinct t.macro macro, t.macro_sans_carspec macro_sans_carspec
 				  from  temp_risquemetier t
 				  left join processus p on t.macro_sans_carspec = p.libelle_sans_carspecial and p.type_processus_id =".$ids['type_processus']['macro']." and p.structure_id=".$chargement->getDirection()->getId() ."
@@ -468,6 +478,7 @@ class RisqueMetierQuery extends BaseQuery {
 		// remplir risque_has_impact
         $query .= "DELETE FROM `risque_has_impact`
                    WHERE risque_id = (select distinct t.risque_id from temp_impact t);";
+
         $query .= "INSERT INTO `risque_has_impact`(`risque_id`, `impact_id`, `grille_id`)
 				  select  distinct t.risque_id, t.id, null
 				  from   temp_impact t;";
@@ -541,7 +552,6 @@ class RisqueMetierQuery extends BaseQuery {
     public function checkDoublonMetier()
     {
         $temp_risque = $this->connection->fetchAll("SELECT * FROM temp_risque;");
-        $data = array();
         foreach ($temp_risque as $risk){
             $req = "SELECT r.id FROM `risque_metier` rm
                 INNER JOIN risque r ON r.id = rm.risque_id
@@ -554,17 +564,14 @@ class RisqueMetierQuery extends BaseQuery {
             $idRiskDoublon = $this->connection->fetchOne($req);
 
             if ($idRiskDoublon) {
-                $req = "UPDATE temp_risque SET risque_id_doublon=".$idRiskDoublon.", id=".$idRiskDoublon." 
+                $req = "UPDATE temp_risque SET risque_id_doublon=".$idRiskDoublon.", id=".$idRiskDoublon."
                         WHERE menace_id=".$risk['menace_id']." AND processus_id=".$risk['processus_id']." AND activite_id=".$risk['activite_id'].";";
 
-                $req .= "update temp_risquemetier t , temp_risque tr
-				   set t.best_id=".$idRiskDoublon."
-				   where tr.menace_id=t.menace and tr.processus_id=t.sous_processus and tr.activite_id=t.activite;";
-
+                $req .= "update temp_risquemetier
+				         set best_id=".$idRiskDoublon."
+                         WHERE menace=".$risk['menace_id']." AND sous_processus=".$risk['processus_id']." AND activite=".$risk['activite_id'].";";
                 $this->connection->prepare($req)->execute();
             }
         }
-
-        //dd($data);
     }
 }

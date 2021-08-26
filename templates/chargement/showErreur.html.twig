@@ -7,5 +7,11 @@
 	{% for erreur in erreurs %}
 	  <li><b>{{ erreur }}</b></li>
 	{% endfor %}
+
+
+	{# S'il y a une erreur lors de l'exécution d'une requête #}
+	{% if app.session.get('erreurs_driver') %}
+		{{ erreurs }}
+	{% endif %}
 	</ul>
 </div>

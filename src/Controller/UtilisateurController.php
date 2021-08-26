@@ -50,7 +50,7 @@ class UtilisateurController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$user = $em->getRepository('App\Entity\Utilisateur')->find($id);
 		$form = $this->createForm(UtilisateurFormType::class, $user);
-		$this->denyAccessUnlessGranted('update', $user,'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('update', $this->getUser(),'Accés non autorisé!');
 		$form->setData($user);
 		if ($request->getMethod() == 'POST') {
 			$form->handleRequest($request);
@@ -72,7 +72,7 @@ class UtilisateurController extends BaseController {
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$utilisateur = $em->getRepository('App\Entity\Utilisateur')->find($id);
-		$this->denyAccessUnlessGranted('read', $utilisateur,'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('read', $this->getUser(),'Accés non autorisé!');
 		return array('entity' => $utilisateur);
 	}
 	 
@@ -100,7 +100,7 @@ class UtilisateurController extends BaseController {
 	public function activateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$utilisateur = $em->getRepository('App\Entity\Utilisateur')->find($id);
-		$this->denyAccessUnlessGranted('activate', $utilisateur,'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('activate', $this->getUser(),'Accés non autorisé!');
 		$utilisateur->setEnabled(true);
 		$em->persist($utilisateur);
 		$em->flush();
@@ -116,7 +116,7 @@ class UtilisateurController extends BaseController {
 	public function desactivateAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$utilisateur = $em->getRepository('App\Entity\Utilisateur')->find($id);
-		$this->denyAccessUnlessGranted('desactivate', $utilisateur,'Accés non autorisé!');
+		$this->denyAccessUnlessGranted('desactivate', $this->getUser(),'Accés non autorisé!');
 		$utilisateur->setEnabled(false);
 		$em->persist($utilisateur);
 		$em->flush();

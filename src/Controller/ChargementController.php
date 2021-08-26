@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Form\ChargementType;
+use Doctrine\DBAL\Exception\DriverException;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,7 +14,6 @@ use App\Entity\CritereChargement;
 use App\Entity\Risque;
 use App\Criteria\RisqueCriteria;
 use Doctrine\ORM\EntityNotFoundException;
-use Doctrine\DBAL\DBALException;
 use App\Entity\Rapport;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Cartographie;
@@ -144,9 +144,10 @@ class ChargementController extends BaseController {
 		if($request->getMethod()=='POST') {
 			$form->handleRequest($request);
 			if($form->isValid()) {
-				//try {
+				try {
 					$data = $form->getData();
 					$number = $this->orange_main_loader->loadRisque($data['file'], $this->getUser(), $chargement);
+
 					$em->persist($chargement->generateRapport());
 					$em->flush();
 					$to = $this->getUser()->getEmail();
@@ -166,14 +167,18 @@ class ChargementController extends BaseController {
 					//$this->get('mailer')->send($mail);
 					$this->get('session')->getFlashBag()->add('success', "Le chargement s'est déroulé avec succés!.");
 					return $this->redirect($this->generateUrl('les_risques_importes', array('id'=>$chargement->getId())));
-				//} catch (DBALException $e) {
-				//	$this->get('session')->set('erreurs_chargement', $e->getMessage());
-				//	$this->get('session')->getFlashBag()->add('error', "Des erreurs se sont produites au chargement!");
-				//	return array('form'=>$form->createView(), 'id'=>$id, 'chargement'=>$chargement);
-				//}
+				} catch (\Exception $e) {
+				    if ($e instanceof DriverException){
+                        $this->get('session')->set('erreurs_driver', true);
+                    }
+					$this->get('session')->set('erreurs_chargement', $e->getMessage());
+					$this->get('session')->getFlashBag()->add('error', "Des erreurs se sont produites au chargement!");
+					return array('form'=>$form->createView(), 'id'=>$id, 'chargement'=>$chargement);
+				}
 			}
 		} else {
-			$this->get('session')->set('erreurs_chargement', null);
+            $this->get('session')->set('erreurs_chargement', null);
+            $this->get('session')->set('erreurs_driver', null);
 		}
 		return array('form'=>$form->createView(), 'id'=>$id, 'chargement'=>$chargement);
 	}
@@ -240,7 +245,7 @@ class ChargementController extends BaseController {
 	 */
 	public function showErreurAction() {
 		$erreurs=$this->get('session')->get('erreurs_chargement');
-		$erreurs =unserialize($erreurs);
+		$erreurs = $this->get('session')->get('erreurs_driver') ? $erreurs : unserialize($erreurs);
 		return array('erreurs'=>$erreurs);
 	}
 	/**

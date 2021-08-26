@@ -4,11 +4,13 @@ namespace App\Query;
 
 use App\Entity\Chargement;
 use App\Entity\Impact;
+use App\Service\Loader;
 use Doctrine\ORM\EntityManager;
 use App\Entity\Utilisateur;
 use Doctrine\DBAL\DBALException;
 use App\Entity\Processus;
 use App\Entity\Risque;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class RisqueProjetQuery extends BaseQuery {
 	
@@ -86,10 +88,21 @@ class RisqueProjetQuery extends BaseQuery {
 		}
 		$this->connection->prepare($query)->execute();
 
-		$toString = serialize($erreurs);
-		if(count($erreurs) > 0) {
-			throw new DBALException($toString);
-		}
+        $results = $this->connection->fetchAll("SELECT distinct id, date_debut_pa, date_fin_pa from temp_risqueprojet");
+        // Formats des dates d'échéances incorrects
+        for($i = 0; $i < count($results); $i ++) {
+            $dd = $results [$i] ['date_debut_pa'];
+            $df = $results [$i] ['date_fin_pa'];
+            if(!preg_match("/([012]?[1-9]|[12]0|3[01])\/(0?[1-9]|1[012])\/([0-9]{4})/", $dd) && $dd != '') {
+                $erreurs [] = sprintf("Le format de la date debut du PA a la ligne %s est incorrect ", $i + 2);
+            } if(!preg_match("/([012]?[1-9]|[12]0|3[01])\/(0?[1-9]|1[012])\/([0-9]{4})/", $df) && $df != '') {
+                $erreurs [] = sprintf("Le format de la date fin du PA a la ligne %s est incorrect ", $i + 2);
+            }
+        }
+        $toString = serialize($erreurs);
+        if(count($erreurs) > 0) {
+            throw new \Exception($toString);
+        }
 		// creer cause inexistant et les rattacher a au carto
 		$query .= "INSERT INTO `cause`(`libelle`, `etat`, `description`, `libelle_sans_carspecial`)
 			   select distinct t.cause, 1, t.cause, t.cause_sans_carspec
@@ -155,7 +168,7 @@ class RisqueProjetQuery extends BaseQuery {
 		}
 		$toString = serialize($erreurs);
 		if(count($erreurs) > 0) {
-			throw new DBALException($toString);
+			throw new \Exception($toString);
 		}
 	}
 

@@ -247,7 +247,7 @@ class RisqueSSTEQuery extends BaseQuery {
 			}
 			$toString = serialize($erreurs);
 			if (count ( $erreurs ) > 0)
-				throw new DBALException($toString);
+				throw new \Exception($toString);
 	}
 
 	/**

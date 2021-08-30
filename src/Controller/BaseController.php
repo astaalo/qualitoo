@@ -90,7 +90,7 @@ class BaseController extends AbstractController
         $query = $queryBuilder->getQuery();
         $paginator  = $this->paginator;
         $numberPage = ((int)$request->query->get('iDisplayStart')/(int)$request->query->get('iDisplayLength'))+1;
-        $pagination = $paginator->paginate($query, $request->query->get('page', 1), 10);
+        //$pagination = $paginator->paginate($query, $request->query->get('page', 1), 10);
         $this->setFilter($queryBuilder, array(), $request);
         $this->{$orderMethod}($queryBuilder, array(), $request);
         $query = $this->customResultsQuery($queryBuilder);

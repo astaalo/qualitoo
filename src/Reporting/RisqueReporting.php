@@ -53,7 +53,6 @@ class RisqueReporting extends ExcelReporting {
                 'name'  => 'Verdana'
             ));
         $this->sheet->getStyle("A1:D1")->applyFromArray($styleEntete);
-
         
         $this->setValues($this->sheet,1, array('A'=>'Macro Processus', 'B'=>'Processus', 'C'=>'Sous Processus', 'D'=>'Entité', 'E'=>'Sous-Entité'));
 		$this->setValues($this->sheet,1, array('F'=>'Code Activité','G'=>'Activité', 'H'=>'Code risque', 'I'=>'Risque', 'J'=>'Causes', 
@@ -86,13 +85,16 @@ class RisqueReporting extends ExcelReporting {
 	 * @param Societe $societe
 	 */
 	public function extractProjet($data, $societe) {
-		$this->setDimensionColumns(array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'O'), 50);
-		$this->setDimensionColumns(array('J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y','Z'), 25);
-		$this->setValues(1, array('A'=>'Macro Processus', 'B'=>'Processus', 'C'=>'Sous Processus', 'D'=>'Entité', 'E'=>'Sous-Entité'));
-		$this->setValues(1, array('F'=>'Code Projet','G'=>'Projet', 'H'=>'Code risque', 'I'=>'Risque', 'J'=>'Causes',
+        $spreadsheet = new Spreadsheet();
+        $this->sheet = $spreadsheet->getActiveSheet();
+
+		$this->setDimensionColumns($this->sheet, array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'O'), 50);
+		$this->setDimensionColumns($this->sheet, array('J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y','Z'), 25);
+		$this->setValues($this->sheet,1, array('A'=>'Macro Processus', 'B'=>'Processus', 'C'=>'Sous Processus', 'D'=>'Entité', 'E'=>'Sous-Entité'));
+		$this->setValues($this->sheet,1, array('F'=>'Code Projet','G'=>'Projet', 'H'=>'Code risque', 'I'=>'Risque', 'J'=>'Causes',
 				'k'=>'Code PA','L'=>"Description du plan d'action", 'M'=>'Porteur'));
-		$this->setValues(1, array('N'=>'Date de début', 'O'=>'Date de fin', 'P'=>'Avancement', 'Q'=>'Statut','R'=>'Code Controle' ,'S'=>'Objectifs de controle'));
-		$this->setValues(1, array('T'=>'Contrôle description','U' =>'Type de controle' ,'V'=>'Methode de contrôle', 'W'=>'Probabilité', 'X'=>'Gravité'));
+		$this->setValues($this->sheet,1, array('N'=>'Date de début', 'O'=>'Date de fin', 'P'=>'Avancement', 'Q'=>'Statut','R'=>'Code Controle' ,'S'=>'Objectifs de controle'));
+		$this->setValues($this->sheet,1, array('T'=>'Contrôle description','U' =>'Type de controle' ,'V'=>'Methode de contrôle', 'W'=>'Probabilité', 'X'=>'Gravité'));
 		$column = 'Y';
 		foreach($data['domaine'] as $key=>$domaine) {
 			$this->sheet->setCellValue($column.'1', $domaine['name']);
@@ -105,11 +107,13 @@ class RisqueReporting extends ExcelReporting {
 		foreach($data['carto'] as $processus) {
 			$this->extractByProcessus($processus, $data['domaine'] ,$row, $row, 1);
 		}
-		$this->getActiveSheet()->getStyle('A1:Z'.$this->getActiveSheet()->getHighestRow())->getAlignment()->setWrapText(true);
-		$this->setColors('A1:J1', 'FF6600');
-		$this->setColors('K1:Q1', 'CCCCCC');
-		$this->setColors('R1:V1', '2EFE2E');
-		$this->setColors(sprintf('W1:%s1', $column), 'FF6600');
+		$this->sheet->getStyle('A1:Z'.$this->sheet->getHighestRow())->getAlignment()->setWrapText(true);
+		$this->setColors($this->sheet,'A1:J1', 'FF6600');
+		$this->setColors($this->sheet,'K1:Q1', 'CCCCCC');
+		$this->setColors($this->sheet,'R1:V1', '2EFE2E');
+		$this->setColors($this->sheet,sprintf('W1:%s1', $column), 'FF6600');
+        // Create your Office 2007 Excel (XLSX Format)
+        return $this->save($spreadsheet);
 	}
 	
 	
@@ -118,23 +122,28 @@ class RisqueReporting extends ExcelReporting {
 	 * @param Societe $societe
 	 */
 	public function extractSite($data, $societe) {
-		$this->setDimensionColumns(array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'), 40);
-		$this->setDimensionColumns(array('K', 'L', 'O'), 100);
-		$this->setDimensionColumns(array('J', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W'), 35);
-		$this->setValues(1, array('A'=>'Site', 'B'=>'Domaine', 'C'=>'thème du risque', 'D'=>'Activité/Equipement', 'E'=>'Propriétaire'));
-		$this->setValues(1, array('F'=>'Code Risks', 'G'=>'Aspect', 'H'=>'Mode Fonctionnement', 'I'=>"Risque", 'J'=>'Lieu'));
-		$this->setValues(1, array('K'=>'Manifestation', 'L'=>'Dispositif de maitrise', 'M'=>'Type de controle', 'N'=>'Méthode de controle', 'O'=>'Decription PA'));
-		$this->setValues(1, array('P'=>'Type de contrôle', 'Q'=>'Porteur', 'R'=>'Date fin', 'S'=>'Statut', 'T'=>'Probabilité/Exposition', 'U'=>'Gravité', 'V'=>'Criticité','W'=>'Maturité'));
+        $spreadsheet = new Spreadsheet();
+        $this->sheet = $spreadsheet->getActiveSheet();
+
+		$this->setDimensionColumns($this->sheet, array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'), 40);
+		$this->setDimensionColumns($this->sheet, array('K', 'L', 'O'), 100);
+		$this->setDimensionColumns($this->sheet, array('J', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W'), 35);
+		$this->setValues($this->sheet,1, array('A'=>'Site', 'B'=>'Domaine', 'C'=>'thème du risque', 'D'=>'Activité/Equipement', 'E'=>'Propriétaire'));
+		$this->setValues($this->sheet,1, array('F'=>'Code Risks', 'G'=>'Aspect', 'H'=>'Mode Fonctionnement', 'I'=>"Risque", 'J'=>'Lieu'));
+		$this->setValues($this->sheet,1, array('K'=>'Manifestation', 'L'=>'Dispositif de maitrise', 'M'=>'Type de controle', 'N'=>'Méthode de controle', 'O'=>'Decription PA'));
+		$this->setValues($this->sheet,1, array('P'=>'Type de contrôle', 'Q'=>'Porteur', 'R'=>'Date fin', 'S'=>'Statut', 'T'=>'Probabilité/Exposition', 'U'=>'Gravité', 'V'=>'Criticité','W'=>'Maturité'));
 		$row = 2;
 		foreach($data as $dt) {
 			$this->extractForEnvironnement($dt, $row);
 		}
-		$this->getActiveSheet()->getStyle('A1:W'.$this->getActiveSheet()->getHighestRow())->getAlignment()->setWrapText(true);
-		$this->setColors('A1:C1', 'c3c3c3');
-		$this->setColors('D1:K1', 'FF6600');
-		$this->setColors('L1:N1', 'EEFF00');
-		$this->setColors('O1:S1', '22CCEE');
-		$this->setColors('T1:W1', 'EECECE');
+		$this->sheet->getStyle('A1:W'.$this->sheet->getHighestRow())->getAlignment()->setWrapText(true);
+		$this->setColors($this->sheet,'A1:C1', 'c3c3c3');
+		$this->setColors($this->sheet,'D1:K1', 'FF6600');
+		$this->setColors($this->sheet,'L1:N1', 'EEFF00');
+		$this->setColors($this->sheet,'O1:S1', '22CCEE');
+		$this->setColors($this->sheet,'T1:W1', 'EECECE');
+        // Create your Office 2007 Excel (XLSX Format)
+        return $this->save($spreadsheet);
 	}
 	
 	

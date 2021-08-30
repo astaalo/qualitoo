@@ -81,8 +81,8 @@ class EvaluationController extends BaseController{
 		$entity->setRisque($risque);
 		$entity->setEvaluateur($this->getUser());
 		$form = $this->createCreateForm($entity->newEvaluation($risque), EvaluationType::class, array('attr' => array('em' => $em)));
-		if($request->getMethod()=='POST'){
-			$form->handleRequest($request);
+		if($request->getMethod()=='POST' && $form->handleRequest($request)->isValid()){
+			;
 			$dispatcher = $this->container->get('event_dispatcher');
 			$event = $this->cartoEvent;
 			$entity->cleanUselessImpact();

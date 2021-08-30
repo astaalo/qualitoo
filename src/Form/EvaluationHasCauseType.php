@@ -24,38 +24,50 @@ class EvaluationHasCauseType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('cause', null, array('placeholder' => 'Choisir une cause ...', 'label'=>'Choisir une cause', 'attr' => array('class' => 'chzn-select chzn-done')));
-		$builder->addEventListener(FormEvents::SUBMIT, array($this, 'onSetData'));
+		$builder->addEventListener(FormEvents::SUBMIT, array($this, 'afterSetData'));
 		$builder->addEventListener(FormEvents::POST_SET_DATA, array($this, 'onSetData'));
 	}
-	
-	/**
-	 * @param FormEvent $event
-	 */
-	public function onSetData(FormEvent $event) {
-		if($event->getData() && null != $evaluation = $event->getData()->getEvaluation()) {
-			$risque = $evaluation->getRisque();
-			//var_dump($event->getData()->getFinalGrille()->getId());exit;
-			$event->getForm()->add('grille', null, array('query_builder' => function($er) use($risque) {
-					return $er->createQueryBuilder('r')->innerJoin('r.typeGrille', 'tg')->innerJoin('tg.typeEvaluation', 'te')
-						->where('tg.cartographie = :cartographie')->andWhere('te.id = :typeEvaluation')
-						->setParameters(array('cartographie'=>$risque->getCartographie(), 'typeEvaluation'=>$this->ids['type_evaluation']['cause']));
-				}, 'placeholder' => 'Choisir un niveau ...'));
-			$event->getForm()->add('normalGrille', EntityType::class, array('label'=>'Normal','class' => Grille::class, 'query_builder' => function($er) use($risque) {
-					return $er->createQueryBuilder('r')->where('r.typeGrille = :typeGrille')
-						->setParameter('typeGrille', $risque->getTypeGrilleCauseBy(ModeFonctionnement::$ids['normal']));
-				}, 'placeholder' => 'Choisir un niveau ...'));
-			$event->getForm()->add('anormalGrille', EntityType::class, array('label'=>'Anormal','class' => Grille::class, 'query_builder' => function($er) use($risque) {
-					return $er->createQueryBuilder('r')->where('r.typeGrille = :typeGrille')
-						->setParameter('typeGrille', $risque->getTypeGrilleCauseBy(ModeFonctionnement::$ids['anormal']));
-				}, 'placeholder' => 'Choisir un niveau ...'));
-			if($event->getForm()->getName()==FormEvents::SUBMIT) {
-				$grille = $event->getData()->getFinalGrille();
-				$event->getData()->setGrille($grille);
-				$event->getForm()->get('grille')->submit($grille ? $grille->getId() : null);
-				$event->getForm()->get('normalGrille')->submit($event->getData()->getNormalGrille() ? $event->getData()->getNormalGrille()->getId() : null);
-			}
-		}
-	}
+
+    /**
+     * @param FormEvent $event
+     */
+    public function onSetData(FormEvent $event) {
+        if($event->getData() && null != $evaluation = $event->getData()->getEvaluation()) {
+            $this->modifyForm($evaluation, $event);
+        }
+    }
+
+    /**
+     * @param FormEvent $event
+     */
+    public function afterSetData(FormEvent $event) {
+        if($event->getData() && null != $evaluation = $event->getData()->getEvaluation()) {
+            $this->modifyForm($evaluation, $event);
+
+            $grille = $event->getData()->getFinalGrille();
+            $event->getData()->setGrille($grille);
+            $event->getForm()->get('grille')->submit($grille ? $grille->getId() : null);
+            $event->getForm()->get('normalGrille')->submit($event->getData()->getNormalGrille() ? $event->getData()->getNormalGrille()->getId() : null);
+        }
+    }
+
+    public function modifyForm($evaluation, $event):void{
+        $risque = $evaluation->getRisque();
+        //var_dump($event->getData()->getFinalGrille()->getId());exit;
+        $event->getForm()->add('grille', null, array('query_builder' => function($er) use($risque) {
+            return $er->createQueryBuilder('r')->innerJoin('r.typeGrille', 'tg')->innerJoin('tg.typeEvaluation', 'te')
+                ->where('tg.cartographie = :cartographie')->andWhere('te.id = :typeEvaluation')
+                ->setParameters(array('cartographie'=>$risque->getCartographie(), 'typeEvaluation'=>$this->ids['type_evaluation']['cause']));
+        }, 'placeholder' => 'Choisir un niveau ...'));
+        $event->getForm()->add('normalGrille', EntityType::class, array('label'=>'Normal','class' => Grille::class, 'query_builder' => function($er) use($risque) {
+            return $er->createQueryBuilder('r')->where('r.typeGrille = :typeGrille')
+                ->setParameter('typeGrille', $risque->getTypeGrilleCauseBy(ModeFonctionnement::$ids['normal']));
+        }, 'placeholder' => 'Choisir un niveau ...'));
+        $event->getForm()->add('anormalGrille', EntityType::class, array('label'=>'Anormal','class' => Grille::class, 'query_builder' => function($er) use($risque) {
+            return $er->createQueryBuilder('r')->where('r.typeGrille = :typeGrille')
+                ->setParameter('typeGrille', $risque->getTypeGrilleCauseBy(ModeFonctionnement::$ids['anormal']));
+        }, 'placeholder' => 'Choisir un niveau ...'));
+    }
 	
 	public function configureOptions(OptionsResolver $resolver)
 	{

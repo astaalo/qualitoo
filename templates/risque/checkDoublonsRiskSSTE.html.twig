@@ -1,5 +1,5 @@
 <script>
-    var carto = {{ cartographie_id }};
+    var carto = {{ entity.id is empty ? cartographie_id }};
 	$('#{{ form.risque.menace.vars.id }}').change(function() {
 		if (this.value && $('#{{ form.site.vars.id }}').val()){
 			$.ajax({

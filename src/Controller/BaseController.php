@@ -76,8 +76,7 @@ class BaseController extends AbstractController
     protected function createCreateForm($entity, $formName, $options = array()) {
         //$type = '\App\Form\\'.$formName.'Type';
         $type = $formName;
-        $form = $this->createForm($type , $entity, $options);
-        return $form;
+        return $this->createForm($type , $entity, $options);
     }
 
     /**
@@ -109,8 +108,7 @@ class BaseController extends AbstractController
             "iTotalDisplayRecords" => $pagination->getTotalItemCount(),
             "aaData" => $aaData
         );
-        $response = new JsonResponse($output);
-        return $response;
+        return new JsonResponse($output);
     }
 
     /**

@@ -52,7 +52,7 @@ class Cause
     protected $description;
     
     /**
-     * @var \Famille
+     * @var Famille
      *
      * @ORM\ManyToOne(targetEntity="Famille")
      * @ORM\JoinColumns({

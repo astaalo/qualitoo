@@ -65,7 +65,7 @@ class ProjetController extends BaseController {
 		$form = $this->createForm(ProjetCriteria::class, new Projet());
 		$this->modifyRequestForForm($request, $this->get('session')->get('projet_criteria'), $form);
 		$criteria = $form->getData();
-		$queryBuilder = $em->getRepository('App\Entity\Projet')->listAllQueryBuilder($criteria);
+		$queryBuilder = $em->getRepository(Projet::class)->listAllQueryBuilder($criteria);
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -76,7 +76,7 @@ class ProjetController extends BaseController {
 	 */
 	public function changeStatutAction(Request $request,$id,$statut){
 		$em = $this->getDoctrine()->getManager();
-		$entity =$em->getRepository('App\Entity\Projet')->find($id);
+		$entity =$em->getRepository(Projet::class)->find($id);
 		if($request->getMethod()=='POST'){
 		    $entity->setEtat($statut);
 		    $em->persist($entity);
@@ -95,7 +95,7 @@ class ProjetController extends BaseController {
 		$form = $this->createForm(ProjetCriteria::class, new Projet());
 		$this->modifyRequestForForm($request, $this->get('session')->get('projet_criteria'), $form);
 		$criteria = $form->getData();
-		$queryBuilder = $em->getRepository('App\Entity\Projet')->listAllQueryBuilder($criteria);
+		$queryBuilder = $em->getRepository(Projet::class)->listAllQueryBuilder($criteria);
 		return $this->paginate($request, $queryBuilder, 'addRowInTableSuivi');
 	}
 	
@@ -144,7 +144,7 @@ class ProjetController extends BaseController {
 	 */
 	public function showAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$projet = $em->getRepository('App\Entity\Projet')->find($id);
+		$projet = $em->getRepository(Projet::class)->find($id);
 		return array('entity' => $projet);
 	}
 	
@@ -155,7 +155,7 @@ class ProjetController extends BaseController {
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('App\Entity\Projet')->find($id);
+		$entity = $em->getRepository(Projet::class)->find($id);
 		$form = $this->createCreateForm($entity, ProjetType::class);
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
@@ -168,7 +168,7 @@ class ProjetController extends BaseController {
 	 */
 	public function updateAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('App\Entity\Projet')->find($id);
+		$entity = $em->getRepository(Projet::class)->find($id);
 		$form = $this->createCreateForm($entity, ProjetType::class);
 
 		if ($request->getMethod() == 'POST') {
@@ -194,7 +194,7 @@ class ProjetController extends BaseController {
 	 */
 	public function listByProcessusAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$projets = $em->getRepository('App\Entity\Projet')->findByProcessusId($request->request->get('id'));
+		$projets = $em->getRepository(Projet::class)->findByProcessusId($request->request->get('id'));
 		$output = array(array('id' => "", 'libelle' => 'Choisir un projet ...'));
 		foreach ($projets as $projet) {
 			$output[] = array('id' => $projet['id'], 'libelle' => $projet['libelle']);
@@ -210,7 +210,7 @@ class ProjetController extends BaseController {
 	 */
 	public function listByStructureAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$projets = $em->getRepository('App\Entity\Projet')->findByStructureId($request->request->get('id'));
+		$projets = $em->getRepository(Projet::class)->findByStructureId($request->request->get('id'));
 		$output = array(array('id' => "", 'libelle' => 'Choisir un projet ...'));
 		foreach ($projets as $projet) {
 			$output[] = array('id' => $projet['id'], 'libelle' => $projet['libelle']);
@@ -227,7 +227,7 @@ class ProjetController extends BaseController {
 	 */
 	public function deleteAction(Request $request, $id){
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('App\Entity\Projet')->find($id);
+		$entity = $em->getRepository(Projet::class)->find($id);
 		if($entity == null)
 			$this->createNotFoundException("Ce projet n'existe pas!");
 		$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');

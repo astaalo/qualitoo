@@ -14,6 +14,7 @@ use App\Criteria\CauseCriteria;
 use App\Criteria\RisqueHasCauseCriteria;
 use Doctrine\ORM\EntityNotFoundException;
 use App\Annotation\QMLogger;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class CauseController extends BaseController {
 
@@ -176,10 +177,10 @@ class CauseController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(CauseCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('risquehascause_criteria'), $form);
-		$queryBuilder = $em->getRepository('App\Entity\Cause')->listAllQueryBuilder($form->getData());
-		$data = $this->orange_main_core->getMapping('Cause')->mapForBasicExport($queryBuilder->getQuery()->getResult());
+		$queryBuilder = $em->getRepository('App\Entity\Cause')->listAllQueryBuilder($form->getData())->getQuery()->getResult();
+		$data = $this->orange_main_core->getMapping('Cause')->mapForBasicExport($queryBuilder);
 		$reporting = $this->orange_main_core->getReporting('Cause')->extractByCause($data);
-		$reporting->getResponseAfterSave('php://output', 'Extraction des causes');
+        return $this->file($reporting, 'Extraction des causes.xlsx', ResponseHeaderBag::DISPOSITION_INLINE);
 	}
 	
 	/**

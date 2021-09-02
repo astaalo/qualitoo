@@ -64,7 +64,7 @@ class ActiviteRepository extends ServiceEntityRepository
                 ->andWhere('q.rgt <= :rgt')->setParameter('rgt', $structure->getRgt());
         }
         if($activite && $activite->getProcessus() && $activite->getProcessus()->getLibelle()) {
-            $queryBuilder->andWhere('q.libelle LIKE :libelle')
+            $queryBuilder->andWhere('p.libelle LIKE :libelle')
                 ->setParameter('libelle', '%'.$activite->getProcessus()->getLibelle().'%');
         }
         return BaseRepository::filterBySociete($queryBuilder, 'q', $this->_user);

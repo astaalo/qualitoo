@@ -85,8 +85,8 @@ class ProjetRepository extends ServiceEntityRepository
         $societe_id=$this->_user->getSociete()->getId();
         $queryBuilder = $this->createQueryBuilder('p')->where('IDENTITY(p.societe)=:societe_id')->setParameter('societe_id', $societe_id);
         if($criteria->getUtilisateur()) {
-            $queryBuilder->innerJoin('App\Entity\Utilisateur', 'u')
-                ->andWhere('u = :user')->setParameter('user', $criteria->getUtilisateur());
+            $queryBuilder->innerJoin('p.utilisateur', 'u')
+                ->andWhere('u.id = :user')->setParameter('user', $criteria->getUtilisateur()->getId());
         }
         if($criteria->getProcessus()) {
             $queryBuilder->innerJoin('App\Entity\Processus', 'pp')

@@ -9,7 +9,9 @@ class ProcessusCriteria extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('libelle')->add('structure');
+        $builder
+            ->add('libelle')
+            ->add('structure',null, ['attr' => array('class' => 'chzn-select')]);
     }
 	
 	public function configureOptions(OptionsResolver $resolver)

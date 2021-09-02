@@ -10,8 +10,8 @@ class ProjetCriteria extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$builder
-    		->add('processus')
-    		->add('utilisateur');
+    		->add('processus',null, ['attr' => array('class' => 'chzn-select')])
+    		->add('utilisateur',null, ['attr' => array('class' => 'chzn-select')]);
     }
     
     /**

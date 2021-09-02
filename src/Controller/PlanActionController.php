@@ -18,6 +18,7 @@ use App\Event\CartoEvent;
 use App\Annotation\QMLogger;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class PlanActionController extends BaseController {
 	
@@ -257,8 +258,8 @@ class PlanActionController extends BaseController {
 		$queryBuilder = $em->getRepository('App\Entity\PlanAction')->listAllQueryBuilder($form->getData())->getQuery()->getResult();
 		$data = $this->orange_main_core->getMapping('PlanAction')->mapForExport($queryBuilder);
 		$reporting = $this->orange_main_core->getReporting('PlanAction')->extract($data);
-		return $reporting->getResponseAfterSave('php://output', 'PlanActions');
-	}
+        return $this->file($reporting, 'Les plans d\'action.xlsx', ResponseHeaderBag::DISPOSITION_INLINE);
+    }
 	
 	/**
 	 * @QMLogger(message="Extraction des dispositifs")
@@ -273,8 +274,8 @@ class PlanActionController extends BaseController {
         $traitements = $em->getRepository('App\Entity\Traitement')->findAll ();
         $data = $this->orange_main_core->getMapping('PlanAction')->mapForExport($queryBuilder, $traitements);
         $reporting = $this->orange_main_core->getReporting('PlanAction')->extract($data);
-        return $reporting->getResponseAfterSave('php://output', 'PlanAction');
-	}
+        return $this->file($reporting, 'Les plans d\'action en Dispositif.xlsx', ResponseHeaderBag::DISPOSITION_INLINE);
+    }
 	
 	/**
 	 * @QMLogger(message="Suppression d'un plan d'action")

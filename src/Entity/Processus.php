@@ -90,17 +90,6 @@ class Processus extends Tree implements TreeInterface
      */
     private $typeProcessus;
 
-    /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Activite", mappedBy="processus", cascade={"persist", "merge"})
-     */
-    private $activite;
-
-    /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Projet", mappedBy="processus", cascade={"persist", "merge", "remove"})
-     */
-    private $projet;
 
     /**
      * @var Processus
@@ -150,22 +139,7 @@ class Processus extends Tree implements TreeInterface
         return $this->id;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getActivite() {
-        return $this->activite;
-    }
-
-    /**
-     * @param Activite $activite
-     * @return Processus
-     */
-    public function addActivite($activite) {
-        $activite->setProcessus($this);
-        $this->activite->add($activite);
-        return $this;
-    }
+    
 
     /**
      * @return integer
@@ -212,24 +186,7 @@ class Processus extends Tree implements TreeInterface
         return $icg ? ($icg < 1 ? 1 : round($icg)) : null;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getProjet() {
-        return $this->projet;
-    }
-
-
-
-    /**
-     * @param Projet $projet
-     * @return Projet
-     */
-    public function addProjet($projet) {
-        $projet->setProcessus($this);
-        $this->projet->add($projet);
-        return $this;
-    }
+   
 
     public function getRisque(&$collection = null) {
         if($collection==null) {
@@ -464,25 +421,7 @@ class Processus extends Tree implements TreeInterface
         return $this->libelleSansCarSpecial;
     }
 
-    /**
-     * Remove activite
-     *
-     * @param Activite $activite
-     */
-    public function removeActivite(Activite $activite)
-    {
-        $this->activite->removeElement($activite);
-    }
-
-    /**
-     * Remove projet
-     *
-     * @param Projet $projet
-     */
-    public function removeProjet(Projet $projet)
-    {
-        $this->projet->removeElement($projet);
-    }
+    
 
     /**
      * Add children

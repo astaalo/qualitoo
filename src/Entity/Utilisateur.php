@@ -105,13 +105,6 @@ class Utilisateur extends User implements UtilisateurInterface
     
     
     /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Projet", mappedBy="utilisateur")
-     */
-    private $projet;
-    
-    
-    /**
      * @var Societe
      * @ORM\ManyToOne(targetEntity="Societe")
      * @ORM\JoinColumns({

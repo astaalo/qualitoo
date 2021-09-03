@@ -39,12 +39,7 @@ class Famille extends Tree implements TreeInterface
      */
     private $etat = true;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Societe", mappedBy="famille")
-     */
-    private $societe;
+    
 	
     /**
      * @var String
@@ -53,24 +48,9 @@ class Famille extends Tree implements TreeInterface
      */
     protected $description;
     
-    /**
-     * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="Famille", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
-     */
-    protected $parent;
+   
 
-    /**
-     * @ORM\OneToMany(targetEntity="Structure", mappedBy="parent")
-     * @ORM\OrderBy({"lft" = "ASC"})
-     */
-    protected $children;
     
-    /**
-     * @var \Doctrine\Common
-     * @ORM\OneToMany(targetEntity="Cause", mappedBy="famille")
-     */
-    protected $cause;
     
     /**
      * Constructor

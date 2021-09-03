@@ -51,25 +51,6 @@ class Societe
      */
     private $isAdmin;
 
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ORM\OneToMany(targetEntity="Colonne", mappedBy="societe")
-     */
-    private $colonne;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     * @ORM\ManyToMany(targetEntity="Famille", inversedBy="societe", cascade={"persist","remove","merge"})
-     * @ORM\JoinTable(name="societe_has_famille",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="societe_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="famille_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $famille;
     
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -89,19 +70,10 @@ class Societe
      */
     protected $auditeur;
     
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ORM\OneToMany(targetEntity="Relance", mappedBy="societe")
-     */
-    private $relances;
 
     /**
      * Constructor
      */
-    public function __construct()
-    {
-        $this->famille = new \Doctrine\Common\Collections\ArrayCollection();
-    }
     
     /**
      * @return integer
@@ -141,40 +113,7 @@ class Societe
 		$this->etat = $etat;
 		return $this;
 	}
-	
-	/**
-	 * get colonnes
-	 * @return \Doctrine\Common\Collections\ArrayCollection
-	 */
-	public function getColonne() {
-		return $this->colonne;
-	}
-	
-	/**
-	 * set colonnes
-	 * @param \Doctrine\Common\Collections\ArrayCollection $colonne
-	 * @return Societe
-	 */
-	public function setColonne($colonne) {
-		$this->colonne = $colonne;
-		return $this;
-	}
-	
-	/**
-	 * @return \Doctrine\Common\Collections\ArrayCollection
-	 */
-	public function getFamille() {
-		return $this->famille;
-	}
-	
-	/**
-	 * @param \Doctrine\Common\Collections\ArrayCollection $famille
-	 * @return Societe
-	 */
-	public function setFamille($famille) {
-		$this->famille = $famille;
-		return $this;
-	}
+
 	
 	/**
 	 * @return boolean
@@ -275,16 +214,6 @@ class Societe
     }
 
     /**
-     * Remove famille
-     *
-     * @param Famille $famille
-     */
-    public function removeFamille(Famille $famille)
-    {
-        $this->famille->removeElement($famille);
-    }
-
-    /**
      * Add administrateur
      *
      * @param Utilisateur $administrateur
@@ -381,66 +310,6 @@ class Societe
     public function getAuditeur()
     {
         return $this->auditeur;
-    }
-
-    /**
-     * Add colonne
-     *
-     * @param Colonne $colonne
-     * @return Societe
-     */
-    public function addColonne(Colonne $colonne)
-    {
-        $this->colonne[] = $colonne;
-    
-        return $this;
-    }
-
-    /**
-     * Remove colonne
-     *
-     * @param Colonne $colonne
-     */
-    public function removeColonne(Colonne $colonne)
-    {
-        $this->colonne->removeElement($colonne);
-    }
-
-    /**
-     * Add relances
-     *
-     * @param Relance $relances
-     * @return Societe
-     */
-    public function addRelance(Relance $relances)
-    {
-        $this->relances[] = $relances;
-    
-        return $this;
-    }
-
-    /**
-     * Remove relances
-     *
-     * @param Relance $relances
-     */
-    public function removeRelance(Relance $relances)
-    {
-        $this->relances->removeElement($relances);
-    }
-
-    /**
-     * Get relances
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRelances()
-    {
-        return $this->relances;
-    }
-    
-    public function getRelance(){
-    	return $this->relances->first();
     }
 
     /**

@@ -57,25 +57,9 @@ class Notification
      */
     private $dateModification;
 
-    /**
-     * @var TypeNotification
-     *
-     * @ORM\ManyToOne(targetEntity="TypeNotification")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="type_id", referencedColumnName="id")
-     * })
-     */
-    private $type;
+    
 
-    /**
-     * @var Utilisateur
-     *
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
-     */
-    private $user;
+   
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -92,29 +76,11 @@ class Notification
      */
     private $receivers;
 
-    /**
-     * @var NotificationControle
-     * @ORM\OneToOne(targetEntity="NotificationControle", mappedBy="notification", cascade={"persist", "merge", "remove"})
-     */
-    private $notificationControle;
+   
 
-    /**
-     * @var NotificationRisque
-     * @ORM\OneToOne(targetEntity="NotificationRisque", mappedBy="notification", cascade={"persist", "merge", "remove"})
-     */
-    private $notificationRisque;
+   
 
-    /**
-     * @var NotificationExecution
-     * @ORM\OneToOne(targetEntity="NotificationExecution", mappedBy="notification", cascade={"persist", "merge", "remove"})
-     */
-    private $notificationExecution;
-
-    /**
-     * @var NotificationPlanAction
-     * @ORM\OneToOne(targetEntity="NotificationPlanAction", mappedBy="notification", cascade={"persist", "merge", "remove"})
-     */
-    private $notificationPa;
+    
 
 
     public function __construct() {

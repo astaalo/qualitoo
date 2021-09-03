@@ -80,33 +80,10 @@ class Projet
      */
     private $etat = 0;
 
-    /**
-     * @var Utilisateur
-     * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="projet")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id")
-     * })
-     */
-    private $utilisateur;
+    
 
-    /**
-     * @var Societe
-     * @ORM\ManyToOne(targetEntity="Societe")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="societe_id", referencedColumnName="id")
-     * })
-     */
-    private $societe;
 
-    /**
-     * @var Processus
-     *
-     * @ORM\ManyToOne(targetEntity="Processus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="processus_id", referencedColumnName="id")
-     * })
-     */
-    private $processus;
+    
 
 
     /**

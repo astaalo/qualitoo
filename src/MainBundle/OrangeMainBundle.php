@@ -32,7 +32,7 @@ class OrangeMainBundle extends Bundle
 		// \App\Entity\Risque::$carto = $ids['carto'];
 		// \App\Entity\TypeEvaluation::$ids = $ids['type_evaluation'];
 		// \App\Entity\ModeFonctionnement::$ids = $ids['mode_fonctionnement'];
-		\App\Entity\Projet::$states = $states['projet'];
+		//\App\Entity\Projet::$states = $states['projet'];
 		// \App\Entity\Equipement::$types = $types['equipement'];
 		// \App\Entity\Rapport::$types = $types['rapportChargement'];
 	}

@@ -88,11 +88,7 @@ class PlanAction implements NotificationInterface
      */
     public  $dateFinTo;
 
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ORM\OneToMany(targetEntity="NotificationPlanAction", mappedBy="pa", cascade={"remove"})
-     */
-    private $notificationPA;
+    
 
     /**
      * @var boolean
@@ -101,92 +97,25 @@ class PlanAction implements NotificationInterface
      */
     private $etat = true;
 
-    /**
-     * @var Utilisateur
-     *
-     * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="paOfPorteur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="porteur", referencedColumnName="id")
-     * })
-     * @Assert\NotNull(message="Le nom du porteur est obligatoire", groups={"Validation"})
-     */
-    private $porteur;
+    
 
-    /**
-     * @var Structure
-     *
-     * @ORM\ManyToOne(targetEntity="Structure")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="structure_porteur", referencedColumnName="id")
-     * })
-     */
-    private $structurePorteur;
+   
 
-    /**
-     * @var Utilisateur
-     *
-     * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="paOfSuperviseur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="superviseur", referencedColumnName="id")
-     * })
-     */
-    private $superviseur;
+   
 
-    /**
-     * @var Structure
-     *
-     * @ORM\ManyToOne(targetEntity="Structure")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="structure_superviseur", referencedColumnName="id")
-     * })
-     */
-    private $structureSuperviseur;
+    
 
-    /**
-     * @var Statut
-     * @ORM\ManyToOne(targetEntity="Statut")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="statut_id", referencedColumnName="id")
-     * })
-     */
-    private $statut;
+   
 
-    /**
-     * @var Controle
-     * @ORM\OneToOne(targetEntity="Controle", cascade={"persist", "merge", "remove"})
-     * @ORM\JoinColumn(name="controle_id", referencedColumnName="id")
-     */
-    private $controle;
+    
 
-    /**
-     * @var Controle
-     * @ORM\OneToOne(targetEntity="Controle", mappedBy="planAction")
-     */
-    private $toControle;
+   
+   
 
-    /**
-     * @var RisqueHasCause
-     * @ORM\ManyToOne(targetEntity="RisqueHasCause")
-     * @ORM\JoinColumn(name="risque_cause_id", referencedColumnName="id")
-     * @Assert\NotNull(message="Veuiller choisir la cause du risque")
-     */
-    private $causeOfRisque;
+    
 
-    /**
-     * @var Cause
-     */
-    private $cause;
 
-    /**
-     * @var Risque
-     */
-    private $risque;
-
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ORM\OneToMany(targetEntity="Avancement", mappedBy="planAction", cascade={"remove", "merge", "persist"})
-     */
-    private $avancement;
+   
 
     /**
      * @var string

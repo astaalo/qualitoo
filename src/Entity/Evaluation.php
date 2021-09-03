@@ -28,24 +28,7 @@ class Evaluation
      */
     private $dateEvaluation;
 
-    /**
-     * @var Utilisateur
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="evaluateur", referencedColumnName="id")
-     * })
-     */
-    private $evaluateur;
-
-    /**
-     * @var Utilisateur
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="validateur", referencedColumnName="id", nullable=true)
-     * })
-     */
-    private $validateur;
-
+    
     /**
      * @var integer
      *
@@ -60,48 +43,9 @@ class Evaluation
      */
     private $gravite;
 
-    /**
-     * @var Criticite
-     * @ORM\ManyToOne(targetEntity="Criticite")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="criticite_id", referencedColumnName="id")
-     * })
-     */
-    private $criticite;
 
-    /**
-     * @var Risque
-     * @ORM\ManyToOne(targetEntity="Risque", cascade={"persist", "merge"})
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="risque_id", referencedColumnName="id")
-     * })
-     */
-    private $risque;
-
-    /**
-     * @var Evaluation
-     *
-     * @ORM\ManyToOne(targetEntity="Evaluation")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="precedant", referencedColumnName="id")
-     * })
-     */
-    private $precedant;
-
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="EvaluationHasImpact", orphanRemoval=true, mappedBy="evaluation", cascade={"persist", "merge"})
-     */
-    private $impactOfEvaluation;
-
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="EvaluationHasCause", orphanRemoval=true, mappedBy="evaluation", cascade={"persist", "merge"})
-     */
-    private $causeOfEvaluation;
-    
+   
+   
     /**
      * @var boolean
      *

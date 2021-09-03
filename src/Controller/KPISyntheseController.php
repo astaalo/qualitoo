@@ -1,15 +1,11 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Menace;
-use App\Entity\Quiz;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use App\Criteria\RisqueCriteria;
-use App\Entity\Risque;
 use App\Entity\Controle;
 use Blameable\Fixture\Document\Type;
 use Symfony\Component\HttpFoundation\JsonResponse;

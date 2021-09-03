@@ -29,7 +29,7 @@ interface TreeInterface
      */
     public function addChildren($children);
     
-    /**
+    /**  
      * Remove children
      *
      * @param \App\Model\TreeInterface $children

@@ -3,8 +3,6 @@
 namespace App\Service;
 
 use App\Entity\Utilisateur;
-use App\Entity\Risque;
-use App\Entity\Notification;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Security;
 

@@ -59,7 +59,7 @@ class DashboardController extends BaseController
             )
         );
         // BLOC CONTROLE ET MAITRISE
-        $typeSh     = $typeDocumentRepo->findOneBy(array('code'=>TypeDocument::TYPE_TDB));
+        //$typeSh     = $typeDocumentRepo->findOneBy(array('code'=>TypeDocument::TYPE_TDB));
         $gridItems[] = array(
             'header'	=> "Administrer Les Documents",
             'roles'		=> array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_PORTEUR', 'ROLE_SUPERVISEUR', 'ROLE_RESPONSABLE'),
@@ -73,7 +73,8 @@ class DashboardController extends BaseController
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Document",
                     'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER'),
-                    'path'	=> $typeSh? $this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$typeSh->getId())):'#'
+                    'path'	=> $this->generateUrl('les_processus')
+                    //'path'	=> $typeSh? $this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$typeSh->getId())):'#'
                 )
 
             )
@@ -97,11 +98,11 @@ class DashboardController extends BaseController
                     'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE', 'ROLE_CHEFPROJET', 'ROLE_SUPERVISEUR', 'ROLE_PORTEUR'),
                     'path'	=> $this->generateUrl('les_processus')
                 ), array(
-                    'icon'	=> 'cutter.png',
+                    'icon'	=> 'add.png',
                     'text'	=> "Recherche Utilisateur",
                     'width' => '50%',
                     'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE', 'ROLE_CHEFPROJET'),
-                    'path'	=> $this->generateUrl('choix_carto',array('carto' =>$default_carto_by_profil, 'link'=>'les_risques_rejetes'))
+                    'path'	=> $this->generateUrl('choix_carto',array('carto' =>$default_carto_by_profil, 'link'=>'les_processus'))
                 ),array(
                     'icon'	=> 'stats_lines.png',
                     'text'	=> "Statistiques",

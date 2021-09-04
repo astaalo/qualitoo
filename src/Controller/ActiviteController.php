@@ -71,32 +71,6 @@ class ActiviteController extends BaseController
 	}
 
 	/**
-	 * @QMLogger(message="Affichage d'une activité")
-	 * @Route("/{id}/details_activite", name="details_activite", requirements={ "id"=  "\d+"})
-	 * @Template()
-	 *
-	 */
-	public function showAction($id, RisqueRepository $risqueRepo)
-	{
-		$em = $this->getDoctrine()->getManager();
-		$activite = $em->getRepository('App\Entity\Activite')->find($id);
-		$this->denyAccessUnlessGranted('read', $activite, 'Accés non autorisé');
-
-		$dataId = array();
-        $errorOnRisque = false ;
-		foreach ($activite->getRisque() as $rm){
-            try {
-                $dataId[] = $rm->getRisque()->getId();
-                $rm->getRisque()->getCartographie();
-            } catch (EntityNotFoundException $e){
-                $errorOnRisque = true;
-                //break;
-            }
-        }
-		return array('entitie' => $activite, 'errorOnRisque' => $errorOnRisque, 'dataId' => $dataId);
-	}
-
-	/**
 	 * @QMLogger(message="Suppression d'une activite")
 	 * @Route("/{id}/supprimer_activite", name="supprimer_activite", requirements={ "id"=  "\d+"})
 	 * @Template()

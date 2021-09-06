@@ -82,12 +82,12 @@
     <div id="header">
         <div class="logo"></div>
         <div id="account_info">
-            {# {% if has_rights('ROLE_ADMIN') or has_rights('ROLE_SUPER_ADMIN') or has_rights('ROLE_RISKMANAGER') or has_rights('ROLE_AUDITEUR') %} #}
+            {# {% if has_rights('ROLE_ADMIN') or has_rights('ROLE_SUPER_ADMIN') %} #}
             <div id="societe_choice">
 	                	<span>{% if app.user.societe and app.user.societe.photo %}<img src="{{ asset(app.user.societe.webPath) }}" />{% endif %}
 	                		<b>{{ app.user.societe?app.user.societe:"" }}</b>
 	                	</span>
-                {% set societes = app.user.allSocietes %}
+                {% set societes = app.user.societe %}
 
                 <span class="scroll_down_menu"></span>
                 <ul style="display: none;">

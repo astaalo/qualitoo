@@ -38,7 +38,7 @@ class DashboardController extends BaseController
         // BLOC RISQUE
         $gridItems[] = array(
             'header'	=> "Administrer Processus",
-            'roles'		=> array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE'),
+            'roles'		=> array('ROLE_ADMIN'),
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',
@@ -62,52 +62,48 @@ class DashboardController extends BaseController
         //$typeSh     = $typeDocumentRepo->findOneBy(array('code'=>TypeDocument::TYPE_TDB));
         $gridItems[] = array(
             'header'	=> "Administrer Les Documents",
-            'roles'		=> array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_PORTEUR', 'ROLE_SUPERVISEUR', 'ROLE_RESPONSABLE'),
+            'roles'		=> array('ROLE_ADMIN'),
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Document",
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER'),
+                    'roles' => array('ROLE_ADMIN'),
                     'path'	=> $this->generateUrl('nouveau_processus')
                 ),array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Document",
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER'),
+                    'roles' => array('ROLE_ADMIN'),
                     'path'	=> $this->generateUrl('les_processus')
                     //'path'	=> $typeSh? $this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$typeSh->getId())):'#'
                 )
 
             )
         );
-        $default_carto_by_profil = ($utilisateur->hasRole('ROLE_RESPONSABLE_ONLY') && !$utilisateur->isManager()) ? $this->getParameter('ids')['carto']['sst'] : $this->getParameter('ids')['carto']['metier'];
+        //$default_carto_by_profil = ($utilisateur->hasRole('ROLE_RESPONSABLE_ONLY') && !$utilisateur->isManager()) ? $this->getParameter('ids')['carto']['sst'] : $this->getParameter('ids')['carto']['metier'];
         // BLOC Evaluation
         $gridItems[] = array(
             'header'	=> "Administrer Les Utilisateurs",
-            'roles'		=> array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE', 'ROLE_CHEFPROJET', 'ROLE_SUPERVISEUR', 'ROLE_PORTEUR'),
+            'roles'		=> array('ROLE_ADMIN'),
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Utilisateur",
                     'width' => '50%',
-                    'roles' =>array('ROLE_PORTEUR'),
-                    'path'	=> $this->generateUrl('choix_carto',array('carto' =>$default_carto_by_profil, 'link'=>'nouveau_processus'))
                 ), array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Utilisateur",
                     'width' => '40%',
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE', 'ROLE_CHEFPROJET', 'ROLE_SUPERVISEUR', 'ROLE_PORTEUR'),
+                    'roles' => array('ROLE_ADMIN'),
                     'path'	=> $this->generateUrl('les_processus')
                 ), array(
                     'icon'	=> 'add.png',
                     'text'	=> "Recherche Utilisateur",
                     'width' => '50%',
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE', 'ROLE_CHEFPROJET'),
-                    'path'	=> $this->generateUrl('choix_carto',array('carto' =>$default_carto_by_profil, 'link'=>'les_processus'))
                 ),array(
                     'icon'	=> 'stats_lines.png',
                     'text'	=> "Statistiques",
                     'width' => '40%',
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE', 'ROLE_CHEFPROJET', 'ROLE_SUPERVISEUR', 'ROLE_PORTEUR'),
+                    'roles' => array('ROLE_ADMIN'),
                     'path'	=> $this->generateUrl('les_processus')
                 )/*, array(
                     'icon'	=> 'stats_lines.png',
@@ -130,17 +126,17 @@ class DashboardController extends BaseController
         // BLOC Reporting et veille
         $gridItems[] = array(
             'header'	=> "Administrer Entités",
-            'roles'		=> array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE'),
+            'roles'		=> array('ROLE_ADMIN'),
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Entités",
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_RESPONSABLE', 'ROLE_AUDITEUR'),
+                    'roles' => array('ROLE_ADMIN'),
                     'path'	=> $this->generateUrl('nouveau_processus')
                 ), array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Entités",
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_RESPONSABLE', 'ROLE_AUDITEUR'),
+                    'roles' => array('ROLE_ADMIN'),
                     'path'	=> $this->generateUrl('les_processus')
                 )/*, array(
                     'icon'	=> 'calculator.png',
@@ -158,14 +154,14 @@ class DashboardController extends BaseController
         // BLOC Administration et Exploitation
         $gridItems[] = array(
             'header'	=> "Administrer Les Societes",
-            'roles'		=> array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_RESPONSABLE'),
+            'roles'		=> array('ROLE_ADMIN'),
             //'rows'		=> array(),
-            'path'		=> ($this->getUser()->hasRole('ROLE_ADMIN')|| $this->getUser()->hasRole('ROLE_RISKMANAGER'))?$this->generateUrl('les_processus'):'#',
+            'path'		=> ($this->getUser()->hasRole('ROLE_ADMIN')|| $this->getUser())?$this->generateUrl('les_processus'):'#',
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Société",
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RESPONSABLE'),
+                    'roles' => array('ROLE_ADMIN'),
                     'path'	=> $this->generateUrl('nouveau_processus')
                 ),
                 array(

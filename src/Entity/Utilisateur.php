@@ -19,14 +19,6 @@ class Utilisateur extends User
 {
 	const ROLE_SUPER_ADMIN			= 'ROLE_SUPER_ADMIN';
 	const ROLE_ADMIN				= 'ROLE_ADMIN';
-	const ROLE_RISKMANAGER 			= 'ROLE_RISKMANAGER';
-	const ROLE_CHEFPROJET 			= 'ROLE_CHEFPROJET';
-	const ROLE_RESPONSABLE 			= 'ROLE_RESPONSABLE';
-	const ROLE_RESPONSABLE_ONLY 	= 'ROLE_RESPONSABLE_ONLY';
-	const ROLE_AUDITEUR 			= 'ROLE_AUDITEUR';
-	const ROLE_CONSULTEUR			= 'ROLE_CONSULTEUR';
-	const ROLE_SUPERVISEUR 			= 'ROLE_SUPERVISEUR';
-	const ROLE_PORTEUR 				= 'ROLE_PORTEUR';
 	const ROLE_USER 				= 'ROLE_USER';
 	
     /**
@@ -112,85 +104,7 @@ class Utilisateur extends User
      * })
      */
     private $societe;
-	
-    /**
-     * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Societe", inversedBy="administrateur")
-     * @ORM\JoinTable(name="administrateur",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="societe_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $societeOfAdministrator;
-
-    /**
-     * @var Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Societe", inversedBy="auditeur")
-     * @ORM\JoinTable(name="auditeur",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="societe_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $societeOfAuditor;
-    
-    /**
-     * @var Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Structure", inversedBy="consulteur")
-     * @ORM\JoinTable(name="consulteur",
-     *   joinColumns={ @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id") },
-     *   inverseJoinColumns={ @ORM\JoinColumn(name="structure_id", referencedColumnName="id") }
-     * )
-     */
-    private $structureOfConsulteur;
-
-    /**
-     * @var Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Societe", inversedBy="riskManager")
-     * @ORM\JoinTable(name="risk_manager",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="societe_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $societeOfRiskManager;
-	
-    /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="PlanAction", mappedBy="porteur")
-     */
-    private $paOfPorteur;
-	
-    /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="PlanAction", mappedBy="superviseur")
-     */
-    private $paOfSuperviseur;
-
-    /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="Controle", mappedBy="porteur")
-     */
-    private $controleOfPorteur;
-
-    /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="Controle", mappedBy="superviseur")
-     */
-    private $controleOfSuperviseur;
+   
 
     /**
      * Constructor
@@ -240,151 +154,6 @@ class Utilisateur extends User
 		return $this;
 	}
 	
-	/**
-	 * @return boolean
-	 */
-	public function hasSocieteOfAdministrator() {
-		return $this->societeOfAdministrator->count() ? true : false;
-	}
-	
-	/**
-	 * @return Collection
-	 */
-	public function getSocieteOfAdministrator() {
-		return $this->societeOfAdministrator;
-	}
-	
-	public function setSocieteOfAdministrator($societeOfAdministrator) {
-		if(!$this->societe) {
-			$this->societe = $societeOfAdministrator->count() ? $societeOfAdministrator->get(0) : null;
-		}
-		$this->societeOfAdministrator = $societeOfAdministrator;
-		return $this;
-	}
-	
-	/**
-	 * check if is administrator of this societe
-	 * @param integer $societeId
-	 * @return boolean
-	 */
-	public function isAdministratorOf($societeId) {
-		$data = $this->societeOfAdministrator->filter(function($societe) use($societeId) {
-				return $societeId && $societe->getId()==$societeId;
-			});
-		return $data->count() ? true : false;
-	}
-	
-	/**
-	 * @return boolean
-	 */
-	public function hasSocieteOfAuditor() {
-		return $this->societeOfAuditor->count() ? true : false;
-	}
-	
-	/**
-	 * @return Collection
-	 */
-	public function getSocieteOfAuditor() {
-		return $this->societeOfAuditor;
-	}
-	
-	public function setSocieteOfAuditor($societeOfAuditor) {
-		if(!$this->societe) {
-			$this->societe = $societeOfAuditor->count() ? $societeOfAuditor->get(0) : null;
-		}
-		$this->societeOfAuditor = $societeOfAuditor;
-		return $this;
-	}
-	
-	/**
-	 * @return boolean
-	 */
-	public function hasStructureOfConsulteur() {
-		return $this->structureOfConsulteur->count() ? true : false;
-	}
-	
-	/**
-	 * @return Collection
-	 */
-	public function getStructureOfConsulteur() {
-		return $this->structureOfConsulteur;
-	}
-	
-	public function setStructureOfConsulteur($structureOfConsulteur) {
-		if(!$this->structure) {
-			$this->structure = $structureOfConsulteur->count() ? $structureOfConsulteur->get(0) : null;
-		}
-		$this->structureOfConsulteur= $structureOfConsulteur;
-		return $this;
-	}
-	
-	/**
-	 * check if is auditor of this societe
-	 * @param integer $societeId
-	 * @return boolean
-	 */
-	public function isAuditorOf($societeId) {
-		$data = $this->societeOfAuditor->filter(function($societe) use($societeId) {
-				return $societeId && $societe->getId()==$societeId;
-			});
-		return $data->count() ? true : false;
-	}
-	
-	/**
-	 * check if is consulteur of this structure
-	 * @param integer $structureId
-	 * @return boolean
-	 */
-	public function isConsulteurOf($structureId) {
-		$data = $this->structureOfConsulteur->filter(function($structure) use($structureId) {
-				return $structureId && $structure->getId()==$structureId;
-			});
-		return $data->count() ? true : false;
-	}
-	
-	/**
-	 * @return Collection
-	 */
-	public function getSocieteOfRiskManager() {
-		return $this->societeOfRiskManager;
-	}
-	
-	public function setSocieteOfRiskManager($societeOfRiskManager) {
-		if(!$this->societe) {
-			$this->societe = $societeOfRiskManager->count() ? $societeOfRiskManager->get(0) : null;
-		}
-		$this->societeOfRiskManager = $societeOfRiskManager;
-		return $this;
-	}
-
-	/**
-	 * @return boolean
-	 */
-	public function hasSocieteOfRiskManager() {
-		return $this->societeOfRiskManager->count() ? true : false;
-	}
-	
-	/**
-	 * check if is riskManager of this societe
-	 * @param integer $societeId
-	 * @return boolean
-	 */
-	public function isRiskManagerOf($societeId) {
-		$data = $this->societeOfRiskManager->filter(function($societe) use($societeId) {
-				return $societeId && $societe->getId()==$societeId;
-			});
-		return $data->count() ? true : false;
-	}
-	
-	/**
-	 * @param number $societeId
-	 * @return ArrayCollection
-	 */
-	public function getProjetOf($societeId) {
-		return $this->projet->filter(function($projet) use($societeId) {
-				return $projet->getSociete()->getId()==$societeId;
-			});
-	}
 	
 	/**
 	 * @return integer
@@ -452,34 +221,7 @@ class Utilisateur extends User
 		return $this->societe;
 	}
 	
-	/**
-	 * @return ArrayCollection
-	 */
-	public function getAllSocietes() {
-		$data = new ArrayCollection();
-		$ids = array();
-		$data->add($this->structure->getSociete());
-		$ids[] = $this->structure->getSociete()->getId();
-		foreach($this->societeOfAdministrator as $societe) {
-			if(in_array($societe->getId(), $ids)==false) {
-				array_push($ids, $societe->getId());
-				$data->add($societe);
-			}
-		}
-		foreach($this->societeOfRiskManager as $societe) {
-			if(in_array($societe->getId(), $ids)==false) {
-				array_push($ids, $societe->getId());
-				$data->add($societe);
-			}
-		}
-		foreach($this->societeOfAuditor as $societe) {
-			if(in_array($societe->getId(), $ids)==false) {
-				array_push($ids, $societe->getId());
-				$data->add($societe);
-			}
-		}
-		return $data;
-	}
+	
 	
 	/**
      * Get libelle
@@ -500,21 +242,7 @@ class Utilisateur extends User
     {
     	if($this->hasRole('ROLE_ADMIN')) {
     		return 'Super Administrateur';
-    	} elseif($this->hasSocieteOfAdministrator()) {
-    		return "Administrateur";
-    	} elseif($this->hasSocieteOfAuditor()) {
-    		return "Auditeur";
-    	}  elseif($this->hasStructureOfConsulteur()) {
-    		return "Consulteur de Risques";
-    	}  elseif($this->hasSocieteOfRiskManager()) {
-    		return "Risk Manager";
-    	} elseif($this->manager) {
-    		return "Responsable de processus";
-    	} elseif($this->controleOfSuperviseur->count() || $this->paOfSuperviseur->count()) {
-    		return "Superviseur";
-    	} elseif($this->site->count()>0) {
-    		return "Responsable de site";
-    	} else{
+    	}else{
     		return "Simple utilisateur"; 
     	}
     }
@@ -527,28 +255,9 @@ class Utilisateur extends User
     	$societeId = $societeId ? $societeId : ($this->societe ? $this->societe->getId() : null);
     	if(strtoupper($role)==self::ROLE_SUPER_ADMIN) {
     		return parent::hasRole(self::ROLE_ADMIN);
-    	}  elseif(strtoupper($role)==self::ROLE_ADMIN) {
-    		return parent::hasRole(self::ROLE_SUPER_ADMIN) || $this->isAdministratorOf($societeId);
-    	}  elseif(strtoupper($role)==self::ROLE_RISKMANAGER) {
-    		return $this->isRiskManagerOf($societeId)|| $this->isAdministratorOf($societeId);
-    	}  elseif(strtoupper($role)==self::ROLE_AUDITEUR) {
-    		return $this->isAuditorOf($societeId) || $this->isAdministratorOf($societeId);
-    	}  elseif(strtoupper($role)==self::ROLE_PORTEUR) {
-    		return true;
-    	}  elseif(strtoupper($role)==self::ROLE_SUPERVISEUR) {
-    		return $this->paOfSuperviseur->count() || $this->controleOfSuperviseur->count() || $this->isAdministratorOf($societeId);
-    	} elseif(strtoupper($role)==self::ROLE_RESPONSABLE) {
-    		return $this->manager || $this->isAdministratorOf($societeId) || $this->getSite()->count()>0;
-    	} elseif(strtoupper($role)==self::ROLE_CHEFPROJET) {
-    		return $this->getProjetOf($societeId)->count()>0;
-    	} elseif(strtoupper($role)==self::ROLE_USER) {
+    	}  elseif(strtoupper($role)==self::ROLE_USER) {
     		return in_array(strtoupper($role), $this->roles);
-    	} elseif(strtoupper($role)==self::ROLE_RESPONSABLE_ONLY){
-    		return ($this->manager || $this->getSite()->count()>0 ) &&
-    				! (parent::hasRole(self::ROLE_SUPER_ADMIN) || $this->isAdministratorOf($societeId)) &&
-    				! ($this->isAuditorOf($societeId) || $this->isAdministratorOf($societeId)) &&
-    				! ( $this->isRiskManagerOf($societeId)|| $this->isAdministratorOf($societeId));
-    	}else
+    	}
     		return false;
     }
     
@@ -558,7 +267,7 @@ class Utilisateur extends User
     public function takeRoles()
     {
     	$roles = array();
-		$roles_possibles = array(self::ROLE_SUPER_ADMIN, self::ROLE_ADMIN,self::ROLE_RISKMANAGER,self::ROLE_AUDITEUR ,self::ROLE_PORTEUR,self::ROLE_SUPERVISEUR,self::ROLE_RESPONSABLE,self::ROLE_USER);    
+		$roles_possibles = array(self::ROLE_SUPER_ADMIN, self::ROLE_ADMIN,self::ROLE_USER);    
     	foreach ($roles_possibles as $role) {
     		if($this->hasRole($role))
     			 $roles[]= $role;
@@ -633,74 +342,7 @@ class Utilisateur extends User
     	return $this->connectWindows;
     }
 
-    /**
-     * Add societeOfAdministrator
-     *
-     * @param Societe $societeOfAdministrator
-     * @return Utilisateur
-     */
-    public function addSocieteOfAdministrator(Societe $societeOfAdministrator)
-    {
-        $this->societeOfAdministrator[] = $societeOfAdministrator;
-
-        return $this;
-    }
-
-    /**
-     * Remove societeOfAdministrator
-     *
-     * @param Societe $societeOfAdministrator
-     */
-    public function removeSocieteOfAdministrator(Societe $societeOfAdministrator)
-    {
-        $this->societeOfAdministrator->removeElement($societeOfAdministrator);
-    }
-
-    /**
-     * Add societeOfAuditor
-     *
-     * @param Societe $societeOfAuditor
-     * @return Utilisateur
-     */
-    public function addSocieteOfAuditor(Societe $societeOfAuditor)
-    {
-        $this->societeOfAuditor[] = $societeOfAuditor;
-
-        return $this;
-    }
-
-    /**
-     * Remove societeOfAuditor
-     *
-     * @param Societe $societeOfAuditor
-     */
-    public function removeSocieteOfAuditor(Societe $societeOfAuditor)
-    {
-        $this->societeOfAuditor->removeElement($societeOfAuditor);
-    }
-
-    /**
-     * Add societeOfRiskManager
-     *
-     * @param Societe $societeOfRiskManager
-     * @return Utilisateur
-     */
-    public function addSocieteOfRiskManager(Societe $societeOfRiskManager)
-    {
-        $this->societeOfRiskManager[] = $societeOfRiskManager;
-
-        return $this;
-    }
-
-    /**
-     * Remove societeOfRiskManager
-     *
-     * @param Societe $societeOfRiskManager
-     */
-    public function removeSocieteOfRiskManager(Societe $societeOfRiskManager)
-    {
-        $this->societeOfRiskManager->removeElement($societeOfRiskManager);
-    }
+    
     /**
      * Add site
      *

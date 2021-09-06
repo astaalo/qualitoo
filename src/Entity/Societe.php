@@ -58,19 +58,6 @@ class Societe
      */
     protected $administrateur;
     
-    /** 
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Utilisateur", mappedBy="societeOfRiskManager", cascade={"persist","remove","merge"})
-     */
-    protected $riskManager;
-    
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Utilisateur", mappedBy="societeOfAuditor", cascade={"persist","remove","merge"})
-     */
-    protected $auditeur;
-    
-
     /**
      * Constructor
      */
@@ -197,21 +184,6 @@ class Societe
 		$this->photo = $photo;
 		return $this;
 	}
-	
-	
-
-    /**
-     * Add famille
-     *
-     * @param Famille $famille
-     * @return Societe
-     */
-    public function addFamille(Famille $famille)
-    {
-        $this->famille[] = $famille;
-
-        return $this;
-    }
 
     /**
      * Add administrateur
@@ -244,72 +216,6 @@ class Societe
     public function getAdministrateur()
     {
         return $this->administrateur;
-    }
-
-    /**
-     * Add riskManager
-     *
-     * @param Utilisateur $riskManager
-     * @return Societe
-     */
-    public function addRiskManager(Utilisateur $riskManager)
-    {
-        $this->riskManager[] = $riskManager;
-
-        return $this;
-    }
-
-    /**
-     * Remove riskManager
-     *
-     * @param Utilisateur $riskManager
-     */
-    public function removeRiskManager(Utilisateur $riskManager)
-    {
-        $this->riskManager->removeElement($riskManager);
-    }
-	
-    /**
-     * Get riskManager
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRiskManager()
-    {
-        return $this->riskManager;
-    }
-	
-    /**
-     * Add auditeur
-     *
-     * @param Utilisateur $auditeur
-     * @return Societe
-     */
-    public function addAuditeur(Utilisateur $auditeur)
-    {
-        $this->auditeur[] = $auditeur;
-
-        return $this;
-    }
-
-    /**
-     * Remove auditeur
-     *
-     * @param Utilisateur $auditeur
-     */
-    public function removeAuditeur(Utilisateur $auditeur)
-    {
-        $this->auditeur->removeElement($auditeur);
-    }
-
-    /**
-     * Get auditeur
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAuditeur()
-    {
-        return $this->auditeur;
     }
 
     /**

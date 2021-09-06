@@ -6,15 +6,13 @@ use App\Repository\StructureRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Model\TreeInterface;
 
 /**
  * Structure
- * @Gedmo\Tree(type="nested")
  * @ORM\Table(name="structure")
  * @ORM\Entity(repositoryClass=StructureRepository::class)
  */
-class Structure extends Tree implements TreeInterface
+class Structure
 {
     /**
      * @ORM\Id
@@ -84,28 +82,10 @@ class Structure extends Tree implements TreeInterface
     private $societe;
 
     /**
-     * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="Structure", inversedBy="children", cascade={"persist", "merge","remove"})
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
-     */
-    protected $parent;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Structure", mappedBy="parent")
-     * @ORM\OrderBy({"lft" = "ASC"})
-     */
-    protected $children;
-
-    /**
      * @ORM\OneToMany(targetEntity="Utilisateur", mappedBy="structure")
      */
     protected $utilisateur;
 
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Utilisateur", mappedBy="structureOfConsulteur", cascade={"persist","remove","merge"})
-     */
-    protected $consulteur;
 
     public function __construct() {
         $this->dateCreation = new \DateTime('NOW');
@@ -303,40 +283,6 @@ class Structure extends Tree implements TreeInterface
     }
 
     /**
-     * Add children
-     *
-     * @param Structure $children
-     * @return Structure
-     */
-    public function addChild(Structure $children)
-    {
-        $this->children[] = $children;
-
-        return $this;
-    }
-
-    /**
-     * Remove children
-     *
-     * @param Structure $children
-     */
-    public function removeChild(Structure $children)
-    {
-        $this->children->removeElement($children);
-    }
-
-    /**
-     * @return array
-     */
-    public function getChildrenIds() {
-        $ids= array($this->getId());
-        foreach($this->children as $child) {
-            $ids = array_merge($ids, $child->getChildrenIds());
-        }
-        return $ids;
-    }
-
-    /**
      * Add utilisateur
      *
      * @param Utilisateur $utilisateur
@@ -366,31 +312,5 @@ class Structure extends Tree implements TreeInterface
     public function getUtilisateur()
     {
         return $this->utilisateur;
-    }
-
-    /**
-     * Add consulteur
-     * @param Utilisateur $consulteur
-     * @return Structure
-     */
-    public function addConsulteur(Utilisateur $consulteur) {
-        $this->consulteur[] = $consulteur;
-        return $this;
-    }
-
-    /**
-     * Remove consulteur
-     * @param Utilisateur $consulteur
-     */
-    public function removeConsulteur(Utilisateur $consulteur) {
-        $this->consulteur->removeElement($consulteur);
-    }
-
-    /**
-     * Get consulteur
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getConsulteur() {
-        return $this->consulteur;
     }
 }

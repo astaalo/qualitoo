@@ -90,7 +90,6 @@ class Processus extends Tree implements TreeInterface
      */
     private $typeProcessus;
 
-
     /**
      * @var Processus
      *

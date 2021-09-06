@@ -15,10 +15,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="utilisateur")
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  */
-class Utilisateur extends User
+class Utilisateur extends User implements UtilisateurInterface
 {
 	const ROLE_SUPER_ADMIN			= 'ROLE_SUPER_ADMIN';
 	const ROLE_ADMIN				= 'ROLE_ADMIN';
+	const ROLE_RESPONSABLE 			= 'ROLE_RESPONSABLE';
+	const ROLE_RESPONSABLE_ONLY 	= 'ROLE_RESPONSABLE_ONLY';
 	const ROLE_USER 				= 'ROLE_USER';
 	
     /**
@@ -89,14 +91,6 @@ class Utilisateur extends User
     private $structure;
     
     /**
-     * @var Site
-     *
-     * @ORM\OneToMany(targetEntity="Site", mappedBy="responsable")
-     */
-    private $site;
-    
-    
-    /**
      * @var Societe
      * @ORM\ManyToOne(targetEntity="Societe")
      * @ORM\JoinColumns({
@@ -104,7 +98,20 @@ class Utilisateur extends User
      * })
      */
     private $societe;
-   
+	
+    /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Societe", inversedBy="administrateur")
+     * @ORM\JoinTable(name="administrateur",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="societe_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $societeOfAdministrator;
 
     /**
      * Constructor
@@ -113,9 +120,6 @@ class Utilisateur extends User
     {
     	parent::__construct();
         $this->societeOfAdministrator = new ArrayCollection();
-        $this->societeOfRiskManager = new ArrayCollection();
-        $this->societeOfAuditor = new ArrayCollection();
-        $this->structureOfConsulteur = new ArrayCollection();
     }
     
     /**
@@ -154,6 +158,39 @@ class Utilisateur extends User
 		return $this;
 	}
 	
+	/**
+	 * @return boolean
+	 */
+	public function hasSocieteOfAdministrator() {
+		return $this->societeOfAdministrator->count() ? true : false;
+	}
+	
+	/**
+	 * @return Collection
+	 */
+	public function getSocieteOfAdministrator() {
+		return $this->societeOfAdministrator;
+	}
+	
+	public function setSocieteOfAdministrator($societeOfAdministrator) {
+		if(!$this->societe) {
+			$this->societe = $societeOfAdministrator->count() ? $societeOfAdministrator->get(0) : null;
+		}
+		$this->societeOfAdministrator = $societeOfAdministrator;
+		return $this;
+	}
+	
+	/**
+	 * check if is administrator of this societe
+	 * @param integer $societeId
+	 * @return boolean
+	 */
+	public function isAdministratorOf($societeId) {
+		$data = $this->societeOfAdministrator->filter(function($societe) use($societeId) {
+				return $societeId && $societe->getId()==$societeId;
+			});
+		return $data->count() ? true : false;
+	}
 	
 	/**
 	 * @return integer
@@ -221,7 +258,22 @@ class Utilisateur extends User
 		return $this->societe;
 	}
 	
-	
+	/**
+	 * @return ArrayCollection
+	 */
+	public function getAllSocietes() {
+		$data = new ArrayCollection();
+		$ids = array();
+		$data->add($this->structure->getSociete());
+		$ids[] = $this->structure->getSociete()->getId();
+		foreach($this->societeOfAdministrator as $societe) {
+			if(in_array($societe->getId(), $ids)==false) {
+				array_push($ids, $societe->getId());
+				$data->add($societe);
+			}
+		}
+		return $data;
+	}
 	
 	/**
      * Get libelle
@@ -242,7 +294,11 @@ class Utilisateur extends User
     {
     	if($this->hasRole('ROLE_ADMIN')) {
     		return 'Super Administrateur';
-    	}else{
+    	} elseif($this->hasSocieteOfAdministrator()) {
+    		return "Administrateur";
+    	}  elseif($this->manager) {
+    		return "Responsable de processus";
+    	}  else{
     		return "Simple utilisateur"; 
     	}
     }
@@ -255,9 +311,13 @@ class Utilisateur extends User
     	$societeId = $societeId ? $societeId : ($this->societe ? $this->societe->getId() : null);
     	if(strtoupper($role)==self::ROLE_SUPER_ADMIN) {
     		return parent::hasRole(self::ROLE_ADMIN);
-    	}  elseif(strtoupper($role)==self::ROLE_USER) {
+    	}  elseif(strtoupper($role)==self::ROLE_ADMIN) {
+    		return parent::hasRole(self::ROLE_SUPER_ADMIN) || $this->isAdministratorOf($societeId);
+    	}  elseif(strtoupper($role)==self::ROLE_RESPONSABLE) {
+    		return $this->manager || $this->isAdministratorOf($societeId) || $this->getSite()->count()>0;
+    	} elseif(strtoupper($role)==self::ROLE_USER) {
     		return in_array(strtoupper($role), $this->roles);
-    	}
+    	} else
     		return false;
     }
     
@@ -267,7 +327,7 @@ class Utilisateur extends User
     public function takeRoles()
     {
     	$roles = array();
-		$roles_possibles = array(self::ROLE_SUPER_ADMIN, self::ROLE_ADMIN,self::ROLE_USER);    
+		$roles_possibles = array(self::ROLE_SUPER_ADMIN, self::ROLE_ADMIN,self::ROLE_RESPONSABLE,self::ROLE_USER);    
     	foreach ($roles_possibles as $role) {
     		if($this->hasRole($role))
     			 $roles[]= $role;
@@ -342,50 +402,27 @@ class Utilisateur extends User
     	return $this->connectWindows;
     }
 
-    
     /**
-     * Add site
+     * Add societeOfAdministrator
      *
-     * @param Site $site
+     * @param Societe $societeOfAdministrator
      * @return Utilisateur
      */
-    public function addSite(Site $site)
+    public function addSocieteOfAdministrator(Societe $societeOfAdministrator)
     {
-        $this->site[] = $site;
-    
+        $this->societeOfAdministrator[] = $societeOfAdministrator;
+
         return $this;
     }
 
     /**
-     * Remove site
+     * Remove societeOfAdministrator
      *
-     * @param Site $site
+     * @param Societe $societeOfAdministrator
      */
-    public function removeSite(Site $site)
+    public function removeSocieteOfAdministrator(Societe $societeOfAdministrator)
     {
-        $this->site->removeElement($site);
+        $this->societeOfAdministrator->removeElement($societeOfAdministrator);
     }
-    
-    /**
-     * Get site
-     * @return Collection
-     */
-    public function getSite()
-    {
-    	return $this->site;
-    }
-    
-    /**
-     * Get ids's site
-     * @return array
-     */
-    public function getSiteIds()
-    {
-    	$data = array();
-    	foreach($this->site as $site) {
-    		$data[] = $site->getId();
-    	}
-    	return $data;
-    }
-    
+
 }

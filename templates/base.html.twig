@@ -87,7 +87,7 @@
 	                	<span>{% if app.user.societe and app.user.societe.photo %}<img src="{{ asset(app.user.societe.webPath) }}" />{% endif %}
 	                		<b>{{ app.user.societe?app.user.societe:"" }}</b>
 	                	</span>
-                {% set societes = app.user.societe %}
+                {% set societes = app.user.allSocietes %}
 
                 <span class="scroll_down_menu"></span>
                 <ul style="display: none;">

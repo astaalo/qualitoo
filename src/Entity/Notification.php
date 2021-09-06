@@ -57,6 +57,10 @@ class Notification
      */
     private $dateModification;
 
+    
+
+   
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -71,6 +75,13 @@ class Notification
      * )
      */
     private $receivers;
+
+   
+
+   
+
+    
+
 
     public function __construct() {
         $this->dateCreation = new \DateTime();

@@ -58,6 +58,7 @@ class Actions
         $this->router = $router;
         $this->states = $states;
         $this->user = $security_context->getToken()->getUser();
+        //dd($security_context->getToken());
         $this->em = $entitymanager;
     }
 

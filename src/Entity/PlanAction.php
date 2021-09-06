@@ -97,26 +97,6 @@ class PlanAction implements NotificationInterface
      */
     private $etat = true;
 
-    
-
-   
-
-   
-
-    
-
-   
-
-    
-
-   
-   
-
-    
-
-
-   
-
     /**
      * @var string
      * @ORM\Column(name="description", type="text", nullable=true)
@@ -133,26 +113,6 @@ class PlanAction implements NotificationInterface
      * @var Structure
      */
     public $structure;
-
-    /**
-     * @var Site
-     */
-    public $site;
-
-    /**
-     * @var Projet
-     */
-    public $projet;
-
-    /**
-     * @var Cartographie
-     */
-    public $cartographie;
-
-    /**
-     * @var Menace
-     */
-    public $menace;
 
     /**
      * @var boolean
@@ -206,58 +166,6 @@ class PlanAction implements NotificationInterface
 
     public function getLibelle() {
         return $this->libelle;
-    }
-
-    /**
-     * @param string $libelle
-     * @return PlanAction
-     */
-    public function setLibelle($libelle) {
-        $this->libelle = $libelle;
-        return $this;
-    }
-
-    /**
-     * @param Risque $risque
-     * @return PlanAction
-     */
-    public function setRisque($risque) {
-        $this->risque = $risque;
-        return $this;
-    }
-
-    /**
-     * get risque
-     * @return Risque
-     */
-    public function getRisque() {
-        return $this->risque ? $this->risque : ($this->causeOfRisque ? $this->causeOfRisque->getRisque() : null);
-    }
-
-    /**
-     * get cause of risque
-     * @return RisqueHasCause
-     */
-    public function getCauseOfRisque() {
-        return $this->causeOfRisque;
-    }
-
-    /**
-     * set cause of risque
-     * @param RisqueHasCause $causeOfRisque
-     * @return PlanAction
-     */
-    public function setCauseOfRisque(RisqueHasCause $causeOfRisque) {
-        $this->causeOfRisque = $causeOfRisque;
-        return $this;
-    }
-
-    /**
-     * get cause
-     * @return Cause
-     */
-    public function getCause() {
-        return $this->causeOfRisque->getCause();
     }
 
     /**
@@ -362,30 +270,6 @@ class PlanAction implements NotificationInterface
     }
 
     /**
-     * @return Controle
-     */
-    public function getToControle() {
-        return $this->toControle;
-    }
-
-    /**
-     * @return Controle
-     */
-    public function getControle() {
-        return $this->controle;
-    }
-
-    /**
-     * @param Controle $controle
-     * @return PlanAction
-     */
-    public function setControle($controle) {
-        $controle->setPlanAction($this);
-        $this->controle = $controle;
-        return $this;
-    }
-
-    /**
      * get statut
      * @return Statut
      */
@@ -401,24 +285,6 @@ class PlanAction implements NotificationInterface
     public function setStatut($statut) {
         $this->statut = $statut;
         return $this;
-    }
-
-    /**
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getAvancement() {
-        return $this->avancement;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAvancementInText() {
-        $text = null;
-        foreach($this->avancement as $avancement) {
-            $text .= $avancement->getDescription()."\n";
-        }
-        return $text;
     }
 
     public function inValidation() {
@@ -636,37 +502,4 @@ class PlanAction implements NotificationInterface
         return $this->nom_porteur;
     }
 
-    /**
-     * Add notificationPA
-     *
-     * @param NotificationPlanAction $notificationPA
-     *
-     * @return PlanAction
-     */
-    public function addNotificationPA(NotificationPlanAction $notificationPA)
-    {
-        $this->notificationPA[] = $notificationPA;
-
-        return $this;
-    }
-
-    /**
-     * Remove notificationPA
-     *
-     * @param NotificationPlanAction $notificationPA
-     */
-    public function removeNotificationPA(NotificationPlanAction $notificationPA)
-    {
-        $this->notificationPA->removeElement($notificationPA);
-    }
-
-    /**
-     * Get notificationPA
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getNotificationPA()
-    {
-        return $this->notificationPA;
-    }
 }

@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="utilisateur")
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  */
-class Utilisateur extends User implements UtilisateurInterface
+class Utilisateur extends User
 {
 	const ROLE_SUPER_ADMIN			= 'ROLE_SUPER_ADMIN';
 	const ROLE_ADMIN				= 'ROLE_ADMIN';
@@ -701,139 +701,6 @@ class Utilisateur extends User implements UtilisateurInterface
     {
         $this->societeOfRiskManager->removeElement($societeOfRiskManager);
     }
-
-    /**
-     * Add paOfPorteur
-     *
-     * @param PlanAction $paOfPorteur
-     * @return Utilisateur
-     */
-    public function addPaOfPorteur(PlanAction $paOfPorteur)
-    {
-        $this->paOfPorteur[] = $paOfPorteur;
-
-        return $this;
-    }
-
-    /**
-     * Remove paOfPorteur
-     *
-     * @param PlanAction $paOfPorteur
-     */
-    public function removePaOfPorteur(PlanAction $paOfPorteur)
-    {
-        $this->paOfPorteur->removeElement($paOfPorteur);
-    }
-
-    /**
-     * Get paOfPorteur
-     *
-     * @return Collection 
-     */
-    public function getPaOfPorteur()
-    {
-        return $this->paOfPorteur;
-    }
-
-    /**
-     * Add paOfSuperviseur
-     *
-     * @param PlanAction $paOfSuperviseur
-     * @return Utilisateur
-     */
-    public function addPaOfSuperviseur(PlanAction $paOfSuperviseur)
-    {
-        $this->paOfSuperviseur[] = $paOfSuperviseur;
-
-        return $this;
-    }
-
-    /**
-     * Remove paOfSuperviseur
-     *
-     * @param PlanAction $paOfSuperviseur
-     */
-    public function removePaOfSuperviseur(PlanAction $paOfSuperviseur)
-    {
-        $this->paOfSuperviseur->removeElement($paOfSuperviseur);
-    }
-
-    /**
-     * Get paOfSuperviseur
-     *
-     * @return Collection 
-     */
-    public function getPaOfSuperviseur()
-    {
-        return $this->paOfSuperviseur;
-    }
-
-    /**
-     * Add controleOfPorteur
-     *
-     * @param Controle $controleOfPorteur
-     * @return Utilisateur
-     */
-    public function addControleOfPorteur(Controle $controleOfPorteur)
-    {
-        $this->controleOfPorteur[] = $controleOfPorteur;
-
-        return $this;
-    }
-
-    /**
-     * Remove controleOfPorteur
-     *
-     * @param Controle $controleOfPorteur
-     */
-    public function removeControleOfPorteur(Controle $controleOfPorteur)
-    {
-        $this->controleOfPorteur->removeElement($controleOfPorteur);
-    }
-
-    /**
-     * Get controleOfPorteur
-     *
-     * @return Collection 
-     */
-    public function getControleOfPorteur()
-    {
-        return $this->controleOfPorteur;
-    }
-
-    /**
-     * Add controleOfSuperviseur
-     *
-     * @param Controle $controleOfSuperviseur
-     * @return Utilisateur
-     */
-    public function addControleOfSuperviseur(Controle $controleOfSuperviseur)
-    {
-        $this->controleOfSuperviseur[] = $controleOfSuperviseur;
-
-        return $this;
-    }
-
-    /**
-     * Remove controleOfSuperviseur
-     *
-     * @param Controle $controleOfSuperviseur
-     */
-    public function removeControleOfSuperviseur(Controle $controleOfSuperviseur)
-    {
-        $this->controleOfSuperviseur->removeElement($controleOfSuperviseur);
-    }
-
-    /**
-     * Get controleOfSuperviseur
-     *
-     * @return Collection 
-     */
-    public function getControleOfSuperviseur()
-    {
-        return $this->controleOfSuperviseur;
-    }
-
     /**
      * Add site
      *
@@ -879,49 +746,4 @@ class Utilisateur extends User implements UtilisateurInterface
     	return $data;
     }
     
-    /**
-     * Get projet
-     * @return ArrayCollection
-     */
-    public function getProjet()
-    {
-    	return $this->site;
-    }
-    
-    /**
-     * Get ids's projet
-     * @return array
-     */
-    public function getProjetIds()
-    {
-    	$data = array();
-    	foreach($this->projet as $projet) {
-    		$data[] = $projet->getId();
-    	}
-    	return $data;
-    }
-
-    /**
-     * Add projet
-     *
-     * @param Projet $projet
-     *
-     * @return Utilisateur
-     */
-    public function addProjet(Projet $projet)
-    {
-        $this->projet[] = $projet;
-
-        return $this;
-    }
-
-    /**
-     * Remove projet
-     *
-     * @param Projet $projet
-     */
-    public function removeProjet(Projet $projet)
-    {
-        $this->projet->removeElement($projet);
-    }
 }

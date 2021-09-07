@@ -50,12 +50,7 @@ class DashboardController extends BaseController
                     'text'	=> "Liste Processus",
                     'roles' => array(),
                     'path'	=> $this->generateUrl('les_processus')
-                )/*, array(
-                    'icon'	=> 'arrow_up2.png',
-                    'text'	=> "Charger des fiches de risque",
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER'),
-                    'path'	=> $this->generateUrl('suivi_projet')
-                )*/
+                )
             )
         );
         // BLOC CONTROLE ET MAITRISE
@@ -79,51 +74,6 @@ class DashboardController extends BaseController
 
             )
         );
-      /*  $default_carto_by_profil = ($utilisateur->hasRole('ROLE_RESPONSABLE') && !$utilisateur->isManager()) ? $this->getParameter('ids')['carto']['sst'] : $this->getParameter('ids')['carto']['metier'];
-        // BLOC Evaluation
-        $gridItems[] = array(
-            'header'	=> "Administrer Les Utilisateurs",
-            'roles'		=> array('ROLE_ADMIN', 'ROLE_RESPONSABLE'),
-            'rows'		=> array(
-                array(
-                    'icon'	=> 'add.png',
-                    'text'	=> "Ajout Utilisateur",
-                    'width' => '50%',
-                ), array(
-                    'icon'	=> 'list.png',
-                    'text'	=> "Liste Utilisateur",
-                    'width' => '40%',
-                    'roles' => array('ROLE_ADMIN','ROLE_RESPONSABLE'),
-                    'path'	=> $this->generateUrl('les_processus')
-                ), array(
-                    'icon'	=> 'add.png',
-                    'text'	=> "Recherche Utilisateur",
-                    'width' => '50%',
-                ),array(
-                    'icon'	=> 'stats_lines.png',
-                    'text'	=> "Statistiques",
-                    'width' => '40%',
-                    'roles' => array('ROLE_ADMIN','ROLE_RESPONSABLE'),
-                    'path'	=> $this->generateUrl('les_processus')
-                ), array(
-                    'icon'	=> 'stats_lines.png',
-                    'text'	=> "Matrice",
-                    'width' => '40%',
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE', 'ROLE_CHEFPROJET'),
-                    'path'	=> $this->generateUrl('choix_carto_kpi', array('carto'=>1, 'type'=>4, 'link'=>'la_restitution'))
-                
-            ))
-        );*/
-        // BLOC Fonctions supplémentaires
-        //$gridItems[] = array(
-          //  'header'	=> "Fonctions supplémentaires",
-         //   'roles'		=> array(),
-         //   'rows'		=> array()
-       // );
-
-        //$typeSh     = $typeDocumentRepo->findOneBy(array('code'=>TypeDocument::TYPE_TDB));
-        //$typeVeille = $typeDocumentRepo->findOneBy(array('code'=>TypeDocument::TYPE_VEILLE));
-        // BLOC Reporting et veille
         $gridItems[] = array(
             'header'	=> "Administrer Entités",
             'roles'		=> array('ROLE_ADMIN', 'ROLE_RESPONSABLE'),
@@ -138,17 +88,7 @@ class DashboardController extends BaseController
                     'text'	=> "Liste Entités",
                     'roles' => array('ROLE_ADMIN','ROLE_RESPONSABLE'),
                     'path'	=> $this->generateUrl('les_processus')
-                )/*, array(
-                    'icon'	=> 'calculator.png',
-                    'text'	=> "Formation",
-                    'roles' => array('ROLE_SUPERADMIN'),
-                    'path'	=> '#'
-                ), array(
-                    'icon'	=> 'calculator.png',
-                    'text'	=> "Divers",
-                    'roles' => array('ROLE_SUPERADMIN'),
-                    'path'	=> '#'
-                )*/
+                )
             )
         );
         // BLOC Administration et Exploitation
@@ -170,25 +110,7 @@ class DashboardController extends BaseController
                     'roles' => array('ROLE_ADMIN'),
                     'path'	=> $this->generateUrl('les_societes')
                     // 'path'	=> ($this->getUser()->getSociete()&&$this->getUser()->getSociete()->getRelance())? $this->generateUrl('edition_relance',array('id' =>$this->getUser()->getSociete()->getRelance()->getId())):'#'
-                ),/* array(
-                    'icon'	=> 'add.png',
-                    'text'	=> "Chargements",
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RISKMANAGER'),
-                    'path'	=> $this->generateUrl('les_chargements')
                 ),
-    					array(
-    							'icon'	=> 'cutter.png',
-    							'text'	=> "Tester les risques",
-    							'roles' => array('ROLE_ADMIN', 'ROLE_AUDITEUR'),
-    							'path'	=> $this->generateUrl('les_risques_a_tester')
-    					)
-    					,
-    					array(
-    							'icon'	=> 'screwdriver.png',
-    							'text'	=> "Tester les controles",
-    							'roles' => array('ROLE_ADMIN', 'ROLE_AUDITEUR'),
-    							'path'	=> '#'
-    					)*/
             )
         );
 

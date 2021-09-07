@@ -112,13 +112,13 @@ class Actions
             'id' => $entity->getId()
         )), $this->asset('assets/bundles/orangemain/images/icon/color_18/info.png'));
         $this->addActionByRoles(
-            array('ROLE_RISKMANAGER', 'ROLE_ADMIN'),
+            array('ROLE_ADMIN'),
             "Modifier",
             $this->router->generate('edition_processus', array('id' => $entity->getId())),
             $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png')
         );
         $this->addActionByRoles(
-            array('ROLE_RISKMANAGER', 'ROLE_ADMIN'),
+            array('ROLE_ADMIN'),
             "Supprimer",
             $this->router->generate('supprimer_processus', array('id' => $entity->getId())),
             $this->asset('assets/bundles/orangemain/images/icon/color_18/cancel.png'),

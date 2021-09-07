@@ -69,20 +69,6 @@ class Document
 	 */
 	private $utilisateur;
 	
-	
-	/**
-	 * @var \Doctrine\Common\Collections\ArrayCollection 
-	 * @ORM\OneToMany(targetEntity="DocumentHasUtilisateur", mappedBy="document", orphanRemoval=true, cascade={"persist", "merge"})
-	 * @Assert\Valid
-	 */
-	private $utilisateursAutorises;
-	
-	/**
-	 *
-	 * @var \Doctrine\Common\Collections\ArrayCollection
-	 */
-	private $tmpUtilisateur;
-	
 	/**
 	 * @var TypeDocument
 	 * @ORM\ManyToOne(targetEntity="TypeDocument")
@@ -132,9 +118,7 @@ class Document
 	 */
 	public function __construct() {
 	    $this->dateCreation = new \DateTime();
-	    $this->annee = $this->dateCreation->format('Y');
-	    $this->tmpUtilisateur = new ArrayCollection();
-	    $this->utilisateursAutorises = new ArrayCollection();
+	    $this->annee = $this->dateCreation->format('Y');;
 	    $this->deleted = false;
 	}
 	

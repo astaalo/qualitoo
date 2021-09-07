@@ -52,16 +52,16 @@ class RegistrationFormType extends AbstractType
                 }
             ))
             
-            ->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('placeholder' => 'Choisir la société ...','class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe',
-            'query_builder'=>function($sr){
-            return $sr->listUserSocieties();
-            }
-            ))
-            ->add('societeOfRiskManager',null, array('label' => 'Est risque manager de','class' => 'App\Entity\Societe', 'attr'=>array('placeholder' => 'Choisir la société ...', 'class'=>'chzn-select', 'multiple' => 'multiple'),
-            'query_builder'=>function($sr){
-            return $sr-> listUserSocieties();
-            }
-            ))
+           // ->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('placeholder' => 'Choisir la société ...','class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe',
+            //'query_builder'=>function($sr){
+          //  return $sr->listUserSocieties();
+           // }
+           // ))
+            //->add('societeOfRiskManager',null, array('label' => 'Est risque manager de','class' => 'App\Entity\Societe', 'attr'=>array('placeholder' => 'Choisir la société ...', 'class'=>'chzn-select', 'multiple' => 'multiple'),
+            //'query_builder'=>function($sr){
+            //return $sr-> listUserSocieties();
+           // }
+           // ))
     		->add('connectWindows', null, array('label' => 'Connexion avec compte windows', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,

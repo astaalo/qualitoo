@@ -53,6 +53,21 @@ class RegistrationController extends BaseController
     }
 
     /**
+     * @Rest\Post("/users/create")
+     * @QMLogger(message="Creation d'utilisateur")
+     */
+    /*public function addUser(Request $request,GroupeRepository $groupeRepository){
+        $access=AccessControlService::checkRole(['admin'],$this->tokenStorage,$this->userRepository);
+        if(is_array($access)){
+          //return new JsonResponse($access);
+        }
+        $dataUser=$request->request->all();
+        $dataUser['images_directory']=$this->getParameter('images_directory');
+        $dataUser['avatar']=$request->files->get('avatar');
+        return new JsonResponse($this->userManager->addUser($dataUser));
+    }*/
+
+    /**
      * @param Request $request
      * @Route("/register", name="register")
      * @return Response

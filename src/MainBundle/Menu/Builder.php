@@ -14,8 +14,8 @@ class Builder implements ContainerAwareInterface
 	public function showMenu(FactoryInterface $factory, array $options) {
 		$menu = $factory->createItem('menu');
 		$menu->addChild('Processus', array('route' => 'les_processus', 'label' => 'Processus', 'attributes' => array('class' => 'repeat')));
-		$menu->addChild('Activite', array('route' => 'les_activites', 'label' => 'Activite', 'attributes' => array('class' => 'ruler_square')));
-		$menu->addChild('Menace', array('route' => 'les_menaces', 'label' => 'Base des riques', 'attributes' => array('class' => 'ruler_square')));
+		//$menu->addChild('Activite', array('route' => 'les_activites', 'label' => 'Activite', 'attributes' => array('class' => 'ruler_square')));
+		//$menu->addChild('Menace', array('route' => 'les_menaces', 'label' => 'Base des riques', 'attributes' => array('class' => 'ruler_square')));
 		//$menu->addChild('Projet', array('route' => 'les_projets', 'label' => 'Projet', 'attributes' => array('class' => 'file')));
 		//$menu->addChild('Cause', array('route' => 'les_causes', 'label' => 'Cause', 'attributes' => array('class' => 'firewall')));
  		//$menu->addChild('Questions', array('route' => 'les_questions', 'label' => 'Grille de maturité', 'attributes' => array('class' => 'home')));
@@ -26,7 +26,7 @@ class Builder implements ContainerAwareInterface
 		//$menu->addChild('Critere', array('route' => 'les_criteres', 'label' => "Grille d'impact", 'attributes' => array('class' => 'access_point')));
 		$menu->addChild('Utilisateur', array('route' => 'les_utilisateurs', 'label' => 'Utilisateur', 'attributes' => array('class' => 'administrator')));
 		$menu->addChild('Structure', array('route' => 'les_structures', 'label' => 'Structure/Entité', 'attributes' => array('class' => 'door')));
-		$menu->addChild('Site', array('route' => 'les_sites', 'label' => 'Sites', 'attributes' => array('class' => 'door')));
+		//$menu->addChild('Site', array('route' => 'les_sites', 'label' => 'Sites', 'attributes' => array('class' => 'door')));
 		return $menu;
 	}
 	

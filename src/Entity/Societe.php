@@ -31,11 +31,6 @@ class Societe
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     public $photo;
-    
-    /**
-     * @Assert\File(maxSize="6000000")
-     */
-    public $file;
 
     /**
      * @var boolean
@@ -99,25 +94,6 @@ class Societe
 	public function setEtat($etat) {
 		$this->etat = $etat;
 		return $this;
-	}
-
-	
-	/**
-	 * @return boolean
-	 */
-	public function hasChangeFile(){
-	
-	}
-	
-	public function setChangeFile(){
-	
-	}
-	
-	/**
-	 * @return boolean
-	 */
-	public function isChangeFile(){
-	
 	}
     
 	/**

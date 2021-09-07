@@ -23,25 +23,6 @@ class Structure
 
     /**
      * @var string
-     * @ORM\Column(name="code", type="string", length=100, nullable=false)
-     * @Assert\NotNull(message="Le nom de la structure est obligatoire")
-     */
-    private $code;
-
-    /**
-     * @var string
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
-     */
-    private $name;
-
-    /**
-     * @var string
-     * @ORM\Column(name="name_sans_spec_char", type="string", length=255, nullable=false)
-     */
-    private $nameSansSpecChar;
-
-    /**
-     * @var string
      * @ORM\Column(name="libelle", type="string", length=100, nullable=false)
      * @Assert\NotNull(message="Le nom complet de la structure est obligatoire")
      */
@@ -85,6 +66,21 @@ class Structure
      * @ORM\OneToMany(targetEntity="Utilisateur", mappedBy="structure")
      */
     protected $utilisateur;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $service;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $departement;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pole;
 
 
     public function __construct() {
@@ -235,30 +231,6 @@ class Structure
         }
     }
 
-
-    /**
-     * Set nameSansSpecChar
-     *
-     * @param string $nameSansSpecChar
-     * @return Structure
-     */
-    public function setNameSansSpecChar($nameSansSpecChar)
-    {
-        $this->nameSansSpecChar = $nameSansSpecChar;
-
-        return $this;
-    }
-
-    /**
-     * Get nameSansSpecChar
-     *
-     * @return string
-     */
-    public function getNameSansSpecChar()
-    {
-        return $this->nameSansSpecChar;
-    }
-
     /**
      * Set dateCreation
      *
@@ -312,5 +284,41 @@ class Structure
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    public function getService(): ?string
+    {
+        return $this->service;
+    }
+
+    public function setService(?string $service): self
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    public function getDepartement(): ?string
+    {
+        return $this->departement;
+    }
+
+    public function setDepartement(?string $departement): self
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+
+    public function getPole(): ?string
+    {
+        return $this->pole;
+    }
+
+    public function setPole(?string $pole): self
+    {
+        $this->pole = $pole;
+
+        return $this;
     }
 }

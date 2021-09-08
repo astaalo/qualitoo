@@ -35,9 +35,9 @@ class DashboardController extends BaseController
             $em->flush();
         }
         $gridItems = array();
-        // BLOC RISQUE
+        // BLOC PROCESSUS
         $gridItems[] = array(
-            'header'	=> "Administrer Processus",
+            'header'	=> "Processus",
             'roles'		=> array('ROLE_SUPER_ADMIN', 'ROLE_RESPONSABLE'),
             'rows'		=> array(
                 array(
@@ -53,67 +53,89 @@ class DashboardController extends BaseController
                 )
             )
         );
-        // BLOC CONTROLE ET MAITRISE
+        // BLOC DOCUMENTS
         //$typeSh     = $typeDocumentRepo->findOneBy(array('code'=>TypeDocument::TYPE_TDB));
         $gridItems[] = array(
-            'header'	=> "Administrer Les Documents",
-            'roles'		=> array('ROLE_ADMIN','ROLE_RESPONSABLE'),
+            'header'	=> "Documents",
+            'roles'		=> array('ROLE_SUPER_ADMIN','ROLE_RESPONSABLE'),
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Document",
-                    'roles' => array('ROLE_ADMIN'),
+                    'roles' => array('ROLE_SUPER_ADMIN'),
                     'path'	=> $this->generateUrl('nouveau_processus')
                 ),array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Document",
-                    'roles' => array('ROLE_ADMIN'),
+                    'roles' => array('ROLE_SUPER_ADMIN'),
                     'path'	=> $this->generateUrl('les_processus')
                     //'path'	=> $typeSh? $this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$typeSh->getId())):'#'
                 )
 
             )
         );
+        // BLOC ENTITES OU STRUCTURES
         $gridItems[] = array(
-            'header'	=> "Administrer Entités",
-            'roles'		=> array('ROLE_ADMIN', 'ROLE_RESPONSABLE'),
+            'header'	=> "Entités",
+            'roles'		=> array('ROLE_SUPER_ADMIN', 'ROLE_RESPONSABLE'),
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Entités",
-                    'roles' => array('ROLE_ADMIN','ROLE_RESPONSABLE'),
-                    'path'	=> $this->generateUrl('nouveau_processus')
+                    'roles' => array('ROLE_SUPER_ADMIN','ROLE_RESPONSABLE'),
+                    'path'	=> $this->generateUrl('creer_structure')
                 ), array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Entités",
-                    'roles' => array('ROLE_ADMIN','ROLE_RESPONSABLE'),
+                    'roles' => array('ROLE_SUPER_ADMIN','ROLE_RESPONSABLE'),
                     'path'	=> $this->generateUrl('les_processus')
                 )
             )
         );
-        // BLOC Administration et Exploitation
+        // BLOC SOCIETES 
         $gridItems[] = array(
-            'header'	=> "Administrer Les Societes",
-            'roles'		=> array('ROLE_ADMIN', 'ROLE_RESPONSABLE'),
+            'header'	=> "Societes",
+            'roles'		=> array('ROLE_SUPER_ADMIN', 'ROLE_RESPONSABLE'),
             //'rows'		=> array(),
-            'path'		=> ($this->getUser()->hasRole('ROLE_ADMIN')|| $this->getUser()->hasRole('ROLE_RISKMANAGER'))?$this->generateUrl('les_processus'):'#',
+            'path'		=> ($this->getUser()->hasRole('ROLE_SUPER_ADMIN')|| $this->getUser()->hasRole('ROLE_RISKMANAGER'))?$this->generateUrl('les_processus'):'#',
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Société",
-                    'roles' => array('ROLE_ADMIN', 'ROLE_RESPONSABLE'),
-                    'path'	=> $this->generateUrl('nouveau_processus')
+                    'roles' => array('ROLE_SUPER_ADMIN', 'ROLE_RESPONSABLE'),
+                    'path'	=> $this->generateUrl('creer_societe')
                 ),
                 array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Société",
-                    'roles' => array('ROLE_ADMIN'),
+                    'roles' => array('ROLE_SUPER_ADMIN'),
                     'path'	=> $this->generateUrl('les_societes')
                     // 'path'	=> ($this->getUser()->getSociete()&&$this->getUser()->getSociete()->getRelance())? $this->generateUrl('edition_relance',array('id' =>$this->getUser()->getSociete()->getRelance()->getId())):'#'
                 ),
             )
         );
-
+        // BLOC UTILISATEURS 
+        $gridItems[] = array(
+            'header'	=> "Utilisateurs",
+            'roles'		=> array('ROLE_SUPER_ADMIN', 'ROLE_RESPONSABLE'),
+            //'rows'		=> array(),
+            'path'		=> ($this->getUser()->hasRole('ROLE_SUPER_ADMIN')|| $this->getUser()->hasRole('ROLE_RISKMANAGER'))?$this->generateUrl('les_processus'):'#',
+            'rows'		=> array(
+                array(
+                    'icon'	=> 'add.png',
+                    'text'	=> "Ajout Utilisateur",
+                    'roles' => array('ROLE_SUPER_ADMIN', 'ROLE_RESPONSABLE'),
+                    'path'	=> $this->generateUrl('creer_societe')
+                ),
+                array(
+                    'icon'	=> 'list.png',
+                    'text'	=> "Liste Utilisateur",
+                    'roles' => array('ROLE_SUPER_ADMIN'),
+                    'path'	=> $this->generateUrl('les_societes')
+                    // 'path'	=> ($this->getUser()->getSociete()&&$this->getUser()->getSociete()->getRelance())? $this->generateUrl('edition_relance',array('id' =>$this->getUser()->getSociete()->getRelance()->getId())):'#'
+                ),
+            )
+        );
         return array('gridItems' => $gridItems);
 
     }

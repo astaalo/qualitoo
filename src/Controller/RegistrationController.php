@@ -114,6 +114,7 @@ class RegistrationController extends BaseController
                 return new RedirectResponse($url);
             }
             $event = new FormEvent($form, $request);
+            dd($event);
             $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
 
             if (null !== $response = $event->getResponse()) {

@@ -57,6 +57,7 @@ class StructureController extends BaseController {
 		$form = $this->createForm(StructureType::class, new Structure());
 		$this->modifyRequestForForm($request, $this->get('session')->get('structure_criteria'), $form);
 		$criteria = $form->getData();
+		//dd($criteria);
 		$queryBuilder = $em->getRepository(Structure::class)->listAllQueryBuilder($criteria);
 		return $this->paginate($request, $queryBuilder);
 	}
@@ -84,6 +85,7 @@ class StructureController extends BaseController {
 		$entity = new Structure();
 		$form   = $this->createCreateForm($entity, StructureType::class);
 		$form->handleRequest($request);
+		if ($form->isSubmitted()) {
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			if($this->getUser()->getSociete()) {
@@ -94,6 +96,7 @@ class StructureController extends BaseController {
 			$em->flush();
 			return $this->redirect($this->generateUrl('les_structures'));
 		}
+	}
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -215,14 +218,14 @@ class StructureController extends BaseController {
 	}
 	 
 	
-	
 	/**
 	 * (non-PHPdoc)
 	 * @see \App\BaseController::setFilter()
 	 */
-	protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
-		parent::setFilter($queryBuilder, array('q.code', 'q.libelle'), $request);
-	}
+	//protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
+	//	parent::setFilter($queryBuilder, array('q.code', 'q.libelle'), $request);
+	//}
+	
 	
 	/**
 	 * @param \App\Entity\Structure $entity

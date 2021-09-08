@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SocieteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -52,6 +54,16 @@ class Societe
      * @ORM\ManyToMany(targetEntity="Utilisateur", mappedBy="societeOfAdministrator", cascade={"persist","remove","merge"})
      */
     protected $administrateur;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Processus::class, mappedBy="societe")
+     */
+    private $processuses;
+
+    public function __construct()
+    {
+        $this->processuses = new ArrayCollection();
+    }
     
     /**
      * Constructor
@@ -68,33 +80,33 @@ class Societe
      * @return string
      */
 	public function getLibelle() {
-		return $this->libelle;
-	}
+                        		return $this->libelle;
+                        	}
 	
 	/**
 	 * @param string $libelle
 	 * @return Societe
 	 */
 	public function setLibelle($libelle) {
-		$this->libelle = $libelle;
-		return $this;
-	}
+                        		$this->libelle = $libelle;
+                        		return $this;
+                        	}
     
 	/**
 	 * @return boolean
 	 */
 	public function getEtat() {
-		return $this->etat;
-	}
+                        		return $this->etat;
+                        	}
 	
 	/**
 	 * @param boolean $etat
 	 * @return Societe
 	 */
 	public function setEtat($etat) {
-		$this->etat = $etat;
-		return $this;
-	}
+                        		$this->etat = $etat;
+                        		return $this;
+                        	}
     
 	/**
 	 * @return string
@@ -141,25 +153,25 @@ class Societe
 	 * @return string
 	 */
 	public function __toString()
-	{
-		return $this->libelle;
-	}
+                        	{
+                        		return $this->libelle;
+                        	}
 	
 	/**
 	 * @return string
 	 */
 	public function getPhoto() {
-		return $this->photo;
-	}
+                        		return $this->photo;
+                        	}
 	
 	/**
 	 * @param string $photo
 	 * @return Societe
 	 */
 	public function setPhoto($photo) {
-		$this->photo = $photo;
-		return $this;
-	}
+                        		$this->photo = $photo;
+                        		return $this;
+                        	}
 
     /**
      * Add administrateur
@@ -202,6 +214,36 @@ class Societe
     public function getIsAdmin()
     {
         return $this->isAdmin;
+    }
+
+    /**
+     * @return Collection|Processus[]
+     */
+    public function getProcessuses(): Collection
+    {
+        return $this->processuses;
+    }
+
+    public function addProcessus(Processus $processus): self
+    {
+        if (!$this->processuses->contains($processus)) {
+            $this->processuses[] = $processus;
+            $processus->setSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProcessus(Processus $processus): self
+    {
+        if ($this->processuses->removeElement($processus)) {
+            // set the owning side to null (unless already changed)
+            if ($processus->getSociete() === $this) {
+                $processus->setSociete(null);
+            }
+        }
+
+        return $this;
     }
 
    

@@ -318,9 +318,7 @@ class Utilisateur extends User implements UtilisateurInterface
     		return parent::hasRole(self::ROLE_ADMIN);
     	}  elseif(strtoupper($role)==self::ROLE_ADMIN) {
     		return parent::hasRole(self::ROLE_SUPER_ADMIN) || $this->isAdministratorOf($societeId);
-    	}  elseif(strtoupper($role)==self::ROLE_RESPONSABLE) {
-    		return $this->manager || $this->isAdministratorOf($societeId) || $this->getSite()->count()>0;
-    	} elseif(strtoupper($role)==self::ROLE_USER) {
+    	}   elseif(strtoupper($role)==self::ROLE_USER) {
     		return in_array(strtoupper($role), $this->roles);
     	} else
     		return false;

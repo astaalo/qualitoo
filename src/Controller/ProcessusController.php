@@ -132,7 +132,7 @@ class ProcessusController extends BaseController {
 		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
-            $entity->setLibelleSansCarSpecial($this->replaceSpecialChars($entity->getLibelle()));
+            //$entity->setLibelleSansCarSpecial($this->replaceSpecialChars($entity->getLibelle()));
 			$em->persist($entity);
 			$em->flush();$this->get('session')->getFlashBag()->add('success', "Processus ajouté avec succés.");
             if($entity->getParent()) {

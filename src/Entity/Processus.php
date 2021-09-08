@@ -5,15 +5,15 @@ namespace App\Entity;
 use App\Model\TreeInterface;
 use App\Repository\ProcessusRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProcessusRepository::class)
- * @Gedmo\Tree(type="nested")
  */
-class Processus extends Tree implements TreeInterface
+class Processus
 {
     /**
      * @var integer
@@ -25,34 +25,12 @@ class Processus extends Tree implements TreeInterface
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="numero", type="integer", length=11, nullable=true)
-     */
-    private $numero;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="libelle", type="string", length=255, nullable=true)
      * @Assert\NotNull(message="Le nom du processus est obligatoire")
      */
     private $libelle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="libelle_sans_carspecial", type="string", length=255, nullable=true)
-     */
-    private $libelleSansCarSpecial;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="code", type="string", length=50, nullable=true)
-     */
-    private $code;
-
 
     /**
      * @var boolean
@@ -91,44 +69,23 @@ class Processus extends Tree implements TreeInterface
     private $typeProcessus;
 
     /**
-     * @var Processus
-     *
-     * @ORM\ManyToOne(targetEntity="Processus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="origine", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity=Processus::class, inversedBy="processuses")
      */
-    private $origine;
+    private $parent;
 
     /**
-     * @var Processus
+     * @ORM\OneToMany(targetEntity=Processus::class, mappedBy="parent")
      */
-    public $processus;
+    private $processuses;
 
     /**
-     * @var ProfilRisque
+     * @ORM\ManyToOne(targetEntity=Societe::class, inversedBy="processuses")
      */
-    public $profilRisque;
+    private $societe;
 
-
-    /**
-     * @Gedmo\TreeParent()
-     * @ORM\ManyToOne(targetEntity="Processus", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
-     */
-    protected $parent;
-
-    /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Processus", mappedBy="parent")
-     * @ORM\OrderBy({"lft" = "ASC"})
-     */
-    protected $children;
-
-    public function __construct() {
-        $this->activite = new ArrayCollection();
-        $this->projet	= new ArrayCollection();
-        $this->risque	= new ArrayCollection();
+    public function __construct()
+    {
+        $this->processuses = new ArrayCollection();
     }
 
     /**
@@ -138,85 +95,6 @@ class Processus extends Tree implements TreeInterface
         return $this->id;
     }
 
-    
-
-    /**
-     * @return integer
-     */
-    public function getProbabilite() {
-        $probabilite = null;
-        foreach($this->getRisque() as $risque) {
-            if($probabilite) {
-                $probabilite = $risque->getProbabilite() ? ($probabilite > $risque->getProbabilite() ? $probabilite : $risque->getProbabilite()) : $probabilite;
-            } else {
-                $probabilite = $risque->getProbabilite();
-            }
-        }
-        return $probabilite;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getGravite() {
-        $gravite = $number = 0;
-        foreach($this->getRisque() as $risque) {
-            if($risque->getGravite()) {
-                $gravite += $risque->getGravite();
-                $number = $number + 1;
-            }
-        }
-        $gravite = $gravite ? $gravite/$number : 0;
-        return $gravite ? ($gravite < 1 ? 1 : round($gravite)) : null;
-    }
-
-    /**
-     * @return
-     */
-    public function getICG() {
-        $icg = $number = 0;
-        foreach($this->getRisque() as $risque) {
-            if($risque->getProbabilite() && $risque->getGravite()) {
-                $icg += $risque->getProbabilite() * $risque->getGravite();
-                $number = $number + 1;
-            }
-        }
-        $icg = $icg ? $icg/$number : 0;
-        return $icg ? ($icg < 1 ? 1 : round($icg)) : null;
-    }
-
-   
-
-    public function getRisque(&$collection = null) {
-        if($collection==null) {
-            $collection = new ArrayCollection();
-        }
-        foreach($this->children as $processus) {
-            $processus->getRisque($collection);
-        }
-        foreach($this->activite as $activite) {
-            foreach($activite->getRisque() as $risque) {
-                $collection->add($risque);
-            }
-        }
-        return $collection;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getNumero() {
-        return $this->numero;
-    }
-
-    /**
-     * @param integer $numero
-     * @return Processus
-     */
-    public function setNumero($numero) {
-        $this->numero = $numero;
-        return $this;
-    }
 
     /**
      * @return string
@@ -299,22 +177,6 @@ class Processus extends Tree implements TreeInterface
     }
 
     /**
-     * @return Processus
-     */
-    public function getOrigine() {
-        return $this->origine;
-    }
-
-    /**
-     * @param Processus $origine
-     * @return Processus
-     */
-    public function setOrigine($origine) {
-        $this->origine = $origine;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getDescription() {
@@ -330,129 +192,57 @@ class Processus extends Tree implements TreeInterface
         return $this;
     }
 
-    /**
-     * show values
-     * @return array
-     */
-    public function showValuesToArray($data = array()) {
-        if($this->parent==null) {
-            return $data;
-        }
-        if($this->typeProcessus->getId()==TypeProcessus::$ids['macro']) {
-            $data['macro'] = array('id' => $this->id, 'libelle' => $this->libelle);
-        }
-        if($this->typeProcessus->getId()==TypeProcessus::$ids['normal']) {
-            $data['normal'] = array('id' => $this->id, 'libelle' => $this->libelle);
-        }
-        if($this->typeProcessus->getId()==TypeProcessus::$ids['sous']) {
-            $data['sous'] = array('id' => $this->id, 'libelle' => $this->libelle);
-        }
-        return $this->parent->showValuesToArray($data);
-    }
-
-    /**
-     * show ids
-     * @return array
-     */
-    public function showIdsToArray($data = array()) {
-        if($this->parent==null) {
-            return $data;
-        }
-        if($this->typeProcessus->getId()==TypeProcessus::$ids['macro']) {
-            $data['macro'] = array('id' => $this->id);
-        }
-        if($this->typeProcessus->getId()==TypeProcessus::$ids['normal']) {
-            $data['normal'] = array('id' => $this->id);
-        }
-        if($this->typeProcessus->getId()==TypeProcessus::$ids['sous']) {
-            $data['sous'] = array('id' => $this->id);
-        }
-        return $this->parent->showIdsToArray($data);
-    }
-
-    /**
-     * Get libelle
-     *
-     * @return string
-     */
-    public function __toString(){
-        return $this->libelle ? $this->libelle : '';
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName() {
-        $object = $this;
-        $libelle = null;
-        if($object->getLvl() != 0) {
-            $libelle = $object->getParent()->getName().' \ '.$object->getLibelle().$libelle;
-        } else {
-            $libelle = $object->getLibelle();
-        }
-        return $libelle;
-    }
-
-
-
-    /**
-     * Set libelleSansCarSpecial
-     *
-     * @param string $libelleSansCarSpecial
-     * @return Processus
-     */
-    public function setLibelleSansCarSpecial($libelleSansCarSpecial)
+    public function getParent(): ?self
     {
-        $this->libelleSansCarSpecial = $libelleSansCarSpecial;
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
+    {
+        $this->parent = $parent;
 
         return $this;
     }
 
     /**
-     * Get libelleSansCarSpecial
-     *
-     * @return string
+     * @return Collection|self[]
      */
-    public function getLibelleSansCarSpecial()
+    public function getProcessuses(): Collection
     {
-        return $this->libelleSansCarSpecial;
+        return $this->processuses;
     }
 
-    
-
-    /**
-     * Add children
-     *
-     * @param Processus $children
-     * @return Processus
-     */
-    public function addChild(Processus $children)
+    public function addProcessus(self $processus): self
     {
-        $this->children[] = $children;
+        if (!$this->processuses->contains($processus)) {
+            $this->processuses[] = $processus;
+            $processus->setParent($this);
+        }
 
         return $this;
     }
 
-    /**
-     * Remove children
-     *
-     * @param Processus $children
-     */
-    public function removeChild(Processus $children)
+    public function removeProcessus(self $processus): self
     {
-        $this->children->removeElement($children);
+        if ($this->processuses->removeElement($processus)) {
+            // set the owning side to null (unless already changed)
+            if ($processus->getParent() === $this) {
+                $processus->setParent(null);
+            }
+        }
+
+        return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getChildrenIds() {
-        $ids= array($this->getId());
-        foreach($this->children as $child) {
-            $ids = array_merge($ids, $child->getChildrenIds());
-        }
-        return $ids;
+    public function getSociete(): ?Societe
+    {
+        return $this->societe;
+    }
+
+    public function setSociete(?Societe $societe): self
+    {
+        $this->societe = $societe;
+
+        return $this;
     }
 }

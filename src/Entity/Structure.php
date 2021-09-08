@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StructureRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -82,9 +84,25 @@ class Structure
      */
     private $pole;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $direction;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Structure::class, inversedBy="structures")
+     */
+    private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Structure::class, mappedBy="parent")
+     */
+    private $structures;
+
 
     public function __construct() {
         $this->dateCreation = new \DateTime('NOW');
+        $this->structures = new ArrayCollection();
     }
 
     /**
@@ -176,15 +194,6 @@ class Structure
         return $this;
     }
 
-    /**
-     * Get libelle
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->name;
-    }
 
     /**
      * Get name
@@ -318,6 +327,55 @@ class Structure
     public function setPole(?string $pole): self
     {
         $this->pole = $pole;
+
+        return $this;
+    }
+
+    public function setDirection(string $direction): self
+    {
+        $this->direction = $direction;
+
+        return $this;
+    }
+
+    public function getParent(): ?self
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getStructures(): Collection
+    {
+        return $this->structures;
+    }
+
+    public function addStructure(self $structure): self
+    {
+        if (!$this->structures->contains($structure)) {
+            $this->structures[] = $structure;
+            $structure->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStructure(self $structure): self
+    {
+        if ($this->structures->removeElement($structure)) {
+            // set the owning side to null (unless already changed)
+            if ($structure->getParent() === $this) {
+                $structure->setParent(null);
+            }
+        }
 
         return $this;
     }

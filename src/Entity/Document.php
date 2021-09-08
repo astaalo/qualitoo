@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -86,53 +87,37 @@ class Document
      public $file;
      
      /**
-      * @var array
-      * @ORM\Column(name="profils", type="array")
-      */
-     private $profils;
-     
-     /**
-      * @var integer
-      * @ORM\Column(name="annee", type="integer", nullable=true)
-      */
-     private $annee;
-     
-     /**
       * @var boolean
       * @ORM\Column(name="deleted", type="boolean", nullable=false)
       */
      private $deleted;
      
+
      /**
-      * @var integer
+      * @ORM\ManyToMany(targetEntity=Structure::class, inversedBy="documents")
       */
-     public  $anneeFrom;
-     
-     /**
-      * @var integer
-      */
-     public  $anneeTo;
+     private $document;
      
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-	    $this->dateCreation = new \DateTime();
-	    $this->annee = $this->dateCreation->format('Y');;
-	    $this->deleted = false;
-	}
+                  	    $this->dateCreation = new \DateTime();
+                  	    $this->deleted = false;
+                       $this->document = new ArrayCollection();
+                  	}
 	
 	public function __toString(){
-		return $this->libelle;
-	}
+                  		return $this->libelle;
+                  	}
 	/**
 	 * Get id
 	 * @return integer
 	 */
 	public function getId()
-	{
-		return $this->id;
-	}
+                  	{
+                  		return $this->id;
+                  	}
 
 	/**
 	 * Set nomFichier
@@ -140,9 +125,9 @@ class Document
 	 * @return Document
 	 */
 	public function setNomFichier($nomFichier) {
-		$this->nomFichier = $nomFichier;
-		return $this;
-	}
+                  		$this->nomFichier = $nomFichier;
+                  		return $this;
+                  	}
 
 	/**
 	 * Set libelle
@@ -150,17 +135,17 @@ class Document
 	 * @return Document
 	 */
 	public function setLibelle($libelle) {
-		$this->libelle = $libelle;
-		return $this;
-	}
+                  		$this->libelle = $libelle;
+                  		return $this;
+                  	}
 
 	/**
 	 * Get libelle
 	 * @return string
 	 */
 	public function getLibelle() {
-		return $this->libelle;
-	}
+                  		return $this->libelle;
+                  	}
 
 	/**
 	 * Set dateCreation
@@ -168,33 +153,33 @@ class Document
 	 * @return Document
 	 */
 	public function setDateCreation($dateCreation) {
-		$this->dateCreation = $dateCreation;
-		return $this;
-	}
+                  		$this->dateCreation = $dateCreation;
+                  		return $this;
+                  	}
 
 	/**
 	 * Get dateCreation
 	 * @return \DateTime
 	 */
 	public function getDateCreation() {
-		return $this->dateCreation;
-	}
+                  		return $this->dateCreation;
+                  	}
 	
 	/**
 	 * @return Utilisateur
 	 */
 	public function getUtilisateur() {
-		return $this->utilisateur;
-	}
+                  		return $this->utilisateur;
+                  	}
 	
 	/**
 	 * @param Utilisateur $utilisateur
 	 * @return Document
 	 */
 	public function setUtilisateur($utilisateur) {
-		$this->utilisateur = $utilisateur;
-		return $this;
-	}
+                  		$this->utilisateur = $utilisateur;
+                  		return $this;
+                  	}
 	
 
     public function getAbsolutePath() {
@@ -252,89 +237,36 @@ class Document
 //         }
 //     }
 	public function getTypeDocument() {
-		return $this->typeDocument;
-	}
+                  		return $this->typeDocument;
+                  	}
 	public function setTypeDocument($typeDocument) {
-		$this->typeDocument = $typeDocument;
-		return $this;
-	}
+                  		$this->typeDocument = $typeDocument;
+                  		return $this;
+                  	}
 	public function getDescription() {
-		return $this->description;
-	}
+                  		return $this->description;
+                  	}
 	public function setDescription($description) {
-		$this->description = $description;
-		return $this;
-	}
+                  		$this->description = $description;
+                  		return $this;
+                  	}
 	public function getNomFichier() {
-		return $this->nomFichier;
-	}
+                  		return $this->nomFichier;
+                  	}
 	public function getFile() {
-		return $this->file;
-	}
+                  		return $this->file;
+                  	}
 	public function setFile($file) {
-		$this->file = $file;
-		return $this;
-	}
+                  		$this->file = $file;
+                  		return $this;
+                  	}
 	public function getEtat() {
-		return $this->etat;
-	}
+                  		return $this->etat;
+                  	}
 	public function setEtat($etat) {
-		$this->etat = $etat;
-		return $this;
-	}
-	
-	
-	
-	
-	
-	
-	
-
-    /**
-     * Set profils
-     *
-     * @param array $profils
-     * @return Document
-     */
-    public function setProfils($profils)
-    {
-        $this->profils = $profils;
-    
-        return $this;
-    }
-
-    /**
-     * Get profils
-     *
-     * @return array 
-     */
-    public function getProfils()
-    {
-        return $this->profils;
-    }
-
-    /**
-     * Set annee
-     *
-     * @param integer $annee
-     * @return Document
-     */
-    public function setAnnee($annee)
-    {
-        $this->annee = $annee;
-    
-        return $this;
-    }
-
-    /**
-     * Get annee
-     *
-     * @return integer 
-     */
-    public function getAnnee()
-    {
-        return $this->annee;
-    }
+                  		$this->etat = $etat;
+                  		return $this;
+                  	}
 
     /**
      * Add utilisateursAutorises
@@ -368,7 +300,6 @@ class Document
     {
         return $this->utilisateursAutorises;
     }
-    
     
     /**
      * Get tmpUtilisateur
@@ -440,5 +371,29 @@ class Document
     public function getDeleted()
     {
         return $this->deleted;
+    }
+
+    /**
+     * @return Collection|Structure[]
+     */
+    public function getDocument(): Collection
+    {
+        return $this->document;
+    }
+
+    public function addDocument(Structure $document): self
+    {
+        if (!$this->document->contains($document)) {
+            $this->document[] = $document;
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Structure $document): self
+    {
+        $this->document->removeElement($document);
+
+        return $this;
     }
 }

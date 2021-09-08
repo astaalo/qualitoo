@@ -20,7 +20,7 @@
 <div class="contentForm">
 	<form  novalidate="novalidate"  action="{{ (id is empty) ? path('creer_processus') : path('ajouter_processus', {id: id}) }}" method="POST">
 		{{ form_row(form.libelle, {attr: {class: 'full'}}) }}
-		{{ form_row(form.parent, {attr: (id is empty) ? {} : {disabled: 'true'}} ) }}
+		{{ form_row(form.societe, {attr: (id is empty) ? {} : {disabled: 'true'}} ) }}
 		{{ form_row(form.typeProcessus) }}
 		{{ form_row(form.structure) }}
 		{{ form_row(form.description, {attr: {class: 'full'}})  }}
@@ -36,9 +36,9 @@
 
 
 	<script>
-		$('#{{ form.parent.vars.id }}').prepend("<option value>Choisir un parent ...</option>");
-		{% if form.parent.vars.value is empty %}
-		$('#{{ form.parent.vars.id }}').val(''); // if you want it to be automatically selected
+		$('#{{ form.societe.vars.id }}').prepend("<option value>Choisir la Societe ...</option>");
+		{% if form.societe.vars.value is empty %}
+		$('#{{ form.societe.vars.id }}').val(''); // if you want it to be automatically selected
 		{% endif %}
 	</script>
 {% endblock %}

@@ -31,10 +31,14 @@ class UtilisateurFormType extends AbstractType
       		->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('prenom', null, array('label' => 'Prénom'))
             ->add('nom', null, array('label' => 'Nom'))
-            ->add('structure', EntityType::class, array('label' => 'Structure', 'class' => 'App\Entity\Structure',
-				'query_builder'=>function($sr){
-				return $sr->filter();
-				}))
+            //->add('ip', null, array('label' => 'IP'))
+            ->add('password', null, array('label' => 'Password'))
+            ->add('structure', EntityType::class, array('label' => 'Structure','class' => 'App\Entity\Structure', 'attr' => array('class' => 'chzn-select'), 'query_builder' => function (StructureRepository $er) {
+		 		return $er->createQueryBuilder('u')
+					->orderBy('u.libelle', 'ASC');
+			},
+            'choice_label' => 'libelle',
+			))
             ->add('matricule', TextType::class, array('label' => 'Matricule', 'attr' => array('class' => 'ui-spinner-box')))
             ->add('telephone', null, array('label' => 'Téléphone'))
             ->add('manager', null, array('label' => 'Est manager', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
@@ -42,8 +46,8 @@ class UtilisateurFormType extends AbstractType
             'query_builder'=>function($sr){
             return $sr->listUserSocieties();
             }
-            ))
-            ->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe','placeholder' => 'Choisir la société ...',
+        ));
+            /*->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe','placeholder' => 'Choisir la société ...',
             'query_builder'=>function($sr){
             return $sr->listUserSocieties();
             }
@@ -56,8 +60,8 @@ class UtilisateurFormType extends AbstractType
             ->add('structureOfConsulteur', null, array('label' => 'Est consulteur de', 'required' => false, 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Structure','placeholder' => 'Choisir ...', 'query_builder'=>function($sr){
                 return $sr-> listUserStructure();
                 }
-            ))
-            ->add('roles', ChoiceType::class, array('label' => 'Profil', 'choices' => array('ROLE_USER' => 'Utilisateur simple', 'ROLE_ADMIN' => 'Administrateur'), 'multiple' => true, 'required' => true, 'placeholder' => 'Choisir ...'));
+            ))*/
+           // ->add('roles', ChoiceType::class, array('label' => 'Profils', 'choices' => array('ROLE_USER' => 'Utilisateur simple', 'ROLE_ADMIN' => 'Administrateur'), 'multiple' => true, 'required' => true, 'placeholder' => 'Choisir ...'));
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -291,18 +291,16 @@ class Utilisateur extends User implements UtilisateurInterface
     }
 	
     /**
-     * Get profil
+     * Get profils
      *
      * @return string
      */
-    public function getProfil()
+    public function getProfils()
     {
     	if($this->hasRole('ROLE_ADMIN')) {
     		return 'Super Administrateur';
     	} elseif($this->hasSocieteOfAdministrator()) {
     		return "Administrateur";
-    	}  elseif($this->manager) {
-    		return "Responsable de processus";
     	}  else{
     		return "Simple utilisateur"; 
     	}
@@ -428,10 +426,10 @@ class Utilisateur extends User implements UtilisateurInterface
         $this->societeOfAdministrator->removeElement($societeOfAdministrator);
     }
 
-    public function getProfils(): ?Profil
-    {
-        return $this->profils;
-    }
+   // public function getProfils(): ?Profil
+    //{
+     //   return $this->profils;
+    //}
 
     public function setProfils(?Profil $profils): self
     {

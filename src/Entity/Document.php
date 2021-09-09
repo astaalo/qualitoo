@@ -99,37 +99,35 @@ class Document
      private $document;
 
      /**
-      * @ORM\OneToMany(targetEntity=Rubrique::class, mappedBy="document")
+      * @ORM\ManyToOne(targetEntity=Rubrique::class, inversedBy="documents")
       */
-     private $rubriques;
+     private $rubrique;
 
      /**
-      * @ORM\OneToMany(targetEntity=Theme::class, mappedBy="document")
+      * @ORM\ManyToOne(targetEntity=Theme::class, inversedBy="documents")
       */
-     private $themes;
+     private $theme;
+
      
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-                                                	    $this->dateCreation = new \DateTime();
-                                                	    $this->deleted = false;
-                                                     $this->document = new ArrayCollection();
-                                                     $this->rubriques = new ArrayCollection();
-                                                     $this->themes = new ArrayCollection();
-                                                	}
+        $this->dateCreation = new \DateTime();
+        $this->deleted = false;
+        $this->document = new ArrayCollection();
+    }
 	
 	public function __toString(){
-                                                		return $this->libelle;
-                                                	}
+        return $this->libelle;
+    }
 	/**
 	 * Get id
 	 * @return integer
 	 */
-	public function getId()
-                                                	{
-                                                		return $this->id;
-                                                	}
+	public function getId(){
+        return $this->id;
+    }
 
 	/**
 	 * Set nomFichier
@@ -137,9 +135,9 @@ class Document
 	 * @return Document
 	 */
 	public function setNomFichier($nomFichier) {
-                                                		$this->nomFichier = $nomFichier;
-                                                		return $this;
-                                                	}
+        $this->nomFichier = $nomFichier;
+        return $this;
+    }
 
 	/**
 	 * Set libelle
@@ -147,17 +145,17 @@ class Document
 	 * @return Document
 	 */
 	public function setLibelle($libelle) {
-                                                		$this->libelle = $libelle;
-                                                		return $this;
-                                                	}
+        $this->libelle = $libelle;
+        return $this;
+    }
 
 	/**
 	 * Get libelle
 	 * @return string
 	 */
 	public function getLibelle() {
-                                                		return $this->libelle;
-                                                	}
+        return $this->libelle;
+  	}
 
 	/**
 	 * Set dateCreation
@@ -165,34 +163,33 @@ class Document
 	 * @return Document
 	 */
 	public function setDateCreation($dateCreation) {
-                                                		$this->dateCreation = $dateCreation;
-                                                		return $this;
-                                                	}
+        $this->dateCreation = $dateCreation;
+        return $this;
+    }
 
 	/**
 	 * Get dateCreation
 	 * @return \DateTime
 	 */
 	public function getDateCreation() {
-                                                		return $this->dateCreation;
-                                                	}
+        return $this->dateCreation;
+    }
 	
 	/**
 	 * @return Utilisateur
 	 */
 	public function getUtilisateur() {
-                                                		return $this->utilisateur;
-                                                	}
+        return $this->utilisateur;
+    }
 	
 	/**
 	 * @param Utilisateur $utilisateur
 	 * @return Document
 	 */
 	public function setUtilisateur($utilisateur) {
-                                                		$this->utilisateur = $utilisateur;
-                                                		return $this;
-                                                	}
-	
+        $this->utilisateur = $utilisateur;
+        return $this;
+    }
 
     public function getAbsolutePath() {
         return null === $this->file ? null : $this->getUploadRootDir().'/'.$this->file;
@@ -249,36 +246,36 @@ class Document
 //         }
 //     }
 	public function getTypeDocument() {
-                                                		return $this->typeDocument;
-                                                	}
+        return $this->typeDocument;
+    }
 	public function setTypeDocument($typeDocument) {
-                                                		$this->typeDocument = $typeDocument;
-                                                		return $this;
-                                                	}
+        $this->typeDocument = $typeDocument;
+        return $this;
+    }
 	public function getDescription() {
-                                                		return $this->description;
-                                                	}
+        return $this->description;
+    }
 	public function setDescription($description) {
-                                                		$this->description = $description;
-                                                		return $this;
-                                                	}
+        $this->description = $description;
+        return $this;
+    }
 	public function getNomFichier() {
-                                                		return $this->nomFichier;
-                                                	}
+        return $this->nomFichier;
+    }
 	public function getFile() {
-                                                		return $this->file;
-                                                	}
+        return $this->file;
+    }
 	public function setFile($file) {
-                                                		$this->file = $file;
-                                                		return $this;
-                                                	}
+        $this->file = $file;
+        return $this;
+    }
 	public function getEtat() {
-                                                		return $this->etat;
-                                                	}
+        return $this->etat;
+    }
 	public function setEtat($etat) {
-                                                		$this->etat = $etat;
-                                                		return $this;
-                                                	}
+        $this->etat = $etat;
+        return $this;
+     }
 
     /**
      * Add utilisateursAutorises
@@ -409,63 +406,25 @@ class Document
         return $this;
     }
 
-    /**
-     * @return Collection|Rubrique[]
-     */
-    public function getRubriques(): Collection
+    public function getRubrique(): ?Rubrique
     {
-        return $this->rubriques;
+        return $this->rubrique;
     }
 
-    public function addRubrique(Rubrique $rubrique): self
+    public function setRubrique(?Rubrique $rubrique): self
     {
-        if (!$this->rubriques->contains($rubrique)) {
-            $this->rubriques[] = $rubrique;
-            $rubrique->setDocument($this);
-        }
-
+        $this->rubrique = $rubrique;
         return $this;
     }
 
-    public function removeRubrique(Rubrique $rubrique): self
+    public function getTheme(): ?Theme
     {
-        if ($this->rubriques->removeElement($rubrique)) {
-            // set the owning side to null (unless already changed)
-            if ($rubrique->getDocument() === $this) {
-                $rubrique->setDocument(null);
-            }
-        }
-
-        return $this;
+        return $this->theme;
     }
 
-    /**
-     * @return Collection|Theme[]
-     */
-    public function getThemes(): Collection
+    public function setTheme(?Theme $theme): self
     {
-        return $this->themes;
-    }
-
-    public function addTheme(Theme $theme): self
-    {
-        if (!$this->themes->contains($theme)) {
-            $this->themes[] = $theme;
-            $theme->setDocument($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTheme(Theme $theme): self
-    {
-        if ($this->themes->removeElement($theme)) {
-            // set the owning side to null (unless already changed)
-            if ($theme->getDocument() === $this) {
-                $theme->setDocument(null);
-            }
-        }
-
+        $this->theme = $theme;
         return $this;
     }
 }

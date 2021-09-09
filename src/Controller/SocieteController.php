@@ -60,11 +60,7 @@ class SocieteController extends BaseController {
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$entity->upload();
-			//$relance = new Relance();
-			//$relance->setSociete($entity);
-			//$relance->getIsActif(true);
 			$em->persist($entity);
-			//$em->persist($relance);
 			$em->flush();
 			return $this->redirect($this->generateUrl('les_societes'));
 		}

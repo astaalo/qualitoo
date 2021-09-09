@@ -125,13 +125,13 @@ class DashboardController extends BaseController
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Utilisateur",
                     'roles' => array('ROLE_SUPER_ADMIN', 'ROLE_RESPONSABLE'),
-                    'path'	=> $this->generateUrl('creer_societe')
+                    'path'	=> $this->generateUrl('creer_utilisateur')
                 ),
                 array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Utilisateur",
                     'roles' => array('ROLE_SUPER_ADMIN'),
-                    'path'	=> $this->generateUrl('les_societes')
+                    'path'	=> $this->generateUrl('les_utilisateurs')
                     // 'path'	=> ($this->getUser()->getSociete()&&$this->getUser()->getSociete()->getRelance())? $this->generateUrl('edition_relance',array('id' =>$this->getUser()->getSociete()->getRelance()->getId())):'#'
                 ),
             )

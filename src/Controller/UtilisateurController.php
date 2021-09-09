@@ -63,6 +63,49 @@ class UtilisateurController extends BaseController {
 		}
 		return array('user' => $user, 'form' => $form->createView());
 	}
+
+	/**
+	 * @QMLogger(message="Creation d'un utilisateur")
+	 * @Route("/{id}/ajout_utilisateur", name="ajout_utilisateur", requirements={ "id"=  "\d+"})
+	 * @Route("/nouveau_utilisateur", name="nouveau_utilisateur")
+	 * @Template()
+	 */
+	public function newAction($id = null) {
+		$entity = new Utilisateur();
+		if($id) {
+			$user = $this->getDoctrine()->getManager()->getRepository(Utilisateur::class)->find($id);
+			$entity->setParent($user);
+		}
+		$form   = $this->createForm(UtilisateurFormType::class, $entity);
+		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
+		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
+	}
+	
+
+	/**
+	 * @QMLogger(message="Envoi des donnees saisies lors de la creation d'un user")
+	 * @Route("/{id}/ajouter_utilisateur", name="ajouter_utilisateur")
+	 * @Route("/creer_utilisateur", name="creer_utilisateur")
+	 * @Template("utilisateur/new.html.twig")
+	 */
+	public function createAction(Request $request, $id = null) {
+		$entity = new Utilisateur();
+		$form   = $this->createCreateForm($entity, UtilisateurFormType::class);
+		$form->handleRequest($request);
+		if ($form->isSubmitted()) {
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($entity);
+				$em->flush();$this->get('session')->getFlashBag()->add('success', "Utilisateur ajouté avec succés.");
+				if($entity->getParent()) {
+					return $this->redirect($this->generateUrl('details_utilisateur', array('id' => $entity->getParent()->getId())));
+				} else{
+					return $this->redirect($this->generateUrl('les_utilisateurs'));
+				}
+			}	
+		}
+		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
+	}
 	
 	/**
 	 * @QMLogger(message="Détails d'un utilisateur")

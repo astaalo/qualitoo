@@ -82,23 +82,23 @@
     <div id="header">
         <div class="logo"></div>
         <div id="account_info">
-            {# {% if has_rights('ROLE_ADMIN') or has_rights('ROLE_SUPER_ADMIN') %} #}
-            <div id="societe_choice">
+             {% if has_rights('ROLE_ADMIN') or has_rights('ROLE_SUPER_ADMIN') %} 
+                <div id="societe_choice">
 	                	<span>{% if app.user.societe and app.user.societe.photo %}<img src="{{ asset(app.user.societe.webPath) }}" />{% endif %}
 	                		<b>{{ app.user.societe?app.user.societe:"" }}</b>
 	                	</span>
-                {% set societes = app.user.allSocietes %}
+                    {% set societes = app.user.allSocietes %}
 
-                <span class="scroll_down_menu"></span>
-                <ul style="display: none;">
-                    {% for societe in societes %}
-                        <li ><a href="#" class="ajaxLink" modal-url={{ path('changement_societe', {id: societe.id}) }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li>
-                        {# <li ><a href="#" class="ajaxLink" modal-url={{ path('dashboard') }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li> #}
-                    {% endfor %}
-                </ul>
+                    <span class="scroll_down_menu"></span>
+                    <ul style="display: none;">
+                        {% for societe in societes %}
+                            <li ><a href="#" class="ajaxLink" modal-url={{ path('changement_societe', {id: societe.id}) }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li>
+                            {# <li ><a href="#" class="ajaxLink" modal-url={{ path('dashboard') }} call="redirectTo" argument-call="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"> {{ societe }} </a></li> #}
+                        {% endfor %}
+                    </ul>
 
-            </div>
-            {# {% endif %} #}
+                </div>
+             {% endif %} 
             <div style="float: left;"><img src="{{ asset('assets/bundles/orangemain/images/logo/logo.gif') }}" alt="Online" class="avatar" /></div>
             <div class="setting" title="Modification du profil"><b>Bienvenue,</b> <b class="red">{{ app.user }}</b><img src="{{ asset('assets/bundles/orangemain/images/gear.png') }}" class="gear"  alt="Profile Setting" ></div>
             <div title="Disconnect">

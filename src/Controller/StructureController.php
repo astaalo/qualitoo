@@ -13,6 +13,7 @@ use App\Entity\Hierarchie;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\QueryBuilder;
 use App\Annotation\QMLogger;
+use App\Repository\StructureRepository;
 
 class StructureController extends BaseController {
 
@@ -52,13 +53,14 @@ class StructureController extends BaseController {
 	 * @Route("/liste_des_structures", name="liste_des_structures")
 	 * @Template()
 	 */
-	public function listAction(Request $request) {
+	public function listAction(Request $request,StructureRepository $structureRepo) {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(StructureType::class, new Structure());
 		$this->modifyRequestForForm($request, $this->get('session')->get('structure_criteria'), $form);
 		$criteria = $form->getData();
 		//dd($criteria);
-		$queryBuilder = $em->getRepository(Structure::class)->listAllQueryBuilder($criteria);
+		$queryBuilder = $structureRepo->listAllQueryBuilder($criteria);
+		//dd($queryBuilder);
 		return $this->paginate($request, $queryBuilder);
 	}
 
@@ -86,17 +88,17 @@ class StructureController extends BaseController {
 		$form   = $this->createCreateForm($entity, StructureType::class);
 		$form->handleRequest($request);
 		if ($form->isSubmitted()) {
-		if ($form->isValid()) {
-			$em = $this->getDoctrine()->getManager();
-			if($this->getUser()->getSociete()) {
-				$entity->setSociete($this->getUser()->getSociete());
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getManager();
+				if($this->getUser()->getSociete()) {
+					$entity->setSociete($this->getUser()->getSociete());
+				}
+				$entity->setName($entity->getName());
+				$em->persist($entity);
+				$em->flush();
+				return $this->redirect($this->generateUrl('les_structures'));
 			}
-			$entity->setName($entity->getName());
-			$em->persist($entity);
-			$em->flush();
-			return $this->redirect($this->generateUrl('les_structures'));
 		}
-	}
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
@@ -236,7 +238,7 @@ class StructureController extends BaseController {
 	  			$entity->__toString(),
 	  			$entity->getTypeStructure()?$entity->getTypeStructure()->getLibelle():null,
 	  			$entity->getParent() ? $entity->getParent()->__toString() : null,
-	  			$this->service_action->generateActionsForStructure($entity)
+	  			//$this->service_action->generateActionsForStructure($entity)
 	  	);
 	}
 }

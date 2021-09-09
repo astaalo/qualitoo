@@ -1,8 +1,6 @@
 {% extends 'configuration/index.html.twig' %}
 
-{% block menu_config %}
-	{% include 'configuration/hierarchie.html.twig' with {position: 1} %}
-{% endblock %}
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
 
 {% block header_config %}
 <div class="header">

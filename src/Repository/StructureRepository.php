@@ -116,17 +116,25 @@ class StructureRepository extends ServiceEntityRepository {
      */
     public function listAllQueryBuilder($structure = null) {
         $queryBuilder = $this->createQueryBuilder('q');
-        if($structure && $structure->getParent()) {
+        //->innerJoin('p.structure', 'q')
+        //->where('q.etat != :etat')
+        //->setParameter('etat', $this->_states['entity']['supprime']);
+       // dd($queryBuilder);
+    //if($this->_user->getSociete()) {
+     //   $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
+    //}
+        //dd($queryBuilder);
+       /* if($structure && $structure->getParent()) {
             $queryBuilder->andWhere('q.lvl >= :level')->setParameter('level', $structure->getParent()->getLvl())
                 ->andWhere('q.root = :root')->setParameter('root', $structure->getParent()->getRoot())
                 ->andWhere('q.lft >= :lft')->setParameter('lft', $structure->getParent()->getLft())
                 ->andWhere('q.rgt <= :rgt')->setParameter('rgt', $structure->getParent()->getRgt());
-        }
+        }*/
         if($structure && $structure->getTypeStructure()) {
             $queryBuilder->andWhere('q.typeStructure = :typeStructure')->setParameter('typeStructure', $structure->getTypeStructure());
         }
 
-        return BaseRepository::filterBySociete($queryBuilder, 'q', $this->_user)->orderBy('q.lvl');
+        return BaseRepository::filterBySociete($queryBuilder, 'q', $this->_user)->orderBy('q');
     }
 
     /* (non-PHPdoc)

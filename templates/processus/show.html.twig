@@ -32,151 +32,19 @@
 						<td style="padding-left: 100px;">{{ entitie.libelle }}</td>
 					</tr>
 					<tr>
-						<th style="width:115px;" >Code:</th>
-						<td style="padding-left: 100px;">{{ entitie.code }}</td>
+						<th style="width:115px;" >Description:</th>
+						<td style="padding-left: 100px;">{{ entitie.description }}</td>
+					</tr>
+					<tr>
+						<th style="width:115px;" >Type Processus:</th>
+						<td style="padding-left: 100px;">{{ entitie.typeProcessus.name }}</td>
 					</tr>
 					<tr>
 						<th style="width:115px;" >Structure:</th>
 						<td style="padding-left: 100px;">{{ entitie.structure.name }}</td>
 					</tr>
-					<tr>
-						<th style="width:115px;" >Description:</th>
-						<td style="padding-left: 100px;">{{ entitie.description }}</td>
-					</tr>
-				</tbody>
-				
+				</tbody>	
 			</table>
-			<ul class="tabs header no-margin" >
-				<li ><a href="#tab1">Sous-processus </a></li>
-				<li ><a href="#tab2">Activités </a></li>
-				<li ><a href="#tab3">Projets </a></li>
-			</ul>
-			<div id="tab1" class="tab_content">
-				<ul class="uibutton-group">
-					<li><a class="uibutton icon add "  title="Ajouter sous-processus" href="{{ path('ajout_processus', {'id': entitie.id}) }}">Ajout sous-processus</a></li>
-				</ul>
-				<table class="display no-margin">
-				<thead>
-					<tr>
-						<th width="152" >Code</th>
-						<th >Libellé</th>
-						<th width="246" >Activités</th>
-						<th width="99" class="no-sort">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for sp in entitie.children %}
-					 <tr>
-						<td >{{ sp.code }}</td>
-						<td >{{ sp.libelle }}</td>
-						<td >{{ sp.activite|length }} activité(s)</td>
-						<td >
-							<span class="tip" >
-	                			<a title="Afficher" href="{{ path('details_processus', {'id': sp.id}) }}">
-		                			<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}" >
-		                		</a>
-                			</span> 
-			                <span class="tip" >
-				                <a title="Modifier" href="{{ path('edition_processus', {'id': sp.id}) }}">
-				                	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/pencil.png') }}" >
-				                </a>
-			                </span> 
-			               	<span class="tip" >
-				                <a id="1" class="Delete"  name="Band ring" title="Delete" title="Supprimer"  href="#">
-				                	<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/delete.png') }}" >
-				                </a>
-			                </span> 
-						</td>
-					</tr>
-					{% else %}
-					<tr>
-						<td colspan="4" style="color: red;font-family: serif;font-size: 16px;">Aucun sous-processus trouvé</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-				</table>
-				{# </div>#}
-			</div><!--tab1-->
-			<div id="tab2" class="tab_content">
-				<ul class="uibutton-group">
-					<li><a class="uibutton icon add"  title="Ajouter une activité" href="{{ path('ajout_activite', {'id':entitie.id }) }}" >Ajout activité</a></li>
-				</ul>
-				<table class="display no-margin">
-					<thead>
-						<tr>
-							<th><div class="th_wrapp">Code</div></th>
-							<th><div class="th_wrapp">Libellé</div></th>
-							<th><div class="th_wrapp">Processus</div></th>
-							<th><div class="th_wrapp">Actions</div></th>
-						</tr>
-					</thead>
-					<tbody>
-					{% for activite in entitie.activite %}
-						<tr class="odd gradeX">
-							<td>{{ activite.code }}</td>
-							<td>{{ activite.libelle }}</td>
-							<td>{{ activite.processus }}</td>
-							<td>
-								<span class="tip" >
-	                				<a title="Afficher" href="{{ path('details_activite', {id: activite.id}) }}">
-		                				<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}" >
-		                			</a>
-	                			</span> 
-				                <span class="tip" >
-				                	<a title="Modifier" href="{{ path('edition_activite', {id: activite.id}) }}">
-				                		<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/pencil.png') }}" >
-				                	</a>
-				                </span> 
-				               	<span class="tip" >
-				                	<a title="Supprimer" href="{{ path('supprimer_activite', {id: activite.id}) }}">
-				                		<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/delete.png') }}" >
-				                	</a>
-				                </span> 
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="4" style="color: red;font-family: serif;font-size: 16px;">Aucune activité trouvée</td>
-						</tr>
-					{% endfor %}
-					</tbody>
-				</table>
-			</div><!--tab2-->
-			<div id="tab3" class="tab_content">
-				<ul class="uibutton-group">
-					<li><a class="uibutton icon add"  title="Ajouter un projet" href="{{ path('ajout_projet', {'id':entitie.id }) }}" >Ajout projet</a></li>
-				</ul>
-				<table class="display no-margin">
-					<thead>
-						<tr>
-							<th><div class="th_wrapp">Libellé</div></th>
-							<th><div class="th_wrapp">Porteur</div></th>
-							<th><div class="th_wrapp">Statut</div></th>
-							<th><div class="th_wrapp">Actions</div></th>
-						</tr>
-					</thead>
-					<tbody>
-					{% for projet in entitie.projet %}
-						<tr class="odd gradeX">
-							<td>{{ projet.libelle }}</td>
-							<td>{{ projet.utilisateur }}</td>
-							<td>{{ projet|show_status }}</td>
-							<td>
-								<span class="tip" >
-	                				<a  title="Afficher" href="{{ path('details_projet', {id: projet.id}) }}">
-		                			<img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}" >
-		                			</a>
-	                			</span> 
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="4" style="color: red;font-family: serif;font-size: 16px;">Aucune activité trouvée</td>
-						</tr>
-					{% endfor %}
-					</tbody>
-				</table>
-			</div><!--tab3-->
 		</div><!--/END TAB/-->
 		<div class="clear"/></div>
 	</div>

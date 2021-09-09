@@ -11,11 +11,11 @@ class SocieteType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('libelle', null, array('label' => 'Libellé', 'attr' => array('class' => 'medium')))
-			->add('file', null, array('label' => 'Icône', 'attr' => array('class' => 'file fileupload')))
-			->add('famille', null, array('label' =>'Familles',
-					'placeholder' => '-- Chosir les familles --', 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple')))
-			->add('profilRisque', null, array('label' =>'Profil risque',
-					'placeholder' => '-- Chosir les profils risques --', 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple')));
+			->add('file', null, array('label' => 'Icône', 'attr' => array('class' => 'file fileupload')));
+			//->add('famille', null, array('label' =>'Familles',
+			//		'placeholder' => '-- Chosir les familles --', 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple')))
+			//->add('profilRisque', null, array('label' =>'Profil risque',
+			//		'placeholder' => '-- Chosir les profils risques --', 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple')));
 	}
 	
 	public function configureOptions(OptionsResolver $resolver)

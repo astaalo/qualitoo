@@ -95,23 +95,6 @@ class Processus
         return $this->id;
     }
 
-
-    /**
-     * @return string
-     */
-    public function getCode() {
-        return $this->code;
-    }
-
-    /**
-     * @param string $code
-     * @return Processus
-     */
-    public function setCode($code) {
-        $this->code = $code;
-        return $this;
-    }
-
     /**
      * @return string
      */

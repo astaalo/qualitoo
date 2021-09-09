@@ -88,7 +88,7 @@ class DashboardController extends BaseController
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Entités",
                     'roles' => array('ROLE_SUPER_ADMIN','ROLE_RESPONSABLE'),
-                    'path'	=> $this->generateUrl('les_processus')
+                    'path'	=> $this->generateUrl('les_structures')
                 )
             )
         );

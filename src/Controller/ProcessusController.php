@@ -61,6 +61,7 @@ class ProcessusController extends BaseController {
 		$this->modifyRequestForForm($request, $this->get('session')->get('processus_criteria'), $form);
 		$criteria = $form->getData();
 		$queryBuilder = $processusRepo->listAll($criteria);
+		//dd($queryBuilder);
 		return $this->paginate($request, $queryBuilder);
 	}
 	
@@ -208,11 +209,11 @@ class ProcessusController extends BaseController {
 	 */
 	protected function addRowInTable($entity) {
 	  	return array(
-			$entity->getCode(),
 			$entity->getLibelle(),
+			$entity->getDescription(),
 			$entity->getTypeProcessus()->getLibelle(),
-			$entity->getStructure() ? $entity->getStructure()->getName() : null,
-			$this->service_action->generateActionsForProcessus($entity)
+			$entity->getStructure()->getLibelle(),
+			//$this->service_action->generateActionsForProcessus($entity)
 		);
 	}
 }

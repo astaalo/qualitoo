@@ -1,0 +1,48 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Liste des utilisateurs
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li class="tip"><a href="#myModal" class="uibutton icon filter actionLink" data-toggle="modal" data-target="#myModal" modal-url="{{ path('filtrer_les_utilisateurs') }}" original-title="Filter les processus">Filtre</a></li>
+			<li class="tip"><a class="uibutton icon add" href="{{ path('nouveau_utilisateur') }}" original-title="Ajouter un utilisateur">Nouveau utilisateurs</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+	<div class="clear"></div>
+	<div class="content">
+		<div class="tableName">
+			<table class="display" id="userTable">
+				<thead>
+					<tr>
+						<th width="100"><div class="th_wrapp">Matricule</div></th>
+						<th><div class="th_wrapp">Prénom</div></th>
+						<th width="200"><div class="th_wrapp">Nom</div></th>
+						<th width="200"><div class="th_wrapp">Email</div></th>
+                        <th width="200"><div class="th_wrapp">Profil</div></th>
+						<th width="100"><div class="th_wrapp">Actions</div></th>
+					</tr>
+				</thead>
+				<tbody>
+				 	<tr class="odd gradeX">
+				 		<td colspan="4">Chargement des données en cours ...</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }}
+	{% include 'extra/datatable.html.twig' with {idTable: 'userTable', url: path('liste_des_utilisateurs'), nosorting: {0:3, 1:4} } %}
+{% endblock %}

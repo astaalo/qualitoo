@@ -84,12 +84,12 @@ class ProcessusRepository extends ServiceEntityRepository
         if($this->_user->getSociete()) {
             $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
         }
-        if($processus && $processus->getStructure()) {
+       /* if($processus && $processus->getStructure()) {
             $queryBuilder->andWhere('q.lvl >= :level')->setParameter('level', $processus->getStructure()->getLvl())
                 ->andWhere('q.root = :root')->setParameter('root', $processus->getStructure()->getRoot())
                 ->andWhere('q.lft >= :lft')->setParameter('lft', $processus->getStructure()->getLft())
                 ->andWhere('q.rgt <= :rgt')->setParameter('rgt', $processus->getStructure()->getRgt());
-        }
+        }*/
         if($processus && $processus->getTypeProcessus()) {
             $queryBuilder->andWhere('p.typeProcessus = :typeProcessus')->setParameter('typeProcessus', $processus->getTypeProcessus());
         }

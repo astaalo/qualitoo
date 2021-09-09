@@ -60,11 +60,11 @@ class SocieteController extends BaseController {
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$entity->upload();
-			$relance = new Relance();
-			$relance->setSociete($entity);
-			$relance->getIsActif(true);
+			//$relance = new Relance();
+			//$relance->setSociete($entity);
+			//$relance->getIsActif(true);
 			$em->persist($entity);
-			$em->persist($relance);
+			//$em->persist($relance);
 			$em->flush();
 			return $this->redirect($this->generateUrl('les_societes'));
 		}
@@ -127,9 +127,9 @@ class SocieteController extends BaseController {
 	  	return array(
             // sprintf('<img src="%s" />', $this->get('twig.extension.assets')->getAssetUrl($entity->getWebPath())),
             sprintf('<img src="%s" />', $this->service_assets_extension->getAssetUrl($entity->getWebPath())),
-            sprintf('<a href="%s">%s<a/>', $this->generateUrl('details_risque', array('id' => $entity->getId())), $entity->getLibelle()),
+            sprintf('<a href="%s">%s<a/>', $this->generateUrl('details_societe', array('id' => $entity->getId())), $entity->getLibelle()),
             $this->service_status->generateStatusForSociete($entity),
-            $this->service_action->generateActionsForSociete($entity)
+            //$this->service_action->generateActionsForSociete($entity)
 	  	);
 	}
 }

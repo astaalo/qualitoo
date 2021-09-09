@@ -1,0 +1,48 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Détails du {{ entitie.typeProcessus }}
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon confirm answer" href="{{ path('les_societes') }}" title="les societes">Retour à la liste</a></li>
+			<li><a class="uibutton icon edit" href="{{ path('edition_societe', {'id': entitie.id}) }}">Edition une societe</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+	<div class="content">
+		<div id="uploadTab">
+			<table class="show_table">
+				<tbody>
+					{% if entitie.parent is not empty  %}
+						<tr>
+							<th style="width:300px;" >Processus parent:</th>
+							<td style="padding-left: 100px;"><a href="{{ path('details_societes', {'id': entitie.parent.id}) }}">{{ entitie.parent }}</a></td>
+						</tr>
+					{% endif %}
+					<tr>
+						<th style="width:115px;" >Icône:</th>
+						<td style="padding-left: 100px;">{{ entitie.logo }}</td>
+					</tr>
+					<tr>
+						<th style="width:115px;" >Nom de la Societe:</th>
+						<td style="padding-left: 100px;">{{ entitie.nom }}</td>
+					</tr>
+					<tr>
+						<th style="width:115px;" >Etat:</th>
+						<td style="padding-left: 100px;">{{ entitie.etat }}</td>
+					</tr>
+				</tbody>	
+			</table>
+		</div><!--/END TAB/-->
+		<div class="clear"/></div>
+	</div>
+</div>
+{% endblock %}

@@ -19,7 +19,7 @@
 	</div>
 	<div class="clear"></div>
 	<div class="contentForm">
-	<form  novalidate="novalidate"  action="{{ path('creer_document', {type: type}) }}"  method="POST">
+	<form  novalidate="novalidate"  action="{{ path('creer_document') : path('ajouter_document', {id: id}) }}"  method="POST">
 	    {{ form_row(form._token) }}
 		{{ form_row(form.libelle, {attr:{class:'full'}}) }}
 		<div style="display: none">

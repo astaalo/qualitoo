@@ -22,6 +22,16 @@ class Rubrique
      */
     private $libelle;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $etat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="rubriques")
+     */
+    private $document;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +45,30 @@ class Rubrique
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getEtat(): ?bool
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?bool $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getDocument(): ?Document
+    {
+        return $this->document;
+    }
+
+    public function setDocument(?Document $document): self
+    {
+        $this->document = $document;
 
         return $this;
     }

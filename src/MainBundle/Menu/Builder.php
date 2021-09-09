@@ -13,7 +13,7 @@ class Builder implements ContainerAwareInterface
 
 	public function showMenu(FactoryInterface $factory, array $options) {
 		$menu = $factory->createItem('menu');
-		//$menu->addChild('Processus', array('route' => 'les_processus', 'label' => 'Processus', 'attributes' => array('class' => 'repeat')));
+		$menu->addChild('Processus', array('route' => 'les_processus', 'label' => 'Processus', 'attributes' => array('class' => 'repeat')));
 		//$menu->addChild('Activite', array('route' => 'les_activites', 'label' => 'Activite', 'attributes' => array('class' => 'ruler_square')));
 		//$menu->addChild('Menace', array('route' => 'les_menaces', 'label' => 'Base des riques', 'attributes' => array('class' => 'ruler_square')));
 		//$menu->addChild('Projet', array('route' => 'les_projets', 'label' => 'Projet', 'attributes' => array('class' => 'file')));
@@ -22,11 +22,11 @@ class Builder implements ContainerAwareInterface
 		//$menu->addChild('Equipement', array('route' => 'les_equipements', 'label' => 'Equipement/Activité', 'attributes' => array('class' => 'spreadsheet')));
 		//$menu->addChild('DomainePhysique', array('route' => 'les_domaines', 'label' => 'Domaines', 'attributes' => array('class' => 'home')));
 		//$menu->addChild('DomaineActivite', array('route' => 'les_domaines', 'label' => "Domaine d'activité", 'attributes' => array('class' => 'home')));
-		//$menu->addChild('Bareme', array('route' => 'les_baremes', 'label' => 'Grille de cause', 'attributes' => array('class' => 'spreadsheet')));
-		//$menu->addChild('Critere', array('route' => 'les_criteres', 'label' => "Grille d'impact", 'attributes' => array('class' => 'access_point')));
-		//$menu->addChild('Utilisateur', array('route' => 'les_utilisateurs', 'label' => 'Utilisateur', 'attributes' => array('class' => 'administrator')));
-		//$menu->addChild('Structure', array('route' => 'les_structures', 'label' => 'Structure/Entité', 'attributes' => array('class' => 'door')));
-		//$menu->addChild('Site', array('route' => 'les_sites', 'label' => 'Sites', 'attributes' => array('class' => 'door')));
+		$menu->addChild('Rubrique', array('route' => 'les_structures', 'label' => 'Rubriques', 'attributes' => array('class' => 'spreadsheet')));
+		$menu->addChild('Societe', array('route' => 'les_societes', 'label' => "Societe", 'attributes' => array('class' => 'access_point')));
+		$menu->addChild('Utilisateur', array('route' => 'les_utilisateurs', 'label' => 'Utilisateur', 'attributes' => array('class' => 'administrator')));
+		$menu->addChild('Structure', array('route' => 'les_structures', 'label' => 'Structure/Entité', 'attributes' => array('class' => 'door')));
+		$menu->addChild('Document', array('route' => 'les_documents', 'label' => 'Document', 'attributes' => array('class' => 'door')));
 		return $menu;
 	}
 	
@@ -58,9 +58,9 @@ class Builder implements ContainerAwareInterface
 				->setLabelAttribute('title', 'Reporting');
 		}
 		if($this->hasRole('ROLE_SUPER_ADMIN')) {
-			$menu->addChild('Traces', array(
-				'route' => 'les_utilisateurs', 'label' => 'Traces', 'attributes' => array('icon' => 'shortcut/fingerprint.png') 
-				))->setLabelAttribute('title', 'Traces');
+			$menu->addChild('Parameters', array(
+				'route' => 'les_utilisateurs', 'label' => 'Parameters', 'attributes' => array('icon' => 'shortcut/setting.png') 
+				))->setLabelAttribute('title', 'Parameters');
 		}
 		return $menu;
 	}

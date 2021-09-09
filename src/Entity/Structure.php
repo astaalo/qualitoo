@@ -195,31 +195,7 @@ class Structure
     }
 
 
-    /**
-     * Get name
-     * @return string
-     */
-    public function getName() {
-        $object = $this;
-        $code = null;
-        if($object->getLvl() != 0) {
-            if($object->getParent() == null) {
-            } else {
-                $code = $object->getParent()->getName().' \ '.$object->getCode().$code;
-            }
-        } else {
-            $code = $object->getCode();
-        }
-        return $code;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName($name){
-        $this->name=$name;
-        return $this;
-    }
+   
     /**
      * @return Utilisateur
      */

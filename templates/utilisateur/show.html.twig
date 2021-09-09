@@ -1,0 +1,50 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color spreadsheet"></span>Détails du {{ entitie.typeProcessus }}
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon confirm answer" href="{{ path('les_processus') }}" title="les utilisateurs">Retour à la liste</a></li>
+			<li><a class="uibutton icon edit" href="{{ path('edition_utilisateur', {'id': entitie.id}) }}">Edition d'un utilisateur</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+	<div class="content">
+		<div id="uploadTab">
+			<table class="show_table">
+				<tbody>
+					<tr>
+						<th style="width:115px;" >Matricule:</th>
+						<td style="padding-left: 100px;">{{ entitie.matricule }}</td>
+					</tr>
+                    <tr>
+						<th style="width:115px;" >Prénom:</th>
+						<td style="padding-left: 100px;">{{ entitie.prenom }}</td>
+					</tr>
+					<tr>
+						<th style="width:115px;" >Nom:</th>
+						<td style="padding-left: 100px;">{{ entitie.nom }}</td>
+					</tr>
+					<tr>
+						<th style="width:115px;" >Email:</th>
+						<td style="padding-left: 100px;">{{ entitie.email }}</td>
+					</tr>
+					<tr>
+						<th style="width:115px;" >Profil:</th>
+						<td style="padding-left: 100px;">{{ entitie.profil.name }}</td>
+					</tr>
+				</tbody>	
+			</table>
+		</div><!--/END TAB/-->
+		<div class="clear"/></div>
+	</div>
+</div>
+{% endblock %}

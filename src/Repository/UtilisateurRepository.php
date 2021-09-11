@@ -32,17 +32,19 @@ class UtilisateurRepository extends ServiceEntityRepository
      * @param \App\Entity\Utilisateur $user
      * @return QueryBuilder
      */
-    public function listAllQueryBuilder($user = null) {
+    public function listAll($user = null) {
         $this->_user = $user;
         $querBuilder = $this->createQueryBuilder('q')
-            ->leftJoin('q.societeOfRiskManager', 'r')
-            ->leftJoin('q.societeOfAdministrator', 'd')
-            ->leftJoin('q.societeOfAuditor', 'u')
-            ->leftJoin('q.structure', 'e')
+            //->leftJoin('q.societeOfRiskManager', 'r')
+            //->leftJoin('q.societeOfAdministrator', 'd')
+            //->leftJoin('q.societeOfAuditor', 'u')
+            ->innerJoin('q.profils', 'e')
             ->where('q.etat != :etat')
             ->setParameter('etat', $this->_states['entity']['supprime']);
-
-        return BaseRepository::filterBySociete($querBuilder, 'e', $this->_user)->groupBy('q.id');
+            if($this->_user->getSociete()) {
+                $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
+            }
+            return $queryBuilder;
     }
 
     /* (non-PHPdoc)

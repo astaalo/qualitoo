@@ -85,11 +85,6 @@ class Structure
     private $pole;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $direction;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Structure::class, inversedBy="structures")
      */
     private $parent;
@@ -98,6 +93,11 @@ class Structure
      * @ORM\OneToMany(targetEntity=Structure::class, mappedBy="parent")
      */
     private $structures;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Direction::class, inversedBy="structures")
+     */
+    private $direction;
 
 
     public function __construct() {
@@ -130,6 +130,15 @@ class Structure
     }
 
     /**
+	 * Get libelle
+	 * @return string
+	 */
+	public function __toString()
+          {
+              return $this->libelle;
+          }
+    
+    /**
      * @return string
      */
     public function getLibelle() {
@@ -141,7 +150,6 @@ class Structure
      * @return Structure
      */
     public function setLibelle($libelle) {
-        $this->nameSansSpecChar = $this->removeSpecialChar($libelle);
         $this->libelle = $libelle;
         return $this;
     }
@@ -306,14 +314,7 @@ class Structure
 
         return $this;
     }
-
-    public function setDirection(string $direction): self
-    {
-        $this->direction = $direction;
-
-        return $this;
-    }
-
+    
     public function getParent(): ?self
     {
         return $this->parent;
@@ -352,6 +353,13 @@ class Structure
                 $structure->setParent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function setDirection(?Direction $direction): self
+    {
+        $this->direction = $direction;
 
         return $this;
     }

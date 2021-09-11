@@ -1,9 +1,7 @@
 {% extends 'configuration/index.html.twig' %}
 {% form_theme form 'extra/simple_form_theme.html.twig' %}
 
-{% block menu_config %}
-	{% include 'configuration/hierarchie.html.twig' with {position: 1} %}
-{% endblock %}
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
 
 {% block header_config %}
 <div class="header">
@@ -21,11 +19,9 @@
 
 {% block content_config %}
 <div class="contentForm">
-	<form  novalidate="novalidate"  action="{{ path('creer_societe') }}" method="POST" {{ form_enctype(form) }}>
+	<form  novalidate="novalidate"  action="{{ path('creer_societe') }}" method="POST">
 		{{ form_row(form.libelle) }}
-		{{ form_row(form.famille) }}
-		{{ form_row(form.profilRisque) }}
-		{{ form_row(form.file) }}
+		{{ form_row(form.photo) }}
 		{{ form_row(form._token) }}
 		<div class="section last">
 			<div>

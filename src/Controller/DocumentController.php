@@ -111,29 +111,31 @@ class DocumentController extends BaseController {
 		$form   = $this->createCreateForm($entity, DocumentType::class);
 		$typeDocument = $this->getDoctrine()->getRepository(TypeDocument::class)->find($type);
 		$entity->setTypeDocument($typeDocument);
-		$currrentYear = date('Y');
+		//$currrentYear = date('Y');
 		$form->handleRequest($request);
-		if ($form->isValid()) {
-			$em = $this->getDoctrine()->getManager();
-			$entity->setUtilisateur($this->getUser());
-			$file = $entity->getFile();
-			
-			// Generate a unique name for the file before saving it
-			$fileName = md5(uniqid()).'.'.$file->guessExtension();
-			
-			// Move the file to the directory where brochures are stored
-			$brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/upload/sharepoint';
-			$file->move($brochuresDir, $fileName);
-			
-			// instead of its contents
-			$entity->setNomFichier($file->getClientOriginalName());
-			$entity->setFile($fileName);
-			$em->persist($entity);
-			$em->flush();
-			$this->get('session')->getFlashBag()->add('success', "Le document a été ajouté avec succés.");
-			return $this->redirect($this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$entity->getTypeDocument()->getId())));
+		if ($form->isSubmitted()) {
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getManager();
+				$entity->setUtilisateur($this->getUser());
+				$file = $entity->getFile();
+				
+				// Generate a unique name for the file before saving it
+				$fileName = md5(uniqid()).'.'.$file->guessExtension();
+				
+				// Move the file to the directory where brochures are stored
+				$brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/upload/sharepoint';
+				$file->move($brochuresDir, $fileName);
+				
+				// instead of its contents
+				$entity->setNomFichier($file->getClientOriginalName());
+				$entity->setFile($fileName);
+				$em->persist($entity);
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('success', "Le document a été ajouté avec succés.");
+				return $this->redirect($this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$entity->getTypeDocument()->getId())));
+			}
 		}
-		return $this->render('OrangeMainBundle:Document:new.html.twig', array('entity' => $entity, 'form' => $form->createView(), 'type'=>$type, 'year'=>$currrentYear));
+		return $this->render('OrangeMainBundle:Document:new.html.twig', array('entity' => $entity, 'form' => $form->createView()));
 	}
 	
 	

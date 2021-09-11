@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Societe;
+use App\Form\SocieteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Relance;
 use App\Annotation\QMLogger;
@@ -57,12 +58,14 @@ class SocieteController extends BaseController {
 		$entity = new Societe();
 		$form   = $this->createCreateForm($entity, SocieteType::class);
 		$form->handleRequest($request);
-		if ($form->isValid()) {
-			$em = $this->getDoctrine()->getManager();
-			$entity->upload();
-			$em->persist($entity);
-			$em->flush();
-			return $this->redirect($this->generateUrl('les_societes'));
+		if ($form->isSubmitted()) {
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getManager();
+				$entity->upload();
+				$em->persist($entity);
+				$em->flush();
+				return $this->redirect($this->generateUrl('les_societes'));
+			}
 		}
 		return array('entity' => $entity, 'form' => $form->createView());
 	}

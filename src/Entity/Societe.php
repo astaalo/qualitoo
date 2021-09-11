@@ -60,9 +60,15 @@ class Societe
      */
     private $processuses;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Direction::class, mappedBy="societe")
+     */
+    private $directions;
+
     public function __construct()
     {
         $this->processuses = new ArrayCollection();
+        $this->directions = new ArrayCollection();
     }
     
     /**
@@ -80,33 +86,33 @@ class Societe
      * @return string
      */
 	public function getLibelle() {
-                        		return $this->libelle;
-                        	}
+                       return $this->libelle;
+                   }
 	
 	/**
 	 * @param string $libelle
 	 * @return Societe
 	 */
 	public function setLibelle($libelle) {
-                        		$this->libelle = $libelle;
-                        		return $this;
-                        	}
+                       $this->libelle = $libelle;
+                       return $this;
+                   }
     
 	/**
 	 * @return boolean
 	 */
 	public function getEtat() {
-                        		return $this->etat;
-                        	}
+                       return $this->etat;
+                   }
 	
 	/**
 	 * @param boolean $etat
 	 * @return Societe
 	 */
 	public function setEtat($etat) {
-                        		$this->etat = $etat;
-                        		return $this;
-                        	}
+                       $this->etat = $etat;
+                       return $this;
+                   }
     
 	/**
 	 * @return string
@@ -139,39 +145,39 @@ class Societe
         return 'uploads/photos';
     }
 	
-    public function upload() {
-    	if (null === $this->file) {
-    		return;
-    	}
-    	$this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
-    	$this->photo = $this->file->getClientOriginalName();
-    	$this->file = null;
-    }
+ public function upload() {
+                   	if (null === $this->photo) {
+                   		return;
+                   	}
+                   	$this->photo->move($this->getUploadRootDir(), $this->photo->getClientOriginalName());
+                   	$this->photo = $this->photo->getClientOriginalName();
+                   	$this->photo = null;
+                   }   
     
 	/**
 	 * Get libelle
 	 * @return string
 	 */
 	public function __toString()
-                        	{
-                        		return $this->libelle;
-                        	}
+                   {
+                       return $this->libelle;
+                   }
 	
 	/**
 	 * @return string
 	 */
 	public function getPhoto() {
-                        		return $this->photo;
-                        	}
+                       return $this->photo;
+                   }
 	
 	/**
 	 * @param string $photo
 	 * @return Societe
 	 */
 	public function setPhoto($photo) {
-                        		$this->photo = $photo;
-                        		return $this;
-                        	}
+                       $this->photo = $photo;
+                       return $this;
+                   }
 
     /**
      * Add administrateur
@@ -240,6 +246,36 @@ class Societe
             // set the owning side to null (unless already changed)
             if ($processus->getSociete() === $this) {
                 $processus->setSociete(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Direction[]
+     */
+    public function getDirections(): Collection
+    {
+        return $this->directions;
+    }
+
+    public function addDirection(Direction $direction): self
+    {
+        if (!$this->directions->contains($direction)) {
+            $this->directions[] = $direction;
+            $direction->setSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDirection(Direction $direction): self
+    {
+        if ($this->directions->removeElement($direction)) {
+            // set the owning side to null (unless already changed)
+            if ($direction->getSociete() === $this) {
+                $direction->setSociete(null);
             }
         }
 

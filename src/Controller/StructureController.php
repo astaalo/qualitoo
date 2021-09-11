@@ -23,12 +23,13 @@ class StructureController extends BaseController {
 	 * @Template()
 	 */
 	public function indexAction() {
-		$this->get('session')->set('structure_criteria', array());
-		$em = $this->getDoctrine()->getManager();
+		//$em = $this->getDoctrine()->getManager();
 		
 		$entity= new Structure();
 		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
-		
+		if(!$this->get('session')->get('structure_criteria')) {
+			$this->get('session')->set('structure_criteria', array());
+		}
 		return array();
 	}
 	
@@ -59,7 +60,7 @@ class StructureController extends BaseController {
 		$this->modifyRequestForForm($request, $this->get('session')->get('structure_criteria'), $form);
 		$criteria = $form->getData();
 		//dd($criteria);
-		$queryBuilder = $structureRepo->listAllQueryBuilder($criteria);
+		$queryBuilder = $structureRepo->listAll($criteria);
 		//dd($queryBuilder);
 		return $this->paginate($request, $queryBuilder);
 	}
@@ -90,10 +91,6 @@ class StructureController extends BaseController {
 		if ($form->isSubmitted()) {
 			if ($form->isValid()) {
 				$em = $this->getDoctrine()->getManager();
-				if($this->getUser()->getSociete()) {
-					$entity->setSociete($this->getUser()->getSociete());
-				}
-				$entity->setName($entity->getName());
 				$em->persist($entity);
 				$em->flush();
 				return $this->redirect($this->generateUrl('les_structures'));

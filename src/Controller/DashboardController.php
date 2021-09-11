@@ -63,7 +63,7 @@ class DashboardController extends BaseController
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Document",
                     'roles' => array('ROLE_SUPER_ADMIN'),
-                    'path'	=> $this->generateUrl('nouveau_processus')
+                    'path'	=> $this->generateUrl('creer_processus')
                 ),array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Document",

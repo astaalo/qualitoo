@@ -59,8 +59,8 @@ class ProcessusController extends BaseController {
 		$processus = new Processus();
 		$form = $this->createForm(ProcessusType::class, $processus);
 		$this->modifyRequestForForm($request, $this->get('session')->get('processus_criteria'), $form);
-		$criteria = $form->getData();
-		$queryBuilder = $processusRepo->listAll($criteria);
+		$process = $form->getData();
+		$queryBuilder = $processusRepo->listAll($process);
 		//dd($queryBuilder);
 		return $this->paginate($request, $queryBuilder);
 	}

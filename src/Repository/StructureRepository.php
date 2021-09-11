@@ -25,6 +25,25 @@ class StructureRepository extends ServiceEntityRepository {
         $this->_user	= $security->getUser();
     }
 
+
+     /**
+     * @param \App\Entity\Structure $structure
+     * @return QueryBuilder
+     */
+    public function listAll($structure = null) {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->innerJoin('p.direction', 'q');
+            //->where('q.etat != :etat')
+            //->setParameter('etat', $this->_states['entity']['supprime']);
+        if($this->_user->getSociete()) {
+            $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
+        }
+        if($structure && $structure->getTypeStructure()) {
+            $queryBuilder->andWhere('p.typeStructure = :typeStructure')->setParameter('typeStructure', $structure->getTypeStructure());
+        }
+        return $queryBuilder;
+    }
+
     public function findOneByFullname($fullname = null) {
         if($fullname==null) {
             return null;
@@ -108,33 +127,6 @@ class StructureRepository extends ServiceEntityRepository {
             $query->where('p IS NULL');
         }
         return $query->orderBy('s.name');
-    }
-
-    /**
-     * @param \App\Entity\Structure $structure
-     * @return QueryBuilder
-     */
-    public function listAllQueryBuilder($structure = null) {
-        $queryBuilder = $this->createQueryBuilder('q');
-        //->innerJoin('p.structure', 'q')
-        //->where('q.etat != :etat')
-        //->setParameter('etat', $this->_states['entity']['supprime']);
-       // dd($queryBuilder);
-    //if($this->_user->getSociete()) {
-     //   $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
-    //}
-        //dd($queryBuilder);
-       /* if($structure && $structure->getParent()) {
-            $queryBuilder->andWhere('q.lvl >= :level')->setParameter('level', $structure->getParent()->getLvl())
-                ->andWhere('q.root = :root')->setParameter('root', $structure->getParent()->getRoot())
-                ->andWhere('q.lft >= :lft')->setParameter('lft', $structure->getParent()->getLft())
-                ->andWhere('q.rgt <= :rgt')->setParameter('rgt', $structure->getParent()->getRgt());
-        }*/
-        if($structure && $structure->getTypeStructure()) {
-            $queryBuilder->andWhere('q.typeStructure = :typeStructure')->setParameter('typeStructure', $structure->getTypeStructure());
-        }
-
-        return BaseRepository::filterBySociete($queryBuilder, 'q', $this->_user)->orderBy('q');
     }
 
     /* (non-PHPdoc)

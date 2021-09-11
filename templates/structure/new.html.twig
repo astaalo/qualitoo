@@ -1,9 +1,7 @@
 {% extends 'configuration/index.html.twig' %}
 {% form_theme form 'extra/simple_form_theme.html.twig' %}
 
-{% block menu_config %}
-	{% include 'configuration/hierarchie.html.twig' with {position: 2} %}
-{% endblock %}
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
 
 {% block header_config %}
 <div class="header"> 
@@ -21,8 +19,9 @@
 
 {% block content_config %}
 <div class="contentForm">
-	<form  novalidate="novalidate"  action="{{ path('creer_structure') }}" method="POST">
+	<form  novalidate="novalidate" action="{{ path('creer_structure') }}" method="POST">
 		{{ form_row(form.libelle, {attr: attr|default({class: ' large'}) }) }}
+		{{ form_row(form.direction) }}
 		{{ form_row(form.typeStructure) }}
 		{{ form_row(form.parent) }}
 		{{ form_row(form._token) }}

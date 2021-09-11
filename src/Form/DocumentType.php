@@ -15,16 +15,14 @@ class DocumentType extends AbstractType
 	{
 		$builder->add('libelle', null, array('label' => 'Nom Document'))
 				->add('typeDocument', null, array('label' => 'Type Document', 'attr' => array('class' => 'chzn-select')));
-				
 				if($builder->getData()->getId()==null) 
 						$builder->add('file', FileType::class, array('label' => 'Document'));
-				$builder
+						$builder
 						->add('description', null, array('label' => 'Description', 'attr' => array('class' => 'fileupload')))
 						->add('profils', ChoiceType::class, array('label' => 'Accessible par les profils :',
-														 'choices' => array( Utilisateur::ROLE_USER =>'Tout le monde',
-														 					 Utilisateur::ROLE_AUDITEUR=> 'Auditeur', 
-																		     Utilisateur::ROLE_SUPERVISEUR=> 'Superviseur'
-																		 ), 
+								'choices' => array( Utilisateur::ROLE_USER =>'Utilisateur Simple',
+								Utilisateur::ROLE_Admin=> 'Administrateur', 
+							), 
 								'expanded' => true, 'multiple' => true))
 						->add('tmpUtilisateur', EntityType::class, array(
 		            		'multiple' => true,

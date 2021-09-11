@@ -9,6 +9,7 @@ use App\Entity\Utilisateur;
 use App\Form\UtilisateurFormType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\QueryBuilder;
+use App\Repository\UtilisateurRepository;
 
 
 /**
@@ -35,10 +36,14 @@ class UtilisateurController extends BaseController {
 	 * @Route("/liste_des_utilisateurs", name="liste_des_utilisateurs")
 	 * @Template()
 	 */
-	public function listAction(Request $request) {
-		$em = $this->getDoctrine ()->getManager ();
-		$queryBuilder = $em->getRepository (Utilisateur::class)->listAllQueryBuilder ( $this->getUser () );
-		return $this->paginate ( $request, $queryBuilder );
+	public function listAction(Request $request, UtilisateurRepository $userRepo) {
+		$utilisateur = new Utilisateur();
+		$form = $this->createForm(UtilisateurFormType::class, $utilisateur);
+		$this->modifyRequestForForm($request, $this->get('session')->get('utilisateur_criteria'), $form);
+		$user = $form->getData();
+		$queryBuilder = $userRepo->listAll($user);
+		//dd($queryBuilder);
+		return $this->paginate($request, $queryBuilder);
 	}
 	
 	/**

@@ -11,7 +11,7 @@ class SocieteType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('libelle', null, array('label' => 'Libellé', 'attr' => array('class' => 'medium')))
-			->add('file', null, array('label' => 'Icône', 'attr' => array('class' => 'file fileupload')));
+			->add('photo', null, array('label' => 'Icône', 'attr' => array('class' => 'file fileupload')));
 			//->add('famille', null, array('label' =>'Familles',
 			//		'placeholder' => '-- Chosir les familles --', 'attr' => array('class' => 'chzn-select', 'multiple' => 'multiple')))
 			//->add('profilRisque', null, array('label' =>'Profil risque',

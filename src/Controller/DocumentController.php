@@ -22,14 +22,12 @@ class DocumentController extends BaseController {
 	 * @Template()
 	 */
 	public function indexAction(Request $request) {
-		$position=$this->get('session')->get('document_criteria')['typeDocument'];
-		
-		$position=$this->get('session')->get('document_criteria')['typeDocument'];
-		
-		$data = $this->get('session')->get('document_criteria');
-		$form = $this->createForm(DocumentCriteria::class, new Document(), array('attr' => array('em' => $this->getDoctrine()->getManager())));
-		$this->modifyRequestForForm($request, $data, $form);
-		return array('form' => $form->createView(),'position'=>intval($position));
+		$entity= new Document();
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		if(!$this->get('session')->get('document_criteria')) {
+			$this->get('session')->set('document_criteria', array());
+		}
+		return array();
 	}
 	
 	/**

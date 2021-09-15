@@ -27,8 +27,11 @@ class UtilisateurController extends BaseController {
 	 */
 	public function indexAction() {
 		$entity = $this->getUser();
-		$this->denyAccessUnlessGranted('read', $entity,'Accés non autorisé!');
-		return array ();
+		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
+		if(!$this->get('session')->get('structure_criteria')) {
+			$this->get('session')->set('structure_criteria', array());
+		}
+		return array();
 	}
 	
 	/**

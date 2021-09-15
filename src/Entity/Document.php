@@ -35,13 +35,6 @@ class Document
 	private $libelle;
 
 	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="nom_fichier", type="string", length=100, nullable=true)
-	 */
-	private $nomFichier;
-
-	/**
 	 * @var \DateTime
 	 * @ORM\Column(name="date_creation", type="datetime", nullable=false)
 	 */
@@ -79,7 +72,7 @@ class Document
 
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="blob")
      *
      * @Assert\NotBlank(message="Merci de joindre un fichier.")
      * @Assert\File(mimeTypes={ "application/pdf" , "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel"})
@@ -127,16 +120,6 @@ class Document
 	 */
 	public function getId(){
         return $this->id;
-    }
-
-	/**
-	 * Set nomFichier
-	 * @param string $nomFichier
-	 * @return Document
-	 */
-	public function setNomFichier($nomFichier) {
-        $this->nomFichier = $nomFichier;
-        return $this;
     }
 
 	/**

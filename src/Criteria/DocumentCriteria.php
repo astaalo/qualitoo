@@ -9,10 +9,10 @@ class DocumentCriteria extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	$year = $options['attr']['year']!=null? $options['attr']['year']: date('Y');
+    	//$year = $options['attr']['year']!=null? $options['attr']['year']: date('Y');
         $builder ->add('libelle')
-        		 ->add('typeDocument')
-        		 ->add('annee',null, array('data'=>$year));
+        		 ->add('typeDocument');
+        		// ->add('annee',null, array('data'=>$year));
     }
 	
 	public function configureOptions(OptionsResolver $resolver)

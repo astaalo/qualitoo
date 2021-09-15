@@ -15,22 +15,23 @@ class DocumentType extends AbstractType
 	{
 		$builder->add('libelle', null, array('label' => 'Nom Document'))
 				->add('typeDocument', null, array('label' => 'Type Document', 'attr' => array('class' => 'chzn-select')));
-				if($builder->getData()->getId()==null) 
-						$builder->add('file', FileType::class, array('label' => 'Document'));
+				if($builder->getData()->getId()==null) {
 						$builder
-						->add('description', null, array('label' => 'Description', 'attr' => array('class' => 'fileupload')))
-						->add('profils', ChoiceType::class, array('label' => 'Accessible par les profils :',
+						->add('file', FileType::class, array('label' => 'File', 'attr' => array('class' => 'file fileupload')))
+						->add('description', null, array('label' => 'Description'))
+						->add('utilisateur', ChoiceType::class, array('label' => 'Accessible par les profils :',
 								'choices' => array( Utilisateur::ROLE_USER =>'Utilisateur Simple',
-								Utilisateur::ROLE_Admin=> 'Administrateur', 
+								Utilisateur::ROLE_ADMIN=> 'Administrateur', 
 							), 
-								'expanded' => true, 'multiple' => true))
-						->add('tmpUtilisateur', EntityType::class, array(
-		            		'multiple' => true,
-		            		'class'=> Utilisateur::class,
-		            		'label' => 'Accessible par les utilisateurs  :',
-							'attr' => array('class' => 'chzn-select full')
-		                ))
+								'expanded' => true, 'multiple' => false))
+						//->add('tmpUtilisateur', EntityType::class, array(
+		            	//	'multiple' => true,
+		            	//	'class'=> Utilisateur::class,
+		            	//	'label' => 'Accessible par les utilisateurs  :',
+						//	'attr' => array('class' => 'chzn-select full')
+		                //))
 						;
+				}
 	}
 	
 	public function configureOptions(OptionsResolver $resolver)

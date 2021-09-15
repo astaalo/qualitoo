@@ -50,17 +50,7 @@ class SecurityExtension extends \Twig_Extension
     public function showProfil($role) {
     	if($role =='ROLE_ADMIN') {
     		return 'Super Administrateur';
-    	}  elseif($role == 'ROLE_RISKMANAGER') {
-    		return "Risk Manager";
-    	} elseif($role == 'ROLE_AUDITEUR') {
-    		return "Auditeur";
-    	}elseif($role == 'ROLE_RESPONSABLE') {
-    		return "Responsable de processus";
-    	} elseif($role == 'ROLE_SUPERVISEUR') {
-    		return "Superviseur";
-    	} elseif($role == 'ROLE_PORTEUR') {
-    		return "Porteur";
-    	} elseif($role == 'ROLE_USER') {
+    	}  elseif($role == 'ROLE_USER') {
     		return "Tout le mode";
     	}
     }

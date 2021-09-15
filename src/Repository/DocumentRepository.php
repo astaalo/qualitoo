@@ -26,6 +26,24 @@ class DocumentRepository extends ServiceEntityRepository
         $this->_user	= $security->getUser();
     }
 
+     /**
+     * @param \App\Entity\Document $document
+     * @return QueryBuilder
+     */
+    public function listAll($document = null) {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->innerJoin('p.utilisateur', 'q');
+            //->where('q.etat != :etat')
+            //->setParameter('etat', $this->_states['entity']['supprime']);
+        if($this->_user->getSociete()) {
+            $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
+        }
+        if($document && $document->getTypeDocument()) {
+            $queryBuilder->andWhere('p.TypeDocument = :TypeDocument')->setParameter('TypeDocument', $document->getTypeDocument());
+        }
+        return $queryBuilder;
+    }
+
     /**
      *
      * @param Document $criteria
@@ -44,7 +62,7 @@ class DocumentRepository extends ServiceEntityRepository
         if($criteria->getAnnee()){
             $qb -> andWhere('d.annee = :annee')->setParameter('annee',$criteria->getAnnee());
         }
-        if(!$this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_RISKMANAGER)){
+        if(!$this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_USER)){
             $roles = $this->_user->takeRoles();
             foreach ($roles as $key=> $role)
                 $qb -> andWhere('d.profils like :role')->setParameter('role', '%'.$role.'%');

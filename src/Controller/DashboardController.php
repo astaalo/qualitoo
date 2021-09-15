@@ -63,12 +63,12 @@ class DashboardController extends BaseController
                     'icon'	=> 'add.png',
                     'text'	=> "Ajout Document",
                     'roles' => array('ROLE_SUPER_ADMIN'),
-                    'path'	=> $this->generateUrl('creer_processus')
+                    'path'	=> $this->generateUrl('creer_document')
                 ),array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Document",
                     'roles' => array('ROLE_SUPER_ADMIN'),
-                    'path'	=> $this->generateUrl('les_documents')
+                    'path'	=> $this->generateUrl('documents'),
                     //'path'	=> $typeSh? $this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$typeSh->getId())):'#'
                 )
 
@@ -97,7 +97,7 @@ class DashboardController extends BaseController
             'header'	=> "Societes",
             'roles'		=> array('ROLE_SUPER_ADMIN', 'ROLE_RESPONSABLE'),
             //'rows'		=> array(),
-            'path'		=> ($this->getUser()->hasRole('ROLE_SUPER_ADMIN')|| $this->getUser()->hasRole('ROLE_RISKMANAGER'))?$this->generateUrl('les_processus'):'#',
+            'path'		=> ($this->getUser()->hasRole('ROLE_SUPER_ADMIN')|| $this->getUser()->hasRole('ROLE_RESPONSABLE'))?$this->generateUrl('les_processus'):'#',
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',
@@ -119,7 +119,7 @@ class DashboardController extends BaseController
             'header'	=> "Utilisateurs",
             'roles'		=> array('ROLE_SUPER_ADMIN', 'ROLE_RESPONSABLE'),
             //'rows'		=> array(),
-            'path'		=> ($this->getUser()->hasRole('ROLE_SUPER_ADMIN')|| $this->getUser()->hasRole('ROLE_RISKMANAGER'))?$this->generateUrl('les_processus'):'#',
+            'path'		=> ($this->getUser()->hasRole('ROLE_SUPER_ADMIN')|| $this->getUser()->hasRole('ROLE_RESPONSABLE'))?$this->generateUrl('les_utilisateurs'):'#',
             'rows'		=> array(
                 array(
                     'icon'	=> 'add.png',

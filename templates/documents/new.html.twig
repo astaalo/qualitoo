@@ -1,0 +1,44 @@
+{% extends 'configuration/index.html.twig' %}
+{% form_theme form 'extra/simple_form_theme.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+		<span class="ico color add"></span>Ajout d'un document
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon answer" href="{{ path('documents') }}">Liste des documents</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+<div class="contentForm">
+	<form  novalidate="novalidate"  action="{{ (id is empty) ? path('creer_document') : path('ajouter_document', {id: id}) }}" method="POST">
+		{{ form_row(form.libelle, {attr: {class: 'full'}}) }}
+		{{ form_row(form.typeDocument, {attr: (id is empty) ? {} : {disabled: 'true'}} ) }}
+		{{ form_row(form.file) }}
+		{{ form_row(form.utilisateur) }}
+		{{ form_row(form.description, {attr: {class: 'full'}})  }}
+		{{ form_row(form._token) }}
+		<div class="section last footer">
+			<div>
+				<button class="uibutton loading">Enregistrer</button>
+				<input type="reset"  class="uibutton special" value="Annuler" >
+			</div>
+		</div>
+	</form>
+</div>
+
+
+	<script>
+		$('#{{ form.societe.vars.id }}').prepend("<option value>Choisir la Societe ...</option>");
+		{% if form.societe.vars.value is empty %}
+		$('#{{ form.societe.vars.id }}').val(''); // if you want it to be automatically selected
+		{% endif %}
+	</script>
+{% endblock %}

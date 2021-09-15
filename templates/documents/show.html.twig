@@ -10,7 +10,7 @@
 	<div id="buttom_top">
 		<ul class="uibutton-group">
 			<li><a class="uibutton icon confirm answer" href="{{ path('documents') }}" title="les documents">Retour à la liste</a></li>
-			<li><a class="uibutton icon edit" href="{{ path('edition_document', {'id': entitie.id}) }}">Edition un document</a></li>
+			<li><a class="uibutton icon edit" href="{{ path('edition_document', {'id': entitie.id}) }}">Edition de processus</a></li>
         </ul>
     </div>
 </div>
@@ -23,7 +23,7 @@
 				<tbody>
 					{% if entitie.parent is not empty  %}
 						<tr>
-							<th style="width:300px;" >Processus parent:</th>
+							<th style="width:300px;" >Document parent:</th>
 							<td style="padding-left: 100px;"><a href="{{ path('details_document', {'id': entitie.parent.id}) }}">{{ entitie.parent }}</a></td>
 						</tr>
 					{% endif %}
@@ -36,11 +36,11 @@
 						<td style="padding-left: 100px;">{{ entitie.description }}</td>
 					</tr>
 					<tr>
-						<th style="width:115px;" >Date Création:</th>
+						<th style="width:115px;" >Date de Création:</th>
 						<td style="padding-left: 100px;">{{ entitie.dateCreation }}</td>
 					</tr>
 					<tr>
-						<th style="width:115px;" >Utilisateur:</th>
+						<th style="width:115px;" >utilisateur:</th>
 						<td style="padding-left: 100px;">{{ entitie.utilisateur.name }}</td>
 					</tr>
 				</tbody>	

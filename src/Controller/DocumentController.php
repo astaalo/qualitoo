@@ -40,7 +40,7 @@ class DocumentController extends BaseController {
 		
 		return array('document'=>$document);
 	}
-	
+
 	
 	/**
 	 * @QMLogger(message="Affichage document par type et par annee ")
@@ -61,8 +61,6 @@ class DocumentController extends BaseController {
 		$documents = $em->getRepository(Document::class)->getDocumentsByType($form->getData())->getQuery()->execute();
 		return array('form' => $form->createView(),'position'=>$year, 'type'=>$type, 'currentYear'=>$currrentYear,'documents'=>$documents, 'entityType'=>$entityType);
 	}
-	
-	
 	
 	/**
 	 * @QMLogger(message="Chargement document par ajax ")
@@ -125,7 +123,7 @@ class DocumentController extends BaseController {
 				$file->move($brochuresDir, $fileName);
 				
 				// instead of its contents
-				$entity->setNomFichier($file->getClientOriginalName());
+				//$entity->setNomFichier($file->getClientOriginalName());
 				$entity->setFile($fileName);
 				$em->persist($entity);
 				$em->flush();

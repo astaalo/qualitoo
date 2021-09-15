@@ -23,8 +23,6 @@ class StructureController extends BaseController {
 	 * @Template()
 	 */
 	public function indexAction() {
-		//$em = $this->getDoctrine()->getManager();
-		
 		$entity= new Structure();
 		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
 		if(!$this->get('session')->get('structure_criteria')) {

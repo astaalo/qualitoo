@@ -299,9 +299,7 @@ class Utilisateur extends User implements UtilisateurInterface
     {
     	if($this->hasRole('ROLE_ADMIN')) {
     		return 'Super Administrateur';
-    	} elseif($this->hasSocieteOfAdministrator()) {
-    		return "Administrateur";
-    	}  else{
+    	} else{
     		return "Simple utilisateur"; 
     	}
     }
@@ -426,12 +424,12 @@ class Utilisateur extends User implements UtilisateurInterface
         $this->societeOfAdministrator->removeElement($societeOfAdministrator);
     }
 
-   // public function getProfils(): ?Profil
+   // public function getProfils(): ?Profils
     //{
      //   return $this->profils;
     //}
 
-    public function setProfils(?Profil $profils): self
+    public function setProfils(?Profils $profils): self
     {
         $this->profils = $profils;
 

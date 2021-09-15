@@ -42,6 +42,7 @@ class UtilisateurFormType extends AbstractType
             ->add('matricule', TextType::class, array('label' => 'Matricule', 'attr' => array('class' => 'ui-spinner-box')))
             ->add('telephone', null, array('label' => 'Téléphone'))
             ->add('manager', null, array('label' => 'Est manager', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
+            ->add('profils',null, array('label' => 'a le profil de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Profil','placeholder' => 'Choisir le profil ...'))
             ->add('societeOfAdministrator',null, array('label' => 'Est administrateur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe','placeholder' => 'Choisir la société ...',
             'query_builder'=>function($sr){
             return $sr->listUserSocieties();

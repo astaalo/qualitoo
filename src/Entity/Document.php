@@ -69,10 +69,9 @@ class Document
 	 * @ORM\JoinColumn(name="type_document_id", referencedColumnName="id", nullable=true)
 	 */
 	private $typeDocument;
-
     
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="string")
      *
      * @Assert\NotBlank(message="Merci de joindre un fichier.")
      * @Assert\File(mimeTypes={ "application/pdf" , "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel"})
@@ -100,8 +99,7 @@ class Document
       * @ORM\ManyToOne(targetEntity=Theme::class, inversedBy="documents")
       */
      private $theme;
-
-     
+ 
 	/**
 	 * Constructor
 	 */
@@ -198,36 +196,6 @@ class Document
         return 'upload/sharepoint';
     }
     
-//     /**
-//      * @ORM\PrePersist()
-//      * @ORM\PreUpdate()
-//      */
-//     public function preUpload() {
-//         if (null !== $this->file) {
-//     		$this->nomFichier = $this->file->getClientOriginalName();
-//         }
-//     }
-
-//     /**
-//      * @ORM\PostPersist()
-//      * @ORM\PostUpdate()
-//      */
-//     public function upload() {
-//         if (null === $this->file) {
-//             return;
-//         }
-//        $this->nomFichier = $this->file->getClientOriginalName();
-//     }
-    
-//     /**
-//      * @ORM\PostRemove()
-//      */
-//     public function removeUpload() {
-//     	$file = $this->getAbsolutePath();
-//         if(file_exists($file)) {
-//             unlink($file);
-//         }
-//     }
 	public function getTypeDocument() {
         return $this->typeDocument;
     }
@@ -242,9 +210,7 @@ class Document
         $this->description = $description;
         return $this;
     }
-	public function getNomFichier() {
-        return $this->nomFichier;
-    }
+	
 	public function getFile() {
         return $this->file;
     }
@@ -259,88 +225,6 @@ class Document
         $this->etat = $etat;
         return $this;
      }
-
-    /**
-     * Add utilisateursAutorises
-     *
-     * @param DocumentHasUtilisateur $utilisateursAutorises
-     * @return Document
-     */
-    public function addUtilisateursAutorise(DocumentHasUtilisateur $utilisateursAutorises)
-    {
-        $this->utilisateursAutorises[] = $utilisateursAutorises;
-    
-        return $this;
-    }
-
-    /**
-     * Remove utilisateursAutorises
-     *
-     * @param DocumentHasUtilisateur $utilisateursAutorises
-     */
-    public function removeUtilisateursAutorise(DocumentHasUtilisateur $utilisateursAutorises)
-    {
-        $this->utilisateursAutorises->removeElement($utilisateursAutorises);
-    }
-
-    /**
-     * Get utilisateursAutorises
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUtilisateursAutorises()
-    {
-        return $this->utilisateursAutorises;
-    }
-    
-    /**
-     * Get tmpUtilisateur
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getTmpUtilisateur() {
-    	$this->tmpUtilisateur = new \Doctrine\Common\Collections\ArrayCollection();
-    	foreach($this->utilisateursAutorises as $user) {
-    		$this->tmpUtilisateur->add($user->getUtilisateur());
-    	}
-    	return $this->tmpUtilisateur;
-    }
-    
-    /**
-     * @param Utilisateur $tmp_user
-     * @return Document
-     */
-    public function addTmpUtilisateur($tmp_user) {
-    	$this->tmpUtilisateur->add($tmp_user);
-    	$isExist=false;
-    	foreach ($this->utilisateursAutorises as $user){
-    		if($user->getUtilisateur()->getId()==$tmp_user->getId()) {
-    			$isExist=true;
-    			break;
-    		}
-    	}
-    	if ($isExist==false) {
-    		$anim= new DocumentHasUtilisateur();
-    		$anim->setDocument($this);
-    		$anim->setUtilisateur($tmp_user);
-    		$this->utilisateursAutorises->add($anim);
-    	}
-    	return $this;
-    }
-    
-    /**
-     * @param Utilisateur $tmp_user
-     * @return Document
-     */
-    public function removeTmpUtilisateur($tmp_user) {
-    	foreach ($this->utilisateursAutorises as $user){
-    		if($user->getUtilisateur()->getId()==$tmp_user->getId()) {
-    			$this->removeUtilisateursAutorise($user);
-    			break;
-    		}
-    	}
-    	return $this;
-    }
 
     /**
      * Set deleted

@@ -32,12 +32,12 @@ class DocumentRepository extends ServiceEntityRepository
      */
     public function listAll($document = null) {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->innerJoin('p.utilisateur', 'q');
+            ->innerJoin('p.profil', 'q');
             //->where('q.etat != :etat')
             //->setParameter('etat', $this->_states['entity']['supprime']);
-        if($this->_user->getSociete()) {
-            $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
-        }
+        //if($this->_user->getSociete()) {
+           // $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
+        //}
         if($document && $document->getTypeDocument()) {
             $queryBuilder->andWhere('p.TypeDocument = :TypeDocument')->setParameter('TypeDocument', $document->getTypeDocument());
         }
@@ -59,18 +59,15 @@ class DocumentRepository extends ServiceEntityRepository
         if($criteria->getTypeDocument()){
             $qb -> andWhere('td =:type')->setParameter('type',$criteria->getTypeDocument());
         }
-        if($criteria->getAnnee()){
-            $qb -> andWhere('d.annee = :annee')->setParameter('annee',$criteria->getAnnee());
-        }
-        if(!$this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_USER)){
+      /*  if(!$this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_USER)){
             $roles = $this->_user->takeRoles();
             foreach ($roles as $key=> $role)
                 $qb -> andWhere('d.profils like :role')->setParameter('role', '%'.$role.'%');
-        }
+        }*/
         if($criteria->getLibelle()){
             $qb -> andWhere('d.libelle like :libelle')->setParameter('libelle','%'.$criteria->getLibelle().'%');
         }
-        $qb->andWhere('u.id is null or u.id =:user_id')->setParameter('user_id', $this->_user->getId());
+       // $qb->andWhere('u.id is null or u.id =:user_id')->setParameter('user_id', $this->_user->getId());
         $qb->andWhere('d.deleted= false');
         return $qb;
     }

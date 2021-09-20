@@ -51,16 +51,8 @@ class BaseRepository extends EntityRepository
 		if($role && $role==Utilisateur::ROLE_SUPER_ADMIN && $user->hasRole(Utilisateur::ROLE_SUPER_ADMIN)) {
 		} elseif($role && $role==Utilisateur::ROLE_ADMIN && $user->hasRole(Utilisateur::ROLE_ADMIN)) {
 			$queryBuilder->andWhere($alias.'.id = :societeId')->setParameter('societeId', $user->getSociete()->getId());
-		} elseif($role && $role==Utilisateur::ROLE_RISKMANAGER && $user->hasRole(Utilisateur::ROLE_RISKMANAGER)) {
-			$queryBuilder->andWhere($alias.'.id = :societeId')->setParameter('societeId', $user->getSociete()->getId());
-		} elseif($role && $role==Utilisateur::ROLE_RESPONSABLE && $user->hasRole(Utilisateur::ROLE_RESPONSABLE)) {
+		}  elseif($role && $role==Utilisateur::ROLE_RESPONSABLE && $user->hasRole(Utilisateur::ROLE_RESPONSABLE)) {
 			$queryBuilder->andWhere($alias.'.id = :structureId')->setParameter('structureId', $user->getStructure()->getId());
-		} elseif($role && $role==Utilisateur::ROLE_AUDITEUR && $user->hasRole(Utilisateur::ROLE_AUDITEUR)) {
-			$queryBuilder->andWhere($alias.'.id = :societeId')->setParameter('societeId', $user->getSociete()->getId());
-		} elseif($role && $role==Utilisateur::ROLE_SUPERVISEUR && $user->hasRole(Utilisateur::ROLE_SUPERVISEUR)) {
-			$queryBuilder->andWhere($alias.'.id=:userId')->setParameter('userId', $user->getId());
-		} elseif($role && $role==Utilisateur::ROLE_PORTEUR && $user->hasRole(Utilisateur::ROLE_PORTEUR)) {
-			$queryBuilder->andWhere($alias.'.id=:userId')->setParameter('userId', $user->getId());
 		} elseif($role) {
 			$queryBuilder->andWhere($alias.'.id = -1');
 		}

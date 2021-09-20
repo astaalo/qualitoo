@@ -97,7 +97,7 @@ class Structure
     /**
      * @ORM\ManyToOne(targetEntity=Direction::class, inversedBy="structures")
      */
-    private $direction;
+    protected $direction;
 
 
     public function __construct() {
@@ -202,8 +202,6 @@ class Structure
         return $this;
     }
 
-
-   
     /**
      * @return Utilisateur
      */

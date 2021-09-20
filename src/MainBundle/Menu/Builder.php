@@ -22,11 +22,12 @@ class Builder implements ContainerAwareInterface
 		//$menu->addChild('Equipement', array('route' => 'les_equipements', 'label' => 'Equipement/Activité', 'attributes' => array('class' => 'spreadsheet')));
 		//$menu->addChild('DomainePhysique', array('route' => 'les_domaines', 'label' => 'Domaines', 'attributes' => array('class' => 'home')));
 		//$menu->addChild('DomaineActivite', array('route' => 'les_domaines', 'label' => "Domaine d'activité", 'attributes' => array('class' => 'home')));
-		$menu->addChild('Rubrique', array('route' => 'les_structures', 'label' => 'Rubriques', 'attributes' => array('class' => 'spreadsheet')));
 		$menu->addChild('Societe', array('route' => 'les_societes', 'label' => "Societe", 'attributes' => array('class' => 'access_point')));
 		$menu->addChild('Utilisateur', array('route' => 'les_utilisateurs', 'label' => 'Utilisateur', 'attributes' => array('class' => 'administrator')));
 		$menu->addChild('Structure', array('route' => 'les_structures', 'label' => 'Structure/Entité', 'attributes' => array('class' => 'door')));
 		$menu->addChild('Document', array('route' => 'les_documents', 'label' => 'Document', 'attributes' => array('class' => 'door')));
+		$menu->addChild('Rubrique', array('route' => 'les_structures', 'label' => 'Rubriques', 'attributes' => array('class' => 'spreadsheet')));
+		$menu->addChild('Theme', array('route' => 'les_structures', 'label' => 'Thémes', 'attributes' => array('class' => 'spreadsheet')));
 		return $menu;
 	}
 	
@@ -49,14 +50,14 @@ class Builder implements ContainerAwareInterface
 		if($notificationCount >= 5) {
 			$menu ['Notifications']->addChild($notification->getId(), array('route' => 'les_notifs', 'label' => 'Tout afficher', 'attributes' => array('class' => 'last')));
 		}
-		if($this->hasRole('ROLE_ADMIN')) {
+		/*if($this->hasRole('ROLE_ADMIN')) {
 			$menu->addChild('Config', array('route' => 'les_processus', 'label' => 'Config.', 'attributes' => array('icon' => 'shortcut/setting.png')))
 				->setLabelAttribute('title', 'Configuration');
 		}
 		if($this->hasRole('ROLE_RISKMANAGER') || $this->hasRole('ROLE_ADMIN') || $this->hasRole('ROLE_RESPONSABLE')) {
 			$menu->addChild('Reporting', array('uri' => $this->container->get('router')->generate('tprc', array('carto' =>1)), 'label' => 'Reporting', 'attributes' => array('icon' => 'shortcut/graph.png')))
 				->setLabelAttribute('title', 'Reporting');
-		}
+		}*/
 		if($this->hasRole('ROLE_SUPER_ADMIN')) {
 			$menu->addChild('Parameters', array(
 				'route' => 'les_utilisateurs', 'label' => 'Parameters', 'attributes' => array('icon' => 'shortcut/setting.png') 

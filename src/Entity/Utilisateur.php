@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\UtilisateurRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Profil;
+use App\Entity\Societe;
 use FOS\UserBundle\Model\User;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -116,7 +118,7 @@ class Utilisateur extends User implements UtilisateurInterface
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="profil")
      */
-    private $profils;
+    protected $profils;
 
     /**
      * Constructor
@@ -131,59 +133,59 @@ class Utilisateur extends User implements UtilisateurInterface
      * @return string
      */
 	public function getPrenom() {
-         		return $this->prenom;
-         	}
+        return $this->prenom;
+    }
 	
 	public function setPrenom($prenom) {
-         		$this->prenom = $prenom;
-         		return $this;
-         	}
+        $this->prenom = $prenom;
+        return $this;
+    }
 	
 	/**
 	 * @return string
 	 */
 	public function getNom() {
-         		return $this->nom;
-         	}
+        return $this->nom;
+    }
 	
 	public function setNom( $nom) {
-         		$this->nom = $nom;
-         		return $this;
-         	}
+        $this->nom = $nom;
+        return $this;
+    }
 	
 	/**
 	 * @return Structure
 	 */
 	public function getStructure() {
-         		return $this->structure;
-         	}
+        return $this->structure;
+    }
 	
 	public function setStructure($structure) {
-         		$this->structure = $structure;
-         		return $this;
-         	}
+        $this->structure = $structure;
+        return $this;
+    }
 	
 	/**
 	 * @return boolean
 	 */
 	public function hasSocieteOfAdministrator() {
-         		return $this->societeOfAdministrator->count() ? true : false;
-         	}
+        return $this->societeOfAdministrator->count() ? true : false;
+    }
 	
 	/**
 	 * @return Collection
 	 */
 	public function getSocieteOfAdministrator() {
-         		return $this->societeOfAdministrator;
-         	}
+        return $this->societeOfAdministrator;
+    }
 	
 	public function setSocieteOfAdministrator($societeOfAdministrator) {
-         		if(!$this->societe) {
-         			$this->societe = $societeOfAdministrator->count() ? $societeOfAdministrator->get(0) : null;
-         		}
-         		$this->societeOfAdministrator = $societeOfAdministrator;
-         		return $this;
-         	}
+        if(!$this->societe) {
+         	$this->societe = $societeOfAdministrator->count() ? $societeOfAdministrator->get(0) : null;
+        }
+        $this->societeOfAdministrator = $societeOfAdministrator;
+        return $this;
+    }
 	
 	/**
 	 * check if is administrator of this societe
@@ -191,59 +193,59 @@ class Utilisateur extends User implements UtilisateurInterface
 	 * @return boolean
 	 */
 	public function isAdministratorOf($societeId) {
-         		$data = $this->societeOfAdministrator->filter(function($societe) use($societeId) {
-         				return $societeId && $societe->getId()==$societeId;
-         			});
-         		return $data->count() ? true : false;
-         	}
+        $data = $this->societeOfAdministrator->filter(function($societe) use($societeId) {
+            return $societeId && $societe->getId()==$societeId;
+        });
+         	return $data->count() ? true : false;
+    }
 	
 	/**
 	 * @return integer
 	 */
 	public function getMatricule() {
-         		return $this->matricule;
-         	}
+        return $this->matricule;
+    }
 	
 	public function setMatricule($matricule) {
-         		$this->matricule = $matricule;
-         		return $this;
-         	}
+        $this->matricule = $matricule;
+        return $this;
+    }
 	
 	/**
 	 * @var string
 	 */
 	public function getTelephone() {
-         		return $this->telephone;
-         	}
+        return $this->telephone;
+    }
 	
 	public function setTelephone($telephone) {
-         		$this->telephone = $telephone;
-         		return $this;
-         	}
+        $this->telephone = $telephone;
+        return $this;
+    }
 	
 	/**
 	 * @return boolean
 	 */
 	public function isManager() {
-         		return $this->manager ? true : false;
-         	}
+        return $this->manager ? true : false;
+    }
 	
 	public function setManager($manager) {
-         		$this->manager = $manager;
-         		return $this;
-         	}
+        $this->manager = $manager;
+        return $this;
+    }
 	
 	/**
 	 * @return boolean
 	 */
 	public function isConnectWindows() {
-         		return $this->connectWindows ? true : false;
-         	}
+        return $this->connectWindows ? true : false;
+    }
 	
 	public function setConnectWindows($ConnectWindows) {
-         		$this->connectWindows = $ConnectWindows;
-         		return $this;
-         	}
+        $this->connectWindows = $ConnectWindows;
+        return $this;
+    }
 	
 	/**
 	 * set ssociete
@@ -251,17 +253,17 @@ class Utilisateur extends User implements UtilisateurInterface
 	 * @return Utilisateur
 	 */
 	public function setSociete($societe) {
-         		$this->societe = $societe;
-         		return $this;
-         	}
+        $this->societe = $societe;
+        return $this;
+    }
 	
 	/**
 	 * get societe
 	 * @return Societe
 	 */
 	public function getSociete() {
-         		return $this->societe;
-         	}
+        return $this->societe;
+    }
 	
 	/**
 	 * @return ArrayCollection
@@ -298,8 +300,10 @@ class Utilisateur extends User implements UtilisateurInterface
     public function getProfils()
     {
     	if($this->hasRole('ROLE_ADMIN')) {
-    		return 'Super Administrateur';
-    	} else{
+    		return 'Admin';
+    	} elseif($this->hasSocieteOfAdministrator()) {
+    		return "Administrateur";
+    	}  else{
     		return "Simple utilisateur"; 
     	}
     }
@@ -424,12 +428,12 @@ class Utilisateur extends User implements UtilisateurInterface
         $this->societeOfAdministrator->removeElement($societeOfAdministrator);
     }
 
-   // public function getProfils(): ?Profils
+   // public function getProfils(): ?Profil
     //{
      //   return $this->profils;
     //}
 
-    public function setProfils(?Profils $profils): self
+    public function setProfils(?Profil $profils): self
     {
         $this->profils = $profils;
 

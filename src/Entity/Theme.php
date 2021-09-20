@@ -80,4 +80,12 @@ class Theme
 
         return $this;
     }
+    /**
+	 * Get libelle
+	 * @return string
+	 */
+	public function __toString()
+    {
+        return $this->libelle;
+    }
 }

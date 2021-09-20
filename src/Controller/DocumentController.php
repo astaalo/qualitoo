@@ -51,15 +51,15 @@ class DocumentController extends BaseController {
 	public function documentAction(Request $request,$year, $type) {
 		$em = $this->getDoctrine()->getManager();
 		$entityType = $em->find(TypeDocument::class, $type);
-		$currrentYear = date('Y');
+		//$currrentYear = date('Y');
 		$form = $this->createForm(DocumentCriteria::class, new Document(), array('attr' => array('em' => $this->getDoctrine()->getManager(), 'year'=>$year)));
 		if($request->getMethod()=='POST') {
 			$this->get('session')->set('document_criteria', $request->request->get($form->getName()));
 		}
 		$data = $this->get('session')->get('document_criteria');
 		$this->modifyRequestForForm($request, $data, $form);
-		$documents = $em->getRepository(Document::class)->getDocumentsByType($form->getData())->getQuery()->execute();
-		return array('form' => $form->createView(),'position'=>$year, 'type'=>$type, 'currentYear'=>$currrentYear,'documents'=>$documents, 'entityType'=>$entityType);
+		//$documents = $em->getRepository(Document::class)->getDocumentsByType($form->getData())->getQuery()->execute();
+		//return array('form' => $form->createView(),'position'=>$year, 'type'=>$type, 'currentYear'=>$currrentYear,'documents'=>$documents, 'entityType'=>$entityType);
 	}
 	
 	/**
@@ -71,8 +71,8 @@ class DocumentController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(DocumentCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('document_criteria'), $form);
-		$queryBuilder = $em->getRepository('App\Entity\Document')->getDocumentsByType($form->getData());
-		return $this->paginate($request, $queryBuilder);
+		//$queryBuilder = $em->getRepository('App\Entity\Document')->getDocumentsByType($form->getData());
+	//	return $this->paginate($request, $queryBuilder);
 	}
 	
 	/**
@@ -112,15 +112,15 @@ class DocumentController extends BaseController {
 		if ($form->isSubmitted()) {
 			if ($form->isValid()) {
 				$em = $this->getDoctrine()->getManager();
-				$entity->setUtilisateur($this->getUser());
+				//$entity->setUtilisateur($this->getUser());
 				$file = $entity->getFile();
 				
 				// Generate a unique name for the file before saving it
 				$fileName = md5(uniqid()).'.'.$file->guessExtension();
 				
 				// Move the file to the directory where brochures are stored
-				$brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/upload/sharepoint';
-				$file->move($brochuresDir, $fileName);
+				//$brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/upload/sharepoint';
+				//$file->move($brochuresDir, $fileName);
 				
 				// instead of its contents
 				//$entity->setNomFichier($file->getClientOriginalName());

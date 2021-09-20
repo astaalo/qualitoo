@@ -11,15 +11,16 @@
 
 namespace App\Form;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Repository\StructureRepository;
+use App\Repository\ProfilRepository;
 use App\Repository\SocieteRepository;
+use App\Repository\StructureRepository;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class UtilisateurFormType extends AbstractType
@@ -42,11 +43,14 @@ class UtilisateurFormType extends AbstractType
             ->add('matricule', TextType::class, array('label' => 'Matricule', 'attr' => array('class' => 'ui-spinner-box')))
             ->add('telephone', null, array('label' => 'Téléphone'))
             ->add('manager', null, array('label' => 'Est manager', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
-            ->add('profils',null, array('label' => 'a le profil de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Profil','placeholder' => 'Choisir le profil ...'))
+            ->add('profils', EntityType::class, array('label' => 'Profil','class' => 'App\Entity\Profil', 'attr' => array('class' => 'chzn-select'), 'query_builder' => function (ProfilRepository $er) {
+                return $er->createQueryBuilder('u')
+                    ->orderBy('u.libelle', 'ASC');
+            },))
             ->add('societeOfAdministrator',null, array('label' => 'Est administrateur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe','placeholder' => 'Choisir la société ...',
-            'query_builder'=>function($sr){
-            return $sr->listUserSocieties();
-            }
+           // 'query_builder'=>function($sr){
+            //return $sr->listUserSocieties();
+           // }
         ));
             /*->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe','placeholder' => 'Choisir la société ...',
             'query_builder'=>function($sr){

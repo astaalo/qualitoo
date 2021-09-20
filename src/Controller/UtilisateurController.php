@@ -1,15 +1,15 @@
 <?php
 namespace App\Controller;
 
-use App\Annotation\QMLogger;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Utilisateur;
-use App\Form\UtilisateurFormType;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Annotation\QMLogger;
 use Doctrine\ORM\QueryBuilder;
+use App\Form\UtilisateurFormType;
 use App\Repository\UtilisateurRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
 /**
@@ -26,10 +26,10 @@ class UtilisateurController extends BaseController {
 	 * @Template()
 	 */
 	public function indexAction() {
-		$entity = $this->getUser();
+		$entity= new Utilisateur();
 		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
-		if(!$this->get('session')->get('structure_criteria')) {
-			$this->get('session')->set('structure_criteria', array());
+		if(!$this->get('session')->get('utilisateur_criteria')) {
+			$this->get('session')->set('utilisateur_criteria', array());
 		}
 		return array();
 	}
@@ -80,10 +80,10 @@ class UtilisateurController extends BaseController {
 	 */
 	public function newAction($id = null) {
 		$entity = new Utilisateur();
-		if($id) {
-			$user = $this->getDoctrine()->getManager()->getRepository(Utilisateur::class)->find($id);
-			$entity->setParent($user);
-		}
+		//if($id) {
+		//	$user = $this->getDoctrine()->getManager()->getRepository(Utilisateur::class)->find($id);
+		//	$entity->setParent($user);
+		//}
 		$form   = $this->createForm(UtilisateurFormType::class, $entity);
 		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
@@ -105,11 +105,11 @@ class UtilisateurController extends BaseController {
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($entity);
 				$em->flush();$this->get('session')->getFlashBag()->add('success', "Utilisateur ajouté avec succés.");
-				if($entity->getParent()) {
+				/*if($entity->getParent()) {
 					return $this->redirect($this->generateUrl('details_utilisateur', array('id' => $entity->getParent()->getId())));
-				} else{
+				} else{*/
 					return $this->redirect($this->generateUrl('les_utilisateurs'));
-				}
+				//}
 			}	
 		}
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
@@ -158,7 +158,7 @@ class UtilisateurController extends BaseController {
 		$this->get('session')->getFlashBag()->add('success', "L'utilisateur a été bien activé");
 		return $this->redirect($this->generateUrl('les_utilisateurs'));
 	}
-	 
+
 	/**
 	 * @QMLogger(message="Désactiver utilisateur")
 	 * @Route("/{id}/desactiver_utilisateur", name="desactiver_utilisateur", requirements={ "id"=  "\d+"})
@@ -174,19 +174,6 @@ class UtilisateurController extends BaseController {
 		$this->get('session')->getFlashBag()->add('success', "L'utilisateur a été bien désactivé");
 		return $this->redirect($this->generateUrl('les_utilisateurs'));
 	}
-	  
-	/**
-	 * @todo ajoute un filtre
-	 * @param Request $request
-	 */
-	protected function setFilter(QueryBuilder $queryBuilder, $aColumns, Request $request) {
-		parent::setFilter($queryBuilder, array('q.nom', 'q.prenom'), $request);
-		if($request->query->has('sSearch') && $request->query->get('sSearch')!="") {
-			$search = '%'.$request->query->get('sSearch').'%';
-			$queryBuilder->orWhere("CONCAT(q.prenom,' ',q.nom) LIKE :search")->setParameter('search', $search);
-			$queryBuilder->orWhere("CONCAT(q.nom,' ',q.prenom) LIKE :search")->setParameter('search', $search);
-		}
-	}
 
 	/**
 	 * @param \App\Entity\Utilisateur $entity
@@ -194,10 +181,10 @@ class UtilisateurController extends BaseController {
 	 */
 	protected function addRowInTable($entity) {
 	  	return array(
-	  			sprintf('<a href="%s">%s<a/>', /*$this->generateUrl('details_utilisateur', array('id' => $entity->getId()))*/'#', $entity->__toString()),
+	  			sprintf('<a href="%s">%s<a/>','#', $entity->__toString()),
 	  			$entity->getMatricule(),
-	  			$entity->getStructure() ? $entity->getStructure()->getName() : null,
-	  			$entity->getProfil(),
+	  			$entity->getStructure() ? $entity->getStructure()->getLibelle() : null,
+	  			$entity->getProfils(),
 	  			$this->service_status->generateStatusForUtilisateur($entity),
 	  			$this->service_action->generateActionsForUtilisateur($entity)
 	  	);

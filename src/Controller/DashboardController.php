@@ -67,8 +67,8 @@ class DashboardController extends BaseController
                 ),array(
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Document",
-                    'roles' => array('ROLE_SUPER_ADMIN'),
-                    'path'	=> $this->generateUrl('documents'),
+                    'roles' => array('ROLE_ADMIN'),
+                    'path'	=> $this->generateUrl('les_documents'),
                     //'path'	=> $typeSh? $this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$typeSh->getId())):'#'
                 )
 
@@ -131,8 +131,8 @@ class DashboardController extends BaseController
                     'icon'	=> 'list.png',
                     'text'	=> "Liste Utilisateur",
                     'roles' => array('ROLE_SUPER_ADMIN'),
-                    'path'	=> $this->generateUrl('les_utilisateurs')
-                    // 'path'	=> ($this->getUser()->getSociete()&&$this->getUser()->getSociete()->getRelance())? $this->generateUrl('edition_relance',array('id' =>$this->getUser()->getSociete()->getRelance()->getId())):'#'
+                    'path'	=> $this->generateUrl('les_utilisateurs'),
+                   // 'path'	=> ($this->getUser()->getSociete()&&$this->getUser()->getSociete()->getRelance())? $this->generateUrl('edition_relance',array('id' =>$this->getUser()->getSociete()->getRelance()->getId())):'#'
                 ),
             )
         );

@@ -13,21 +13,21 @@
 		</span>
 		<div id="buttom_top">
 			<ul class="uibutton-group">
-				<li><a class="uibutton icon answer" href="{{ path('documents')}}">Liste des documents</a></li>
+				<li><a class="uibutton icon answer" href="{{ path('les_documents')}}">Liste des documents</a></li>
             </ul>
         </div>
 	</div>
 	<div class="clear"></div>
 	<div class="contentForm">
-	<form  novalidate="novalidate" action="{{ (id is empty) ? path('creer_document') : path('ajouter_document', {id: id}) }}"  method="POST">
+	<form  novalidate="novalidate" action="{{ (id is empty) ? path('creer_document') : path('ajouter_document', {id: id}) }}"  method="POST" enctype="multipart/form-data">
 	    {{ form_row(form._token) }}
 		{{ form_row(form.libelle, {attr:{class:'full'}}) }}
-		<div style="display: none">
-			{{ form_row(form.typeDocument) }}
-		</div>
+		{{ form_row(form.typeDocument) }}
+		{{ form_row(form.rubrique) }}
+		{{ form_row(form.theme) }}
 		{{ form_row(form.description) }}
 		{{ form_row(form.file) }}
-		{{ form_row(form.utilisateur) }}
+		{{ form_row(form.profil) }}
 		<div class="section last">
 			<div>
 				<button class="uibutton loading">Enregistrer</button>

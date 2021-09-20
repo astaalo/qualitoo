@@ -81,63 +81,13 @@ class ProcessusRepository extends ServiceEntityRepository
             ->innerJoin('p.structure', 'q')
             ->where('q.etat != :etat')
             ->setParameter('etat', $this->_states['entity']['supprime']);
-        if($this->_user->getSociete()) {
-            $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
-        }
+       // if($this->_user->getSociete()) {
+        //    $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
+        //}
         if($processus && $processus->getTypeProcessus()) {
             $queryBuilder->andWhere('p.typeProcessus = :typeProcessus')->setParameter('typeProcessus', $processus->getTypeProcessus());
         }
         return $queryBuilder;
-    }
-
-    /**
-     * @param array $criteria
-     * @return \Doctrine\ORM\QueryBuilder
-     */
-    public function restitutionBuilder($criteria) {
-        $criteria = $criteria ? $criteria : new \App\Entity\Processus();
-        $queryBuilder = $this->createQueryBuilder('p')
-            ->innerJoin('p.structure', 's')
-            ->where('s.societe = :societe')
-            ->setParameter('societe', $this->_user->getSociete());
-        if($criteria->getStructure()) {
-            $queryBuilder->innerJoin('App\Entity\Structure', 'ps')
-                ->andWhere('ps = :structure')->setParameter('structure', $criteria->getStructure())
-                ->andWhere('ps.root = s.root AND ps.lvl <= s.lvl AND ps.lft <= s.lft AND ps.rgt >= s.rgt');
-        }
-        if($criteria->processus) {
-            $queryBuilder->innerJoin('App\Entity\Processus', 'pp')
-                ->andWhere('pp = :processus')->setParameter('processus', $criteria->processus)
-                ->andWhere('pp.root = p.root AND pp.lvl <= p.lvl AND pp.lft <= p.lft AND pp.rgt >= p.rgt');
-        }
-        if($criteria->getTypeProcessus()) {
-            $queryBuilder->andWhere('p.typeProcessus = :typeProcessus')
-                ->setParameter('typeProcessus', $criteria->getTypeProcessus());
-        }
-        return $queryBuilder->groupBy('p.id');
-    }
-
-    /**
-     * @param QueryBuilder $queryBuilder
-     * @return array
-     */
-    public function getMatrice($queryBuilder) {
-        $data = array();
-        $result = $queryBuilder->getQuery()->getResult();
-        foreach($result as $processus) {
-            $data[] = array('libelle'=>sprintf($processus), 'probabilite'=>$processus->getProbabilite(), 'gravite'=>$processus->getGravite(), 'icg'=>$processus->getICG());
-        }
-        return $data;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getLastNumero() {
-        $data = $this->createQueryBuilder('r')
-            ->select('MAX(r.numero) as number')
-            ->getQuery()->getOneOrNullResult();
-        return $data['number'];
     }
 
     public function findByStructureId($structure_id) {

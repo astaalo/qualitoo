@@ -2,9 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Processus;
 use App\Entity\Structure;
-use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
@@ -33,11 +31,6 @@ class StructureRepository extends ServiceEntityRepository {
     public function listAll($structure = null) {
         $queryBuilder = $this->createQueryBuilder('p')
             ->innerJoin('p.direction', 'q');
-            //->where('q.etat != :etat')
-            //->setParameter('etat', $this->_states['entity']['supprime']);
-        if($this->_user->getSociete()) {
-            $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
-        }
         if($structure && $structure->getTypeStructure()) {
             $queryBuilder->andWhere('p.typeStructure = :typeStructure')->setParameter('typeStructure', $structure->getTypeStructure());
         }
@@ -67,7 +60,7 @@ class StructureRepository extends ServiceEntityRepository {
      * @param integer $id
      * @return array
      */
-    public function listAllDirectionBySociete() {
+    /*public function listAllDirectionBySociete() {
         $societe_id=$this->_user->getSociete()->getId();
         $query = $this->createQueryBuilder('s')
             ->where('IDENTITY(s.societe)=:societe_id')->setParameter('societe_id', $societe_id)
@@ -78,13 +71,13 @@ class StructureRepository extends ServiceEntityRepository {
             $query->andWhere('s.root=:root')->setParameter('root', $this->_user->getStructure()->getRoot());
         }
         return $query->orderBy('s.name');
-    }
+    }*/
 
     /**
      *
      * @return QueryBuilder
      */
-    public function listByType($type){
+   /* public function listByType($type){
         $societe_id=$this->_user->getStructure()->getSociete()->getId();
         $query = $this->createQueryBuilder('s')
             ->where('IDENTITY(s.societe)=:societe_id')->setParameter('societe_id', $societe_id);
@@ -93,25 +86,25 @@ class StructureRepository extends ServiceEntityRepository {
         else
             $query->andWhere('s.lvl!=:lvl')->setParameter('lvl',0);
         return $query;
-    }
+    }*/
 
     /**
      *
      * @return QueryBuilder
      */
-    public function listBySociete() {
+   /* public function listBySociete() {
         $societe_id=$this->_user->getStructure()->getSociete()->getId();
         $query = $this->createQueryBuilder('s')
             ->where('IDENTITY(s.societe)=:societe_id')->setParameter('societe_id', $societe_id)
         ;
         return $query;
-    }
+    }*/
 
     /**
      * @param integer $id
      * @return array
      */
-    public function listByParent($id = null) {
+  /*  public function listByParent($id = null) {
         $structure = $this->_user->getStructure();
         $query = $this->createQueryBuilder('s')
             ->leftJoin('s.parent', 'p');
@@ -127,7 +120,7 @@ class StructureRepository extends ServiceEntityRepository {
             $query->where('p IS NULL');
         }
         return $query->orderBy('s.name');
-    }
+    }*/
 
     /* (non-PHPdoc)
      * @see EntityRepository::findAll()
@@ -138,7 +131,7 @@ class StructureRepository extends ServiceEntityRepository {
     }
 
 
-    public function filter() {
+  /*  public function filter() {
         $queryBuilder = $this->createQueryBuilder('q')
             ->leftJoin('q.societe','soc');
         if( $this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN)) {
@@ -162,9 +155,9 @@ class StructureRepository extends ServiceEntityRepository {
         }
 
         return BaseRepository::filterBySociete($queryBuilder, 'q', $this->_user)->orderBy('q.name');
-    }
+    }*/
 
-    public function listUserStructure() {
+  /*  public function listUserStructure() {
         $societeNotAdmin=$this->_user->getSociete()->getId();
         $sociteUser=$this->_user->getSociete()->getIsAdmin();
         if($sociteUser) {
@@ -178,9 +171,9 @@ class StructureRepository extends ServiceEntityRepository {
         }
 
         return $query;
-    }
+    }*/
 
-    public function filterBySociete(QueryBuilder $queryBuilder, $alias = null) {
+   /* public function filterBySociete(QueryBuilder $queryBuilder, $alias = null) {
         if(!$alias) {
             $aliases = $queryBuilder->getRootAliases();
             $alias = $aliases[0];
@@ -189,5 +182,5 @@ class StructureRepository extends ServiceEntityRepository {
             $queryBuilder->andWhere($alias . '.societe = :societe')->setParameter('societe', $this->_user->getSociete());
         }
         return $queryBuilder;
-    }
+    }*/
 }

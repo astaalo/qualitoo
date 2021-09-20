@@ -157,43 +157,6 @@ class ProcessusController extends BaseController {
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
-	
-	/**
-	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'un processus")
-	 * @Route ("/{id}/modifier_processus", name="modifier_processus", requirements={ "id"=  "\d+"})
-	 * @Method("POST")
-	 * @Template("processus/edit.html.twig")
-	 */
-	public function updateAction($id, Request $request) {
-		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('App\Entity\Processus')->find($id);
-		$form = $this->createCreateForm($entity, ProcessusType::class);
-		$form->handleRequest($request);
-		if ($form->isValid()) {
-			$em->persist($entity);
-			$lib_sans_spec = $this->replaceSpecialChars($entity->getLibelle());
-			$this->getDoctrine()->getRepository('App\Entity\Processus')->createQueryBuilder('p')
-				 ->update()->set('p.libelleSansCarSpecial', ':lib')
-				 ->where('p.id = :id')
-				 ->setParameter('id', $entity->getId())
-				 ->setParameter('lib', $lib_sans_spec)
-				 ->getQuery()->execute();
-			$this->getDoctrine()->getRepository(RisqueMetier::class)->createQueryBuilder('rm')
-				->update()
-				->set('rm.structure', $entity->getStructure()->getId())
-				->where('IDENTITY(rm.processus) = :processus')->setParameter('processus', $entity->getId())
-				->getQuery()->execute();
-			$this->getDoctrine()->getRepository(RisqueProjet::class)->createQueryBuilder('rp')
-				->update()
-				->set('rp.structure', $entity->getStructure()->getId())
-				->where('IDENTITY(rp.processus) = :processus')->setParameter('processus', $entity->getId())
-				->getQuery()->execute();
-			$em->flush();
-			$this->get('session')->getFlashBag()->add('success', "Le ".$entity->getTypeProcessus()->getLibelle()." a été modifé avec succés.");
-			return $this->redirect($this->generateUrl('les_processus'));
-		}
-		return array('entity' => $entity, 'form' => $form->createView());
-	}
 	  
 	/**
 	 * (non-PHPdoc)

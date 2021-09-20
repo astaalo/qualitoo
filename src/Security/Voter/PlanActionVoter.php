@@ -30,13 +30,13 @@ class PlanActionVoter extends Voter {
         // ... (check conditions and return true to grant permission) ...
 		switch($attribute) {
 			case self::CREATE:
-				return ($user->hasRoles(['ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE']) || $this->isYourPA($pa));
+				return ($user->hasRoles(['ROLE_ADMIN', 'ROLE_USER']) || $this->isYourPA($pa));
 				break;
 			case self::UPDATE:
-				return ($user->hasRoles(['ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR', 'ROLE_RESPONSABLE']) || $this->isYourPA($pa));
+				return ($user->hasRoles(['ROLE_ADMIN', 'ROLE_USER']) || $this->isYourPA($pa));
 				break;
 			case self::DELETE:
-				return ($user->hasRoles(['ROLE_ADMIN', 'ROLE_RISKMANAGER', 'ROLE_AUDITEUR']));
+				return ($user->hasRoles(['ROLE_ADMIN', 'ROLE_USER']));
 				break;
 			case self::ACCESS_ONE_PA:
 				return $this->isYourPA($pa);

@@ -34,13 +34,10 @@ class UtilisateurRepository extends ServiceEntityRepository
      */
     public function listAll($user = null) {
         $this->_user = $user;
-        $querBuilder = $this->createQueryBuilder('q')
-            //->leftJoin('q.societeOfRiskManager', 'r')
-            //->leftJoin('q.societeOfAdministrator', 'd')
-            //->leftJoin('q.societeOfAuditor', 'u')
-            ->innerJoin('q.profils', 'e')
-            ->where('q.etat != :etat')
-            ->setParameter('etat', $this->_states['entity']['supprime']);
+        $queryBuilder = $this->createQueryBuilder('q')
+            ->innerJoin('q.profils', 'e');
+            //->where('q.etat != :etat')
+           // ->setParameter('etat', $this->_states['entity']['supprime']);
             if($this->_user->getSociete()) {
                 $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
             }

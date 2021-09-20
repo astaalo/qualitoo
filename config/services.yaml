@@ -4,6 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    document_target: "%kernel.project_dir%/public/uploads/document"
     twig.extension.assets.class: App\MainBundle\Twig\AssetsExtension
     template_status: extra/status.html.twig
     states:
@@ -244,3 +245,7 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
         calls:
             - [ setAnnotationReader, [ "@annotation_reader" ] ]
+
+    App\Service\UploadFile:
+        arguments:
+            $targetDoc: "%document_target%"

@@ -156,7 +156,7 @@ class StructureController extends BaseController {
 	 * @Route("/{id}/suppression_structure", name="suppression_structure")
 	 * @Template()
 	 */
-	public function deleteAction(Request $request, $id){
+	/*public function deleteAction(Request $request, $id){
 		$em = $this->getDoctrine()->getManager();
 		$entity = $em->getRepository('App\Entity\Structure')->find($id);
 		if($entity == null)
@@ -174,45 +174,22 @@ class StructureController extends BaseController {
 			return new JsonResponse(array('status' => 'success', 'text' => 'La structure a été supprimée avec succès.'));
 		}
 		return new Response($this->renderView('OrangeMainBundle:Structure:delete.html.twig', array('entity' => $entity)));
-	}
-
-	/**
-	 * @QMLogger(message="Affichage risques dans modal")
-	 * @Route("/structure_for_risque_in_modal", name="structure_for_risque_in_modal")
-	 * @Template()
-	 */
-	public function showForRisqueInModalAction(Request $request) {
-		$em = $this->getDoctrine()->getManager();
-		$structure = $em->getRepository('App\Entity\Structure')->findOneByFullname($request->request->get('value'));
-		$entity = Hierarchie::createFromStructure($structure);
-		$form = $this->createCreateForm($entity, HierarchieType::class);
-		return array('entity' => $entity, 'form' => $form->createView());
-	}
-	
-	/**
-	 * @Route("/choose_structure_in_modal", name="choose_structure_in_modal")
-	 * @Template()
-	 */
-	public function chooseStructureInModalAction(Request $request) {
-		$form = $this->createForm(ChooseStructureType::class);
-		return array('form' => $form->createView());
-	}
-	
+	}*/
 
 	/**
 	 * @Route("/structure_by_parent", name="structure_by_parent")
 	 */
-	public function structureByParentAction(Request $request) {
-		$em = $this->getDoctrine()->getManager();
-		$arrData = $em->getRepository('App\Entity\Structure')->listByParent($request->request->get('id'))->getQuery()->execute();
-		$output = array(0 => array('id' => '', 'libelle' => 'Choisir une entité ...'));
-		foreach ($arrData as $data) {
-			$output[] = array('id' => $data->getId(), 'libelle' => $data->getName());
-		}
-		$response = new Response();
-		$response->headers->set('Content-Type', 'application/json');
-		return $response->setContent(json_encode($output));
-	}
+		/*public function structureByParentAction(Request $request) {
+			$em = $this->getDoctrine()->getManager();
+			$arrData = $em->getRepository('App\Entity\Structure')->listByParent($request->request->get('id'))->getQuery()->execute();
+			$output = array(0 => array('id' => '', 'libelle' => 'Choisir une entité ...'));
+			foreach ($arrData as $data) {
+				$output[] = array('id' => $data->getId(), 'libelle' => $data->getName());
+			}
+			$response = new Response();
+			$response->headers->set('Content-Type', 'application/json');
+			return $response->setContent(json_encode($output));
+		}*/
 	 
 	
 	/**

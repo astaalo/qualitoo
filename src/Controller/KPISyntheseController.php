@@ -1,16 +1,17 @@
 <?php
 namespace App\Controller;
 
-use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Controle;
-use Blameable\Fixture\Document\Type;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Annotation\QMLogger;
+use Blameable\Fixture\Document\Type;
+use App\SyntheseBundle\Document\Risque;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class KPISyntheseController extends BaseController {
 

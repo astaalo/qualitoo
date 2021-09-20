@@ -18,12 +18,10 @@ class AdministrationVoter extends Voter {
 	
 	protected function supports($attribute, $entity): bool {
         return in_array($attribute, [self::CREATE, self::READ, self::UPDATE, self::DELETE, self::ACTIVATE, self::DESACTIVATE, self::CHANGE_POSITION])
-			&& ($entity instanceof \App\Entity\Processus || $entity instanceof \App\Entity\Activite || 
-				$entity instanceof \App\Entity\Projet || $entity instanceof \App\Entity\Equipement || 
-				$entity instanceof \App\Entity\Structure || $entity instanceof \App\Entity\Site || 
-				$entity instanceof \App\Entity\Menace || $entity instanceof \App\Entity\DomaineActivite || 
-				$entity instanceof \App\Entity\DomaineImpact || $entity instanceof \App\Entity\DomaineSite || 
-				$entity instanceof \App\Entity\Question
+			&& ($entity instanceof \App\Entity\Processus || $entity instanceof \App\Entity\Direction || 
+				$entity instanceof \App\Entity\Document || $entity instanceof \App\Entity\Document || 
+				$entity instanceof \App\Entity\Structure || $entity instanceof \App\Entity\TypeDocument || 
+				$entity instanceof \App\Entity\Utilisateur 
 			);
     }
 

@@ -86,33 +86,33 @@ class Societe
      * @return string
      */
 	public function getLibelle() {
-                       return $this->libelle;
-                   }
+        return $this->libelle;
+    }
 	
 	/**
 	 * @param string $libelle
 	 * @return Societe
 	 */
 	public function setLibelle($libelle) {
-                       $this->libelle = $libelle;
-                       return $this;
-                   }
+        $this->libelle = $libelle;
+        return $this;
+    }
     
 	/**
 	 * @return boolean
 	 */
 	public function getEtat() {
-                       return $this->etat;
-                   }
+        return $this->etat;
+    }
 	
 	/**
 	 * @param boolean $etat
 	 * @return Societe
 	 */
 	public function setEtat($etat) {
-                       $this->etat = $etat;
-                       return $this;
-                   }
+        $this->etat = $etat;
+        return $this;
+    }
     
 	/**
 	 * @return string
@@ -145,39 +145,39 @@ class Societe
         return 'uploads/photos';
     }
 	
- public function upload() {
-                   	if (null === $this->photo) {
-                   		return;
-                   	}
-                   	$this->photo->move($this->getUploadRootDir(), $this->photo->getClientOriginalName());
-                   	$this->photo = $this->photo->getClientOriginalName();
-                   	$this->photo = null;
-                   }   
+ /*public function upload() {
+    if (null === $this->photo) {
+        return;
+    }
+        $this->photo->move($this->getUploadRootDir(), $this->photo->getClientOriginalName());
+        $this->photo = $this->photo->getClientOriginalName();
+        $this->photo = null;
+    } */  
     
 	/**
 	 * Get libelle
 	 * @return string
 	 */
 	public function __toString()
-                   {
-                       return $this->libelle;
-                   }
+    {
+        return $this->libelle;
+    }
 	
 	/**
 	 * @return string
 	 */
 	public function getPhoto() {
-                       return $this->photo;
-                   }
+         return $this->photo;
+    }
 	
 	/**
 	 * @param string $photo
 	 * @return Societe
 	 */
 	public function setPhoto($photo) {
-                       $this->photo = $photo;
-                       return $this;
-                   }
+        $this->photo = $photo;
+        return $this;
+    }
 
     /**
      * Add administrateur

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Form\DocumentType;
+use Doctrine\ORM\QueryBuilder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,12 +15,13 @@ use App\Repository;
 use App\Repository\DocumentRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Annotation\QMLogger;
+use App\Service\UploadFile;
 
 class DocumentsController extends BaseController
 {
     /**
      * @QMLogger(message="Affichage des documents du sharepoint ")
-	 * @Route("/documents", name="documents")
+	 * @Route("/les_documents", name="les_documents")
 	 * @Template()
      */
     public function index()
@@ -40,10 +42,6 @@ class DocumentsController extends BaseController
 	 */
 	public function newAction($id = null) {
 		$entity = new Document();
-		if($id) {
-			$doc = $this->getDoctrine()->getManager()->getRepository(Document::class)->find($id);
-			$entity->setParent($doc);
-		}
 		$form   = $this->createForm(DocumentType::class, $entity);
 		$this->denyAccessUnlessGranted('create', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
@@ -55,25 +53,26 @@ class DocumentsController extends BaseController
 	 * @Route("/creer_document", name="creer_document")
 	 * @Template("document/new.html.twig")
 	 */
-	public function createAction(Request $request, $id = null) {
+	public function createAction(Request $request, $id = null, UploadFile $file) {
 		$entity = new Document();
 		$form   = $this->createCreateForm($entity, DocumentType::class);
 		$form->handleRequest($request);
+        //dd($entity);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                //$entity->setLibelleSansCarSpecial($this->replaceSpecialChars($entity->getLibelle()));
+                $fileName= $file->uploadFile($entity->getFile());
+                $entity->setFile($fileName);
+                //dd($entity);
                 $em->persist($entity);
                 $em->flush();$this->get('session')->getFlashBag()->add('success', "Document ajouté avec succés.");
-                if($entity->getParent()) {
-                    return $this->redirect($this->generateUrl('details_document', array('id' => $entity->getParent()->getId())));
-                } else{
-                    return $this->redirect($this->generateUrl('les_documents'));
-                }	
+               // return $this->redirect($this->generateUrl('les_documents'));
             }
         }
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
 	}
+
+
     /**
 	 * @QMLogger(message="Chargement ajax des processus")
 	 * @Route("/liste_des_documents", name="liste_des_documents")
@@ -86,7 +85,7 @@ class DocumentsController extends BaseController
 		$docs = $form->getData();
 		$queryBuilder = $docRepo->listAll($docs);
 		//dd($queryBuilder);
-		return $this->paginate($request, $queryBuilder);
+		//return $this->paginate($request, $queryBuilder);
 	}
 
     /**

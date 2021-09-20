@@ -55,15 +55,6 @@ class Document
 	protected $description;
 	
 	/**
-	 * @var Utilisateur
-	 * @ORM\ManyToOne(targetEntity="Utilisateur")
-	 * @ORM\JoinColumns({
-	 *      @ORM\JoinColumn(name="utilisateur", referencedColumnName="id")
-	 * })
-	 */
-	private $utilisateur;
-	
-	/**
 	 * @var TypeDocument
 	 * @ORM\ManyToOne(targetEntity="TypeDocument")
 	 * @ORM\JoinColumn(name="type_document_id", referencedColumnName="id", nullable=true)
@@ -74,7 +65,7 @@ class Document
      * @ORM\Column(type="string")
      *
      * @Assert\NotBlank(message="Merci de joindre un fichier.")
-     * @Assert\File(mimeTypes={ "application/pdf" , "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel"})
+     * @Assert\File(mimeTypes={ "application/pdf,"})
      */
      public $file;
      
@@ -99,26 +90,31 @@ class Document
       * @ORM\ManyToOne(targetEntity=Theme::class, inversedBy="documents")
       */
      private $theme;
+
+     /**
+      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="documents")
+      */
+     private $profil;
  
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-        $this->dateCreation = new \DateTime();
-        $this->deleted = false;
-        $this->document = new ArrayCollection();
-    }
+                 $this->dateCreation = new \DateTime();
+                 $this->deleted = false;
+                 $this->document = new ArrayCollection();
+             }
 	
 	public function __toString(){
-        return $this->libelle;
-    }
+                 return $this->libelle;
+             }
 	/**
 	 * Get id
 	 * @return integer
 	 */
 	public function getId(){
-        return $this->id;
-    }
+                 return $this->id;
+             }
 
 	/**
 	 * Set libelle
@@ -126,17 +122,17 @@ class Document
 	 * @return Document
 	 */
 	public function setLibelle($libelle) {
-        $this->libelle = $libelle;
-        return $this;
-    }
+                 $this->libelle = $libelle;
+                 return $this;
+             }
 
 	/**
 	 * Get libelle
 	 * @return string
 	 */
 	public function getLibelle() {
-        return $this->libelle;
-  	}
+                 return $this->libelle;
+           	}
 
 	/**
 	 * Set dateCreation
@@ -144,33 +140,17 @@ class Document
 	 * @return Document
 	 */
 	public function setDateCreation($dateCreation) {
-        $this->dateCreation = $dateCreation;
-        return $this;
-    }
+                 $this->dateCreation = $dateCreation;
+                 return $this;
+             }
 
 	/**
 	 * Get dateCreation
 	 * @return \DateTime
 	 */
 	public function getDateCreation() {
-        return $this->dateCreation;
-    }
-	
-	/**
-	 * @return Utilisateur
-	 */
-	public function getUtilisateur() {
-        return $this->utilisateur;
-    }
-	
-	/**
-	 * @param Utilisateur $utilisateur
-	 * @return Document
-	 */
-	public function setUtilisateur($utilisateur) {
-        $this->utilisateur = $utilisateur;
-        return $this;
-    }
+                 return $this->dateCreation;
+             }
 
     public function getAbsolutePath() {
         return null === $this->file ? null : $this->getUploadRootDir().'/'.$this->file;
@@ -197,34 +177,34 @@ class Document
     }
     
 	public function getTypeDocument() {
-        return $this->typeDocument;
-    }
+                 return $this->typeDocument;
+             }
 	public function setTypeDocument($typeDocument) {
-        $this->typeDocument = $typeDocument;
-        return $this;
-    }
+                 $this->typeDocument = $typeDocument;
+                 return $this;
+             }
 	public function getDescription() {
-        return $this->description;
-    }
+                 return $this->description;
+             }
 	public function setDescription($description) {
-        $this->description = $description;
-        return $this;
-    }
+                 $this->description = $description;
+                 return $this;
+             }
 	
 	public function getFile() {
-        return $this->file;
-    }
+                 return $this->file;
+             }
 	public function setFile($file) {
-        $this->file = $file;
-        return $this;
-    }
+                 $this->file = $file;
+                 return $this;
+             }
 	public function getEtat() {
-        return $this->etat;
-    }
+                 return $this->etat;
+             }
 	public function setEtat($etat) {
-        $this->etat = $etat;
-        return $this;
-     }
+                 $this->etat = $etat;
+                 return $this;
+              }
 
     /**
      * Set deleted
@@ -292,6 +272,18 @@ class Document
     public function setTheme(?Theme $theme): self
     {
         $this->theme = $theme;
+        return $this;
+    }
+
+    public function getProfil(): ?Profil
+    {
+        return $this->profil;
+    }
+
+    public function setProfil(?Profil $profil): self
+    {
+        $this->profil = $profil;
+
         return $this;
     }
 }

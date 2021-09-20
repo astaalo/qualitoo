@@ -61,7 +61,7 @@ class SocieteController extends BaseController {
 		if ($form->isSubmitted()) {
 			if ($form->isValid()) {
 				$em = $this->getDoctrine()->getManager();
-				$entity->upload();
+				//$entity->upload();
 				$em->persist($entity);
 				$em->flush();
 				return $this->redirect($this->generateUrl('les_societes'));

@@ -9,7 +9,7 @@
 	</span>
 	<div id="buttom_top">
 		<ul class="uibutton-group">
-			<li><a class="uibutton icon confirm answer" href="{{ path('documents') }}" title="les documents">Retour à la liste</a></li>
+			<li><a class="uibutton icon confirm answer" href="{{ path('les_documents') }}" title="les documents">Retour à la liste</a></li>
 			<li><a class="uibutton icon edit" href="{{ path('edition_document', {'id': entitie.id}) }}">Edition un document</a></li>
         </ul>
     </div>
@@ -41,7 +41,7 @@
 					</tr>
 					<tr>
 						<th style="width:115px;" >Utilisateur:</th>
-						<td style="padding-left: 100px;">{{ entitie.utilisateur.name }}</td>
+						<td style="padding-left: 100px;">{{ entitie.profil.name }}</td>
 					</tr>
 				</tbody>	
 			</table>

@@ -81,9 +81,6 @@ class ProcessusRepository extends ServiceEntityRepository
             ->innerJoin('p.structure', 'q')
             ->where('q.etat != :etat')
             ->setParameter('etat', $this->_states['entity']['supprime']);
-       // if($this->_user->getSociete()) {
-        //    $queryBuilder->andWhere('q.societe = :societe')->setParameter('societe', $this->_user->getSociete());
-        //}
         if($processus && $processus->getTypeProcessus()) {
             $queryBuilder->andWhere('p.typeProcessus = :typeProcessus')->setParameter('typeProcessus', $processus->getTypeProcessus());
         }

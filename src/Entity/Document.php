@@ -100,14 +100,15 @@ class Document
 	 * Constructor
 	 */
 	public function __construct() {
-                 $this->dateCreation = new \DateTime();
-                 $this->deleted = false;
-                 $this->document = new ArrayCollection();
-             }
+        $this->dateCreation = new \DateTime();
+        $this->deleted = false;
+        $this->document = new ArrayCollection();
+    }
 	
 	public function __toString(){
-                 return $this->libelle;
-             }
+        return $this->libelle;
+    }
+             
 	/**
 	 * Get id
 	 * @return integer

@@ -145,36 +145,41 @@ class StructureController extends BaseController {
 				$em->persist($entity);
 				$em->flush();
 				return $this->redirect($this->generateUrl('les_structures'));
-				// 				return new JsonResponse(array('type' => 'success', 'text' => 'Le centre a été mis à jour avec succès.'));
+				//return new JsonResponse(array('type' => 'success', 'text' => 'Le centre a été mis à jour avec succès.'));
 			}
 		}
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
 	
 	/**
-	 * @QMLogger(message="Suppression d'une structure")
-	 * @Route("/{id}/suppression_structure", name="suppression_structure")
+	 * @QMLogger(message="Suppression d'un structure")
+	 * @Route("/{id}/supprimer_structure", name="supprimer_structure", requirements={ "id"=  "\d+"})
 	 * @Template()
 	 */
-	/*public function deleteAction(Request $request, $id){
+	public function deleteAction(Request $request, $id){
 		$em = $this->getDoctrine()->getManager();
-		$entity = $em->getRepository('App\Entity\Structure')->find($id);
-		if($entity == null)
-			$this->createNotFoundException("Cette structure n'existe pas!");
-		
-		$this->denyAccessUnlessGranted('delete', $entity, 'Accés non autorisé!');
-		if($request->getMethod()=='POST') {
-			//var_dump($entity); exit();
-			//$em->remove($entity);
-			//$em->flush();
-			$connection = $em->getConnection();
-			$statement = $connection->prepare("DELETE FROM structure WHERE id = :id");
-			$statement->bindValue('id', $id);
-			$statement->execute();
-			return new JsonResponse(array('status' => 'success', 'text' => 'La structure a été supprimée avec succès.'));
+		$structure = $em->getRepository('App\Entity\Structure')->find($id);
+		//$activites=$structure->getActivite();
+		if (! $structure) {
+			throw $this->createNotFoundException('Aucun structure trouvé pour cet id : ' . $id);
 		}
-		return new Response($this->renderView('OrangeMainBundle:Structure:delete.html.twig', array('entity' => $entity)));
-	}*/
+		
+		$this->denyAccessUnlessGranted('delete', $structure, 'Accés non autorisé');
+		if ($request->getMethod () == 'POST') {
+			/*if(count($activites) > 0 || count($structure->getChildren()) > 0 || count($structure->getProjet()) > 0) {
+				$this->get('session')->getFlashBag()->add('error', "Le structure ne peut pas etre supprimé. Il est lié à des activités ou sous-structure ou projets.");
+			} else {
+				$em->remove($structure);
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('success', "Le structure a été supprimé avec succés.");
+			}*/
+			$em->remove($structure);
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('success', "La structure a été supprimé avec succés.");
+			return $this->redirect($this->generateUrl('les_structure'));
+		}
+		return array ('entity' => $structure);
+	}
 
 	/**
 	 * @Route("/structure_by_parent", name="structure_by_parent")
@@ -210,7 +215,7 @@ class StructureController extends BaseController {
 	  			$entity->__toString(),
 	  			$entity->getTypeStructure()?$entity->getTypeStructure()->getLibelle():null,
 	  			$entity->getParent() ? $entity->getParent()->__toString() : null,
-	  			//$this->service_action->generateActionsForStructure($entity)
+	  			$this->service_action->generateActionsForStructures($entity)
 	  	);
 	}
 }

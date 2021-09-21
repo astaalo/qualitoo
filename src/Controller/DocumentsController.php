@@ -2,29 +2,26 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Document;
 use App\Form\DocumentType;
-use Doctrine\ORM\QueryBuilder;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Service\UploadFile;
+use App\Annotation\QMLogger;
+use App\Repository\DocumentRepository;
+use \App\Repository\QueryBuilder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Document;
-use App\Repository;
-use App\Repository\DocumentRepository;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use App\Annotation\QMLogger;
-use App\Service\UploadFile;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DocumentsController extends BaseController
 {
     /**
      * @QMLogger(message="Affichage des documents du sharepoint ")
 	 * @Route("/les_documents", name="les_documents")
-	 * @Template()
+	 * @Template("document/index.html.twig")
      */
-    public function index()
+    public function indexAction()
     {
         $entity= new Document();
 		$this->denyAccessUnlessGranted('read', $entity, 'Accés non autorisé');
@@ -72,11 +69,10 @@ class DocumentsController extends BaseController
 		return array('entity' => $entity, 'form' => $form->createView(), 'id' => $id);
 	}
 
-
     /**
 	 * @QMLogger(message="Chargement ajax des processus")
 	 * @Route("/liste_des_documents", name="liste_des_documents")
-	 * @Template()
+	 * @Template("document/index.html.twig")
 	 */
 	public function listAction(Request $request, DocumentRepository $docRepo) {
 		$document = new Document();
@@ -85,13 +81,13 @@ class DocumentsController extends BaseController
 		$docs = $form->getData();
 		$queryBuilder = $docRepo->listAll($docs);
 		//dd($queryBuilder);
-		//return $this->paginate($request, $queryBuilder);
+		return $this->paginate($request, $queryBuilder);
 	}
 
     /**
 	 * @QMLogger(message="Affichage d'un document")
 	 * @Route("/{id}/details_document", name="details_document", requirements={ "id"=  "\d+"})
-	 * @Template()
+	 * @Template("document/show.html.twig")
 	 */
 	public function showAction($id){
 		$em = $this->getDoctrine()->getManager();
@@ -99,5 +95,63 @@ class DocumentsController extends BaseController
 		$this->denyAccessUnlessGranted('read', $document, 'Accés non autorisé');
 		return array('entitie' => $document);
 	}
+
+	/**
+	 * @QMLogger(message="Envoi des donnees saisies lors de la modification du dcument ")
+	 * @Route ("/{id}/modifier_document", name="modifier_document", requirements={ "id"=  "\d+"})
+	 * @Method("POST")
+	 * @Template("document/edit.html.twig")
+	 */
+	public function updateAction(Request $request,$id) {
+		$em = $this->getDoctrine()->getManager();
+		$entity = $em->getRepository('App\Entity\Document')->find($id);
+		$form = $this->createCreateForm($entity, DocumentType::class);
+
+		if ($request->getMethod() == 'POST') {
+			$form->handleRequest($request);
+			if ($form->isValid()) {
+				$em->persist($entity);
+				$em->flush();
+				return $this->redirect($this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$entity->getTypeDocument()->getId())));
+			}
+		}
+		return array('entity' => $entity, 'form' => $form->createView());
+	}
+
+	/**
+	 * @QMLogger(message="Modification d'un document ")
+	 * @Route ("/{id}/edition_document", name="edition_document", requirements={ "id"=  "\d+"})
+	 * @Template()
+	 */
+	public function editAction($id) {
+		$em = $this->getDoctrine()->getManager();
+		$entity = $em->getRepository('App\Entity\Document')->find($id);
+		$form = $this->createCreateForm($entity, DocumentType::class);
+		return array('entity' => $entity, 'form' => $form->createView());
+	}
 	
+		/**
+	 * @QMLogger(message="filtrer la liste des documents")
+	 * @Route("/filtrer_les_documents", name="filtrer_les_documents")
+	 * @Template()
+	 */
+	public function filterAction(Request $request) {
+		$form = $this->createForm(DocumentType::class);
+		if($request->getMethod()=='POST') {
+			$this->get('session')->set('document_criteria', $request->request->get($form->getName()));
+			return new JsonResponse();
+		} else {
+			$this->modifyRequestForForm($request, $this->get('session')->get('document_criteria'), $form);
+			return array('form' => $form->createView());
+		}
+	}
+	protected function addRowInTable($entity) {
+		return array(
+				$entity->getLibelle(),
+				$entity->getProfil()->__toString(),
+				$entity->getDateCreation()->format('d-m-Y'),
+	  			//$this->service_status->generateStatusForDocument($entity),
+ 	  			$this->service_action->generateActionsForDocument($entity)
+			);
+  }
 }

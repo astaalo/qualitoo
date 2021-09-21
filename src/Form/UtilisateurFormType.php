@@ -28,21 +28,16 @@ class UtilisateurFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-       $builder->add('email', EmailType::class, array('label' => "Adresse e-mail"))
-      		->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+       $builder
+            ->add('matricule', TextType::class, array('label' => 'Matricule', 'attr' => array('class' => 'ui-spinner-box')))
             ->add('prenom', null, array('label' => 'Prénom'))
             ->add('nom', null, array('label' => 'Nom'))
+            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+            ->add('email', EmailType::class, array('label' => "Adresse e-mail"))
             //->add('ip', null, array('label' => 'IP'))
             ->add('password', null, array('label' => 'Password'))
-            ->add('structure', EntityType::class, array('label' => 'Structure','class' => 'App\Entity\Structure', 'attr' => array('class' => 'chzn-select'), 'query_builder' => function (StructureRepository $er) {
-		 		return $er->createQueryBuilder('u')
-					->orderBy('u.libelle', 'ASC');
-			},
-            'choice_label' => 'libelle',
-			))
-            ->add('matricule', TextType::class, array('label' => 'Matricule', 'attr' => array('class' => 'ui-spinner-box')))
             ->add('telephone', null, array('label' => 'Téléphone'))
-            ->add('manager', null, array('label' => 'Est manager', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
+            //->add('manager', null, array('label' => 'Est manager', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
             ->add('profils', EntityType::class, array('label' => 'Profil','class' => 'App\Entity\Profil', 'attr' => array('class' => 'chzn-select'), 'query_builder' => function (ProfilRepository $er) {
                 return $er->createQueryBuilder('u')
                     ->orderBy('u.libelle', 'ASC');
@@ -51,7 +46,13 @@ class UtilisateurFormType extends AbstractType
            // 'query_builder'=>function($sr){
             //return $sr->listUserSocieties();
            // }
-        ));
+           ))
+           ->add('structure', EntityType::class, array('label' => 'Structure','class' => 'App\Entity\Structure', 'attr' => array('class' => 'chzn-select'), 'query_builder' => function (StructureRepository $er) {
+            return $er->createQueryBuilder('u')
+               ->orderBy('u.libelle', 'ASC');
+                },
+                'choice_label' => 'libelle',
+            ));
             /*->add('societeOfAuditor',null, array('label' => 'Est auditeur de', 'attr'=>array('class'=>'chzn-select', 'multiple' => 'multiple'),'class' => 'App\Entity\Societe','placeholder' => 'Choisir la société ...',
             'query_builder'=>function($sr){
             return $sr->listUserSocieties();

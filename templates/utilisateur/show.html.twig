@@ -5,12 +5,12 @@
 {% block header_config %}
 <div class="header">
 	<span>
-		<span class="ico color spreadsheet"></span>Détails du {{ entitie.typeProcessus }}
+		<span class="ico color spreadsheet"></span>Détails du {{ entity.typeProcessus }}
 	</span>
 	<div id="buttom_top">
 		<ul class="uibutton-group">
 			<li><a class="uibutton icon confirm answer" href="{{ path('les_utilisateurs') }}" title="les utilisateurs">Retour à la liste</a></li>
-			<li><a class="uibutton icon edit" href="{{ path('edition_utilisateur', {'id': entitie.id}) }}">Edition d'un utilisateur</a></li>
+			<li><a class="uibutton icon edit" href="{{ path('edition_utilisateur', {'id': entity.id}) }}">Edition d'un utilisateur</a></li>
         </ul>
     </div>
 </div>
@@ -21,25 +21,31 @@
 		<div id="uploadTab">
 			<table class="show_table">
 				<tbody>
+				{% if entity.parent is not empty  %}
+						<tr>
+							<th style="width:300px;" >Utilisateur parent:</th>
+							<td style="padding-left: 100px;"><a href="{{ path('details_utilisateur', {'id': entity.parent.id}) }}">{{ entity.parent }}</a></td>
+						</tr>
+					{% endif %}
 					<tr>
 						<th style="width:115px;" >Matricule:</th>
-						<td style="padding-left: 100px;">{{ entitie.matricule }}</td>
+						<td style="padding-left: 100px;">{{ entity.matricule }}</td>
 					</tr>
                     <tr>
 						<th style="width:115px;" >Prénom:</th>
-						<td style="padding-left: 100px;">{{ entitie.prenom }}</td>
+						<td style="padding-left: 100px;">{{ entity.prenom }}</td>
 					</tr>
 					<tr>
 						<th style="width:115px;" >Nom:</th>
-						<td style="padding-left: 100px;">{{ entitie.nom }}</td>
+						<td style="padding-left: 100px;">{{ entity.nom }}</td>
 					</tr>
 					<tr>
 						<th style="width:115px;" >Email:</th>
-						<td style="padding-left: 100px;">{{ entitie.email }}</td>
+						<td style="padding-left: 100px;">{{ entity.email }}</td>
 					</tr>
 					<tr>
 						<th style="width:115px;" >Profil:</th>
-						<td style="padding-left: 100px;">{{ entitie.profil.name }}</td>
+						<td style="padding-left: 100px;">{{ entity.profil.name }}</td>
 					</tr>
 				</tbody>	
 			</table>

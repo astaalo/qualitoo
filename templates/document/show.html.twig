@@ -21,9 +21,9 @@
 		<div id="uploadTab">
 			<table class="show_table">
 				<tbody>
-					{% if entitie.parent is not empty  %}
+					{% if entitie.document is not empty  %}
 						<tr>
-							<th style="width:300px;" >Processus parent:</th>
+							<th style="width:300px;" >typeDocument:</th>
 							<td style="padding-left: 100px;"><a href="{{ path('details_document', {'id': entitie.parent.id}) }}">{{ entitie.parent }}</a></td>
 						</tr>
 					{% endif %}
@@ -32,16 +32,16 @@
 						<td style="padding-left: 100px;">{{ entitie.libelle }}</td>
 					</tr>
 					<tr>
-						<th style="width:115px;" >Description:</th>
-						<td style="padding-left: 100px;">{{ entitie.description }}</td>
+						<th style="width:115px;" >Profil:</th>
+						<td style="padding-left: 100px;">{{ entitie.profil.libelle }}</td>
 					</tr>
 					<tr>
 						<th style="width:115px;" >Date Création:</th>
 						<td style="padding-left: 100px;">{{ entitie.dateCreation }}</td>
 					</tr>
 					<tr>
-						<th style="width:115px;" >Utilisateur:</th>
-						<td style="padding-left: 100px;">{{ entitie.profil.name }}</td>
+						<th style="width:115px;" >File:</th>
+						<td style="padding-left: 100px;">{{ entitie.file }}</td>
 					</tr>
 				</tbody>	
 			</table>

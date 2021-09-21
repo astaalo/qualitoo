@@ -40,7 +40,7 @@
 						<th width="150" >Libellé</th>
 						<th width="150" >Description</th>
 						<th width="150" >Fichier</th>
-						<th width="150"><div class="th_wrapp">Utilisateur</div></th>
+						<th width="150"><div class="th_wrapp">Profil</div></th>
 						<th width="100"><div class="th_wrapp">Date de Création</div></th>
 						<th width="50"><div class="th_wrapp">Actions</div></th>
 					</tr>
@@ -56,14 +56,14 @@
 							<td width="100px"><div class="th_wrapp">{{ document.dateCreation|date('d/m/Y') }}</div></td>
 							<td width="70px"><div class="th_wrapp">
 								<span class="tip">
-									<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('details_fichier',{id : document.id}) }}" original-title="Voir les détails "><img src="{{ asset('bundles/orangemain/images/icon/color_18/info.png') }}"></a>
+									<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('details_fichier',{id : document.id}) }}" original-title="Voir les détails "><img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/info.png') }}"></a>
 							    </span>
-							    {% if has_rights('ROLE_ADMIN') or (has_rights('ROLE_RISKMANAGER') and is_proprietaire(document)) %}
+							    {% if has_rights('ROLE_ADMIN') and is_proprietaire(document) %}
 							    <span class="tip">
 									<a   href="{{ path('edition_document',{id : document.id}) }}" original-title="Modifier "><img src="{{ asset('bundles/orangemain/images/icon/color_18/pencil.png') }}"></a>
 							    </span>
 							    <span class="tip">
-							    	<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('supprimer_document',{id : document.id}) }}" original-title="Supprimer le fichier"><img src="{{ asset('bundles/orangemain/images/icon/color_18/delete.png') }}"></a>
+							    	<a class="actionLink"  href="#myModal" data-toggle="modal" data-target="#myModal" modal-url="{{ path('supprimer_document',{id : document.id}) }}" original-title="Supprimer le fichier"><img src="{{ asset('assets/bundles/orangemain/images/icon/color_18/delete.png') }}"></a>
 							    </span>
 							    {% endif %}
 							</div></td>
@@ -82,5 +82,6 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: true, with_tag: 1 }) }}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }}
+	{% include 'extra/datatable.html.twig' with {idTable: 'documentTable', url: path('liste_des_documents'), nosorting: {0:3, 1:4} } %}
 {% endblock %}

@@ -128,7 +128,7 @@ class SocieteController extends BaseController {
             sprintf('<img src="%s" />', $this->service_assets_extension->getAssetUrl($entity->getWebPath())),
             sprintf('<a href="%s">%s<a/>', $this->generateUrl('details_societe', array('id' => $entity->getId())), $entity->getLibelle()),
             $this->service_status->generateStatusForSociete($entity),
-            //$this->service_action->generateActionsForSociete($entity)
+            $this->service_action->generateActionsForSocite($entity)
 	  	);
 	}
 }

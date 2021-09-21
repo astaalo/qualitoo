@@ -1,21 +1,16 @@
 <?php
 namespace App\Controller;
 
-use App\Annotation\QMLogger;
-use App\Entity\RisqueMetier;
-use App\Entity\RisqueProjet;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
-use App\Form\ProcessusType;
 use App\Entity\Processus;
-use App\Repository;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use App\Entity\Activite;
+use App\Form\ProcessusType;
+use App\Annotation\QMLogger;
 use Doctrine\ORM\QueryBuilder;
-use App\Query\BaseQuery;
 use App\Repository\ProcessusRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class ProcessusController extends BaseController {
 
@@ -85,20 +80,19 @@ class ProcessusController extends BaseController {
 	public function deleteAction(Request $request, $id){
 		$em = $this->getDoctrine()->getManager();
 		$processus = $em->getRepository('App\Entity\Processus')->find($id);
-		$activites=$processus->getActivite();
+		//$activites=$processus->getActivite();
 		if (! $processus) {
 			throw $this->createNotFoundException('Aucun processus trouvé pour cet id : ' . $id);
 		}
-		
 		$this->denyAccessUnlessGranted('delete', $processus, 'Accés non autorisé');
 		if ($request->getMethod () == 'POST') {
-			if(count($activites) > 0 || count($processus->getChildren()) > 0 || count($processus->getProjet()) > 0) {
+			/*if(count($activites) > 0 || count($processus->getChildren()) > 0 || count($processus->getProjet()) > 0) {
 				$this->get('session')->getFlashBag()->add('error', "Le processus ne peut pas etre supprimé. Il est lié à des activités ou sous-processus ou projets.");
 			} else {
 				$em->remove($processus);
 				$em->flush();
 				$this->get('session')->getFlashBag()->add('success', "Le processus a été supprimé avec succés.");
-			}
+			}*/
 			return $this->redirect($this->generateUrl('les_processus'));
 		}
 		return array ('entity' => $processus);
@@ -157,6 +151,37 @@ class ProcessusController extends BaseController {
 		$this->denyAccessUnlessGranted('update', $entity, 'Accés non autorisé');
 		return array('entity' => $entity, 'form' => $form->createView());
 	}
+
+	/**
+	 * @QMLogger(message="Envoi des donnees saisies lors de la modification d'un processus")
+	 * @Route ("/{id}/modifier_processus", name="modifier_processus", requirements={ "id"=  "\d+"})
+	 * @Method("POST")
+	 * @Template("processus/edit.html.twig")
+	 */
+	public function updateAction($id, Request $request) {
+		$em = $this->getDoctrine()->getManager();
+		$entity = $em->getRepository('App\Entity\Processus')->find($id);
+		$form = $this->createCreateForm($entity, ProcessusType::class);
+		$this->denyAccessUnlessGranted('update', $this->getUser(),'Accés non autorisé!');
+		if ($request->getMethod() == 'POST') {
+			$form->handleRequest($request);
+			if ($form->isValid()) {
+				/*$entity->setName($entity->getName());
+				if($entity->getChildren()->count()>0)
+					foreach ($entity->getChildren() as $key=>$value){
+						$value -> setName($value->getName());
+						$em->persist($value);
+					}*/
+				$em->persist($entity);
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('success', "La modification s'est effectuée avec succès.");
+				return $this->redirect($this->generateUrl('les_processus'));
+				// 				return new JsonResponse(array('type' => 'success', 'text' => 'Le centre a été mis à jour avec succès.'));
+			}
+		}
+		return array('entity' => $entity, 'form' => $form->createView());
+	}
+	
 	  
 	/**
 	 * (non-PHPdoc)
@@ -176,7 +201,7 @@ class ProcessusController extends BaseController {
 			$entity->getDescription(),
 			$entity->getTypeProcessus()->getLibelle(),
 			$entity->getStructure()->getLibelle(),
-			//$this->service_action->generateActionsForProcessus($entity)
+			$this->service_action->generateActionsForProcessus($entity)
 		);
 	}
 }

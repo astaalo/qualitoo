@@ -5,12 +5,12 @@
 {% block header_config %}
 <div class="header">
 	<span>
-		<span class="ico color spreadsheet"></span>Détails du {{ entity.typeStructure }}
+		<span class="ico color spreadsheet"></span>Détails de la {{ entity.libelle }}
 	</span>
 	<div id="buttom_top">
 		<ul class="uibutton-group">
 			<li><a class="uibutton icon confirm answer" href="{{ path('les_structures') }}" title="les structures">Retour à la liste</a></li>
-			<li><a class="uibutton icon edit" href="{{ path('edition_structures', {'id': entity.id}) }}">Edition d'une Structure</a></li>
+			<li><a class="uibutton icon edit" href="{{ path('edition_structure', {'id': entity.id}) }}">Edition d'une Structure</a></li>
         </ul>
     </div>
 </div>
@@ -32,8 +32,8 @@
 						<td style="padding-left: 100px;">{{ entity.libelle }}</td>
 					</tr>
 					<tr>
-						<th style="width:115px;" >Direction:</th>
-						<td style="padding-left: 100px;">{{ entity.direction.libelle }}</td>
+						<th style="width:115px;" >Parent:</th>
+						<td style="padding-left: 100px;">{{ entity.parent.libelle }}</td>
 					</tr>
 					<tr>
 						<th style="width:115px;" >Type Structure:</th>

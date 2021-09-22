@@ -60,15 +60,9 @@ class Societe
      */
     private $processuses;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Direction::class, mappedBy="societe")
-     */
-    private $directions;
-
     public function __construct()
     {
         $this->processuses = new ArrayCollection();
-        $this->directions = new ArrayCollection();
     }
     
     /**
@@ -246,36 +240,6 @@ class Societe
             // set the owning side to null (unless already changed)
             if ($processus->getSociete() === $this) {
                 $processus->setSociete(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Direction[]
-     */
-    public function getDirections(): Collection
-    {
-        return $this->directions;
-    }
-
-    public function addDirection(Direction $direction): self
-    {
-        if (!$this->directions->contains($direction)) {
-            $this->directions[] = $direction;
-            $direction->setSociete($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDirection(Direction $direction): self
-    {
-        if ($this->directions->removeElement($direction)) {
-            // set the owning side to null (unless already changed)
-            if ($direction->getSociete() === $this) {
-                $direction->setSociete(null);
             }
         }
 

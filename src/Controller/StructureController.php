@@ -1,7 +1,6 @@
 <?php
 namespace App\Controller;
 
-use App\Form\HierarchieType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -9,8 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Structure;
 use App\Form\StructureType;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use App\Entity\Hierarchie;
-use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\QueryBuilder;
 use App\Annotation\QMLogger;
 use App\Repository\StructureRepository;
@@ -89,6 +86,11 @@ class StructureController extends BaseController {
 		if ($form->isSubmitted()) {
 			if ($form->isValid()) {
 				$em = $this->getDoctrine()->getManager();
+				if($this->getUser()->getSociete()) {
+					$entity->setSociete($this->getUser()->getSociete());
+				}
+				$entity->setName($entity->getName());
+				$entity->setParent($entity->getParent());
 				$em->persist($entity);
 				$em->flush();
 				return $this->redirect($this->generateUrl('les_structures'));

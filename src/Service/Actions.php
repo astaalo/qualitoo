@@ -121,7 +121,7 @@ class Actions
         $this->addActionByRoles(array(
                 'ROLE_ADMIN' 
         ), "Modifier",
-        $this->router->generate('edition_societe', array('id' => $entity->getId(), 'page' => 1)),
+        $this->router->generate('edition_societe', array('id' => $entity->getId())),
         $this->asset('assets/bundles/orangemain/images/icon/color_18/pencil.png'),
         true);
         return $this->getActions();

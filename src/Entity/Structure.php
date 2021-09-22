@@ -1,20 +1,21 @@
 <?php
 
 namespace App\Entity;
-
 use App\Repository\StructureRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Model\TreeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Structure
+ * @Gedmo\Tree(type="nested")
  * @ORM\Table(name="structure")
  * @ORM\Entity(repositoryClass=StructureRepository::class)
  */
-class Structure
+class Structure extends Tree implements TreeInterface
 {
     /**
      * @ORM\Id
@@ -25,10 +26,23 @@ class Structure
 
     /**
      * @var string
+     * @ORM\Column(name="code", type="string", length=100, nullable=false)
+     * @Assert\NotNull(message="Le nom de la structure est obligatoire")
+     */
+    private $code;
+	
+    /**
+     * @var string
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
      * @ORM\Column(name="libelle", type="string", length=100, nullable=false)
      * @Assert\NotNull(message="Le nom complet de la structure est obligatoire")
      */
-    private $libelle;
+    protected $libelle;
 
     /**
      * @var \DateTime
@@ -48,7 +62,7 @@ class Structure
      *
      * @ORM\ManyToOne(targetEntity="TypeStructure")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="type_structure_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="type_structure_id", referencedColumnName="id")
      * })
      * @Assert\NotNull(message="Le type de structure est obligatoire")
      */
@@ -59,10 +73,23 @@ class Structure
      *
      * @ORM\ManyToOne(targetEntity="Societe")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="societe_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="societe_id", referencedColumnName="id")
      * })
      */
     private $societe;
+
+    /**
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="Structure", inversedBy="children", cascade={"persist", "merge","remove"})
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $parent;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Structure", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    protected $children;
 
     /**
      * @ORM\OneToMany(targetEntity="Utilisateur", mappedBy="structure")
@@ -85,24 +112,13 @@ class Structure
     private $pole;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Structure::class, inversedBy="structures")
-     */
-    private $parent;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Structure::class, mappedBy="parent")
-     */
-    private $structures;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Direction::class, inversedBy="structures")
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     protected $direction;
 
 
     public function __construct() {
         $this->dateCreation = new \DateTime('NOW');
-        $this->structures = new ArrayCollection();
     }
 
     /**
@@ -200,6 +216,66 @@ class Structure
     public function setSociete($societe) {
         $this->societe = $societe;
         return $this;
+    }
+
+    /**
+	 * Get name
+	 * @return string
+	 */
+	public function getName() {
+		$object = $this;
+		$code = null;
+		if($object->getLvl() != 0) {
+			if($object->getParent() == null) {
+			} else {
+				$code = $object->getParent()->getLibelle().' \ '.$object->getCode().$code;
+			}
+		} else {
+			$code = $object->getCode();
+		}
+		return $code;
+	}
+
+    /**
+	 * @param unknown $name
+	 */
+	public function setName($name){
+		$this->name=$name;
+		return $this;
+	}
+
+     /**
+     * Add children
+     *
+     * @param Structure $children
+     * @return Structure
+     */
+    public function addChild(Structure $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param Structure $children
+     */
+    public function removeChild(Structure $children)
+    {
+        $this->children->removeElement($children);
+    }
+    
+    /**
+     * @return array
+     */
+    public function getChildrenIds() {
+    	$ids= array($this->getId());
+    	foreach($this->children as $child) {
+    		$ids = array_merge($ids, $child->getChildrenIds());
+    	}
+    	return $ids;
     }
 
     /**
@@ -318,47 +394,11 @@ class Structure
         return $this->parent;
     }
 
-    public function setParent(?self $parent): self
+    /*public function setParent(?self $parent): self
     {
         $this->parent = $parent;
 
         return $this;
-    }
+    }*/
 
-    /**
-     * @return Collection|self[]
-     */
-    public function getStructures(): Collection
-    {
-        return $this->structures;
-    }
-
-    public function addStructure(self $structure): self
-    {
-        if (!$this->structures->contains($structure)) {
-            $this->structures[] = $structure;
-            $structure->setParent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeStructure(self $structure): self
-    {
-        if ($this->structures->removeElement($structure)) {
-            // set the owning side to null (unless already changed)
-            if ($structure->getParent() === $this) {
-                $structure->setParent(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function setDirection(?Direction $direction): self
-    {
-        $this->direction = $direction;
-
-        return $this;
-    }
 }

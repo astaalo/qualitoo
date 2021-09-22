@@ -2,9 +2,13 @@
 
 namespace App\Security\Voter;
 
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Authorization\Voter\Voter;
+use App\Entity\Document;
+use App\Entity\Processus;
+use App\Entity\Structure;
+use App\Entity\Utilisateur;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\Voter;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class AdministrationVoter extends Voter {
 	
@@ -18,7 +22,7 @@ class AdministrationVoter extends Voter {
 	
 	protected function supports($attribute, $entity): bool {
         return in_array($attribute, [self::CREATE, self::READ, self::UPDATE, self::DELETE, self::ACTIVATE, self::DESACTIVATE, self::CHANGE_POSITION])
-			&& ($entity instanceof \App\Entity\Processus || $entity instanceof \App\Entity\Direction || 
+			&& ($entity instanceof \App\Entity\Processus || $entity instanceof \App\Entity\Processus || 
 				$entity instanceof \App\Entity\Document || $entity instanceof \App\Entity\Document || 
 				$entity instanceof \App\Entity\Structure || $entity instanceof \App\Entity\TypeDocument || 
 				$entity instanceof \App\Entity\Utilisateur 

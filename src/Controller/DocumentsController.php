@@ -35,7 +35,7 @@ class DocumentsController extends BaseController
 	 * @QMLogger(message="Creation d'un processus")
 	 * @Route("/{id}/ajout_document", name="ajout_document", requirements={ "id"=  "\d+"})
 	 * @Route("/nouveau_document", name="nouveau_document")
-	 * @Template()
+	 * @Template("document/new.html.twig")
 	 */
 	public function newAction($id = null) {
 		$entity = new Document();

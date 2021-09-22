@@ -8,6 +8,7 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Security\Core\Security;
+use App\Entity\Utilisateur;
 
 class StructureRepository extends ServiceEntityRepository {
 
@@ -30,12 +31,35 @@ class StructureRepository extends ServiceEntityRepository {
      */
     public function listAll($structure = null) {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->innerJoin('p.direction', 'q');
+            ->innerJoin('p.parent', 'q');
         if($structure && $structure->getTypeStructure()) {
             $queryBuilder->andWhere('p.typeStructure = :typeStructure')->setParameter('typeStructure', $structure->getTypeStructure());
         }
         return $queryBuilder;
     }
+
+    /**
+	 * @param integer $id
+	 * @return array
+	 */
+	/*public function listByParent($id = null) {
+		$structure = $this->_user->getStructure();
+		$query = $this->createQueryBuilder('s')
+			          ->leftJoin('s.parent', 'p');
+		if($id) {
+			    if($this->_user->hasRole(Utilisateur::ROLE_RESPONSABLE_ONLY)){
+						$query->andWhere('s.root = :root')->setParameter('root', $structure->getRoot())
+							  ->andWhere('s.lvl >= :lvl')->setParameter('lvl', $structure->getLvl())
+							  ->andWhere('s.lft >= :lft')->setParameter('lft', $structure->getLft())
+							  ->andWhere('s.rgt <= :rgt')->setParameter('rgt', $structure->getRgt());	      
+				    }else 
+			    	     $query->andWhere('p.id = :id')->setParameter('id', $id);
+		} else {
+			$query->where('p IS NULL');
+		}
+		return $query->orderBy('s.name');
+	} */
+	
 
     public function findOneByFullname($fullname = null) {
         if($fullname==null) {
@@ -67,7 +91,7 @@ class StructureRepository extends ServiceEntityRepository {
             ->andWhere('s.lvl=:lvl')->setParameter('lvl', 0);
         if( $this->_user->hasRole(Utilisateur::ROLE_SUPER_ADMIN)) {
 
-        } elseif(! $this->_user->hasRole(Utilisateur::ROLE_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_RISKMANAGER) && !$this->_user->hasRole(Utilisateur::ROLE_AUDITEUR)) {
+        } elseif(! $this->_user->hasRole(Utilisateur::ROLE_ADMIN) && !$this->_user->hasRole(Utilisateur::ROLE_USER) ) {
             $query->andWhere('s.root=:root')->setParameter('root', $this->_user->getStructure()->getRoot());
         }
         return $query->orderBy('s.name');

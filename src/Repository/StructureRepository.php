@@ -38,29 +38,6 @@ class StructureRepository extends ServiceEntityRepository {
         return $queryBuilder;
     }
 
-    /**
-	 * @param integer $id
-	 * @return array
-	 */
-	/*public function listByParent($id = null) {
-		$structure = $this->_user->getStructure();
-		$query = $this->createQueryBuilder('s')
-			          ->leftJoin('s.parent', 'p');
-		if($id) {
-			    if($this->_user->hasRole(Utilisateur::ROLE_RESPONSABLE_ONLY)){
-						$query->andWhere('s.root = :root')->setParameter('root', $structure->getRoot())
-							  ->andWhere('s.lvl >= :lvl')->setParameter('lvl', $structure->getLvl())
-							  ->andWhere('s.lft >= :lft')->setParameter('lft', $structure->getLft())
-							  ->andWhere('s.rgt <= :rgt')->setParameter('rgt', $structure->getRgt());	      
-				    }else 
-			    	     $query->andWhere('p.id = :id')->setParameter('id', $id);
-		} else {
-			$query->where('p IS NULL');
-		}
-		return $query->orderBy('s.name');
-	} */
-	
-
     public function findOneByFullname($fullname = null) {
         if($fullname==null) {
             return null;
@@ -101,8 +78,8 @@ class StructureRepository extends ServiceEntityRepository {
      *
      * @return QueryBuilder
      */
-   /* public function listByType($type){
-        $societe_id=$this->_user->getStructure()->getSociete()->getId();
+  /*  public function listByType($type){
+        $societe_id=$this->_user->getSociete()->getId();
         $query = $this->createQueryBuilder('s')
             ->where('IDENTITY(s.societe)=:societe_id')->setParameter('societe_id', $societe_id);
         if($type==0)
@@ -128,12 +105,12 @@ class StructureRepository extends ServiceEntityRepository {
      * @param integer $id
      * @return array
      */
-  /*  public function listByParent($id = null) {
+   /* public function listByParent($id = null) {
         $structure = $this->_user->getStructure();
         $query = $this->createQueryBuilder('s')
             ->leftJoin('s.parent', 'p');
         if($id) {
-            if($this->_user->hasRole(Utilisateur::ROLE_RESPONSABLE_ONLY)){
+            if($this->_user->hasRole(Utilisateur::ROLE_ADMIN)){
                 $query->andWhere('s.root = :root')->setParameter('root', $structure->getRoot())
                     ->andWhere('s.lvl >= :lvl')->setParameter('lvl', $structure->getLvl())
                     ->andWhere('s.lft >= :lft')->setParameter('lft', $structure->getLft())

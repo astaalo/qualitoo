@@ -35,7 +35,7 @@ class Structure extends Tree implements TreeInterface
      * @var string
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -112,7 +112,7 @@ class Structure extends Tree implements TreeInterface
     private $pole;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $direction;
 

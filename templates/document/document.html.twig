@@ -19,7 +19,7 @@
 			<li><a class="uibutton type_aggreg icon forward  {{ position==currentYear ? 'active' : null }}" onclick="location.href='{{ path('choix_type',{year:currentYear, type:type, link:app.request.attributes.get('_route')}) }}'">{{ currentYear }}</a></li>
         </ul>
 		<ul class="uibutton-group">
-		{% if has_rights('ROLE_ADMIN') or has_rights('ROLE_RISKMANAGER') %}
+		{% if has_rights('ROLE_ADMIN') or has_rights('ROLE_USER') %}
 			<li><a class="uibutton icon add " href="{{ path('nouveau_document',{type : type}) }}">Ajouter</a></li>
 		{% endif %}
 			<li><a class="uibutton icon filter on_load_filter" name="#filter_content" href="#">Filtrer</a></li>

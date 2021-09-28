@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Entity\Controle;
 use App\Entity\Document;
 use App\Entity\TypeDocument;
 use App\Entity\Utilisateur;

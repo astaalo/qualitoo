@@ -9,6 +9,7 @@ use App\Repository\UtilisateurRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
@@ -52,7 +53,7 @@ class UtilisateurController extends BaseController {
 	/**
 	 * @QMLogger(message="Modification utilisateur")
 	 * @Route ("/{id}/edition_utilisateur", name="edition_utilisateur", requirements={ "id"= "\d+"})
-	 * @Template("bundles/FOSUserBundle/Registration/edit.html.twig")
+	 * @Template("utilisateur/edit.html.twig")
 	 */
 	public function editAction($id, Request $request) {
 		$em = $this->getDoctrine()->getManager();
@@ -70,6 +71,30 @@ class UtilisateurController extends BaseController {
 			}
 		}
 		return array('user' => $user, 'form' => $form->createView());
+	}
+
+	/**
+	 * @QMLogger(message="Envoi des données saisies lors de la modification d'un utilisateur")
+	 * @Route ("/{id}/modifier_utilisateur", name="modifier_utilisateur", requirements={ "id"=  "\d+"})
+	 * @Method("POST")
+	 * @Template("utilisateur/edit.html.twig")
+	 */
+	public function updateAction($id, Request $request) {
+		$em = $this->getDoctrine()->getManager();
+		$entity = $em->getRepository('App\Entity\Utilisateur')->find($id);
+		$form = $this->createCreateForm($entity, UtilisateurFormType::class);
+
+		if ($request->getMethod() == 'POST') {
+			$form->handleRequest($request);
+			if ($form->isValid()) {
+				//$entity->upload();
+				$em->persist($entity);
+				$em->flush();
+				//$this->get('session')->getFlashBag()->add('success', "La modification s\'est effectuée avec succès.");
+				return $this->redirect($this->generateUrl('les_utilisateurs'));
+			}
+		}
+		return array('entity' => $entity, 'form' => $form->createView());
 	}
 
 	/**
@@ -104,7 +129,8 @@ class UtilisateurController extends BaseController {
 			if ($form->isValid()) {
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($entity);
-				$em->flush();$this->get('session')->getFlashBag()->add('success', "Utilisateur ajouté avec succés.");
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('success', "Utilisateur ajouté avec succés.");
 				/*if($entity->getParent()) {
 					return $this->redirect($this->generateUrl('details_utilisateur', array('id' => $entity->getParent()->getId())));
 				} else{*/

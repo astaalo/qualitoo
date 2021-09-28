@@ -7,7 +7,8 @@ use App\Form\DocumentType;
 use App\Service\UploadFile;
 use App\Annotation\QMLogger;
 use App\Repository\DocumentRepository;
-use \App\Repository\QueryBuilder;
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Query;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -74,12 +75,12 @@ class DocumentsController extends BaseController
 	 * @Route("/liste_des_documents", name="liste_des_documents")
 	 * @Template("document/index.html.twig")
 	 */
-	public function listAction(Request $request, DocumentRepository $docRepo) {
+	public function listAction(Request $request, DocumentRepository $documentRepo) {
 		$document = new Document();
 		$form = $this->createForm(DocumentType::class, $document);
 		$this->modifyRequestForForm($request, $this->get('session')->get('document_criteria'), $form);
 		$docs = $form->getData();
-		$queryBuilder = $docRepo->listAll($docs);
+		$queryBuilder = $documentRepo->listAll($docs);
 		//dd($queryBuilder);
 		return $this->paginate($request, $queryBuilder);
 	}
@@ -94,6 +95,17 @@ class DocumentsController extends BaseController
 		$document = $em->getRepository('App\Entity\Document')->find($id);
 		$this->denyAccessUnlessGranted('read', $document, 'Accés non autorisé');
 		return array('entitie' => $document);
+	}
+
+	/**
+	 * @QMLogger(message="Details d'un document")
+	 * @Route("/{id}/details_fichier", name="details_fichier")
+	 * @Template("document/document.html.twig")
+	 */
+	public function detailsFichierAction($id) {
+		$document = $this->getDoctrine()->getRepository(Document::class)->find($id);
+		
+		return array('document'=>$document);
 	}
 
 	/**
@@ -112,7 +124,8 @@ class DocumentsController extends BaseController
 			if ($form->isValid()) {
 				$em->persist($entity);
 				$em->flush();
-				return $this->redirect($this->generateUrl('choix_type',array('link'=>'documents','year'=>date('Y'), 'type'=>$entity->getTypeDocument()->getId())));
+				//$this->get('session')->getFlashBag()->add('success', "La modification s\'est effectuée avec succès.");
+				return $this->redirect($this->generateUrl('les_documents'));
 			}
 		}
 		return array('entity' => $entity, 'form' => $form->createView());
@@ -121,7 +134,7 @@ class DocumentsController extends BaseController
 	/**
 	 * @QMLogger(message="Modification d'un document ")
 	 * @Route ("/{id}/edition_document", name="edition_document", requirements={ "id"=  "\d+"})
-	 * @Template()
+	 * @Template("document/edit.html.twig")
 	 */
 	public function editAction($id) {
 		$em = $this->getDoctrine()->getManager();

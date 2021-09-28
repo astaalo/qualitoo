@@ -35,7 +35,7 @@ class UtilisateurFormType extends AbstractType
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', EmailType::class, array('label' => "Adresse e-mail"))
             //->add('ip', null, array('label' => 'IP'))
-            ->add('password', null, array('label' => 'Password'))
+            //->add('password', null, array('label' => 'Password'))
             ->add('telephone', null, array('label' => 'Téléphone'))
             //->add('manager', null, array('label' => 'Est manager', 'required' => false, 'attr' => array('class' => 'on_off_checkbox')))
             ->add('profils', EntityType::class, array('label' => 'Profil','class' => 'App\Entity\Profil', 'attr' => array('class' => 'chzn-select'), 'query_builder' => function (ProfilRepository $er) {

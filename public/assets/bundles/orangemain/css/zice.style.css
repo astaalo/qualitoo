@@ -176,13 +176,13 @@ span.error {
 	padding: 6px 20px 8px 20px;
 	margin-left: 2px;
 }
-
+/*
 .clear {
 	clear: both;
 	height: 0px;
 	margin: 0;
 	padding: 0;
-}
+}*/
 
 .f_help {
 	display: block;
@@ -2210,6 +2210,7 @@ label.iPhoneCheckLabelOff span {
 	left: 0px;
 	top: 45px;
 	z-index: 48;
+	height: 100%;
 }
 
 .main_menu {
@@ -2217,6 +2218,7 @@ label.iPhoneCheckLabelOff span {
 	padding: 0;
 	float: left;
 	width: 200px;
+	height: 100%;
 	list-style: none;
 	display: block;
 }

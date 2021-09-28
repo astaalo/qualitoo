@@ -174,9 +174,9 @@ class ProcessusController extends BaseController {
 					}*/
 				$em->persist($entity);
 				$em->flush();
-				$this->get('session')->getFlashBag()->add('success', "La modification s'est effectuée avec succès.");
+				//$this->get('session')->getFlashBag()->add('success', "La modification s'est effectuée avec succès.");
 				return $this->redirect($this->generateUrl('les_processus'));
-				// 				return new JsonResponse(array('type' => 'success', 'text' => 'Le centre a été mis à jour avec succès.'));
+				//return new JsonResponse(array('type' => 'success', 'text' => 'Le centre a été mis à jour avec succès.'));
 			}
 		}
 		return array('entity' => $entity, 'form' => $form->createView());

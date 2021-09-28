@@ -88,7 +88,6 @@
 	                		<b>{{ app.user.societe?app.user.societe:"" }}</b>
 	                	</span>
                     {% set societes = app.user.allSocietes %}
-
                     <span class="scroll_down_menu"></span>
                     <ul style="display: none;">
                         {% for societe in societes %}
@@ -100,7 +99,13 @@
                 </div>
              {% endif %} 
             <div style="float: left;"><img src="{{ asset('assets/bundles/orangemain/images/logo/logo.gif') }}" alt="Online" class="avatar" /></div>
-            <div class="setting" title="Modification du profil"><b>Bienvenue,</b> <b class="red">{{ app.user }}</b><img src="{{ asset('assets/bundles/orangemain/images/gear.png') }}" class="gear"  alt="Profile Setting" ></div>
+            <div class="setting" title="Modification du profil"><b>Bienvenue,</b> <b class="red">{{ app.user }}</b></div>
+            <div title="Parameters">
+                {% if has_rights('ROLE_ADMIN') %}
+                    <a href="{{ path('fos_user_security_logout')}}"><b >Parameters</b></a>
+                {% endif %}
+                <img src="{{ asset('assets/bundles/orangemain/images/gear.png') }}"  class="gear" alt="setting" >
+            </div>
             <div title="Disconnect">
                 {% if is_granted("ROLE_PREVIOUS_ADMIN") %}
                     <a href="{{ path('dashboard') ~ '?_want_to_be_this_user=_exit' }}"><b >Déconnexion</b></a>
@@ -116,12 +121,9 @@
     <div id="content">
         <div class="inner">
             <div class="topcolumn">
-                <div class="logo"></div>
-                {% block shortcut %}
-                    {{ knp_menu_render('OrangeMainBundle:Builder:showShortcut', {'template': 'extra/knp_shortcut.html.twig'}) }}
-                {% endblock %}
+                <!--<div class="logo"></div>-->
             </div>
-            <div class="clear"></div>
+            <!--<div class="clear"></div>-->
             <br /><br />
             {% block content %}{% endblock %}
             {% include 'extra/flash.html.twig' %}
@@ -139,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div id="footer"> &copy; Copyright 2015 <span class="tip"><a  href="#" title="DSD/DASI/PMA" >SONATEL MULTIMEDIA</a> </span> </div>
+            <div id="footer"> &copy; Copyright 2015 <span class="tip"><a  href="#" title="DST/DASI/PMA" >SONATEL MULTIMEDIA</a> </span> </div>
         </div> <!--// End inner -->
         <div>
         </div>

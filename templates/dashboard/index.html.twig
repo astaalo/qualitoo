@@ -1,11 +1,7 @@
-{% extends 'base.html.twig' %}
 
-{% block navigation %}
-    {{ knp_menu_render('OrangeMainBundle:Builder:showMenu', {'template': 'Extra/knp_menu.html.twig', 'item': {1:'Risque'} }) }}
-{% endblock %}
 {% block content %}
-    <h1 align="center">Que Voulez vous Faire?</h1>
+    <!--<h1 align="center">Que Voulez vous Faire?</h1>-->
     <div class="dashboard">
-        {% include 'dashboard/dashboard_grid_item.html.twig' with {'items': gridItems} %}
+        {% include 'document/index.html.twig' with {'items': gridItems} %}
     </div>
 {% endblock %}

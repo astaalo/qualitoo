@@ -111,7 +111,6 @@ class StructureController extends BaseController {
 		return array('entity' => $structure);
 	}
 	
-	
 	/**
 	 * @QMLogger(message="Modification d'une structure")
 	 * @Route ("/{id}/edition_structure", name="edition_structure", requirements={ "id"=  "\d+"})
@@ -146,8 +145,8 @@ class StructureController extends BaseController {
 					}
 				$em->persist($entity);
 				$em->flush();
+				$this->get('session')->getFlashBag()->add('success', "La modification s'est effectuée avec succès.");
 				return $this->redirect($this->generateUrl('les_structures'));
-				//return new JsonResponse(array('type' => 'success', 'text' => 'Le centre a été mis à jour avec succès.'));
 			}
 		}
 		return array('entity' => $entity, 'form' => $form->createView());

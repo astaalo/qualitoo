@@ -71,8 +71,8 @@ class DocumentController extends BaseController {
 		$em = $this->getDoctrine()->getManager();
 		$form = $this->createForm(DocumentCriteria::class);
 		$this->modifyRequestForForm($request, $this->get('session')->get('document_criteria'), $form);
-		//$queryBuilder = $em->getRepository('App\Entity\Document')->getDocumentsByType($form->getData());
-	//	return $this->paginate($request, $queryBuilder);
+		$queryBuilder = $em->getRepository('App\Entity\Document')->getDocumentsByType($form->getData());
+		return $this->paginate($request, $queryBuilder);
 	}
 	
 	/**

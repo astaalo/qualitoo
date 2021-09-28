@@ -14,20 +14,13 @@ class Builder implements ContainerAwareInterface
 	public function showMenu(FactoryInterface $factory, array $options) {
 		$menu = $factory->createItem('menu');
 		$menu->addChild('Processus', array('route' => 'les_processus', 'label' => 'Processus', 'attributes' => array('class' => 'repeat')));
-		//$menu->addChild('Activite', array('route' => 'les_activites', 'label' => 'Activite', 'attributes' => array('class' => 'ruler_square')));
-		//$menu->addChild('Menace', array('route' => 'les_menaces', 'label' => 'Base des riques', 'attributes' => array('class' => 'ruler_square')));
-		//$menu->addChild('Projet', array('route' => 'les_projets', 'label' => 'Projet', 'attributes' => array('class' => 'file')));
-		//$menu->addChild('Cause', array('route' => 'les_causes', 'label' => 'Cause', 'attributes' => array('class' => 'firewall')));
- 		//$menu->addChild('Questions', array('route' => 'les_questions', 'label' => 'Grille de maturité', 'attributes' => array('class' => 'home')));
-		//$menu->addChild('Equipement', array('route' => 'les_equipements', 'label' => 'Equipement/Activité', 'attributes' => array('class' => 'spreadsheet')));
-		//$menu->addChild('DomainePhysique', array('route' => 'les_domaines', 'label' => 'Domaines', 'attributes' => array('class' => 'home')));
-		//$menu->addChild('DomaineActivite', array('route' => 'les_domaines', 'label' => "Domaine d'activité", 'attributes' => array('class' => 'home')));
 		$menu->addChild('Societe', array('route' => 'les_societes', 'label' => "Societe", 'attributes' => array('class' => 'access_point')));
 		$menu->addChild('Utilisateur', array('route' => 'les_utilisateurs', 'label' => 'Utilisateur', 'attributes' => array('class' => 'administrator')));
 		$menu->addChild('Structure', array('route' => 'les_structures', 'label' => 'Structure/Entité', 'attributes' => array('class' => 'door')));
-		$menu->addChild('Document', array('route' => 'les_documents', 'label' => 'Document', 'attributes' => array('class' => 'door')));
+		$menu->addChild('Suivi Document', array('route' => 'les_documents', 'label' => 'Suivie Document', 'attributes' => array('class' => 'door')));
 		$menu->addChild('Rubrique', array('route' => 'les_structures', 'label' => 'Rubriques', 'attributes' => array('class' => 'spreadsheet')));
 		$menu->addChild('Theme', array('route' => 'les_structures', 'label' => 'Thémes', 'attributes' => array('class' => 'spreadsheet')));
+		$menu->addChild('Profil', array('route' => 'les_structures', 'label' => 'Changer Password', 'attributes' => array('class' => 'spreadsheet')));
 		return $menu;
 	}
 	

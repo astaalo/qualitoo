@@ -20,8 +20,9 @@
 {% block content_config %}
 <div class="contentForm">
 	<form  novalidate="novalidate" action="{{ path('creer_structure') }}" method="POST">
+		{{ form_row(form.code) }}
 		{{ form_row(form.libelle, {attr: attr|default({class: ' large'}) }) }}
-		{{ form_row(form.direction) }}
+		{{ form_row(form.societe) }}
 		{{ form_row(form.typeStructure) }}
 		{{ form_row(form.parent) }}
 		{{ form_row(form._token) }}

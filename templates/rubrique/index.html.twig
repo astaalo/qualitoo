@@ -1,0 +1,46 @@
+{% extends 'configuration/index.html.twig' %}
+
+{% block menu_config %}{% include 'configuration/configuration.html.twig' %}{% endblock %}
+
+{% block header_config %}
+<div class="header">
+	<span>
+	<span class="ico color spreadsheet"></span>
+		Liste des Rubriques
+	</span>
+	<div id="buttom_top">
+		<ul class="uibutton-group">
+			<li><a class="uibutton icon add" href="{{ path('nouveau_rubrique') }}">rubrique</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_config %}
+	<div class="content_table">
+		<div class="tableName">
+			<table class="display" id="rubriqueTable">
+				<thead>
+					<tr>
+						<th width="50px"><div class="th_wrapp">Libelle</div></th>
+						<th><div class="th_wrapp">Nom de la société</div></th>
+						<th><div class="th_wrapp">Etat</div></th>
+						<th width="100px"><div class="th_wrapp">Actions</div></th>
+					</tr>
+				</thead>
+				<tbody>
+				 	<tr class="odd gradeX">
+						<td colspan="4">Chargement des données en cours ...</td>
+					</tr>
+				</tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ block_render('form_div_layout.html.twig', 'datatable_options', {has_buttons: false, with_tag: 1 }) }}
+	{% include 'extra/datatable.html.twig' with {idTable: 'rubriqueTable', url: path('liste_des_rubrique'), nosorting: {0:0, 1:2, 2:3} } %}
+{% endblock %}

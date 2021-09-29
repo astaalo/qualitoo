@@ -17,10 +17,9 @@ class Builder implements ContainerAwareInterface
 		$menu->addChild('Societe', array('route' => 'les_societes', 'label' => "Societe", 'attributes' => array('class' => 'access_point')));
 		$menu->addChild('Utilisateur', array('route' => 'les_utilisateurs', 'label' => 'Utilisateur', 'attributes' => array('class' => 'administrator')));
 		$menu->addChild('Structure', array('route' => 'les_structures', 'label' => 'Structure/Entité', 'attributes' => array('class' => 'door')));
-		$menu->addChild('Suivi Document', array('route' => 'les_documents', 'label' => 'Suivie Document', 'attributes' => array('class' => 'door')));
-		$menu->addChild('Rubrique', array('route' => 'les_structures', 'label' => 'Rubriques', 'attributes' => array('class' => 'spreadsheet')));
-		$menu->addChild('Theme', array('route' => 'les_structures', 'label' => 'Thémes', 'attributes' => array('class' => 'spreadsheet')));
-		$menu->addChild('Profil', array('route' => 'les_structures', 'label' => 'Changer Password', 'attributes' => array('class' => 'spreadsheet')));
+		$menu->addChild('Document', array('route' => 'les_documents', 'label' => 'Document', 'attributes' => array('class' => 'door')));
+		//$menu->addChild('Rubrique', array('route' => 'les_structures', 'label' => 'Rubriques', 'attributes' => array('class' => 'spreadsheet')));
+		//$menu->addChild('Theme', array('route' => 'les_structures', 'label' => 'Thémes', 'attributes' => array('class' => 'spreadsheet')));
 		return $menu;
 	}
 	

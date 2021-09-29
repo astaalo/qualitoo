@@ -130,13 +130,15 @@ class BaseController extends AbstractController
      */
     public function modifyRequestForForm($request, $data, $form, $method = 'POST') {
         $arrData = $request->request->all();
-        foreach($data as $key => $value) {
-            $arrData[$form->getName()][$key] = $value;
+        if (is_array($data) || is_object($data)){
+            foreach($data as $key => $value) {
+                $arrData[$form->getName()][$key] = $value;
+            }
         }
-        $request->request->replace($arrData);
-        $request->setMethod($method);
-        $form->handleRequest($request);
-    }
+            $request->request->replace($arrData);
+            $request->setMethod($method);
+            $form->handleRequest($request);
+        }
 
     /**
      * @param Request $request

@@ -7,34 +7,28 @@
 <div class="header">
 	<span>
 		<span class="ico gray add"></span>
-		Edition structure
+		Ajout Société
 	</span>
 	<div id="buttom_top">
 		<ul class="uibutton-group">
-			<li><a class="uibutton icon add" href="{{ path('nouvelle_structure') }}">structure</a></li>
-			<li><a class="uibutton icon answer" href="{{ path('les_structures') }}">Liste des Structures</a></li>
+			<li><a class="uibutton icon answer" href="{{ path('les_societes') }}">Liste des sociétés</a></li>
         </ul>
     </div>
 </div>
 {% endblock %}
 
 {% block content_config %}
-<div class="onecolumn">
-	<div class="clear"></div>
-	<div class="contentForm">
-	<form  novalidate="novalidate"  action="{{ path('modifier_structure', {'id': entity.id}) }}" method="POST">
-		{{ form_row(form.code) }}
-		{{ form_row(form.libelle, {attr: attr|default({class: ' large'})}) }}
-		{{ form_row(form.typeStructure) }}
-		{{ form_row(form.parent) }}
+<div class="contentForm">
+	<form  novalidate="novalidate"  action="{{ path('creer_societe') }}" method="POST">
+		{{ form_row(form.libelle) }}
+		{{ form_row(form.photo) }}
 		{{ form_row(form._token) }}
-		<div class="section last footer">
+		<div class="section last">
 			<div>
 				<button class="uibutton loading">Enregistrer</button>
 				<input type="reset"  class="uibutton special" value="Effacer" >
 			</div>
 		</div>
 	</form>
-	</div>
-	</div>
+</div>
 {% endblock %}

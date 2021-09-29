@@ -32,6 +32,8 @@ class DocumentRepository extends ServiceEntityRepository
     public function listAll($document = null) {
         $queryBuilder = $this->createQueryBuilder('p')
             ->innerJoin('p.profil', 'q');
+            //->where('q.etat != :etat')
+            //->setParameter('etat', $this->_states['entity']['supprime']);
         if($document && $document->getTypeDocument()) {
             $queryBuilder->andWhere('p.TypeDocument = :TypeDocument')->setParameter('TypeDocument', $document->getTypeDocument());
         }
